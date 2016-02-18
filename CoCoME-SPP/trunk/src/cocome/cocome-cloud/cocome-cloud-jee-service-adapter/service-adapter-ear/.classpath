@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/de.kit.ipd.utils"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/service-adapter-ejb"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/service-adapter-rest"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

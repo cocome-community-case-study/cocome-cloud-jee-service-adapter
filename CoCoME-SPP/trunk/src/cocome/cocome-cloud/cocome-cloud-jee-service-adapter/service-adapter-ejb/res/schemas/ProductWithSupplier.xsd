@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="Product" type="Product"/>
+
+  <xs:element name="ProductWithSupplier" type="ProductWithSupplier"/>
+
+  <xs:element name="Supplier" type="Supplier"/>
+
+  <xs:complexType name="ProductWithSupplier">
+    <xs:complexContent>
+      <xs:extension base="Product">
+        <xs:sequence>
+          <xs:element ref="Supplier" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Product">
+    <xs:sequence>
+      <xs:element name="Id" type="xs:long"/>
+      <xs:element name="Barcode" type="xs:long"/>
+      <xs:element name="PurchasePrice" type="xs:double"/>
+      <xs:element name="Name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Supplier">
+    <xs:sequence>
+      <xs:element name="Id" type="xs:long"/>
+      <xs:element name="Name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

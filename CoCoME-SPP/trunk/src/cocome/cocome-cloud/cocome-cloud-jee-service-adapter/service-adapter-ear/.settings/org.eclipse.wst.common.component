@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="service-adapter-ear">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/" source-path="/src"/>
+        <dependent-module archiveName="de.kit.ipd.utils.jar" deploy-path="/lib" handle="module:/resource/de.kit.ipd.utils/de.kit.ipd.utils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="service-adapter-ejb.jar" deploy-path="/" handle="module:/resource/service-adapter-ejb/service-adapter-ejb">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="service-adapter-rest.war" deploy-path="/" handle="module:/resource/service-adapter-rest/service-adapter-rest">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

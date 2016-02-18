@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="StockItem" type="StockItem"/>
+
+  <xs:complexType name="StockItem">
+    <xs:sequence>
+      <xs:element name="Id" type="xs:long"/>
+      <xs:element name="SalesPrice" type="xs:double"/>
+      <xs:element name="Amount" type="xs:long"/>
+      <xs:element name="MinStock" type="xs:long"/>
+      <xs:element name="MaxStock" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

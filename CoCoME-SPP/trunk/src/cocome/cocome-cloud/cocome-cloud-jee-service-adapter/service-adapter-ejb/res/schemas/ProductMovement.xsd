@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="Product" type="Product"/>
+
+  <xs:element name="ProductAmount" type="ProductAmount"/>
+
+  <xs:element name="ProductMovement" type="ProductMovement"/>
+
+  <xs:element name="Store" type="Store"/>
+
+  <xs:complexType name="ProductMovement">
+    <xs:sequence>
+      <xs:element name="OriginStore" type="Store" minOccurs="0"/>
+      <xs:element name="DestinationStore" type="Store" minOccurs="0"/>
+      <xs:element name="ProductAmounts" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="ProductAmount" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Store">
+    <xs:sequence>
+      <xs:element name="Id" type="xs:long"/>
+      <xs:element name="Name" type="xs:string" minOccurs="0"/>
+      <xs:element name="Location" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ProductAmount">
+    <xs:sequence>
+      <xs:element ref="Product" minOccurs="0"/>
+      <xs:element name="Amount" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Product">
+    <xs:sequence>
+      <xs:element name="Id" type="xs:long"/>
+      <xs:element name="Barcode" type="xs:long"/>
+      <xs:element name="PurchasePrice" type="xs:double"/>
+      <xs:element name="Name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+
