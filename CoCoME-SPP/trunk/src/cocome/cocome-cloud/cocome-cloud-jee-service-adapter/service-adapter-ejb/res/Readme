@@ -178,9 +178,9 @@ the App-Server starts.
 4.4 How to create a JDBC Connection Resource 
 
 A JDBC resource connects itself to a connection pool. It has a JDNI-Name and can have properties.
-This JDBC resource is set later in the persistence.xml. For a full connection at least a jdbc connection-pool
-and a jdbc resource is needed. The default resource names are jdbc/CoCoMEDB__pm and jdbc/CoCoMEDB__nontx.
-Note the __pm and __nontx suffixes which should be added when creating the resources but not in the persistence.xml.
+For a full connection at least a jdbc connection-pool and a jdbc resource is needed. 
+The default resource name for the service-adapter is jdbc/CoCoMEDB and has to be created.
+This name can be changed inside the service-adapter-ejb/ejbModule/META-INF/persistence.xml.
 
 4.4.1 With Command-Line tool asadmin
 
@@ -189,7 +189,7 @@ Note the __pm and __nontx suffixes which should be added when creating the resou
 -   Click on "JDBC Resources" in the project tree
 -	Click on "New" and follow the wizard. As connection pool take the 
 	appropriated one you probably created in step 4.3.2
-
+- 	As the name of the new Resource use jdbc/CoCoMEDB
  
 4.5 Configure the persistence.xml in the service-adapter-ejb/ejbModule/META-INF folder to 
     use the jta-data-source that you configured or skip this step if you use the defaults.

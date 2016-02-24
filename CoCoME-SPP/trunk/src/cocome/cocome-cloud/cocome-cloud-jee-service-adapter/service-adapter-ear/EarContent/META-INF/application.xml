@@ -7,7 +7,7 @@
   <module>
     <web>
       <web-uri>service-adapter-rest.war</web-uri>
-      <context-root>service-adapter-rest</context-root>
+      <context-root>/de.kit.ipd.cocome.cloud.serviceadapter</context-root>
     </web>
   </module>
 </application>
