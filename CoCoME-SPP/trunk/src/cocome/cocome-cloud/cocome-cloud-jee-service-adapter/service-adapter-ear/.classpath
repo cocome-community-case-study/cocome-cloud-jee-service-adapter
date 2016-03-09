@@ -5,5 +5,8 @@
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/de.kit.ipd.utils"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/service-adapter-ejb"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/service-adapter-rest"/>
+	<classpathentry exported="true" kind="lib" path="libs/common-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/kieker-1.12.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/monitoring-0.0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

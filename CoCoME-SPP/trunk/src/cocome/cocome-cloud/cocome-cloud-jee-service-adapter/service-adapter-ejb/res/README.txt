@@ -3,14 +3,14 @@
 **************************************************************
 
 
-1. Preliminary:
+1. Preliminary
 
-	- Used Server: GlassFish Server OpenSource Edition 3.1.2
+	- Used Server: GlassFish Server OpenSource Edition 3.1.2/4.x
 	- Java Version: JDK 1.7.0_51
 
-2. Deployment:
+2. Deployment
 
-2.1 Using Eclipse:
+2.1 Using Eclipse
 
 In order to use Eclipse IDE for deploying apps following tools
 have to be installed:
@@ -21,36 +21,28 @@ have to be installed:
 These tools normally are available under the standard download
 side of used eclipse.
 
-http://download.eclipse.org/releases/indigo
-
-in case using Eclipse Indigo.
-
-Oracle Enterprise tools can also help and are available under
-
-http://download.oracle.com/otn_software/oepe/indigo
-
-in case using Eclipse Indigo.
+See http://download.eclipse.org/releases/mars
 
 After having installed tools, the server adapter is still missing.
 Do following:
 
--	Open the JavaEE Perspective
--	Go to the Servers View
-- 	Right-Click and chose "New Server"
--	Choose the Glassfish Version you use and name the new server
--   Choose the location of the Glassfish installation on your local computer
--   Choose a domain to use for the application or create a new one by 
-    clicking on the + symbols to the right of the domain path. When creating a new 
-    domain, portbase + 80 will be the port to access the deployed application 
-    and portbase + 48 will be the port to access the admin panel of this domain.
+- Open the JavaEE Perspective
+- Go to the Servers View
+- Right-Click and chose "New Server"
+- Choose the Glassfish Version you use and name the new server
+- Choose the location of the Glassfish installation on your local computer
+- Choose a domain to use for the application or create a new one by 
+  clicking on the + symbols to the right of the domain path. When creating a new 
+  domain, portbase + 80 will be the port to access the deployed application 
+  and portbase + 48 will be the port to access the admin panel of this domain.
     
-a) For deploying an application like the service adapter:
+a) Deploying an application like the service adapter:
 
 -	Right-Click on the created Web-Application Project. In case of the 
     service adapter, right click on the service-adapter-ear project.
 -	Select "Run As > Run on Server" and select the server you created.
 
-b) For undeploying an application:
+b) Undeploying an application
 
 - 	Switch to JavaEE-Perspective
 -	Select the Servers-View
@@ -58,7 +50,7 @@ b) For undeploying an application:
 -	Right-Click on the app which has to be undeployed
 -	Select "Remove"
 
-2.2 Using Command-Line:
+2.2 Using Command-Line
 
 - Use the glassfish3\bin\asadmin tool to deploy the application.
 
@@ -124,9 +116,45 @@ b) For undeploying an application
  
 4. Configuration Database
 
-In this project DerbyDb is used.
+4.1 Create JDBC Connection Pool
 
-4.1 Settings before derby can be started properly
+For the connection pool you must decide which database service you are going to use.
+We successfully used PostgreSQL and DerbyDB for this task (see Appendix A for DerbyDB).
+
+4.1.1 With Command-Line tool asadmin
+
+4.1.2 With Admin-Console
+
+- Click on JBDC-Connection Pool in the project tree
+- Click on new, follow the wizard
+
+4.2 Create a JDBC Connection Resource 
+
+A JDBC resource connects itself to a connection pool. It has a JDNI-Name and can have properties.
+For a full connection at least a jdbc connection-pool and a jdbc resource is needed. 
+The default resource name for the service-adapter is jdbc/CoCoMEDB and has to be created.
+This name can be changed inside the service-adapter-ejb/ejbModule/META-INF/persistence.xml.
+
+4.2.1 With Command-Line tool asadmin
+
+4.2.2 With Admin-Console
+
+-   Click on "JDBC Resources" in the project tree
+-	Click on "New" and follow the wizard. As connection pool take the 
+	appropriated one created in 4.1
+- 	As the name of the new Resource use jdbc/CoCoMEDB
+ 
+4.3 Configure the persistence.xml in the service-adapter-ejb/ejbModule/META-INF folder to 
+    use the jta-data-source that you configured or skip this step if you use the defaults.
+	
+		
+		
+	
+= Appendix =
+
+A Setup of DerbyDB
+
+A.1 Settings before derby can be started properly
 
 the JRE has to have the permissions to listen to the port, where derby is going
 to listen (default: 1527). Following has to be done, if starting derby fails 
@@ -155,7 +183,7 @@ i.e. C:\Program Files\Java\jdk1.7.0_51\jre\lib\security
 Now try again to start derby. This time, no security problems should appear.
 	
 
-4.2 Starting the database
+A.2 Starting DerbyDB
 
 Once a database should be used to store data, the database has to be started.
 The database has to connect to the port (default: 1527). This can be accomplished
@@ -165,37 +193,5 @@ Eclipse provides a convenient option to start the JavaDB automatically when
 the App-Server starts.
 
 	Window>Preferences>GlassfishPreferences->see checkboxes
-
-4.3 How to create a JDBC Connection Pool
-
-4.3.1 With Command-Line tool asadmin
-
-4.3.2 With Admin-Console
-
-- Click on JBDC-Connection Pool in the project tree
-- Click on new, follow the wizard
-
-4.4 How to create a JDBC Connection Resource 
-
-A JDBC resource connects itself to a connection pool. It has a JDNI-Name and can have properties.
-For a full connection at least a jdbc connection-pool and a jdbc resource is needed. 
-The default resource name for the service-adapter is jdbc/CoCoMEDB and has to be created.
-This name can be changed inside the service-adapter-ejb/ejbModule/META-INF/persistence.xml.
-
-4.4.1 With Command-Line tool asadmin
-
-4.4.2 With Admin-Console
-
--   Click on "JDBC Resources" in the project tree
--	Click on "New" and follow the wizard. As connection pool take the 
-	appropriated one you probably created in step 4.3.2
-- 	As the name of the new Resource use jdbc/CoCoMEDB
- 
-4.5 Configure the persistence.xml in the service-adapter-ejb/ejbModule/META-INF folder to 
-    use the jta-data-source that you configured or skip this step if you use the defaults.
-	
-		
-		
-	
 		
 		

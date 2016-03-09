@@ -8,11 +8,11 @@
 		<jta-data-source>jdbc/CoCoMEDB</jta-data-source>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		
-		<!-- Commented out to nor produce always a empty db -->
-		<properties>
-		    <property name="javax.persistence.jdbc.user"     value="APP" />
-      		<property name="javax.persistence.jdbc.password" value="APP" />
-			<property name="eclipselink.ddl-generation" value="create-tables" />
-		</properties> 
+		<!-- Comment out to not produce always a empty db -->
+<!-- 		<properties> -->
+<!-- 		    <property name="javax.persistence.jdbc.user"     value="APP" /> -->
+<!--       		<property name="javax.persistence.jdbc.password" value="APP" /> -->
+<!-- 			<property name="eclipselink.ddl-generation" value="create-tables" /> -->
+<!-- 		</properties>  -->
 	</persistence-unit>
 </persistence>

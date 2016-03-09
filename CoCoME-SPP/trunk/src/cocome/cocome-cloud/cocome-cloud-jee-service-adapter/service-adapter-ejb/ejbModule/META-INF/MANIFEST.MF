@@ -1,2 +1,4 @@
 Manifest-Version: 1.0
+Class-Path: lib/kieker-1.12.jar:lib/monitoring-0.0.1-SNAPSHOT.jar:lib/
+ common-0.0.1-SNAPSHOT.jar
 

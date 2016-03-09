@@ -13,5 +13,14 @@
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="monitoring-0.0.1-SNAPSHOT.jar" deploy-path="/lib" handle="module:/classpath/lib/service-adapter-ear/libs/monitoring-0.0.1-SNAPSHOT.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="common-0.0.1-SNAPSHOT.jar" deploy-path="/lib" handle="module:/classpath/lib/service-adapter-ear/libs/common-0.0.1-SNAPSHOT.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="kieker-1.12.jar" deploy-path="/lib" handle="module:/classpath/lib/service-adapter-ear/libs/kieker-1.12.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>
