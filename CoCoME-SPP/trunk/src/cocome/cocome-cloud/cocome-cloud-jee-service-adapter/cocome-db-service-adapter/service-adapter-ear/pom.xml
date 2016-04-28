@@ -1,0 +1,99 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>service-adapter-ear</artifactId>
+	<packaging>ear</packaging>
+
+	<name>CoCoME Service Adapter EAR</name>
+
+	<parent>
+		<groupId>org.cocome</groupId>
+		<artifactId>service-adapter</artifactId>
+		<version>1.1</version>
+	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>org.cocome</groupId>
+			<artifactId>service-adapter-ejb</artifactId>
+			<version>1.1</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>org.cocome</groupId>
+			<artifactId>service-adapter-rest</artifactId>
+			<version>1.1</version>
+			<type>war</type>
+		</dependency>
+<!--		<dependency>
+			<groupId>net.kieker-monitoring</groupId>
+			<artifactId>kieker</artifactId>
+			<version>1.12</version>
+		</dependency>
+ 		<dependency>
+			<groupId>org.iobserve</groupId>
+			<artifactId>monitoring</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.iobserve</groupId>
+			<artifactId>common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency> -->
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.glassfish.maven.plugin</groupId>
+				<artifactId>maven-glassfish-plugin</artifactId>
+
+				<configuration>
+					<glassfishDirectory>${local.glassfish.home}</glassfishDirectory>
+					<user>${serviceadapter.user}</user>
+					<adminPassword>${serviceadapter.password}</adminPassword>
+					<!-- <passwordFile>${serviceadapter.passwordFile}</passwordFile> -->
+					<domain>
+						<name>${serviceadapter.domain}</name>
+						<host>${serviceadapter.host}</host>
+						<httpPort>${serviceadapter.httpPort}</httpPort>
+						<adminPort>${serviceadapter.adminPort}</adminPort>
+					</domain>
+					<components>
+						<component>
+							<name>${project.artifactId}</name>
+							<artifact>target/${project.artifactId}-${project.version}.${project.packaging}</artifact>
+						</component>
+					</components>
+					<debug>true</debug>
+					<echo>true</echo>
+				</configuration>
+				<executions>
+					<execution>
+						<id>gf-undeploy</id>
+						<goals>
+							<goal>undeploy</goal>
+							<goal>stop-domain</goal>
+						</goals>
+						<phase>clean</phase>
+					</execution>
+					<execution>
+						<id>gf-deploy</id>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

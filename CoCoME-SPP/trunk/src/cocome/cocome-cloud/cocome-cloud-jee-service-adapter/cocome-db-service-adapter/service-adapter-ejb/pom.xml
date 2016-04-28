@@ -1,0 +1,194 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>service-adapter-ejb</artifactId>
+	<packaging>ejb</packaging>
+
+	<name>CoCoME Service Adapter EJB</name>
+
+	<parent>
+		<groupId>org.cocome</groupId>
+		<artifactId>service-adapter</artifactId>
+		<version>1.1</version>
+	</parent>
+	
+	<properties>
+		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>de.kit.ipd</groupId>
+			<artifactId>java.utils</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-1.2-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<!-- This dependency is necessary because the standard javaee library doesn't provide javadocs -->
+			<groupId>org.jboss.spec</groupId>
+			<artifactId>jboss-javaee-all-6.0</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+		</dependency>
+<!-- 		<dependency>
+			<groupId>net.kieker-monitoring</groupId>
+			<artifactId>kieker</artifactId>
+			<version>1.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.iobserve</groupId>
+			<artifactId>monitoring</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.iobserve</groupId>
+			<artifactId>common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency> -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.8.7</version>
+		</dependency>
+	</dependencies>
+
+    <build>
+        <plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+<!-- 					<compilerArguments>
+						<endorseddirs>${endorsed.dir}</endorseddirs>
+					</compilerArguments> -->
+					<excludes>
+						<exclude>org/cocome/tradingsystem/inventory/data/generator/*.java</exclude>
+						<exclude>org/cocome/tradingsystem/util/Configuration.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+<!-- 			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>aspectj-maven-plugin</artifactId>
+				<version>1.8</version>
+				<configuration>
+					<complianceLevel>1.7</complianceLevel>
+					<source>1.7</source>
+					<target>1.7</target>
+					<aspectLibraries>
+						<aspectLibrary>
+							<groupId>net.kieker-monitoring</groupId>
+              				<artifactId>kieker</artifactId>
+						</aspectLibrary>
+					</aspectLibraries>
+					<xmlConfigured>${basedir}/src/main/resources/META-INF/aop.xml</xmlConfigured>
+					<sources>
+						<source>
+							<basedir>${basedir}/src/main/java</basedir>
+							<includes>
+								<include>**</include>
+							</includes>
+							<excludes>
+								<exclude>org/cocome/tradingsystem/inventory/data/store/StoreQueryProvider.java</exclude>
+								<exclude>org/cocome/tradingsystem/inventory/data/enterprise/EnterpriseQueryProvider.java</exclude>
+								<exclude>org/cocome/tradingsystem/inventory/data/persistence/*Transaction*.java</exclude>
+								<exclude>de/kit/ipd/java/tradingsystem/entity/*.java</exclude>
+								<exclude>org/cocome/tradingsystem/util/**</exclude>
+								<exclude>org/cocome/tradingsystem/inventory/application/store/ProductMovementTO.java</exclude>
+								<exclude>org/cocome/tradingsystem/inventory/application/store/StoreServer.java</exclude>
+								<exclude>org/cocome/tradingsystem/inventory/data/enterprise/CloudEnterpriseQueryProvider.java</exclude>
+								<exclude>org/cocome/tradingsystem/inventory/data/enterprise/Product.java</exclude>
+								<exclude>org/cocome/tradingsystem/inventory/data/enterprise/ProductSupplier.java</exclude>
+								<exclude>org/cocome/tradingsystem/inventory/data/enterprise/TradingEnterprise.java</exclude>
+								<exclude>org/cocome/tradingsystem/inventory/data/persistence/ServiceAdapterEntityConverter.java</exclude>
+								<exclude>org/cocome/tradingsystem/inventory/data/store/OrderEntry.java</exclude>
+								<exclude>org/cocome/tradingsystem/inventory/data/store/ProductOrder.java</exclude>
+								<exclude>org/cocome/tradingsystem/inventory/data/store/StockItem.java</exclude>
+								<exclude>org/cocome/tradingsystem/inventory/data/store/Store.java</exclude>
+								<exclude>org/cocome/tradingsystem/cashdeskline/cashdesk/IllegalCashDeskStateException.java</exclude>
+								<exclude>org/cocome/tradingsystem/cashdeskline/cashdesk/userdisplay/MessageKind.java</exclude>
+								<exclude>org/cocome/tradingsystem/cashdeskline/datatypes/*.java</exclude>
+								<exclude>org/cocome/tradingsystem/cashdeskline/events/*Event.java</exclude>
+								<exclude>org/cocome/tradingsystem/remote/access/connection/IPersistenceConnection.java</exclude>
+							</excludes>
+						</source>
+					</sources>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>       use this goal to weave all your main classes
+							<goal>test-compile</goal>  use this goal to weave all your test classes
+						</goals>
+					</execution>
+				</executions>
+			</plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<configuration>
+					<generateClient>true</generateClient>
+					<clientIncludes>
+						<clientInclude>**/I*.class</clientInclude>
+						<clientInclude>**/*Event.class</clientInclude>
+						<clientInclude>**/*Exception.class</clientInclude>
+						<clientInclude>**/scope/CashDeskSessionScoped.class</clientInclude>
+						<clientInclude>**/datatypes/*.class</clientInclude>
+					</clientIncludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unpack-properties-file</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeArtifactIds>cloud-logic-core</includeArtifactIds>
+							<outputDirectory>${project.basedir}/src/main/resources</outputDirectory>
+							<includes>**\/*.properties</includes>
+						</configuration>
+					</execution>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+ 						<configuration>
+							<outputDirectory>${endorsed.dir}</outputDirectory>
+							<silent>true</silent>
+							<artifactItems>
+								<artifactItem>
+									<groupId>javax</groupId>
+									<artifactId>javaee-endorsed-api</artifactId>
+									<version>6.0</version>
+									<type>jar</type>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> 
+				<executions> <execution> <id>attach-javadocs</id> <goals> <goal>jar</goal> 
+				</goals> </execution> </executions> </plugin> -->
+		</plugins>
+	</build>
+
+
+</project>
