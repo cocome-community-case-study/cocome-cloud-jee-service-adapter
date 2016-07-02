@@ -114,7 +114,7 @@ public interface IStoreQuery {
 	 * @return
 	 * 		{@link Product} entity with the specified barcode, or {@code null} if there is no such product.
 	 */
-	Product queryProduct(long barcode, IPersistenceContext pctx);
+	Product queryProduct(edu.kit.ipd.sdq.evaluation.Barcode barcode, IPersistenceContext pctx);
 
 	/**
 	 * Queries the database for a {@link ProductOrder} with given identifier.

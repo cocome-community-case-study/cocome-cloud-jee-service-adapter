@@ -95,7 +95,7 @@ final class UserDisplayEventHandler
 
 	@Override
 	public void onEvent(final InvalidProductBarcodeEvent event) {
-		final long barcode = event.getBarcode();
+		final edu.kit.ipd.sdq.evaluation.Barcode barcode = event.getBarcode();
 		LOG.info("\tbarcode: " + barcode);
 
 		//

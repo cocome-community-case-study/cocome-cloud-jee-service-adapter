@@ -48,11 +48,11 @@ final class DatabaseFiller {
 	//
 
 	private static final class ItemInfo {
-		final long barcode;
+		final edu.kit.ipd.sdq.evaluation.Barcode barcode;
 		final long amount;
 		final ItemType type;
 
-		ItemInfo(final long barcode, final long amount, final ItemType type) {
+		ItemInfo(final edu.kit.ipd.sdq.evaluation.Barcode barcode, final long amount, final ItemType type) {
 			this.barcode = barcode;
 			this.amount = amount;
 			this.type = type;

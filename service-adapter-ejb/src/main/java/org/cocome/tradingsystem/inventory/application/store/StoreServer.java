@@ -470,7 +470,7 @@ public final class StoreServer extends UnicastRemoteObject
 			public void execute(final IPersistenceContext pctx) throws ProductNotAvailableException {
 				for (final ProductAmountTO movedProduct : movedProducts.getProductAmounts()) {
 					final ProductTO productTO = movedProduct.getProduct();
-					final long barcode = productTO.getBarcode();
+					final edu.kit.ipd.sdq.evaluation.Barcode barcode = productTO.getBarcode();
 					final StockItem stockItem =
 							storeQuery.queryStockItem(__storeId, barcode, pctx);
 

@@ -41,7 +41,7 @@ public class Product implements Serializable{
 
 	private long id;
 
-	private long barcode;
+	private edu.kit.ipd.sdq.evaluation.Barcode barcode;
 
 	private double purchasePrice;
 
@@ -84,7 +84,7 @@ public class Product implements Serializable{
 	 * @param barcode
 	 *            The barcode of the product
 	 */
-	public void setBarcode(long barcode) {
+	public void setBarcode(edu.kit.ipd.sdq.evaluation.Barcode barcode) {
 		this.barcode = barcode;
 	}
 

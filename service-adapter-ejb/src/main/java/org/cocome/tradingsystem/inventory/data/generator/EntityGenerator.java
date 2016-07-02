@@ -97,7 +97,7 @@ final class EntityGenerator {
 	//
 
 	List<Product> createProducts(
-			final String namePrefix, final long barcodeOffset, final int count
+			final String namePrefix, final edu.kit.ipd.sdq.evaluation.Barcode barcodeOffset, final int count
 			) {
 		return _generateEntities(count, new Factory<Product>() {
 			@Override

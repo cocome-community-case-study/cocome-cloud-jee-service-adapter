@@ -24,6 +24,6 @@ package org.cocome.tradingsystem.cashdeskline.cashdesk.barcodescanner;
  */
 public interface IBarcodeScanner {
 
-	void sendProductBarcode(long barcode);
+	void sendProductBarcode(edu.kit.ipd.sdq.evaluation.Barcode barcode);
 
 }

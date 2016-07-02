@@ -145,7 +145,7 @@ final class CashDeskEventHandler
 
 	@Override
 	public void onEvent(final ProductBarcodeScannedEvent event) throws JMSException {
-		final long barcode = event.getBarcode();
+		final edu.kit.ipd.sdq.evaluation.Barcode barcode = event.getBarcode();
 		LOG.info("\tbarcode: " + barcode);
 
 		//

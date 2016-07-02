@@ -59,7 +59,7 @@ public final class BarcodeScannerModel
 	//
 
 	// @Override
-	public void sendProductBarcode(final long barcode) {
+	public void sendProductBarcode(final edu.kit.ipd.sdq.evaluation.Barcode barcode) {
 		this.cashDeskProducer.sendAsync(new ProductBarcodeScannedEvent(barcode));
 	}
 

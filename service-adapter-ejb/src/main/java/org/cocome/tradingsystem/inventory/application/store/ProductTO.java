@@ -86,7 +86,7 @@ public class ProductTO implements Serializable {
 	 * 
 	 * @param barcode
 	 */
-	public void setBarcode(final long barcode) {
+	public void setBarcode(final edu.kit.ipd.sdq.evaluation.Barcode barcode) {
 		__barcode = barcode;
 	}
 

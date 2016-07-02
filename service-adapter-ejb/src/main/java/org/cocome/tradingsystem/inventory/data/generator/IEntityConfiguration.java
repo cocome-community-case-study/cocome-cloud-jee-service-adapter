@@ -43,7 +43,7 @@ interface IEntityConfiguration {
 
 	String getProductName(String prefix, int index);
 
-	long getProductBarcode(long barcodeOffset, int index);
+	long getProductBarcode(edu.kit.ipd.sdq.evaluation.Barcode barcodeOffset, int index);
 
 	double getProductPurchasePrice();
 

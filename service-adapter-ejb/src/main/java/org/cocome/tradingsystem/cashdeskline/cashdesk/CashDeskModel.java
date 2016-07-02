@@ -257,7 +257,7 @@ public final class CashDeskModel
 	 * 
 	 * @param barcode
 	 */
-	void addItemToSale(final long barcode) throws JMSException {
+	void addItemToSale(final edu.kit.ipd.sdq.evaluation.Barcode barcode) throws JMSException {
 		this.ensureStateIsLegal(ADD_ITEM_TO_SALE_STATES);
 
 		//
@@ -302,7 +302,7 @@ public final class CashDeskModel
 		return expressModeDisabled || itemCountUnderLimit;
 	}
 
-	void sendInvalidProductBarcodeEvent(final long barcode) throws JMSException {
+	void sendInvalidProductBarcodeEvent(final edu.kit.ipd.sdq.evaluation.Barcode barcode) throws JMSException {
 		this.sendCashDeskEvent(new InvalidProductBarcodeEvent(barcode));
 	}
 
