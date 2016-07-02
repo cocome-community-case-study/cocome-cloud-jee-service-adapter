@@ -43,6 +43,6 @@ public interface IStoreInventory extends Remote {
 	 *             if there is no product (or a stock item for product) with the
 	 *             given barcode in the store
 	 */
-	ProductWithStockItemTO getProductWithStockItem(long productBarcode) throws NoSuchProductException, RemoteException;
+	ProductWithStockItemTO getProductWithStockItem(edu.kit.ipd.sdq.evaluation.Barcode productBarcode) throws NoSuchProductException, RemoteException;
 
 }

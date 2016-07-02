@@ -204,7 +204,7 @@ public interface IStoreQuery {
 	 *         barcode, or {@code null} if the stock item could not be found.
 	 */
 	StockItem queryStockItem(
-			long storeId, long productBarcode, IPersistenceContext pctx);
+			long storeId, edu.kit.ipd.sdq.evaluation.Barcode productBarcode, IPersistenceContext pctx);
 
 	/**
 	 * @author SDQ Returns the stock for the given productIds.

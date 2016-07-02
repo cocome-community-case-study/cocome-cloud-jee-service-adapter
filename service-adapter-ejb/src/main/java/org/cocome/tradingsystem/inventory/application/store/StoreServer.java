@@ -392,7 +392,7 @@ public final class StoreServer extends UnicastRemoteObject
 
 	@Override
 	public ProductWithStockItemTO getProductWithStockItem(
-			final long productBarCode
+			final edu.kit.ipd.sdq.evaluation.Barcode productBarCode
 			) throws NoSuchProductException {
 		return TransactionWrapper.execute(new CheckedOperation<ProductWithStockItemTO, NoSuchProductException>() {
 			@Override

@@ -32,7 +32,7 @@ public final class ProductBarcodeScannedEvent implements Serializable {
 
 	//
 
-	private final long __barcode;
+	private final edu.kit.ipd.sdq.evaluation.Barcode __barcode;
 
 	//
 
@@ -40,7 +40,7 @@ public final class ProductBarcodeScannedEvent implements Serializable {
 		__barcode = barcode;
 	}
 
-	public long getBarcode() {
+	public edu.kit.ipd.sdq.evaluation.Barcode getBarcode() {
 		return __barcode;
 	}
 

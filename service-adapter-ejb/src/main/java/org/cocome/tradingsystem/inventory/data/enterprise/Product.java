@@ -76,7 +76,7 @@ public class Product implements Serializable{
 	 * @return The barcode of the product
 	 */
 	@Basic
-	public long getBarcode() {
+	public edu.kit.ipd.sdq.evaluation.Barcode getBarcode() {
 		return barcode;
 	}
 

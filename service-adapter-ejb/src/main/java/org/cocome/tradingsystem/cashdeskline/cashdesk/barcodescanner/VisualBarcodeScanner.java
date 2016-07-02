@@ -73,7 +73,7 @@ public final class VisualBarcodeScanner
 					public void actionPerformed(final ActionEvent event) {
 						final String input = barcodeEntryField.getText();
 						try {
-							final edu.kit.ipd.sdq.evaluation.Barcode barcode = Long.parseLong(input);
+							final edu.kit.ipd.sdq.evaluation.Barcode barcode = edu.kit.ipd.sdq.evaluation.Barcode.parseInput(input);
 							barcodeEntryField.setBackground(Color.WHITE);
 
 							VisualBarcodeScanner.this._model().sendProductBarcode(barcode);

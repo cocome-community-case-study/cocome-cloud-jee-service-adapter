@@ -692,7 +692,7 @@ public class ServiceProviderDatabase extends HttpServlet {
 				continue;
 			}
 			final Product p = new Product();
-			p.setBarcode(Long.parseLong(colBarcode.getValue()));
+			p.setBarcode(edu.kit.ipd.sdq.evaluation.Barcode.parseInput(colBarcode.getValue()));
 			if (colName != null) {
 				p.setName(colName.getValue());
 			}
@@ -770,7 +770,7 @@ public class ServiceProviderDatabase extends HttpServlet {
 			}
 
 			final Product product = new Product();
-			product.setBarcode(Long.parseLong(colProductBarcode.getValue()));
+			product.setBarcode(edu.kit.ipd.sdq.evaluation.Barcode.parseInput(colProductBarcode.getValue()));
 
 			final OrderEntry orderentry = new OrderEntry();
 			orderentry.setOrder(productOrder);
@@ -816,7 +816,7 @@ public class ServiceProviderDatabase extends HttpServlet {
 			}
 
 			final Product product = new Product();
-			product.setBarcode(Long.parseLong(colProductBarcode.getValue()));
+			product.setBarcode(edu.kit.ipd.sdq.evaluation.Barcode.parseInput(colProductBarcode.getValue()));
 
 			final StockItem stockItem = new StockItem();
 			stockItem.setStore(store);

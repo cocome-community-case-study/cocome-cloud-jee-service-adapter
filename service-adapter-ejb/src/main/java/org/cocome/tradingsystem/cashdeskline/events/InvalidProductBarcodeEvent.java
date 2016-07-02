@@ -28,15 +28,15 @@ public final class InvalidProductBarcodeEvent implements Serializable {
 
 	//
 
-	private final long __invalidBarcode;
+	private final edu.kit.ipd.sdq.evaluation.Barcode __invalidBarcode;
 
 	//
 
-	public InvalidProductBarcodeEvent(final long invalidBarcode) {
+	public InvalidProductBarcodeEvent(final edu.kit.ipd.sdq.evaluation.Barcode invalidBarcode) {
 		__invalidBarcode = invalidBarcode;
 	}
 
-	public long getBarcode() {
+	public edu.kit.ipd.sdq.evaluation.Barcode getBarcode() {
 		return __invalidBarcode;
 	}
 

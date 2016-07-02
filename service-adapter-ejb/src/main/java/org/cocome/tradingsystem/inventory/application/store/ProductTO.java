@@ -48,7 +48,7 @@ public class ProductTO implements Serializable {
 	@XmlElement(name="Id")
 	private long __id;
 	@XmlElement(name="Barcode")
-	private long __barcode;
+	private edu.kit.ipd.sdq.evaluation.Barcode __barcode;
 	@XmlElement(name="PurchasePrice")
 	private double __purchasePrice;
 	@XmlElement(name="Name")
@@ -77,7 +77,7 @@ public class ProductTO implements Serializable {
 	 * @return
 	 *         Saved barcode value.
 	 */
-	public long getBarcode() {
+	public edu.kit.ipd.sdq.evaluation.Barcode getBarcode() {
 		return __barcode;
 	}
 
