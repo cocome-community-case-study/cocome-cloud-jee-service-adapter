@@ -17,6 +17,7 @@
 package org.cocome.tradingsystem.inventory.data.generator;
 
 import java.util.Date;
+import org.cocome.tradingsystem.inventory.application.store.Barcode;
 
 /**
  * Represents configuration of database entity attribute values. The interface
@@ -43,7 +44,7 @@ interface IEntityConfiguration {
 
 	String getProductName(String prefix, int index);
 
-	long getProductBarcode(edu.kit.ipd.sdq.evaluation.Barcode barcodeOffset, int index);
+	long getProductBarcode(Barcode barcodeOffset, int index);
 
 	double getProductPurchasePrice();
 

@@ -61,6 +61,7 @@ import org.cocome.tradingsystem.util.event.ObjectMessageListener;
 import org.cocome.tradingsystem.util.java.Lists;
 import org.cocome.tradingsystem.util.java.Sets;
 import org.cocome.tradingsystem.util.mvc.AbstractModel;
+import org.cocome.tradingsystem.inventory.application.store.Barcode;
 
 /**
  * Implements the cash desk model. The model provides methods to process a sale,
@@ -257,7 +258,7 @@ public final class CashDeskModel
 	 * 
 	 * @param barcode
 	 */
-	void addItemToSale(final edu.kit.ipd.sdq.evaluation.Barcode barcode) throws JMSException {
+	void addItemToSale(final Barcode barcode) throws JMSException {
 		this.ensureStateIsLegal(ADD_ITEM_TO_SALE_STATES);
 
 		//
@@ -302,7 +303,7 @@ public final class CashDeskModel
 		return expressModeDisabled || itemCountUnderLimit;
 	}
 
-	void sendInvalidProductBarcodeEvent(final edu.kit.ipd.sdq.evaluation.Barcode barcode) throws JMSException {
+	void sendInvalidProductBarcodeEvent(final Barcode barcode) throws JMSException {
 		this.sendCashDeskEvent(new InvalidProductBarcodeEvent(barcode));
 	}
 

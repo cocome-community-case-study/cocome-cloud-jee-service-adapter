@@ -17,6 +17,7 @@
 package org.cocome.tradingsystem.cashdeskline.cashdesk;
 
 import java.io.Serializable;
+
 import java.util.logging.Logger;
 
 import javax.jms.JMSException;
@@ -33,6 +34,8 @@ import org.cocome.tradingsystem.cashdeskline.events.ProductBarcodeScannedEvent;
 import org.cocome.tradingsystem.cashdeskline.events.SaleFinishedEvent;
 import org.cocome.tradingsystem.cashdeskline.events.SaleStartedEvent;
 import org.cocome.tradingsystem.util.event.AbstractSerializableEventDispatcher;
+import org.cocome.tradingsystem.inventory.application.store.Barcode;
+
 
 //import org.cocome.tradingsystem.cashdeskline.events.CreditCardPinEnteredEvent;
 
@@ -145,7 +148,7 @@ final class CashDeskEventHandler
 
 	@Override
 	public void onEvent(final ProductBarcodeScannedEvent event) throws JMSException {
-		final edu.kit.ipd.sdq.evaluation.Barcode barcode = event.getBarcode();
+		final Barcode barcode = event.getBarcode();
 		LOG.info("\tbarcode: " + barcode);
 
 		//

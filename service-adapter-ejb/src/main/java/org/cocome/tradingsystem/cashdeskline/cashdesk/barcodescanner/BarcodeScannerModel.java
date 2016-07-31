@@ -22,6 +22,7 @@ import javax.jms.Connection;
 import javax.jms.Session;
 
 import org.cocome.tradingsystem.cashdeskline.events.ProductBarcodeScannedEvent;
+import org.cocome.tradingsystem.inventory.application.store.Barcode;
 import org.cocome.tradingsystem.util.JmsHelper;
 import org.cocome.tradingsystem.util.JmsHelper.SessionBoundProducer;
 import org.cocome.tradingsystem.util.Names;
@@ -59,7 +60,7 @@ public final class BarcodeScannerModel
 	//
 
 	// @Override
-	public void sendProductBarcode(final edu.kit.ipd.sdq.evaluation.Barcode barcode) {
+	public void sendProductBarcode(final Barcode barcode) {
 		this.cashDeskProducer.sendAsync(new ProductBarcodeScannedEvent(barcode));
 	}
 

@@ -13,6 +13,8 @@
 		<module>service-adapter-ear</module>
 		<module>service-adapter-ejb</module>
 		<module>service-adapter-rest</module>
+		
+		<module>../cocome-eval</module>
 	</modules>
 
 	<properties>

@@ -18,6 +18,8 @@ package org.cocome.tradingsystem.cashdeskline.events;
 
 import java.io.Serializable;
 
+import org.cocome.tradingsystem.inventory.application.store.Barcode;
+
 /**
  * Event emitted by the cash desk if there is no product associated with the
  * scanned product bar code.
@@ -28,15 +30,15 @@ public final class InvalidProductBarcodeEvent implements Serializable {
 
 	//
 
-	private final edu.kit.ipd.sdq.evaluation.Barcode __invalidBarcode;
+	private final Barcode __invalidBarcode;
 
 	//
 
-	public InvalidProductBarcodeEvent(final edu.kit.ipd.sdq.evaluation.Barcode invalidBarcode) {
+	public InvalidProductBarcodeEvent(final Barcode invalidBarcode) {
 		__invalidBarcode = invalidBarcode;
 	}
 
-	public edu.kit.ipd.sdq.evaluation.Barcode getBarcode() {
+	public Barcode getBarcode() {
 		return __invalidBarcode;
 	}
 

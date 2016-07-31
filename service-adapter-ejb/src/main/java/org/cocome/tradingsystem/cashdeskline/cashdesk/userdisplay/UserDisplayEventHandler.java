@@ -34,6 +34,7 @@ import org.cocome.tradingsystem.cashdeskline.events.PaymentModeSelectedEvent;
 import org.cocome.tradingsystem.cashdeskline.events.RunningTotalChangedEvent;
 import org.cocome.tradingsystem.cashdeskline.events.SaleStartedEvent;
 import org.cocome.tradingsystem.cashdeskline.events.SaleSuccessEvent;
+import org.cocome.tradingsystem.inventory.application.store.Barcode;
 import org.cocome.tradingsystem.util.event.AbstractSerializableEventDispatcher;
 
 /**
@@ -95,7 +96,7 @@ final class UserDisplayEventHandler
 
 	@Override
 	public void onEvent(final InvalidProductBarcodeEvent event) {
-		final edu.kit.ipd.sdq.evaluation.Barcode barcode = event.getBarcode();
+		final Barcode barcode = event.getBarcode();
 		LOG.info("\tbarcode: " + barcode);
 
 		//

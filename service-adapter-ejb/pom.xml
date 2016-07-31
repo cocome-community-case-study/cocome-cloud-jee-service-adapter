@@ -42,6 +42,11 @@
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.cocome</groupId>
+			<artifactId>cloud-logic-core-api</artifactId>
+			<version>1.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>

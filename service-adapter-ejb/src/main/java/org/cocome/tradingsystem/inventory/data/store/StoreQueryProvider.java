@@ -25,6 +25,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
+import org.cocome.tradingsystem.inventory.application.store.Barcode;
 import org.cocome.tradingsystem.inventory.data.enterprise.Product;
 import org.cocome.tradingsystem.inventory.data.persistence.EntityPersistenceContext;
 import org.cocome.tradingsystem.inventory.data.persistence.IPersistenceContext;
@@ -83,7 +84,7 @@ public final class StoreQueryProvider implements IStoreQuery {
 	}
 
 	@Override
-	public Product queryProduct(final edu.kit.ipd.sdq.evaluation.Barcode barcode, final IPersistenceContext pctx) {
+	public Product queryProduct(final Barcode barcode, final IPersistenceContext pctx) {
 		final EntityManager em = this.getEntityManager(pctx);
 		return this.internalQueryProduct(barcode, em);
 	}
@@ -196,7 +197,7 @@ public final class StoreQueryProvider implements IStoreQuery {
 	 * @return returns one stock item when such item exists, else null
 	 */
 	@Override
-	public StockItem queryStockItem(final long storeId, final edu.kit.ipd.sdq.evaluation.Barcode barcode, final IPersistenceContext pctx) {
+	public StockItem queryStockItem(final long storeId, final Barcode barcode, final IPersistenceContext pctx) {
 		final EntityManager em = this.getEntityManager(pctx);
 
 		final Product product = this.internalQueryProduct(barcode, em);
@@ -208,7 +209,7 @@ public final class StoreQueryProvider implements IStoreQuery {
 			return null;
 	}
 
-	private Product internalQueryProduct(final edu.kit.ipd.sdq.evaluation.Barcode barcode, final EntityManager em) {
+	private Product internalQueryProduct(final Barcode barcode, final EntityManager em) {
 		this.debug("looking for product barcode %d", barcode);
 		final Query query = em.createQuery("SELECT product FROM Product AS product WHERE product.barcode = ?1");
 

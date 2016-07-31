@@ -28,6 +28,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.cocome.tradingsystem.inventory.application.store.Barcode;
 import org.cocome.tradingsystem.util.java.Swing;
 import org.cocome.tradingsystem.util.mvc.AbstractVisualController;
 
@@ -73,7 +74,7 @@ public final class VisualBarcodeScanner
 					public void actionPerformed(final ActionEvent event) {
 						final String input = barcodeEntryField.getText();
 						try {
-							final edu.kit.ipd.sdq.evaluation.Barcode barcode = edu.kit.ipd.sdq.evaluation.Barcode.parseInput(input);
+							final Barcode barcode = Barcode.parseInput(input);
 							barcodeEntryField.setBackground(Color.WHITE);
 
 							VisualBarcodeScanner.this._model().sendProductBarcode(barcode);

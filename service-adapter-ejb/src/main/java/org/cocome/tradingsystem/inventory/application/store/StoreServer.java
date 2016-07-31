@@ -392,7 +392,7 @@ public final class StoreServer extends UnicastRemoteObject
 
 	@Override
 	public ProductWithStockItemTO getProductWithStockItem(
-			final edu.kit.ipd.sdq.evaluation.Barcode productBarCode
+			final Barcode productBarCode
 			) throws NoSuchProductException {
 		return TransactionWrapper.execute(new CheckedOperation<ProductWithStockItemTO, NoSuchProductException>() {
 			@Override
@@ -470,7 +470,7 @@ public final class StoreServer extends UnicastRemoteObject
 			public void execute(final IPersistenceContext pctx) throws ProductNotAvailableException {
 				for (final ProductAmountTO movedProduct : movedProducts.getProductAmounts()) {
 					final ProductTO productTO = movedProduct.getProduct();
-					final edu.kit.ipd.sdq.evaluation.Barcode barcode = productTO.getBarcode();
+					final Barcode barcode = productTO.getBarcode();
 					final StockItem stockItem =
 							storeQuery.queryStockItem(__storeId, barcode, pctx);
 

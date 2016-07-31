@@ -21,6 +21,7 @@ import java.util.Collection;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.NonUniqueResultException;
 
+import org.cocome.tradingsystem.inventory.application.store.Barcode;
 import org.cocome.tradingsystem.inventory.application.store.IStoreInventory;
 import org.cocome.tradingsystem.inventory.application.store.IStoreInventoryManager;
 import org.cocome.tradingsystem.inventory.data.enterprise.Product;
@@ -114,7 +115,7 @@ public interface IStoreQuery {
 	 * @return
 	 * 		{@link Product} entity with the specified barcode, or {@code null} if there is no such product.
 	 */
-	Product queryProduct(edu.kit.ipd.sdq.evaluation.Barcode barcode, IPersistenceContext pctx);
+	Product queryProduct(Barcode barcode, IPersistenceContext pctx);
 
 	/**
 	 * Queries the database for a {@link ProductOrder} with given identifier.
@@ -204,7 +205,7 @@ public interface IStoreQuery {
 	 *         barcode, or {@code null} if the stock item could not be found.
 	 */
 	StockItem queryStockItem(
-			long storeId, edu.kit.ipd.sdq.evaluation.Barcode productBarcode, IPersistenceContext pctx);
+			long storeId, Barcode productBarcode, IPersistenceContext pctx);
 
 	/**
 	 * @author SDQ Returns the stock for the given productIds.

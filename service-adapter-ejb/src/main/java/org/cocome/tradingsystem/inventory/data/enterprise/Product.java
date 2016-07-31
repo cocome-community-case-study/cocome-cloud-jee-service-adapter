@@ -28,6 +28,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.cocome.tradingsystem.inventory.application.store.Barcode;
+
 /**
  * This class represents a Product in the database
  * 
@@ -41,8 +43,8 @@ public class Product implements Serializable{
 
 	private long id;
 
-	private edu.kit.ipd.sdq.evaluation.Barcode barcode;
-
+	private transient Barcode barcode;
+	
 	private double purchasePrice;
 
 	private String name;
@@ -76,7 +78,7 @@ public class Product implements Serializable{
 	 * @return The barcode of the product
 	 */
 	@Basic
-	public edu.kit.ipd.sdq.evaluation.Barcode getBarcode() {
+	public Barcode getBarcode() {
 		return barcode;
 	}
 
@@ -84,7 +86,7 @@ public class Product implements Serializable{
 	 * @param barcode
 	 *            The barcode of the product
 	 */
-	public void setBarcode(edu.kit.ipd.sdq.evaluation.Barcode barcode) {
+	public void setBarcode( Barcode barcode) {
 		this.barcode = barcode;
 	}
 

@@ -16,6 +16,8 @@
 
 package org.cocome.tradingsystem.cashdeskline.cashdesk.barcodescanner;
 
+import org.cocome.tradingsystem.inventory.application.store.Barcode;
+
 /**
  * Defines barcode scanner actions that can be triggered from outside.
  * 
@@ -24,6 +26,6 @@ package org.cocome.tradingsystem.cashdeskline.cashdesk.barcodescanner;
  */
 public interface IBarcodeScanner {
 
-	void sendProductBarcode(edu.kit.ipd.sdq.evaluation.Barcode barcode);
+	void sendProductBarcode(Barcode barcode);
 
 }
