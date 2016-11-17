@@ -38,7 +38,8 @@ recommend to test packaging before deploying.
 Before you can deploy the service-adapter make sure you have added a
 data (re)source called `jdbc/CoCoMEDB`. This can be done on command line
 or via the Glassfish UI. You need:
-- A JDBC connection pool (please consult the Glassfish documentation)
+- A JDBC connection pool (please consult the [Glassfish documentation]
+(https://glassfish.java.net/docs/4.0/administration-guide.pdf))
 - A JDBC resource named `jdbc/CoCoMEDB` using the connection pool you
   defined
 
