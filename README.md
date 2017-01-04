@@ -42,6 +42,13 @@ or via the Glassfish UI. You need:
 (https://glassfish.java.net/docs/4.0/administration-guide.pdf))
 - A JDBC resource named `jdbc/CoCoMEDB` using the connection pool you
   defined
+  
+ - JDBC connection pool (default jdcb-pool (DerbyPool) is automatically 
+    created when 'asadmin start-database' was executed for the first time.
+ - JDBC ressource:  'asadmin create-jdbc-resource --connectionpoolid DerbyPool 
+     --host localhost --port 8248  jdbc/CoCoMEDB'
+   Notice that port 8248 is the admin port of the adapter-domain. So when
+   you did not use the same port you have to change it!
 
 You can directly deploy them via the Cargo Maven plug-in with
 
