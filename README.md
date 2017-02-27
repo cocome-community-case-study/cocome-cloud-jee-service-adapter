@@ -17,7 +17,7 @@ properties defined in the XML file.
 The properties correspond with values of your running Glassfish
 instance. In a default Glassfish installation the domain is called
 `domain1` if you did not provide a different name. However, we recommend
-to create your own domain, e.g., `cocome` or `service-adapter`.
+to create your own domain, e.g., `cocome` or `service-adapter`. 
 
 To build the service-adapter with Maven type in the project root
 directory:
@@ -49,6 +49,8 @@ or via the Glassfish UI. You need:
      --host localhost --port 8248  jdbc/CoCoMEDB'
    Notice that port 8248 is the admin port of the adapter-domain. So when
    you did not use the same port you have to change it!
+
+- Make sure you refer to the same domain for `service adapter` in this setting file and in the setting file of jee-plattform-migration.
 
 You can directly deploy them via the Cargo Maven plug-in with
 
