@@ -17,7 +17,10 @@ properties defined in the XML file.
 The properties correspond with values of your running Glassfish
 instance. In a default Glassfish installation the domain is called
 `domain1` if you did not provide a different name. However, we recommend
-to create your own domain, e.g., `cocome` or `service-adapter`. 
+to create your own domain, e.g., `cocome` or `adapter`.
+Important: If you finished the glassfish setup, you've propably already created
+the domain for the service-adapter (it is named `adapter`)
+
 
 To build the service-adapter with Maven type in the project root
 directory:
