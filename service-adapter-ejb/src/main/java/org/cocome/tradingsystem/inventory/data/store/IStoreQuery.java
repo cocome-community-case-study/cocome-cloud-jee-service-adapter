@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright 2013 DFG SPP 1593 (http://dfg-spp1593.de)
+* Copyright 2013 DFG SPP 1593 (http://dfg-spp1593.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.NonUniqueResultException;
 
 import org.cocome.tradingsystem.inventory.application.store.IStoreInventory;
-import org.cocome.tradingsystem.inventory.application.store.IStoreInventoryManager;
 import org.cocome.tradingsystem.inventory.data.enterprise.Product;
 import org.cocome.tradingsystem.inventory.data.persistence.IPersistenceContext;
 

@@ -23,7 +23,7 @@ import org.cocome.tradingsystem.inventory.data.enterprise.IEnterpriseQuery;
 import org.cocome.tradingsystem.inventory.data.persistence.EntityPersistence;
 import org.cocome.tradingsystem.inventory.data.persistence.IPersistence;
 import org.cocome.tradingsystem.inventory.data.store.IStoreQuery;
-import org.cocome.tradingsystem.inventory.data.store.StoreQueryProvider;
+
 
 /**
  * @author Yannick Welsch
@@ -54,9 +54,4 @@ final class DataComponent implements IData {
 		return new EnterpriseQueryProvider();
 	}
 
-	@Override
-	public IStoreQuery getStoreQuery() {
-		return new StoreQueryProvider();
 	}
-
-}

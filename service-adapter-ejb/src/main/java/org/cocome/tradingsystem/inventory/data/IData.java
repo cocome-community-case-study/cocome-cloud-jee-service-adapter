@@ -41,7 +41,7 @@ public interface IData {
 	 * 
 	 * @return the new StoreQuery component
 	 */
-	IStoreQuery getStoreQuery();
+	
 
 	/**
 	 * Creates a new PersistenceIf component

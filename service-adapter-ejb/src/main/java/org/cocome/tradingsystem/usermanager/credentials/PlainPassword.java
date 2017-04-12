@@ -75,9 +75,4 @@ public class PlainPassword extends AbstractCredential implements Serializable {
 		password = credential;
 	}
 
-	@Override
-	public char[] resetCredential(LoginUser user) {
-		password = new String(RandomPasswordGenerator.generatePassword());
-		return password.toCharArray();
 	}
-}
