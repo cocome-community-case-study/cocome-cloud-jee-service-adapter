@@ -8,15 +8,7 @@ import de.kit.ipd.java.utils.strings.StringUtils;
 
 public class SelectQuery implements IQuery {
 
-	// TODO this should be moved to a test class (if necessary) or deleted.
-	// public static void main(final String[] args) {
-	// final HashMap<String, String> map = new HashMap<>();
-	// map.put("entity.type", "StockItem");
-	// map.put("store.name", "like'*'");
-	//
-	// final SelectQuery qu = new SelectQuery();
-	// qu.parse(map);
-	// }
+	
 
 	private static final String ENTITY_TYPE = "entity.type";
 

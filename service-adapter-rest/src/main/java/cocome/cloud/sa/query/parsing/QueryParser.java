@@ -21,11 +21,7 @@ import cocome.cloud.sa.query.parsing.QueryLexer.State6;
 
 public class QueryParser implements IParser<String>, ILexerVisitor<CharSequence> {
 
-	// public static void main(final String[] args) {
-	// final String query = "query.select=entity.type=Store;Enterprise.name=Kaufland";
-	// final QueryParser parser = new QueryParser();
-	// parser.parse(query);
-	// }
+	
 
 	private static final int INIT_STATE = 0;
 	private static final int EOL_STATE = 5;
