@@ -12,7 +12,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.TypedQuery;
 
-import org.cocome.tradingsystem.inventory.application.store.EnterpriseTO;
+
 import org.cocome.tradingsystem.inventory.data.DataFactory;
 import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.enterprise.Product;
