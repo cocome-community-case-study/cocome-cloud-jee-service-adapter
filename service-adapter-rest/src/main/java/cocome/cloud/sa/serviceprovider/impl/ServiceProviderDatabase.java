@@ -61,11 +61,6 @@ import cocome.cloud.sa.serviceprovider.ServiceProvider;
  *
  */
 @WebServlet("/Database/ServiceProviderDatabase")
-// @ServletSecurity(httpMethodConstraints={
-// @HttpMethodConstraint(value="GET",rolesAllowed={"ADMIN"},transportGuarantee=TransportGuarantee.CONFIDENTIAL),
-// @HttpMethodConstraint(value="POST", rolesAllowed={"ADMIN"},transportGuarantee=TransportGuarantee.CONFIDENTIAL),
-// @HttpMethodConstraint(value="PUT", rolesAllowed={"ADMIN"},transportGuarantee=TransportGuarantee.CONFIDENTIAL),
-// @HttpMethodConstraint(value="TRACE", emptyRoleSemantic=ServletSecurity.EmptyRoleSemantic.DENY)})
 public class ServiceProviderDatabase extends HttpServlet {
 
 	public static final String URL_SERVICE_PROVIDER_DATABASE = "/Database/ServiceProviderDatabase";
