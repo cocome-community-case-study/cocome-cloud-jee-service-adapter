@@ -18,7 +18,7 @@ package org.cocome.tradingsystem.inventory.data;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.IEnterpriseQuery;
 import org.cocome.tradingsystem.inventory.data.persistence.IPersistence;
-import org.cocome.tradingsystem.inventory.data.store.IStoreQuery;
+
 
 /**
  * Interface for the Data component

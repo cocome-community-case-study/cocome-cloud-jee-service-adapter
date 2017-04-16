@@ -22,7 +22,7 @@ import org.cocome.tradingsystem.inventory.data.enterprise.EnterpriseQueryProvide
 import org.cocome.tradingsystem.inventory.data.enterprise.IEnterpriseQuery;
 import org.cocome.tradingsystem.inventory.data.persistence.EntityPersistence;
 import org.cocome.tradingsystem.inventory.data.persistence.IPersistence;
-import org.cocome.tradingsystem.inventory.data.store.IStoreQuery;
+
 
 
 /**
