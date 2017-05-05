@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:33:38Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="Coding the dukes-age Example Application" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39032-01" />
+        <meta name="description" content="A short tutorial introducing beginning Java EE developers to the Java EE platform." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Web, developer, enterprise" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>Your First Cup: An Introduction to the Java EE Platform:Coding the dukes-age Example Application | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/firstcup/doc/firstcup.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GCQYW">Preface</a></h2>
+<h2 class="tocheader"><a href="intro.htm#GCQYB"><span class="secnum">1</span> Introduction</a></h2>
+<h2 class="tocheader"><a href="java-ee.htm#GCRLO"><span class="secnum">2</span> Understanding Java Platform, Enterprise Edition</a></h2>
+<h2 class="tocheader"><a href="creating-example.htm#GCRKP"><span class="secnum">3</span> Creating Your First Java EE Application</a></h2>
+<ul style="list-style-type:none">
+<li><a href="creating-example001.htm#GKHQT"><span class="secnum">3.1</span> Architecture of the Example Applications</a>
+<ul style="list-style-type:none">
+<li><a href="creating-example001.htm#GCRLR"><span class="secnum">3.1.1</span> Tiers in the Example Applications</a></li>
+<li><a href="creating-example001.htm#GCRLU"><span class="secnum">3.1.2</span> Java EE Technologies Used in the Example Applications</a></li>
+</ul>
+</li>
+<li><div id="backgroundColor"><a href="creating-example002.htm#GCRKM"><span class="secnum">3.2</span> Coding the dukes-age Example Application</a><ul style="list-style-type:none">
+<li><a href="creating-example002.htm#GCSKG"><span class="secnum">3.2.1</span> Getting Started</a>
+<ul style="list-style-type:none">
+<li><a href="creating-example002.htm#GCSKJ"><span class="secnum">3.2.1.1</span> Install the Maven Archetypes</a></li>
+</ul>
+</li>
+<li><a href="creating-example002.htm#GCRKN"><span class="secnum">3.2.2</span> Creating the Web Service</a>
+<ul style="list-style-type:none">
+<li><a href="creating-example002.htm#GCROM"><span class="secnum">3.2.2.1</span> JAX-RS Resources</a></li>
+<li><a href="creating-example002.htm#GCROI"><span class="secnum">3.2.2.2</span> Creating the dukes-age Application Using the Maven Archetype</a></li>
+<li><a href="creating-example002.htm#sthref9"><span class="secnum">3.2.2.3</span> Starting GlassFish Server and the Database Server</a></li>
+<li><a href="creating-example002.htm#GCTOZ"><span class="secnum">3.2.2.4</span> Building and Deploying the Web Service Endpoint</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 class="tocheader"><a href="web-application.htm#GLCFC"><span class="secnum">4</span> Creating Your Second Web Application</a></h2>
+<h2 class="tocheader"><a href="next-steps.htm#GCRLL"><span class="secnum">5</span> Next Steps</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>Your First Cup: An Introduction to the Java EE Platform  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="creating-example001.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="web-application.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="GCRKM" name="GCRKM"></a><a id="JEEFC00057" name="JEEFC00057"></a>
+<div class="sect1">
+<h1 class="sect1"><span class="secnum">3.2</span> Coding the dukes-age Example Application</h1>
+<p>This section describes how to code the <code>dukes-age</code> example application, a web application containing a JAX-RS RESTful web service endpoint.</p>
+<a id="GCSKG" name="GCSKG"></a><a id="JEEFC00094" name="JEEFC00094"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">3.2.1</span> Getting Started</h2>
+<p>Before you start coding the example, you need to perform some configuration tasks:</p>
+<ol>
+<li>
+<p>Register the server with your NetBeans IDE as described in <a href="intro002.htm#GFUZE">Configuring Your Environment</a>.</p>
+</li>
+<li>
+<p>Install the Maven archetypes used to create the example applications.</p>
+</li>
+</ol>
+<a id="GCSKJ" name="GCSKJ"></a><a id="JEEFC00015" name="JEEFC00015"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">3.2.1.1</span> Install the Maven Archetypes</h3>
+<p>Maven archetypes are templates that create the structure of a particular application. There are two archetypes included in the example, <code>dukes-age-archetype</code> and <code>firstcup-war-archetype</code>. These archetypes create Java EE 7 web applications that you will then edit and deploy.</p>
+<p>Before you can create applications based on the archetypes, you must first install the archetypes and supporting projects to your local Maven repository.</p>
+<ol>
+<li>
+<p>In NetBeans IDE select <span class="gui-object-action">File</span>, then <span class="gui-object-action">Open Project</span>, navigate to <code><span class="codeinlineitalic">tut-install</span></code><code>/</code>, select <code>example</code>, deselect the <span class="gui-object-action">Open Required Projects</span> check box, and click <span class="gui-object-action">Open Project</span>.</p>
+</li>
+<li>
+<p>Right-click the <code>firstcup</code> project in the <span class="gui-object-title">Projects</span> pane and select <span class="gui-object-action">Build</span>.</p>
+</li>
+</ol>
+<p>The required projects, including the archetypes, will be built.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="GCRKN" name="GCRKN"></a><a id="JEEFC00095" name="JEEFC00095"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">3.2.2</span> Creating the Web Service</h2>
+<p>The <code>DukesAgeResource</code> endpoint is a simple RESTful web service. REST stands for <span class="italic">representational state transfer</span>, and software architectures that conform to the principles of REST are referred to as <span class="italic">RESTful</span>. RESTful web services are web-based applications that use the HTTP protocol to access, modify, or delete information contained within a <span class="italic">resource</span>. A RESTful web service resource is a source of specific information identifiable by a uniform resource identifier (URI), for example <code>http://example.com/someResource</code>, and may be manipulated by calling the HTTP protocol's methods, for example GET or POST.</p>
+<p>Web services are designed to be independent of their clients. Typically RESTful web services are publicly available to a wide variety of clients, and the clients are located throughout the Internet. This is called "loose coupling," as the clients and servers are connected only by the standard HTTP-based requests and responses, and do not need to know each other's implementation details. For this reason, <code>dukes-age</code> will be developed in its own application module and deployed separately from the <code>DukesBirthdayBean</code> enterprise bean and <code>firstcup-war</code> web client. <code>dukes-age</code> could be deployed on a completely different machine without affecting the functionality of the <code>firstcup-war</code> web client.</p>
+<a id="GCROM" name="GCROM"></a><a id="JEEFC00081" name="JEEFC00081"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">3.2.2.1</span> JAX-RS Resources</h3>
+<p><code>DukesAgeResource</code> is a JAX-RS resource class that responds to HTTP GET requests and returns a <code>String</code> representing the age of Duke at the time of the request.</p>
+<p>The basic <code>DukesAgeResource</code> resource class is generated from the <code>dukes-age-archetype</code> Maven archetype. This class is annotated with the <code>javax.ws.rs.Path</code> annotation, which specifies the URL suffix to which the resource will respond. <code>DukesAgeResource</code> has a single method, <code>getText</code>, annotated with the <code>javax.ws.rs.GET</code> and <code>javax.ws.rs.Produces</code> annotations. <code>@GET</code> marks the method as a responder to HTTP GET requests, and <code>@Produces</code> specifies the MIME-type of the response sent back from <code>getText</code> to clients. In this case, the MIME-type is <code>text/plain</code>.</p>
+</div>
+<!-- class="sect3" -->
+<a id="GCROI" name="GCROI"></a><a id="JEEFC00082" name="JEEFC00082"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">3.2.2.2</span> Creating the dukes-age Application Using the Maven Archetype</h3>
+<p>In NetBeans IDE, create a new web project using the <code>dukes-age-archetype</code> Maven archetype.</p>
+<p class="orderedlisttitle">Create the Project in NetBeans IDE&nbsp;</p>
+<ol>
+<li>
+<p>From the <span class="gui-object-action">File</span> menu, select <span class="gui-object-action">New Project</span>.</p>
+</li>
+<li>
+<p>Under <span class="gui-object-action">Categories</span>, select <span class="gui-object-action">Maven</span>.</p>
+</li>
+<li>
+<p>Under <span class="gui-object-action">Projects</span>, select <span class="gui-object-action">Project from Archetype</span>.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">Next</span>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-action">Search</span> field, enter <code>dukes-age</code>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-action">Known Archetypes</span> field, select <code>dukes-age-archetype</code>.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">Next</span>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-action">Project Name</span> field, enter <code>dukes-age</code>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-action">Package</span> field, enter <code>firstcup.dukesage.resource</code>.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">Finish</span>.</p>
+<p>You should now see the module you created in the <span class="gui-object-action">Projects</span> tab. The project is created in the <code>NetBeansProjects</code> directory under your home directory.</p>
+</li>
+</ol>
+<p>The <code>dukes-age-archetype</code> archetype creates the structure of the JAX-RS endpoint application, including:</p>
+<ul>
+<li>
+<p>The <code>DukesAgeResource</code> resource class</p>
+</li>
+<li>
+<p>The <code>web.xml</code> deployment descriptor</p>
+</li>
+</ul>
+<p>After you create the basic application structure with the archetype, you will configure how the application will run, implement the functionality of the resource class, and then deploy the application.</p>
+<p><span class="bold">Configure the dukes-age Web Application</span></p>
+<p>Set the default URL that is brought up in a web browser when you run <code>dukes-age</code>.</p>
+<ol>
+<li>
+<p>In the <span class="gui-object-action">Projects</span> tab, right-click the <code>dukes-age</code> project and select <span class="gui-object-action">Properties</span>.</p>
+</li>
+<li>
+<p>Under <span class="gui-object-action">Categories</span>, click <span class="gui-object-action">Run</span>.</p>
+</li>
+<li>
+<p>Under <span class="gui-object-action">Server</span> select the GlassFish Server instance you configured.</p>
+</li>
+<li>
+<p>Under <span class="bold">Relative URL</span> enter <code>/webapi/dukesAge</code>.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">OK</span>.</p>
+</li>
+</ol>
+<p><span class="bold">Implement the getText Method</span></p>
+<p>Add code to <code>DukesAgeResource.getText</code> that calculates Duke's age at the time of the request. To do this, use the <code>java.util.Calendar</code> and <code>java.util.GregorianCalendar</code> classes to create an object representing the date May 23, 1995, Duke's birthday. Then create another <code>Calendar</code> object representing today's date, and subtract today's year from Duke's birth year. If today's date falls before May 23, subtract a year from this result. Then return the result as a <code>String</code> representation.</p>
+<ol>
+<li>
+<p>Expand the <span class="gui-object-action">Source Packages</span> node, expand the <code>firstcup.dukesage.resource</code> node, then double-click the <code>DukesAgeResource.java</code> file to open it in the editor window.</p>
+</li>
+<li>
+<p>Highlight the current code in <code>getText</code> and replace it with the following code:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+// Create a new Calendar for Duke's birthday
+Calendar dukesBirthday = new GregorianCalendar(1995, Calendar.MAY, 23);
+// Create a new Calendar for today
+Calendar now = GregorianCalendar.getInstance();
+
+// Subtract today's year from Duke's birth year, 1995
+int dukesAge = now.get(Calendar.YEAR) - dukesBirthday.get(Calendar.YEAR);
+dukesBirthday.add(Calendar.YEAR, dukesAge);
+
+// If today's date is before May 23, subtract a year from Duke's age
+if (now.before(dukesBirthday)) {
+    dukesAge--;
+}
+// Return a String representation of Duke's age
+return "" + dukesAge;
+</pre></li>
+<li>
+<p>In the editor window, right-click and select <span class="gui-object-action">Format</span>.</p>
+</li>
+<li>
+<p>From the <span class="gui-object-action">File</span> menu, select <span class="gui-object-action">Save</span> to save the file.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref9" name="sthref9"></a>
+<h3 class="sect3"><span class="secnum">3.2.2.3</span> Starting GlassFish Server and the Database Server</h3>
+<p>Follow these steps to start GlassFish Server and the Java DB database server.</p>
+<ol>
+<li>
+<p>Click the <span class="gui-object-action">Services</span> tab.</p>
+</li>
+<li>
+<p>Expand <span class="gui-object-action">Servers</span>.</p>
+</li>
+<li>
+<p>Right-click the GlassFish Server instance and select <span class="gui-object-action">Start</span>.</p>
+<p>Both the database server and the GlassFish Server instance will start. In the tab where the GlassFish Server instance is running, you can see the contents of the server log.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="GCTOZ" name="GCTOZ"></a><a id="JEEFC00083" name="JEEFC00083"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">3.2.2.4</span> Building and Deploying the Web Service Endpoint</h3>
+<p>Build <code>dukes-age.war</code>, the JAX-RS web application, and deploy it to your GlassFish Server instance.</p>
+<p>In the <span class="gui-object-action">Projects</span> tab, right-click <code>dukes-age</code> and select <span class="gui-object-action">Run</span>.</p>
+<p>After <code>dukes-age.war</code> deploys successfully to GlassFish Server, a web browser will load the URL of the <code>DukesAgeResource</code> path, and you'll see the returned <code>String</code> representing Duke's age.</p>
+<p>At this point, you've successfully created, deployed, and run your first Java EE application. Now you will create a web application that uses this web service data.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="creating-example001.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="web-application.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

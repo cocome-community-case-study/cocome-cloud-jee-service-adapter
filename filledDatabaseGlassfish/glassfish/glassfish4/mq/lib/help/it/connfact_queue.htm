@@ -1,0 +1,65 @@
+<!--
+
+    DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+    Copyright (c) 2000-2010 Oracle and/or its affiliates. All rights reserved.
+
+    The contents of this file are subject to the terms of either the GNU
+    General Public License Version 2 only ("GPL") or the Common Development
+    and Distribution License("CDDL") (collectively, the "License").  You
+    may not use this file except in compliance with the License.  You can
+    obtain a copy of the License at
+    https://glassfish.dev.java.net/public/CDDL+GPL_1_1.html
+    or packager/legal/LICENSE.txt.  See the License for the specific
+    language governing permissions and limitations under the License.
+
+    When distributing the software, include this License Header Notice in each
+    file and include the License file at packager/legal/LICENSE.txt.
+
+    GPL Classpath Exception:
+    Oracle designates this particular file as subject to the "Classpath"
+    exception as provided by Oracle in the GPL Version 2 section of the License
+    file that accompanied this code.
+
+    Modifications:
+    If applicable, add the following below the License Header, with the fields
+    enclosed by brackets [] replaced by your own identifying information:
+    "Portions Copyright [year] [name of copyright owner]"
+
+    Contributor(s):
+    If you wish your version of this file to be governed by only the CDDL or
+    only the GPL Version 2, indicate your decision by adding "[Contributor]
+    elects to include this software in this distribution under the [CDDL or GPL
+    Version 2] license."  If you don't indicate a single choice of license, a
+    recipient has the option to distribute your version of this file under
+    either the CDDL, the GPL Version 2 or to extend the choice of license to
+    its licensees as provided above.  However, if you add GPL Version 2 code
+    and therefore, elected the GPL Version 2 license, then the option applies
+    only if the new code is made subject to such option by the copyright
+    holder.
+
+-->
+
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+ <TITLE>connfact queue</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>Propriet&agrave; oggetto ConnectionFactory &gt; <BR>QueueBrowsers e ServerSessions</H2>
+ 
+<P>Utilizzare questa scheda per riconfigurare la navigazione della coda per il runtime del client e per specificare nuovamente il comportamento di sessioni in esecuzione in un server di applicazioni.</P>
+
+<p><b>Dimensione di&middot;recupero browser della coda</b> Specifica il numero massimo di messaggi che il runtime del client recuperer&agrave; in una volta, durante la navigazione dell'indice della destinazione per la coda. Predefinito: 1000</p>
+
+<p><b>Timeout di recupero browser della coda (millisecondi)</b> Specifica il tempo massimo che il runtime del client attender&agrave; per recuperare messaggi, durante la navigazione dell'indice di una destinazione per la coda prima del lancio di una eccezione. Predefinito: 60000 millisecondi.</p>
+
+<p><b>Carica fino a un numero massimo di messaggi sulle sessioni del server</b> Specifica che un ConnectionConsumer di Message Queue deve caricare fino a <code>maxMessages</code> numero di messaggi in una sessione del ServerSession. Lasciare la casella non selezionata per specificare che un ConnectionConsumer di Message Queue deve caricare soltanto un singolo messaggio alla volta. Per ulteriori informazioni vedere la sezione relativa alle funzionalit&agrave; del server di applicazioni della specifica JMS.</p>
+
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

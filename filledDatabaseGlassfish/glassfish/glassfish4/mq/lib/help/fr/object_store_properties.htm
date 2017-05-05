@@ -1,0 +1,38 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+ <TITLE>object store properties</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ <H2>Propri&eacute;t&eacute;s Object Store</H2>
+ 
+<P>Utilisez cette bo&icirc;te de dialogue pour ajouter, supprimer ou mettre &agrave; jour les propri&eacute;t&eacute;s d'un magasin d'objets d&eacute;j&agrave; ajout&eacute; dans la fen&ecirc;tre de navigation de la console d'administration.  Pour modifier les champs de cette fen&ecirc;tre, vous devez d&eacute;connecter la console d'administration du magasin d'objets, puis afficher de nouveau cette bo&icirc;te de dialogue.</P>
+
+<P><b>Propri&eacute;t&eacute;s du service d'affectation des noms JNDI</b>&nbsp;: Utilisez les commandes de cette zone pour d&eacute;finir la liste des propri&eacute;t&eacute;s JNDI pour ce magasin d'objets. Utilisez la liste d&eacute;roulante <b>Nom</b> pour s&eacute;lectionner un nom de propri&eacute;t&eacute;. Apr&egrave;s avoir s&eacute;lectionn&eacute; le nom de propri&eacute;t&eacute;, utilisez le champ <b>Valeur</b> pour saisir la valeur de la propri&eacute;t&eacute;.</P>
+<P> Voir <code>http://java.sun.com/products/jndi/1.2/javadoc/</code> pour en savoir plus sur l'interface de programmation d'application (api) JNDI. Vous devez d&eacute;finir les propri&eacute;t&eacute;s <code>java.naming.factory.initial et java.naming.provider.url</code>. </P>
+<p>Il existe deux valeurs pour la propri&eacute;t&eacute; de contexte initial (<code>java.naming.factory.initial</code>) :</p>
+<ul> 
+  <li> Magasin de syst&egrave;me de fichiers : <code>com.sun.jndi.fscontext.RefFSContextFactory</code></li>
+  <li>Serveur LDAP : <code>com.sun.jndi.ldap.LdapCtxFactory</code></li>
+</ul>
+<p>Vous devez &eacute;galement sp&eacute;cifier les informations d'authentification. Cependant, si la s&eacute;curit&eacute; vous semble un &eacute;l&eacute;ment important, vous pouvez attendre le moment de connexion o&ugrave; cette information vous sera demand&eacute;e</p>
+<ul>
+  <li> Apr&egrave;s avoir sp&eacute;cifi&eacute; les nom et valeur de la propri&eacute;t&eacute;, cliquez sur le bouton <b>Ajouter</b> pour l'ajouter &agrave; la table.</li>
+  <li> Pour supprimer une propri&eacute;t&eacute; existante, s&eacute;lectionnez-la dans la table et cliquez sur le bouton <b>Supprimer</b>. </li>
+  <li>Utilisez le bouton <b>Effacer</b> pour annuler toutes les entr&eacute;es. </li>
+  <li>S&eacute;lectionnez une entr&eacute;e, modifiez sa valeur et utilisez le bouton <b>Modifier</b> pour valider la nouvelle configuration de cette propri&eacute;t&eacute;. </li>
+  <li>Utilisez le bouton <b>OK</b> pour appliquer tous les param&egrave;tres des propri&eacute;t&eacute;s. </li>
+</ul>
+
+<p>Pour se connecter &agrave; nouveau au magasin d'objets apr&egrave;s avoir modifi&eacute; sa configuration&nbsp;: S&eacute;lectionnez le magasin d'objets dans la fen&ecirc;tre de navigation et choisissez <b>Actions &gt; Se connecter &agrave; Object Store</b>. </p>
+
+<P>&nbsp;</P>
+</BODY>
+</HTML>

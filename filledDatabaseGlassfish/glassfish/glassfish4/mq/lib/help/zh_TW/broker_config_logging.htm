@@ -1,0 +1,28 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=Big5">
+<TITLE>代理程式配置記錄</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>查詢/更新代理程式> <BR> 記錄</H2>
+ 
+<P>使用此標籤為代理程式實例配置記錄。</P>
+
+<P><b>日誌層次</b> 指定可被寫入任何輸出通道的記錄輸出層次。將類別按照嚴重程度遞減排列，分別為 <code>ERROR</code>、<code>WARNING</code>、<code>INFO</code>。使用下拉式清單選取類別：當您選取一個類別時，記錄程式將寫出指定類別的資料和所有更高層次的類別。例如，如果您選取 <code>INFO</code>， 將取得所有三種類別的資料。如果您選取 <code>ERROR</code>，則將僅取得 <code>ERROR</code> 訊息。預設為 <code>INFO</code>。</P>
+
+<P><b>日誌翻轉</b><b>容量</b> 指定日誌檔的容量。當達到此容量時，將輸出翻轉至新日誌檔。使用下拉式清單選取單元：Byte、Kbyte 或 MB。選取 [無限制] 單選按鈕以根據日誌檔案大小而指定無翻轉。預設的選項為 [無限制]。</P>
+
+<P><b>日誌翻轉間隔</b> 指定日誌檔的存在時間 (以秒計)。當達到此時間時，將輸出翻轉至新日誌檔。選取 [無限制] 單選按鈕以根據檔案的天數而指定無翻轉。預設值為 604800。</P>
+
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

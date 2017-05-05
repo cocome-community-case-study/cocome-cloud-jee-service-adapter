@@ -1,0 +1,47 @@
+/*
+	Minimal CSS for Oracle Database Documentation
+*/
+
+/* Standard Element Selectors */
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: sans-serif;
+	color: #309;
+	background: white;
+}
+
+th {
+	font-family: sans-serif;
+}
+
+a img {
+	border-style: none;
+}
+
+div.header > p {
+	display: none;
+}
+
+/* Class Selectors */
+
+.ProductTitle {
+	font-family: sans-serif;
+}
+
+.BookTitle {
+	font-family: sans-serif;
+}
+
+.VersionNumber {
+	font-family: sans-serif;
+}
+
+.PrintDate {
+	font-family: sans-serif;
+	font-size: small;
+}
+
+.PartNumber {
+	font-family: sans-serif;
+	font-size: small;
+}

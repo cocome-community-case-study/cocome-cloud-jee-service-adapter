@@ -1,0 +1,623 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:33:38Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="Modifying the Web Client" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39032-01" />
+        <meta name="description" content="A short tutorial introducing beginning Java EE developers to the Java EE platform." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Web, developer, enterprise" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>Your First Cup: An Introduction to the Java EE Platform:Modifying the Web Client | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/firstcup/doc/firstcup.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GCQYW">Preface</a></h2>
+<h2 class="tocheader"><a href="intro.htm#GCQYB"><span class="secnum">1</span> Introduction</a></h2>
+<h2 class="tocheader"><a href="java-ee.htm#GCRLO"><span class="secnum">2</span> Understanding Java Platform, Enterprise Edition</a></h2>
+<h2 class="tocheader"><a href="creating-example.htm#GCRKP"><span class="secnum">3</span> Creating Your First Java EE Application</a></h2>
+<h2 class="tocheader"><a href="web-application.htm#GLCFC"><span class="secnum">4</span> Creating Your Second Web Application</a></h2>
+<ul style="list-style-type:none">
+<li><a href="web-application001.htm#GJBCA"><span class="secnum">4.1</span> Creating the firstcup-war Project</a>
+<ul style="list-style-type:none">
+<li><a href="web-application001.htm#GIMNT"><span class="secnum">4.1.1</span> Create the Web Application Project Using the Archetype</a></li>
+</ul>
+</li>
+<li><a href="web-application002.htm#GJBCS"><span class="secnum">4.2</span> Modifying the Java Persistence API Entity</a>
+<ul style="list-style-type:none">
+<li><a href="web-application002.htm#GKKNN"><span class="secnum">4.2.1</span> Edit the Constructor of the FirstcupUser Entity</a></li>
+<li><a href="web-application002.htm#GJBCM"><span class="secnum">4.2.2</span> Add a Named Query to the FirstcupUser Entity</a></li>
+</ul>
+</li>
+<li><a href="web-application003.htm#GCRLX"><span class="secnum">4.3</span> Modifying the Enterprise Bean</a>
+<ul style="list-style-type:none">
+<li><a href="web-application003.htm#GJBCU"><span class="secnum">4.3.1</span> Implement a Business Method to DukesBirthdayBean that Gets the Average Age Difference of firstcup-war Users</a></li>
+<li><a href="web-application003.htm#GKGOT"><span class="secnum">4.3.2</span> Implement a Business Method for Calculating the Age Difference Between Duke and the User</a></li>
+</ul>
+</li>
+<li><div id="backgroundColor"><a href="web-application004.htm#GCRLT"><span class="secnum">4.4</span> Modifying the Web Client</a><ul style="list-style-type:none">
+<li><a href="web-application004.htm#GCRQX"><span class="secnum">4.4.1</span> Modify the DukesBDay Managed Bean Class</a>
+<ul style="list-style-type:none">
+<li><a href="web-application004.htm#sthref10"><span class="secnum">4.4.1.1</span> Call the dukes-age Web Service to Retrieve Duke's Current Age</a></li>
+<li><a href="web-application004.htm#GCRSA"><span class="secnum">4.4.1.2</span> Get the Age Difference from the DukesBirthdayBean Enterprise Bean</a></li>
+</ul>
+</li>
+<li><a href="web-application004.htm#GIMVD"><span class="secnum">4.4.2</span> Creating the Facelets Client</a>
+<ul style="list-style-type:none">
+<li><a href="web-application004.htm#GIMUG"><span class="secnum">4.4.2.1</span> Resource Libraries in firstcup-war</a></li>
+<li><a href="web-application004.htm#GIMTW"><span class="secnum">4.4.2.2</span> The inputDate Composite Component</a></li>
+<li><a href="web-application004.htm#GIMWV"><span class="secnum">4.4.2.3</span> Implement the inputDate Composite Component</a></li>
+<li><a href="web-application004.htm#GIMUM"><span class="secnum">4.4.2.4</span> The Facelets Web Interface</a></li>
+<li><a href="web-application004.htm#GIMTA"><span class="secnum">4.4.2.5</span> Add the Form to greeting.xhtml</a></li>
+<li><a href="web-application004.htm#GIMVW"><span class="secnum">4.4.2.6</span> Add the Form to response.html</a></li>
+</ul>
+</li>
+</ul>
+</div></li>
+<li><a href="web-application005.htm#GCTNX"><span class="secnum">4.5</span> Building, Packaging, Deploying, and Running the firstcup-war Web Application</a>
+<ul style="list-style-type:none">
+<li><a href="web-application005.htm#GCTOJ"><span class="secnum">4.5.1</span> Build, Package, and Deploy the firstcup-war Web Application</a></li>
+<li><a href="web-application005.htm#GCTQC"><span class="secnum">4.5.2</span> Run the firstcup-war Application</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="tocheader"><a href="next-steps.htm#GCRLL"><span class="secnum">5</span> Next Steps</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>Your First Cup: An Introduction to the Java EE Platform  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="web-application003.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="web-application005.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="GCRLT" name="GCRLT"></a><a id="JEEFC00061" name="JEEFC00061"></a>
+<div class="sect1">
+<h1 class="sect1"><span class="secnum">4.4</span> Modifying the Web Client</h1>
+<p>To add the correct functionality to the web client, you need to perform the following tasks:</p>
+<ul>
+<li>
+<p>Modify the <code>DukesBDay</code> managed bean class</p>
+</li>
+<li>
+<p>Modify the Facelets pages</p>
+</li>
+</ul>
+<a id="GCRQX" name="GCRQX"></a><a id="JEEFC00098" name="JEEFC00098"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">4.4.1</span> Modify the DukesBDay Managed Bean Class</h2>
+<p><code>DukesBDay</code> is a CDI managed bean that acts as a backing bean. A managed bean is a lightweight container-managed object that supports a set of basic services. A backing bean is a managed bean that provides temporary data storage for the values of the components included on a particular JavaServer Faces page. The JavaServer Faces application instantiates the managed bean and stores it in scope. The section following this one describes more about managed beans and how to configure them.</p>
+<p>This section describes how to modify the <code>DukesBDay</code> class.</p>
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref10" name="sthref10"></a>
+<h3 class="sect3"><span class="secnum">4.4.1.1</span> Call the dukes-age Web Service to Retrieve Duke's Current Age</h3>
+<p>Now modify the <code>getAge</code> method of <code>DukesBDay</code> to call the <code>dukes-age</code> web service using the JAX-RS Client API. This will retrieve Duke's current age, so it can be compared to the user's age.</p>
+<ol>
+<li>
+<p>Expand the <span class="gui-object-action">Source Packages</span> node, expand the <code>firstcup.web</code> node, then double-click the <code>DukesBDay.java</code> file to open it in the editor window.</p>
+</li>
+<li>
+<p>Find the <code>getAge</code> method and implement its functionality by copying and pasting the following code in bold:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+    public int getAge() {
+        <code><span class="codeinlinebold">try {</span></code>
+            <code><span class="codeinlinebold">Client client = ClientBuilder.newClient();</span></code>
+            <code><span class="codeinlinebold">WebTarget target = </span></code>
+            <code><span class="codeinlinebold">client.target("http://localhost:8080/dukes-age/webapi/dukesAge");</span></code>
+            <code><span class="codeinlinebold">String response = target.request().get(String.class);</span></code>
+            <code><span class="codeinlinebold">age = Integer.parseInt(response);</span></code>
+        <code><span class="codeinlinebold">} catch (IllegalArgumentException | NullPointerException | </span></code>
+                 <code><span class="codeinlinebold">WebApplicationException ex) {</span></code>
+            <code><span class="codeinlinebold">logger.severe("processing of HTTP response failed");</span></code>
+        <code><span class="codeinlinebold">}</span></code> 
+        <code><span class="codeinlinebold">return age;</span></code>
+    }
+</pre></li>
+<li>
+<p>In the editor window, right-click and select <span class="gui-object-action">Format</span>.</p>
+</li>
+<li>
+<p>From the <span class="gui-object-action">File</span> menu, select <span class="gui-object-action">Save</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="GCRSA" name="GCRSA"></a><a id="JEEFC00037" name="JEEFC00037"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">4.4.1.2</span> Get the Age Difference from the DukesBirthdayBean Enterprise Bean</h3>
+<p>Now modify the <code>processBirthday</code> method to get the difference in age between the user's age and Duke's age from the <code>DukesBirthdayBean</code> EJB, set the <code>absAgeDiff</code> variable to the absolute value of the age difference, and set a result string that will forward the user to the display page.</p>
+<ol>
+<li>
+<p>Find the <code>processBirthday</code> method and implement the functionality by copying and pasting the following code in bold:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+    public String processBirthday() {
+        <code><span class="codeinlinebold">this.setAgeDiff(dukesBirthdayBean.getAgeDifference(yourBD));</span></code>
+        <code><span class="codeinlinebold">logger.log(Level.INFO, "age diff from dukesbday {0}", ageDiff);</span></code>
+        <code><span class="codeinlinebold">this.setAbsAgeDiff(Math.abs(this.getAgeDiff()));</span></code>
+        <code><span class="codeinlinebold">logger.log(Level.INFO, "absAgeDiff {0}", absAgeDiff);</span></code>
+    <code><span class="codeinlinebold">this.setAverageAgeDifference(dukesBirthdayBean.getAverageAgeDifference());</span></code>
+    <code><span class="codeinlinebold">logger.log(Level.INFO, "averageAgeDifference {0}", averageAgeDifference);</span></code>
+        <code><span class="codeinlinebold">return "/response.xhtml";</span></code>
+    }
+</pre>
+<p>This method calls the <code>getAgeDifference</code> method of <code>DukesBirthdayBean</code> to get the age difference and store it in the <code>ageDiff</code> property, sets the absolute age difference stored in the <code>absAgeDiff</code> property, and sets the average age difference stored in the <code>averageAgeDifference</code> property. It returns the relative URL of the response page to which the user will be forwarded.</p>
+</li>
+<li>
+<p>In the editor window, right-click and select <span class="gui-object-action">Format</span>.</p>
+</li>
+<li>
+<p>From the <span class="gui-object-action">File</span> menu, select <span class="gui-object-action">Save</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="GIMVD" name="GIMVD"></a><a id="JEEFC00099" name="JEEFC00099"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">4.4.2</span> Creating the Facelets Client</h2>
+<p>The Facelets client consists of a <span class="italic">resource library</span>, a <span class="italic">composite component</span>, and two XHTML files.</p>
+<a id="GIMUG" name="GIMUG"></a><a id="JEEFC00084" name="JEEFC00084"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">4.4.2.1</span> Resource Libraries in firstcup-war</h3>
+<p>A JavaServer Faces resource library is a collection of user-created components collected in a standard location in a web application. Resource libraries are identified according to a <span class="italic">resource identifier</span>, a string that represents a particular resource within a web application. Resources can be packaged either at the root of the web application or on the web application's classpath.</p>
+<p>A resource packaged in the web application root must be in a subdirectory of a <code>resources</code> directory at the web application root.</p>
+<pre xml:space="preserve" class="oac_no_warn">
+resources/<span class="variable">resource-identifier</span>
+</pre>
+<p>A resource packaged in the web application classpath must be in a subdirectory of the <code>META-INF/resources</code> directory within a web application.</p>
+<pre xml:space="preserve" class="oac_no_warn">
+META-INF/resources/<span class="variable">resource-identifier</span>
+</pre>
+<p>Resource identifiers are unique strings that conform to the following format:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+[<span class="variable">locale-prefix</span>/][<span class="variable">library-name </span>/][<span class="variable">library-version</span>/]<span class="variable">resource-name </span>[/<span class="variable">resource-version</span>]
+</pre>
+<p>Elements of the resource identifier in brackets (<code>[]</code>) are optional. A resource name, identifying a particular resource (a file or a graphic, for example), is required. In <code>firstcup-war</code>, a resource library with the name <code>components</code> is packaged in the web application root, and this library contains one resource, a file called <code>inputDate.xhtml</code>. The resource identifier for this resource is therefore <code>components/inputDate.xhtml</code>, and it is located in the web application root at <code>resources/components/inputDate.xhtml</code>.</p>
+</div>
+<!-- class="sect3" -->
+<a id="GIMTW" name="GIMTW"></a><a id="JEEFC00085" name="JEEFC00085"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">4.4.2.2</span> The inputDate Composite Component</h3>
+<p>A composite component is a set of user-defined JavaServerFaces and Facelets components located in a resource. In <code>firstcup-war</code>, the <code>inputDate.xhtml</code> resource, located in the <code>components</code> resource library, is a composite component that contains tags for reading in a date the user enters in a form. Composite components consist of an <span class="italic">interface</span> definition and an <span class="italic">implementation</span>.</p>
+<p>The interface definition is specified with the <code>&lt;cc:interface&gt;</code> tag to define which attributes are exposed to pages that use the composite component. Attributes are identified with the <code>&lt;cc:attribute&gt;</code> tag.</p>
+<p>The <code>inputDate.xhtml</code> interface definition is as follows. It defines a single attribute, <code>date</code>, that must be specified in pages that use the <code>inputDate</code> composite component.</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;cc:interface&gt;
+    &lt;cc:attribute name="date" /&gt;
+&lt;/cc:interface&gt;
+</pre>
+<p>The implementation of the composite component is specified with the <code>&lt;cc:implementation&gt;</code> tag. The tags within the <code>&lt;cc:implementation&gt;</code> are the actual component tags that will be added to pages that use the composite component. They can be any HTML render kit, JavaServer Faces, or Facelets tags. The <code>#{cc.attrs.</code><code><span class="codeinlineitalic">attribute-name</span></code><code>}</code> expression is used to get the value of the specified attribute from the page or component that is using the composite component.</p>
+<p>The implementation of the <code>inputDate</code> composite component is as follows. An HTML input text component will store the entered text into the <code>date</code> attribute, accessed by the <code>#{cc.attrs.date}</code> expression. A JavaServer Faces <code>convertDateTime</code> component will convert the entered text to a date with the form of <code>MM/dd/yyyy</code> (04/13/2014, for example).</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;cc:implementation&gt;
+    &lt;h:inputText id="getdate" value="#{cc.attrs.date}"&gt;
+        &lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;
+    &lt;/h:inputText&gt;
+    &lt;p/&gt;
+    &lt;h:message for="getdate" style="color:red" /&gt;
+&lt;/cc:implementation&gt;
+</pre>
+<p>If there's an error with the input of the <code>inputText</code> component, the form submission is unsuccessful, and a warning message is displayed. The message output is specified by the <code>&lt;h:message&gt;</code> tag, which is connected to the <code>inputText</code> component that has the id <code>getdate</code>.</p>
+</div>
+<!-- class="sect3" -->
+<a id="GIMWV" name="GIMWV"></a><a id="JEEFC00038" name="JEEFC00038"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">4.4.2.3</span> Implement the inputDate Composite Component</h3>
+<p>Modify the <code>inputDate</code> composite component in the <code>components</code> resource library.</p>
+<ol>
+<li>
+<p>Expand <span class="gui-object-action">Web Pages</span>, then <code>resources</code>, then <code>components</code>, and open <code>inputDate.xhtml</code>.</p>
+</li>
+<li>
+<p>Add the composite component interface definition between the opening and closing <code>&lt;cc:interface&gt;</code> tags in <code>inputDate.xhtml</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+    &lt;cc:interface&gt;
+        <span class="bold">&lt;cc:attribute name="date" /&gt;</span>
+    &lt;/cc:interface&gt;
+</pre></li>
+<li>
+<p>Add the composite component implementation between the opening and closing <code>cc:implementation</code> tags:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+    &lt;cc:implementation&gt;
+        <span class="bold">&lt;h:inputText id="getdate" value="#{cc.attrs.date}"&gt;</span>
+            <span class="bold">&lt;f:convertDateTime pattern="MM/dd/yyyy" /&gt;</span>
+        <span class="bold">&lt;/h:inputText&gt;</span>
+    <code><span class="codeinlinebold">    &lt;p/&gt;</span></code>
+        <code><span class="codeinlinebold">&lt;h:message for="getdate" style="color:red" /&gt;</span></code>
+    &lt;/cc:implementation&gt;
+</pre></li>
+<li>
+<p>In the editor window, right-click and select <span class="gui-object-action">Format</span>.</p>
+</li>
+<li>
+<p>From the <span class="gui-object-action">File</span> menu, select <span class="gui-object-action">Save</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="GIMUM" name="GIMUM"></a><a id="JEEFC00086" name="JEEFC00086"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">4.4.2.4</span> The Facelets Web Interface</h3>
+<p>The <code>firstcup-war</code> web application interface has two XHTML files. The <code>greeting.xhtml</code> file displays Duke's current age and the form where the user can enter a birthday. The <code>response.xhtml</code> file displays the age difference between the user and Duke.</p>
+<p>The <code>greeting.xhtml</code> file contains several pieces of the <code>firstcup-war</code> application detailed previously. It uses the localized strings contained in <code>WebMessages.properties</code> and <code>WebMessages_es.properties</code>. It uses the <code>DukesBDay</code> managed bean to call both the <code>DukesAgeResource</code> JAX-RS web service and the <code>DukesBirthdayBean</code> enterprise bean. It uses the <code>inputDate</code> composite component to create the input for the user to enter a birthday.</p>
+<p>Here's the content of the <code>greeting.xhtml</code> file.</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE html
+      PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:fc="http://xmlns.jcp.org/jsf/composite/components"&gt;
+    &lt;h:head&gt;
+        &lt;title&gt;Firstcup Greeting Page&lt;/title&gt;
+    &lt;/h:head&gt;
+    &lt;h:body&gt;
+        &lt;h:form&gt;
+            &lt;h2&gt;
+                &lt;h:outputText value="#{bundle.Welcome}"/&gt;
+            &lt;/h2&gt;
+            &lt;h:outputText value="#{bundle.DukeIs} "/&gt;
+            &lt;h:outputText value="#{dukesBDay.age} #{bundle.YearsOldToday}"/&gt;
+            &lt;p/&gt;
+            &lt;h:outputText value="#{bundle.Instructions}"/&gt;
+            &lt;p/&gt;
+            &lt;h:outputText value="#{bundle.YourBD} "/&gt;
+            &lt;fc:inputDate id="userBirthday" date="#{dukesBDay.yourBD}" /&gt;
+            &lt;p/&gt;
+            &lt;h:commandButton value="#{bundle.Submit}"
+                             action="#{dukesBDay.processBirthday}"/&gt;
+        &lt;/h:form&gt;
+
+    &lt;/h:body&gt;
+&lt;/html&gt;
+</pre>
+<p>The <code>greeting.xhtml</code> file uses the HTML RenderKit and the <code>components</code> resource library tag libraries. The <code>components</code> tag library has a prefix of <code>fc</code>, and is used to specify the <code>inputDate</code> composite component in the form below. The <code>&lt;fc:inputDate id="userBirthday" date="#{dukesBDay.yourBD}" /&gt;</code> tag has the required <code>date</code> attribute, and it stores the value in the <code>yourBD</code> property in the <code>DukesBDay</code> managed bean by using the EL expression <code>#{dukesBDay.yourBD}</code>.</p>
+<p>The localized strings are referenced by the EL expressions <code>#{bundle.</code><code><span class="codeinlineitalic">property-name</span></code><code>}</code>. For example, the <code>&lt;h:outputText value="#{bundle.Welcome}"/&gt;</code> tag will display the following string in English locales:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+Hi. I'm Duke. Let's find out who's older -- you or I.
+</pre>
+<p>The <code>&lt;h:commandButton&gt;</code> tag creates a <span class="gui-object-action">Submit</span> button and specifies that a successful submission should render the <code>response.xhtml</code> file by setting the <code>action</code> attribute to <code>#{dukesBDay.processBirthday}</code>. The <code>processBirthday</code> method returns the value <code>"/response.xhtml"</code>. The <code>action</code> attribute is used to define navigation rules for forms in Facelets pages.</p>
+<p>The <code>response.xhtml</code> file displays the age difference between the user and Duke and the average age difference of all users so far. Different strings are displayed based on whether the user is the same age, younger, or older than Duke. The text can be displayed or not based on the conditions specified by the <code>rendered</code> attribute of the <code>&lt;h:outputText&gt;</code> tag. The conditions used in the <code>rendered</code> attribute are Expression Language (EL) alternatives to the Java programming language conditional operators to allow XML parsing of the XHTML file.</p>
+<div class="tblhruleformal"><a id="sthref11" name="sthref11"></a><a id="GIMVG" name="GIMVG"></a>
+<p class="titleintable">Table 4-1 Conditional Operator EL Language Alternatives</p>
+<table class="HRuleFormal" title="Conditional Operator EL Language Alternatives" summary="This table lists logical conditions and shows the Java programming operator and Expression Language (EL) alternative for each." dir="ltr" border="1" width="100%" frame="hsides" rules="rows" cellpadding="3" cellspacing="0">
+<col width="22%" />
+<col width="*" />
+<col width="27%" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t2">Logical Condition</th>
+<th align="left" valign="bottom" id="r1c2-t2">Java Programming Language Conditional Operator</th>
+<th align="left" valign="bottom" id="r1c3-t2">EL Alternative</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t2" headers="r1c1-t2">
+<p>AND</p>
+</td>
+<td align="left" headers="r2c1-t2 r1c2-t2">
+<p><code>&amp;&amp;</code></p>
+<br /></td>
+<td align="left" headers="r2c1-t2 r1c3-t2">
+<p><code>&amp;&amp;</code></p>
+<br /></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t2" headers="r1c1-t2">
+<p>EQUALS</p>
+</td>
+<td align="left" headers="r3c1-t2 r1c2-t2">
+<p><code>==</code></p>
+<br /></td>
+<td align="left" headers="r3c1-t2 r1c3-t2">
+<p><code>==</code></p>
+<br /></td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t2" headers="r1c1-t2">
+<p>LESS THAN</p>
+</td>
+<td align="left" headers="r4c1-t2 r1c2-t2">
+<p><code>&lt;</code></p>
+<br /></td>
+<td align="left" headers="r4c1-t2 r1c3-t2">
+<p><code>lt</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t2" headers="r1c1-t2">
+<p>GREATER THAN</p>
+</td>
+<td align="left" headers="r5c1-t2 r1c2-t2">
+<p><code>&gt;</code></p>
+</td>
+<td align="left" headers="r5c1-t2 r1c3-t2">
+<p><code>gt</code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblhruleformal" -->
+<p>Here's the content of the <code>response.xhtml</code> file.</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;?xml version='1.0' encoding='UTF-8' ?&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"&gt;
+    &lt;h:head&gt;
+        &lt;title&gt;Response Page&lt;/title&gt;
+    &lt;/h:head&gt;
+    &lt;h:body&gt;
+        &lt;h:form&gt;
+            &lt;h:outputText value="#{bundle.YouAre} "/&gt;
+            &lt;h:outputText value="#{bundle.SameAge}"
+                          rendered="#{dukesBDay.ageDiff == 0}"/&gt;
+            &lt;h:outputText value="#{dukesBDay.absAgeDiff}"
+                          rendered="#{dukesBDay.ageDiff lt 0}"/&gt;
+            &lt;h:outputText value=" #{bundle.Year} "
+                          rendered="#{dukesBDay.ageDiff == -1}"/&gt;
+            &lt;h:outputText value=" #{bundle.Years} "
+                          rendered="#{dukesBDay.ageDiff lt -1}"/&gt;
+            &lt;h:outputText value="#{bundle.Younger}"
+                          rendered="#{dukesBDay.ageDiff lt 0}"/&gt;
+            &lt;h:outputText value="#{dukesBDay.absAgeDiff}"
+                          rendered="#{dukesBDay.ageDiff gt 0}"/&gt;
+            &lt;h:outputText value=" #{bundle.Year} "
+                          rendered="#{dukesBDay.ageDiff == 1}"/&gt;
+            &lt;h:outputText value=" #{bundle.Years} "
+                          rendered="#{dukesBDay.ageDiff gt 1}"/&gt;
+            &lt;h:outputText value="#{bundle.Older}"
+                          rendered="#{dukesBDay.ageDiff gt 0}"/&gt;
+            &lt;p/&gt;
+            &lt;h:outputText 
+                value="#{bundle.AverageAge} #{dukesBDay.averageAgeDifference}."/&gt;
+            &lt;p/&gt;
+            &lt;h:commandButton id="back" value="#{bundle.Back}" action="greeting"/&gt;
+        &lt;/h:form&gt;
+    &lt;/h:body&gt;
+&lt;/html&gt;
+</pre>
+<p>For example, the <code>#{bundle.SameAge}</code> string is displayed if the user and Duke have the same birthday, as specified by the condition <code>#{dukesBDay.ageDiff == 0}</code> in the <code>rendered</code> attribute. That is, the following string is displayed when the <code>ageDiff</code> property of <code>DukesBDay</code> equals <code>0</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+You are the same age as Duke!
+</pre>
+<p>The form also contains a <code>&lt;h:commandButton&gt;</code> tag that creates a <span class="gui-object-action">Back</span> button, which directs the user back to the <code>greeting.xhtml</code> page, as specified in the <code>action</code> attribute.</p>
+</div>
+<!-- class="sect3" -->
+<a id="GIMTA" name="GIMTA"></a><a id="JEEFC00042" name="JEEFC00042"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">4.4.2.5</span> Add the Form to greeting.xhtml</h3>
+<p>Add the form that provides the user interface for displaying Duke's age and specifying the user's birthday.</p>
+<ol>
+<li>
+<p>In the <span class="gui-object-action">Projects</span> tab, double-click <code>greeting.xhtml</code> in the <code>firstcup-war</code> project and, in the editor window, replace the text between the <code>&lt;h:form&gt;</code> and <code>&lt;/h:form&gt;</code> tags with the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+    &lt;h2&gt;
+        &lt;h:outputText value="#{bundle.Welcome}"/&gt;
+    &lt;/h2&gt;
+    &lt;h:outputText value="#{bundle.DukeIs} "/&gt;
+    &lt;h:outputText value="#{dukesBDay.age} #{bundle.YearsOldToday}"/&gt;
+    &lt;p/&gt;
+    &lt;h:outputText value="#{bundle.Instructions}"/&gt;
+    &lt;p/&gt;
+    &lt;h:outputText value="#{bundle.YourBD} "/&gt;
+    &lt;fc:inputDate id="userBirthday" date="#{dukesBDay.yourBD}" /&gt;
+    &lt;p/&gt;
+    &lt;h:commandButton value="#{bundle.Submit}" 
+                     action="#{dukesBDay.processBirthday}"/&gt;
+</pre></li>
+<li>
+<p>In the editor window, right-click and select <span class="gui-object-action">Format</span>.</p>
+</li>
+<li>
+<p>From the <span class="gui-object-action">File</span> menu, select <span class="gui-object-action">Save</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="GIMVW" name="GIMVW"></a><a id="JEEFC00043" name="JEEFC00043"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">4.4.2.6</span> Add the Form to response.html</h3>
+<p>Add a form that displays the age difference between Duke and the user, displays the average age difference of all users, and allows the user to navigate back to <code>greeting.xhtml</code>.</p>
+<ol>
+<li>
+<p>In the <span class="gui-object-action">Projects</span> tab, double-click <code>response.xhtml</code> in the <code>firstcup-war</code> project and, in the editor window, replace the text between the <code>&lt;h:form&gt;</code> and <code>&lt;/h:form&gt;</code> tags with the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+    &lt;h:outputText value="#{bundle.YouAre} "/&gt;
+    &lt;h:outputText value="#{bundle.SameAge}"
+                  rendered="#{dukesBDay.ageDiff == 0}"/&gt;
+    &lt;h:outputText value="#{dukesBDay.absAgeDiff}"
+                  rendered="#{DukesBDay.ageDiff lt 0}"/&gt;
+    &lt;h:outputText value=" #{bundle.Year} "
+                  rendered="#{dukesBDay.ageDiff == -1}"/&gt;
+    &lt;h:outputText value=" #{bundle.Years} "
+                  rendered="#{dukesBDay.ageDiff lt -1}"/&gt;
+    &lt;h:outputText value="#{bundle.Younger}"
+                  rendered="#{dukesBDay.ageDiff lt 0}"/&gt;
+    &lt;h:outputText value="#{dukesBDay.absAgeDiff}"
+                  rendered="#{dukesBDay.ageDiff gt 0}"/&gt;
+    &lt;h:outputText value=" #{bundle.Year} "
+                  rendered="#{dukesBDay.ageDiff == 1}"/&gt;
+    &lt;h:outputText value=" #{bundle.Years} "
+                  rendered="#{dukesBDay.ageDiff gt 1}"/&gt;
+    &lt;h:outputText value="#{bundle.Older}" 
+                  rendered="#{dukesBDay.ageDiff gt 0}"/&gt;
+    &lt;p/&gt;
+    &lt;h:outputText 
+        value="#{bundle.AverageAge} #{dukesBDay.averageAgeDifference}." /&gt;
+    &lt;p/&gt;
+    &lt;h:commandButton id="back" value="#{bundle.Back}" action="greeting"/&gt;
+</pre></li>
+<li>
+<p>In the editor window, right-click and select <span class="gui-object-action">Format</span>.</p>
+</li>
+<li>
+<p>From the <span class="gui-object-action">File</span> menu, select <span class="gui-object-action">Save</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="web-application003.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="web-application005.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

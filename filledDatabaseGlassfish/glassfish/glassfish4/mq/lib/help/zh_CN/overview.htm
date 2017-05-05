@@ -1,0 +1,42 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=GB2312">
+<TITLE>概述</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H1>概述</H1>
+ 
+<P> 可以使用管理控制台中的控件与一个或多个 Message Queue 代理和对象存储通信。</P>
+<P>管理控制台分为五个窗格，如下所示。</P>
+<P><img src="../images/console.gif" alt="划分为五个区域的管理控制台的图表。"></P>
+<UL>
+<LI>1 - 菜单栏
+<LI>2 - 工具栏
+<LI>3 - 导航窗格
+<LI>4 - 结果窗格
+<LI>5 - 状态窗格
+</UL>
+<P>可以使用“菜单栏”中的菜单或“工具栏”中的图标对“导航窗格”和“结果窗格”中的选定元素进行操作。
+  
+“状态窗格”显示关于最近完成的操作的信息。</P>
+<P>导航窗格显示连接的对象存储和代理的树视图。对象存储包含被管理对象，这些对象可能是目的地（队列或主题）或连接工厂。代理包含一个服务和物理目的地的阵列。</P>
+<ul>
+<li>要查看对象存储中的目的地，请单击 Destinations 文件夹。其中的内容将显示在结果窗格中。</li>
+<li>要查看关于对象存储中的连接工厂的信息，请单击 Connection Factories 文件夹。每个连接工厂的查找名称和类型将显示在结果窗格中。</li>
+<li>要查看关于代理中的可用服务的信息，请单击 Services 文件夹。服务列表、每个服务的端口号以及状态将显示在结果窗格中。</li>
+<li>要查看/更改有关特定服务的信息，请在结果窗格中选择该服务，然后选择“操作”>“属性”。</li>
+<li>要查看关于代理中的物理目的地的信息，请单击 Destinations 文件夹。屏幕上将显示在该代理上创建的目的地列表以及目的地类型（如果是队列，则显示传送策略）。 </li>
+<li>要查看/更改有关特定目的地的信息，请在结果窗格中选择该目的地，然后选择“操作”>“属性”。</li>
+</ul>
+<P>要更改对象存储或代理的属性，必须先断开连接。</P>
+<P>使用管理控制台，可以通过图形界面访问 Message Queue 管理的基本功能。但是，您可以通过相应的 Message Queue 命令实用程序获取更多功能。详细信息，请参阅<i>《Message Queue 管理员指南》</i>。</P>
+</BODY>
+</HTML>

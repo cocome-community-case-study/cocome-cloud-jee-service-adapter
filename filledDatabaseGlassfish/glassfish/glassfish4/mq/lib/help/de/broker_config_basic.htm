@@ -1,0 +1,35 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+ <TITLE>Broker-Abfrage/Aktualisierung &gt; Grundlagen</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>Broker-Abfrage/Aktualisierung &gt; <BR> Grundlagen</H2>
+ 
+<P>Mit Hilfe der Optionen auf dieser Registerkarte k&ouml;nnen Sie grundlegende Konfigurationsinformationen f&uuml;r eine Broker-Instanz festlegen bzw. durchsuchen.</P>
+
+<P><b>Version</b>: Gibt die Version des Brokers an.</P>
+
+<P><b>Instanzname</b>: Zeigt entweder den Standardnamen <code>imqbroker</code> oder den Namen an, den Sie beim Starten des Brokers zugewiesen haben.</P>
+
+<P><b>Prim&auml;rer Anschluss</b>: Zeigt die Nummer des Portmapper-Anschlusses des Brokers an. Der Portmapper ist f&uuml;r die dynamische Zuweisung von Anschl&uuml;ssen zu Message Queue-Diensten zust&auml;ndig. Diese Nummer sollte mit der Nummer identisch sein, die Sie beim Starten des Brokers angegeben haben.</P>
+
+<P><b>Automatische Erzeugung Themen</b>: Gibt an, ob der Broker bei jedem Versuch eines Meldungskonsumenten oder -erzeugers, auf ein nicht vorhandenes Ziel zuzugreifen, ein Ziel des Typs <B>Thema</B> erstellen soll. </P>
+
+<P><b>Automatische Erzeugung Warteschlangen</b>: Gibt an, ob der Broker bei jedem Versuch eines Meldungskonsumenten oder -erzeugers, auf ein nicht vorhandenes Ziel zuzugreifen, ein Ziel des Typs <B>Warteschlange</B> erstellen soll.</P>
+
+<P><b>Automatisch erstellte Warteschlange &ndash; H&ouml;chstzahl aktiver Konsumenten:</b> Gibt die maximale Anzahl an Konsumenten an, die bei einer Zustellung mit Lastenausgleich von diesem Ziel aus aktiv sein d&uuml;rfen.</P>
+<P><b>Automatisch erstellte Warteschlange &ndash; H&ouml;chstzahl von Backup-Konsumenten:</b> Gibt die maximale Anzahl an Backup-Konsumenten an, die an die Stelle aktiver Konsumenten treten k&ouml;nnen, falls ein aktiver Konsument bei einer Zustellung mit Lastenausgleich von einem Warteschlangenziel fehlschlagen sollte. 
+</P>
+
+
+</BODY>
+</HTML>

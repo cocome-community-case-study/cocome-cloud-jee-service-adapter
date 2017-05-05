@@ -1,0 +1,49 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<html>
+<head>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+ <title>Objektspeicher hinzuf&uuml;gen</title>
+ <link rel="StyleSheet" href="ide.css">
+ 
+</head>
+<body>
+<h2>Objektspeicher hinzuf&uuml;gen</h2>
+<p>Mit Hilfe dieses Dialogfelds k&ouml;nnen Sie dem Navigationsbereich Ihrer Administratorkonsole einen bereits vorhandenen Objektspeicher hinzuf&uuml;gen. Nach dem Hinzuf&uuml;gen des Objektspeichers k&ouml;nnen Sie eine Verbindung zu diesem Objektspeicher herstellen und damit fortfahren, ihm Zielobjekte und Verbindungs-Factory-Objekte hinzuzuf&uuml;gen. </p>
+<p>Ein <i>Objektspeicher</i> enth&auml;lt die von Ihnen erstellten Verwaltungsobjekte: <i>Zielobjekte</i> und <i>Verbindungs-Factory-Objekte</i>. Der Zugriff auf deren Inhalt erfolgt &uuml;ber Standard-JNDI-Abfragen, die von der Client-Anwendung aufgerufen werden. Objektspeicher k&ouml;nnen entweder dateibasiert sein oder es kann sich bei ihnen um einen LDAP-Server handeln. Wenn Sie einen dateibasierten Objektspeicher verwenden m&ouml;chten, m&uuml;ssen Sie einen Ordner daf&uuml;r erstellen. Soll ein LDAP-Server verwendet werden, m&uuml;ssen Sie den Server konfigurieren und starten. </p>
+<p><b>Objektspeicherbeschriftung</b>: Legt den Namen des Objektspeichers fest. Unter diesem Namen wird der Objektspeicher im Navigationsbereich der Administratorkonsole angezeigt.</p>
+<p><b>Eigenschaften JNDI-Benennungsdienst</b>: Mit den Optionen in diesem Bereich k&ouml;nnen Sie die Liste der JNDI-Eigenschaften f&uuml;r diesen Objektspeicher definieren. W&auml;hlen Sie in der Dropdown-Liste <b>Name</b> einen Eigenschaftsnamen aus. Geben Sie anschlie&szlig;end im Feld <b>Wert</b> den Eigenschaftswert ein.</p>
+<p> Informationen zur JNDI-API finden Sie unter <code>http://java.sun.com/products/jndi/1.2/javadoc/</code>. Sie m&uuml;ssen die Eigenschaften <code>java.naming.factory.initial</code> und <font face="Courier New, Courier, mono">java.naming.provider.url</font> festlegen. </p>
+<p>Die anf&auml;ngliche Kontexteigenschaft (<code>java.naming.factory.initial</code>) kann zwei Werte aufweisen:</p>
+<ul>
+  <li>Dateisystemspeicher: <code>com.sun.jndi.fscontext.RefFSContextFactory</code></li>
+  <li>LDAP-Server: <code>com.sun.jndi.ldap.LdapCtxFactory</code></li>
+</ul>
+<p>Dar&uuml;ber hinaus m&uuml;ssen Sie die Authentifizierungsinformationen eingeben. Wenn Ihnen das nicht sicher genug ist, sollten Sie mit der Eingabe dieser Informationen warten, bis Sie beim Verbindungsaufbau dazu aufgefordert werden.</p>
+
+<ul>
+  <li>Klicken Sie nach dem Eingeben des Namens und des Wertes f&uuml;r die Eigenschaft auf <b>Hinzuf&uuml;gen</b>, um der Tabelle die Eigenschaft hinzuzuf&uuml;gen.</li>
+  <li>Wenn Sie eine bereits hinzugef&uuml;gte Eigenschaft wieder l&ouml;schen m&ouml;chten, w&auml;hlen Sie die entsprechende Eigenschaft in der Tabelle aus und klicken Sie dann auf <b>L&ouml;schen</b>.</li>
+  <li>Wenn alle Eintr&auml;ge gel&ouml;scht werden sollen, klicken Sie auf <b>Alle l&ouml;schen</b>.</li>
+  <li>Wenn Sie eine Eigenschaft &auml;ndern m&ouml;chten, w&auml;hlen Sie den entsprechenden Eintrag aus, &auml;ndern Sie den Wert der Eigenschaft und klicken Sie dann auf <b>&Auml;ndern</b>.</li>
+  <li>Klicken Sie auf <b>OK</b>, um alle Einstellungen zu best&auml;tigen und den Objektspeicher hinzuzuf&uuml;gen.</li>
+</ul>
+<p>So &auml;ndern Sie die Eigenschaften eines vorhandenen Objektspeichers: 
+</p>
+
+<ol>
+  <li>Trennen Sie, wenn nicht bereits geschehen, die Verbindung zum Objektspeicher. Wenn die Verbindung getrennt ist, sieht das Objektspeicher-Symbol im Navigationsbereich wie folgt aus: <img src="../images/ObjectStoreX16X.gif" alt="mit einem roten x durchkreuztes Objektspeicher-Symbol"><br> Wenn Sie die Verbindung zu einem Objektspeicher trennen m&ouml;chten, w&auml;hlen Sie im Navigationsbereich den Objektspeicher aus, und klicken Sie auf <b>Aktionen &gt; Verbindung mit Objektspeicher trennen</b>. </li>
+  <li>W&auml;hlen Sie den Befehl <b>Aktionen &gt; Eigenschaften</b>, um das Dialogfeld <b>Objektspeichereigenschaften</b> zu &ouml;ffnen.</li>
+</ol>
+
+<p>Wenn Sie dem Objektspeicher ein Zielobjekt hinzuf&uuml;gen m&ouml;chten, klicken Sie auf den Ordner <b>Ziele</b> und w&auml;hlen Sie den Befehl <b>Aktionen &gt; Zielobjekt hinzuf&uuml;gen</b>. </p>
+
+<p>Wenn Sie dem Objektspeicher ein Verbindungs-Factory-Objekt hinzuf&uuml;gen m&ouml;chten, klicken Sie auf den Ordner <b>Verbindungs-Factory</b> und w&auml;hlen Sie den Befehl <b>Aktionen &gt; Verbindungs-Factory-Objekt hinzuf&uuml;gen</b>. </b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

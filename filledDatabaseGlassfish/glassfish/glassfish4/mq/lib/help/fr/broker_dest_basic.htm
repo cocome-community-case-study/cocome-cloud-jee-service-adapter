@@ -1,0 +1,81 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+ <TITLE>broker dest basic</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>Propri&eacute;t&eacute;s de destination du courtier &gt; <BR>De base</H2>
+ 
+<P>Cet onglet affiche les informations sur une destination courtier. Vous pouvez &eacute;galement l'utiliser pour modifier les propri&eacute;t&eacute;s que vous avez d&eacute;finies pour une destination dans la bo&icirc;te de dialogue <b>Ajouter destination du courtier</b>.</P>
+
+<p><b>Nom destination</b> Sp&eacute;cifie le nom de la destination physique.</p>
+<p><b>Type de destination</b> Sp&eacute;cifie le type de destination (file d'attente ou rubrique). </p>
+<p><b>&Eacute;tat de la destination</b> Sp&eacute;cifie si la destination est active ou en attente (flux des producteurs interrompus, flux des consommateurs interrompus ou les deux)</p>
+
+<P>
+<hr>
+<p><b>Nombre actuel de messages</b> Sp&eacute;cifie le nombre de messages non consomm&eacute;s se trouvant actuellement &agrave; cette destination.</p>
+<p><b>Taille totale actuelle de messages (en octets)</b> Sp&eacute;cifie la m&eacute;moire utilis&eacute;e par les messages non consomm&eacute;s actuellement stock&eacute;s &agrave; cette destination.</p>
+<p><b>Nombre actuel de producteurs</b> Sp&eacute;cifie le nombre de producteurs actuellement associ&eacute;s &agrave; cette destination.</p>
+<p><b>Nombre actuel de consommateurs</b> Sp&eacute;cifie le nombre de consommateurs actuellement associ&eacute;s &agrave; cette destination. Ce nombre inclut les non durables, ainsi que les durables actifs/inactifs (rubrique seulement).</p>
+<p><b>Nombre actuel de consommateurs actifs</b> Sp&eacute;cifie le nombre de consommateurs actifs actuellement associ&eacute;s &agrave; cette destination (file d'attente seulement).</p>
+<p><b>Nombre actuel de consommateurs de remplacement</b> Sp&eacute;cifie le nombre de consommateurs de remplacement actuellement associ&eacute;s &agrave; cette destination (file d'attente seulement).</p>
+<P>
+<hr>
+<p><b>Nombre max de messages</b> Sp&eacute;cifie le nombre maximal de messages non consomm&eacute;s autoris&eacute;s &agrave; cette destination. </p>
+<p><b>Taille totale max des messages</b> Sp&eacute;cifie la m&eacute;moire totale maximale autoris&eacute;e pour les messages non consomm&eacute;s &agrave; cette destination. Utilisez le menu d&eacute;roulant pour choisir l'unit&eacute; de mesure&nbsp;: octets, kilo-octets ou m&eacute;ga-octets.</p>
+<p><b>Taille max par message (en octets)</b> Sp&eacute;cifie la taille maximale autoris&eacute;e pour un message unique &agrave; cette destination. Utilisez le menu d&eacute;roulant pour choisir l'unit&eacute; de mesure&nbsp;: octets, kilo-octets ou m&eacute;ga-octets.</p>
+<p><b>Nombre maximal de producteurs</b> Sp&eacute;cifie le nombre maximal de producteurs autoris&eacute;s pour cette destination.</p>
+<p><b>Nombre maximal de consommateurs actifs</b> S'applique uniquement aux destinations de type file d'attente. Sp&eacute;cifie le nombre maximal de consommateurs qui peuvent &ecirc;tre actifs dans le cadre d'une livraison avec &eacute;quilibrage de charge &agrave; partir de cette destination.</p>
+<p><b>Nombre maximal de consommateurs de remplacement</b> S'applique uniquement aux destinations de type file d'attente. Sp&eacute;cifie le nombre maximal de consommateurs qui peuvent remplacer les consommateurs actifs, en cas d'&eacute;chec de ces derniers pendant une livraison avec &eacute;quilibrage de charge &agrave; partir de cette destination.</p>
+<P>
+<hr>
+<P><b>Comportement aux limites</b> Sp&eacute;cifie le mode de r&eacute;ponse du courtier lorsque le seuil limite de m&eacute;moire est atteint pour cette destination. Les valeurs possibles sont les suivantes : 
+<UL>
+  <li>FLOW_CONTROL : ralentit les producteurs</li>
+  <li>REMOVE_OLDEST : &eacute;limine les messages les plus anciens</li>
+  <li>REMOVE_LOW_PRIORITY : &eacute;limine les messages de priorit&eacute; la plus faible d'apr&egrave;s l'&acirc;ge des messages (le client producteur n'est pas averti de la suppression du message)</li>  
+  <li>REJECT_NEWEST : rejette les messages les plus r&eacute;cents (le client producteur re&ccedil;oit une exception pour le rejet des messages permanents, mais n'est pas inform&eacute; du rejet des messages non permanents</li>
+  
+</ul>
+
+<p><b>Utiliser la file d'attente des messages bloqu&eacute;s</b> Sp&eacute;cifie l'utilisation d'une file d'attente de messages bloqu&eacute;s pour cette destination.</p>
+
+<p>Si un message est consid&eacute;r&eacute; comme non livrable, il est automatiquement plac&eacute; dans une file d'attente sp&eacute;ciale appel&eacute;e file d'attente des messages bloqu&eacute;s. Un message plac&eacute; dans cette file d'attente conserve tous ses en-t&ecirc;tes d'origine (y compris la destination d'origine) et un certain nombre d'informations sont ajout&eacute;es aux propri&eacute;t&eacute;s du message pour expliquer pourquoi il est bloqu&eacute;. Un administrateur ou un d&eacute;veloppeur a la possibilit&eacute; d'acc&eacute;der &agrave; cette file d'attente, de supprimer un message et de d&eacute;terminer pourquoi il a &eacute;t&eacute; plac&eacute; dans la file d'attente des messages bloqu&eacute;s.</p>
+
+<p>La file d'attente des messages bloqu&eacute;s est cr&eacute;&eacute;e automatiquement par le syst&egrave;me et porte le nom <code>mq.sys.dmq</code>.</p>
+
+<hr>
+
+<p><b>Pour purger les messages d'une destination&nbsp;:</b></p>
+<ol>
+  <li>S&eacute;lectionnez la destination dans la fen&ecirc;tre de r&eacute;sultats de la console d'administration.</li>
+  <li>S&eacute;lectionnez <b>Actions &gt; Purger les messages</b>.</li>
+</ol>
+<p><b>Pour supprimer une destination&nbsp;:</b></p>
+<ol>
+  <li>S&eacute;lectionnez la destination dans la fen&ecirc;tre de r&eacute;sultats de la console d'administration.</li>
+  <li>S&eacute;lectionnez <b>Modifier &gt; Supprimer</b>.</li>
+</ol>
+<p><b>Pour interrompre un flux depuis\vers une destination&nbsp;:</b></p>
+<ol>
+  <li>S&eacute;lectionnez la destination dans la fen&ecirc;tre de r&eacute;sultats de la console d'administration.</li>
+  <li>S&eacute;lectionnez <b>Actions &gt; Interrompre les flux des producteurs | Interrompre le flux des consommateurs | Tout interrompre</b>.</li>
+</ol>
+<p><b>Pour reprendre un flux de destination interrompu :</b></p>
+<ol>
+  <li>S&eacute;lectionnez la destination dans la fen&ecirc;tre de r&eacute;sultats de la console d'administration.</li>
+  <li>S&eacute;lectionnez <b>Actions &gt; Reprendre</b>.</li>
+</ol>
+<p>&nbsp;</p>
+
+</BODY>
+</HTML>

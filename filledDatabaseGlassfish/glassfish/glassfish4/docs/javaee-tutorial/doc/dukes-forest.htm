@@ -1,0 +1,362 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:30:3Z" />
+<meta name="description" content="Duke's Forest is a simple e-commerce application that contains several web applications and illustrates the use of multiple Java EE 7 APIs:" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="Duke's Forest Case Study Example" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39031-01" />
+        <meta name="description" content="A guide to developing enterprise applications for the Java Platform, Enterprise Edition 7 (Java EE 7) using GlassFish Server Open Source Edition." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Java FX, Web, developer, enterprise, Java EE Tutorial, Java EE 7 Tutorial" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>The Java EE 7 Tutorial:Duke's Forest Case Study Example | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7.0</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/tutorial/doc/javaeetutorial7.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GEXAF">Preface</a></h2>
+<h2 class="tocheader"><a href="partintro.htm#GFIRP">Part I Introduction</a></h2>
+<h2 class="tocheader"><a href="overview.htm#BNAAW"><span class="secnum">1</span> Overview</a></h2>
+<h2 class="tocheader"><a href="usingexamples.htm#GFIUD"><span class="secnum">2</span> Using the Tutorial Examples</a></h2>
+<h2 class="tocheader"><a href="partplatform.htm#GFIRP2">Part II Platform Basics</a></h2>
+<h2 class="tocheader"><a href="resource-creation.htm#GKJIQ2"><span class="secnum">3</span> Resource Creation</a></h2>
+<h2 class="tocheader"><a href="injection.htm#GKJIQ3"><span class="secnum">4</span> Injection</a></h2>
+<h2 class="tocheader"><a href="packaging.htm#GKJIQ4"><span class="secnum">5</span> Packaging</a></h2>
+<h2 class="tocheader"><a href="partwebtier.htm#BNADP">Part III The Web Tier</a></h2>
+<h2 class="tocheader"><a href="webapp.htm#BNADR"><span class="secnum">6</span> Getting Started with Web Applications</a></h2>
+<h2 class="tocheader"><a href="jsf-intro.htm#BNAPH"><span class="secnum">7</span> JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-facelets.htm#GIEPX"><span class="secnum">8</span> Introduction to Facelets</a></h2>
+<h2 class="tocheader"><a href="jsf-el.htm#GJDDD"><span class="secnum">9</span> Expression Language</a></h2>
+<h2 class="tocheader"><a href="jsf-page.htm#BNAQZ"><span class="secnum">10</span> Using JavaServer Faces Technology in Web Pages</a></h2>
+<h2 class="tocheader"><a href="jsf-page-core.htm#GJCUT"><span class="secnum">11</span> Using Converters, Listeners, and Validators</a></h2>
+<h2 class="tocheader"><a href="jsf-develop.htm#BNATX"><span class="secnum">12</span> Developing with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-ajax.htm#GKIOW"><span class="secnum">13</span> Using Ajax with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-advanced-cc.htm#GKHXA"><span class="secnum">14</span> Composite Components: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="jsf-custom.htm#BNAVG"><span class="secnum">15</span> Creating Custom UI Components and Other Custom Objects</a></h2>
+<h2 class="tocheader"><a href="jsf-configure.htm#BNAWO"><span class="secnum">16</span> Configuring JavaServer Faces Applications</a></h2>
+<h2 class="tocheader"><a href="servlets.htm#BNAFD"><span class="secnum">17</span> Java Servlet Technology</a></h2>
+<h2 class="tocheader"><a href="websocket.htm#GKJIQ5"><span class="secnum">18</span> Java API for WebSocket</a></h2>
+<h2 class="tocheader"><a href="jsonp.htm#GLRBB"><span class="secnum">19</span> JSON Processing</a></h2>
+<h2 class="tocheader"><a href="webi18n.htm#BNAXU"><span class="secnum">20</span> Internationalizing and Localizing Web Applications</a></h2>
+<h2 class="tocheader"><a href="partbeanvalidation.htm#sthref1322">Part IV Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation.htm#CHDGJIIA"><span class="secnum">21</span> Introduction to Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation-advanced.htm#GKAHP"><span class="secnum">22</span> Bean Validation: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partcdi.htm#GJBNR">Part V Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basic.htm#GIWHB"><span class="secnum">23</span> Introduction to Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basicexamples.htm#GJBLS"><span class="secnum">24</span> Running the Basic Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="cdi-adv.htm#GJEHI"><span class="secnum">25</span> Contexts and Dependency Injection for Java EE: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="cdi-adv-examples.htm#GKHRE"><span class="secnum">26</span> Running the Advanced Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="partwebsvcs.htm#BNAYK">Part VI Web Services</a></h2>
+<h2 class="tocheader"><a href="webservices-intro.htm#GIJTI"><span class="secnum">27</span> Introduction to Web Services</a></h2>
+<h2 class="tocheader"><a href="jaxws.htm#BNAYL"><span class="secnum">28</span> Building Web Services with JAX-WS</a></h2>
+<h2 class="tocheader"><a href="jaxrs.htm#GIEPU"><span class="secnum">29</span> Building RESTful Web Services with JAX-RS</a></h2>
+<h2 class="tocheader"><a href="jaxrs-client.htm#BABEIGIH"><span class="secnum">30</span> Accessing REST Resources with the JAX-RS Client API</a></h2>
+<h2 class="tocheader"><a href="jaxrs-advanced.htm#GJJXE"><span class="secnum">31</span> JAX-RS: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="partentbeans.htm#BNBLR">Part VII Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-intro.htm#GIJSZ"><span class="secnum">32</span> Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-gettingstarted.htm#GIJRE"><span class="secnum">33</span> Getting Started with Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-basicexamples.htm#GIJRB"><span class="secnum">34</span> Running the Enterprise Bean Examples</a></h2>
+<h2 class="tocheader"><a href="ejb-embedded.htm#GKCQZ"><span class="secnum">35</span> Using the Embedded Enterprise Bean Container</a></h2>
+<h2 class="tocheader"><a href="ejb-async.htm#GKIDZ"><span class="secnum">36</span> Using Asynchronous Method Invocation in Session Beans</a></h2>
+<h2 class="tocheader"><a href="partpersist.htm#BNBPY">Part VIII Persistence</a></h2>
+<h2 class="tocheader"><a href="persistence-intro.htm#BNBPZ"><span class="secnum">37</span> Introduction to the Java Persistence API</a></h2>
+<h2 class="tocheader"><a href="persistence-basicexamples.htm#GIJST"><span class="secnum">38</span> Running the Persistence Examples</a></h2>
+<h2 class="tocheader"><a href="persistence-querylanguage.htm#BNBTG"><span class="secnum">39</span> The Java Persistence Query Language</a></h2>
+<h2 class="tocheader"><a href="persistence-criteria.htm#GJITV"><span class="secnum">40</span> Using the Criteria API to Create Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-string-queries.htm#GKJIQ"><span class="secnum">41</span> Creating and Using String-Based Criteria Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-locking.htm#GKJJF"><span class="secnum">42</span> Controlling Concurrent Access to Entity Data with Locking</a></h2>
+<h2 class="tocheader"><a href="persistence-entitygraphs.htm#BABIJIAC"><span class="secnum">43</span> Creating Fetch Plans with Entity Graphs</a></h2>
+<h2 class="tocheader"><a href="persistence-cache.htm#GKJIA"><span class="secnum">44</span> Using a Second-Level Cache with Java Persistence API Applications</a></h2>
+<h2 class="tocheader"><a href="partmessaging.htm#GFIRP3">Part IX Messaging</a></h2>
+<h2 class="tocheader"><a href="jms-concepts.htm#BNCDQ"><span class="secnum">45</span> Java Message Service Concepts</a></h2>
+<h2 class="tocheader"><a href="jms-examples.htm#BNCGV"><span class="secnum">46</span> Java Message Service Examples</a></h2>
+<h2 class="tocheader"><a href="partsecurity.htm#GIJRP">Part X Security</a></h2>
+<h2 class="tocheader"><a href="security-intro.htm#BNBWJ"><span class="secnum">47</span> Introduction to Security in the Java EE Platform</a></h2>
+<h2 class="tocheader"><a href="security-webtier.htm#BNCAS"><span class="secnum">48</span> Getting Started Securing Web Applications</a></h2>
+<h2 class="tocheader"><a href="security-javaee.htm#BNBYK"><span class="secnum">49</span> Getting Started Securing Enterprise Applications</a></h2>
+<h2 class="tocheader"><a href="security-advanced.htm#GJJWX"><span class="secnum">50</span> Java EE Security: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partsupporttechs.htm#GIJUE">Part XI Java EE Supporting Technologies</a></h2>
+<h2 class="tocheader"><a href="transactions.htm#BNCIH"><span class="secnum">51</span> Transactions</a></h2>
+<h2 class="tocheader"><a href="resources.htm#BNCJH"><span class="secnum">52</span> Resource Adapters and Contracts</a></h2>
+<h2 class="tocheader"><a href="connectorexample.htm#GLODB"><span class="secnum">53</span> The Resource Adapter Examples</a></h2>
+<h2 class="tocheader"><a href="interceptors.htm#GKEED"><span class="secnum">54</span> Using Java EE Interceptors</a></h2>
+<h2 class="tocheader"><a href="batch-processing.htm#GKJIQ6"><span class="secnum">55</span> Batch Processing</a></h2>
+<h2 class="tocheader"><a href="concurrency-utilities.htm#GKJIQ8"><span class="secnum">56</span> Concurrency Utilities for Java EE</a></h2>
+<h2 class="tocheader"><a href="partcasestudies.htm#GKGJW">Part XII Case Studies</a></h2>
+<h2 class="tocheader"><a href="dukes-bookstore.htm#GLNVI"><span class="secnum">57</span> Duke's Bookstore Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-tutoring.htm#GKAEE"><span class="secnum">58</span> Duke's Tutoring Case Study Example</a></h2>
+<h2 class="tocheader"><div id="backgroundColor"><a href="dukes-forest.htm#GLNPW"><span class="secnum">59</span> Duke's Forest Case Study Example</a></div></h2>
+<ul style="list-style-type:none">
+<li><a href="dukes-forest001.htm#GLNRJ"><span class="secnum">59.1</span> Design and Architecture of Duke's Forest</a>
+<ul style="list-style-type:none">
+<li><a href="dukes-forest001.htm#CIHHJEGA"><span class="secnum">59.1.1</span> The events Project</a></li>
+<li><a href="dukes-forest001.htm#CIHFCIAC"><span class="secnum">59.1.2</span> The entities Project</a></li>
+<li><a href="dukes-forest001.htm#sthref3074"><span class="secnum">59.1.3</span> The dukes-payment Project</a></li>
+<li><a href="dukes-forest001.htm#sthref3075"><span class="secnum">59.1.4</span> The dukes-resources Project</a></li>
+<li><a href="dukes-forest001.htm#sthref3076"><span class="secnum">59.1.5</span> The Duke's Store Project</a>
+<ul style="list-style-type:none">
+<li><a href="dukes-forest001.htm#sthref3077"><span class="secnum">59.1.5.1</span> Enterprise Beans Used in Duke's Store</a></li>
+<li><a href="dukes-forest001.htm#sthref3078"><span class="secnum">59.1.5.2</span> Facelets Files Used in the Main Interface of Duke's Store</a></li>
+<li><a href="dukes-forest001.htm#CIHHDHIH"><span class="secnum">59.1.5.3</span> Facelets Files Used in the Administration Interface of Duke's Store</a></li>
+<li><a href="dukes-forest001.htm#sthref3079"><span class="secnum">59.1.5.4</span> Managed Beans Used in Duke's Store</a></li>
+<li><a href="dukes-forest001.htm#sthref3080"><span class="secnum">59.1.5.5</span> Helper Classes Used in Duke's Store</a></li>
+<li><a href="dukes-forest001.htm#CIHEBAFD"><span class="secnum">59.1.5.6</span> Qualifiers Used in Duke's Store</a></li>
+<li><a href="dukes-forest001.htm#sthref3081"><span class="secnum">59.1.5.7</span> Event Handlers Used in Duke's Store</a></li>
+<li><a href="dukes-forest001.htm#sthref3082"><span class="secnum">59.1.5.8</span> Deployment Descriptors Used in Duke's Store</a></li>
+</ul>
+</li>
+<li><a href="dukes-forest001.htm#sthref3083"><span class="secnum">59.1.6</span> The Duke's Shipment Project</a>
+<ul style="list-style-type:none">
+<li><a href="dukes-forest001.htm#sthref3084"><span class="secnum">59.1.6.1</span> Enterprise Beans Used in Duke's Shipment</a></li>
+<li><a href="dukes-forest001.htm#sthref3085"><span class="secnum">59.1.6.2</span> Facelets Files Used in Duke's Shipment</a></li>
+<li><a href="dukes-forest001.htm#sthref3086"><span class="secnum">59.1.6.3</span> Managed Beans Used in Duke's Shipment</a></li>
+<li><a href="dukes-forest001.htm#sthref3087"><span class="secnum">59.1.6.4</span> Helper Class Used in Duke's Shipment</a></li>
+<li><a href="dukes-forest001.htm#sthref3088"><span class="secnum">59.1.6.5</span> Qualifier Used in Duke's Shipment</a></li>
+<li><a href="dukes-forest001.htm#sthref3089"><span class="secnum">59.1.6.6</span> Deployment Descriptors Used in Duke's Shipment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="dukes-forest002.htm#GLNQP"><span class="secnum">59.2</span> Building and Deploying the Duke's Forest Case Study Application</a>
+<ul style="list-style-type:none">
+<li><a href="dukes-forest002.htm#sthref3090"><span class="secnum">59.2.1</span> To Build and Deploy the Duke's Forest Application Using NetBeans IDE</a></li>
+<li><a href="dukes-forest002.htm#sthref3091"><span class="secnum">59.2.2</span> To Build and Deploy the Duke's Forest Application Using Maven</a></li>
+</ul>
+</li>
+<li><a href="dukes-forest003.htm#GLNSX"><span class="secnum">59.3</span> Running the Duke's Forest Application</a>
+<ul style="list-style-type:none">
+<li><a href="dukes-forest003.htm#sthref3092"><span class="secnum">59.3.1</span> To Register as a Duke's Store Customer</a></li>
+<li><a href="dukes-forest003.htm#sthref3093"><span class="secnum">59.3.2</span> To Purchase Products</a></li>
+<li><a href="dukes-forest003.htm#sthref3094"><span class="secnum">59.3.3</span> To Approve Shipment of a Product</a></li>
+<li><a href="dukes-forest003.htm#sthref3095"><span class="secnum">59.3.4</span> To Create a New Product</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="tocheader"><a href="index.htm">Index</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>The Java EE 7 Tutorial  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="dukes-tutoring004.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="dukes-forest001.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="GLNPW" name="GLNPW"></a><a id="JEETT00116" name="JEETT00116"></a>
+<h1 class="chapter"><span class="secnum">59</span> <a id="sthref3070" name="sthref3070"></a>Duke's Forest Case Study Example</h1>
+<p>Duke's Forest is a simple e-commerce application that contains several web applications and illustrates the use of multiple Java EE 7 APIs:</p>
+<ul>
+<li>
+<p>JavaServer Faces technology, including Ajax</p>
+</li>
+<li>
+<p>Contexts and Dependency Injection for Java EE (CDI)</p>
+</li>
+<li>
+<p>Java API for RESTful Web Services (JAX-RS)</p>
+</li>
+<li>
+<p>Java Persistence API (JPA)</p>
+</li>
+<li>
+<p>Java API for JavaBeans Validation (Bean Validation)</p>
+</li>
+<li>
+<p>Enterprise JavaBeans (EJB) technology</p>
+</li>
+<li>
+<p>Java Message Service (JMS)</p>
+</li>
+</ul>
+<p>The application consists of the following projects.</p>
+<ul>
+<li>
+<p>Duke's Store: A web application that has a product catalog, customer self-registration, and a shopping cart. It also has an administration interface for product, category, and user management. The project name is <code>dukes-store</code>.</p>
+</li>
+<li>
+<p>Duke's Shipment: A web application that provides an interface for order shipment management. The project name is <code>dukes-shipment</code>.</p>
+</li>
+<li>
+<p>Duke's Payment: A web service application that has a RESTful web service for order payment. The project name is <code>dukes-payment</code>.</p>
+</li>
+<li>
+<p>Duke's Resources: A simple Java archive project that contains all resources used by the web projects. It includes messages, CSS style sheets, images, JavaScript files, and JavaServer Faces composite components. The project name is <code>dukes-resources</code>.</p>
+</li>
+<li>
+<p>Entities: A simple Java archive project that contains all JPA entities. This project is shared among other projects that use the entities. The project name is <code>entities</code>.</p>
+</li>
+<li>
+<p>Events: A simple Java archive project that contains a POJO class that is used as a CDI event. The project name is <code>events</code>.</p>
+</li>
+</ul>
+<p>The following topics are addressed here:</p>
+<ul>
+<li>
+<p><a href="dukes-forest001.htm#GLNRJ">Design and Architecture of Duke's Forest</a></p>
+</li>
+<li>
+<p><a href="dukes-forest002.htm#GLNQP">Building and Deploying the Duke's Forest Case Study Application</a></p>
+</li>
+<li>
+<p><a href="dukes-forest003.htm#GLNSX">Running the Duke's Forest Application</a></p>
+</li>
+</ul>
+ 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="dukes-tutoring004.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="dukes-forest001.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

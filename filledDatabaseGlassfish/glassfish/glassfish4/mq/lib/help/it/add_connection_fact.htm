@@ -1,0 +1,91 @@
+<!--
+
+    DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+    Copyright (c) 2000-2010 Oracle and/or its affiliates. All rights reserved.
+
+    The contents of this file are subject to the terms of either the GNU
+    General Public License Version 2 only ("GPL") or the Common Development
+    and Distribution License("CDDL") (collectively, the "License").  You
+    may not use this file except in compliance with the License.  You can
+    obtain a copy of the License at
+    https://glassfish.dev.java.net/public/CDDL+GPL_1_1.html
+    or packager/legal/LICENSE.txt.  See the License for the specific
+    language governing permissions and limitations under the License.
+
+    When distributing the software, include this License Header Notice in each
+    file and include the License file at packager/legal/LICENSE.txt.
+
+    GPL Classpath Exception:
+    Oracle designates this particular file as subject to the "Classpath"
+    exception as provided by Oracle in the GPL Version 2 section of the License
+    file that accompanied this code.
+
+    Modifications:
+    If applicable, add the following below the License Header, with the fields
+    enclosed by brackets [] replaced by your own identifying information:
+    "Portions Copyright [year] [name of copyright owner]"
+
+    Contributor(s):
+    If you wish your version of this file to be governed by only the CDDL or
+    only the GPL Version 2, indicate your decision by adding "[Contributor]
+    elects to include this software in this distribution under the [CDDL or GPL
+    Version 2] license."  If you don't indicate a single choice of license, a
+    recipient has the option to distribute your version of this file under
+    either the CDDL, the GPL Version 2 or to extend the choice of license to
+    its licensees as provided above.  However, if you add GPL Version 2 code
+    and therefore, elected the GPL Version 2 license, then the option applies
+    only if the new code is made subject to such option by the copyright
+    holder.
+
+-->
+
+<html>
+<head>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+ <title>add connection fact</title>
+ <link rel="StyleSheet" href="ide.css">
+ 
+</head>
+<body>
+ <h2>Aggiungi oggetto ConnectionFactory</h2>
+ 
+<p>Utilizzare questa finestra di dialogo per configurare un oggetto ConnectionFactory e aggiungerlo a un archivio degli oggetti.</p>
+
+<p>Per <i>ConnectionFactory</i> si intendono oggetti amministrati utilizzati dai client JMS per la connessione al broker. Questo tipo di oggetto &egrave; inoltre utilizzato per specificare il comportamento della connessione e in che modo il runtime del client che utilizza tale connessione riesce ad accedere al broker.</p>
+
+<p><b>Nome della ricerca</b> Utilizzare questo campo per specificare il nome della ricerca JNDI dell'oggetto ConnectionFactory. </p>
+
+<p><b>Tipo di factory</b> Scegliere l'elemento del menu che specifica il tipo di connessioni factory: QueueConnectionFactory o TopicConnectionFactory. Se il messaggio deve essere parte di una transazione distribuita, scegliere XAConnectionFactory, XAQueueConnectionFactory o XATopicConnectionFactory.</p>
+
+<p><b>Sola lettura</b> Fare clic su questa casella di controllo per impostare l'oggetto della connessione factory in modalit&agrave; di sola lettura. Se l'oggetto &egrave; in modalit&agrave; di sola lettura, le applicazioni del client non consentono di modificare gli attributi factory di connessione tramite le chiamate API. </p>
+
+<p>Configurando un oggetto ConnectionFactory, vengono specificate le propriet&agrave; comuni a tutte le connessioni prodotte dalla factory. &Egrave; possibile utilizzare le schede mostrate nella finestra di dialogo per configurare le factory di connessione. Per informazioni su una scheda specifica, fare clic sui collegamenti seguenti.</p>
+
+	
+<a HREF="add_connfact_rel.htm">Affidabilit&agrave; e controllo di flusso</a> <br>
+  	<a HREF="add_connfact_queue.htm">QueueBrowsers e ServerSessions</a><br>
+  	<a HREF="add_connfact_handling.htm">Gestione di connessione</a><br>
+  	<a HREF="add_connfact_clientid.htm">Identificazione del client</a> <br>
+  	<a HREF="add_connfact_jmsx.htm">Propriet&agrave; JMSX</a> <br>
+	<a HREF="add_connfact_message_header_overrides.htm">Override intestazione messaggio</a><br>
+	<a HREF="add_connfact_handling_old.htm">Gestione di connessione 3.0</a><br>
+  	 
+
+<ul>
+  <li>Fare clic sul pulsante <b>Ripristina ai valori predefiniti</b> per reimpostare tutti i campi in tutte le schede di dialogo ai valori predefiniti. </li>
+  <li> Fare clic su <b>OK</b> per creare l'oggetto ConnectionFactory. </li>
+</ul>
+
+<p>Per modificare le propriet&agrave; di un oggetto ConnectionFactory:</p>
+
+<ol>
+  <li>Selezionare la cartella Factory di connessione nel riquadro di navigazione della console di amministrazione. </li>
+  <li>Selezionare l'oggetto ConnectionFactory nel riquadro dei risultati della console di amministrazione. </li>
+  <li>Selezionare <b>Azioni &gt; Propriet&agrave;</b> per visualizzare la finestra di dialogo Propriet&agrave; oggetto ConnectionFactory. </li>
+</ol>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

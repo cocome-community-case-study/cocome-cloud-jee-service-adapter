@@ -1,0 +1,530 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:30:2Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="Working with Realms, Users, Groups, and Roles" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39031-01" />
+        <meta name="description" content="A guide to developing enterprise applications for the Java Platform, Enterprise Edition 7 (Java EE 7) using GlassFish Server Open Source Edition." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Java FX, Web, developer, enterprise, Java EE Tutorial, Java EE 7 Tutorial" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>The Java EE 7 Tutorial:Working with Realms, Users, Groups, and Roles | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7.0</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/tutorial/doc/javaeetutorial7.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GEXAF">Preface</a></h2>
+<h2 class="tocheader"><a href="partintro.htm#GFIRP">Part I Introduction</a></h2>
+<h2 class="tocheader"><a href="overview.htm#BNAAW"><span class="secnum">1</span> Overview</a></h2>
+<h2 class="tocheader"><a href="usingexamples.htm#GFIUD"><span class="secnum">2</span> Using the Tutorial Examples</a></h2>
+<h2 class="tocheader"><a href="partplatform.htm#GFIRP2">Part II Platform Basics</a></h2>
+<h2 class="tocheader"><a href="resource-creation.htm#GKJIQ2"><span class="secnum">3</span> Resource Creation</a></h2>
+<h2 class="tocheader"><a href="injection.htm#GKJIQ3"><span class="secnum">4</span> Injection</a></h2>
+<h2 class="tocheader"><a href="packaging.htm#GKJIQ4"><span class="secnum">5</span> Packaging</a></h2>
+<h2 class="tocheader"><a href="partwebtier.htm#BNADP">Part III The Web Tier</a></h2>
+<h2 class="tocheader"><a href="webapp.htm#BNADR"><span class="secnum">6</span> Getting Started with Web Applications</a></h2>
+<h2 class="tocheader"><a href="jsf-intro.htm#BNAPH"><span class="secnum">7</span> JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-facelets.htm#GIEPX"><span class="secnum">8</span> Introduction to Facelets</a></h2>
+<h2 class="tocheader"><a href="jsf-el.htm#GJDDD"><span class="secnum">9</span> Expression Language</a></h2>
+<h2 class="tocheader"><a href="jsf-page.htm#BNAQZ"><span class="secnum">10</span> Using JavaServer Faces Technology in Web Pages</a></h2>
+<h2 class="tocheader"><a href="jsf-page-core.htm#GJCUT"><span class="secnum">11</span> Using Converters, Listeners, and Validators</a></h2>
+<h2 class="tocheader"><a href="jsf-develop.htm#BNATX"><span class="secnum">12</span> Developing with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-ajax.htm#GKIOW"><span class="secnum">13</span> Using Ajax with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-advanced-cc.htm#GKHXA"><span class="secnum">14</span> Composite Components: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="jsf-custom.htm#BNAVG"><span class="secnum">15</span> Creating Custom UI Components and Other Custom Objects</a></h2>
+<h2 class="tocheader"><a href="jsf-configure.htm#BNAWO"><span class="secnum">16</span> Configuring JavaServer Faces Applications</a></h2>
+<h2 class="tocheader"><a href="servlets.htm#BNAFD"><span class="secnum">17</span> Java Servlet Technology</a></h2>
+<h2 class="tocheader"><a href="websocket.htm#GKJIQ5"><span class="secnum">18</span> Java API for WebSocket</a></h2>
+<h2 class="tocheader"><a href="jsonp.htm#GLRBB"><span class="secnum">19</span> JSON Processing</a></h2>
+<h2 class="tocheader"><a href="webi18n.htm#BNAXU"><span class="secnum">20</span> Internationalizing and Localizing Web Applications</a></h2>
+<h2 class="tocheader"><a href="partbeanvalidation.htm#sthref1322">Part IV Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation.htm#CHDGJIIA"><span class="secnum">21</span> Introduction to Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation-advanced.htm#GKAHP"><span class="secnum">22</span> Bean Validation: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partcdi.htm#GJBNR">Part V Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basic.htm#GIWHB"><span class="secnum">23</span> Introduction to Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basicexamples.htm#GJBLS"><span class="secnum">24</span> Running the Basic Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="cdi-adv.htm#GJEHI"><span class="secnum">25</span> Contexts and Dependency Injection for Java EE: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="cdi-adv-examples.htm#GKHRE"><span class="secnum">26</span> Running the Advanced Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="partwebsvcs.htm#BNAYK">Part VI Web Services</a></h2>
+<h2 class="tocheader"><a href="webservices-intro.htm#GIJTI"><span class="secnum">27</span> Introduction to Web Services</a></h2>
+<h2 class="tocheader"><a href="jaxws.htm#BNAYL"><span class="secnum">28</span> Building Web Services with JAX-WS</a></h2>
+<h2 class="tocheader"><a href="jaxrs.htm#GIEPU"><span class="secnum">29</span> Building RESTful Web Services with JAX-RS</a></h2>
+<h2 class="tocheader"><a href="jaxrs-client.htm#BABEIGIH"><span class="secnum">30</span> Accessing REST Resources with the JAX-RS Client API</a></h2>
+<h2 class="tocheader"><a href="jaxrs-advanced.htm#GJJXE"><span class="secnum">31</span> JAX-RS: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="partentbeans.htm#BNBLR">Part VII Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-intro.htm#GIJSZ"><span class="secnum">32</span> Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-gettingstarted.htm#GIJRE"><span class="secnum">33</span> Getting Started with Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-basicexamples.htm#GIJRB"><span class="secnum">34</span> Running the Enterprise Bean Examples</a></h2>
+<h2 class="tocheader"><a href="ejb-embedded.htm#GKCQZ"><span class="secnum">35</span> Using the Embedded Enterprise Bean Container</a></h2>
+<h2 class="tocheader"><a href="ejb-async.htm#GKIDZ"><span class="secnum">36</span> Using Asynchronous Method Invocation in Session Beans</a></h2>
+<h2 class="tocheader"><a href="partpersist.htm#BNBPY">Part VIII Persistence</a></h2>
+<h2 class="tocheader"><a href="persistence-intro.htm#BNBPZ"><span class="secnum">37</span> Introduction to the Java Persistence API</a></h2>
+<h2 class="tocheader"><a href="persistence-basicexamples.htm#GIJST"><span class="secnum">38</span> Running the Persistence Examples</a></h2>
+<h2 class="tocheader"><a href="persistence-querylanguage.htm#BNBTG"><span class="secnum">39</span> The Java Persistence Query Language</a></h2>
+<h2 class="tocheader"><a href="persistence-criteria.htm#GJITV"><span class="secnum">40</span> Using the Criteria API to Create Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-string-queries.htm#GKJIQ"><span class="secnum">41</span> Creating and Using String-Based Criteria Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-locking.htm#GKJJF"><span class="secnum">42</span> Controlling Concurrent Access to Entity Data with Locking</a></h2>
+<h2 class="tocheader"><a href="persistence-entitygraphs.htm#BABIJIAC"><span class="secnum">43</span> Creating Fetch Plans with Entity Graphs</a></h2>
+<h2 class="tocheader"><a href="persistence-cache.htm#GKJIA"><span class="secnum">44</span> Using a Second-Level Cache with Java Persistence API Applications</a></h2>
+<h2 class="tocheader"><a href="partmessaging.htm#GFIRP3">Part IX Messaging</a></h2>
+<h2 class="tocheader"><a href="jms-concepts.htm#BNCDQ"><span class="secnum">45</span> Java Message Service Concepts</a></h2>
+<h2 class="tocheader"><a href="jms-examples.htm#BNCGV"><span class="secnum">46</span> Java Message Service Examples</a></h2>
+<h2 class="tocheader"><a href="partsecurity.htm#GIJRP">Part X Security</a></h2>
+<h2 class="tocheader"><a href="security-intro.htm#BNBWJ"><span class="secnum">47</span> Introduction to Security in the Java EE Platform</a></h2>
+<ul style="list-style-type:none">
+<li><a href="security-intro001.htm#BNBWK"><span class="secnum">47.1</span> Overview of Java EE Security</a>
+<ul style="list-style-type:none">
+<li><a href="security-intro001.htm#BNBWL"><span class="secnum">47.1.1</span> A Simple Application Security Walkthrough</a>
+<ul style="list-style-type:none">
+<li><a href="security-intro001.htm#BNBWM"><span class="secnum">47.1.1.1</span> Step 1: Initial Request</a></li>
+<li><a href="security-intro001.htm#BNBWO"><span class="secnum">47.1.1.2</span> Step 2: Initial Authentication</a></li>
+<li><a href="security-intro001.htm#BNBWQ"><span class="secnum">47.1.1.3</span> Step 3: URL Authorization</a></li>
+<li><a href="security-intro001.htm#BNBWS"><span class="secnum">47.1.1.4</span> Step 4: Fulfilling the Original Request</a></li>
+<li><a href="security-intro001.htm#BNBWU"><span class="secnum">47.1.1.5</span> Step 5: Invoking Enterprise Bean Business Methods</a></li>
+</ul>
+</li>
+<li><a href="security-intro001.htm#BNBWW"><span class="secnum">47.1.2</span> Features of a Security Mechanism</a></li>
+<li><a href="security-intro001.htm#BNBWX"><span class="secnum">47.1.3</span> Characteristics of Application Security</a></li>
+</ul>
+</li>
+<li><a href="security-intro002.htm#BNBWY"><span class="secnum">47.2</span> Security Mechanisms</a>
+<ul style="list-style-type:none">
+<li><a href="security-intro002.htm#BNBWZ"><span class="secnum">47.2.1</span> Java SE Security Mechanisms</a></li>
+<li><a href="security-intro002.htm#BNBXA"><span class="secnum">47.2.2</span> Java EE Security Mechanisms</a>
+<ul style="list-style-type:none">
+<li><a href="security-intro002.htm#BNBXB"><span class="secnum">47.2.2.1</span> Application-Layer Security</a></li>
+<li><a href="security-intro002.htm#BNBXC"><span class="secnum">47.2.2.2</span> Transport-Layer Security</a></li>
+<li><a href="security-intro002.htm#BNBXD"><span class="secnum">47.2.2.3</span> Message-Layer Security</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="security-intro003.htm#BNBXE"><span class="secnum">47.3</span> Securing Containers</a>
+<ul style="list-style-type:none">
+<li><a href="security-intro003.htm#BNBXG"><span class="secnum">47.3.1</span> Using Annotations to Specify Security Information</a></li>
+<li><a href="security-intro003.htm#BNBXF"><span class="secnum">47.3.2</span> Using Deployment Descriptors for Declarative Security</a></li>
+<li><a href="security-intro003.htm#BNBXH"><span class="secnum">47.3.3</span> Using Programmatic Security</a></li>
+</ul>
+</li>
+<li><a href="security-intro004.htm#BNBXI"><span class="secnum">47.4</span> Securing GlassFish Server</a></li>
+<li><div id="backgroundColor"><a href="security-intro005.htm#BNBXJ"><span class="secnum">47.5</span> Working with Realms, Users, Groups, and Roles</a><ul style="list-style-type:none">
+<li><a href="security-intro005.htm#BNBXK"><span class="secnum">47.5.1</span> What Are Realms, Users, Groups, and Roles?</a>
+<ul style="list-style-type:none">
+<li><a href="security-intro005.htm#BNBXM"><span class="secnum">47.5.1.1</span> What Is a Realm?</a></li>
+<li><a href="security-intro005.htm#BNBXN"><span class="secnum">47.5.1.2</span> What Is a User?</a></li>
+<li><a href="security-intro005.htm#BNBXO"><span class="secnum">47.5.1.3</span> What Is a Group?</a></li>
+<li><a href="security-intro005.htm#BNBXP"><span class="secnum">47.5.1.4</span> What Is a Role?</a></li>
+<li><a href="security-intro005.htm#BNBXQ"><span class="secnum">47.5.1.5</span> Some Other Terminology</a></li>
+</ul>
+</li>
+<li><a href="security-intro005.htm#BNBXR"><span class="secnum">47.5.2</span> Managing Users and Groups in GlassFish Server</a>
+<ul style="list-style-type:none">
+<li><a href="security-intro005.htm#BNBXS"><span class="secnum">47.5.2.1</span> To Add Users to GlassFish Server</a></li>
+</ul>
+</li>
+<li><a href="security-intro005.htm#BNBXU"><span class="secnum">47.5.3</span> Setting Up Security Roles</a></li>
+<li><a href="security-intro005.htm#BNBXV"><span class="secnum">47.5.4</span> Mapping Roles to Users and Groups</a></li>
+</ul>
+</div></li>
+<li><a href="security-intro006.htm#BNBXW"><span class="secnum">47.6</span> Establishing a Secure Connection Using SSL</a>
+<ul style="list-style-type:none">
+<li><a href="security-intro006.htm#BNBXX"><span class="secnum">47.6.1</span> Verifying and Configuring SSL Support</a></li>
+</ul>
+</li>
+<li><a href="security-intro007.htm#BNBYJ"><span class="secnum">47.7</span> Further Information about Security</a></li>
+</ul>
+<h2 class="tocheader"><a href="security-webtier.htm#BNCAS"><span class="secnum">48</span> Getting Started Securing Web Applications</a></h2>
+<h2 class="tocheader"><a href="security-javaee.htm#BNBYK"><span class="secnum">49</span> Getting Started Securing Enterprise Applications</a></h2>
+<h2 class="tocheader"><a href="security-advanced.htm#GJJWX"><span class="secnum">50</span> Java EE Security: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partsupporttechs.htm#GIJUE">Part XI Java EE Supporting Technologies</a></h2>
+<h2 class="tocheader"><a href="transactions.htm#BNCIH"><span class="secnum">51</span> Transactions</a></h2>
+<h2 class="tocheader"><a href="resources.htm#BNCJH"><span class="secnum">52</span> Resource Adapters and Contracts</a></h2>
+<h2 class="tocheader"><a href="connectorexample.htm#GLODB"><span class="secnum">53</span> The Resource Adapter Examples</a></h2>
+<h2 class="tocheader"><a href="interceptors.htm#GKEED"><span class="secnum">54</span> Using Java EE Interceptors</a></h2>
+<h2 class="tocheader"><a href="batch-processing.htm#GKJIQ6"><span class="secnum">55</span> Batch Processing</a></h2>
+<h2 class="tocheader"><a href="concurrency-utilities.htm#GKJIQ8"><span class="secnum">56</span> Concurrency Utilities for Java EE</a></h2>
+<h2 class="tocheader"><a href="partcasestudies.htm#GKGJW">Part XII Case Studies</a></h2>
+<h2 class="tocheader"><a href="dukes-bookstore.htm#GLNVI"><span class="secnum">57</span> Duke's Bookstore Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-tutoring.htm#GKAEE"><span class="secnum">58</span> Duke's Tutoring Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-forest.htm#GLNPW"><span class="secnum">59</span> Duke's Forest Case Study Example</a></h2>
+<h2 class="tocheader"><a href="index.htm">Index</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>The Java EE 7 Tutorial  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="security-intro004.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="security-intro006.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="BNBXJ" name="BNBXJ"></a><a id="JEETT00513" name="JEETT00513"></a>
+<div class="sect1">
+<h1 class="sect1"><span class="secnum">47.5</span> Working with Realms, Users, Groups, and Roles</h1>
+<p>You often need to protect resources to ensure that only authorized users have access. See <a href="security-intro001.htm#BNBWX">Characteristics of Application Security</a> for an introduction to the concepts of authentication, identification, and authorization.</p>
+<p>This section discusses setting up users so that they can be correctly identified and either given access to protected resources or denied access if they are not authorized to access the protected resources. To authenticate a user, you need to follow these basic steps.</p>
+<ol>
+<li>
+<p>The application developer writes code to prompt for a user name and password. The various methods of authentication are discussed in <a href="security-webtier002.htm#GKBSA">Specifying Authentication Mechanisms</a>.</p>
+</li>
+<li>
+<p>The application developer communicates how to set up security for the deployed application by use of a metadata annotation or deployment descriptor. This step is discussed in <a href="#BNBXU">Setting Up Security Roles</a>.</p>
+</li>
+<li>
+<p>The server administrator sets up authorized users and groups in GlassFish Server. This is discussed in <a href="#BNBXR">Managing Users and Groups in GlassFish Server</a>.</p>
+</li>
+<li>
+<p>The application deployer maps the application's security roles to users, groups, and principals defined in GlassFish Server. This topic is discussed in <a href="#BNBXV">Mapping Roles to Users and Groups</a>.</p>
+</li>
+</ol>
+<a id="BNBXK" name="BNBXK"></a><a id="JEETT01220" name="JEETT01220"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">47.5.1</span> What Are Realms, Users, Groups, and Roles?</h2>
+<p><a id="sthref2561" name="sthref2561"></a>A <span class="glossaryterm">realm</span> is a security policy domain defined for a web or application server. A realm contains a collection of users, who may or may not be assigned to a group. Managing users in GlassFish Server is discussed in <a href="#BNBXR">Managing Users and Groups in GlassFish Server</a>.</p>
+<p>An application will often prompt for a user name and password before allowing access to a protected resource. After the user name and password have been entered, that information is passed to the server, which either authenticates the user and sends the protected resource or does not authenticate the user, in which case access to the protected resource is denied. This type of user authentication is discussed in <a href="security-webtier002.htm#BNCBN">Specifying an Authentication Mechanism in the Deployment Descriptor</a>.</p>
+<p>In some applications, authorized users are assigned to roles. In this situation, the role assigned to the user in the application must be mapped to a principal or group defined on the application server. <a href="#BNBXL">Figure 47-6</a> shows this. More information on mapping roles to users and groups can be found in <a href="#BNBXU">Setting Up Security Roles</a>.</p>
+<div class="figure"><a id="BNBXL" name="BNBXL"></a><a id="JEETT00034" name="JEETT00034"></a>
+<p class="titleinfigure">Figure 47-6 Mapping Roles to Users and Groups</p>
+<img src="img/jeett_dt_044.png" alt="Description of Figure 47-6 follows" title="Description of Figure 47-6 follows" longdesc="img_text/jeett_dt_044.htm" /><br />
+<a id="sthref2562" name="sthref2562" href="img_text/jeett_dt_044.htm">Description of "Figure 47-6 Mapping Roles to Users and Groups"</a><br />
+<br /></div>
+<!-- class="figure" -->
+<p>The following sections provide more information on realms, users, groups, and roles.</p>
+<a id="BNBXM" name="BNBXM"></a><a id="JEETT00768" name="JEETT00768"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">47.5.1.1</span> <a id="sthref2563" name="sthref2563"></a><a id="sthref2564" name="sthref2564"></a>What Is a Realm?</h3>
+<p>The protected resources on a server can be partitioned into a set of protection spaces, each with its own authentication scheme and/or authorization database containing a collection of users and groups. A realm is a complete database of users and groups identified as valid users of one or more applications and controlled by the same authentication policy.</p>
+<p>The Java EE server authentication service can govern users in multiple realms. The <code>file</code>, <code>admin-realm</code>, and <code>certificate</code> realms come preconfigured for GlassFish Server.</p>
+<p><a id="sthref2565" name="sthref2565"></a>In the <code>file</code> realm, the server stores user credentials locally in a file named <code>keyfile</code>. You can use the Administration Console to manage users in the <code>file</code> realm. When using the <code>file</code> realm, the server authentication service verifies user identity by checking the <code>file</code> realm. This realm is used for the authentication of all clients except for web browser clients that use HTTPS and certificates.</p>
+<p><a id="sthref2566" name="sthref2566"></a>In the <code>certificate</code> realm, the server stores user credentials in a certificate database. When using the <code>certificate</code> realm, the server uses certificates with HTTPS to authenticate web clients. To verify the identity of a user in the <code>certificate</code> realm, the authentication service verifies an X.509 certificate. For step-by-step instructions for creating this type of certificate, see <a href="security-advanced001.htm#BNBYB">Working with Digital Certificates</a>. The common name field of the X.509 certificate is used as the principal name.</p>
+<p><a id="sthref2567" name="sthref2567"></a>The <code>admin-realm</code> is also a <code>file</code> realm and stores administrator user credentials locally in a file named <code>admin-keyfile</code>. You can use the Administration Console to manage users in this realm in the same way you manage users in the <code>file</code> realm. For more information, see <a href="#BNBXR">Managing Users and Groups in GlassFish Server</a>.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BNBXN" name="BNBXN"></a><a id="JEETT00769" name="JEETT00769"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">47.5.1.2</span> <a id="sthref2568" name="sthref2568"></a><a id="sthref2569" name="sthref2569"></a>What Is a User?</h3>
+<p>A <span class="glossaryterm">user</span> is an individual or application program identity that has been defined in GlassFish Server. In a web application, a user can have associated with that identity a set of roles that entitle the user to access all resources protected by those roles. Users can be associated with a group.</p>
+<p>A Java EE user is similar to an operating system user. Typically, both types of users represent people. However, these two types of users are not the same. The Java EE server authentication service has no knowledge of the user name and password you provide when you log in to the operating system. The Java EE server authentication service is not connected to the security mechanism of the operating system. The two security services manage users that belong to different realms.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BNBXO" name="BNBXO"></a><a id="JEETT00770" name="JEETT00770"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">47.5.1.3</span> <a id="sthref2570" name="sthref2570"></a><a id="sthref2571" name="sthref2571"></a>What Is a Group?</h3>
+<p>A <span class="glossaryterm">group</span> is a set of authenticated users, classified by common traits, defined in GlassFish Server. A Java EE user of the <code>file</code> realm can belong to a group in GlassFish Server. (A user in the <code>certificate</code> realm cannot.) A group in GlassFish Server is a category of users classified by common traits, such as job title or customer profile. For example, most customers of an e-commerce application might belong to the <code>CUSTOMER</code> group, but the big spenders would belong to the <code>PREFERRED</code> group. Categorizing users into groups makes it easier to control the access of large numbers of users.</p>
+<p>A group in GlassFish Server has a different scope from a role. A group is designated for the entire GlassFish Server, whereas a role is associated only with a specific application in GlassFish Server.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BNBXP" name="BNBXP"></a><a id="JEETT00771" name="JEETT00771"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">47.5.1.4</span> <a id="sthref2572" name="sthref2572"></a><a id="sthref2573" name="sthref2573"></a>What Is a Role?</h3>
+<p>A <span class="glossaryterm">role</span> is an abstract name for the permission to access a particular set of resources in an application. A role can be compared to a key that can open a lock. Many people might have a copy of the key. The lock doesn't care who you are, only that you have the right key.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BNBXQ" name="BNBXQ"></a><a id="JEETT00772" name="JEETT00772"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">47.5.1.5</span> Some Other Terminology</h3>
+<p>The following terminology is also used to describe the security requirements of the Java EE platform.</p>
+<ul>
+<li>
+<p><a id="sthref2574" name="sthref2574"></a>A <span class="glossaryterm">principal</span> is an entity that can be authenticated by an authentication protocol in a security service that is deployed in an enterprise. A principal is identified by using a principal name and authenticated by using authentication data.</p>
+</li>
+<li>
+<p><a id="sthref2575" name="sthref2575"></a><a id="sthref2576" name="sthref2576"></a>A <span class="glossaryterm">security policy domain</span>, also known as a <span class="bold">security domain</span> or <span class="bold">realm</span>, is a scope over which a common security policy is defined and enforced by the security administrator of the security service.</p>
+</li>
+<li>
+<p><span class="glossaryterm">Security attributes</span> are a set of attributes associated with every principal. The security attributes have many uses: for example, access to protected resources and auditing of users. Security attributes can be associated with a principal by an authentication protocol.</p>
+</li>
+<li>
+<p><a id="sthref2577" name="sthref2577"></a>A <span class="glossaryterm">credential</span> is an object that contains or references security attributes used to authenticate a principal for Java EE services. A principal acquires a credential upon authentication or from another principal that allows its credential to be used.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BNBXR" name="BNBXR"></a><a id="JEETT01221" name="JEETT01221"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">47.5.2</span> <a id="sthref2578" name="sthref2578"></a><a id="sthref2579" name="sthref2579"></a>Managing Users and Groups in GlassFish Server</h2>
+<p>Follow these steps for managing users before you run the tutorial examples.</p>
+<a id="BNBXS" name="BNBXS"></a><a id="JEETT00241" name="JEETT00241"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">47.5.2.1</span> <a id="sthref2580" name="sthref2580"></a><a id="sthref2581" name="sthref2581"></a>To Add Users to GlassFish Server</h3>
+<ol>
+<li>
+<p>Start GlassFish Server, if you haven't already done so.</p>
+<p>Information on starting GlassFish Server is available in <a href="usingexamples002.htm#BNADI">Starting and Stopping GlassFish Server</a>.</p>
+</li>
+<li>
+<p>Start the Administration Console, if you haven't already done so.</p>
+<p>To start the Administration Console, open a web browser and specify the URL <code>http://localhost:4848/</code>. If you changed the default Admin port during installation, enter the correct port number in place of <code>4848</code>.</p>
+</li>
+<li>
+<p>In the navigation tree, expand the <span class="gui-object-action">Configurations</span> node, then expand the <span class="gui-object-action">server-config</span> node.</p>
+</li>
+<li>
+<p>Expand the <span class="gui-object-action">Security</span> node.</p>
+</li>
+<li>
+<p>Expand the <span class="gui-object-action">Realms</span> node.</p>
+</li>
+<li>
+<p>Select the realm to which you are adding users.</p>
+<ul>
+<li>
+<p>Select the <code>file</code> realm to add users you want to access applications running in this realm.</p>
+<p>For the example security applications, select the <code>file</code> realm.</p>
+</li>
+<li>
+<p>Select the <code>admin-realm</code> to add users you want to enable as system administrators of GlassFish Server.</p>
+</li>
+</ul>
+<p>You cannot add users to the <code>certificate</code> realm by using the Administration Console. In the <code>certificate</code> realm, you can add only certificates. For information on adding (importing) certificates to the <code>certificate</code> realm, see <a href="security-advanced001.htm#GLIFW">Adding Users to the Certificate Realm</a>.</p>
+</li>
+<li>
+<p>On the <span class="gui-object-title">Edit Realm</span> page, click <span class="gui-object-action">Manage Users</span>.</p>
+</li>
+<li>
+<p>On the <span class="gui-object-title">File Users</span> or <span class="gui-object-title">Admin Users</span> page, click <span class="gui-object-action">New</span> to add a new user to the realm.</p>
+</li>
+<li>
+<p>On the <span class="gui-object-title">New File Realm User</span> page, enter values in the <span class="gui-object-action">User ID</span>, <span class="gui-object-action">Group List</span>, <span class="gui-object-action">New Password</span>, and <span class="gui-object-action">Confirm New Password</span> fields.</p>
+<p>For the Admin Realm, the <span class="gui-object-action">Group List</span> field is read-only, and the group name is <code>asadmin</code>. Restart GlassFish Server and the Administration Console after you add a user to the Admin Realm.</p>
+<p>For more information on these properties, see <a href="#BNBXJ">Working with Realms, Users, Groups, and Roles</a>.</p>
+<p>For the example security applications, specify a user with any name and password you like, but make sure that the user is assigned to the group <code>TutorialUser</code>. The user name and password are case-sensitive. Keep a record of the user name and password for working with the examples later in this tutorial.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">OK</span> to add this user to the realm, or click <span class="gui-object-action">Cancel</span> to quit without saving.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BNBXU" name="BNBXU"></a><a id="JEETT01222" name="JEETT01222"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">47.5.3</span> <a id="sthref2582" name="sthref2582"></a><a id="sthref2583" name="sthref2583"></a><a id="sthref2584" name="sthref2584"></a>Setting Up Security Roles</h2>
+<p>When you design an enterprise bean or web component, you should always think about the kinds of users who will access the component. For example, a web application for a human resources department might have a different request URL for someone who has been assigned the role of <code>DEPT_ADMIN</code> than for someone who has been assigned the role of <code>DIRECTOR</code>. The <code>DEPT_ADMIN</code> role may let you view employee data, but the <code>DIRECTOR</code> role enables you to modify employee data, including salary data. Each of these security roles is an abstract logical grouping of users that is defined by the person who assembles the application. When an application is deployed, the deployer will map the roles to security identities in the operational environment, as shown in <a href="#BNBXL">Figure 47-6</a>.</p>
+<p>For Java EE components, you define security roles using the <code>@DeclareRoles</code> and <code>@RolesAllowed</code> metadata annotations.</p>
+<p>The following is an example of an application in which the role of <code>DEPT-ADMIN</code> is authorized for methods that review employee payroll data, and the role of <code>DIRECTOR</code> is authorized for methods that change employee payroll data.</p>
+<p>The enterprise bean would be annotated as shown in the following code:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
+...
+@DeclareRoles({"DEPT-ADMIN", "DIRECTOR"})
+@Stateless public class PayrollBean implements Payroll {
+    @Resource SessionContext ctx;
+
+
+    @RolesAllowed("DEPT-ADMIN")
+    public void reviewEmployeeInfo(EmplInfo info) {
+
+        oldInfo = ... read from database;
+
+        // ...
+    }
+
+    @RolesAllowed("DIRECTOR")
+    public void updateEmployeeInfo(EmplInfo info) {
+
+        newInfo = ... update database;
+
+        // ...
+    }
+    ...
+ }
+</pre>
+<p>For a servlet, you can use the <code>@HttpConstraint</code> annotation within the <code>@ServletSecurity</code> annotation to specify the roles that are allowed to access the servlet. For example, a servlet might be annotated as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@WebServlet(name = "PayrollServlet", urlPatterns = {"/payroll"})
+@ServletSecurity(
+@HttpConstraint(transportGuarantee = TransportGuarantee.CONFIDENTIAL,
+    rolesAllowed = {"DEPT-ADMIN", "DIRECTOR"}))
+public class GreetingServlet extends HttpServlet {
+</pre>
+<p>These annotations are discussed in more detail in <a href="security-webtier004.htm#GJRMH">Specifying Security for Basic Authentication Using Annotations</a> and <a href="security-javaee002.htm#GJGDI">Securing an Enterprise Bean Using Declarative Security</a>.</p>
+<p>After users have provided their login information and the application has declared what roles are authorized to access protected parts of an application, the next step is to map the security role to the name of a user, or principal.</p>
+</div>
+<!-- class="sect2" -->
+<a id="BNBXV" name="BNBXV"></a><a id="JEETT01223" name="JEETT01223"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">47.5.4</span> <a id="sthref2585" name="sthref2585"></a><a id="sthref2586" name="sthref2586"></a><a id="sthref2587" name="sthref2587"></a><a id="sthref2588" name="sthref2588"></a><a id="sthref2589" name="sthref2589"></a>Mapping Roles to Users and Groups</h2>
+<p>When you are developing a Java EE application, you don't need to know what categories of users have been defined for the realm in which the application will be run. In the Java EE platform, the security architecture provides a mechanism for mapping the roles defined in the application to the users or groups defined in the runtime realm.</p>
+<p>The role names used in the application are often the same as the group names defined in GlassFish Server. Under these circumstances, you can enable a default principal-to-role mapping in GlassFish Server by using the Administration Console. The task <a href="security-webtier004.htm#GJJLK">To Set Up Your System for Running the Security Examples</a> explains how to do this. All the tutorial security examples use default principal-to-role mapping. With that setting enabled, if the group name defined on GlassFish Server matches the role name defined in the application, there is no need to use the runtime deployment descriptor to provide a mapping. The application server will implicitly make this mapping, as long as the names of the groups and roles match.</p>
+<p>If the role names used in an application are <span class="italic">not</span> the same as the group names defined on the server, use the runtime deployment descriptor to specify the mapping. The following example demonstrates how to do this mapping in the <code>glassfish-web.xml</code> file, which is the file used for web applications:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;glassfish-web-app&gt;
+    ...
+    &lt;security-role-mapping&gt;
+        &lt;role-name&gt;Mascot&lt;/role-name&gt;
+        &lt;principal-name&gt;Duke&lt;/principal-name&gt;
+    &lt;/security-role-mapping&gt;
+
+    &lt;security-role-mapping&gt;
+        &lt;role-name&gt;Admin&lt;/role-name&gt;
+        &lt;group-name&gt;Director&lt;/group-name&gt;
+    &lt;/security-role-mapping&gt;
+    ...
+&lt;/glassfish-web-app&gt;
+</pre>
+<p>A role can be mapped to specific principals, specific groups, or both. The principal or group names must be valid principals or groups in the current default realm or in the realm specified in the <code>login-config</code> element. In this example, the role of <code>Mascot</code> used in the application is mapped to a principal, named <code>Duke</code>, that exists on the application server. Mapping a role to a specific principal is useful when the person occupying that role may change. For this application, you would need to modify only the runtime deployment descriptor rather than search and replace throughout the application for references to this principal.</p>
+<p>Also in this example, the role of <code>Admin</code> is mapped to a group of users assigned the group name of <code>Director</code>. This is useful because the group of people authorized to access director-level administrative data has to be maintained only in GlassFish Server. The application developer does not need to know who these people are, but only needs to define the group of people who will be given access to the information.</p>
+<p>The <code>role-name</code> must match the <code>role-name</code> in the <code>security-role</code> element of the corresponding deployment descriptor or the role name defined in a <code>@DeclareRoles</code> annotation.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="security-intro004.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="security-intro006.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

@@ -1,0 +1,57 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+ <TITLE>add broker destination</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ <H2>Ajouter destination du courtier</H2>
+
+<P>Utilisez cette bo&icirc;te de dialogue pour cr&eacute;er et configurer une destination physique sur un courtier. La <i>destination</i> sur le courtier est un emplacement dans la m&eacute;moire physique du courtier o&ugrave; les messages entrants sont rassembl&eacute;s avant d'&ecirc;tre achemin&eacute;s vers des consommateurs de messages. </P>
+<P>La messagerie Message Queue est une livraison de messages en deux phases&nbsp;: premi&egrave;rement, le message est livr&eacute; par un producteur &agrave; une <i>destination</i> sur le courtier&nbsp;; dans un deuxi&egrave;me temps, le message est livr&eacute; de cette destination &agrave; un ou plusieurs consommateurs. </P>
+<P>Un courtier peut &ecirc;tre configur&eacute; pour cr&eacute;er dynamiquement des destinations physiques si vous ne les avez pas cr&eacute;&eacute;es. Ces destinations sont d&eacute;truites automatiquement par le courtier d&egrave;s lors qu'elles ne sont plus n&eacute;cessaires.</P>
+<P>Pour configurer une destination physique, d&eacute;terminez les valeurs d'attribut suivantes :</P>
+<P><b>Nom destination</b> Sp&eacute;cifie le nom de la destination physique.</P>
+<P><b>Type de destination</b> Sp&eacute;cifie le type de destination (file d'attente ou rubrique). Cliquez sur la case d'option <b>File d'attente</b> ou <b>Rubrique</b>. </P>
+
+<P><b>Nombre max de messages</b> Sp&eacute;cifie le nombre maximal de messages non consomm&eacute;s autoris&eacute;s &agrave; cette destination. </P>
+<p><b>Taille totale max des messages</b> Sp&eacute;cifie la m&eacute;moire totale maximale autoris&eacute;e pour les messages non consomm&eacute;s &agrave; cette destination. Utilisez le menu d&eacute;roulant pour choisir l'unit&eacute; de mesure&nbsp;: octets, kilo-octets ou m&eacute;ga-octets.</p>
+<p><b>Taille max par message (en octets)</b> Sp&eacute;cifie la taille maximale autoris&eacute;e pour un message unique &agrave; cette destination. Utilisez le menu d&eacute;roulant pour choisir l'unit&eacute; de mesure&nbsp;: octets, kilo-octets ou m&eacute;ga-octets.</p>
+<p><b>Nombre maximal de producteurs</b> Sp&eacute;cifie le nombre maximal de producteurs autoris&eacute;s pour cette destination.</p>
+<p><b>Nombre maximal de consommateurs actifs</b> S'applique uniquement aux destinations de type file d'attente. Sp&eacute;cifie le nombre maximal de consommateurs qui peuvent &ecirc;tre actifs dans le cadre d'une livraison avec &eacute;quilibrage de charge &agrave; partir de cette destination.</p>
+<p><b>Nombre maximal de consommateurs de remplacement</b> S'applique uniquement aux destinations de type file d'attente. Sp&eacute;cifie le nombre maximal de consommateurs qui peuvent remplacer les consommateurs actifs, en cas d'&eacute;chec de ces derniers pendant une livraison avec &eacute;quilibrage de charge &agrave; partir de cette destination.</p>
+<P><b>Comment obtenir des informations sur l'&eacute;tat actuel d'une destination ou pour modifier les propri&eacute;t&eacute;s d'une destination.</b></P>
+<ol>
+  <li>S&eacute;lectionnez la destination dans la fen&ecirc;tre de r&eacute;sultats de la console d'administration.</li>
+  <li>S&eacute;lectionnez <b>Actions &gt; Propri&eacute;t&eacute;s</b>.</li>
+</ol>
+<P><b>Pour purger les messages d'une destination&nbsp;:</b></P>
+<ol>
+  <li>S&eacute;lectionnez la destination dans la fen&ecirc;tre de r&eacute;sultats de la console d'administration.</li>
+  <li>S&eacute;lectionnez <b>Actions &gt; Purger les messages</b>.</li>
+</ol>
+<p><b>Pour supprimer une destination&nbsp;:</b></p>
+<ol>
+  <li>S&eacute;lectionnez la destination dans la fen&ecirc;tre de r&eacute;sultats de la console d'administration.</li>
+  <li>S&eacute;lectionnez <b>Modifier &gt; Supprimer</b>.</li>
+</ol>
+<p><b>Pour interrompre un flux depuis\vers une destination&nbsp;:</b></p>
+<ol>
+  <li>S&eacute;lectionnez la destination dans la fen&ecirc;tre de r&eacute;sultats de la console d'administration.</li>
+  <li>S&eacute;lectionnez <b>Actions &gt; Interrompre les flux des producteurs | Interrompre le flux des consommateurs | Tout interrompre</b>.</li>
+</ol>
+<p><b>Pour reprendre un flux de destination interrompu :</b></p>
+<ol>
+  <li>S&eacute;lectionnez la destination dans la fen&ecirc;tre de r&eacute;sultats de la console d'administration.</li>
+  <li>S&eacute;lectionnez <b>Actions &gt; Reprendre</b>.</li>
+</ol>
+<p>&nbsp;</p>
+
+</BODY>
+</HTML>

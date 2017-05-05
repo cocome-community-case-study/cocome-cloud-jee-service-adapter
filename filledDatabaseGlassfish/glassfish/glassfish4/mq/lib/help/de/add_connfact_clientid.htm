@@ -1,0 +1,27 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+ <TITLE>Verbindungs-Factory-Objekt hinzuf&uuml;gen &gt; Client-Identifizierung</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>Verbindungs-Factory-Objekt hinzuf&uuml;gen &gt; <BR>Client-Identifizierung</H2>
+ 
+<P>Mit Hilfe der Optionen auf dieser Registerkarte k&ouml;nnen Sie Standardwerte f&uuml;r den Benutzernamen und das Passwort eingeben und die Client-ID festlegen, mit der Clients gegen&uuml;ber dem Broker identifiziert werden. Client-ID-Werte werden haupts&auml;chlich zur Verwaltung dauerhafter Abonnenten verwendet.</P>
+
+<P><b>Standardbenutzername</b>: Gibt den Standardbenutzernamen an, mit dem der Client beim Broker authentifiziert wird. Der Standardwert lautet <code>guest</code>.</P>
+<p><b>Standardpasswort</b>: Gibt das Standardpasswort an, mit dem der Client beim Broker authentifiziert wird. Der Standardwert lautet <code>guest</code>.</p>
+<p><b>setClientID() JMS-API deaktivieren</b>: Gibt an, dass die Client-Anwendung keine API-Aufrufe zur &Auml;nderung der Client-ID verwenden soll. Grunds&auml;tzlich ist es besser, wenn Sie als Administrator die Zuweisung von Client-IDs steuern.</p>
+<p> Wenn Sie diese Option aktivieren, k&ouml;nnen Sie im Feld <b>Client-ID konfigurieren als</b> eine Client-ID f&uuml;r den Client festlegen. Wenn Sie keinen solchen Wert festlegen, wird vom System standardm&auml;&szlig;ig die IP-Adresse des Hosts des Clients als Client-ID zugewiesen. Dies ist zum einen bequemer f&uuml;r die Entwickler, zum anderen wird dadurch verhindert, dass Client-Anwendungen mehr als eine Verbindung erstellen, denn das System erlaubt keine zwei Verbindungen mit ein und derselben Client-ID.</p>
+<p><b>Client-ID konfigurieren als</b>: Gibt eine ID f&uuml;r den Client an. Wenn Sie keine ID eingegeben und die Option <b>setClientID() JMS-API deaktivieren</b> aktiviert haben, wird vom System standardm&auml;&szlig;ig die IP-Adresse des Hosts des Clients als Client-ID zugewiesen. Dies ist zum einen bequemer f&uuml;r die Entwickler, zum anderen wird dadurch verhindert, dass Client-Anwendungen mehr als eine Verbindung erstellen, denn das System erlaubt keine zwei Verbindungen mit ein und derselben Client-ID.</p>
+<p>&nbsp;</p>
+
+</BODY>
+</HTML>

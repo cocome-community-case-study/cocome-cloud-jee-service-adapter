@@ -1,0 +1,518 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:30:0Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="Managing Entities" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39031-01" />
+        <meta name="description" content="A guide to developing enterprise applications for the Java Platform, Enterprise Edition 7 (Java EE 7) using GlassFish Server Open Source Edition." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Java FX, Web, developer, enterprise, Java EE Tutorial, Java EE 7 Tutorial" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>The Java EE 7 Tutorial:Managing Entities | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7.0</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/tutorial/doc/javaeetutorial7.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GEXAF">Preface</a></h2>
+<h2 class="tocheader"><a href="partintro.htm#GFIRP">Part I Introduction</a></h2>
+<h2 class="tocheader"><a href="overview.htm#BNAAW"><span class="secnum">1</span> Overview</a></h2>
+<h2 class="tocheader"><a href="usingexamples.htm#GFIUD"><span class="secnum">2</span> Using the Tutorial Examples</a></h2>
+<h2 class="tocheader"><a href="partplatform.htm#GFIRP2">Part II Platform Basics</a></h2>
+<h2 class="tocheader"><a href="resource-creation.htm#GKJIQ2"><span class="secnum">3</span> Resource Creation</a></h2>
+<h2 class="tocheader"><a href="injection.htm#GKJIQ3"><span class="secnum">4</span> Injection</a></h2>
+<h2 class="tocheader"><a href="packaging.htm#GKJIQ4"><span class="secnum">5</span> Packaging</a></h2>
+<h2 class="tocheader"><a href="partwebtier.htm#BNADP">Part III The Web Tier</a></h2>
+<h2 class="tocheader"><a href="webapp.htm#BNADR"><span class="secnum">6</span> Getting Started with Web Applications</a></h2>
+<h2 class="tocheader"><a href="jsf-intro.htm#BNAPH"><span class="secnum">7</span> JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-facelets.htm#GIEPX"><span class="secnum">8</span> Introduction to Facelets</a></h2>
+<h2 class="tocheader"><a href="jsf-el.htm#GJDDD"><span class="secnum">9</span> Expression Language</a></h2>
+<h2 class="tocheader"><a href="jsf-page.htm#BNAQZ"><span class="secnum">10</span> Using JavaServer Faces Technology in Web Pages</a></h2>
+<h2 class="tocheader"><a href="jsf-page-core.htm#GJCUT"><span class="secnum">11</span> Using Converters, Listeners, and Validators</a></h2>
+<h2 class="tocheader"><a href="jsf-develop.htm#BNATX"><span class="secnum">12</span> Developing with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-ajax.htm#GKIOW"><span class="secnum">13</span> Using Ajax with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-advanced-cc.htm#GKHXA"><span class="secnum">14</span> Composite Components: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="jsf-custom.htm#BNAVG"><span class="secnum">15</span> Creating Custom UI Components and Other Custom Objects</a></h2>
+<h2 class="tocheader"><a href="jsf-configure.htm#BNAWO"><span class="secnum">16</span> Configuring JavaServer Faces Applications</a></h2>
+<h2 class="tocheader"><a href="servlets.htm#BNAFD"><span class="secnum">17</span> Java Servlet Technology</a></h2>
+<h2 class="tocheader"><a href="websocket.htm#GKJIQ5"><span class="secnum">18</span> Java API for WebSocket</a></h2>
+<h2 class="tocheader"><a href="jsonp.htm#GLRBB"><span class="secnum">19</span> JSON Processing</a></h2>
+<h2 class="tocheader"><a href="webi18n.htm#BNAXU"><span class="secnum">20</span> Internationalizing and Localizing Web Applications</a></h2>
+<h2 class="tocheader"><a href="partbeanvalidation.htm#sthref1322">Part IV Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation.htm#CHDGJIIA"><span class="secnum">21</span> Introduction to Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation-advanced.htm#GKAHP"><span class="secnum">22</span> Bean Validation: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partcdi.htm#GJBNR">Part V Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basic.htm#GIWHB"><span class="secnum">23</span> Introduction to Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basicexamples.htm#GJBLS"><span class="secnum">24</span> Running the Basic Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="cdi-adv.htm#GJEHI"><span class="secnum">25</span> Contexts and Dependency Injection for Java EE: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="cdi-adv-examples.htm#GKHRE"><span class="secnum">26</span> Running the Advanced Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="partwebsvcs.htm#BNAYK">Part VI Web Services</a></h2>
+<h2 class="tocheader"><a href="webservices-intro.htm#GIJTI"><span class="secnum">27</span> Introduction to Web Services</a></h2>
+<h2 class="tocheader"><a href="jaxws.htm#BNAYL"><span class="secnum">28</span> Building Web Services with JAX-WS</a></h2>
+<h2 class="tocheader"><a href="jaxrs.htm#GIEPU"><span class="secnum">29</span> Building RESTful Web Services with JAX-RS</a></h2>
+<h2 class="tocheader"><a href="jaxrs-client.htm#BABEIGIH"><span class="secnum">30</span> Accessing REST Resources with the JAX-RS Client API</a></h2>
+<h2 class="tocheader"><a href="jaxrs-advanced.htm#GJJXE"><span class="secnum">31</span> JAX-RS: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="partentbeans.htm#BNBLR">Part VII Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-intro.htm#GIJSZ"><span class="secnum">32</span> Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-gettingstarted.htm#GIJRE"><span class="secnum">33</span> Getting Started with Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-basicexamples.htm#GIJRB"><span class="secnum">34</span> Running the Enterprise Bean Examples</a></h2>
+<h2 class="tocheader"><a href="ejb-embedded.htm#GKCQZ"><span class="secnum">35</span> Using the Embedded Enterprise Bean Container</a></h2>
+<h2 class="tocheader"><a href="ejb-async.htm#GKIDZ"><span class="secnum">36</span> Using Asynchronous Method Invocation in Session Beans</a></h2>
+<h2 class="tocheader"><a href="partpersist.htm#BNBPY">Part VIII Persistence</a></h2>
+<h2 class="tocheader"><a href="persistence-intro.htm#BNBPZ"><span class="secnum">37</span> Introduction to the Java Persistence API</a></h2>
+<ul style="list-style-type:none">
+<li><a href="persistence-intro001.htm#BNBQA"><span class="secnum">37.1</span> Entities</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-intro001.htm#BNBQB"><span class="secnum">37.1.1</span> Requirements for Entity Classes</a></li>
+<li><a href="persistence-intro001.htm#BNBQC"><span class="secnum">37.1.2</span> Persistent Fields and Properties in Entity Classes</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-intro001.htm#BNBQD"><span class="secnum">37.1.2.1</span> Persistent Fields</a></li>
+<li><a href="persistence-intro001.htm#BNBQE"><span class="secnum">37.1.2.2</span> Persistent Properties</a></li>
+<li><a href="persistence-intro001.htm#GIQVN"><span class="secnum">37.1.2.3</span> Using Collections in Entity Fields and Properties</a></li>
+<li><a href="persistence-intro001.htm#GKAHQ"><span class="secnum">37.1.2.4</span> Validating Persistent Fields and Properties</a></li>
+</ul>
+</li>
+<li><a href="persistence-intro001.htm#BNBQF"><span class="secnum">37.1.3</span> Primary Keys in Entities</a></li>
+<li><a href="persistence-intro001.htm#BNBQH"><span class="secnum">37.1.4</span> Multiplicity in Entity Relationships</a></li>
+<li><a href="persistence-intro001.htm#BNBQI"><span class="secnum">37.1.5</span> Direction in Entity Relationships</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-intro001.htm#BNBQJ"><span class="secnum">37.1.5.1</span> Bidirectional Relationships</a></li>
+<li><a href="persistence-intro001.htm#BNBQK"><span class="secnum">37.1.5.2</span> Unidirectional Relationships</a></li>
+<li><a href="persistence-intro001.htm#BNBQL"><span class="secnum">37.1.5.3</span> Queries and Relationship Direction</a></li>
+<li><a href="persistence-intro001.htm#BNBQM"><span class="secnum">37.1.5.4</span> Cascade Operations and Relationships</a></li>
+<li><a href="persistence-intro001.htm#GIQXY"><span class="secnum">37.1.5.5</span> Orphan Removal in Relationships</a></li>
+</ul>
+</li>
+<li><a href="persistence-intro001.htm#GJIWZ"><span class="secnum">37.1.6</span> Embeddable Classes in Entities</a></li>
+</ul>
+</li>
+<li><a href="persistence-intro002.htm#BNBQN"><span class="secnum">37.2</span> Entity Inheritance</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-intro002.htm#BNBQO"><span class="secnum">37.2.1</span> Abstract Entities</a></li>
+<li><a href="persistence-intro002.htm#BNBQP"><span class="secnum">37.2.2</span> Mapped Superclasses</a></li>
+<li><a href="persistence-intro002.htm#BNBQQ"><span class="secnum">37.2.3</span> Non-Entity Superclasses</a></li>
+<li><a href="persistence-intro002.htm#BNBQR"><span class="secnum">37.2.4</span> Entity Inheritance Mapping Strategies</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-intro002.htm#BNBQS"><span class="secnum">37.2.4.1</span> The Single Table per Class Hierarchy Strategy</a></li>
+<li><a href="persistence-intro002.htm#BNBQU"><span class="secnum">37.2.4.2</span> The Table per Concrete Class Strategy</a></li>
+<li><a href="persistence-intro002.htm#BNBQV"><span class="secnum">37.2.4.3</span> The Joined Subclass Strategy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><div id="backgroundColor"><a href="persistence-intro003.htm#BNBQW"><span class="secnum">37.3</span> Managing Entities</a><ul style="list-style-type:none">
+<li><a href="persistence-intro003.htm#BNBQY"><span class="secnum">37.3.1</span> The EntityManager Interface</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-intro003.htm#BNBQZ"><span class="secnum">37.3.1.1</span> Container-Managed Entity Managers</a></li>
+<li><a href="persistence-intro003.htm#BNBRA"><span class="secnum">37.3.1.2</span> Application-Managed Entity Managers</a></li>
+<li><a href="persistence-intro003.htm#BNBRB"><span class="secnum">37.3.1.3</span> Finding Entities Using the EntityManager</a></li>
+<li><a href="persistence-intro003.htm#BNBRC"><span class="secnum">37.3.1.4</span> Managing an Entity Instance's Lifecycle</a></li>
+<li><a href="persistence-intro003.htm#BNBRD"><span class="secnum">37.3.1.5</span> Persisting Entity Instances</a></li>
+<li><a href="persistence-intro003.htm#BNBRE"><span class="secnum">37.3.1.6</span> Removing Entity Instances</a></li>
+<li><a href="persistence-intro003.htm#BNBRF"><span class="secnum">37.3.1.7</span> Synchronizing Entity Data to the Database</a></li>
+</ul>
+</li>
+<li><a href="persistence-intro003.htm#BNBRJ"><span class="secnum">37.3.2</span> Persistence Units</a></li>
+</ul>
+</div></li>
+<li><a href="persistence-intro004.htm#GJISE"><span class="secnum">37.4</span> Querying Entities</a></li>
+<li><a href="persistence-intro005.htm#CHDBEGIC"><span class="secnum">37.5</span> Database Schema Creation</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-intro005.htm#sthref1908"><span class="secnum">37.5.1</span> Configuring an Application to Create or Drop Database Tables</a></li>
+<li><a href="persistence-intro005.htm#sthref1919"><span class="secnum">37.5.2</span> Loading Data Using SQL Scripts</a></li>
+</ul>
+</li>
+<li><a href="persistence-intro006.htm#GKCLC"><span class="secnum">37.6</span> Further Information about Persistence</a></li>
+</ul>
+<h2 class="tocheader"><a href="persistence-basicexamples.htm#GIJST"><span class="secnum">38</span> Running the Persistence Examples</a></h2>
+<h2 class="tocheader"><a href="persistence-querylanguage.htm#BNBTG"><span class="secnum">39</span> The Java Persistence Query Language</a></h2>
+<h2 class="tocheader"><a href="persistence-criteria.htm#GJITV"><span class="secnum">40</span> Using the Criteria API to Create Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-string-queries.htm#GKJIQ"><span class="secnum">41</span> Creating and Using String-Based Criteria Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-locking.htm#GKJJF"><span class="secnum">42</span> Controlling Concurrent Access to Entity Data with Locking</a></h2>
+<h2 class="tocheader"><a href="persistence-entitygraphs.htm#BABIJIAC"><span class="secnum">43</span> Creating Fetch Plans with Entity Graphs</a></h2>
+<h2 class="tocheader"><a href="persistence-cache.htm#GKJIA"><span class="secnum">44</span> Using a Second-Level Cache with Java Persistence API Applications</a></h2>
+<h2 class="tocheader"><a href="partmessaging.htm#GFIRP3">Part IX Messaging</a></h2>
+<h2 class="tocheader"><a href="jms-concepts.htm#BNCDQ"><span class="secnum">45</span> Java Message Service Concepts</a></h2>
+<h2 class="tocheader"><a href="jms-examples.htm#BNCGV"><span class="secnum">46</span> Java Message Service Examples</a></h2>
+<h2 class="tocheader"><a href="partsecurity.htm#GIJRP">Part X Security</a></h2>
+<h2 class="tocheader"><a href="security-intro.htm#BNBWJ"><span class="secnum">47</span> Introduction to Security in the Java EE Platform</a></h2>
+<h2 class="tocheader"><a href="security-webtier.htm#BNCAS"><span class="secnum">48</span> Getting Started Securing Web Applications</a></h2>
+<h2 class="tocheader"><a href="security-javaee.htm#BNBYK"><span class="secnum">49</span> Getting Started Securing Enterprise Applications</a></h2>
+<h2 class="tocheader"><a href="security-advanced.htm#GJJWX"><span class="secnum">50</span> Java EE Security: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partsupporttechs.htm#GIJUE">Part XI Java EE Supporting Technologies</a></h2>
+<h2 class="tocheader"><a href="transactions.htm#BNCIH"><span class="secnum">51</span> Transactions</a></h2>
+<h2 class="tocheader"><a href="resources.htm#BNCJH"><span class="secnum">52</span> Resource Adapters and Contracts</a></h2>
+<h2 class="tocheader"><a href="connectorexample.htm#GLODB"><span class="secnum">53</span> The Resource Adapter Examples</a></h2>
+<h2 class="tocheader"><a href="interceptors.htm#GKEED"><span class="secnum">54</span> Using Java EE Interceptors</a></h2>
+<h2 class="tocheader"><a href="batch-processing.htm#GKJIQ6"><span class="secnum">55</span> Batch Processing</a></h2>
+<h2 class="tocheader"><a href="concurrency-utilities.htm#GKJIQ8"><span class="secnum">56</span> Concurrency Utilities for Java EE</a></h2>
+<h2 class="tocheader"><a href="partcasestudies.htm#GKGJW">Part XII Case Studies</a></h2>
+<h2 class="tocheader"><a href="dukes-bookstore.htm#GLNVI"><span class="secnum">57</span> Duke's Bookstore Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-tutoring.htm#GKAEE"><span class="secnum">58</span> Duke's Tutoring Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-forest.htm#GLNPW"><span class="secnum">59</span> Duke's Forest Case Study Example</a></h2>
+<h2 class="tocheader"><a href="index.htm">Index</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>The Java EE 7 Tutorial  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="persistence-intro002.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="persistence-intro004.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="BNBQW" name="BNBQW"></a><a id="JEETT00490" name="JEETT00490"></a>
+<div class="sect1">
+<h1 class="sect1"><span class="secnum">37.3</span> <a id="sthref1886" name="sthref1886"></a><a id="sthref1887" name="sthref1887"></a>Managing Entities</h1>
+<p>Entities are managed by the entity manager, which is represented by <code>javax.persistence.EntityManager</code> instances. Each <code>EntityManager</code> instance is associated with a persistence context: a set of managed entity instances that exist in a particular data store. A persistence context defines the scope under which particular entity instances are created, persisted, and removed. The <code>EntityManager</code> interface defines the methods that are used to interact with the persistence context.</p>
+<a id="BNBQY" name="BNBQY"></a><a id="JEETT01161" name="JEETT01161"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">37.3.1</span> <a id="sthref1888" name="sthref1888"></a><a id="sthref1889" name="sthref1889"></a>The EntityManager Interface</h2>
+<p>The <code>EntityManager</code> API creates and removes persistent entity instances, finds entities by the entity's primary key, and allows queries to be run on entities.</p>
+<a id="BNBQZ" name="BNBQZ"></a><a id="JEETT00682" name="JEETT00682"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">37.3.1.1</span> <a id="sthref1890" name="sthref1890"></a>Container-Managed Entity Managers</h3>
+<p>With a <span class="glossaryterm">container-managed entity manager</span>, an <code>EntityManager</code> instance's persistence context is automatically propagated by the container to all application components that use the <code>EntityManager</code> instance within a single Java Transaction API (JTA) transaction.</p>
+<p><a id="sthref1891" name="sthref1891"></a>JTA transactions usually involve calls across application components. To complete a JTA transaction, these components usually need access to a single persistence context. This occurs when an <code>EntityManager</code> is injected into the application components by means of the <code>javax.persistence.PersistenceContext</code> annotation. The persistence context is automatically propagated with the current JTA transaction, and <code>EntityManager</code> references that are mapped to the same persistence unit provide access to the persistence context within that transaction. By automatically propagating the persistence context, application components don't need to pass references to <code>EntityManager</code> instances to each other in order to make changes within a single transaction. The Java EE container manages the lifecycle of container-managed entity managers.</p>
+<p>To obtain an <code>EntityManager</code> instance, inject the entity manager into the application component:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@PersistenceContext
+EntityManager em;
+</pre></div>
+<!-- class="sect3" -->
+<a id="BNBRA" name="BNBRA"></a><a id="JEETT00683" name="JEETT00683"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">37.3.1.2</span> <a id="sthref1892" name="sthref1892"></a><a id="sthref1893" name="sthref1893"></a>Application-Managed Entity Managers</h3>
+<p>With an <span class="glossaryterm">application-managed entity manager</span>, on the other hand, the persistence context is not propagated to application components, and the lifecycle of <code>EntityManager</code> instances is managed by the application.</p>
+<p>Application-managed entity managers are used when applications need to access a persistence context that is not propagated with the JTA transaction across <code>EntityManager</code> instances in a particular persistence unit. In this case, each <code>EntityManager</code> creates a new, isolated persistence context. The <code>EntityManager</code> and its associated persistence context are created and destroyed explicitly by the application. They are also used when directly injecting <code>EntityManager</code> instances can't be done because <code>EntityManager</code> instances are not thread-safe. <code>EntityManagerFactory</code> instances are thread-safe.</p>
+<p>Applications create <code>EntityManager</code> instances in this case by using the <code>createEntityManager</code> method of <code>javax.persistence.EntityManagerFactory</code>.</p>
+<p><a id="sthref1894" name="sthref1894"></a>To obtain an <code>EntityManager</code> instance, you first must obtain an <code>EntityManagerFactory</code> instance by injecting it into the application component by means of the <code>javax.persistence.PersistenceUnit</code> annotation:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@PersistenceUnit
+EntityManagerFactory emf;
+</pre>
+<p>Then obtain an <code>EntityManager</code> from the <code>EntityManagerFactory</code> instance:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+EntityManager em = emf.createEntityManager();
+</pre>
+<p><a id="sthref1895" name="sthref1895"></a>Application-managed entity managers don't automatically propagate the JTA transaction context. Such applications need to manually gain access to the JTA transaction manager and add transaction demarcation information when performing entity operations. The <code>javax.transaction.UserTransaction</code> interface defines methods to begin, commit, and roll back transactions. Inject an instance of <code>UserTransaction</code> by creating an instance variable annotated with <code>@Resource</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Resource
+UserTransaction utx;
+</pre>
+<p>To begin a transaction, call the <code>UserTransaction.begin</code> method. When all the entity operations are complete, call the <code>UserTransaction.commit</code> method to commit the transaction. The <code>UserTransaction.rollback</code> method is used to roll back the current transaction.</p>
+<p>The following example shows how to manage transactions in an application that uses an application-managed entity manager:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@PersistenceUnit
+EntityManagerFactory emf;
+EntityManager em;
+@Resource
+UserTransaction utx;
+...
+em = emf.createEntityManager();
+try {
+    utx.begin();
+    em.persist(SomeEntity);
+    em.merge(AnotherEntity);
+    em.remove(ThirdEntity);
+    utx.commit();
+} catch (Exception e) {
+    utx.rollback();
+}
+</pre></div>
+<!-- class="sect3" -->
+<a id="BNBRB" name="BNBRB"></a><a id="JEETT00684" name="JEETT00684"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">37.3.1.3</span> <a id="sthref1896" name="sthref1896"></a>Finding Entities Using the EntityManager</h3>
+<p>The <code>EntityManager.find</code> method is used to look up entities in the data store by the entity's primary key:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@PersistenceContext
+EntityManager em;
+public void enterOrder(int custID, CustomerOrder newOrder) {
+    Customer cust = em.find(Customer.class, custID);
+    cust.getOrders().add(newOrder);
+    newOrder.setCustomer(cust);
+}
+</pre></div>
+<!-- class="sect3" -->
+<a id="BNBRC" name="BNBRC"></a><a id="JEETT00685" name="JEETT00685"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">37.3.1.4</span> <a id="sthref1897" name="sthref1897"></a>Managing an Entity Instance's Lifecycle</h3>
+<p>You manage entity instances by invoking operations on the entity by means of an <code>EntityManager</code> instance. Entity instances are in one of four states: new, managed, detached, or removed.</p>
+<ul>
+<li>
+<p>New entity instances have no persistent identity and are not yet associated with a persistence context.</p>
+</li>
+<li>
+<p>Managed entity instances have a persistent identity and are associated with a persistence context.</p>
+</li>
+<li>
+<p>Detached entity instances have a persistent identity and are not currently associated with a persistence context.</p>
+</li>
+<li>
+<p>Removed entity instances have a persistent identity, are associated with a persistent context, and are scheduled for removal from the data store.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<a id="BNBRD" name="BNBRD"></a><a id="JEETT00686" name="JEETT00686"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">37.3.1.5</span> <a id="sthref1898" name="sthref1898"></a>Persisting Entity Instances</h3>
+<p>New entity instances become managed and persistent either by invoking the <code>persist</code> method or by a cascading <code>persist</code> operation invoked from related entities that have the <code>cascade=PERSIST</code> or <code>cascade=ALL</code> elements set in the relationship annotation. This means that the entity's data is stored to the database when the transaction associated with the <code>persist</code> operation is completed. If the entity is already managed, the <code>persist</code> operation is ignored, although the <code>persist</code> operation will cascade to related entities that have the <code>cascade</code> element set to <code>PERSIST</code> or <code>ALL</code> in the relationship annotation. If <code>persist</code> is called on a removed entity instance, the entity becomes managed. If the entity is detached, either <code>persist</code> will throw an <code>IllegalArgumentException</code>, or the transaction commit will fail. The following method performs a <code>persist</code> operation:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@PersistenceContext
+EntityManager em;
+...
+public LineItem createLineItem(CustomerOrder order, Product product,
+        int quantity) {
+    LineItem li = new LineItem(order, product, quantity);
+    order.getLineItems().add(li);
+    em.persist(li);
+    return li;
+}
+</pre>
+<p>The <code>persist</code> operation is propagated to all entities related to the calling entity that have the <code>cascade</code> element set to <code>ALL</code> or <code>PERSIST</code> in the relationship annotation:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@OneToMany(cascade=ALL, mappedBy="order")
+public Collection&lt;LineItem&gt; getLineItems() {
+    return lineItems;
+}
+</pre></div>
+<!-- class="sect3" -->
+<a id="BNBRE" name="BNBRE"></a><a id="JEETT00687" name="JEETT00687"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">37.3.1.6</span> <a id="sthref1899" name="sthref1899"></a>Removing Entity Instances</h3>
+<p>Managed entity instances are removed by invoking the <code>remove</code> method or by a cascading <code>remove</code> operation invoked from related entities that have the <code>cascade=REMOVE</code> or <code>cascade=ALL</code> elements set in the relationship annotation. If the <code>remove</code> method is invoked on a new entity, the <code>remove</code> operation is ignored, although <code>remove</code> will cascade to related entities that have the <code>cascade</code> element set to <code>REMOVE</code> or <code>ALL</code> in the relationship annotation. If <code>remove</code> is invoked on a detached entity, either <code>remove</code> will throw an <code>IllegalArgumentException</code>, or the transaction commit will fail. If invoked on an already removed entity, <code>remove</code> will be ignored. The entity's data will be removed from the data store when the transaction is completed or as a result of the <code>flush</code> operation.</p>
+<p>In the following example, all <code>LineItem</code> entities associated with the order are also removed, as <code>CustomerOrder.getLineItems</code> has <code>cascade=ALL</code> set in the relationship annotation:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+public void removeOrder(Integer orderId) {
+    try {
+        CustomerOrder order = em.find(CustomerOrder.class, orderId);
+        em.remove(order);
+    }...
+</pre></div>
+<!-- class="sect3" -->
+<a id="BNBRF" name="BNBRF"></a><a id="JEETT00688" name="JEETT00688"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">37.3.1.7</span> <a id="sthref1900" name="sthref1900"></a>Synchronizing Entity Data to the Database</h3>
+<p>The state of persistent entities is synchronized to the database when the transaction with which the entity is associated commits. If a managed entity is in a bidirectional relationship with another managed entity, the data will be persisted, based on the owning side of the relationship.</p>
+<p>To force synchronization of the managed entity to the data store, invoke the <code>flush</code> method of the <code>EntityManager</code> instance. If the entity is related to another entity and the relationship annotation has the <code>cascade</code> element set to <code>PERSIST</code> or <code>ALL</code>, the related entity's data will be synchronized with the data store when <code>flush</code> is called.</p>
+<p>If the entity is removed, calling <code>flush</code> will remove the entity data from the data store.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BNBRJ" name="BNBRJ"></a><a id="JEETT01162" name="JEETT01162"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">37.3.2</span> <a id="sthref1901" name="sthref1901"></a><a id="sthref1902" name="sthref1902"></a>Persistence Units</h2>
+<p>A persistence unit defines a set of all entity classes that are managed by <code>EntityManager</code> instances in an application. This set of entity classes represents the data contained within a single data store.</p>
+<p><a id="sthref1903" name="sthref1903"></a>Persistence units are defined by the <code>persistence.xml</code> configuration file. The following is an example <code>persistence.xml</code> file:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;persistence&gt;
+    &lt;persistence-unit name="OrderManagement"&gt;
+        &lt;description&gt;This unit manages orders and customers.
+            It does not rely on any vendor-specific features and can
+            therefore be deployed to any persistence provider.
+        &lt;/description&gt;
+        &lt;jta-data-source&gt;jdbc/MyOrderDB&lt;/jta-data-source&gt;
+        &lt;jar-file&gt;MyOrderApp.jar&lt;/jar-file&gt;
+        &lt;class&gt;com.widgets.CustomerOrder&lt;/class&gt;
+        &lt;class&gt;com.widgets.Customer&lt;/class&gt;
+    &lt;/persistence-unit&gt;
+&lt;/persistence&gt;
+</pre>
+<p>This file defines a persistence unit named <code>OrderManagement</code>, which uses a JTA-aware data source, <code>jdbc/MyOrderDB</code>. The <code>jar-file</code> and <code>class</code> elements specify managed persistence classes: entity classes, embeddable classes, and mapped superclasses. The <code>jar-file</code> element specifies JAR files that are visible to the packaged persistence unit that contain managed persistence classes, whereas the <code>class</code> element explicitly names managed persistence classes.</p>
+<p>The <code>jta-data-source</code> (for JTA-aware data sources) and <code>non-jta-data-source</code> (for non-JTA-aware data sources) elements specify the global JNDI name of the data source to be used by the container.</p>
+<p>The JAR file or directory whose <code>META-INF</code> directory contains <code>persistence.xml</code> is called the root of the persistence unit. The scope of the persistence unit is determined by the persistence unit's root. Each persistence unit must be identified with a name that is unique to the persistence unit's scope.</p>
+<p>Persistent units can be packaged as part of a WAR or EJB JAR file or can be packaged as a JAR file that can then be included in an WAR or EAR file.</p>
+<ul>
+<li>
+<p>If you package the persistent unit as a set of classes in an EJB JAR file, <code>persistence.xml</code> should be put in the EJB JAR's <code>META-INF</code> directory.</p>
+</li>
+<li>
+<p>If you package the persistence unit as a set of classes in a WAR file, <code>persistence.xml</code> should be located in the WAR file's <code>WEB-INF/classes/META-INF</code> directory.</p>
+</li>
+<li>
+<p>If you package the persistence unit in a JAR file that will be included in a WAR or EAR file, the JAR file should be located in either</p>
+<ul>
+<li>
+<p>The <code>WEB-INF/lib</code> directory of a WAR</p>
+</li>
+<li>
+<p>Or the EAR file's library directory</p>
+<div align="center">
+<div class="inftblnote"><br />
+<table class="Note oac_no_warn" summary="" border="1" width="80%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>
+<p>In the Java Persistence API 1.0, JAR files could be located at the root of an EAR file as the root of the persistence unit. This is no longer supported. Portable applications should use the EAR file's library directory as the root of the persistence unit.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="inftblnote" --></div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="persistence-intro002.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="persistence-intro004.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

@@ -1,0 +1,809 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:30:1Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="Writing More Advanced JMS Applications" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39031-01" />
+        <meta name="description" content="A guide to developing enterprise applications for the Java Platform, Enterprise Edition 7 (Java EE 7) using GlassFish Server Open Source Edition." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Java FX, Web, developer, enterprise, Java EE Tutorial, Java EE 7 Tutorial" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>The Java EE 7 Tutorial:Writing More Advanced JMS Applications | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7.0</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/tutorial/doc/javaeetutorial7.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GEXAF">Preface</a></h2>
+<h2 class="tocheader"><a href="partintro.htm#GFIRP">Part I Introduction</a></h2>
+<h2 class="tocheader"><a href="overview.htm#BNAAW"><span class="secnum">1</span> Overview</a></h2>
+<h2 class="tocheader"><a href="usingexamples.htm#GFIUD"><span class="secnum">2</span> Using the Tutorial Examples</a></h2>
+<h2 class="tocheader"><a href="partplatform.htm#GFIRP2">Part II Platform Basics</a></h2>
+<h2 class="tocheader"><a href="resource-creation.htm#GKJIQ2"><span class="secnum">3</span> Resource Creation</a></h2>
+<h2 class="tocheader"><a href="injection.htm#GKJIQ3"><span class="secnum">4</span> Injection</a></h2>
+<h2 class="tocheader"><a href="packaging.htm#GKJIQ4"><span class="secnum">5</span> Packaging</a></h2>
+<h2 class="tocheader"><a href="partwebtier.htm#BNADP">Part III The Web Tier</a></h2>
+<h2 class="tocheader"><a href="webapp.htm#BNADR"><span class="secnum">6</span> Getting Started with Web Applications</a></h2>
+<h2 class="tocheader"><a href="jsf-intro.htm#BNAPH"><span class="secnum">7</span> JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-facelets.htm#GIEPX"><span class="secnum">8</span> Introduction to Facelets</a></h2>
+<h2 class="tocheader"><a href="jsf-el.htm#GJDDD"><span class="secnum">9</span> Expression Language</a></h2>
+<h2 class="tocheader"><a href="jsf-page.htm#BNAQZ"><span class="secnum">10</span> Using JavaServer Faces Technology in Web Pages</a></h2>
+<h2 class="tocheader"><a href="jsf-page-core.htm#GJCUT"><span class="secnum">11</span> Using Converters, Listeners, and Validators</a></h2>
+<h2 class="tocheader"><a href="jsf-develop.htm#BNATX"><span class="secnum">12</span> Developing with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-ajax.htm#GKIOW"><span class="secnum">13</span> Using Ajax with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-advanced-cc.htm#GKHXA"><span class="secnum">14</span> Composite Components: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="jsf-custom.htm#BNAVG"><span class="secnum">15</span> Creating Custom UI Components and Other Custom Objects</a></h2>
+<h2 class="tocheader"><a href="jsf-configure.htm#BNAWO"><span class="secnum">16</span> Configuring JavaServer Faces Applications</a></h2>
+<h2 class="tocheader"><a href="servlets.htm#BNAFD"><span class="secnum">17</span> Java Servlet Technology</a></h2>
+<h2 class="tocheader"><a href="websocket.htm#GKJIQ5"><span class="secnum">18</span> Java API for WebSocket</a></h2>
+<h2 class="tocheader"><a href="jsonp.htm#GLRBB"><span class="secnum">19</span> JSON Processing</a></h2>
+<h2 class="tocheader"><a href="webi18n.htm#BNAXU"><span class="secnum">20</span> Internationalizing and Localizing Web Applications</a></h2>
+<h2 class="tocheader"><a href="partbeanvalidation.htm#sthref1322">Part IV Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation.htm#CHDGJIIA"><span class="secnum">21</span> Introduction to Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation-advanced.htm#GKAHP"><span class="secnum">22</span> Bean Validation: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partcdi.htm#GJBNR">Part V Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basic.htm#GIWHB"><span class="secnum">23</span> Introduction to Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basicexamples.htm#GJBLS"><span class="secnum">24</span> Running the Basic Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="cdi-adv.htm#GJEHI"><span class="secnum">25</span> Contexts and Dependency Injection for Java EE: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="cdi-adv-examples.htm#GKHRE"><span class="secnum">26</span> Running the Advanced Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="partwebsvcs.htm#BNAYK">Part VI Web Services</a></h2>
+<h2 class="tocheader"><a href="webservices-intro.htm#GIJTI"><span class="secnum">27</span> Introduction to Web Services</a></h2>
+<h2 class="tocheader"><a href="jaxws.htm#BNAYL"><span class="secnum">28</span> Building Web Services with JAX-WS</a></h2>
+<h2 class="tocheader"><a href="jaxrs.htm#GIEPU"><span class="secnum">29</span> Building RESTful Web Services with JAX-RS</a></h2>
+<h2 class="tocheader"><a href="jaxrs-client.htm#BABEIGIH"><span class="secnum">30</span> Accessing REST Resources with the JAX-RS Client API</a></h2>
+<h2 class="tocheader"><a href="jaxrs-advanced.htm#GJJXE"><span class="secnum">31</span> JAX-RS: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="partentbeans.htm#BNBLR">Part VII Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-intro.htm#GIJSZ"><span class="secnum">32</span> Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-gettingstarted.htm#GIJRE"><span class="secnum">33</span> Getting Started with Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-basicexamples.htm#GIJRB"><span class="secnum">34</span> Running the Enterprise Bean Examples</a></h2>
+<h2 class="tocheader"><a href="ejb-embedded.htm#GKCQZ"><span class="secnum">35</span> Using the Embedded Enterprise Bean Container</a></h2>
+<h2 class="tocheader"><a href="ejb-async.htm#GKIDZ"><span class="secnum">36</span> Using Asynchronous Method Invocation in Session Beans</a></h2>
+<h2 class="tocheader"><a href="partpersist.htm#BNBPY">Part VIII Persistence</a></h2>
+<h2 class="tocheader"><a href="persistence-intro.htm#BNBPZ"><span class="secnum">37</span> Introduction to the Java Persistence API</a></h2>
+<h2 class="tocheader"><a href="persistence-basicexamples.htm#GIJST"><span class="secnum">38</span> Running the Persistence Examples</a></h2>
+<h2 class="tocheader"><a href="persistence-querylanguage.htm#BNBTG"><span class="secnum">39</span> The Java Persistence Query Language</a></h2>
+<h2 class="tocheader"><a href="persistence-criteria.htm#GJITV"><span class="secnum">40</span> Using the Criteria API to Create Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-string-queries.htm#GKJIQ"><span class="secnum">41</span> Creating and Using String-Based Criteria Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-locking.htm#GKJJF"><span class="secnum">42</span> Controlling Concurrent Access to Entity Data with Locking</a></h2>
+<h2 class="tocheader"><a href="persistence-entitygraphs.htm#BABIJIAC"><span class="secnum">43</span> Creating Fetch Plans with Entity Graphs</a></h2>
+<h2 class="tocheader"><a href="persistence-cache.htm#GKJIA"><span class="secnum">44</span> Using a Second-Level Cache with Java Persistence API Applications</a></h2>
+<h2 class="tocheader"><a href="partmessaging.htm#GFIRP3">Part IX Messaging</a></h2>
+<h2 class="tocheader"><a href="jms-concepts.htm#BNCDQ"><span class="secnum">45</span> Java Message Service Concepts</a></h2>
+<h2 class="tocheader"><a href="jms-examples.htm#BNCGV"><span class="secnum">46</span> Java Message Service Examples</a></h2>
+<ul style="list-style-type:none">
+<li><a href="jms-examples001.htm#BABEFBHJ"><span class="secnum">46.1</span> Overview of the JMS Examples</a></li>
+<li><a href="jms-examples002.htm#BNCFA"><span class="secnum">46.2</span> Writing Simple JMS Applications</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples002.htm#BNCFD"><span class="secnum">46.2.1</span> Starting the JMS Provider</a></li>
+<li><a href="jms-examples002.htm#GKTJS"><span class="secnum">46.2.2</span> Creating JMS Administered Objects</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples002.htm#BABHEFCB"><span class="secnum">46.2.2.1</span> To Create Resources for the Simple Examples</a></li>
+</ul>
+</li>
+<li><a href="jms-examples002.htm#BABEEABE"><span class="secnum">46.2.3</span> Building All the Simple Examples</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples002.htm#sthref2386"><span class="secnum">46.2.3.1</span> To Build All the Simple Examples Using NetBeans IDE</a></li>
+<li><a href="jms-examples002.htm#sthref2387"><span class="secnum">46.2.3.2</span> To Build All the Simple Examples Using Maven</a></li>
+</ul>
+</li>
+<li><a href="jms-examples002.htm#BABIHCAE"><span class="secnum">46.2.4</span> Sending Messages</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples002.htm#sthref2390"><span class="secnum">46.2.4.1</span> The Producer.java Client</a></li>
+<li><a href="jms-examples002.htm#sthref2391"><span class="secnum">46.2.4.2</span> To Run the Producer Client</a></li>
+</ul>
+</li>
+<li><a href="jms-examples002.htm#BNCFB"><span class="secnum">46.2.5</span> Receiving Messages Synchronously</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples002.htm#BNCFC"><span class="secnum">46.2.5.1</span> The SynchConsumer.java Client</a></li>
+<li><a href="jms-examples002.htm#BNCFG"><span class="secnum">46.2.5.2</span> To Run the SynchConsumer and Producer Clients</a></li>
+</ul>
+</li>
+<li><a href="jms-examples002.htm#BNCFH"><span class="secnum">46.2.6</span> Using a Message Listener for Asynchronous Message Delivery</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples002.htm#BNCFI"><span class="secnum">46.2.6.1</span> Writing the AsynchConsumer.java and TextListener.java Clients</a></li>
+<li><a href="jms-examples002.htm#BNCFK"><span class="secnum">46.2.6.2</span> To Run the AsynchConsumer and Producer Clients</a></li>
+</ul>
+</li>
+<li><a href="jms-examples002.htm#BNCFL"><span class="secnum">46.2.7</span> Browsing Messages on a Queue</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples002.htm#BNCFM"><span class="secnum">46.2.7.1</span> The MessageBrowser.java Client</a></li>
+<li><a href="jms-examples002.htm#BNCFN"><span class="secnum">46.2.7.2</span> To Run the QueueBrowser Client</a></li>
+</ul>
+</li>
+<li><a href="jms-examples002.htm#BABDDHHC"><span class="secnum">46.2.8</span> Running Multiple Consumers on the Same Destination</a></li>
+<li><a href="jms-examples002.htm#BNCFX"><span class="secnum">46.2.9</span> Acknowledging Messages</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples002.htm#GJSCG"><span class="secnum">46.2.9.1</span> To Run the ClientAckConsumer Client</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><div id="backgroundColor"><a href="jms-examples003.htm#GIWFH"><span class="secnum">46.3</span> Writing More Advanced JMS Applications</a><ul style="list-style-type:none">
+<li><a href="jms-examples003.htm#BNCGG"><span class="secnum">46.3.1</span> Using Durable Subscriptions</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples003.htm#sthref2410"><span class="secnum">46.3.1.1</span> To Create Resources for the Durable Subscription Example</a></li>
+<li><a href="jms-examples003.htm#GJSCI"><span class="secnum">46.3.1.2</span> To Run the Durable Subscription Example</a></li>
+<li><a href="jms-examples003.htm#sthref2411"><span class="secnum">46.3.1.3</span> To Run the unsubscriber Example</a></li>
+</ul>
+</li>
+<li><a href="jms-examples003.htm#BNCGJ"><span class="secnum">46.3.2</span> Using Local Transactions</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples003.htm#sthref2415"><span class="secnum">46.3.2.1</span> To Create Resources for the transactedexample Example</a></li>
+<li><a href="jms-examples003.htm#GJSHA"><span class="secnum">46.3.2.2</span> To Run the transactedexample Clients</a></li>
+</ul>
+</li>
+</ul>
+</div></li>
+<li><a href="jms-examples004.htm#BABGEFHC"><span class="secnum">46.4</span> Writing High Performance and Scalable JMS Applications</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples004.htm#BABIBEAC"><span class="secnum">46.4.1</span> Using Shared Nondurable Subscriptions</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples004.htm#sthref2416"><span class="secnum">46.4.1.1</span> Writing the Clients for the Shared Consumer Example</a></li>
+<li><a href="jms-examples004.htm#sthref2417"><span class="secnum">46.4.1.2</span> To Run the SharedConsumer and Producer Clients</a></li>
+</ul>
+</li>
+<li><a href="jms-examples004.htm#BABEJBHA"><span class="secnum">46.4.2</span> Using Shared Durable Subscriptions</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples004.htm#sthref2420"><span class="secnum">46.4.2.1</span> To Run the SharedDurableConsumer and Producer Clients</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="jms-examples005.htm#BABBABFC"><span class="secnum">46.5</span> Sending and Receiving Messages Using a Simple Web Application</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples005.htm#sthref2426"><span class="secnum">46.5.1</span> The websimplemessage Facelets Pages</a></li>
+<li><a href="jms-examples005.htm#sthref2427"><span class="secnum">46.5.2</span> The websimplemessage Managed Beans</a></li>
+<li><a href="jms-examples005.htm#sthref2428"><span class="secnum">46.5.3</span> Running the websimplemessage Example</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples005.htm#sthref2429"><span class="secnum">46.5.3.1</span> Creating Resources for the websimplemessage Example</a></li>
+<li><a href="jms-examples005.htm#sthref2430"><span class="secnum">46.5.3.2</span> To Package and Deploy websimplemessage Using NetBeans IDE</a></li>
+<li><a href="jms-examples005.htm#sthref2431"><span class="secnum">46.5.3.3</span> To Package and Deploy websimplemessage Using Maven</a></li>
+<li><a href="jms-examples005.htm#sthref2432"><span class="secnum">46.5.3.4</span> To Run the websimplemessage Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="jms-examples006.htm#BNBPK"><span class="secnum">46.6</span> Receiving Messages Asynchronously Using a Message-Driven Bean</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples006.htm#BNBPL"><span class="secnum">46.6.1</span> Overview of the simplemessage Example</a></li>
+<li><a href="jms-examples006.htm#BNBPN"><span class="secnum">46.6.2</span> The simplemessage Application Client</a></li>
+<li><a href="jms-examples006.htm#BNBPO"><span class="secnum">46.6.3</span> The simplemessage Message-Driven Bean Class</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples006.htm#BNBPP"><span class="secnum">46.6.3.1</span> The onMessage Method</a></li>
+</ul>
+</li>
+<li><a href="jms-examples006.htm#BNBPQ"><span class="secnum">46.6.4</span> Running the simplemessage Example</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples006.htm#BNBPR"><span class="secnum">46.6.4.1</span> Creating Resources for the simplemessage Example</a></li>
+<li><a href="jms-examples006.htm#sthref2449"><span class="secnum">46.6.4.2</span> To Run the simplemessage Example Using NetBeans IDE</a></li>
+<li><a href="jms-examples006.htm#BNBPT"><span class="secnum">46.6.4.3</span> To Run the simplemessage Example Using Maven</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="jms-examples007.htm#BNCGW"><span class="secnum">46.7</span> Sending Messages from a Session Bean to an MDB</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples007.htm#BNCGX"><span class="secnum">46.7.1</span> Writing the Application Components for the clientsessionmdb Example</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples007.htm#BNCGZ"><span class="secnum">46.7.1.1</span> Coding the Application Client: MyAppClient.java</a></li>
+<li><a href="jms-examples007.htm#BNCHA"><span class="secnum">46.7.1.2</span> Coding the Publisher Session Bean</a></li>
+<li><a href="jms-examples007.htm#BNCHB"><span class="secnum">46.7.1.3</span> Coding the Message-Driven Bean: MessageBean.java</a></li>
+</ul>
+</li>
+<li><a href="jms-examples007.htm#sthref2458"><span class="secnum">46.7.2</span> Running the clientsessionmdb Example</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples007.htm#sthref2459"><span class="secnum">46.7.2.1</span> To Run clientsessionmdb Using NetBeans IDE</a></li>
+<li><a href="jms-examples007.htm#sthref2460"><span class="secnum">46.7.2.2</span> To Run clientsessionmdb Using Maven</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="jms-examples008.htm#BNCHF"><span class="secnum">46.8</span> Using an Entity to Join Messages from Two MDBs</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples008.htm#BNCHG"><span class="secnum">46.8.1</span> Overview of the clientmdbentity Example Application</a></li>
+<li><a href="jms-examples008.htm#BNCHI"><span class="secnum">46.8.2</span> Writing the Application Components for the clientmdbentity Example</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples008.htm#BNCHJ"><span class="secnum">46.8.2.1</span> Coding the Application Client: HumanResourceClient.java</a></li>
+<li><a href="jms-examples008.htm#BNCHK"><span class="secnum">46.8.2.2</span> Coding the Message-Driven Beans for the clientmdbentity Example</a></li>
+<li><a href="jms-examples008.htm#BNCHL"><span class="secnum">46.8.2.3</span> Coding the Entity Class for the clientmdbentity Example</a></li>
+</ul>
+</li>
+<li><a href="jms-examples008.htm#sthref2471"><span class="secnum">46.8.3</span> Running the clientmdbentity Example</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples008.htm#sthref2472"><span class="secnum">46.8.3.1</span> To Run clientmdbentity Using NetBeans IDE</a></li>
+<li><a href="jms-examples008.htm#sthref2473"><span class="secnum">46.8.3.2</span> To Run clientmdbentity Using Maven</a></li>
+<li><a href="jms-examples008.htm#sthref2474"><span class="secnum">46.8.3.3</span> Viewing the Application Output</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="jms-examples009.htm#BABDFDJC"><span class="secnum">46.9</span> Using NetBeans IDE to Create JMS Resources</a>
+<ul style="list-style-type:none">
+<li><a href="jms-examples009.htm#sthref2475"><span class="secnum">46.9.1</span> To Create JMS Resources Using NetBeans IDE</a></li>
+<li><a href="jms-examples009.htm#sthref2480"><span class="secnum">46.9.2</span> To Delete JMS Resources Using NetBeans IDE</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="tocheader"><a href="partsecurity.htm#GIJRP">Part X Security</a></h2>
+<h2 class="tocheader"><a href="security-intro.htm#BNBWJ"><span class="secnum">47</span> Introduction to Security in the Java EE Platform</a></h2>
+<h2 class="tocheader"><a href="security-webtier.htm#BNCAS"><span class="secnum">48</span> Getting Started Securing Web Applications</a></h2>
+<h2 class="tocheader"><a href="security-javaee.htm#BNBYK"><span class="secnum">49</span> Getting Started Securing Enterprise Applications</a></h2>
+<h2 class="tocheader"><a href="security-advanced.htm#GJJWX"><span class="secnum">50</span> Java EE Security: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partsupporttechs.htm#GIJUE">Part XI Java EE Supporting Technologies</a></h2>
+<h2 class="tocheader"><a href="transactions.htm#BNCIH"><span class="secnum">51</span> Transactions</a></h2>
+<h2 class="tocheader"><a href="resources.htm#BNCJH"><span class="secnum">52</span> Resource Adapters and Contracts</a></h2>
+<h2 class="tocheader"><a href="connectorexample.htm#GLODB"><span class="secnum">53</span> The Resource Adapter Examples</a></h2>
+<h2 class="tocheader"><a href="interceptors.htm#GKEED"><span class="secnum">54</span> Using Java EE Interceptors</a></h2>
+<h2 class="tocheader"><a href="batch-processing.htm#GKJIQ6"><span class="secnum">55</span> Batch Processing</a></h2>
+<h2 class="tocheader"><a href="concurrency-utilities.htm#GKJIQ8"><span class="secnum">56</span> Concurrency Utilities for Java EE</a></h2>
+<h2 class="tocheader"><a href="partcasestudies.htm#GKGJW">Part XII Case Studies</a></h2>
+<h2 class="tocheader"><a href="dukes-bookstore.htm#GLNVI"><span class="secnum">57</span> Duke's Bookstore Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-tutoring.htm#GKAEE"><span class="secnum">58</span> Duke's Tutoring Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-forest.htm#GLNPW"><span class="secnum">59</span> Duke's Forest Case Study Example</a></h2>
+<h2 class="tocheader"><a href="index.htm">Index</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>The Java EE 7 Tutorial  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="jms-examples002.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="jms-examples004.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="GIWFH" name="GIWFH"></a><a id="JEETT00555" name="JEETT00555"></a>
+<div class="sect1">
+<h1 class="sect1"><span class="secnum">46.3</span> Writing More Advanced JMS Applications</h1>
+<p>The following examples show how to use some of the more advanced features of the JMS API: durable subscriptions and transactions.</p>
+<a id="BNCGG" name="BNCGG"></a><a id="JEETT01297" name="JEETT01297"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">46.3.1</span> <a id="sthref2408" name="sthref2408"></a><a id="sthref2409" name="sthref2409"></a>Using Durable Subscriptions</h2>
+<p>The <code>durablesubscriptionexample</code> example shows how unshared durable subscriptions work. It demonstrates that a durable subscription continues to exist and accumulate messages even when there is no active consumer on it.</p>
+<p>The example consists of two modules, a <code>durableconsumer</code> application that creates a durable subscription and consumes messages, and an <code>unsubscriber</code> application that enables you to unsubscribe from the durable subscription after you have finished running the <code>durableconsumer</code> application.</p>
+<p>For information on durable subscriptions, see <a href="jms-concepts003.htm#BNCGD">Creating Durable Subscriptions</a>.</p>
+<p>The main client, <code>DurableConsumer.java</code>, is under the <span class="variable">tut-install</span><code>/examples/jms/durablesubscriptionexample/durableconsumer</code>/ directory.</p>
+<p>The example uses a connection factory, j<code>ms/DurableConnectionFactory</code>, that has a client ID.</p>
+<p>The <code>DurableConsumer</code> client creates a <code>JMSContext</code> using the connection factory. It then stops the <code>JMSContext</code>, calls <code>createDurableConsumer</code> to create a durable subscription and a consumer on the topic by specifying a subscription name, registers a message listener, and starts the <code>JMSContext</code> again. The subscription is created only if it does not already exist, so the example can be run repeatedly:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+try (JMSContext context = durableConnectionFactory.createContext();) {
+    context.stop();
+    consumer = context.createDurableConsumer(topic, "MakeItLast");
+    listener = new TextListener();
+    consumer.setMessageListener(listener);
+    context.start();
+    ...
+</pre>
+<p>To send messages to the topic, you run the <code>producer</code> client.</p>
+<p>The <code>unsubscriber</code> example contains a very simple <code>Unsubscriber</code> client, which creates a <code>JMSContext</code> on the same connection factory and then calls the <code>unsubscribe</code> method, specifying the subscription name:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+try (JMSContext context = durableConnectionFactory.createContext();) {
+    System.out.println("Unsubscribing from durable subscription");
+    context.unsubscribe("MakeItLast");
+} ...
+</pre>
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref2410" name="sthref2410"></a>
+<h3 class="sect3"><span class="secnum">46.3.1.1</span> To Create Resources for the Durable Subscription Example</h3>
+<ol>
+<li>
+<p>Make sure that GlassFish Server has been started (see <a href="usingexamples002.htm#BNADI">Starting and Stopping GlassFish Server</a>).</p>
+</li>
+<li>
+<p>In a command window, go to the <code>durableconsumer</code> example.</p>
+<pre xml:space="preserve" class="oac_no_warn">
+cd <span class="variable">tut-install</span>/jms/durablesubscriptionexample/durableconsumer
+</pre></li>
+<li>
+<p>Create the resources using the <code>asadmin add-resources</code> command:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+asadmin add-resources src/main/setup/glassfish-resources.xml
+</pre>
+<p>The command output reports the creation of a connector connection pool and a connector resource.</p>
+</li>
+<li>
+<p>Verify the creation of the resources:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+asadmin list-jms-resources
+</pre>
+<p>In addition to the resources you created for the simple examples, the command lists the new connection factory:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+jms/MyQueue
+jms/MyTopic
+jms/__defaultConnectionFactory
+jms/DurableConnectionFactory
+Command list-jms-resources executed successfully.
+</pre></li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="GJSCI" name="GJSCI"></a><a id="JEETT00279" name="JEETT00279"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">46.3.1.2</span> To Run the Durable Subscription Example</h3>
+<ol>
+<li>
+<p>In a terminal window, go to the following directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+<span class="variable">tut-install</span>/examples/jms/durablesubscriptionexample/
+</pre></li>
+<li>
+<p>Build the <code>durableconsumer</code> and <code>unsubscriber</code> examples:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+mvn install
+</pre></li>
+<li>
+<p>Go to the <code>durableconsumer</code> directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+cd durableconsumer
+</pre></li>
+<li>
+<p>To run the client, enter the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+appclient -client target/durableconsumer.jar
+</pre>
+<p>The client creates the durable consumer and then waits for messages:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+Creating consumer for topic
+Starting consumer
+To end program, enter Q or q, then &lt;return&gt;
+</pre></li>
+<li>
+<p>In another terminal window, run the <code>Producer</code> client, sending some messages to the topic:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+cd <span class="variable">tut-install</span>/examples/jms/simple/producer
+appclient -client target/producer.jar topic 3
+</pre></li>
+<li>
+<p>After the <code>DurableConsumer</code> client receives the messages, enter <code>q</code> or <code>Q</code> to exit the program. At this point, the client has behaved like any other asynchronous consumer.</p>
+</li>
+<li>
+<p>Now, while the <code>DurableConsumer</code> client is not running, use the <code>Producer</code> client to send more messages:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+appclient -client target/producer.jar topic 2
+</pre>
+<p>If a durable subscription did not exist, these messages would be lost, because no consumer on the topic is currently running. However, the durable subscription is still active, and it retains the messages.</p>
+</li>
+<li>
+<p>Run the <code>DurableConsumer</code> client again. It immediately receives the messages that were sent while it was inactive:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+Creating consumer for topic
+Starting consumer
+To end program, enter Q or q, then &lt;return&gt;
+Reading message: This is message 1 from producer
+Reading message: This is message 2 from producer
+Message is not a TextMessage
+</pre></li>
+<li>
+<p>Enter <code>q</code> or <code>Q</code> to exit the program.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref2411" name="sthref2411"></a>
+<h3 class="sect3"><span class="secnum">46.3.1.3</span> To Run the unsubscriber Example</h3>
+<p>After you have finished running the <code>DurableConsumer</code> client, run the <code>unsubscriber</code> example to unsubscribe from the durable subscription.</p>
+<ol>
+<li>
+<p>In a terminal window, go to the following directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+<span class="variable">tut-install</span>/examples/jms/durablesubscriptionexample/unsubscriber
+</pre></li>
+<li>
+<p>To run the <code>Unsubscriber</code> client, enter the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+appclient -client target/unsubscriber.jar
+</pre>
+<p>The client reports that it is unsubscribing from the durable subscription.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BNCGJ" name="BNCGJ"></a><a id="JEETT01298" name="JEETT01298"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">46.3.2</span> <a id="sthref2412" name="sthref2412"></a><a id="sthref2413" name="sthref2413"></a>Using Local Transactions</h2>
+<p>The <code>transactedexample</code> example demonstrates the use of local transactions in a JMS client application. It also demonstrates the use of the request/reply messaging pattern described in <a href="jms-concepts004.htm#BNCGB">Creating Temporary Destinations</a>, although it uses permanent rather than temporary destinations. The example consists of three modules, <code>genericsupplier</code>, <code>retailer</code>, and <code>vendor</code>, which can be found under the <span class="variable">tut-install</span><code>/examples/jms/transactedexample/</code> directory. The source code can be found in the <code>src/main/java/javaeetutorial</code> trees for each module. The <code>genericsupplier</code> and <code>retailer</code> modules each contain a single class, <code>genericsupplier/GenericSupplier.java</code> and <code>retailer/Retailer.java</code>, respectively. The <code>vendor</code> module is more complex, containing four classes: <code>vendor/Vendor.java</code>, <code>vendor/VendorMessageListener.java</code>, <code>vendor/Order.java</code>, and <code>vendor/SampleUtilities.java</code>.</p>
+<p>The example shows how to use a queue and a topic in a single transaction as well as how to pass a <code>JMSContext</code> to a message listener's constructor function. The example represents a highly simplified e-commerce application in which the following actions occur.</p>
+<ol>
+<li>
+<p>A retailer (<code>retailer/src/main/java/javaeetutorial/retailer/Retailer.java</code>) sends a <code>MapMessage</code> to a vendor order queue, ordering a quantity of computers, and waits for the vendor's reply:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+outMessage = context.createMapMessage();
+outMessage.setString("Item", "Computer(s)");
+outMessage.setInt("Quantity", quantity);
+outMessage.setJMSReplyTo(retailerConfirmQueue);
+context.createProducer().send(vendorOrderQueue, outMessage);
+System.out.println("Retailer: ordered " + quantity + " computer(s)");
+orderConfirmReceiver = context.createConsumer(retailerConfirmQueue);
+</pre></li>
+<li>
+<p>The vendor (<code>vendor/src/main/java/javaeetutorial/retailer/Vendor.java</code>) receives the retailer's order message and sends an order message to the supplier order topic in one transaction. This JMS transaction uses a single session, so you can combine a receive from a queue with a send to a topic. Here is the code that uses the same session to create a consumer for a queue:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+vendorOrderReceiver = session.createConsumer(vendorOrderQueue);
+</pre>
+<p>The following code receives the incoming message, sends an outgoing message, and commits the <code>JMSContext</code>. The message processing has been removed to keep the sequence simple:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+inMessage = vendorOrderReceiver.receive();
+// Process the incoming message and format the outgoing 
+// message
+...
+context.createProducer().send(supplierOrderTopic, orderMessage);
+...
+context.commit();
+</pre>
+<p>For simplicity, there are only two suppliers, one for CPUs and one for hard drives.</p>
+</li>
+<li>
+<p>Each supplier (<code>genericsupplier/src/main/java/javaeetutorial/retailer/GenericSupplier.java</code>) receives the order from the order topic, checks its inventory, and then sends the items ordered to the queue named in the order message's <code>JMSReplyTo</code> field. If it does not have enough of the item in stock, the supplier sends what it has. The synchronous receive from the topic and the send to the queue take place in one JMS transaction:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+receiver = context.createConsumer(SupplierOrderTopic);
+...
+inMessage = receiver.receive();
+if (inMessage instanceof MapMessage) {
+    orderMessage = (MapMessage) inMessage;
+} ...
+// Process message
+outMessage = context.createMapMessage();
+// Add content to message
+context.createProducer().send(
+         (Queue) orderMessage.getJMSReplyTo(),
+         outMessage);
+// Display message contents
+context.commit();
+</pre></li>
+<li>
+<p>The vendor receives the suppliers' replies from its confirmation queue and updates the state of the order. Messages are processed by an asynchronous message listener, <code>VendorMessageListener</code>; this step shows the use of JMS transactions with a message listener:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+MapMessage component = (MapMessage) message;
+...
+int orderNumber = component.getInt("VendorOrderNumber");
+Order order = Order.getOrder(orderNumber).processSubOrder(component);
+context.commit();
+</pre></li>
+<li>
+<p>When all outstanding replies are processed for a given order, the vendor message listener sends a message notifying the retailer whether it can fulfill the order:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+Queue replyQueue = (Queue) order.order.getJMSReplyTo();
+MapMessage retailerConfirmMessage = context.createMapMessage();
+// Format the message
+context.createProducer().send(replyQueue, retailerConfirmMessage);
+context.commit();
+</pre></li>
+<li>
+<p>The retailer receives the message from the vendor:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+inMessage = (MapMessage) orderConfirmReceiver.receive();
+</pre>
+<p>The retailer then places a second order for twice as many computers as in the first order, so these steps are executed twice.</p>
+</li>
+</ol>
+<p><a href="#BNCGK">Figure 46-1</a> illustrates these steps.</p>
+<div class="figure"><a id="BNCGK" name="BNCGK"></a><a id="JEETT00056" name="JEETT00056"></a>
+<p class="titleinfigure">Figure 46-1 Transactions: JMS Client Example</p>
+<img src="img/jeett_dt_034.png" alt="Description of Figure 46-1 follows" title="Description of Figure 46-1 follows" longdesc="img_text/jeett_dt_034.htm" /><br />
+<a id="sthref2414" name="sthref2414" href="img_text/jeett_dt_034.htm">Description of "Figure 46-1 Transactions: JMS Client Example"</a><br />
+<br /></div>
+<!-- class="figure" -->
+<p>All the messages use the <code>MapMessage</code> message type. Synchronous receives are used for all message reception except when the vendor processes the replies of the suppliers. These replies are processed asynchronously and demonstrate how to use transactions within a message listener.</p>
+<p>At random intervals, the <code>Vendor</code> client throws an exception to simulate a database problem and cause a rollback.</p>
+<p>All clients except <code>Retailer</code> use transacted contexts.</p>
+<p>The example uses three queues named <code>jms/AQueue</code>, <code>jms/BQueue</code>, and <code>jms/CQueue</code>, and one topic named <code>jms/OTopic</code>.</p>
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref2415" name="sthref2415"></a>
+<h3 class="sect3"><span class="secnum">46.3.2.1</span> To Create Resources for the transactedexample Example</h3>
+<ol>
+<li>
+<p>Make sure that GlassFish Server has been started (see <a href="usingexamples002.htm#BNADI">Starting and Stopping GlassFish Server</a>).</p>
+</li>
+<li>
+<p>In a command window, go to the <code>genericsupplier</code> example:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+cd <span class="variable">tut-install</span>/jms/transactedexample/genericsupplier
+</pre></li>
+<li>
+<p>Create the resources using the <code>asadmin add-resources</code> command:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+asadmin add-resources src/main/setup/glassfish-resources.xml
+</pre></li>
+<li>
+<p>Verify the creation of the resources:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+asadmin list-jms-resources
+</pre>
+<p>In addition to the resources you created for the simple examples and the durable subscription example, the command lists the four new destinations:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+jms/MyQueue
+jms/MyTopic
+jms/AQueue
+jms/BQueue
+jms/CQueue
+jms/OTopic
+jms/__defaultConnectionFactory
+jms/DurableConnectionFactory
+Command list-jms-resources executed successfully.
+</pre></li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="GJSHA" name="GJSHA"></a><a id="JEETT00281" name="JEETT00281"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">46.3.2.2</span> To Run the transactedexample Clients</h3>
+<p>You will need four terminal windows to run the clients. Make sure that you start the clients in the correct order.</p>
+<ol>
+<li>
+<p>In a terminal window, go to the following directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+<span class="variable">tut-install</span>/examples/jms/transactedexample/
+</pre></li>
+<li>
+<p>To build and package all the modules, enter the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+mvn install
+</pre></li>
+<li>
+<p>Go to the <code>genericsupplier</code> directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+cd genericsupplier
+</pre></li>
+<li><a id="BABFCGBI" name="BABFCGBI"></a>
+<p>Use the following command to start the CPU supplier client:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+appclient -client target\genericsupplier.jar CPU
+</pre>
+<p>After some initial output, the client reports the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+Starting CPU supplier
+</pre></li>
+<li>
+<p>In a second terminal window, go to the <code>genericsupplier</code> directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+cd <span class="variable">tut-install</span>/examples/jms/transactedexample/genericsupplier
+</pre></li>
+<li>
+<p>Use the following command to start the hard drive supplier client:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+appclient -client target\genericsupplier.jar HD
+</pre>
+<p>After some initial output, the client reports the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+Starting Hard Drive supplier
+</pre></li>
+<li>
+<p>In a third terminal window, go to the <code>vendor</code> directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+cd <span class="variable">tut-install</span>/examples/jms/transactedexample/vendor
+</pre></li>
+<li>
+<p>Use the following command to start the <code>Vendor</code> client:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+appclient -client target\vendor.jar
+</pre>
+<p>After some initial output, the client reports the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+Starting vendor
+</pre></li>
+<li>
+<p>In another terminal window, go to the <code>retailer</code> directory:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+cd <span class="variable">tut-install</span>/examples/jms/transactedexample/retailer
+</pre></li>
+<li><a id="BABBIHCE" name="BABBIHCE"></a>
+<p>Use a command like the following to run the <code>Retailer</code> client. The argument specifies the number of computers to order:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+appclient -client target/retailer.jar 4
+</pre>
+<p>After some initial output, the <code>Retailer</code> client reports something like the following. In this case, the first order is filled, but the second is not:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+Retailer: Quantity to be ordered is 4
+Retailer: Ordered 4 computer(s)
+Retailer: Order filled
+Retailer: Placing another order
+Retailer: Ordered 8 computer(s)
+Retailer: Order not filled
+</pre>
+<p>The <code>Vendor</code> client reports something like the following, stating in this case that it is able to send all the computers in the first order, but not in the second:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+Vendor: Retailer ordered 4 Computer(s)
+Vendor: Ordered 4 CPU(s) and hard drive(s)
+  Vendor: Committed transaction 1
+Vendor: Completed processing for order 1
+Vendor: Sent 4 computer(s)
+  Vendor: committed transaction 2
+Vendor: Retailer ordered 8 Computer(s)
+Vendor: Ordered 8 CPU(s) and hard drive(s)
+  Vendor: Committed transaction 1
+Vendor: Completed processing for order 2
+Vendor: Unable to send 8 computer(s)
+  Vendor: Committed transaction 2
+</pre>
+<p>The CPU supplier reports something like the following. In this case, it is able to send all the CPUs for both orders:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+CPU Supplier: Vendor ordered 4 CPU(s)
+CPU Supplier: Sent 4 CPU(s)
+  CPU Supplier: Committed transaction
+CPU Supplier: Vendor ordered 8 CPU(s)
+CPU Supplier: Sent 8 CPU(s)
+  CPU Supplier: Committed transaction
+</pre>
+<p>The hard drive supplier reports something like the following. In this case, it has a shortage of hard drives for the second order:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+Hard Drive Supplier: Vendor ordered 4 Hard Drive(s)
+Hard Drive Supplier: Sent 4 Hard Drive(s)
+  Hard Drive Supplier: Committed transaction
+Hard Drive Supplier: Vendor ordered 8 Hard Drive(s)
+Hard Drive Supplier: Sent 1 Hard Drive(s)
+  Hard Drive Supplier: Committed transaction
+</pre></li>
+<li>
+<p>Repeat steps <a href="#BABFCGBI">4</a> through <a href="#BABBIHCE">10</a> as many times as you wish. Occasionally, the vendor will report an exception that causes a rollback:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+Vendor: JMSException occurred: javax.jms.JMSException: Simulated 
+database concurrent access exception
+  Vendor: Rolled back transaction 1
+</pre></li>
+<li>
+<p>After you finish running the clients, you can delete the destination resources by using the following commands:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+asadmin delete-jms-resource jms/AQueue
+asadmin delete-jms-resource jms/BQueue
+asadmin delete-jms-resource jms/CQueue
+asadmin delete-jms-resource jms/OTopic
+</pre></li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="jms-examples002.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="jms-examples004.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

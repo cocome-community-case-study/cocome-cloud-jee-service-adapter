@@ -1,0 +1,933 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:30:3Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="Design and Architecture of Duke's Forest" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39031-01" />
+        <meta name="description" content="A guide to developing enterprise applications for the Java Platform, Enterprise Edition 7 (Java EE 7) using GlassFish Server Open Source Edition." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Java FX, Web, developer, enterprise, Java EE Tutorial, Java EE 7 Tutorial" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>The Java EE 7 Tutorial:Design and Architecture of Duke's Forest | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7.0</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/tutorial/doc/javaeetutorial7.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GEXAF">Preface</a></h2>
+<h2 class="tocheader"><a href="partintro.htm#GFIRP">Part I Introduction</a></h2>
+<h2 class="tocheader"><a href="overview.htm#BNAAW"><span class="secnum">1</span> Overview</a></h2>
+<h2 class="tocheader"><a href="usingexamples.htm#GFIUD"><span class="secnum">2</span> Using the Tutorial Examples</a></h2>
+<h2 class="tocheader"><a href="partplatform.htm#GFIRP2">Part II Platform Basics</a></h2>
+<h2 class="tocheader"><a href="resource-creation.htm#GKJIQ2"><span class="secnum">3</span> Resource Creation</a></h2>
+<h2 class="tocheader"><a href="injection.htm#GKJIQ3"><span class="secnum">4</span> Injection</a></h2>
+<h2 class="tocheader"><a href="packaging.htm#GKJIQ4"><span class="secnum">5</span> Packaging</a></h2>
+<h2 class="tocheader"><a href="partwebtier.htm#BNADP">Part III The Web Tier</a></h2>
+<h2 class="tocheader"><a href="webapp.htm#BNADR"><span class="secnum">6</span> Getting Started with Web Applications</a></h2>
+<h2 class="tocheader"><a href="jsf-intro.htm#BNAPH"><span class="secnum">7</span> JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-facelets.htm#GIEPX"><span class="secnum">8</span> Introduction to Facelets</a></h2>
+<h2 class="tocheader"><a href="jsf-el.htm#GJDDD"><span class="secnum">9</span> Expression Language</a></h2>
+<h2 class="tocheader"><a href="jsf-page.htm#BNAQZ"><span class="secnum">10</span> Using JavaServer Faces Technology in Web Pages</a></h2>
+<h2 class="tocheader"><a href="jsf-page-core.htm#GJCUT"><span class="secnum">11</span> Using Converters, Listeners, and Validators</a></h2>
+<h2 class="tocheader"><a href="jsf-develop.htm#BNATX"><span class="secnum">12</span> Developing with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-ajax.htm#GKIOW"><span class="secnum">13</span> Using Ajax with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-advanced-cc.htm#GKHXA"><span class="secnum">14</span> Composite Components: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="jsf-custom.htm#BNAVG"><span class="secnum">15</span> Creating Custom UI Components and Other Custom Objects</a></h2>
+<h2 class="tocheader"><a href="jsf-configure.htm#BNAWO"><span class="secnum">16</span> Configuring JavaServer Faces Applications</a></h2>
+<h2 class="tocheader"><a href="servlets.htm#BNAFD"><span class="secnum">17</span> Java Servlet Technology</a></h2>
+<h2 class="tocheader"><a href="websocket.htm#GKJIQ5"><span class="secnum">18</span> Java API for WebSocket</a></h2>
+<h2 class="tocheader"><a href="jsonp.htm#GLRBB"><span class="secnum">19</span> JSON Processing</a></h2>
+<h2 class="tocheader"><a href="webi18n.htm#BNAXU"><span class="secnum">20</span> Internationalizing and Localizing Web Applications</a></h2>
+<h2 class="tocheader"><a href="partbeanvalidation.htm#sthref1322">Part IV Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation.htm#CHDGJIIA"><span class="secnum">21</span> Introduction to Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation-advanced.htm#GKAHP"><span class="secnum">22</span> Bean Validation: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partcdi.htm#GJBNR">Part V Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basic.htm#GIWHB"><span class="secnum">23</span> Introduction to Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basicexamples.htm#GJBLS"><span class="secnum">24</span> Running the Basic Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="cdi-adv.htm#GJEHI"><span class="secnum">25</span> Contexts and Dependency Injection for Java EE: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="cdi-adv-examples.htm#GKHRE"><span class="secnum">26</span> Running the Advanced Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="partwebsvcs.htm#BNAYK">Part VI Web Services</a></h2>
+<h2 class="tocheader"><a href="webservices-intro.htm#GIJTI"><span class="secnum">27</span> Introduction to Web Services</a></h2>
+<h2 class="tocheader"><a href="jaxws.htm#BNAYL"><span class="secnum">28</span> Building Web Services with JAX-WS</a></h2>
+<h2 class="tocheader"><a href="jaxrs.htm#GIEPU"><span class="secnum">29</span> Building RESTful Web Services with JAX-RS</a></h2>
+<h2 class="tocheader"><a href="jaxrs-client.htm#BABEIGIH"><span class="secnum">30</span> Accessing REST Resources with the JAX-RS Client API</a></h2>
+<h2 class="tocheader"><a href="jaxrs-advanced.htm#GJJXE"><span class="secnum">31</span> JAX-RS: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="partentbeans.htm#BNBLR">Part VII Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-intro.htm#GIJSZ"><span class="secnum">32</span> Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-gettingstarted.htm#GIJRE"><span class="secnum">33</span> Getting Started with Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-basicexamples.htm#GIJRB"><span class="secnum">34</span> Running the Enterprise Bean Examples</a></h2>
+<h2 class="tocheader"><a href="ejb-embedded.htm#GKCQZ"><span class="secnum">35</span> Using the Embedded Enterprise Bean Container</a></h2>
+<h2 class="tocheader"><a href="ejb-async.htm#GKIDZ"><span class="secnum">36</span> Using Asynchronous Method Invocation in Session Beans</a></h2>
+<h2 class="tocheader"><a href="partpersist.htm#BNBPY">Part VIII Persistence</a></h2>
+<h2 class="tocheader"><a href="persistence-intro.htm#BNBPZ"><span class="secnum">37</span> Introduction to the Java Persistence API</a></h2>
+<h2 class="tocheader"><a href="persistence-basicexamples.htm#GIJST"><span class="secnum">38</span> Running the Persistence Examples</a></h2>
+<h2 class="tocheader"><a href="persistence-querylanguage.htm#BNBTG"><span class="secnum">39</span> The Java Persistence Query Language</a></h2>
+<h2 class="tocheader"><a href="persistence-criteria.htm#GJITV"><span class="secnum">40</span> Using the Criteria API to Create Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-string-queries.htm#GKJIQ"><span class="secnum">41</span> Creating and Using String-Based Criteria Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-locking.htm#GKJJF"><span class="secnum">42</span> Controlling Concurrent Access to Entity Data with Locking</a></h2>
+<h2 class="tocheader"><a href="persistence-entitygraphs.htm#BABIJIAC"><span class="secnum">43</span> Creating Fetch Plans with Entity Graphs</a></h2>
+<h2 class="tocheader"><a href="persistence-cache.htm#GKJIA"><span class="secnum">44</span> Using a Second-Level Cache with Java Persistence API Applications</a></h2>
+<h2 class="tocheader"><a href="partmessaging.htm#GFIRP3">Part IX Messaging</a></h2>
+<h2 class="tocheader"><a href="jms-concepts.htm#BNCDQ"><span class="secnum">45</span> Java Message Service Concepts</a></h2>
+<h2 class="tocheader"><a href="jms-examples.htm#BNCGV"><span class="secnum">46</span> Java Message Service Examples</a></h2>
+<h2 class="tocheader"><a href="partsecurity.htm#GIJRP">Part X Security</a></h2>
+<h2 class="tocheader"><a href="security-intro.htm#BNBWJ"><span class="secnum">47</span> Introduction to Security in the Java EE Platform</a></h2>
+<h2 class="tocheader"><a href="security-webtier.htm#BNCAS"><span class="secnum">48</span> Getting Started Securing Web Applications</a></h2>
+<h2 class="tocheader"><a href="security-javaee.htm#BNBYK"><span class="secnum">49</span> Getting Started Securing Enterprise Applications</a></h2>
+<h2 class="tocheader"><a href="security-advanced.htm#GJJWX"><span class="secnum">50</span> Java EE Security: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partsupporttechs.htm#GIJUE">Part XI Java EE Supporting Technologies</a></h2>
+<h2 class="tocheader"><a href="transactions.htm#BNCIH"><span class="secnum">51</span> Transactions</a></h2>
+<h2 class="tocheader"><a href="resources.htm#BNCJH"><span class="secnum">52</span> Resource Adapters and Contracts</a></h2>
+<h2 class="tocheader"><a href="connectorexample.htm#GLODB"><span class="secnum">53</span> The Resource Adapter Examples</a></h2>
+<h2 class="tocheader"><a href="interceptors.htm#GKEED"><span class="secnum">54</span> Using Java EE Interceptors</a></h2>
+<h2 class="tocheader"><a href="batch-processing.htm#GKJIQ6"><span class="secnum">55</span> Batch Processing</a></h2>
+<h2 class="tocheader"><a href="concurrency-utilities.htm#GKJIQ8"><span class="secnum">56</span> Concurrency Utilities for Java EE</a></h2>
+<h2 class="tocheader"><a href="partcasestudies.htm#GKGJW">Part XII Case Studies</a></h2>
+<h2 class="tocheader"><a href="dukes-bookstore.htm#GLNVI"><span class="secnum">57</span> Duke's Bookstore Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-tutoring.htm#GKAEE"><span class="secnum">58</span> Duke's Tutoring Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-forest.htm#GLNPW"><span class="secnum">59</span> Duke's Forest Case Study Example</a></h2>
+<ul style="list-style-type:none">
+<li><div id="backgroundColor"><a href="dukes-forest001.htm#GLNRJ"><span class="secnum">59.1</span> Design and Architecture of Duke's Forest</a><ul style="list-style-type:none">
+<li><a href="dukes-forest001.htm#CIHHJEGA"><span class="secnum">59.1.1</span> The events Project</a></li>
+<li><a href="dukes-forest001.htm#CIHFCIAC"><span class="secnum">59.1.2</span> The entities Project</a></li>
+<li><a href="dukes-forest001.htm#sthref3074"><span class="secnum">59.1.3</span> The dukes-payment Project</a></li>
+<li><a href="dukes-forest001.htm#sthref3075"><span class="secnum">59.1.4</span> The dukes-resources Project</a></li>
+<li><a href="dukes-forest001.htm#sthref3076"><span class="secnum">59.1.5</span> The Duke's Store Project</a>
+<ul style="list-style-type:none">
+<li><a href="dukes-forest001.htm#sthref3077"><span class="secnum">59.1.5.1</span> Enterprise Beans Used in Duke's Store</a></li>
+<li><a href="dukes-forest001.htm#sthref3078"><span class="secnum">59.1.5.2</span> Facelets Files Used in the Main Interface of Duke's Store</a></li>
+<li><a href="dukes-forest001.htm#CIHHDHIH"><span class="secnum">59.1.5.3</span> Facelets Files Used in the Administration Interface of Duke's Store</a></li>
+<li><a href="dukes-forest001.htm#sthref3079"><span class="secnum">59.1.5.4</span> Managed Beans Used in Duke's Store</a></li>
+<li><a href="dukes-forest001.htm#sthref3080"><span class="secnum">59.1.5.5</span> Helper Classes Used in Duke's Store</a></li>
+<li><a href="dukes-forest001.htm#CIHEBAFD"><span class="secnum">59.1.5.6</span> Qualifiers Used in Duke's Store</a></li>
+<li><a href="dukes-forest001.htm#sthref3081"><span class="secnum">59.1.5.7</span> Event Handlers Used in Duke's Store</a></li>
+<li><a href="dukes-forest001.htm#sthref3082"><span class="secnum">59.1.5.8</span> Deployment Descriptors Used in Duke's Store</a></li>
+</ul>
+</li>
+<li><a href="dukes-forest001.htm#sthref3083"><span class="secnum">59.1.6</span> The Duke's Shipment Project</a>
+<ul style="list-style-type:none">
+<li><a href="dukes-forest001.htm#sthref3084"><span class="secnum">59.1.6.1</span> Enterprise Beans Used in Duke's Shipment</a></li>
+<li><a href="dukes-forest001.htm#sthref3085"><span class="secnum">59.1.6.2</span> Facelets Files Used in Duke's Shipment</a></li>
+<li><a href="dukes-forest001.htm#sthref3086"><span class="secnum">59.1.6.3</span> Managed Beans Used in Duke's Shipment</a></li>
+<li><a href="dukes-forest001.htm#sthref3087"><span class="secnum">59.1.6.4</span> Helper Class Used in Duke's Shipment</a></li>
+<li><a href="dukes-forest001.htm#sthref3088"><span class="secnum">59.1.6.5</span> Qualifier Used in Duke's Shipment</a></li>
+<li><a href="dukes-forest001.htm#sthref3089"><span class="secnum">59.1.6.6</span> Deployment Descriptors Used in Duke's Shipment</a></li>
+</ul>
+</li>
+</ul>
+</div></li>
+<li><a href="dukes-forest002.htm#GLNQP"><span class="secnum">59.2</span> Building and Deploying the Duke's Forest Case Study Application</a>
+<ul style="list-style-type:none">
+<li><a href="dukes-forest002.htm#sthref3090"><span class="secnum">59.2.1</span> To Build and Deploy the Duke's Forest Application Using NetBeans IDE</a></li>
+<li><a href="dukes-forest002.htm#sthref3091"><span class="secnum">59.2.2</span> To Build and Deploy the Duke's Forest Application Using Maven</a></li>
+</ul>
+</li>
+<li><a href="dukes-forest003.htm#GLNSX"><span class="secnum">59.3</span> Running the Duke's Forest Application</a>
+<ul style="list-style-type:none">
+<li><a href="dukes-forest003.htm#sthref3092"><span class="secnum">59.3.1</span> To Register as a Duke's Store Customer</a></li>
+<li><a href="dukes-forest003.htm#sthref3093"><span class="secnum">59.3.2</span> To Purchase Products</a></li>
+<li><a href="dukes-forest003.htm#sthref3094"><span class="secnum">59.3.3</span> To Approve Shipment of a Product</a></li>
+<li><a href="dukes-forest003.htm#sthref3095"><span class="secnum">59.3.4</span> To Create a New Product</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="tocheader"><a href="index.htm">Index</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>The Java EE 7 Tutorial  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="dukes-forest.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="dukes-forest002.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="GLNRJ" name="GLNRJ"></a><a id="JEETT00573" name="JEETT00573"></a>
+<div class="sect1">
+<h1 class="sect1"><span class="secnum">59.1</span> Design and Architecture of Duke's Forest</h1>
+<p>Duke's Forest is a complex application consisting of three main projects and three subprojects. <a href="#GLNVM">Figure 59-1</a> shows the architecture of the three main projects that you will deploy: Duke's Store, Duke's Shipment, and Duke's Payment. It also shows how Duke's Store makes use of the Events and Entities projects.</p>
+<div class="figure"><a id="GLNVM" name="GLNVM"></a><a id="JEETT00061" name="JEETT00061"></a>
+<p class="titleinfigure">Figure 59-1 Architecture of the Duke's Forest Example Application</p>
+<img src="img/jeett_dt_062.png" alt="Description of Figure 59-1 follows" title="Description of Figure 59-1 follows" longdesc="img_text/jeett_dt_062.htm" /><br />
+<a id="sthref3071" name="sthref3071" href="img_text/jeett_dt_062.htm">Description of "Figure 59-1 Architecture of the Duke's Forest Example Application"</a><br />
+<br /></div>
+<!-- class="figure" -->
+<p>Duke's Forest uses the following Java EE 7 platform features:</p>
+<ul>
+<li>
+<p>Java Persistence API entities</p>
+<ul>
+<li>
+<p>Bean Validation annotations on the entities for verifying data</p>
+</li>
+<li>
+<p>XML annotations for Java API for XML binding (JAXB) serialization</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Web services</p>
+<ul>
+<li>
+<p>A JAX-RS web service for payment, with security constraints</p>
+</li>
+<li>
+<p>A JAX-RS web service that is EJB based</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Enterprise beans</p>
+<ul>
+<li>
+<p>Local session beans</p>
+</li>
+<li>
+<p>All enterprise beans packaged within the WAR</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Contexts and Dependency Injection (CDI)</p>
+<ul>
+<li>
+<p>CDI annotations for JavaServer Faces components</p>
+</li>
+<li>
+<p>A CDI managed bean used as a shopping cart, with conversation scoping</p>
+</li>
+<li>
+<p>Qualifiers</p>
+</li>
+<li>
+<p>Events and event handlers</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Servlets</p>
+<ul>
+<li>
+<p>A servlet for dynamic image presentation</p>
+</li>
+</ul>
+</li>
+<li>
+<p>JavaServer Faces 2.2 technology, using Facelets for the web front end</p>
+<ul>
+<li>
+<p>Templating</p>
+</li>
+<li>
+<p>Composite components</p>
+</li>
+<li>
+<p>File upload</p>
+</li>
+<li>
+<p>Resources packaged in a JAR file so they can be found in the classpath</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Security</p>
+<ul>
+<li>
+<p>Java EE security constraints on the administrative interface business methods (enterprise beans)</p>
+</li>
+<li>
+<p>Security constraints for customers and administrators (web components)</p>
+</li>
+<li>
+<p>Single Sign-On (SSO) to propagate an authenticated user identity from Duke's Store to Duke's Shipment</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>The Duke's Forest application has two main user interfaces, both packaged within the Duke's Store WAR file:</p>
+<ul>
+<li>
+<p>The main interface, for customers and guests</p>
+</li>
+<li>
+<p>The administrative interface used to perform back office operations, such as adding new items to the catalog</p>
+</li>
+</ul>
+<p>The Duke's Shipment application also has a user interface, accessible to administrators.</p>
+<p><a href="#CIHCHCAA">Figure 59-2</a> shows how the web applications and the web service interact.</p>
+<div class="figure"><a id="CIHCHCAA" name="CIHCHCAA"></a>
+<p class="titleinfigure">Figure 59-2 Interactions between Duke's Forest Components</p>
+<img src="img/jeett_dt_063.png" alt="Description of Figure 59-2 follows" title="Description of Figure 59-2 follows" longdesc="img_text/jeett_dt_063.htm" /><br />
+<a id="sthref3072" name="sthref3072" href="img_text/jeett_dt_063.htm">Description of "Figure 59-2 Interactions between Duke's Forest Components"</a><br />
+<br /></div>
+<!-- class="figure" -->
+<p>As illustrated in <a href="#CIHCHCAA">Figure 59-2</a>, the customer interacts with the main interface of Duke's Store, while the administrator interacts with the administration interface. Both interfaces access a fa&ccedil;ade consisting of managed beans and stateless session beans, which in turn interact with the entities that represent database tables. The fa&ccedil;ade also interacts with web services APIs that access the Duke's Payment web service. When the payment for an order is approved, Duke's Store sends the order to a JMS queue. The administrator also interacts with the interface of Duke's Shipment, which can be accessed either directly through Duke's Shipment or from the administration interface of Duke's Store by means of a web service. When the administrator approves an order for shipping, Duke's Shipment consumes the order from the JMS queue.</p>
+<p>The most fundamental building blocks of the application are the Events and Entities projects, which are bundled into Duke's Store and Duke's Shipment along with the Duke's Resources project.</p>
+<a id="CIHHJEGA" name="CIHHJEGA"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">59.1.1</span> The events Project</h2>
+<p>Events are one of the core components of Duke's Forest. The <code>events</code> project, included in all three of the main projects, is the most simple project of the application. It has only one class, <code>OrderEvent</code>, but this class is responsible for most of the messages between objects in the application.</p>
+<p>The application can send messages based on events to different components and react to them based on the qualification of the event. The application supports the following qualifiers:</p>
+<ul>
+<li>
+<p><code>@LoggedIn</code>: For authenticated users</p>
+</li>
+<li>
+<p><code>@New</code>: When a new order is created by the shopping cart</p>
+</li>
+<li>
+<p><code>@Paid</code>: When an order is paid for and ready for shipment</p>
+</li>
+</ul>
+<p>The following code snippet from the <code>PaymentHandler</code> class of Duke's Store shows how the <code>@Paid</code> event is handled:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Inject @Paid Event&lt;OrderEvent&gt; eventManager;
+
+...
+public void onNewOrder(@Observes @New OrderEvent event) {
+
+    if (processPayment(event)) {
+        orderBean.setOrderStatus(event.getOrderID(), 
+                String.valueOf(OrderBean.Status.PENDING_PAYMENT.getStatus()));
+        logger.info("Payment Approved");
+        eventManager.fire(event);
+    } else {
+        orderBean.setOrderStatus(event.getOrderID(), 
+                String.valueOf(OrderBean.Status.CANCELLED_PAYMENT.getStatus()));
+        logger.info("Payment Denied");
+    }
+}
+</pre>
+<p>To enable users to add more events to the project easily or update an event class with more fields for a new client, this component is a separate project within the application.</p>
+</div>
+<!-- class="sect2" -->
+<a id="CIHFCIAC" name="CIHFCIAC"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">59.1.2</span> The entities Project</h2>
+<p>The <code>entities</code> project is a Java Persistence API (JPA) project used by both Duke's Store and Duke's Shipment. It is generated from the database schema shown in <a href="#GLNXD">Figure 59-3</a> and is also used as a base for the entities consumed and produced by the web services through JAXB. Each entity has validation rules based on business requirements, specified using Bean Validation.</p>
+<div class="figure"><a id="GLNXD" name="GLNXD"></a><a id="JEETT00062" name="JEETT00062"></a>
+<p class="titleinfigure">Figure 59-3 Duke's Forest Database Tables and Their Relationships</p>
+<img src="img/jeett_dt_064.png" alt="Description of Figure 59-3 follows" title="Description of Figure 59-3 follows" longdesc="img_text/jeett_dt_064.htm" /><br />
+<a id="sthref3073" name="sthref3073" href="img_text/jeett_dt_064.htm">Description of "Figure 59-3 Duke's Forest Database Tables and Their Relationships"</a><br />
+<br /></div>
+<!-- class="figure" -->
+<p>The database schema contains eight tables:</p>
+<ul>
+<li>
+<p><code>PERSON</code>, which has a one-to-many relationship with <code>PERSON_GROUPS</code> and <code>CUSTOMER_ORDER</code></p>
+</li>
+<li>
+<p><code>GROUPS</code>, which has a one-to-many relationship with <code>PERSON_GROUPS</code></p>
+</li>
+<li>
+<p><code>PERSON_GROUPS</code>, which has a many-to-one relationship with <code>PERSON</code> and <code>GROUPS</code> (it is the join table between those two tables)</p>
+</li>
+<li>
+<p><code>PRODUCT</code>, which has a many-to-one relationship with <code>CATEGORY</code> and a one-to-many relationship with <code>ORDER_DETAIL</code></p>
+</li>
+<li>
+<p><code>CATEGORY</code>, which has a one-to-many relationship with <code>PRODUCT</code></p>
+</li>
+<li>
+<p><code>CUSTOMER_ORDER</code>, which has a one-to-many relationship with <code>ORDER_DETAIL</code> and a many-to-one relationship with <code>PERSON</code> and <code>ORDER_STATUS</code></p>
+</li>
+<li>
+<p><code>ORDER_DETAIL</code>, which has a many-to-one relationship with <code>PRODUCT</code> and <code>CUSTOMER_ORDER</code> (it is the join table between those two tables)</p>
+</li>
+<li>
+<p><code>ORDER_STATUS</code>, which has a one-to-many relationship with <code>CUSTOMER_ORDER</code></p>
+</li>
+</ul>
+<p>The entity classes that correspond to these tables are as follows.</p>
+<ul>
+<li>
+<p><code>Person</code>, which defines attributes common to customers and administrators. These attributes are the person's name and contact information, including street and email addresses. The email address has a Bean Validation annotation to ensure that the submitted data is well-formed. The generated table for the <code>Person</code> entity also has a <code>DTYPE</code> field that represents the discriminator column. Its value identifies the subclass (<code>Customer</code> or <code>Administrator</code>) to which the person belongs.</p>
+</li>
+<li>
+<p><code>Customer</code>, a specialization of <code>Person</code> with a specific field for <code>CustomerOrder</code> objects.</p>
+</li>
+<li>
+<p><code>Administrator</code>, a specialization of <code>Person</code> with fields for administration privileges.</p>
+</li>
+<li>
+<p><code>Groups</code>, which represents the group (<code>USERS</code> or <code>ADMINS</code>) to which the user belongs.</p>
+</li>
+<li>
+<p><code>Product</code>, which defines attributes for products. These attributes include name, price, description, associated image, and category.</p>
+</li>
+<li>
+<p><code>Category</code>, which defines attributes for product categories. These attributes include a name and a set of tags.</p>
+</li>
+<li>
+<p><code>CustomerOrder</code>, which defines attributes for orders placed by customers. These attributes include an amount and a date, along with id values for the customer and the order detail.</p>
+</li>
+<li>
+<p><code>OrderDetail</code>, which defines attributes for the order detail. These attributes include a quantity and id values for the product and the customer.</p>
+</li>
+<li>
+<p><code>OrderStatus</code>, which defines a status attribute for each order.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref3074" name="sthref3074"></a>
+<h2 class="sect2"><span class="secnum">59.1.3</span> The dukes-payment Project</h2>
+<p>The <code>dukes-payment</code> project is a web project that holds a simple Payment web service. Since this is an example application, it does not obtain any real credit information or even customer status to validate the payment. For now, the only rule imposed by the payment system is to deny all orders above $1,000. This application illustrates a common scenario where a third-party payment service is used to validate credit cards or bank payments.</p>
+<p>The project uses HTTP Basic Authentication and JAAS (Java Authentication and Authorization Service) to authenticate a customer to a JAX-RS web service. The implementation itself exposes a simple method, <code>processPayment</code>, which receives an <code>OrderEvent</code> to evaluate and approve or deny the order payment. The method is called from the checkout process of Duke's Store.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref3075" name="sthref3075"></a>
+<h2 class="sect2"><span class="secnum">59.1.4</span> The dukes-resources Project</h2>
+<p>The <code>dukes-resources</code> project contains a number of files used by both Duke's Store and Duke's Shipment, bundled into a JAR file placed in the classpath. The resources are in the <code>src/main/resources</code> directory:</p>
+<ul>
+<li>
+<p><code>META-INF/resources/css</code>: Two style sheets, <code>default.css</code> and <code>jsfcrud.css</code></p>
+</li>
+<li>
+<p><code>META-INF/resources/img</code>: Images used by the projects</p>
+</li>
+<li>
+<p><code>META-INF/resources/js</code>: A JavaScript file, <code>util.js</code></p>
+</li>
+<li>
+<p><code>META-INF/resources/util</code>: Composite components used by the projects</p>
+</li>
+<li>
+<p><code>bundles/Bundle.properties</code>: Application messages in English</p>
+</li>
+<li>
+<p><code>bundles/Bundle_es.properties</code>: Application messages in Spanish</p>
+</li>
+<li>
+<p><code>ValidationMessages.properties</code>: Bean Validation messages in English</p>
+</li>
+<li>
+<p><code>ValidationMessages_es.properties</code>: Bean Validation messages in Spanish</p>
+</li>
+</ul>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><a id="sthref3076" name="sthref3076"></a>
+<h2 class="sect2"><span class="secnum">59.1.5</span> The Duke's Store Project</h2>
+<p>Duke's Store, a web application, is the core application of Duke's Forest. It is responsible for the main store interface for customers as well as the administration interface.</p>
+<p>The main interface of Duke's Store allows the user to perform the following tasks:</p>
+<ul>
+<li>
+<p>Browsing the product catalog</p>
+</li>
+<li>
+<p>Signing up as a new customer</p>
+</li>
+<li>
+<p>Adding products to the shopping cart</p>
+</li>
+<li>
+<p>Checking out</p>
+</li>
+<li>
+<p>Viewing order status</p>
+</li>
+</ul>
+<p>The administration interface of Duke's Store allows administrators to perform the following tasks:</p>
+<ul>
+<li>
+<p>Product maintenance (create, edit, update, delete)</p>
+</li>
+<li>
+<p>Category maintenance (create, edit, update, delete)</p>
+</li>
+<li>
+<p>Customer maintenance (create, edit, update, delete)</p>
+</li>
+<li>
+<p>Group maintenance (create, edit, update, delete)</p>
+</li>
+</ul>
+<p>The project also uses stateless session beans as fa&ccedil;ades for interactions with the JPA entities described in <a href="#CIHFCIAC">The entities Project</a>, and CDI managed beans as controllers for interactions with Facelets pages. The project thus follows the MVC (Model-View-Controller) pattern and applies the same pattern to all entities and pages, as in the following example.</p>
+<ul>
+<li>
+<p><code>AbstractFacade</code> is an abstract class that receives a <code>Type&lt;T&gt;</code> and implements the common operations (CRUD) for this type, where <code>&lt;T&gt;</code> is a JPA entity.</p>
+</li>
+<li>
+<p><code>ProductBean</code> is a stateless session bean that extends <code>AbstractFacade</code>, applying <code>Product</code> as <code>Type&lt;T&gt;</code>, and injects the <code>PersistenceContext</code> for the <code>EntityManager</code>. This bean implements any custom methods needed to interact with the <code>Product</code> entity or to call a custom query.</p>
+</li>
+<li>
+<p><code>ProductController</code> is a CDI managed bean that interacts with the necessary enterprise beans and Facelets pages to control the way the data will be displayed.</p>
+</li>
+</ul>
+<p><code>ProductBean</code> begins as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Stateless
+public class ProductBean extends AbstractFacade&lt;Product&gt; {
+    private static final Logger logger =
+        Logger.getLogger(ProductBean.class.getCanonicalName());
+
+    @PersistenceContext(unitName="forestPU")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
+    ...
+</pre>
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref3077" name="sthref3077"></a>
+<h3 class="sect3"><span class="secnum">59.1.5.1</span> Enterprise Beans Used in Duke's Store</h3>
+<p>The enterprise beans used in Duke's Store provide the business logic for the application and are located in the <code>com.forest.ejb</code> package. All are stateless session beans.</p>
+<p><code>AbstractFacade</code> is not an enterprise bean but an abstract class that implements common operations for <code>Type&lt;T&gt;</code>, where <code>&lt;T&gt;</code> is a JPA entity.</p>
+<p>Most of the other beans extend <code>AbstractFacade</code>, inject the <code>PersistenceContext</code>, and implement any needed custom methods:</p>
+<ul>
+<li>
+<p><code>AdministratorBean</code></p>
+</li>
+<li>
+<p><code>CategoryBean</code></p>
+</li>
+<li>
+<p><code>EventDispatcherBean</code></p>
+</li>
+<li>
+<p><code>GroupsBean</code></p>
+</li>
+<li>
+<p><code>OrderBean</code></p>
+</li>
+<li>
+<p><code>OrderDetailBean</code></p>
+</li>
+<li>
+<p><code>OrderJMSManager</code></p>
+</li>
+<li>
+<p><code>OrderStatusBean</code></p>
+</li>
+<li>
+<p><code>ProductBean</code></p>
+</li>
+<li>
+<p><code>ShoppingCart</code></p>
+</li>
+<li>
+<p><code>UserBean</code></p>
+</li>
+</ul>
+<p>The <code>ShoppingCart</code> class, although it is in the <code>ejb</code> package, is a CDI managed bean with conversation scope, which means that the request information will persist across multiple requests. Also, <code>ShoppingCart</code> is responsible for starting the event chain for customer orders, which invokes the RESTful web service in <code>dukes-payment</code> and publishes an order to the JMS queue for shipping approval if the payment is successful.</p>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref3078" name="sthref3078"></a>
+<h3 class="sect3"><span class="secnum">59.1.5.2</span> Facelets Files Used in the Main Interface of Duke's Store</h3>
+<p>Like the other case study examples, Duke's Store uses Facelets to display the user interface. The main interface uses a large number of Facelets pages to display different areas. The pages are grouped into directories based on which module they handle.</p>
+<ul>
+<li>
+<p><code>template.xhtml</code>: Template file, used for both main and administration interfaces. It first performs a browser check to verify that the user's browser supports HTML 5, which is required for Duke's Forest. It divides the screen into several areas and specifies the client page for each area.</p>
+</li>
+<li>
+<p><code>topbar.xhtml</code>: Page for the login area at the top of the screen.</p>
+</li>
+<li>
+<p><code>top.xhtml</code>: Page for the title area.</p>
+</li>
+<li>
+<p><code>left.xhtml</code>: Page for the left sidebar.</p>
+</li>
+<li>
+<p><code>index.xhtml</code>: Page for the main screen content.</p>
+</li>
+<li>
+<p><code>login.xhtml</code>: Login page specified in <code>web.xml</code>. The main login interface is provided in <code>topbar.xhtml</code>, but this page appears if there is a login error.</p>
+</li>
+<li>
+<p><code>admin</code> directory: Pages related to the administration interface, described in <a href="#CIHHDHIH">Facelets Files Used in the Administration Interface of Duke's Store</a>.</p>
+</li>
+<li>
+<p><code>customer</code> directory: Pages related to customers (<code>Create.xhtml</code>, <code>Edit.xhtml</code>, <code>List.xhtml</code>, <code>Profile.xhtml</code>, <code>View.xhtml</code>).</p>
+</li>
+<li>
+<p><code>order</code> directory: Pages related to orders (<code>Create.xhtml</code>, <code>List.xhtml</code>, <code>MyOrders.xhtml</code>, <code>View.xhtml</code>).</p>
+</li>
+<li>
+<p><code>orderDetail</code> directory: Popup page allowing users to view details of an order (<code>View_popup.xhtml</code>).</p>
+</li>
+<li>
+<p><code>product</code> directory: Pages related to products (<code>List.xhtml</code>, <code>ListCategory.xhtml</code>, <code>View.xhtml</code>).</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<a id="CIHHDHIH" name="CIHHDHIH"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect3"><span class="secnum">59.1.5.3</span> Facelets Files Used in the Administration Interface of Duke's Store</h3>
+<p>The Facelets pages for the administration interface of Duke's Store are found in the <code>web/admin</code> directory:</p>
+<ul>
+<li>
+<p><code>administrator</code> directory: Pages related to administrator management (<code>Create.xhtml</code>, <code>Edit.xhtml</code>, <code>List.xhtm</code>l, <code>View.xhtml</code>)</p>
+</li>
+<li>
+<p><code>category</code> directory: Pages related to product category management (<code>Create.xhtml</code>, <code>Edit.xhtml</code>, <code>List.xhtml</code>, <code>View.xhtml</code>)</p>
+</li>
+<li>
+<p><code>customer</code> directory: Pages related to customer management (<code>Create.xhtml</code>, <code>Edit.xhtml</code>, <code>List.xhtml</code>, <code>Profile.xhtml</code>, <code>View.xhtml</code>)</p>
+</li>
+<li>
+<p><code>groups</code> directory: Pages related to group management (<code>Create.xhtml</code>, <code>Edit.xhtml</code>, <code>List.xhtml</code>, <code>View.xhtml</code>)</p>
+</li>
+<li>
+<p><code>order</code> directory: Pages related to order management (<code>Create.xhtml</code>, <code>Edit.xhtml</code>, <code>List.xhtml</code>, <code>View.xhtml</code>)</p>
+</li>
+<li>
+<p><code>orderDetail</code> directory: Popup page allowing the administrator to view details of an order (<code>View_popup.xhtml</code>)</p>
+</li>
+<li>
+<p><code>product</code> directory: Pages related to product management (<code>Confirm.xhtm</code>l, <code>Create.xhtml</code>, <code>Edit.xhtml</code>, <code>List.xhtml</code>, <code>View.xhtml</code>)</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref3079" name="sthref3079"></a>
+<h3 class="sect3"><span class="secnum">59.1.5.4</span> Managed Beans Used in Duke's Store</h3>
+<p>Duke's Store uses the following CDI managed beans, which correspond to the enterprise beans. The beans are in the <code>com.forest.web</code> package:</p>
+<ul>
+<li>
+<p><code>AdministratorController</code></p>
+</li>
+<li>
+<p><code>CategoryController</code></p>
+</li>
+<li>
+<p><code>CustomerController</code></p>
+</li>
+<li>
+<p><code>CustomerOrderController</code></p>
+</li>
+<li>
+<p><code>GroupsController</code></p>
+</li>
+<li>
+<p><code>OrderDetailController</code></p>
+</li>
+<li>
+<p><code>OrderStatusController</code></p>
+</li>
+<li>
+<p><code>ProductController</code></p>
+</li>
+<li>
+<p><code>UserController</code></p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref3080" name="sthref3080"></a>
+<h3 class="sect3"><span class="secnum">59.1.5.5</span> Helper Classes Used in Duke's Store</h3>
+<p>The CDI managed beans in the main interface of Duke's Store use the following helper classes, found in the <code>com.forest.web.util</code> package:</p>
+<ul>
+<li>
+<p><code>AbstractPaginationHelper</code>: An abstract class with methods used by the managed beans</p>
+</li>
+<li>
+<p><code>ImageServlet</code>: A servlet class that retrieves the image content from the database and displays it</p>
+</li>
+<li>
+<p><code>JsfUtil</code>: Class used for JavaServer Faces operations, such as queuing messages on a <code>FacesContext</code> instance</p>
+</li>
+<li>
+<p><code>MD5Util</code>: Class used by the <code>CustomerController</code> managed bean to generate an encrypted password for a user</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<a id="CIHEBAFD" name="CIHEBAFD"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect3"><span class="secnum">59.1.5.6</span> Qualifiers Used in Duke's Store</h3>
+<p>Duke's Store defines the following qualifiers in the <code>com.forest.qualifiers</code> package:</p>
+<ul>
+<li>
+<p><code>@LoggedIn</code>: Qualifies a user as having logged in</p>
+</li>
+<li>
+<p><code>@New</code>: Qualifies an order as new</p>
+</li>
+<li>
+<p><code>@Paid</code>: Qualifies an order as paid</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref3081" name="sthref3081"></a>
+<h3 class="sect3"><span class="secnum">59.1.5.7</span> Event Handlers Used in Duke's Store</h3>
+<p>Duke's Store defines event handlers related to the <code>OrderEvent</code> class packaged in the <code>events</code> project (see <a href="#CIHHJEGA">The events Project</a>). The event handlers are in the <code>com.forest.handlers</code> package.</p>
+<ul>
+<li>
+<p><code>IOrderHandler</code>: The <code>IOrderHandler</code> interface defines a method, <code>onNewOrder</code>, implemented by the two handler classes.</p>
+</li>
+<li>
+<p><code>PaymentHandler</code>: The <code>ShoppingCart</code> bean fires an <code>OrderEvent</code> qualified as <code>@New</code>. The <code>onNewOrder</code> method of <code>PaymentHandler</code> observes these events and, when it intercepts them, processes the payment using the Duke's Payment web service. After a successful response from the web service, <code>PaymentHandler</code> fires the <code>OrderEvent</code> again, this time qualified as <code>@Paid</code>.</p>
+</li>
+<li>
+<p><code>DeliveryHandler</code>: The <code>onNewOrder</code> method of <code>DeliveryHandler</code> observes <code>OrderEvent</code> objects qualified as <code>@Paid</code> (orders paid and ready for delivery) and modifies the order status to <code>PENDING_SHIPMENT</code>. When an administrator accesses Duke's Shipment, it will call the Order Service, a RESTful web service, and ask for all orders in the database that are ready for delivery.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref3082" name="sthref3082"></a>
+<h3 class="sect3"><span class="secnum">59.1.5.8</span> Deployment Descriptors Used in Duke's Store</h3>
+<p>Duke's Store uses the following deployment descriptors, located in the <code>web/WEB-INF</code> directory:</p>
+<ul>
+<li>
+<p><code>faces-config.xml</code>: The JavaServer Faces configuration file</p>
+</li>
+<li>
+<p><code>glassfish-web.xml</code>: The configuration file specific to GlassFish Server</p>
+</li>
+<li>
+<p><code>web.xml</code>: The web application configuration file</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<div class="sect2"><a id="sthref3083" name="sthref3083"></a>
+<h2 class="sect2"><span class="secnum">59.1.6</span> The Duke's Shipment Project</h2>
+<p>Duke's Shipment is a web application with a login page, a main Facelets page, and some other objects. This application, which is accessible only to administrators, consumes orders from a JMS queue and calls the RESTful web service exposed by Duke's Store to update the order status. The main page of Duke's Shipment shows a list of orders pending shipping approval and a list of shipped orders. The administrator can approve or deny orders for shipping. If approved, the order is shipped, and it appears under the Shipped heading. If denied, the order disappears from the page, and on the customer's Orders list it appears as cancelled.</p>
+<p>There is also a gear icon on the Pending list that makes an Ajax call to the Order Service to refresh the list without refreshing the page. The code looks like this:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:commandLink&gt;
+    &lt;h:graphicImage library="img" title="Check for new orders"
+                    style="border:0px" name="refresh.png"/&gt;
+    &lt;f:ajax execute="@form" render="@form" /&gt;
+&lt;/h:commandLink&gt;
+</pre>
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref3084" name="sthref3084"></a>
+<h3 class="sect3"><span class="secnum">59.1.6.1</span> Enterprise Beans Used in Duke's Shipment</h3>
+<p>The <code>UserBean</code> stateless session bean used in Duke's Shipment provides the business logic for the application and is located in the <code>com.forest.shipment.session</code> package.</p>
+<p>Like Duke's Store, Duke's Shipment uses the <code>AbstractFacade</code> class. This class is not an enterprise bean but an abstract class that implements common operations for <code>Type&lt;T&gt;</code>, where <code>&lt;T&gt;</code> is a JPA entity.</p>
+<p>The <code>OrderBrowser</code> stateless session bean, located in the <code>com.forest.shipment.ejb</code> package, has one method that browses the JMS order queue and another that consumes an order message after the administrator approves or denies the order for shipment.</p>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref3085" name="sthref3085"></a>
+<h3 class="sect3"><span class="secnum">59.1.6.2</span> Facelets Files Used in Duke's Shipment</h3>
+<p>Duke's Shipment has only one page, so it has many fewer Facelets files than Duke's Store.</p>
+<ul>
+<li>
+<p><code>template.xhtml</code>: The template file, like the one in Duke's Store, first performs a browser check to verify that the user's browser supports HTML 5, which is required for Duke's Forest. It divides the screen into areas and specifies the client page for each area.</p>
+</li>
+<li>
+<p><code>topbar.xhtml</code>: Page for the login area at the top of the screen.</p>
+</li>
+<li>
+<p><code>top.xhtml</code>: Page for the title area.</p>
+</li>
+<li>
+<p><code>index.xhtml</code>: Page for the initial main screen content.</p>
+</li>
+<li>
+<p><code>login.xhtml</code>: Login page specified in <code>web.xml</code>. The main login interface is provided in <code>topbar.xhtml</code>, but this page appears if there is a login error.</p>
+</li>
+<li>
+<p><code>admin/index.xhtml</code>: Page for the main screen content after authentication.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref3086" name="sthref3086"></a>
+<h3 class="sect3"><span class="secnum">59.1.6.3</span> Managed Beans Used in Duke's Shipment</h3>
+<p>Duke's Shipment uses the following CDI managed beans, in the <code>com.forest.shipment</code> package:</p>
+<ul>
+<li>
+<p><code>web.ShippingBean</code>: Managed bean that acts as a client to the Order Service</p>
+</li>
+<li>
+<p><code>web.UserController</code>: Managed bean that corresponds to the <code>UserBean</code> session bean</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref3087" name="sthref3087"></a>
+<h3 class="sect3"><span class="secnum">59.1.6.4</span> Helper Class Used in Duke's Shipment</h3>
+<p>The Duke's Shipment managed beans use only one helper class, found in the <code>com.forest.shipment.web.util</code> package:</p>
+<ul>
+<li>
+<p><code>JsfUtil</code>: Class used for JavaServer Faces operations, such as queuing messages on a <code>FacesContext</code> instance</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref3088" name="sthref3088"></a>
+<h3 class="sect3"><span class="secnum">59.1.6.5</span> Qualifier Used in Duke's Shipment</h3>
+<p>Duke's Shipment includes the <code>@LoggedIn</code> qualifier described in <a href="#CIHEBAFD">Qualifiers Used in Duke's Store</a>.</p>
+</div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref3089" name="sthref3089"></a>
+<h3 class="sect3"><span class="secnum">59.1.6.6</span> Deployment Descriptors Used in Duke's Shipment</h3>
+<p>Duke's Shipment uses the following deployment descriptors:</p>
+<ul>
+<li>
+<p><code>faces-config.xml</code>: The JavaServer Faces configuration file</p>
+</li>
+<li>
+<p><code>glassfish-web.xml</code>: The configuration file specific to GlassFish Server</p>
+</li>
+<li>
+<p><code>web.xml</code>: The web application configuration file</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="dukes-forest.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="dukes-forest002.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

@@ -1,0 +1,46 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+ <TITLE>Propiedades del objeto de f&aacute;brica de conexi&oacute;n - Confiabilidad de mensajes JMS y control de flujo</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>Propiedades del objeto de f&aacute;brica de conexi&oacute;n&gt; <BR> Confiabilidad de mensajes JMS y controles de flujo</H2>
+ 
+<P>Use esta ficha para a especificar de nuevo el uso de los mensajes de control de Message Queue (confirmaciones del agente) y los controles de flujo del motor de ejecuci&oacute;n cliente.</P>
+<p><b>Esperar confirmaci&oacute;n al producir el mensaje</b> Especifica la confirmaci&oacute;n del agente para los mensajes producidos por el cliente:</p>
+
+<ul>
+  <li>Si el valor es verdadero, el agente confirma la recepci&oacute;n de todos los mensajes JMS (persistentes y no persistentes) enviados por el cliente productor, y los subprocesos de &eacute;ste se bloquear&aacute;n a la espera de las confirmaciones.</li>
+  <li>Si el valor es falso, el agente no confirma la recepci&oacute;n de ning&uacute;n mensaje JMS (persistente o no persistente) enviado por el cliente productor, y los subprocesos de &eacute;ste no se bloquear&aacute;n a la espera de las confirmaciones.</li>
+  <li> De no especificarse, el agente confirma &uacute;nicamente la recepci&oacute;n de los mensajes persistentes, y el subproceso del cliente productor se bloquear&aacute; a la espera de dichas confirmaciones.</li>
+</ul>
+
+<p><b>Esperar confirmaci&oacute;n al confirmarse el mensaje</b> Especifica la confirmaci&oacute;n del agente para las confirmaciones de los clientes consumidores:</p>
+
+<ul>
+  <li>Si el valor es verdadero, el agente confirma todas las confirmaciones de los clientes consumidores y los subprocesos de &eacute;stos se bloquean a la espera de las confirmaciones del agente.</li>
+  <li>Si el valor es falso, el agente no confirma ninguna de las confirmaciones de los clientes consumidores y los subprocesos de &eacute;stos no se bloquean a la espera de las confirmaciones del agente.</li>
+  <li> Si no especifica nada, el agente confirma las confirmaciones de los clientes consumidores en el modo AUTO_ACKNOWLEDGE y CLIENT_ACKNOWLEDGE (y los subprocesos del cliente consumidor se bloquear&aacute;n a la espera de la confirmaci&oacute;n del agente), pero no confirma las confirmaciones de los clientes consumidores en el modo DUPES_OK_ACKNOWLEDGE (y los subprocesos del cliente consumidor no se bloquear&aacute;n.)</li>
+</ul>
+<p><b>Tiempo de espera de confirmaci&oacute;n (milisegs.)</b> Especifica el tiempo m&aacute;ximo, en milisegundos, que el motor de ejecuci&oacute;n cliente esperar&aacute; la confirmaci&oacute;n de un agente antes de iniciar una excepci&oacute;n. El valor predeterminado, 0, implica que no hay l&iacute;mite de tiempo de espera, es decir, el motor de ejecuci&oacute;n cliente esperar&aacute; indefinidamente.</p>
+<p><b>N&uacute;mero de fragmentos de control del flujo de mensajes JMS</b> Especifica el n&uacute;mero m&aacute;ximo de mensajes JMS en un lote medido. Cuando este n&uacute;mero de mensajes JMS se entrega en el motor de ejecuci&oacute;n cliente, la entrega se suspende temporalmente, permitiendo as&iacute; la entrega de los mensajes de control que hubiera retenidos. La entrega de mensajes JMS se reanuda tras la notificaci&oacute;n del motor de ejecuci&oacute;n cliente y contin&uacute;a hasta que se alcanza el n&uacute;mero especificado. Si se define ese n&uacute;mero como 0, no hay restricci&oacute;n en el n&uacute;mero de mensajes JMS que se pueden contener en un lote medido. Si el valor no es cero, el motor de ejecuci&oacute;n cliente podr&aacute; medir el flujo del mensaje para que los mensajes de control de Message Queue no se bloqueen con entregas de mensajes JMS grandes, as&iacute; como medir el flujo hacia el cliente entre lotes medidos.</p>
+
+<p><b>El flujo de mensajes JMS en el cliente es limitado</b> Especifica si se activa un l&iacute;mite de flujo de conexiones (en el n&uacute;mero de mensajes no consumidos entregados al motor de ejecuci&oacute;n cliente). Si esta casilla est&aacute; marcada, debe indicar un n&uacute;mero positivo en el campo <b>L&iacute;mite de flujo de mensajes JMS</b>.</p>
+<p><b>L&iacute;mite del flujo de mensajes JMS (n&uacute;mero de mensajes) </b>Especifica un l&iacute;mite en el n&uacute;mero de mensajes que se puede entregar mediante una conexi&oacute;n y almacenar en b&uacute;fer en el motor de ejecuci&oacute;n cliente en espera de ser consumidos (se puede usar s&oacute;lo si la opci&oacute;n <b>El flujo de mensajes JMS en el cliente es limitado</b> est&aacute; activada). Cuando el n&uacute;mero de mensajes JMS entregados al motor de ejecuci&oacute;n cliente (seg&uacute;n la medici&oacute;n de flujo que establece <b>N&uacute;mero de fragmentos de control del flujo de mensajes JMS</b>) excede este l&iacute;mite, cesa la entrega de mensajes. S&oacute;lo se reanuda cuando el n&uacute;mero de mensajes no consumidos cae por debajo del valor definido mediante esta propiedad. Esto evita que un cliente consumidor que tarda mucho en procesar los mensajes pueda verse saturado con mensajes pendientes que le dejen sin memoria. </p>
+
+<P><b>L&iacute;mite de flujo del consumidor (mensajes no consumidos por el consumidor) </b>Especifica un l&iacute;mite en el n&uacute;mero de mensajes por consumidor que se puede entregar mediante una conexi&oacute;n y almacenar en b&uacute;fer en el motor de ejecuci&oacute;n cliente. Este l&iacute;mite tiene dos objetivos: mejora el equilibrio de la carga entre consumidores en situaciones de entrega en las que haya colas con varios consumidores (a ning&uacute;n consumidor se puede enviar un n&uacute;mero de mensajes desproporcionado) y ayuda a evitar que un consumidor sature a otro en la conexi&oacute;n. Cuando el n&uacute;mero de mensajes JMS entregados al motor de ejecuci&oacute;n cliente excede este l&iacute;mite para cualquier consumidor, cesa la entrega de mensajes a este consumidor. S&oacute;lo se reanuda cuando el n&uacute;mero de mensajes no consumidos es inferior al valor definido en el campo <b>Umbral del flujo del consumidor</b>. </P>
+<P>Observe que si el n&uacute;mero total de mensajes almacenados en b&uacute;fer para todos los consumidores de una conexi&oacute;n excede el valor de <b>L&iacute;mite del flujo de mensajes JMS</b>, entonces la entrega de mensajes de la conexi&oacute;n cesar&aacute; hasta que el n&uacute;mero sea inferior al valor especificado. Si especifica un &quot;L&iacute;mite del flujo del consumidor&quot;, no ser&aacute; necesario especificar un &quot;L&iacute;mite del flujo de mensajes JMS&quot;, excepto en casos muy concretos. Los requisitos de la mayor&iacute;a de las aplicaciones en cuanto a medici&oacute;n de flujo de mensajes se cumplen con la definici&oacute;n de &quot;L&iacute;mite del flujo del consumidor&quot; en lugar de con &quot;L&iacute;mite del flujo de mensajes JMS&quot;.</P>
+<P><b>Umbral del flujo del consumidor (porcentaje) </b>Especifica, como porcentaje de <b>L&iacute;mite de flujo del consumidor</b>, el n&uacute;mero de mensajes por consumidor almacenados en b&uacute;fer en el motor de ejecuci&oacute;n cliente, por debajo del cual se reanudar&aacute; la entrega de mensajes a los clientes. </P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

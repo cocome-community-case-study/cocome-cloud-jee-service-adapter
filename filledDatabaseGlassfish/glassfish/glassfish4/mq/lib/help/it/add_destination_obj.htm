@@ -1,0 +1,85 @@
+<!--
+
+    DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+    Copyright (c) 2000-2010 Oracle and/or its affiliates. All rights reserved.
+
+    The contents of this file are subject to the terms of either the GNU
+    General Public License Version 2 only ("GPL") or the Common Development
+    and Distribution License("CDDL") (collectively, the "License").  You
+    may not use this file except in compliance with the License.  You can
+    obtain a copy of the License at
+    https://glassfish.dev.java.net/public/CDDL+GPL_1_1.html
+    or packager/legal/LICENSE.txt.  See the License for the specific
+    language governing permissions and limitations under the License.
+
+    When distributing the software, include this License Header Notice in each
+    file and include the License file at packager/legal/LICENSE.txt.
+
+    GPL Classpath Exception:
+    Oracle designates this particular file as subject to the "Classpath"
+    exception as provided by Oracle in the GPL Version 2 section of the License
+    file that accompanied this code.
+
+    Modifications:
+    If applicable, add the following below the License Header, with the fields
+    enclosed by brackets [] replaced by your own identifying information:
+    "Portions Copyright [year] [name of copyright owner]"
+
+    Contributor(s):
+    If you wish your version of this file to be governed by only the CDDL or
+    only the GPL Version 2, indicate your decision by adding "[Contributor]
+    elects to include this software in this distribution under the [CDDL or GPL
+    Version 2] license."  If you don't indicate a single choice of license, a
+    recipient has the option to distribute your version of this file under
+    either the CDDL, the GPL Version 2 or to extend the choice of license to
+    its licensees as provided above.  However, if you add GPL Version 2 code
+    and therefore, elected the GPL Version 2 license, then the option applies
+    only if the new code is made subject to such option by the copyright
+    holder.
+
+-->
+
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+ <TITLE>add destination obj</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>Aggiungi oggetto di destinazione</H2>
+ 
+<P>Utilizzare questa finestra di dialogo per aggiungere un oggetto di destinazione a un archivio degli oggetti. </P>
+
+<P>Un <i>oggetto di destinazione amministrato</i> &egrave; una rappresentazione indipendente dal provider di una destinazione fisica (una coda o un argomento) in un broker. </P>
+
+<P><b>Nome della ricerca</b> Utilizzare questo campo per specificare il nome della ricerca JNDI dell'oggetto amministrato. Questo nome pu&ograve; essere lo stesso del nome di destinazione. Tuttavia, deve essere univoco nel contesto dell'archivio degli oggetti. </P>
+
+<P><b>Tipo di destinazione</b>Fare clic sul pulsante di scelta che corrisponde al tipo di destinazione: coda o argomento. </P>
+
+<P><b>Sola lettura</b> Fare clic su questa casella di controllo per rendere l'oggetto di sola lettura. Se l'oggetto &egrave; di sola lettura, le applicazioni client non potranno modificare gli attributi dell'oggetto amministrato tramite le chiamate API. </P>
+
+<P><b>Nome destinazione</b> Utilizzare questo campo per specificare il nome della destinazione fisica sul broker a cui corrisponde tale oggetto amministrato. Se non &egrave; specificato un nome, viene utilizzato il nome predefinito di  <code>Untitled_Destination_Object</code> 
+  . </P>
+
+<P><b>Descrizione della destinazione</b> Utilizzare questo campo per inserire una descrizione utile di questo oggetto di destinazione.</P>
+
+<ul>
+  <li>Fare clic sul pulsante <b>Ripristina ai valori predefiniti</b>per reimpostare tutti i campi al loro valore predefinito. </li>
+  <li> Fare clic su <b>OK</b> per creare l'oggetto di destinazione. </li>
+</ul>
+
+<p>Per modificare le propriet&agrave; di un oggetto di destinazione </p>
+
+<ol>
+  <li>Selezionare la cartella Destinazioni nel riquadro di navigazione della console di amministrazione. </li>
+  <li>Selezionare l'oggetto di destinazione nel riquadro dei risultati della console di amministrazione. </li>
+  <li>Scegliere <b>Azioni &gt; Propriet&agrave;</b> per visualizzare la finestra di dialogo delle propriet&agrave; dell'oggetto di destinazione. </li>
+</ol>
+
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

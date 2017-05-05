@@ -1,0 +1,84 @@
+<!--
+
+    DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+    Copyright (c) 2000-2010 Oracle and/or its affiliates. All rights reserved.
+
+    The contents of this file are subject to the terms of either the GNU
+    General Public License Version 2 only ("GPL") or the Common Development
+    and Distribution License("CDDL") (collectively, the "License").  You
+    may not use this file except in compliance with the License.  You can
+    obtain a copy of the License at
+    https://glassfish.dev.java.net/public/CDDL+GPL_1_1.html
+    or packager/legal/LICENSE.txt.  See the License for the specific
+    language governing permissions and limitations under the License.
+
+    When distributing the software, include this License Header Notice in each
+    file and include the License file at packager/legal/LICENSE.txt.
+
+    GPL Classpath Exception:
+    Oracle designates this particular file as subject to the "Classpath"
+    exception as provided by Oracle in the GPL Version 2 section of the License
+    file that accompanied this code.
+
+    Modifications:
+    If applicable, add the following below the License Header, with the fields
+    enclosed by brackets [] replaced by your own identifying information:
+    "Portions Copyright [year] [name of copyright owner]"
+
+    Contributor(s):
+    If you wish your version of this file to be governed by only the CDDL or
+    only the GPL Version 2, indicate your decision by adding "[Contributor]
+    elects to include this software in this distribution under the [CDDL or GPL
+    Version 2] license."  If you don't indicate a single choice of license, a
+    recipient has the option to distribute your version of this file under
+    either the CDDL, the GPL Version 2 or to extend the choice of license to
+    its licensees as provided above.  However, if you add GPL Version 2 code
+    and therefore, elected the GPL Version 2 license, then the option applies
+    only if the new code is made subject to such option by the copyright
+    holder.
+
+-->
+
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+ <TITLE>connfact rel</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>Propriedades de objeto de f&aacute;brica de conex&atilde;o &gt; <BR>
+  Confiabilidade e controle de fluxo</H2>
+ 
+<P>Utilize esta aba para especificar novamente o uso das mensagens de controle do Message Queue (confirma&ccedil;&otilde;es do broker) e das medidas de controle de fluxo do tempo de execu&ccedil;&atilde;o do cliente.</P>
+<p><b>Confirma&ccedil;&atilde;o de mensagens produzidas do Message Service</b> Especifica a confirma&ccedil;&atilde;o de mensagens do broker proveniente do cliente de produ&ccedil;&atilde;o:</p>
+
+<ul>
+  <li>Se definida como verdadeira, o broker confirma o recebimento de todas as mensagens JMS (persistentes e n&atilde;o persistentes) provenientes do cliente de produ&ccedil;&atilde;o, e o segmento do cliente de produ&ccedil;&atilde;o se bloquear&aacute; aguardando por tais confirma&ccedil;&otilde;es.</li>
+  <li>Se definida como falsa, o broker n&atilde;o confirma o recebimento de nenhuma mensagem JMS (persistente e n&atilde;o persistente) proveniente do cliente de produ&ccedil;&atilde;o, e o segmento do cliente de produ&ccedil;&atilde;o n&atilde;o se bloquear&aacute; aguardando pela confirma&ccedil;&atilde;o do broker.</li>
+  <li> Se n&atilde;o for especificada, o broker confirma o recebimento apenas das mensagens persistentes, e o segmento do cliente de produ&ccedil;&atilde;o se bloquear&aacute; aguardando por tais confirma&ccedil;&otilde;es.</li>
+</ul>
+
+<p><b>Confirma&ccedil;&atilde;o do Message Service das confirma&ccedil;&otilde;es do cliente</b>Especifica a confirma&ccedil;&atilde;o do broker das confirma&ccedil;&otilde;es do cliente de consumo:</p>
+
+<ul>
+  <li>Se definida como verdadeira, o broker confirma todas as confirma&ccedil;&otilde;es do cliente de consumo, e o segmento do cliente de consumo se bloquear&aacute; aguardando tais confirma&ccedil;&otilde;es do broker.</li>
+  <li>Se definida como falsa, o broker n&atilde;o confirma nenhuma confirma&ccedil;&atilde;o do cliente de consumo, e o segmento do cliente de consumo n&atilde;o se bloquear&aacute; aguardando tais confirma&ccedil;&otilde;es do broker.</li>
+  <li> Se n&atilde;o for especificada, o broker confirma as confirma&ccedil;&otilde;es do cliente de consumo dos modos AUTO_ACKNOWLEDGE e CLIENT_ACKNOWLEDGE (e o segmento do cliente de consumo se bloquear&aacute; aguardando tais confirma&ccedil;&otilde;es do broker), mas n&atilde;o confirma as confirma&ccedil;&otilde;es do cliente de consumo do modo DUPS_OK_ACKNOWLEDGE (e o segmento do cliente de consumo n&atilde;o se bloquear&aacute;.)</li>
+</ul>
+<p><b>Tempo-limite da confirma&ccedil;&atilde;o do Message Service (milissegundos) </b>Especifica o tempo m&aacute;ximo em milissegundos que o tempo de execu&ccedil;&atilde;o do cliente esperar&aacute; pela confirma&ccedil;&atilde;o do broker antes de lan&ccedil;ar uma exce&ccedil;&atilde;o. O valor padr&atilde;o 0 significa que n&atilde;o h&aacute; tempo-limite. Em outras palavras, o tempo de execu&ccedil;&atilde;o do cliente esperar&aacute; para sempre.</p>
+<p><b>Contagem do fluxo de conex&otilde;es</b> Especifica o n&uacute;mero m&aacute;ximo de mensagens JMS em um lote medido. Quando este n&uacute;mero de mensagens JMS &eacute; entregue ao tempo de execu&ccedil;&atilde;o do cliente, a entrega &eacute; interrompida temporariamente, permitindo que sejam entregues quaisquer mensagens de controle que tenham sido retidas. A entrega das mensagens JMS &eacute; reiniciada ap&oacute;s notifica&ccedil;&atilde;o do tempo de execu&ccedil;&atilde;o do cliente e continua at&eacute; que o total seja novamente atingido. Se o total estiver definido como 0, ent&atilde;o n&atilde;o haver&aacute; nenhuma restri&ccedil;&atilde;o no n&uacute;mero de mensagens JMS em um lote medido. Uma configura&ccedil;&atilde;o diferente de zero permite que o tempo de execu&ccedil;&atilde;o do cliente me&ccedil;a o fluxo de mensagens para que as mensagens de controle do Message Queue n&atilde;o sejam bloqueadas por entregas de mensagens JMS pesadas e possam chegar ao cliente passando pelos lotes medidos.</p>
+
+<p><b>Limite de fluxo de conex&atilde;o ativado</b> Especifica se ativar um limite de fluxo da conex&atilde;o (no n&uacute;mero de mensagens n&atilde;o consumidas entregues ao tempo de execu&ccedil;&atilde;o do cliente). Se esta caixa for marcada, &eacute; necess&aacute;rio especificar um n&uacute;mero positivo para o campo <b>Limite de fluxo de conex&atilde;o</b>.</p>
+<p><b>Limite do fluxo de conex&otilde;es (mensagens n&atilde;o consumidas por conex&atilde;o) </b>Especifica um limite no n&uacute;mero de mensagens que podem ser entregues durante uma conex&atilde;o e armazenadas em buffer no tempo de execu&ccedil;&atilde;o do cliente, a espera de serem consumidas (somente utilizada se <b>Limite do fluxo de conex&otilde;es ativado</b> estiver marcada). Quando o n&uacute;mero das mensagens JMS entregues ao tempo de execu&ccedil;&atilde;o do cliente (de acordo com a medi&ccedil;&atilde;o do fluxo determinado pela <b>Contagem do fluxo de conex&otilde;es</b>) exceder este limite, a entrega de mensagens &eacute; interrompida. A entrega se reinicia somente quando o n&uacute;mero de mensagens n&atilde;o consumidas for inferior ao valor definido nesta propriedade. Este limite impede que o cliente de consumo que esteja demorando em processar as mensagens seja assolado por mensagens pendentes que podem fazer com que fique sem mem&oacute;ria suficiente. </p>
+
+<P><b>Limite do fluxo do consumidor (mensagens n&atilde;o consumidas por consumidor) </b>Especifica o limite de mensagens que pode ser entregue e armazenado em buffer por consumidor durante uma conex&atilde;o no tempo de execu&ccedil;&atilde;o do cliente. Este limite tem duas fun&ccedil;&otilde;es: pode melhorar o balanceamento de carga entre os consumidores nas entregas de fila com v&aacute;rios consumidores (a nenhum consumidor pode ser enviado um n&uacute;mero inadequado de mensagens), e ajuda a evitar que qualquer consumidor sobrecarregue a outros consumidores em uma conex&atilde;o. Quando o n&uacute;mero das mensagens JMS entregues ao tempo de execu&ccedil;&atilde;o do cliente exceder este limite em qualquer consumidor, a entrega de mensagens &eacute; interrompida. A entrega &eacute; reiniciada somente quando o n&uacute;mero de mensagens n&atilde;o consumidas de tal consumidor for menor que o valor definido em <b>Limiar do fluxo do consumidor</b>. </P>
+<P>Observe que, se o n&uacute;mero total de mensagens armazenado em buffer de todos os consumidores em uma conex&atilde;o exceder o <b>Limite de fluxo de conex&atilde;o</b>, a entrega de mensagens ser&aacute; interrompida at&eacute; que o total seja inferior a tal limite. Se o Limite do fluxo do consumidor for especificado, h&aacute; pouca necessidade de que o Limite do fluxo de conex&otilde;es seja definido, exceto em casos espec&iacute;ficos. Al&eacute;m disso, a maioria dos requisitos do aplicativo em rela&ccedil;&atilde;o &agrave; medi&ccedil;&atilde;o do fluxo de mensagens ser&aacute; definido pelo Limite do fluxo do consumidor e n&atilde;o ao ativar o Limite de fluxo de conex&atilde;o.</P>
+<P><b>Limiar do fluxo do consumidor (porcentagem) </b>Especifica, como uma porcentagem do <b>Limite do fluxo do consumidor</b>, o n&uacute;mero de mensagens por consumidor armazenado em buffer no tempo de execu&ccedil;&atilde;o do cliente, abaixo do qual a entrega de mensagens a um consumidor ser&aacute; reiniciada. </P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

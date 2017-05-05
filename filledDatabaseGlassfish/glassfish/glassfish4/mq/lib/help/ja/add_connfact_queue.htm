@@ -1,0 +1,24 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=EUC-JP">
+<TITLE>コネクションファクトリの追加 (キューとセッションの設定)</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>コネクションファクトリオブジェクトを追加→<BR>QueueBrowsers と ServerSessions</H2>
+ 
+<P>このタブは、クライアントランタイムを参照するキューを設定し、アプリケーションサーバーで実行するセッションの動作を指定するために使用します。</P>
+
+<P><b>キューブラウザ取得サイズ</b> キュー送信先の内容を参照するときに、クライアントランタイムが一度に取得するメッセージの最大数を指定します。デフォルトは 1000 です。</P>
+<p><b>キューブラウザ取得タイムアウト (ミリ秒)</b> キュー送信先の内容を参照するときに、クライアントランタイムがメッセージを取得するまでに待機する最大時間を指定します。この時間を経過すると、例外がスローされます。デフォルトは 60000 ミリ秒です。</p>
+<p><b>ServerSessions にメッセージを最大まで読み込む</b> Message Queue ConnectionConsumer が、ServerSession のセッションに、<code>maxMessages</code> の値の数までメッセージを読み込むように指定するには、このボックスを選択します。Message Queue ConnectionConsumer が一度に 1 つのメッセージだけを読み込むようにするには、このボックスは選択しません。詳細は、JMS 仕様の「Application Server Facilities」のセクションを参照してください。</p>
+
+</BODY>
+</HTML>

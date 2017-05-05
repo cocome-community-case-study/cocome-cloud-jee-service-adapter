@@ -1,0 +1,684 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:29:58Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="Configuring Managed Beans" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39031-01" />
+        <meta name="description" content="A guide to developing enterprise applications for the Java Platform, Enterprise Edition 7 (Java EE 7) using GlassFish Server Open Source Edition." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Java FX, Web, developer, enterprise, Java EE Tutorial, Java EE 7 Tutorial" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>The Java EE 7 Tutorial:Configuring Managed Beans | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7.0</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/tutorial/doc/javaeetutorial7.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GEXAF">Preface</a></h2>
+<h2 class="tocheader"><a href="partintro.htm#GFIRP">Part I Introduction</a></h2>
+<h2 class="tocheader"><a href="overview.htm#BNAAW"><span class="secnum">1</span> Overview</a></h2>
+<h2 class="tocheader"><a href="usingexamples.htm#GFIUD"><span class="secnum">2</span> Using the Tutorial Examples</a></h2>
+<h2 class="tocheader"><a href="partplatform.htm#GFIRP2">Part II Platform Basics</a></h2>
+<h2 class="tocheader"><a href="resource-creation.htm#GKJIQ2"><span class="secnum">3</span> Resource Creation</a></h2>
+<h2 class="tocheader"><a href="injection.htm#GKJIQ3"><span class="secnum">4</span> Injection</a></h2>
+<h2 class="tocheader"><a href="packaging.htm#GKJIQ4"><span class="secnum">5</span> Packaging</a></h2>
+<h2 class="tocheader"><a href="partwebtier.htm#BNADP">Part III The Web Tier</a></h2>
+<h2 class="tocheader"><a href="webapp.htm#BNADR"><span class="secnum">6</span> Getting Started with Web Applications</a></h2>
+<h2 class="tocheader"><a href="jsf-intro.htm#BNAPH"><span class="secnum">7</span> JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-facelets.htm#GIEPX"><span class="secnum">8</span> Introduction to Facelets</a></h2>
+<h2 class="tocheader"><a href="jsf-el.htm#GJDDD"><span class="secnum">9</span> Expression Language</a></h2>
+<h2 class="tocheader"><a href="jsf-page.htm#BNAQZ"><span class="secnum">10</span> Using JavaServer Faces Technology in Web Pages</a></h2>
+<h2 class="tocheader"><a href="jsf-page-core.htm#GJCUT"><span class="secnum">11</span> Using Converters, Listeners, and Validators</a></h2>
+<h2 class="tocheader"><a href="jsf-develop.htm#BNATX"><span class="secnum">12</span> Developing with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-ajax.htm#GKIOW"><span class="secnum">13</span> Using Ajax with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-advanced-cc.htm#GKHXA"><span class="secnum">14</span> Composite Components: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="jsf-custom.htm#BNAVG"><span class="secnum">15</span> Creating Custom UI Components and Other Custom Objects</a></h2>
+<h2 class="tocheader"><a href="jsf-configure.htm#BNAWO"><span class="secnum">16</span> Configuring JavaServer Faces Applications</a></h2>
+<ul style="list-style-type:none">
+<li><a href="jsf-configure001.htm#GIRCH"><span class="secnum">16.1</span> Using Annotations to Configure Managed Beans</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-configure001.htm#GIRCR"><span class="secnum">16.1.1</span> Using Managed Bean Scopes</a></li>
+</ul>
+</li>
+<li><a href="jsf-configure002.htm#BNAWP"><span class="secnum">16.2</span> Application Configuration Resource File</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-configure002.htm#GIREP"><span class="secnum">16.2.1</span> Configuring Eager Application-Scoped Managed Beans</a></li>
+<li><a href="jsf-configure002.htm#GIQCK"><span class="secnum">16.2.2</span> Ordering of Application Configuration Resource Files</a></li>
+</ul>
+</li>
+<li><a href="jsf-configure003.htm#CHDGFCJF"><span class="secnum">16.3</span> Using Faces Flows</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-configure003.htm#sthref1043"><span class="secnum">16.3.1</span> Packaging Flows in an Application</a></li>
+<li><a href="jsf-configure003.htm#sthref1044"><span class="secnum">16.3.2</span> The Simplest Possible Flow: The simple-flow Example Application</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-configure003.htm#sthref1045"><span class="secnum">16.3.2.1</span> To Build, Package, and Deploy the simple-flow Example Using NetBeans IDE</a></li>
+<li><a href="jsf-configure003.htm#sthref1046"><span class="secnum">16.3.2.2</span> To Build, Package, and Deploy the simple-flow Example Using Maven</a></li>
+<li><a href="jsf-configure003.htm#sthref1047"><span class="secnum">16.3.2.3</span> To Run the simple-flow Example</a></li>
+</ul>
+</li>
+<li><a href="jsf-configure003.htm#sthref1048"><span class="secnum">16.3.3</span> The checkout-module Example Application</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-configure003.htm#sthref1049"><span class="secnum">16.3.3.1</span> The Facelets Pages for the checkout-module Example</a></li>
+<li><a href="jsf-configure003.htm#sthref1050"><span class="secnum">16.3.3.2</span> Using a Configuration File to Configure a Flow</a></li>
+<li><a href="jsf-configure003.htm#sthref1051"><span class="secnum">16.3.3.3</span> Using a Java Class to Configure a Flow</a></li>
+<li><a href="jsf-configure003.htm#sthref1052"><span class="secnum">16.3.3.4</span> The Flow-Scoped Managed Beans</a></li>
+<li><a href="jsf-configure003.htm#sthref1053"><span class="secnum">16.3.3.5</span> To Build, Package, and Deploy the checkout-module Example Using NetBeans IDE</a></li>
+<li><a href="jsf-configure003.htm#sthref1054"><span class="secnum">16.3.3.6</span> To Build, Package, and Deploy the checkout-module Example Using Maven</a></li>
+<li><a href="jsf-configure003.htm#sthref1055"><span class="secnum">16.3.3.7</span> To Run the checkout-module Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><div id="backgroundColor"><a href="jsf-configure004.htm#BNAWQ"><span class="secnum">16.4</span> Configuring Managed Beans</a><ul style="list-style-type:none">
+<li><a href="jsf-configure004.htm#BNAWR"><span class="secnum">16.4.1</span> Using the managed-bean Element</a></li>
+<li><a href="jsf-configure004.htm#BNAWS"><span class="secnum">16.4.2</span> Initializing Properties Using the managed-property Element</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-configure004.htm#BNAWU"><span class="secnum">16.4.2.1</span> Referencing a Java Enum Type</a></li>
+<li><a href="jsf-configure004.htm#BNAWV"><span class="secnum">16.4.2.2</span> Referencing a Context Initialization Parameter</a></li>
+<li><a href="jsf-configure004.htm#BNAWW"><span class="secnum">16.4.2.3</span> Initializing Map Properties</a></li>
+<li><a href="jsf-configure004.htm#BNAWX"><span class="secnum">16.4.2.4</span> Initializing Array and List Properties</a></li>
+<li><a href="jsf-configure004.htm#BNAWY"><span class="secnum">16.4.2.5</span> Initializing Managed Bean Properties</a></li>
+</ul>
+</li>
+<li><a href="jsf-configure004.htm#BNAXA"><span class="secnum">16.4.3</span> Initializing Maps and Lists</a></li>
+</ul>
+</div></li>
+<li><a href="jsf-configure005.htm#BNAXB"><span class="secnum">16.5</span> Registering Application Messages</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-configure005.htm#GKUHG"><span class="secnum">16.5.1</span> Using FacesMessage to Create a Message</a></li>
+<li><a href="jsf-configure005.htm#BNASS"><span class="secnum">16.5.2</span> Referencing Error Messages</a></li>
+</ul>
+</li>
+<li><a href="jsf-configure006.htm#GIREB"><span class="secnum">16.6</span> Using Default Validators</a></li>
+<li><a href="jsf-configure007.htm#BNAXD"><span class="secnum">16.7</span> Registering a Custom Validator</a></li>
+<li><a href="jsf-configure008.htm#BNAXE"><span class="secnum">16.8</span> Registering a Custom Converter</a></li>
+<li><a href="jsf-configure009.htm#BNAXF"><span class="secnum">16.9</span> Configuring Navigation Rules</a></li>
+<li><a href="jsf-configure010.htm#BNAXH"><span class="secnum">16.10</span> Registering a Custom Renderer with a Render Kit</a></li>
+<li><a href="jsf-configure011.htm#BNAXI"><span class="secnum">16.11</span> Registering a Custom Component</a></li>
+<li><a href="jsf-configure012.htm#BNAXJ"><span class="secnum">16.12</span> Basic Requirements of a JavaServer Faces Application</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-configure012.htm#BNAXK"><span class="secnum">16.12.1</span> Configuring an Application with a Web Deployment Descriptor</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-configure012.htm#GLPOO"><span class="secnum">16.12.1.1</span> Identifying the Servlet for Lifecycle Processing</a></li>
+<li><a href="jsf-configure012.htm#BNAXM"><span class="secnum">16.12.1.2</span> To Specify a Path to an Application Configuration Resource File</a></li>
+<li><a href="jsf-configure012.htm#BNAXN"><span class="secnum">16.12.1.3</span> To Specify Where State Is Saved</a></li>
+</ul>
+</li>
+<li><a href="jsf-configure012.htm#GIQXL"><span class="secnum">16.12.2</span> Configuring Project Stage</a></li>
+<li><a href="jsf-configure012.htm#BNAXT"><span class="secnum">16.12.3</span> Including the Classes, Pages, and Other Resources</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="tocheader"><a href="servlets.htm#BNAFD"><span class="secnum">17</span> Java Servlet Technology</a></h2>
+<h2 class="tocheader"><a href="websocket.htm#GKJIQ5"><span class="secnum">18</span> Java API for WebSocket</a></h2>
+<h2 class="tocheader"><a href="jsonp.htm#GLRBB"><span class="secnum">19</span> JSON Processing</a></h2>
+<h2 class="tocheader"><a href="webi18n.htm#BNAXU"><span class="secnum">20</span> Internationalizing and Localizing Web Applications</a></h2>
+<h2 class="tocheader"><a href="partbeanvalidation.htm#sthref1322">Part IV Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation.htm#CHDGJIIA"><span class="secnum">21</span> Introduction to Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation-advanced.htm#GKAHP"><span class="secnum">22</span> Bean Validation: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partcdi.htm#GJBNR">Part V Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basic.htm#GIWHB"><span class="secnum">23</span> Introduction to Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basicexamples.htm#GJBLS"><span class="secnum">24</span> Running the Basic Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="cdi-adv.htm#GJEHI"><span class="secnum">25</span> Contexts and Dependency Injection for Java EE: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="cdi-adv-examples.htm#GKHRE"><span class="secnum">26</span> Running the Advanced Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="partwebsvcs.htm#BNAYK">Part VI Web Services</a></h2>
+<h2 class="tocheader"><a href="webservices-intro.htm#GIJTI"><span class="secnum">27</span> Introduction to Web Services</a></h2>
+<h2 class="tocheader"><a href="jaxws.htm#BNAYL"><span class="secnum">28</span> Building Web Services with JAX-WS</a></h2>
+<h2 class="tocheader"><a href="jaxrs.htm#GIEPU"><span class="secnum">29</span> Building RESTful Web Services with JAX-RS</a></h2>
+<h2 class="tocheader"><a href="jaxrs-client.htm#BABEIGIH"><span class="secnum">30</span> Accessing REST Resources with the JAX-RS Client API</a></h2>
+<h2 class="tocheader"><a href="jaxrs-advanced.htm#GJJXE"><span class="secnum">31</span> JAX-RS: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="partentbeans.htm#BNBLR">Part VII Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-intro.htm#GIJSZ"><span class="secnum">32</span> Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-gettingstarted.htm#GIJRE"><span class="secnum">33</span> Getting Started with Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-basicexamples.htm#GIJRB"><span class="secnum">34</span> Running the Enterprise Bean Examples</a></h2>
+<h2 class="tocheader"><a href="ejb-embedded.htm#GKCQZ"><span class="secnum">35</span> Using the Embedded Enterprise Bean Container</a></h2>
+<h2 class="tocheader"><a href="ejb-async.htm#GKIDZ"><span class="secnum">36</span> Using Asynchronous Method Invocation in Session Beans</a></h2>
+<h2 class="tocheader"><a href="partpersist.htm#BNBPY">Part VIII Persistence</a></h2>
+<h2 class="tocheader"><a href="persistence-intro.htm#BNBPZ"><span class="secnum">37</span> Introduction to the Java Persistence API</a></h2>
+<h2 class="tocheader"><a href="persistence-basicexamples.htm#GIJST"><span class="secnum">38</span> Running the Persistence Examples</a></h2>
+<h2 class="tocheader"><a href="persistence-querylanguage.htm#BNBTG"><span class="secnum">39</span> The Java Persistence Query Language</a></h2>
+<h2 class="tocheader"><a href="persistence-criteria.htm#GJITV"><span class="secnum">40</span> Using the Criteria API to Create Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-string-queries.htm#GKJIQ"><span class="secnum">41</span> Creating and Using String-Based Criteria Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-locking.htm#GKJJF"><span class="secnum">42</span> Controlling Concurrent Access to Entity Data with Locking</a></h2>
+<h2 class="tocheader"><a href="persistence-entitygraphs.htm#BABIJIAC"><span class="secnum">43</span> Creating Fetch Plans with Entity Graphs</a></h2>
+<h2 class="tocheader"><a href="persistence-cache.htm#GKJIA"><span class="secnum">44</span> Using a Second-Level Cache with Java Persistence API Applications</a></h2>
+<h2 class="tocheader"><a href="partmessaging.htm#GFIRP3">Part IX Messaging</a></h2>
+<h2 class="tocheader"><a href="jms-concepts.htm#BNCDQ"><span class="secnum">45</span> Java Message Service Concepts</a></h2>
+<h2 class="tocheader"><a href="jms-examples.htm#BNCGV"><span class="secnum">46</span> Java Message Service Examples</a></h2>
+<h2 class="tocheader"><a href="partsecurity.htm#GIJRP">Part X Security</a></h2>
+<h2 class="tocheader"><a href="security-intro.htm#BNBWJ"><span class="secnum">47</span> Introduction to Security in the Java EE Platform</a></h2>
+<h2 class="tocheader"><a href="security-webtier.htm#BNCAS"><span class="secnum">48</span> Getting Started Securing Web Applications</a></h2>
+<h2 class="tocheader"><a href="security-javaee.htm#BNBYK"><span class="secnum">49</span> Getting Started Securing Enterprise Applications</a></h2>
+<h2 class="tocheader"><a href="security-advanced.htm#GJJWX"><span class="secnum">50</span> Java EE Security: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partsupporttechs.htm#GIJUE">Part XI Java EE Supporting Technologies</a></h2>
+<h2 class="tocheader"><a href="transactions.htm#BNCIH"><span class="secnum">51</span> Transactions</a></h2>
+<h2 class="tocheader"><a href="resources.htm#BNCJH"><span class="secnum">52</span> Resource Adapters and Contracts</a></h2>
+<h2 class="tocheader"><a href="connectorexample.htm#GLODB"><span class="secnum">53</span> The Resource Adapter Examples</a></h2>
+<h2 class="tocheader"><a href="interceptors.htm#GKEED"><span class="secnum">54</span> Using Java EE Interceptors</a></h2>
+<h2 class="tocheader"><a href="batch-processing.htm#GKJIQ6"><span class="secnum">55</span> Batch Processing</a></h2>
+<h2 class="tocheader"><a href="concurrency-utilities.htm#GKJIQ8"><span class="secnum">56</span> Concurrency Utilities for Java EE</a></h2>
+<h2 class="tocheader"><a href="partcasestudies.htm#GKGJW">Part XII Case Studies</a></h2>
+<h2 class="tocheader"><a href="dukes-bookstore.htm#GLNVI"><span class="secnum">57</span> Duke's Bookstore Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-tutoring.htm#GKAEE"><span class="secnum">58</span> Duke's Tutoring Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-forest.htm#GLNPW"><span class="secnum">59</span> Duke's Forest Case Study Example</a></h2>
+<h2 class="tocheader"><a href="index.htm">Index</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>The Java EE 7 Tutorial  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="jsf-configure003.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="jsf-configure005.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="BNAWQ" name="BNAWQ"></a><a id="JEETT00394" name="JEETT00394"></a>
+<div class="sect1">
+<h1 class="sect1"><span class="secnum">16.4</span> <a id="sthref1056" name="sthref1056"></a><a id="sthref1057" name="sthref1057"></a><a id="sthref1058" name="sthref1058"></a>Configuring Managed Beans</h1>
+<p>When a page references a managed bean for the first time, the JavaServer Faces implementation initializes it either based on a <code>@Named</code> annotation and scope annotation in the bean class or according to its configuration in the application configuration resource file. For information on using annotations to initialize beans, see <a href="jsf-configure001.htm#GIRCH">Using Annotations to Configure Managed Beans</a>.</p>
+<p>You can use either annotations or the application configuration resource file to instantiate managed beans that are used in a JavaServer Faces application and to store them in scope. The managed bean creation facility is configured in the application configuration resource file using <code>managed-bean</code> XML elements to define each bean. This file is processed at application startup time. For information on using this facility, see <a href="#BNAWR">Using the managed-bean Element</a>.</p>
+<p>Managed beans created in the application configuration resource file are JavaServer Faces managed beans, not CDI managed beans.</p>
+<p>With the managed bean creation facility, you can</p>
+<ul>
+<li>
+<p>Create beans in one centralized file that is available to the entire application, rather than conditionally instantiate beans throughout the application</p>
+</li>
+<li>
+<p>Customize a bean's properties without any additional code</p>
+</li>
+<li>
+<p>Customize a bean's property values directly from within the configuration file so that it is initialized with these values when it is created</p>
+</li>
+<li>
+<p>Using <code>value</code> elements, set a property of one managed bean to be the result of evaluating another value expression</p>
+</li>
+</ul>
+<p>This section shows you how to initialize beans using the managed bean creation facility. See <a href="jsf-develop002.htm#BNATY">Writing Bean Properties</a> and <a href="jsf-develop003.htm#BNAVB">Writing Managed Bean Methods</a> for information on programming managed beans.</p>
+<a id="BNAWR" name="BNAWR"></a><a id="JEETT01009" name="JEETT01009"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">16.4.1</span> <a id="sthref1059" name="sthref1059"></a>Using the managed-bean Element</h2>
+<p>A managed bean is initiated in the application configuration resource file using a <code>managed-bean</code> element, which represents an instance of a bean class that must exist in the application. At runtime, the JavaServer Faces implementation processes the <code>managed-bean</code> element. If a page references the bean and no bean instance exists, the JavaServer Faces implementation instantiates the bean as specified by the element configuration.</p>
+<p>Here is an example managed bean configuration from the Duke's Bookstore case study:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;managed-bean eager="true"&gt;
+    &lt;managed-bean-name&gt;Book201&lt;/managed-bean-name&gt;
+    &lt;managed-bean-class&gt;dukesbookstore.model.ImageArea&lt;/managed-bean-class&gt;
+    &lt;managed-bean-scope&gt;application&lt;/managed-bean-scope&gt;
+    &lt;managed-property&gt;
+        &lt;property-name&gt;shape&lt;/property-name&gt;
+        &lt;value&gt;rect&lt;/value&gt;
+    &lt;/managed-property&gt;
+    &lt;managed-property&gt;
+        &lt;property-name&gt;alt&lt;/property-name&gt;
+        &lt;value&gt;Duke&lt;/value&gt;
+    &lt;/managed-property&gt;
+    &lt;managed-property&gt;
+        &lt;property-name&gt;coords&lt;/property-name&gt;
+        &lt;value&gt;67,23,212,268&lt;/value&gt;
+    &lt;/managed-property&gt;
+&lt;/managed-bean&gt;
+</pre>
+<p><a id="sthref1060" name="sthref1060"></a>The <code>managed-bean-name</code> element defines the key under which the bean will be stored in a scope. For a component's value to map to this bean, the component tag's <code>value</code> attribute must match the <code>managed-bean-name</code> up to the first period.</p>
+<p>The <code>managed-bean-class</code> element defines the fully qualified name of the JavaBeans component class used to instantiate the bean.</p>
+<p>The <code>managed-bean</code> element can contain zero or more <code>managed-property</code> elements, each corresponding to a property defined in the bean class. These elements are used to initialize the values of the bean properties. If you don't want a particular property initialized with a value when the bean is instantiated, do not include a <code>managed-property</code> definition for it in your application configuration resource file.</p>
+<p>If a <code>managed-bean</code> element does not contain other <code>managed-bean</code> elements, it can contain one <code>map-entries</code> element or <code>list-entries</code> element. The <code>map-entries</code> element configures a set of beans that are instances of <code>Map</code>. The <code>list-entries</code> element configures a set of beans that are instances of <code>List</code>.</p>
+<p>In the following example, the <code>newsletters</code> managed bean, representing a <code>UISelectItems</code> component, is configured as an <code>ArrayList</code> that represents a set of <code>SelectItem</code> objects. Each <code>SelectItem</code> object is in turn configured as a managed bean with properties:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;managed-bean&gt;
+    &lt;managed-bean-name&gt;newsletters&lt;/managed-bean-name&gt;
+    &lt;managed-bean-class&gt;java.util.ArrayList&lt;/managed-bean-class&gt;
+    &lt;managed-bean-scope&gt;application&lt;/managed-bean-scope&gt;
+    &lt;list-entries&gt;
+        &lt;value-class&gt;javax.faces.model.SelectItem&lt;/value-class&gt;
+        &lt;value&gt;#{newsletter0}&lt;/value&gt;
+        &lt;value&gt;#{newsletter1}&lt;/value&gt;
+        &lt;value&gt;#{newsletter2}&lt;/value&gt;
+        &lt;value&gt;#{newsletter3}&lt;/value&gt;
+    &lt;/list-entries&gt;
+&lt;/managed-bean&gt;
+&lt;managed-bean&gt;
+    &lt;managed-bean-name&gt;newsletter0&lt;/managed-bean-name&gt;
+    &lt;managed-bean-class&gt;javax.faces.model.SelectItem&lt;/managed-bean-class&gt;
+    &lt;managed-bean-scope&gt;none&lt;/managed-bean-scope&gt;
+    &lt;managed-property&gt;
+        &lt;property-name&gt;label&lt;/property-name&gt;
+        &lt;value&gt;Duke's Quarterly&lt;/value&gt;
+    &lt;/managed-property&gt;
+    &lt;managed-property&gt;
+        &lt;property-name&gt;value&lt;/property-name&gt;
+        &lt;value&gt;200&lt;/value&gt;
+    &lt;/managed-property&gt;
+&lt;/managed-bean&gt;
+...
+</pre>
+<p>This approach may be useful for quick-and-dirty creation of selection item lists before a development team has had time to create such lists from the database. Note that each of the individual newsletter beans has a <code>managed-bean-scope</code> setting of <code>none</code> so that they will not themselves be placed into any scope.</p>
+<p>See <a href="#BNAWX">Initializing Array and List Properties</a> for more information on configuring collections as beans.</p>
+<p>To map to a property defined by a <code>managed-property</code> element, you must ensure that the part of a component tag's <code>value</code> expression after the period matches the <code>managed-property</code> element's <code>property-name</code> element. The next section, <a href="#BNAWS">Initializing Properties Using the managed-property Element</a>, explains in more detail how to use the <code>managed-property</code> element. See <a href="#BNAWY">Initializing Managed Bean Properties</a> for an example of initializing a managed bean property.</p>
+</div>
+<!-- class="sect2" -->
+<a id="BNAWS" name="BNAWS"></a><a id="JEETT01010" name="JEETT01010"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">16.4.2</span> <a id="sthref1061" name="sthref1061"></a>Initializing Properties Using the managed-property Element</h2>
+<p>A <code>managed-property</code> element must contain a <code>property-name</code> element, which must match the name of the corresponding property in the bean. A <code>managed-property</code> element must also contain one of a set of elements that defines the value of the property. This value must be of the same type as that defined for the property in the corresponding bean. Which element you use to define the value depends on the type of the property defined in the bean. <a href="#BNAWT">Table 16-1</a> lists all the elements that are used to initialize a value.</p>
+<div class="tblhruleformal"><a id="sthref1062" name="sthref1062"></a><a id="BNAWT" name="BNAWT"></a>
+<p class="titleintable">Table 16-1 Subelements of managed-property Elements That Define Property Values</p>
+<table class="HRuleFormal" title="Subelements of managed-property Elements That Define Property Values" summary="This table lists and describes the managed-property sub-elements that define properties." dir="ltr" border="1" width="100%" frame="hsides" rules="rows" cellpadding="3" cellspacing="0">
+<col width="18%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t2">Element</th>
+<th align="left" valign="bottom" id="r1c2-t2">Value It Defines</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t2" headers="r1c1-t2">
+<p><a id="sthref1063" name="sthref1063"></a><code>list-entries</code></p>
+</td>
+<td align="left" headers="r2c1-t2 r1c2-t2">
+<p>Defines the values in a list</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t2" headers="r1c1-t2">
+<p><a id="sthref1064" name="sthref1064"></a><code>map-entries</code></p>
+</td>
+<td align="left" headers="r3c1-t2 r1c2-t2">
+<p>Defines the values of a map</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t2" headers="r1c1-t2">
+<p><a id="sthref1065" name="sthref1065"></a><code>null-value</code></p>
+</td>
+<td align="left" headers="r4c1-t2 r1c2-t2">
+<p>Explicitly sets the property to <code>null</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t2" headers="r1c1-t2">
+<p><a id="sthref1066" name="sthref1066"></a><code>value</code></p>
+</td>
+<td align="left" headers="r5c1-t2 r1c2-t2">
+<p>Defines a single value, such as a <code>String</code>, <code>int</code>, or JavaServer Faces EL expression</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblhruleformal" -->
+<p><a href="#BNAWR">Using the managed-bean Element</a> includes an example of initializing an <code>int</code> property (a primitive type) using the <code>value</code> subelement. You also use the <code>value</code> subelement to initialize <code>String</code> and other reference types. The rest of this section describes how to use the <code>value</code> subelement and other subelements to initialize properties of Java <code>Enum</code> types, <code>Map</code>, <code>array</code>, and <code>Collection</code>, as well as initialization parameters.</p>
+<a id="BNAWU" name="BNAWU"></a><a id="JEETT00625" name="JEETT00625"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">16.4.2.1</span> Referencing a Java Enum Type</h3>
+<p>A managed bean property can also be a Java <code>Enum</code> type (see <code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Enum.html">http://docs.oracle.com/javase/7/docs/api/java/lang/Enum.html</a></code>). In this case, the <code>value</code> element of the <code>managed-property</code> element must be a <code>String</code> that matches one of the <code>String</code> constants of the <code>Enum</code>. In other words, the <code>String</code> must be one of the valid values that can be returned if you were to call <code>valueOf(Class, String)</code> on <code>enum</code>, where <code>Class</code> is the <code>Enum</code> class and <code>String</code> is the contents of the <code>value</code> subelement. For example, suppose the managed bean property is the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+public enum Suit { Hearts, Spades, Diamonds, Clubs }
+ ...
+public Suit getSuit() { ... return Suit.Hearts; }
+</pre>
+<p>Assuming you want to configure this property in the application configuration resource file, the corresponding <code>managed-property</code> element looks like this:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;managed-property&gt;
+    &lt;property-name&gt;Suit&lt;/property-name&gt;
+    &lt;value&gt;Hearts&lt;/value&gt;
+&lt;/managed-property&gt;
+</pre>
+<p>When the system encounters this property, it iterates over each of the members of the <code>enum</code> and calls <code>toString()</code> on each member until it finds one that is exactly equal to the value from the <code>value</code> element.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BNAWV" name="BNAWV"></a><a id="JEETT00626" name="JEETT00626"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">16.4.2.2</span> <a id="sthref1067" name="sthref1067"></a>Referencing a Context Initialization Parameter</h3>
+<p>Another powerful feature of the managed bean creation facility is the ability to reference implicit objects from a managed bean property.</p>
+<p>Suppose you have a page that accepts data from a customer, including the customer's address. Suppose also that most of your customers live in a particular area code. You can make the area code component render this area code by saving it in an implicit object and referencing it when the page is rendered.</p>
+<p>You can save the area code as an initial default value in the context <code>initParam</code> implicit object by adding a context parameter to your web application and setting its value in the deployment descriptor. For example, to set a context parameter called <code>defaultAreaCode</code> to <code>650</code>, add a <code>context-param</code> element to the deployment descriptor and give the parameter the name <code>defaultAreaCode</code> and the value <code>650</code>.</p>
+<p>Next, write a <code>managed-bean</code> declaration that configures a property that references the parameter:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;managed-bean&gt;
+    &lt;managed-bean-name&gt;customer&lt;/managed-bean-name&gt;
+        &lt;managed-bean-class&gt;CustomerBean&lt;/managed-bean-class&gt;
+        &lt;managed-bean-scope&gt;request&lt;/managed-bean-scope&gt;
+        &lt;managed-property&gt;
+            &lt;property-name&gt;areaCode&lt;/property-name&gt;
+                &lt;value&gt;#{initParam.defaultAreaCode}&lt;/value&gt;
+            &lt;/managed-property&gt;
+            ...
+&lt;/managed-bean&gt;
+</pre>
+<p>To access the area code at the time the page is rendered, refer to the property from the <code>area</code> component tag's <code>value</code> attribute:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:inputText id=area value="#{customer.areaCode}"
+</pre>
+<p>Values are retrieved from other implicit objects in a similar way.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BNAWW" name="BNAWW"></a><a id="JEETT00627" name="JEETT00627"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">16.4.2.3</span> <a id="sthref1068" name="sthref1068"></a>Initializing Map Properties</h3>
+<p><a id="sthref1069" name="sthref1069"></a>The <code>map-entries</code> element is used to initialize the values of a bean property with a type of <code>Map</code> if the <code>map-entries</code> element is used within a <code>managed-property</code> element. A <code>map-entries</code> element contains an optional <code>key-class</code> element, an optional <code>value-class</code> element, and zero or more <code>map-entry</code> elements.</p>
+<p><a id="sthref1070" name="sthref1070"></a>Each of the <code>map-entry</code> elements must contain a <code>key</code> element and either a <code>null-value</code> or <code>value</code> element. Here is an example that uses the <code>map-entries</code> element:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;managed-bean&gt;
+    ...
+    &lt;managed-property&gt;
+        &lt;property-name&gt;prices&lt;/property-name&gt;
+        &lt;map-entries&gt;
+            &lt;map-entry&gt;
+                &lt;key&gt;My Early Years: Growing Up on *7&lt;/key&gt;
+                &lt;value&gt;30.75&lt;/value&gt;
+            &lt;/map-entry&gt;
+            &lt;map-entry&gt;
+                &lt;key&gt;Web Servers for Fun and Profit&lt;/key&gt;
+                &lt;value&gt;40.75&lt;/value&gt;
+            &lt;/map-entry&gt;
+        &lt;/map-entries&gt;
+    &lt;/managed-property&gt;
+&lt;/managed-bean&gt;
+</pre>
+<p><a id="sthref1071" name="sthref1071"></a>The map created from this <code>map-entries</code> tag contains two entries. By default, all the keys and values are converted to <code>String</code>. If you want to specify a different type for the keys in the map, embed the <code>key-class</code> element just inside the <code>map-entries</code> element:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;map-entries&gt;
+    &lt;key-class&gt;java.math.BigDecimal&lt;/key-class&gt;
+    ...
+&lt;/map-entries&gt;
+</pre>
+<p>This declaration will convert all the keys into <code>java.math.BigDecimal</code>. Of course, you must make sure that the keys can be converted to the type you specify. The key from the example in this section cannot be converted to a <code>BigDecimal</code>, because it is a <code>String</code>.</p>
+<p>If you want to specify a different type for all the values in the map, include the <code>value-class</code> element after the <code>key-class</code> element:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;map-entries&gt;
+    &lt;key-class&gt;int&lt;/key-class&gt;
+    &lt;value-class&gt;java.math.BigDecimal&lt;/value-class&gt;
+    ...
+&lt;/map-entries&gt;
+</pre>
+<p>Note that this tag sets only the type of all the <code>value</code> subelements.</p>
+<p>Each <code>map-entry</code> in the preceding example includes a <code>value</code> subelement. The <code>value</code> subelement defines a single value, which will be converted to the type specified in the bean.</p>
+<p>Instead of using a <code>map-entries</code> element, it is also possible to assign the entire map using a <code>value</code> element that specifies a map-typed expression.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BNAWX" name="BNAWX"></a><a id="JEETT00628" name="JEETT00628"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">16.4.2.4</span> <a id="sthref1072" name="sthref1072"></a>Initializing Array and List Properties</h3>
+<p>The <code>list-entries</code> element is used to initialize the values of an array or <code>List</code> property. Each individual value of the array or <code>List</code> is initialized using a <code>value</code> or <code>null-value</code> element. Here is an example:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;managed-bean&gt;
+    ...
+    &lt;managed-property&gt;
+        &lt;property-name&gt;books&lt;/property-name&gt;
+        &lt;list-entries&gt;
+            &lt;value-class&gt;java.lang.String&lt;/value-class&gt;
+            &lt;value&gt;Web Servers for Fun and Profit&lt;/value&gt;
+            &lt;value&gt;#{myBooks.bookId[3]}&lt;/value&gt;
+            &lt;null-value/&gt;
+        &lt;/list-entries&gt;
+    &lt;/managed-property&gt;
+&lt;/managed-bean&gt;
+</pre>
+<p>This example initializes an array or a <code>List</code>. The type of the corresponding property in the bean determines which data structure is created. The <code>list-entries</code> element defines the list of values in the array or <code>List</code>. The <code>value</code> element specifies a single value in the array or <code>List</code> and can reference a property in another bean. The <code>null-value</code> element will cause the <code>setBooks</code> method to be called with an argument of <code>null</code>. A <code>null</code> property cannot be specified for a property whose data type is a Java primitive, such as <code>int</code> or <code>boolean</code>.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BNAWY" name="BNAWY"></a><a id="JEETT00629" name="JEETT00629"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">16.4.2.5</span> <a id="sthref1073" name="sthref1073"></a>Initializing Managed Bean Properties</h3>
+<p>Sometimes you might want to create a bean that also references other managed beans so that you can construct a graph or a tree of beans. For example, suppose you want to create a bean representing a customer's information, including the mailing address and street address, each of which is also a bean. The following <code>managed-bean</code> declarations create a <code>CustomerBean</code> instance that has two <code>AddressBean</code> properties: one representing the mailing address and the other representing the street address. This declaration results in a tree of beans with <code>CustomerBean</code> as its root and the two <code>AddressBean</code> objects as children.</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;managed-bean&gt;
+    &lt;managed-bean-name&gt;customer&lt;/managed-bean-name&gt;
+    &lt;managed-bean-class&gt;
+        com.example.mybeans.CustomerBean
+    &lt;/managed-bean-class&gt;
+    &lt;managed-bean-scope&gt; request &lt;/managed-bean-scope&gt;
+    &lt;managed-property&gt;
+        &lt;property-name&gt;mailingAddress&lt;/property-name&gt;
+        &lt;value&gt;#{addressBean}&lt;/value&gt;
+    &lt;/managed-property&gt;
+    &lt;managed-property&gt;
+        &lt;property-name&gt;streetAddress&lt;/property-name&gt;
+        &lt;value&gt;#{addressBean}&lt;/value&gt;
+    &lt;/managed-property&gt;
+    &lt;managed-property&gt;
+        &lt;property-name&gt;customerType&lt;/property-name&gt;
+        &lt;value&gt;New&lt;/value&gt;
+    &lt;/managed-property&gt;
+&lt;/managed-bean&gt;
+&lt;managed-bean&gt;
+    &lt;managed-bean-name&gt;addressBean&lt;/managed-bean-name&gt;
+    &lt;managed-bean-class&gt;
+        com.example.mybeans.AddressBean
+    &lt;/managed-bean-class&gt;
+    &lt;managed-bean-scope&gt; none &lt;/managed-bean-scope&gt;
+    &lt;managed-property&gt;
+        &lt;property-name&gt;street&lt;/property-name&gt;
+        &lt;null-value/&gt;
+    &lt;managed-property&gt;
+    ...
+&lt;/managed-bean&gt;
+</pre>
+<p>The first <code>CustomerBean</code> declaration (with the <code>managed-bean-name</code> of <code>customer</code>) creates a <code>CustomerBean</code> in request scope. This bean has two properties, <code>mailingAddress</code> and <code>streetAddress</code>. These properties use the <code>value</code> element to reference a bean named <code>addressBean</code>.</p>
+<p><a id="sthref1074" name="sthref1074"></a>The second managed bean declaration defines an <code>AddressBean</code> but does not create it, because its <code>managed-bean-scope</code> element defines a scope of <code>none</code>. Recall that a scope of <code>none</code> means that the bean is created only when something else references it. Because both the <code>mailingAddress</code> and the <code>streetAddress</code> properties reference <code>addressBean</code> using the <code>value</code> element, two instances of <code>AddressBean</code> are created when <code>CustomerBean</code> is created.</p>
+<p>When you create an object that points to other objects, do not try to point to an object with a shorter life span, because it might be impossible to recover that scope's resources when it goes away. A session-scoped object, for example, cannot point to a request-scoped object. And objects with <code>none</code> scope have no effective life span managed by the framework, so they can point only to other <code>none</code>-scoped objects. <a href="#BNAWZ">Table 16-2</a> outlines all of the allowed connections.</p>
+<div class="tblhruleformal"><a id="sthref1075" name="sthref1075"></a><a id="BNAWZ" name="BNAWZ"></a>
+<p class="titleintable">Table 16-2 Allowable Connections between Scoped Objects</p>
+<table class="HRuleFormal" title="Allowable Connections between Scoped Objects" summary="This table lists the allowable connections between objects of different scopes." dir="ltr" border="1" width="100%" frame="hsides" rules="rows" cellpadding="3" cellspacing="0">
+<col width="27%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t3">An Object of This Scope</th>
+<th align="left" valign="bottom" id="r1c2-t3">May Point to an Object of This Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t3" headers="r1c1-t3">
+<p><code>none</code></p>
+</td>
+<td align="left" headers="r2c1-t3 r1c2-t3">
+<p><code>none</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t3" headers="r1c1-t3">
+<p><code>application</code></p>
+</td>
+<td align="left" headers="r3c1-t3 r1c2-t3">
+<p><code>none</code>, <code>application</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t3" headers="r1c1-t3">
+<p><code>session</code></p>
+</td>
+<td align="left" headers="r4c1-t3 r1c2-t3">
+<p><code>none</code>, <code>application</code>, <code>session</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t3" headers="r1c1-t3">
+<p><code>request</code></p>
+</td>
+<td align="left" headers="r5c1-t3 r1c2-t3">
+<p><code>none</code>, <code>application</code>, <code>session</code>, <code>request</code>, <code>view</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r6c1-t3" headers="r1c1-t3">
+<p><code>view</code></p>
+</td>
+<td align="left" headers="r6c1-t3 r1c2-t3">
+<p><code>none</code>, <code>application</code>, <code>session</code>, <code>view</code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblhruleformal" -->
+<p>Be sure not to allow cyclical references between objects. For example, neither of the <code>AddressBean</code> objects in the preceding example should point back to the <code>CustomerBean</code> object, because <code>CustomerBean</code> already points to the <code>AddressBean</code> objects.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BNAXA" name="BNAXA"></a><a id="JEETT01011" name="JEETT01011"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">16.4.3</span> <a id="sthref1076" name="sthref1076"></a>Initializing Maps and Lists</h2>
+<p>In addition to configuring <code>Map</code> and <code>List</code> properties, you can also configure a <code>Map</code> and a <code>List</code> directly so that you can reference them from a tag rather than referencing a property that wraps a <code>Map</code> or a <code>List</code>.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="jsf-configure003.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="jsf-configure005.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

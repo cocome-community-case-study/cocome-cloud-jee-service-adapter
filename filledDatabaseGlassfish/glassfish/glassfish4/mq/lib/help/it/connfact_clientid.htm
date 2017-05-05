@@ -1,0 +1,70 @@
+<!--
+
+    DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+    Copyright (c) 2000-2010 Oracle and/or its affiliates. All rights reserved.
+
+    The contents of this file are subject to the terms of either the GNU
+    General Public License Version 2 only ("GPL") or the Common Development
+    and Distribution License("CDDL") (collectively, the "License").  You
+    may not use this file except in compliance with the License.  You can
+    obtain a copy of the License at
+    https://glassfish.dev.java.net/public/CDDL+GPL_1_1.html
+    or packager/legal/LICENSE.txt.  See the License for the specific
+    language governing permissions and limitations under the License.
+
+    When distributing the software, include this License Header Notice in each
+    file and include the License file at packager/legal/LICENSE.txt.
+
+    GPL Classpath Exception:
+    Oracle designates this particular file as subject to the "Classpath"
+    exception as provided by Oracle in the GPL Version 2 section of the License
+    file that accompanied this code.
+
+    Modifications:
+    If applicable, add the following below the License Header, with the fields
+    enclosed by brackets [] replaced by your own identifying information:
+    "Portions Copyright [year] [name of copyright owner]"
+
+    Contributor(s):
+    If you wish your version of this file to be governed by only the CDDL or
+    only the GPL Version 2, indicate your decision by adding "[Contributor]
+    elects to include this software in this distribution under the [CDDL or GPL
+    Version 2] license."  If you don't indicate a single choice of license, a
+    recipient has the option to distribute your version of this file under
+    either the CDDL, the GPL Version 2 or to extend the choice of license to
+    its licensees as provided above.  However, if you add GPL Version 2 code
+    and therefore, elected the GPL Version 2 license, then the option applies
+    only if the new code is made subject to such option by the copyright
+    holder.
+
+-->
+
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+ <TITLE>connfact clientid</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>Propriet&agrave; oggetto ConnectionFactory &gt; <BR>
+  Identificazione del client</H2>
+ 
+<P>Utilizzare questa scheda per specificare nuovamente i valori predefiniti di nome utente e password e come un client verr&agrave; identificato (ClientID) in un broker. I valori ClientId sono utilizzati principalmente per tenere traccia degli abbonati durable.</P>
+
+<p><b>Nome utente predefinito</b> Specifica il nome utente predefinito da utilizzare per l'autenticazione con il broker. Il valore predefinito &egrave; <code>guest</code>.</p>
+
+<p><b>Password predefinita</b> Specifica la password predefinita da utilizzare per l'autenticazione con il broker. Il valore predefinito &egrave; <code>guest</code>.</p>
+
+<p><b>Disabilita API JMS setClientID() </b>Specifica che l'applicazione client non pu&ograve; utilizzare le chiamate API per modificare ClientID. Generalmente, &egrave; consigliabile che l'amministratore controlli l'assegnazione dei ClientID.</p>
+
+<p> Se si seleziona la casella, &egrave; possibile utilizzare il campo <b>Configura ClientID come</b> per specificare un ClientID per il client. Se tale valore non viene specificato, il valore predefinito che corrisponde all'indirizzo IP dell'host del client viene assegnato dal sistema. Questa operazione &egrave; utile agli sviluppatori, ma impedisce a un'applicazione client di creare pi&ugrave; di una connessione: il sistema non consente due connessioni con lo stesso ClientID.</p>
+
+<p><b>Configura ClientID come</b> Specifica un identificatore per il client. Se tale valore non viene specificato ed &egrave; stata disattivata la chiamata API che imposta il ClientID, il sistema assegna un valore predefinito che corrisponde all'indirizzo IP dell'host del client. Questa operazione &egrave; utile agli sviluppatori, ma impedisce a un'applicazione client di creare pi&ugrave; di una connessione: il sistema non consente due connessioni con lo stesso ClientID.</p>
+
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

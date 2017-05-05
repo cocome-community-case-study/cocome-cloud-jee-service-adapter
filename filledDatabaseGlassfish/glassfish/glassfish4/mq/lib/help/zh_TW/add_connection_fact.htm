@@ -1,0 +1,48 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=Big5">
+<title>新增連線工廠</title>
+ <link rel="StyleSheet" href="ide.css">
+ 
+</head>
+<body>
+<h2>新增連線工廠物件</h2>
+ 
+<p>使用此對話方塊配置連線工廠物件，並將其加入物件倉庫。</p>
+
+<p><i>連線工廠</i> 是 JMS 用戶端用來連接代理程式的受管理物件。此物件也用於指定連接的運作方式，以及用戶端的執行階段如何使用它來存取代理程式。</p>
+
+<p><b>查找名稱</b> 使用此欄位指定連線工廠物件的 JNDI 查找名稱。 </p>
+
+<p><b>Factory 類型</b> 選擇功能表項目，以指定 Factory 產生的連接類型：ConnectionFactory、QueueConnectionFactory、TopicConnectionFactory。如果訊息必須是分配的事務處理的一部分，則選擇 [XAConnectionFactory]、[XAQueueConnectionFactory] 或 [XATopicConnectionFactory]。</p>
+
+<p><b>唯讀</b> 按一下此核取方塊使 Factory 連接物件為唯讀。如果物件為唯讀，則用戶端應用程式將無法透過 API 呼叫修改連線工廠屬性。 </p>
+
+<p>透過配置連線工廠物件，您可以指定 Factory 產生的全部連接的共有屬性。使用對話方塊中所顯示的標籤來配置連線工廠。請按下列連結以取得該特定標籤的資訊。</p>
+
+	
+<a HREF="add_connfact_rel.htm">可靠度和流量控制</a> <br> <a HREF="add_connfact_queue.htm">佇列瀏覽器和伺服器階段作業</a><br> <a HREF="add_connfact_handling.htm">連接處理</a><br> <a HREF="add_connfact_clientid.htm">用戶端標識</a> <br> <a HREF="add_connfact_jmsx.htm">JMSX 屬性</a> <br> <a HREF="add_connfact_message_header_overrides.htm">訊息標頭置換</a><br> <a HREF="add_connfact_handling_old.htm">3.0 連接處理</a><br>
+  	 
+
+<ul>
+<li>按一下 <b>[重設為預設值]</b> 按鈕，將所有對話方塊標籤中的全部欄位重設為其預設值。 </li>
+<li> 按一下 <b>[確定]</b>，建立連線工廠物件。 </li>
+</ul>
+
+<p>若要變更連線工廠物件的屬性：</p>
+
+<ol>
+<li>在管理主控台的導航窗格中選取 Connection Factories 資料夾。 </li>
+<li>在管理主控台的結果窗格中選取連線工廠物件。 </li>
+<li>選擇 <b>[動作] > [屬性]</b>，顯示 [連線工廠物件屬性] 對話方塊。 </li>
+</ol>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

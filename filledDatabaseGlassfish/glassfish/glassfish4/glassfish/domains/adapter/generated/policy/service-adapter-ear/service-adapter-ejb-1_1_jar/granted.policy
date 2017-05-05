@@ -1,0 +1,31 @@
+/* AUTOMATICALLY GENERATED ON Fri May 05 16:21:48 CEST 2017*/
+/* DO NOT EDIT */
+
+grant {
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "createProductSupplier,Remote,java.util.List";
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "createStore,Remote,java.util.List";
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "updateCustomer,Remote,java.util.List";
+  permission javax.security.jacc.EJBMethodPermission "UserManager", "login,Remote,java.lang.String,java.lang.String,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "updateProducts,Remote,java.util.List";
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "createProducts,Remote,java.util.List";
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "updateProductSupplier,Remote,java.util.List";
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "createProductOrder,Remote,java.util.List";
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "bookSale,Remote,java.lang.Object";
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "updateStore,Remote,java.util.List";
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "createStockItem,Remote,java.util.List";
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "updateStockItems,Remote,java.util.List";
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "createCustomer,Remote,java.util.List";
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "updateUser,Remote,java.util.List";
+  permission javax.security.jacc.EJBMethodPermission "UserManager", "checkPermission,Remote,java.lang.String,java.lang.String,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "query,Remote,java.lang.String";
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "updateEnterprises,Remote,java.util.List";
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "createUser,Remote,java.util.List";
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "createEnterprise,Remote,org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise";
+  permission javax.security.jacc.EJBMethodPermission "DatabaseAccess", "updateProductOrder,Remote,java.util.List";
+};
+
+grant      principal * * {
+  permission javax.security.jacc.EJBRoleRefPermission "DatabaseAccess", "**";
+  permission javax.security.jacc.EJBRoleRefPermission "UserManager", "**";
+};
+

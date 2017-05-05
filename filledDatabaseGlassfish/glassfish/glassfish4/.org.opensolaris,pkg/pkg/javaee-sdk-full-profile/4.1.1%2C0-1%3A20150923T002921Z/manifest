@@ -1,0 +1,13 @@
+set name=fmri value=pkg:/javaee-sdk-full-profile@4.1.1,0-1:20150923T002921Z
+set name=info.classification value="Application Servers"
+set name=pkg.description value="Java EE 7 SDK Full Platform Metapackage.  GlassFish Server is a modular and lightweight Java EE 7 compliant application server. Key features include an OSGi runtime, fast startup time, maven support, and rapid iterative development with Active Redeploy.  GlassFish Server also offers feature-rich administration with the web console, command line, and RESTful API."
+set name=pkg.summary value="Java EE 7 SDK Full Platform"
+depend fmri=pkg:/glassfish-full-profile type=require
+depend fmri=pkg:/javaee-samples-full type=require
+depend fmri=pkg:/javaee-samples-web type=require
+depend fmri=pkg:/sdk-branding-full type=require
+depend fmri=pkg:/javaee-tutorial type=require
+depend fmri=pkg:/javaee-firstcup-tutorial type=require
+depend fmri=pkg:/javaee-javadocs type=require
+license 295d95dbca362b6392155e01a4be7607e9b72110 chash=f7a5f98d6fd365e9d81d66f03b4f7812eba82838 license="OTN License" pkg.csize=4072 pkg.size=10710
+set name=publisher value=release.javaeesdk.oracle.com

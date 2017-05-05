@@ -1,0 +1,622 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:29:58Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="Binding Component Values and Instances to Managed Bean Properties" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39031-01" />
+        <meta name="description" content="A guide to developing enterprise applications for the Java Platform, Enterprise Edition 7 (Java EE 7) using GlassFish Server Open Source Edition." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Java FX, Web, developer, enterprise, Java EE Tutorial, Java EE 7 Tutorial" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>The Java EE 7 Tutorial:Binding Component Values and Instances to Managed Bean Properties | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7.0</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/tutorial/doc/javaeetutorial7.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GEXAF">Preface</a></h2>
+<h2 class="tocheader"><a href="partintro.htm#GFIRP">Part I Introduction</a></h2>
+<h2 class="tocheader"><a href="overview.htm#BNAAW"><span class="secnum">1</span> Overview</a></h2>
+<h2 class="tocheader"><a href="usingexamples.htm#GFIUD"><span class="secnum">2</span> Using the Tutorial Examples</a></h2>
+<h2 class="tocheader"><a href="partplatform.htm#GFIRP2">Part II Platform Basics</a></h2>
+<h2 class="tocheader"><a href="resource-creation.htm#GKJIQ2"><span class="secnum">3</span> Resource Creation</a></h2>
+<h2 class="tocheader"><a href="injection.htm#GKJIQ3"><span class="secnum">4</span> Injection</a></h2>
+<h2 class="tocheader"><a href="packaging.htm#GKJIQ4"><span class="secnum">5</span> Packaging</a></h2>
+<h2 class="tocheader"><a href="partwebtier.htm#BNADP">Part III The Web Tier</a></h2>
+<h2 class="tocheader"><a href="webapp.htm#BNADR"><span class="secnum">6</span> Getting Started with Web Applications</a></h2>
+<h2 class="tocheader"><a href="jsf-intro.htm#BNAPH"><span class="secnum">7</span> JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-facelets.htm#GIEPX"><span class="secnum">8</span> Introduction to Facelets</a></h2>
+<h2 class="tocheader"><a href="jsf-el.htm#GJDDD"><span class="secnum">9</span> Expression Language</a></h2>
+<h2 class="tocheader"><a href="jsf-page.htm#BNAQZ"><span class="secnum">10</span> Using JavaServer Faces Technology in Web Pages</a></h2>
+<h2 class="tocheader"><a href="jsf-page-core.htm#GJCUT"><span class="secnum">11</span> Using Converters, Listeners, and Validators</a></h2>
+<h2 class="tocheader"><a href="jsf-develop.htm#BNATX"><span class="secnum">12</span> Developing with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-ajax.htm#GKIOW"><span class="secnum">13</span> Using Ajax with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-advanced-cc.htm#GKHXA"><span class="secnum">14</span> Composite Components: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="jsf-custom.htm#BNAVG"><span class="secnum">15</span> Creating Custom UI Components and Other Custom Objects</a></h2>
+<ul style="list-style-type:none">
+<li><a href="jsf-custom001.htm#BNAVH"><span class="secnum">15.1</span> Determining Whether You Need a Custom Component or Renderer</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-custom001.htm#BNAVI"><span class="secnum">15.1.1</span> When to Use a Custom Component</a></li>
+<li><a href="jsf-custom001.htm#BNAVJ"><span class="secnum">15.1.2</span> When to Use a Custom Renderer</a></li>
+<li><a href="jsf-custom001.htm#BNAVK"><span class="secnum">15.1.3</span> Component, Renderer, and Tag Combinations</a></li>
+</ul>
+</li>
+<li><a href="jsf-custom002.htm#GLPCB"><span class="secnum">15.2</span> Understanding the Image Map Example</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-custom002.htm#GLPBD"><span class="secnum">15.2.1</span> Why Use JavaServer Faces Technology to Implement an Image Map?</a></li>
+<li><a href="jsf-custom002.htm#GLPEM"><span class="secnum">15.2.2</span> Understanding the Rendered HTML</a></li>
+<li><a href="jsf-custom002.htm#GLPCD"><span class="secnum">15.2.3</span> Understanding the Facelets Page</a></li>
+<li><a href="jsf-custom002.htm#GLPBO"><span class="secnum">15.2.4</span> Configuring Model Data</a></li>
+<li><a href="jsf-custom002.htm#GLPEL"><span class="secnum">15.2.5</span> Summary of the Image Map Application Classes</a></li>
+</ul>
+</li>
+<li><a href="jsf-custom003.htm#BNAVT"><span class="secnum">15.3</span> Steps for Creating a Custom Component</a></li>
+<li><a href="jsf-custom004.htm#BNAVU"><span class="secnum">15.4</span> Creating Custom Component Classes</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-custom004.htm#BNAVV"><span class="secnum">15.4.1</span> Specifying the Component Family</a></li>
+<li><a href="jsf-custom004.htm#BNAVW"><span class="secnum">15.4.2</span> Performing Encoding</a></li>
+<li><a href="jsf-custom004.htm#BNAVX"><span class="secnum">15.4.3</span> Performing Decoding</a></li>
+<li><a href="jsf-custom004.htm#BNAVY"><span class="secnum">15.4.4</span> Enabling Component Properties to Accept Expressions</a></li>
+<li><a href="jsf-custom004.htm#BNAVZ"><span class="secnum">15.4.5</span> Saving and Restoring State</a></li>
+</ul>
+</li>
+<li><a href="jsf-custom005.htm#BNAWA"><span class="secnum">15.5</span> Delegating Rendering to a Renderer</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-custom005.htm#BNAWB"><span class="secnum">15.5.1</span> Creating the Renderer Class</a></li>
+<li><a href="jsf-custom005.htm#BNAWC"><span class="secnum">15.5.2</span> Identifying the Renderer Type</a></li>
+</ul>
+</li>
+<li><a href="jsf-custom006.htm#BNAUT"><span class="secnum">15.6</span> Implementing an Event Listener</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-custom006.htm#BNAUU"><span class="secnum">15.6.1</span> Implementing Value-Change Listeners</a></li>
+<li><a href="jsf-custom006.htm#BNAUV"><span class="secnum">15.6.2</span> Implementing Action Listeners</a></li>
+</ul>
+</li>
+<li><a href="jsf-custom007.htm#BNAWD"><span class="secnum">15.7</span> Handling Events for Custom Components</a></li>
+<li><a href="jsf-custom008.htm#BNAWN"><span class="secnum">15.8</span> Defining the Custom Component Tag in a Tag Library Descriptor</a></li>
+<li><a href="jsf-custom009.htm#BNATT"><span class="secnum">15.9</span> Using a Custom Component</a></li>
+<li><a href="jsf-custom010.htm#BNAUS"><span class="secnum">15.10</span> Creating and Using a Custom Converter</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-custom010.htm#GLPHB"><span class="secnum">15.10.1</span> Creating a Custom Converter</a></li>
+<li><a href="jsf-custom010.htm#BNATU"><span class="secnum">15.10.2</span> Using a Custom Converter</a></li>
+</ul>
+</li>
+<li><a href="jsf-custom011.htm#BNAUW"><span class="secnum">15.11</span> Creating and Using a Custom Validator</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-custom011.htm#BNAUX"><span class="secnum">15.11.1</span> Implementing the Validator Interface</a></li>
+<li><a href="jsf-custom011.htm#BNAUY"><span class="secnum">15.11.2</span> Specifying a Custom Tag</a></li>
+<li><a href="jsf-custom011.htm#BNATV"><span class="secnum">15.11.3</span> Using a Custom Validator</a></li>
+</ul>
+</li>
+<li><div id="backgroundColor"><a href="jsf-custom012.htm#BNATG"><span class="secnum">15.12</span> Binding Component Values and Instances to Managed Bean Properties</a><ul style="list-style-type:none">
+<li><a href="jsf-custom012.htm#BNATI"><span class="secnum">15.12.1</span> Binding a Component Value to a Property</a></li>
+<li><a href="jsf-custom012.htm#BNATJ"><span class="secnum">15.12.2</span> Binding a Component Value to an Implicit Object</a></li>
+<li><a href="jsf-custom012.htm#BNATL"><span class="secnum">15.12.3</span> Binding a Component Instance to a Bean Property</a></li>
+</ul>
+</div></li>
+<li><a href="jsf-custom013.htm#BNATM"><span class="secnum">15.13</span> Binding Converters, Listeners, and Validators to Managed Bean Properties</a></li>
+</ul>
+<h2 class="tocheader"><a href="jsf-configure.htm#BNAWO"><span class="secnum">16</span> Configuring JavaServer Faces Applications</a></h2>
+<h2 class="tocheader"><a href="servlets.htm#BNAFD"><span class="secnum">17</span> Java Servlet Technology</a></h2>
+<h2 class="tocheader"><a href="websocket.htm#GKJIQ5"><span class="secnum">18</span> Java API for WebSocket</a></h2>
+<h2 class="tocheader"><a href="jsonp.htm#GLRBB"><span class="secnum">19</span> JSON Processing</a></h2>
+<h2 class="tocheader"><a href="webi18n.htm#BNAXU"><span class="secnum">20</span> Internationalizing and Localizing Web Applications</a></h2>
+<h2 class="tocheader"><a href="partbeanvalidation.htm#sthref1322">Part IV Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation.htm#CHDGJIIA"><span class="secnum">21</span> Introduction to Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation-advanced.htm#GKAHP"><span class="secnum">22</span> Bean Validation: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partcdi.htm#GJBNR">Part V Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basic.htm#GIWHB"><span class="secnum">23</span> Introduction to Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basicexamples.htm#GJBLS"><span class="secnum">24</span> Running the Basic Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="cdi-adv.htm#GJEHI"><span class="secnum">25</span> Contexts and Dependency Injection for Java EE: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="cdi-adv-examples.htm#GKHRE"><span class="secnum">26</span> Running the Advanced Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="partwebsvcs.htm#BNAYK">Part VI Web Services</a></h2>
+<h2 class="tocheader"><a href="webservices-intro.htm#GIJTI"><span class="secnum">27</span> Introduction to Web Services</a></h2>
+<h2 class="tocheader"><a href="jaxws.htm#BNAYL"><span class="secnum">28</span> Building Web Services with JAX-WS</a></h2>
+<h2 class="tocheader"><a href="jaxrs.htm#GIEPU"><span class="secnum">29</span> Building RESTful Web Services with JAX-RS</a></h2>
+<h2 class="tocheader"><a href="jaxrs-client.htm#BABEIGIH"><span class="secnum">30</span> Accessing REST Resources with the JAX-RS Client API</a></h2>
+<h2 class="tocheader"><a href="jaxrs-advanced.htm#GJJXE"><span class="secnum">31</span> JAX-RS: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="partentbeans.htm#BNBLR">Part VII Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-intro.htm#GIJSZ"><span class="secnum">32</span> Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-gettingstarted.htm#GIJRE"><span class="secnum">33</span> Getting Started with Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-basicexamples.htm#GIJRB"><span class="secnum">34</span> Running the Enterprise Bean Examples</a></h2>
+<h2 class="tocheader"><a href="ejb-embedded.htm#GKCQZ"><span class="secnum">35</span> Using the Embedded Enterprise Bean Container</a></h2>
+<h2 class="tocheader"><a href="ejb-async.htm#GKIDZ"><span class="secnum">36</span> Using Asynchronous Method Invocation in Session Beans</a></h2>
+<h2 class="tocheader"><a href="partpersist.htm#BNBPY">Part VIII Persistence</a></h2>
+<h2 class="tocheader"><a href="persistence-intro.htm#BNBPZ"><span class="secnum">37</span> Introduction to the Java Persistence API</a></h2>
+<h2 class="tocheader"><a href="persistence-basicexamples.htm#GIJST"><span class="secnum">38</span> Running the Persistence Examples</a></h2>
+<h2 class="tocheader"><a href="persistence-querylanguage.htm#BNBTG"><span class="secnum">39</span> The Java Persistence Query Language</a></h2>
+<h2 class="tocheader"><a href="persistence-criteria.htm#GJITV"><span class="secnum">40</span> Using the Criteria API to Create Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-string-queries.htm#GKJIQ"><span class="secnum">41</span> Creating and Using String-Based Criteria Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-locking.htm#GKJJF"><span class="secnum">42</span> Controlling Concurrent Access to Entity Data with Locking</a></h2>
+<h2 class="tocheader"><a href="persistence-entitygraphs.htm#BABIJIAC"><span class="secnum">43</span> Creating Fetch Plans with Entity Graphs</a></h2>
+<h2 class="tocheader"><a href="persistence-cache.htm#GKJIA"><span class="secnum">44</span> Using a Second-Level Cache with Java Persistence API Applications</a></h2>
+<h2 class="tocheader"><a href="partmessaging.htm#GFIRP3">Part IX Messaging</a></h2>
+<h2 class="tocheader"><a href="jms-concepts.htm#BNCDQ"><span class="secnum">45</span> Java Message Service Concepts</a></h2>
+<h2 class="tocheader"><a href="jms-examples.htm#BNCGV"><span class="secnum">46</span> Java Message Service Examples</a></h2>
+<h2 class="tocheader"><a href="partsecurity.htm#GIJRP">Part X Security</a></h2>
+<h2 class="tocheader"><a href="security-intro.htm#BNBWJ"><span class="secnum">47</span> Introduction to Security in the Java EE Platform</a></h2>
+<h2 class="tocheader"><a href="security-webtier.htm#BNCAS"><span class="secnum">48</span> Getting Started Securing Web Applications</a></h2>
+<h2 class="tocheader"><a href="security-javaee.htm#BNBYK"><span class="secnum">49</span> Getting Started Securing Enterprise Applications</a></h2>
+<h2 class="tocheader"><a href="security-advanced.htm#GJJWX"><span class="secnum">50</span> Java EE Security: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partsupporttechs.htm#GIJUE">Part XI Java EE Supporting Technologies</a></h2>
+<h2 class="tocheader"><a href="transactions.htm#BNCIH"><span class="secnum">51</span> Transactions</a></h2>
+<h2 class="tocheader"><a href="resources.htm#BNCJH"><span class="secnum">52</span> Resource Adapters and Contracts</a></h2>
+<h2 class="tocheader"><a href="connectorexample.htm#GLODB"><span class="secnum">53</span> The Resource Adapter Examples</a></h2>
+<h2 class="tocheader"><a href="interceptors.htm#GKEED"><span class="secnum">54</span> Using Java EE Interceptors</a></h2>
+<h2 class="tocheader"><a href="batch-processing.htm#GKJIQ6"><span class="secnum">55</span> Batch Processing</a></h2>
+<h2 class="tocheader"><a href="concurrency-utilities.htm#GKJIQ8"><span class="secnum">56</span> Concurrency Utilities for Java EE</a></h2>
+<h2 class="tocheader"><a href="partcasestudies.htm#GKGJW">Part XII Case Studies</a></h2>
+<h2 class="tocheader"><a href="dukes-bookstore.htm#GLNVI"><span class="secnum">57</span> Duke's Bookstore Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-tutoring.htm#GKAEE"><span class="secnum">58</span> Duke's Tutoring Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-forest.htm#GLNPW"><span class="secnum">59</span> Duke's Forest Case Study Example</a></h2>
+<h2 class="tocheader"><a href="index.htm">Index</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>The Java EE 7 Tutorial  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="jsf-custom011.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="jsf-custom013.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="BNATG" name="BNATG"></a><a id="JEETT00390" name="JEETT00390"></a>
+<div class="sect1">
+<h1 class="sect1"><span class="secnum">15.12</span> <a id="sthref1001" name="sthref1001"></a>Binding Component Values and Instances to Managed Bean Properties</h1>
+<p>A component tag can wire its data to a managed bean by one of the following methods:</p>
+<ul>
+<li>
+<p>Binding its component's value to a bean property</p>
+</li>
+<li>
+<p><a id="sthref1002" name="sthref1002"></a>Binding its component's instance to a bean property</p>
+</li>
+</ul>
+<p><a id="sthref1003" name="sthref1003"></a><a id="sthref1004" name="sthref1004"></a><a id="sthref1005" name="sthref1005"></a><a id="sthref1006" name="sthref1006"></a><a id="sthref1007" name="sthref1007"></a>To bind a component's value to a managed bean property, a component tag's <code>value</code> attribute uses an EL value expression. To bind a component instance to a bean property, a component tag's <code>binding</code> attribute uses a value expression.</p>
+<p>When a component instance is bound to a managed bean property, the property holds the component's local value. Conversely, when a component's value is bound to a managed bean property, the property holds the value stored in the managed bean. This value is updated with the local value during the Update Model Values phase of the lifecycle. There are advantages to both of these methods.</p>
+<p>Binding a component instance to a bean property has the following advantages.</p>
+<ul>
+<li>
+<p>The managed bean can programmatically modify component attributes.</p>
+</li>
+<li>
+<p>The managed bean can instantiate components rather than let the page author do so.</p>
+</li>
+</ul>
+<p>Binding a component's value to a bean property has the following advantages.</p>
+<ul>
+<li>
+<p>The page author has more control over the component attributes.</p>
+</li>
+<li>
+<p>The managed bean has no dependencies on the JavaServer Faces API (such as the component classes), allowing for greater separation of the presentation layer from the model layer.</p>
+</li>
+<li>
+<p>The JavaServer Faces implementation can perform conversions on the data based on the type of the bean property without the developer needing to apply a converter.</p>
+</li>
+</ul>
+<p>In most situations, you will bind a component's value rather than its instance to a bean property. You'll need to use a component binding only when you need to change one of the component's attributes dynamically. For example, if an application renders a component only under certain conditions, it can set the component's <code>rendered</code> property accordingly by accessing the property to which the component is bound.</p>
+<p>When referencing the property using the component tag's <code>value</code> attribute, you need to use the proper syntax. For example, suppose a managed bean called <code>MyBean</code> has this <code>int</code> property:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+protected int currentOption = null;
+public int getCurrentOption(){...}
+public void setCurrentOption(int option){...}
+</pre>
+<p>The <code>value</code> attribute that references this property must have this value-binding expression:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+#{myBean.currentOption}
+</pre>
+<p>In addition to binding a component's value to a bean property, the <code>value</code> attribute can specify a literal value or can map the component's data to any primitive (such as <code>int</code>), structure (such as an array), or collection (such as a list), independent of a JavaBeans component. <a href="#BNATH">Table 15-3</a> lists some example value-binding expressions that you can use with the <code>value</code> attribute.</p>
+<div class="tblhruleformal"><a id="sthref1008" name="sthref1008"></a><a id="BNATH" name="BNATH"></a>
+<p class="titleintable">Table 15-3 <a id="sthref1009" name="sthref1009"></a>Examples of Value-Binding Expressions</p>
+<table class="HRuleFormal" title="Examples of Value-Binding Expressions" summary="This table provides examples of value-binding expressions." dir="ltr" border="1" width="100%" frame="hsides" rules="rows" cellpadding="3" cellspacing="0">
+<col width="*" />
+<col width="47%" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t5">Value</th>
+<th align="left" valign="bottom" id="r1c2-t5">Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t5" headers="r1c1-t5">
+<p>A Boolean</p>
+</td>
+<td align="left" headers="r2c1-t5 r1c2-t5">
+<p><code>cart.numberOfItems&gt; 0</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t5" headers="r1c1-t5">
+<p>A property initialized from a context initialization parameter</p>
+</td>
+<td align="left" headers="r3c1-t5 r1c2-t5">
+<p><code>initParam.quantity</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t5" headers="r1c1-t5">
+<p>A bean property</p>
+</td>
+<td align="left" headers="r4c1-t5 r1c2-t5">
+<p><code>cashierBean.name</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t5" headers="r1c1-t5">
+<p>A value in an array</p>
+</td>
+<td align="left" headers="r5c1-t5 r1c2-t5">
+<p><code>books[3]</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r6c1-t5" headers="r1c1-t5">
+<p>A value in a collection</p>
+</td>
+<td align="left" headers="r6c1-t5 r1c2-t5">
+<p><code>books["fiction"]</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r7c1-t5" headers="r1c1-t5">
+<p>A property of an object in an array of objects</p>
+</td>
+<td align="left" headers="r7c1-t5 r1c2-t5">
+<p><code>books[3].price</code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblhruleformal" -->
+<p>The next two sections explain how to use the <code>value</code> attribute to bind a component's value to a bean property or other data objects and how to use the <code>binding</code> attribute to bind a component instance to a bean property.</p>
+<a id="BNATI" name="BNATI"></a><a id="JEETT01004" name="JEETT01004"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">15.12.1</span> <a id="sthref1010" name="sthref1010"></a><a id="sthref1011" name="sthref1011"></a><a id="sthref1012" name="sthref1012"></a><a id="sthref1013" name="sthref1013"></a>Binding a Component Value to a Property</h2>
+<p>To bind a component's value to a managed bean property, you specify the name of the bean and the property using the <code>value</code> attribute.</p>
+<p>This means that the first part of the EL value expression must match the name of the managed bean up to the first period (<code>.</code>) and the part of the value expression after the period must match the property of the managed bean.</p>
+<p>For example, in the Duke's Bookstore case study, the <code>h:dataTable</code> tag in <code>bookcatalog.xhtml</code> sets the value of the component to the value of the <code>books</code> property of the <code>BookstoreBean</code> backing bean, whose name is <code>store</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:dataTable id="books"
+             value="#{store.books}"
+             var="book"
+             headerClass="list-header"
+             styleClass="list-background"
+             rowClasses="list-row-even, list-row-odd"
+             border="1" 
+             summary="#{bundle.BookCatalog}"&gt;
+</pre>
+<p>The value is obtained by calling the backing bean's <code>getBooks</code> method, which in turn calls the <code>BookRequestBean</code> session bean's <code>getBooks</code> method.</p>
+<p>If you use the application configuration resource file to configure managed beans instead of defining them in managed bean classes, the name of the bean in the <code>value</code> expression must match the <code>managed-bean-name</code> element of the managed bean declaration up to the first period (<code>.</code>) in the expression. Similarly, the part of the value expression after the period must match the name specified in the corresponding <code>property-name</code> element in the application configuration resource file.</p>
+<p>For example, consider this managed bean configuration, which configures the <code>ImageArea</code> bean corresponding to the top-left book in the image map on the <code>index.html</code> page of the Duke's Bookstore case study:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;managed-bean eager="true"&gt;
+    ...
+    &lt;managed-bean-name&gt;Book201&lt;/managed-bean-name&gt;
+    &lt;managed-bean-class&gt;dukesbookstore.model.ImageArea&lt;/managed-bean-class&gt;
+    &lt;managed-bean-scope&gt;application&lt;/managed-bean-scope&gt;
+    &lt;managed-property&gt;
+        ...
+        &lt;property-name&gt;shape&lt;/property-name&gt;
+        &lt;value&gt;rect&lt;/value&gt;
+    &lt;/managed-property&gt;
+    &lt;managed-property&gt;
+        ...
+        &lt;property-name&gt;alt&lt;/property-name&gt;
+        &lt;value&gt;Duke&lt;/value&gt;
+    &lt;/managed-property&gt;
+    ...
+</pre>
+<p>This example configures a bean called <code>Book201</code>, which has several properties, one of which is called <code>shape</code>.</p>
+<p>Although the <code>bookstore:area</code> tags on the <code>index.xhtml</code> page do not bind to an <code>ImageArea</code> property (they bind to the bean itself), you could refer to the property using a value expression from the <code>value</code> attribute of the component's tag:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:outputText value="#{Book201.shape}" /&gt;
+</pre>
+<p>See <a href="jsf-configure004.htm#BNAWQ">Configuring Managed Beans</a> for information on how to configure beans in the application configuration resource file.</p>
+</div>
+<!-- class="sect2" -->
+<a id="BNATJ" name="BNATJ"></a><a id="JEETT01005" name="JEETT01005"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">15.12.2</span> <a id="sthref1014" name="sthref1014"></a><a id="sthref1015" name="sthref1015"></a>Binding a Component Value to an Implicit Object</h2>
+<p>One external data source that a <code>value</code> attribute can refer to is an implicit object.</p>
+<p>The <code>bookreceipt.xhtml</code> page of the Duke's Bookstore case study has a reference to an implicit object:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:outputFormat title="thanks" 
+                value="#{bundle.ThankYouParam}"&gt;
+    &lt;f:param value="#{sessionScope.name}"/&gt;
+&lt;/h:outputFormat&gt;
+</pre>
+<p>This tag gets the name of the customer from the session scope and inserts it into the parameterized message at the key <code>ThankYouParam</code> from the resource bundle. For example, if the name of the customer is Gwen Canigetit, this tag will render:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+Thank you, Gwen Canigetit, for purchasing your books from us.
+</pre>
+<p>Retrieving values from other implicit objects is done in a similar way to the example shown in this section. <a href="#BNATK">Table 15-4</a> lists the implicit objects to which a value attribute can refer. All of the implicit objects, except for the scope objects, are read-only and therefore should not be used as values for a <code>UIInput</code> component.</p>
+<div class="tblhruleformal"><a id="sthref1016" name="sthref1016"></a><a id="BNATK" name="BNATK"></a>
+<p class="titleintable">Table 15-4 <a id="sthref1017" name="sthref1017"></a>Implicit Objects</p>
+<table class="HRuleFormal" title="Implicit Objects" summary="This table lists and describes the implicit objects to which a value attribute can refer." dir="ltr" border="1" width="100%" frame="hsides" rules="rows" cellpadding="3" cellspacing="0">
+<col width="22%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t6">Implicit Object</th>
+<th align="left" valign="bottom" id="r1c2-t6">What It Is</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t6" headers="r1c1-t6">
+<p><code>applicationScope</code></p>
+</td>
+<td align="left" headers="r2c1-t6 r1c2-t6">
+<p>A <code>Map</code> of the application scope attribute values, keyed by attribute name</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t6" headers="r1c1-t6">
+<p><code>cookie</code></p>
+</td>
+<td align="left" headers="r3c1-t6 r1c2-t6">
+<p>A <code>Map</code> of the cookie values for the current request, keyed by cookie name</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t6" headers="r1c1-t6">
+<p><code>facesContext</code></p>
+</td>
+<td align="left" headers="r4c1-t6 r1c2-t6">
+<p>The <code>FacesContext</code> instance for the current request</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t6" headers="r1c1-t6">
+<p><code>header</code></p>
+</td>
+<td align="left" headers="r5c1-t6 r1c2-t6">
+<p>A <code>Map</code> of HTTP header values for the current request, keyed by header name</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r6c1-t6" headers="r1c1-t6">
+<p><code>headerValues</code></p>
+</td>
+<td align="left" headers="r6c1-t6 r1c2-t6">
+<p>A <code>Map</code> of <code>String</code> arrays containing all the header values for HTTP headers in the current request, keyed by header name</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r7c1-t6" headers="r1c1-t6">
+<p><code>initParam</code></p>
+</td>
+<td align="left" headers="r7c1-t6 r1c2-t6">
+<p>A <code>Map</code> of the context initialization parameters for this web application</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r8c1-t6" headers="r1c1-t6">
+<p><code>param</code></p>
+</td>
+<td align="left" headers="r8c1-t6 r1c2-t6">
+<p>A <code>Map</code> of the request parameters for this request, keyed by parameter name</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r9c1-t6" headers="r1c1-t6">
+<p><code>paramValues</code></p>
+</td>
+<td align="left" headers="r9c1-t6 r1c2-t6">
+<p>A <code>Map</code> of <code>String</code> arrays containing all the parameter values for request parameters in the current request, keyed by parameter name</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r10c1-t6" headers="r1c1-t6">
+<p><code>requestScope</code></p>
+</td>
+<td align="left" headers="r10c1-t6 r1c2-t6">
+<p>A <code>Map</code> of the request attributes for this request, keyed by attribute name</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r11c1-t6" headers="r1c1-t6">
+<p><code>sessionScope</code></p>
+</td>
+<td align="left" headers="r11c1-t6 r1c2-t6">
+<p>A <code>Map</code> of the session attributes for this request, keyed by attribute name</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r12c1-t6" headers="r1c1-t6">
+<p><code>view</code></p>
+</td>
+<td align="left" headers="r12c1-t6 r1c2-t6">
+<p>The root <code>UIComponent</code> in the current component tree stored in the <code>FacesRequest</code> for this request</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblhruleformal" --></div>
+<!-- class="sect2" -->
+<a id="BNATL" name="BNATL"></a><a id="JEETT01006" name="JEETT01006"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">15.12.3</span> <a id="sthref1018" name="sthref1018"></a>Binding a Component Instance to a Bean Property</h2>
+<p><a id="sthref1019" name="sthref1019"></a><a id="sthref1020" name="sthref1020"></a><a id="sthref1021" name="sthref1021"></a>A component instance can be bound to a bean property using a value expression with the <code>binding</code> attribute of the component's tag. You usually bind a component instance rather than its value to a bean property if the bean must dynamically change the component's attributes.</p>
+<p>Here are two tags from the <code>bookcashier.xhtml</code> page that bind components to bean properties:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:selectBooleanCheckbox id="fanClub" 
+                         rendered="false"
+                         binding="#{cashierBean.specialOffer}" /&gt;
+&lt;h:outputLabel for="fanClub"
+               rendered="false"
+               binding="#{cashierBean.specialOfferText}"
+               value="#{bundle.DukeFanClub}"/&gt;
+&lt;/h:outputLabel&gt;
+</pre>
+<p>The <code>h:selectBooleanCheckbox</code> tag renders a check box and binds the <code>fanClub</code> <code>UISelectBoolean</code> component to the <code>specialOffer</code> property of the <code>cashier</code> bean. The <code>h:outputLabel</code> tag binds the component representing the check box's label to the <code>specialOfferText</code> property of the <code>cashier</code> bean. If the application's locale is English, the <code>h:outputLabel</code> tag renders</p>
+<pre xml:space="preserve" class="oac_no_warn">
+I'd like to join the Duke Fan Club, free with my purchase of over $100
+</pre>
+<p><a id="sthref1022" name="sthref1022"></a>The <code>rendered</code> attributes of both tags are set to <code>false</code> to prevent the check box and its label from being rendered. If the customer makes a large order and clicks the <span class="gui-object-action">Submit</span> button, the <code>submit</code> method of <code>CashierBean</code> sets both components' <code>rendered</code> properties to <code>true</code>, causing the check box and its label to be rendered.</p>
+<p>These tags use component bindings rather than value bindings because the managed bean must dynamically set the values of the components' <code>rendered</code> properties.</p>
+<p>If the tags were to use value bindings instead of component bindings, the managed bean would not have direct access to the components and would therefore require additional code to access the components from the <code>FacesContext</code> instance to change the components' <code>rendered</code> properties.</p>
+<p><a href="jsf-develop002.htm#BNAUK">Writing Properties Bound to Component Instances</a> explains how to write the bean properties bound to the example components.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="jsf-custom011.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="jsf-custom013.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

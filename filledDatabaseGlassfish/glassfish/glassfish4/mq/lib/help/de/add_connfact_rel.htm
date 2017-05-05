@@ -1,0 +1,41 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+ <TITLE>Verbindungs-Factory-Objekt hinzuf&uuml;gen &gt; Zuverl&auml;ssigkeit und Flusssteuerung f&uuml;r JMS-Meldungen</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ <H2>Verbindungsfactory-Objekt hinzuf&uuml;gen &gt; <BR> Zuverl&auml;ssigkeit und Flusssteuerung f&uuml;r JMS-Meldungen</H2>
+ 
+<P>Mit Hilfe der Optionen auf dieser Registerkarte k&ouml;nnen Sie die Verwendung der Message Queue-Steuerungsmeldungen (Broker-Best&auml;tigungen) und Flusssteuerungsmessungen durch die Client-Runtime festlegen.</P>
+
+<p><b>Warten auf Best&auml;tigung beim Erzeugen der Meldung</b>: Gibt Broker-Best&auml;tigungen von Meldungen des produzierenden Client an:</p>
+<ul>
+  <li>Legen Sie als Wert <B>true</B> fest, wenn der Broker den Empfang aller JMS-Meldungen (persistent und nicht persistent) vom produzierenden Client best&auml;tigen soll und wenn der Thread des produzierenden Client w&auml;hrend des Wartens auf diese Best&auml;tigungen blockiert werden soll.</li>
+  <li>Legen Sie als Wert <B>false</B> fest, wenn der Broker den Empfang der JMS-Meldungen (persistent oder nicht persistent) vom produzierenden Client nicht best&auml;tigen soll und wenn der Thread des produzierenden Client w&auml;hrend des Wartens auf Broker-Best&auml;tigungen blockiert werden soll.</li>
+  <li> Wenn kein Wert festgelegt ist, best&auml;tigt der Broker nur den Empfang von persistenten Meldungen, und der Thread des produzierenden Client blockiert beim Warten auf diese Best&auml;tigungen.</li>
+</ul>
+<p><b>Warten auf Best&auml;tigung beim Best&auml;tigen der Meldung</b>: Gibt die Broker-Best&auml;tigung f&uuml;r Best&auml;tigungen konsumierender Clients an:</p>
+<ul>
+  <li>Legen Sie als Wert <B>true</B> fest, wenn der Broker alle Best&auml;tigungen vom konsumierenden Client best&auml;tigen soll und wenn der Thread des konsumierenden Client w&auml;hrend des Wartens auf Broker-Best&auml;tigungen blockiert werden soll.</li>
+  <li>Legen Sie als Wert <B>false</B> fest, wenn der Broker keine Best&auml;tigungen vom konsumierenden Client best&auml;tigen soll und wenn der Thread des konsumierenden Client w&auml;hrend des Wartens auf Broker-Best&auml;tigungen blockiert werden soll.</li>
+  <li> Falls kein Wert angegeben wird, best&auml;tigt der Broker Best&auml;tigungen vom konsumierenden Client f&uuml;r den Modus AUTO_ACKNOWLEDGE und CLIENT_ACKNOWLEDGE (und der Thread des konsumierenden Client wird w&auml;hrend des Wartens auf die Broker-Best&auml;tigung blockiert). Der Broker best&auml;tigt jedoch keine Best&auml;tigungen vom konsumierenden Client f&uuml;r den Modus DUPES_OK_ACKNOWLEDGE (und der Thread des konsumierenden Cient wird nicht blockiert).</li>
+</ul>
+<p><b>Zeit&uuml;berschreitung bei Best&auml;tigung (Millisekunden)</b>: Gibt an, wie viele Millisekunden die Client-Runtime maximal auf eine Broker-Best&auml;tigung wartet, bevor sie einen Ausnahmefehler meldet. Der Standardwert <B>0</B> bedeutet, dass kein Zeit&uuml;berschreitungswert festgelegt wurde, die Client-Runtime also unbegrenzt wartet.</p>
+<p><b>JMS-Meldungsflusssteuerungsz&auml;hler (Anzahl Meldungen)</b>: Gibt die maximale Anzahl an JMS-Meldungen in einem gemessenen Stapel an. Wenn diese Anzahl an JMS-Meldungen an die Client-Runtime gesendet wird, wird die Zustellung vor&uuml;bergehend unterbrochen, um die zwischenzeitlich aufgehaltenen Steuerungsmeldungen durchzulassen. Nachdem die Steuerungsmeldungen gesendet wurden, wird die Zustellung der JMS-Meldungen wieder aufgenommen und so lange fortgesetzt, bis erneut der mit dieser Option festgelegte Wert erreicht wurde. Wenn Sie als Wert f&uuml;r diese Einstellung 0 festlegen, gibt es keine Beschr&auml;nkungen f&uuml;r den JMS-Meldungsfluss. Sofern nicht 0 eingestellt wurde, kann die Client-Runtime den Meldungsfluss messen, sodass die Message Queue-Steuerungsmeldungen nicht durch umfangreiche Zustellungen von JMS-Meldungen blockiert werden und zwischen den gemessenen Stapeln zum Client geleitet werden k&ouml;nnen.</p>
+<p><b>JMS-Meldungsfluss bei Client ist begrenzt</b>: Gibt an, ob eine Meldungsflussbegrenzung aktiviert wird (in Bezug auf die Anzahl nicht konsumierter Meldungen, die an die Client-Runtime geliefert wurden). Wenn dieses Kontrollk&auml;stchen aktiviert ist, m&uuml;ssen Sie im Feld <b>Obergrenze JMS-Meldungsfluss</b> eine positive Zahl angeben.</p>
+<p><b>Obergrenze JMS-Meldungsfluss (Anzahl Meldungen)</b>: Gibt eine Begrenzung f&uuml;r die Anzahl an Meldungen an, die &uuml;ber eine Verbindung zugestellt werden und in der Client-Runtime gepuffert werden k&ouml;nnen, w&auml;hrend sie darauf warten, konsumiert zu werden (wird nur verwendet, wenn die Option <b>JMS-Meldungsfluss bei Client ist begrenzt</b> aktiviert ist). Wenn die Anzahl der an die Client-Runtime gelieferten JMS-Meldungen (entsprechend dem durch <b>JMS-Meldungsflusssteuerungsz&auml;hler (Anzahl Meldungen)</b> festgelegten Wert) diesen Grenzwert &uuml;berschreitet, wird die Meldungsweiterleitung gestoppt. Sie wird erst wieder aufgenommen, wenn die Anzahl der nicht konsumierten Meldungen unter den f&uuml;r diese Eigenschaft festgelegten Wert sinkt. Durch diese Begrenzung wird verhindert, dass ein konsumierender Client, der viel Zeit ben&ouml;tigt, um Meldungen zu verarbeiten, nicht mit ausstehenden Meldungen &uuml;berlastet wird, durch die er m&ouml;glicherweise seine Speicherkapazit&auml;ten &uuml;berschreitet. </p>
+<p><b>Obergrenze f&uuml;r Konsumentenfluss (Nicht konsumierte Meldungen pro Konsument)</b>: Gibt eine Begrenzung der Anzahl an Meldungen pro Konsument an, die &uuml;ber eine Verbindung zugestellt und in der Client-Runtime gepuffert werden k&ouml;nnen. Diese Begrenzung hat folgende Vorteile: Sie kann den Lastenausgleich zwischen den Konsumenten in Zustellungssituationen mit mehreren Konsumenten verbessern (an keinen Konsumenten kann eine unverh&auml;ltnism&auml;&szlig;ig hohe Anzahl an Meldungen gesendet werden). Au&szlig;erdem wird mit dieser Begrenzung verhindert, dass ein Konsument an einer Verbindung andere Konsumenten an derselben Verbindung &uuml;berlastet. Wenn die Anzahl an JMS-Meldungen, die an die Client-Runtime gesendet werden, diese Begrenzung f&uuml;r einen beliebigen Konsumenten &uuml;berschreitet, wird die Meldungszustellung f&uuml;r diesen Konsumenten abgebrochen. Sie wird erst wieder aufgenommen, wenn die Anzahl der nicht konsumierten Meldungen f&uuml;r den entsprechenden Konsumenten unter den f&uuml;r <b>Schwellenwert f&uuml;r Konsumentenfluss</b> festgelegten Wert sinkt. </p>
+<p>Beachten Sie Folgendes: Falls die Gesamtzahl an Meldungen, die f&uuml;r alle Konsumenten an einer Verbindung gepuffert werden, den Wert f&uuml;r <b>Obergrenze JMS-Meldungsfluss</b> &uuml;berschreitet, wird die Zustellung von Meldungen &uuml;ber die Verbindung so lange unterbrochen, bis die Gesamtzahl wieder unter diese Begrenzung f&auml;llt. Falls Sie eine Obergrenze f&uuml;r den Konsumentenfluss angeben, m&uuml;ssen Sie normalerweise keine Obergrenze f&uuml;r den JMS-Meldungsfluss angeben (au&szlig;er in sehr speziellen F&auml;llen), und die meisten Anwendungsanforderungen f&uuml;r die Meldung des Meldungsflusses werden erf&uuml;llt, wenn Sie eine Obergrenze f&uuml;r den Konsumentenfluss angeben, anstatt die Obergrenze f&uuml;r den JMS-Meldungsfluss zu aktivieren.</p>
+<P><b>Schwellenwert f&uuml;r Konsumentenfluss (Prozent)</b>: Gibt die Anzahl der Meldungen pro Konsument, die in der Client-Runtime gepuffert werden, als Prozentsatz von <b>Obergrenze f&uuml;r Konsumentenfluss</b> an. Unterhalb dieses Schwellenwerts wird die Zustellung von Meldungen f&uuml;r einen Konsumenten wieder aufgenommen. </P>
+<P>&nbsp;</P>
+<p>&nbsp;</p>
+
+</BODY>
+</HTML>

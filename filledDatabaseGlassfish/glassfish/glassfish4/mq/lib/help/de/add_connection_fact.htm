@@ -1,0 +1,48 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<html>
+<head>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+ <title>Verbindungs-Factory-Objekt hinzuf&uuml;gen</title>
+ <link rel="StyleSheet" href="ide.css">
+ 
+</head>
+<body>
+ <h2>Verbindungs-Factory-Objekt hinzuf&uuml;gen</h2>
+ 
+<p>Mit Hilfe dieses Dialogfelds k&ouml;nnen Sie Verbindungs-Factory-Objekte konfigurieren und Objektspeichern hinzuf&uuml;gen.</p>
+
+<p><i>Verbindungs-Factories</i> sind verwaltete Objekte, mit denen JMS-Clients Verbindungen zum Broker herstellen k&ouml;nnen. Mit ihnen kann auch festgelegt werden, wie sich die Verbindung verhalten soll und wie die Client-Runtime, die sie verwendet, auf den Broker zugreift.</p>
+
+<p><b>Suchname</b>: Geben Sie in diesem Feld den JNDI-Suchnamen des Verbindungs-Factory-Objekts ein. </p>
+
+<p><b>Factory-Typ</b>: Geben Sie an, welcher Verbindungstyp vom Factory-Objekt erzeugt wird. Zur Wahl stehen die folgenden Optionen: ConnectionFactory, QueueConnectionFactory und TopicConnectionFactory. Wenn die Nachricht Teil einer verteilten Transaktion sein soll, w&auml;hlen Sie <b>XAConnectionFactory</b>, <b>XAQueueConnectionFactory</b> oder <b>XATopicConnectionFactory</b>.</p>
+
+<p><b>Schreibgesch&uuml;tzt</b>: Aktivieren Sie diese Option, wenn das Verbindungs-Factory-Objekt schreibgesch&uuml;tzt sein soll. Bei schreibgesch&uuml;tzten Objekten k&ouml;nnen Client-Anwendungen die Attribute von Verbindungs-Factory-Objekten nicht &auml;ndern. </p>
+
+<p>Durch Konfigurieren eines Verbindungs-Factory-Objekts legen Sie die Eigenschaften fest, die allen vom Factory-Objekt erzeugten Verbindungen gemein sind. F&uuml;r das Konfigurieren des Verbindungs-Factory-Objekts stehen Ihnen in diesem Dialogfeld eine Reihe von Registerkarten zur Verf&uuml;gung. Informationen zu den einzelnen Registerkarten erhalten Sie, wenn Sie auf den entsprechenden Link klicken.</p>
+
+	
+<a HREF="add_connfact_rel.htm">Zuverl&auml;ssigkeit und Flusssteuerung f&uuml;r JMS-Meldungen</a> <br> <a HREF="add_connfact_queue.htm">QueueBrowsers und ServerSessions</a><br> <a HREF="add_connfact_handling.htm">Verbindungs-Handling</a><br> <a HREF="add_connfact_clientid.htm">Client-Identifizierung</a> <br> <a HREF="add_connfact_jmsx.htm">JMSX-Eigenschaften</a> <br> <a HREF="add_connfact_message_header_overrides.htm">JMS-Meldungs-Header-&Auml;nderungen</a><br> <a HREF="add_connfact_handling_old.htm">3.0 Verbindungs-Handling</a><br>
+  	 
+
+<ul>
+  <li>Wenn alle Felder auf allen Registerkarten dieses Dialogfelds auf ihre Standardwerte zur&uuml;ckgesetzt und Ihre &Auml;nderungen damit verworfen werden sollen, klicken Sie auf <b>Zur&uuml;cksetzen auf Standardwerte</b>. </li>
+  <li> Wenn das Verbindungs-Factory-Objekt jetzt erstellt werden soll, klicken Sie auf <b>OK</b>. </li>
+</ul>
+
+<p>So &auml;ndern Sie die Eigenschaften eines Verbindungs-Factory-Objekts:</p>
+
+<ol>
+  <li>W&auml;hlen Sie im Navigationsbereich der Administrationskonsole den Ordner <b>Verbindungs-Factories</b> aus. </li>
+  <li>W&auml;hlen Sie im Ergebnisbereich der Administrationskonsole das Verbindungs-Factory-Objekt aus. </li>
+  <li>W&auml;hlen Sie den Befehl <b>Aktionen &gt; Eigenschaften</b>, um das Dialogfeld <b>Eigenschaften Verbindungs-Factory-Objekt</b> zu &ouml;ffnen. </li>
+</ol>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

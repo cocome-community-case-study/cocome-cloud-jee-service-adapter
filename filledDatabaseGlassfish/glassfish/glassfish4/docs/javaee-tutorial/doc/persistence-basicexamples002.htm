@@ -1,0 +1,660 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:30:0Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="The roster Application" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39031-01" />
+        <meta name="description" content="A guide to developing enterprise applications for the Java Platform, Enterprise Edition 7 (Java EE 7) using GlassFish Server Open Source Edition." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Java FX, Web, developer, enterprise, Java EE Tutorial, Java EE 7 Tutorial" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>The Java EE 7 Tutorial:The roster Application | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7.0</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/tutorial/doc/javaeetutorial7.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GEXAF">Preface</a></h2>
+<h2 class="tocheader"><a href="partintro.htm#GFIRP">Part I Introduction</a></h2>
+<h2 class="tocheader"><a href="overview.htm#BNAAW"><span class="secnum">1</span> Overview</a></h2>
+<h2 class="tocheader"><a href="usingexamples.htm#GFIUD"><span class="secnum">2</span> Using the Tutorial Examples</a></h2>
+<h2 class="tocheader"><a href="partplatform.htm#GFIRP2">Part II Platform Basics</a></h2>
+<h2 class="tocheader"><a href="resource-creation.htm#GKJIQ2"><span class="secnum">3</span> Resource Creation</a></h2>
+<h2 class="tocheader"><a href="injection.htm#GKJIQ3"><span class="secnum">4</span> Injection</a></h2>
+<h2 class="tocheader"><a href="packaging.htm#GKJIQ4"><span class="secnum">5</span> Packaging</a></h2>
+<h2 class="tocheader"><a href="partwebtier.htm#BNADP">Part III The Web Tier</a></h2>
+<h2 class="tocheader"><a href="webapp.htm#BNADR"><span class="secnum">6</span> Getting Started with Web Applications</a></h2>
+<h2 class="tocheader"><a href="jsf-intro.htm#BNAPH"><span class="secnum">7</span> JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-facelets.htm#GIEPX"><span class="secnum">8</span> Introduction to Facelets</a></h2>
+<h2 class="tocheader"><a href="jsf-el.htm#GJDDD"><span class="secnum">9</span> Expression Language</a></h2>
+<h2 class="tocheader"><a href="jsf-page.htm#BNAQZ"><span class="secnum">10</span> Using JavaServer Faces Technology in Web Pages</a></h2>
+<h2 class="tocheader"><a href="jsf-page-core.htm#GJCUT"><span class="secnum">11</span> Using Converters, Listeners, and Validators</a></h2>
+<h2 class="tocheader"><a href="jsf-develop.htm#BNATX"><span class="secnum">12</span> Developing with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-ajax.htm#GKIOW"><span class="secnum">13</span> Using Ajax with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-advanced-cc.htm#GKHXA"><span class="secnum">14</span> Composite Components: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="jsf-custom.htm#BNAVG"><span class="secnum">15</span> Creating Custom UI Components and Other Custom Objects</a></h2>
+<h2 class="tocheader"><a href="jsf-configure.htm#BNAWO"><span class="secnum">16</span> Configuring JavaServer Faces Applications</a></h2>
+<h2 class="tocheader"><a href="servlets.htm#BNAFD"><span class="secnum">17</span> Java Servlet Technology</a></h2>
+<h2 class="tocheader"><a href="websocket.htm#GKJIQ5"><span class="secnum">18</span> Java API for WebSocket</a></h2>
+<h2 class="tocheader"><a href="jsonp.htm#GLRBB"><span class="secnum">19</span> JSON Processing</a></h2>
+<h2 class="tocheader"><a href="webi18n.htm#BNAXU"><span class="secnum">20</span> Internationalizing and Localizing Web Applications</a></h2>
+<h2 class="tocheader"><a href="partbeanvalidation.htm#sthref1322">Part IV Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation.htm#CHDGJIIA"><span class="secnum">21</span> Introduction to Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation-advanced.htm#GKAHP"><span class="secnum">22</span> Bean Validation: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partcdi.htm#GJBNR">Part V Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basic.htm#GIWHB"><span class="secnum">23</span> Introduction to Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basicexamples.htm#GJBLS"><span class="secnum">24</span> Running the Basic Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="cdi-adv.htm#GJEHI"><span class="secnum">25</span> Contexts and Dependency Injection for Java EE: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="cdi-adv-examples.htm#GKHRE"><span class="secnum">26</span> Running the Advanced Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="partwebsvcs.htm#BNAYK">Part VI Web Services</a></h2>
+<h2 class="tocheader"><a href="webservices-intro.htm#GIJTI"><span class="secnum">27</span> Introduction to Web Services</a></h2>
+<h2 class="tocheader"><a href="jaxws.htm#BNAYL"><span class="secnum">28</span> Building Web Services with JAX-WS</a></h2>
+<h2 class="tocheader"><a href="jaxrs.htm#GIEPU"><span class="secnum">29</span> Building RESTful Web Services with JAX-RS</a></h2>
+<h2 class="tocheader"><a href="jaxrs-client.htm#BABEIGIH"><span class="secnum">30</span> Accessing REST Resources with the JAX-RS Client API</a></h2>
+<h2 class="tocheader"><a href="jaxrs-advanced.htm#GJJXE"><span class="secnum">31</span> JAX-RS: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="partentbeans.htm#BNBLR">Part VII Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-intro.htm#GIJSZ"><span class="secnum">32</span> Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-gettingstarted.htm#GIJRE"><span class="secnum">33</span> Getting Started with Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-basicexamples.htm#GIJRB"><span class="secnum">34</span> Running the Enterprise Bean Examples</a></h2>
+<h2 class="tocheader"><a href="ejb-embedded.htm#GKCQZ"><span class="secnum">35</span> Using the Embedded Enterprise Bean Container</a></h2>
+<h2 class="tocheader"><a href="ejb-async.htm#GKIDZ"><span class="secnum">36</span> Using Asynchronous Method Invocation in Session Beans</a></h2>
+<h2 class="tocheader"><a href="partpersist.htm#BNBPY">Part VIII Persistence</a></h2>
+<h2 class="tocheader"><a href="persistence-intro.htm#BNBPZ"><span class="secnum">37</span> Introduction to the Java Persistence API</a></h2>
+<h2 class="tocheader"><a href="persistence-basicexamples.htm#GIJST"><span class="secnum">38</span> Running the Persistence Examples</a></h2>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples001.htm#GIQST"><span class="secnum">38.1</span> The order Application</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples001.htm#GIQRH"><span class="secnum">38.1.1</span> Entity Relationships in the order Application</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples001.htm#GIQQR"><span class="secnum">38.1.1.1</span> Self-Referential Relationships</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQSR"><span class="secnum">38.1.1.2</span> One-to-One Relationships</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQTJ"><span class="secnum">38.1.1.3</span> One-to-Many Relationship Mapped to Overlapping Primary and Foreign Keys</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQUD"><span class="secnum">38.1.1.4</span> Unidirectional Relationships</a></li>
+</ul>
+</li>
+<li><a href="persistence-basicexamples001.htm#GIQQY"><span class="secnum">38.1.2</span> Primary Keys in the order Application</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples001.htm#GIQUV"><span class="secnum">38.1.2.1</span> Generated Primary Keys</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQUF"><span class="secnum">38.1.2.2</span> Compound Primary Keys</a></li>
+</ul>
+</li>
+<li><a href="persistence-basicexamples001.htm#GIQTL"><span class="secnum">38.1.3</span> Entity Mapped to More Than One Database Table</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQUE"><span class="secnum">38.1.4</span> Cascade Operations in the order Application</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQSC"><span class="secnum">38.1.5</span> BLOB and CLOB Database Types in the order Application</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQUM"><span class="secnum">38.1.6</span> Temporal Types in the order Application</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQQV"><span class="secnum">38.1.7</span> Managing the order Application's Entities</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples001.htm#GIQRR"><span class="secnum">38.1.7.1</span> Creating Entities</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQQC"><span class="secnum">38.1.7.2</span> Finding Entities</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQUK"><span class="secnum">38.1.7.3</span> Setting Entity Relationships</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQSV"><span class="secnum">38.1.7.4</span> Using Queries</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQTW"><span class="secnum">38.1.7.5</span> Removing Entities</a></li>
+</ul>
+</li>
+<li><a href="persistence-basicexamples001.htm#GIQUP"><span class="secnum">38.1.8</span> Running the order Example</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples001.htm#GIQSG"><span class="secnum">38.1.8.1</span> To Run the order Example Using NetBeans IDE</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQTY"><span class="secnum">38.1.8.2</span> To Run the order Example Using Maven</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><div id="backgroundColor"><a href="persistence-basicexamples002.htm#GIQSQ"><span class="secnum">38.2</span> The roster Application</a><ul style="list-style-type:none">
+<li><a href="persistence-basicexamples002.htm#GIQSO"><span class="secnum">38.2.1</span> Relationships in the roster Application</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples002.htm#GIQQK"><span class="secnum">38.2.1.1</span> The Many-To-Many Relationship in roster</a></li>
+</ul>
+</li>
+<li><a href="persistence-basicexamples002.htm#GIQRF"><span class="secnum">38.2.2</span> Entity Inheritance in the roster Application</a></li>
+<li><a href="persistence-basicexamples002.htm#GJJFL"><span class="secnum">38.2.3</span> Criteria Queries in the roster Application</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples002.htm#GJJEX"><span class="secnum">38.2.3.1</span> Metamodel Classes in the roster Application</a></li>
+<li><a href="persistence-basicexamples002.htm#GJJFN"><span class="secnum">38.2.3.2</span> Obtaining a CriteriaBuilder Instance in RequestBean</a></li>
+<li><a href="persistence-basicexamples002.htm#GJJFF"><span class="secnum">38.2.3.3</span> Creating Criteria Queries in RequestBean's Business Methods</a></li>
+</ul>
+</li>
+<li><a href="persistence-basicexamples002.htm#GIQRX"><span class="secnum">38.2.4</span> Automatic Table Generation in the roster Application</a></li>
+<li><a href="persistence-basicexamples002.htm#GIQUZ"><span class="secnum">38.2.5</span> Running the roster Example</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples002.htm#GIQUG"><span class="secnum">38.2.5.1</span> To Run the roster Example Using NetBeans IDE</a></li>
+<li><a href="persistence-basicexamples002.htm#GIQSJ"><span class="secnum">38.2.5.2</span> To Run the roster Example Using Maven</a></li>
+</ul>
+</li>
+</ul>
+</div></li>
+<li><a href="persistence-basicexamples003.htm#GKANQ"><span class="secnum">38.3</span> The address-book Application</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples003.htm#GKAOJ"><span class="secnum">38.3.1</span> Bean Validation Constraints in address-book</a></li>
+<li><a href="persistence-basicexamples003.htm#GKANL"><span class="secnum">38.3.2</span> Specifying Error Messages for Constraints in address-book</a></li>
+<li><a href="persistence-basicexamples003.htm#GKAON"><span class="secnum">38.3.3</span> Validating Contact Input from a JavaServer Faces Application</a></li>
+<li><a href="persistence-basicexamples003.htm#GKAOP"><span class="secnum">38.3.4</span> Running the address-book Example</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples003.htm#GKAOD"><span class="secnum">38.3.4.1</span> To Run the address-book Example Using NetBeans IDE</a></li>
+<li><a href="persistence-basicexamples003.htm#GKANZ"><span class="secnum">38.3.4.2</span> To Run the address-book Example Using Maven</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 class="tocheader"><a href="persistence-querylanguage.htm#BNBTG"><span class="secnum">39</span> The Java Persistence Query Language</a></h2>
+<h2 class="tocheader"><a href="persistence-criteria.htm#GJITV"><span class="secnum">40</span> Using the Criteria API to Create Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-string-queries.htm#GKJIQ"><span class="secnum">41</span> Creating and Using String-Based Criteria Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-locking.htm#GKJJF"><span class="secnum">42</span> Controlling Concurrent Access to Entity Data with Locking</a></h2>
+<h2 class="tocheader"><a href="persistence-entitygraphs.htm#BABIJIAC"><span class="secnum">43</span> Creating Fetch Plans with Entity Graphs</a></h2>
+<h2 class="tocheader"><a href="persistence-cache.htm#GKJIA"><span class="secnum">44</span> Using a Second-Level Cache with Java Persistence API Applications</a></h2>
+<h2 class="tocheader"><a href="partmessaging.htm#GFIRP3">Part IX Messaging</a></h2>
+<h2 class="tocheader"><a href="jms-concepts.htm#BNCDQ"><span class="secnum">45</span> Java Message Service Concepts</a></h2>
+<h2 class="tocheader"><a href="jms-examples.htm#BNCGV"><span class="secnum">46</span> Java Message Service Examples</a></h2>
+<h2 class="tocheader"><a href="partsecurity.htm#GIJRP">Part X Security</a></h2>
+<h2 class="tocheader"><a href="security-intro.htm#BNBWJ"><span class="secnum">47</span> Introduction to Security in the Java EE Platform</a></h2>
+<h2 class="tocheader"><a href="security-webtier.htm#BNCAS"><span class="secnum">48</span> Getting Started Securing Web Applications</a></h2>
+<h2 class="tocheader"><a href="security-javaee.htm#BNBYK"><span class="secnum">49</span> Getting Started Securing Enterprise Applications</a></h2>
+<h2 class="tocheader"><a href="security-advanced.htm#GJJWX"><span class="secnum">50</span> Java EE Security: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partsupporttechs.htm#GIJUE">Part XI Java EE Supporting Technologies</a></h2>
+<h2 class="tocheader"><a href="transactions.htm#BNCIH"><span class="secnum">51</span> Transactions</a></h2>
+<h2 class="tocheader"><a href="resources.htm#BNCJH"><span class="secnum">52</span> Resource Adapters and Contracts</a></h2>
+<h2 class="tocheader"><a href="connectorexample.htm#GLODB"><span class="secnum">53</span> The Resource Adapter Examples</a></h2>
+<h2 class="tocheader"><a href="interceptors.htm#GKEED"><span class="secnum">54</span> Using Java EE Interceptors</a></h2>
+<h2 class="tocheader"><a href="batch-processing.htm#GKJIQ6"><span class="secnum">55</span> Batch Processing</a></h2>
+<h2 class="tocheader"><a href="concurrency-utilities.htm#GKJIQ8"><span class="secnum">56</span> Concurrency Utilities for Java EE</a></h2>
+<h2 class="tocheader"><a href="partcasestudies.htm#GKGJW">Part XII Case Studies</a></h2>
+<h2 class="tocheader"><a href="dukes-bookstore.htm#GLNVI"><span class="secnum">57</span> Duke's Bookstore Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-tutoring.htm#GKAEE"><span class="secnum">58</span> Duke's Tutoring Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-forest.htm#GLNPW"><span class="secnum">59</span> Duke's Forest Case Study Example</a></h2>
+<h2 class="tocheader"><a href="index.htm">Index</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>The Java EE 7 Tutorial  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="persistence-basicexamples001.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="persistence-basicexamples003.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="GIQSQ" name="GIQSQ"></a><a id="JEETT00494" name="JEETT00494"></a>
+<div class="sect1">
+<h1 class="sect1"><span class="secnum">38.2</span> The roster Application</h1>
+<p>The <code>roster</code> application maintains the team rosters for players in recreational sports leagues. The application has four components: Java Persistence API entities (<code>Player</code>, <code>Team</code>, and <code>League</code>), a stateful session bean (<code>RequestBean</code>), an application client (<code>RosterClient</code>), and three helper classes (<code>PlayerDetails</code>, <code>TeamDetails</code>, and <code>LeagueDetails</code>).</p>
+<p>Functionally, <code>roster</code> is similar to the <code>order</code> application, with three new features that <code>order</code> does not have: many-to-many relationships, entity inheritance, and automatic table creation at deployment time.</p>
+<p>The database schema in the Java DB database for the <code>roster</code> application is shown in <a href="#CHDCHJHG">Figure 38-2</a>.</p>
+<div class="figure"><a id="CHDCHJHG" name="CHDCHJHG"></a>
+<p class="titleinfigure">Figure 38-2 Database Schema for the roster Application</p>
+<img src="img/jeett_dt_025.png" alt="Description of Figure 38-2 follows" title="Description of Figure 38-2 follows" longdesc="img_text/jeett_dt_025.htm" /><br />
+<a id="sthref1951" name="sthref1951" href="img_text/jeett_dt_025.htm">Description of "Figure 38-2 Database Schema for the roster Application"</a><br />
+<br /></div>
+<!-- class="figure" -->
+<div align="center">
+<div class="inftblnote"><br />
+<table class="Note oac_no_warn" summary="" border="1" width="80%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>
+<p>In this diagram, for simplicity, the <code>PERSISTENCE_ROSTER_</code> prefix is omitted from the table names.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="inftblnote" --></div>
+<a id="GIQSO" name="GIQSO"></a><a id="JEETT01171" name="JEETT01171"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">38.2.1</span> Relationships in the roster Application</h2>
+<p>A recreational sports system has the following relationships.</p>
+<ul>
+<li>
+<p>A player can be on many teams.</p>
+</li>
+<li>
+<p>A team can have many players.</p>
+</li>
+<li>
+<p>A team is in exactly one league.</p>
+</li>
+<li>
+<p>A league has many teams.</p>
+</li>
+</ul>
+<p>In <code>roster</code> this system is reflected by the following relationships between the <code>Player</code>, <code>Team</code>, and <code>League</code> entities.</p>
+<ul>
+<li>
+<p>There is a many-to-many relationship between <code>Player</code> and <code>Team</code>.</p>
+</li>
+<li>
+<p>There is a many-to-one relationship between <code>Team</code> and <code>League</code>.</p>
+</li>
+</ul>
+<a id="GIQQK" name="GIQQK"></a><a id="JEETT00701" name="JEETT00701"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.2.1.1</span> <a id="sthref1952" name="sthref1952"></a><a id="sthref1953" name="sthref1953"></a>The Many-To-Many Relationship in roster</h3>
+<p>The many-to-many relationship between <code>Player</code> and <code>Team</code> is specified by using the <code>@ManyToMany</code> annotation. In <code>Team.java</code>, the <code>@ManyToMany</code> annotation decorates the <code>getPlayers</code> method:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@ManyToMany
+@JoinTable(
+    name="PERSISTENCE_ROSTER_TEAM_PLAYER",
+    joinColumns=
+        @JoinColumn(name="TEAM_ID", referencedColumnName="ID"),
+    inverseJoinColumns=
+        @JoinColumn(name="PLAYER_ID", referencedColumnName="ID")
+)
+public Collection&lt;Player&gt; getPlayers() {
+    return players;
+}
+</pre>
+<p>The <code>@JoinTable</code> annotation is used to specify a database table that will associate player IDs with team IDs. The entity that specifies the <code>@JoinTable</code> is the owner of the relationship, so the <code>Team</code> entity is the owner of the relationship with the <code>Player</code> entity. Because <code>roster</code> uses automatic table creation at deployment time, the container will create a join table named <code>PERSISTENCE_ROSTER_TEAM_PLAYER</code>.</p>
+<p><code>Player</code> is the inverse, or nonowning, side of the relationship with <code>Team</code>. As one-to-one and many-to-one relationships, the nonowning side is marked by the <code>mappedBy</code> element in the relationship annotation. Because the relationship between <code>Player</code> and <code>Team</code> is bidirectional, the choice of which entity is the owner of the relationship is arbitrary.</p>
+<p>In <code>Player.java</code>, the <code>@ManyToMany</code> annotation decorates the <code>getTeams</code> method:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@ManyToMany(mappedBy="players")
+public Collection&lt;Team&gt; getTeams() {
+    return teams;
+}
+</pre></div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="GIQRF" name="GIQRF"></a><a id="JEETT01172" name="JEETT01172"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">38.2.2</span> <a id="sthref1954" name="sthref1954"></a>Entity Inheritance in the roster Application</h2>
+<p>The <code>roster</code> application shows how to use entity inheritance, as described in <a href="persistence-intro002.htm#BNBQN">Entity Inheritance</a>.</p>
+<p>The <code>League</code> entity in <code>roster</code> is an abstract entity with two concrete subclasses: <code>SummerLeague</code> and <code>WinterLeague</code>. Because <code>League</code> is an abstract class, it cannot be instantiated:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Entity
+@Table(name = "PERSISTENCE_ROSTER_LEAGUE")
+public abstract class League implements Serializable { ... }
+</pre>
+<p>Instead, when creating a league, clients use <code>SummerLeague</code> or <code>WinterLeague</code>. <code>SummerLeague</code> and <code>WinterLeague</code> inherit the persistent properties defined in <code>League</code> and add only a constructor that verifies that the sport parameter matches the type of sport allowed in that seasonal league. For example, here is the <code>SummerLeague</code> entity:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+...
+@Entity
+public class SummerLeague extends League implements Serializable {
+
+    /** Creates a new instance of SummerLeague */
+    public SummerLeague() {
+    }
+
+    public SummerLeague(String id, String name, String sport) 
+            throws IncorrectSportException {
+        this.id = id;
+        this.name = name;
+        if (sport.equalsIgnoreCase("swimming") ||
+                sport.equalsIgnoreCase("soccer") ||
+                sport.equalsIgnoreCase("basketball") ||
+                sport.equalsIgnoreCase("baseball")) {
+            this.sport = sport;
+        } else {
+            throw new IncorrectSportException("Sport is not a summer sport.");
+        }
+    }
+}
+</pre>
+<p>The <code>roster</code> application uses the default mapping strategy of <code>InheritanceType.SINGLE_TABLE</code>, so the <code>@Inheritance</code> annotation is not required. If you want to use a different mapping strategy, decorate <code>League</code> with <code>@Inheritance</code> and specify the mapping strategy in the <code>strategy</code> element:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Entity
+@Inheritance(strategy=JOINED)
+@Table(name="PERSISTENCE_ROSTER_LEAGUE")
+public abstract class League implements Serializable { ... }
+</pre>
+<p>The <code>roster</code> application uses the default discriminator column name, so the <code>@DiscriminatorColumn</code> annotation is not required. Because you are using automatic table generation in <code>roster</code>, the Persistence provider will create a discriminator column called <code>DTYPE</code> in the <code>PERSISTENCE_ROSTER_LEAGUE</code> table, which will store the name of the inherited entity used to create the league. If you want to use a different name for the discriminator column, decorate <code>League</code> with <code>@DiscriminatorColumn</code> and set the <code>name</code> element:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Entity
+@DiscriminatorColumn(name="DISCRIMINATOR")
+@Table(name="PERSISTENCE_ROSTER_LEAGUE")
+public abstract class League implements Serializable { ... }
+</pre></div>
+<!-- class="sect2" -->
+<a id="GJJFL" name="GJJFL"></a><a id="JEETT01173" name="JEETT01173"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">38.2.3</span> <a id="sthref1955" name="sthref1955"></a><a id="sthref1956" name="sthref1956"></a>Criteria Queries in the roster Application</h2>
+<p>The <code>roster</code> application uses Criteria API queries, as opposed to the JPQL queries used in <code>order</code>. Criteria queries are Java programming language, typesafe queries defined in the business tier of <code>roster</code>, in the <code>RequestBean</code> stateful session bean.</p>
+<a id="GJJEX" name="GJJEX"></a><a id="JEETT00702" name="JEETT00702"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.2.3.1</span> <a id="sthref1957" name="sthref1957"></a>Metamodel Classes in the roster Application</h3>
+<p>Metamodel classes model an entity's attributes and are used by Criteria queries to navigate to an entity's attributes. Each entity class in <code>roster</code> has a corresponding metamodel class, generated at compile time, with the same package name as the entity and appended with an underscore character (_). For example, the <code>roster.entity.Player</code> entity has a corresponding metamodel class, <code>roster.entity.Player_</code>.</p>
+<p>Each persistent field or property in the entity class has a corresponding attribute in the entity's metamodel class. For the <code>Player</code> entity, the corresponding metamodel class is as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@StaticMetamodel(Player.class)
+public class Player_ {
+    public static volatile SingularAttribute&lt;Player, String&gt; id;
+    public static volatile SingularAttribute&lt;Player, String&gt; name;
+    public static volatile SingularAttribute&lt;Player, String&gt; position;
+    public static volatile SingularAttribute&lt;Player, Double&gt; salary;
+    public static volatile CollectionAttribute&lt;Player, Team&gt; teams;
+}
+</pre></div>
+<!-- class="sect3" -->
+<a id="GJJFN" name="GJJFN"></a><a id="JEETT00703" name="JEETT00703"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.2.3.2</span> Obtaining a CriteriaBuilder Instance in RequestBean</h3>
+<p>The <code>CriteriaBuilder</code> interface defines methods to create criteria query objects and create expressions for modifying those query objects. <code>RequestBean</code> creates an instance of <code>CriteriaBuilder</code> by using a <code>@PostConstruct</code> method, <code>init</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@PersistenceContext
+private EntityManager em;
+private CriteriaBuilder cb;
+
+@PostConstruct
+private void init() {
+    cb = em.getCriteriaBuilder();
+}
+</pre>
+<p>The <code>EntityManager</code> instance is injected at runtime, and then that <code>EntityManager</code> object is used to create the <code>CriteriaBuilder</code> instance by calling <code>getCriteriaBuilder</code>. The <code>CriteriaBuilder</code> instance is created in a <code>@PostConstruct</code> method to ensure that the <code>EntityManager</code> instance has been injected by the enterprise bean container.</p>
+</div>
+<!-- class="sect3" -->
+<a id="GJJFF" name="GJJFF"></a><a id="JEETT00704" name="JEETT00704"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.2.3.3</span> Creating Criteria Queries in RequestBean's Business Methods</h3>
+<p>Many of the business methods in <code>RequestBean</code> define Criteria queries. One business method, <code>getPlayersByPosition</code>, returns a list of players who play a particular position on a team:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+public List&lt;PlayerDetails&gt; getPlayersByPosition(String position) {
+    logger.info("getPlayersByPosition");
+    List&lt;Player&gt; players = null;
+    
+    try {
+        CriteriaQuery&lt;Player&gt; cq = cb.createQuery(Player.class);
+        if (cq != null) {
+            Root&lt;Player&gt; player = cq.from(Player.class);
+
+            // set the where clause
+            cq.where(cb.equal(player.get(Player_.position), position));
+            cq.select(player);
+            TypedQuery&lt;Player&gt; q = em.createQuery(cq);
+            players = q.getResultList();
+        }
+        return copyPlayersToDetails(players);
+    } catch (Exception ex) {
+        throw new EJBException(ex);
+    }
+}
+</pre>
+<p>A query object is created by calling the <code>CriteriaBuilder</code> object's <code>createQuery</code> method, with the type set to <code>Player</code> because the query will return a list of players.</p>
+<p>The query root, the base entity from which the query will navigate to find the entity's attributes and related entities, is created by calling the <code>from</code> method of the query object. This sets the <code>FROM</code> clause of the query.</p>
+<p>The <code>WHERE</code> clause, set by calling the <code>where</code> method on the query object, restricts the results of the query according to the conditions of an expression. The <code>CriteriaBuilder.equal</code> method compares the two expressions. In <code>getPlayersByPosition</code>, the <code>position</code> attribute of the <code>Player_</code> metamodel class, accessed by calling the <code>get</code> method of the query root, is compared to the <code>position</code> parameter passed to <code>getPlayersByPosition</code>.</p>
+<p>The <code>SELECT</code> clause of the query is set by calling the <code>select</code> method of the query object. The query will return <code>Player</code> entities, so the query root object is passed as a parameter to <code>select</code>.</p>
+<p>The query object is prepared for execution by calling <code>EntityManager.createQuery</code>, which returns a <code>TypedQuery&lt;T&gt;</code> object with the type of the query, in this case <code>Player</code>. This typed query object is used to execute the query, which occurs when the <code>getResultList</code> method is called, and a <code>List&lt;Player&gt;</code> collection is returned.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="GIQRX" name="GIQRX"></a><a id="JEETT01174" name="JEETT01174"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">38.2.4</span> Automatic Table Generation in the roster Application</h2>
+<p>At deployment time, GlassFish Server will automatically drop and create the database tables used by <code>roster</code>. This is done by setting the <code>javax.persistence.schema-generation.database.action</code> property to <code>drop-and-create</code> in <code>persistence.xml</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;persistence version="2.1" 
+    xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"&gt;
+  &lt;persistence-unit name="em" transaction-type="JTA"&gt;
+    &lt;jta-data-source&gt;java:comp/DefaultDataSource&lt;/jta-data-source&gt;
+    &lt;properties&gt;
+      &lt;property name="javax.persistence.schema-generation.database.action" 
+                value="drop-and-create"/&gt;
+    &lt;/properties&gt;
+  &lt;/persistence-unit&gt;
+&lt;/persistence&gt;
+</pre></div>
+<!-- class="sect2" -->
+<a id="GIQUZ" name="GIQUZ"></a><a id="JEETT01175" name="JEETT01175"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">38.2.5</span> Running the roster Example</h2>
+<p>You can use either NetBeans IDE or Maven to build, package, deploy, and run the <code>roster</code> application.</p>
+<a id="GIQUG" name="GIQUG"></a><a id="JEETT00237" name="JEETT00237"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.2.5.1</span> To Run the roster Example Using NetBeans IDE</h3>
+<ol>
+<li>
+<p>Make sure that GlassFish Server has been started (see <a href="usingexamples002.htm#BNADI">Starting and Stopping GlassFish Server</a>).</p>
+</li>
+<li>
+<p>If the database server is not already running, start it by following the instructions in <a href="usingexamples004.htm#BNADK">Starting and Stopping the Java DB Server</a>.</p>
+</li>
+<li>
+<p>From the <span class="gui-object-action">File</span> menu, choose <span class="gui-object-action">Open Project</span>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-title">Open Project</span> dialog box, navigate to:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+<span class="variable">tut-install</span>/examples/persistence
+</pre></li>
+<li>
+<p>Select the <code>roster</code> folder.</p>
+</li>
+<li>
+<p>Select the <span class="gui-object-action">Open Required Projects</span> check box.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">Open Project</span>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-action">Projects</span> tab, right-click the <code>roster</code> project and select <span class="gui-object-action">Build</span>.</p>
+<p>This will compile, package, and deploy the EAR to GlassFish Server.</p>
+<p>You will see the following partial output from the application client in the <span class="gui-object-action">Output</span> tab:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+List all players in team T2:
+P6 Ian Carlyle goalkeeper 555.0
+P7 Rebecca Struthers midfielder 777.0
+P8 Anne Anderson forward 65.0
+P9 Jan Wesley defender 100.0
+P10 Terry Smithson midfielder 100.0
+
+List all teams in league L1:
+T1 Honey Bees Visalia
+T2 Gophers Manteca
+T5 Crows Orland
+
+List all defenders:
+P2 Alice Smith defender 505.0
+P5 Barney Bold defender 100.0
+P9 Jan Wesley defender 100.0
+P22 Janice Walker defender 857.0
+P25 Frank Fletcher defender 399.0
+</pre></li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="GIQSJ" name="GIQSJ"></a><a id="JEETT00238" name="JEETT00238"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.2.5.2</span> To Run the roster Example Using Maven</h3>
+<ol>
+<li>
+<p>Make sure that GlassFish Server has been started (see <a href="usingexamples002.htm#BNADI">Starting and Stopping GlassFish Server</a>).</p>
+</li>
+<li>
+<p>If the database server is not already running, start it by following the instructions in <a href="usingexamples004.htm#BNADK">Starting and Stopping the Java DB Server</a>.</p>
+</li>
+<li>
+<p>In a terminal window, go to:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+<span class="variable">tut-install</span>/examples/persistence/roster/roster-ear/
+</pre></li>
+<li>
+<p>Enter the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+mvn install
+</pre>
+<p>This compiles the source files and packages the application into an EAR file located at <span class="variable">tut-install</span><code>/examples/persistence/roster/target/roster.ear</code>. The EAR file is then deployed to GlassFish Server. GlassFish Server will then drop and create the database tables during deployment, as specified in <code>persistence.xml</code>.</p>
+<p>After successfully deploying the EAR, the client stubs are retrieved and the application client is run using the appclient application included with GlassFish Server.</p>
+<p>You will see the output, which begins as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+[echo] running application client container.
+[exec] List all players in team T2:
+[exec] P6 Ian Carlyle goalkeeper 555.0
+[exec] P7 Rebecca Struthers midfielder 777.0
+[exec] P8 Anne Anderson forward 65.0
+[exec] P9 Jan Wesley defender 100.0
+[exec] P10 Terry Smithson midfielder 100.0
+
+[exec] List all teams in league L1:
+[exec] T1 Honey Bees Visalia
+[exec] T2 Gophers Manteca
+[exec] T5 Crows Orland
+
+[exec] List all defenders:
+[exec] P2 Alice Smith defender 505.0
+[exec] P5 Barney Bold defender 100.0
+[exec] P9 Jan Wesley defender 100.0
+[exec] P22 Janice Walker defender 857.0
+[exec] P25 Frank Fletcher defender 399.0
+</pre></li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="persistence-basicexamples001.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="persistence-basicexamples003.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

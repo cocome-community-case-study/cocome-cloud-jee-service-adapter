@@ -1,0 +1,79 @@
+<!--
+
+    DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+    Copyright (c) 2000-2010 Oracle and/or its affiliates. All rights reserved.
+
+    The contents of this file are subject to the terms of either the GNU
+    General Public License Version 2 only ("GPL") or the Common Development
+    and Distribution License("CDDL") (collectively, the "License").  You
+    may not use this file except in compliance with the License.  You can
+    obtain a copy of the License at
+    https://glassfish.dev.java.net/public/CDDL+GPL_1_1.html
+    or packager/legal/LICENSE.txt.  See the License for the specific
+    language governing permissions and limitations under the License.
+
+    When distributing the software, include this License Header Notice in each
+    file and include the License file at packager/legal/LICENSE.txt.
+
+    GPL Classpath Exception:
+    Oracle designates this particular file as subject to the "Classpath"
+    exception as provided by Oracle in the GPL Version 2 section of the License
+    file that accompanied this code.
+
+    Modifications:
+    If applicable, add the following below the License Header, with the fields
+    enclosed by brackets [] replaced by your own identifying information:
+    "Portions Copyright [year] [name of copyright owner]"
+
+    Contributor(s):
+    If you wish your version of this file to be governed by only the CDDL or
+    only the GPL Version 2, indicate your decision by adding "[Contributor]
+    elects to include this software in this distribution under the [CDDL or GPL
+    Version 2] license."  If you don't indicate a single choice of license, a
+    recipient has the option to distribute your version of this file under
+    either the CDDL, the GPL Version 2 or to extend the choice of license to
+    its licensees as provided above.  However, if you add GPL Version 2 code
+    and therefore, elected the GPL Version 2 license, then the option applies
+    only if the new code is made subject to such option by the copyright
+    holder.
+
+-->
+
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+ <TITLE>add connfact rel</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ <H2>Aggiungi oggetto ConnectionFactory &gt; <BR>
+  Affidabilit&agrave; e controllo di flusso</H2>
+ 
+<P>Utilizzare questa scheda per specificare l'uso di messaggi di controllo Message Queue (conferme ricezione broker) e misure di controllo di flusso dal runtime client.</P>
+
+<p><b>Conferma di ricezione servizio messaggi dei messaggi prodotti</b> Specifica la conferma di ricezione del broker dei messaggi dal client di produzione:</p>
+<ul>
+  <li>Se impostato su true, il broker conferma la ricezione di tutti i messaggi JMS (persistenti e non persistenti) dal client di produzione; il thread del client di produzione si blocca in attesa di tali conferme di ricezione.</li>
+  <li>Se impostato su false, il broker non conferma la ricezione di messaggi JMS (persistenti e non persistenti) dal client di produzione; il thread del client di produzione non si blocca in attesa delle conferme di ricezione del broker.</li>
+  <li> Se non specificato, il broker conferma la ricezione solo dei messaggi persistenti e il thread del client di produzione si blocca in attesa di tali conferme di ricezione.</li>
+</ul>
+<p><b>Conferma di ricezione servizio messaggi delle conferme di ricezione client</b> Specifica la conferma di ricezione da parte del broker delle conferme di ricezione del client di consumo:</p>
+<ul>
+  <li>Se impostato su true, il broker conferma la ricezione di tutte le conferme di ricezione del client di consumo e il thread del client di consumo si blocca in attesa di tali conferme di ricezione del broker.</li>
+  <li>Se impostato su false, il broker non conferma la ricezione delle conferme di ricezione del client di consumo e il thread del client di consumo non si blocca in attesa di tali conferme di ricezione del broker.</li>
+  <li> Se non specificato, il broker conferma la ricezione delle conferme di ricezione del client di consumo per le modalit&agrave; AUTO_ACKNOWLEDGE e CLIENT_ACKNOWLEDGE (e il thread del client di consumo si blocca in attesa di tali conferme di ricezione del broker), ma non conferma la ricezione delle conferme di ricezione del client di consumo per la modalit&agrave; DUPS_OK_ACKNOWLEDGE (e il thread del client di consumo non si blocca).</li>
+</ul>
+<p><b>Timeout conferma di ricezione servizi di messaggio (millisecondi) </b>Specifica il tempo massimo espresso in millisecondi in cui il runtime client rimane in attesa di una qualsiasi conferma di ricezione da parte del broker prima di generare un'eccezione. Il valore standard 0 indica l'assenza di timeout, ovvero il runtime del client rester&agrave; in attesa senza limiti di tempo.</p>
+<p><b>Conteggio del flusso di connessione </b> Specifica il numero massimo di messaggi JMS in un batch misurato. Una volta inviato questo numero di messaggi JMS al runtime del client, il recapito viene sospeso temporaneamente, consentendo la consegna di qualsiasi messaggio di controllo trattenuto. Il recapito dei messaggi JMS viene ripreso al momento della notifica dal runtime del client e continua fino a raggiungere nuovamente il conteggio determinato. Se il conteggio &egrave; impostato su 0 significa che non ci sono limiti nel numero di messaggi JMS in un batch misurato. Un'impostazione diversa da zero consente al runtime del client di misurare il flusso dei messaggi, cos&igrave; da impedire che i messaggi di controllo Message Queue vengano bloccati dal recapito di messaggi JMS pesanti e possano passare al client tra batch misurati.</p>
+<p><b>Limite del flusso di connessione abilitato</b> Specifica la necessit&agrave; di abilitare un limite del flusso di connessione (in un certo numero di messaggi non utilizzati recapitati al runtime del client). Se il riquadro &egrave; selezionato, &egrave; necessario specificare un numero positivo per il campo <b>Limite del flusso di connessione</b>.</p>
+<p><b>Limite del flusso di connessione (messaggi non utilizzati per connessione) </b>Specifica un limite del numero di messaggi che possono essere recapitati su una connessione e di cui &egrave; possibile eseguire il buffer nel runtime del client, in attesa di essere utilizzati (solo se l'opzione <b>Limite del flusso di connessione abilitato </b>&egrave; selezionata). Se il numero di messaggi JMS recapitati al runtime del client (in base alla misurazione del flusso regolata dal <b>Conteggio del flusso di connessione</b>) supera il limite, il recapito dei messaggi viene interrotto. Viene ripreso solo quando il numero di messaggi non utilizzati scende al di sotto del valore impostato con questa propriet&agrave;. Questo limite consente di prevenire il sovraccarico di un client di consumo che impiega un periodo esteso per elaborare i messaggi con messaggi in attesa che possono causarne l'esaurimento della memoria. </p>
+<p><b>Limite di flusso consumatore (messaggi non utilizzati per consumatore) </b>Specifica un limite del numero di messaggi per consumatore che possono essere recapitati su una connessione e di cui &egrave; possibile eseguire il buffer nel runtime del client. Questo limite ha due utilizzi: pu&ograve; migliorare il carico bilanciato tra i consumatori nelle situazioni di recapito con coda formata da pi&ugrave; consumatori (&egrave; impossibile inviare a qualsiasi consumatore un numero non proporzionale di messaggi) ed evita che un qualsiasi consumatore su una connessione sovraccarichi altri consumatori sulla connessione. Se il numero di messaggi JMS recapitati al runtime del client supera il limite per qualsiasi consumatore, il recapito di messaggi relativo a tale consumatore viene interrotto. Viene ripreso solo quando il numero di messaggi non utilizzati per questo consumatore scende al di sotto del valore impostato con l'opzione <b>Soglia del flusso del consumatore</b>. </p>
+<p>Considerare che se il numero totale di messaggi di cui &egrave; stato eseguito il buffer per tutti i consumatori supera il <b>Limite del flusso di connessione</b>, il recapito dei messaggi attraverso la connessione verr&agrave; interrotto finch&eacute; il numero non scende al sotto del limite stabilito. Se si specifica un limite del flusso del consumatore, non &egrave; estremamente necessario impostare il limite del flusso di connessione se non nei casi pi&ugrave; specializzati e nei requisiti della maggior parte delle applicazioni per eseguire la misurazione del flusso di messaggi tramite l'impostazione del limite del flusso del consumatore invece che l'attivazione del limite del flusso di connessione.</p>
+<P><b>Soglia di flusso consumatore (percentuale) </b>Specifica, come percentuale del <b>limite del flusso del consumatore</b>, il numero di messaggi per consumatore di cui &egrave; stato eseguito il buffer nel runtime del client, al di sotto del quale viene ripreso il recapito di messaggi per un consumatore. </P>
+<P>&nbsp;</P>
+<p>&nbsp;</p>
+
+</BODY>
+</HTML>

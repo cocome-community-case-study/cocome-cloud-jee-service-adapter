@@ -1,0 +1,195 @@
+@charset "utf-8";
+/*
+  bp_layout.css
+  Copyright 2007, Oracle and/or its affiliates. All rights reserved.
+*/
+
+body {
+  margin: 0ex;
+  padding: 0ex;
+}
+h1 {
+  display: none;
+}
+#FOOTER {
+  border-top: #0d4988 solid 10px;
+  background-color: inherit;  
+  color: #e4edf3;  
+  clear: both;
+}
+#FOOTER p {
+  font-size: 80%;
+  margin-top: 0em;
+  margin-left: 1em;
+}
+#FOOTER a {
+  background-color: inherit;
+  color: gray;  
+}
+#LEFTCOLUMN {
+  float: left;
+  width: 50%;
+}
+#RIGHTCOLUMN {
+  float: right;
+  width: 50%;
+  clear: right; /* IE hack */
+}
+#LEFTCOLUMN div.portlet {
+  margin-left: 2ex;
+  margin-right: 1ex;
+}
+#RIGHTCOLUMN div.portlet {
+  margin-left: 1ex;
+  margin-right: 2ex;
+}
+div.portlet {
+  margin: 2ex 1ex;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  border: 1px #bcc solid;
+  background-color: #f6f6ff;
+  color: black;
+}
+div.portlet h2 {
+  margin-top: 0.5ex;
+  margin-bottom: 0ex;
+  font-size: 110%;
+}
+div.portlet p {
+  margin-top: 0ex;
+}
+div.portlet ul {
+  list-style-type: none;
+  padding-left: 0em;
+  margin-left: 0em; /* IE Hack */
+}
+div.portlet li {
+  text-align: right;
+}
+div.portlet li cite {
+  font-style: normal;
+  float: left;
+}
+div.portlet li a {
+  margin: 0px 0.2ex;
+  padding: 0px 0.2ex;
+  font-size: 95%;
+}
+#NAME {
+  margin: 0em;
+  padding: 0em;
+  position: relative;
+  top: 0.6ex;
+  left: 10px;
+  width: 80%;
+}
+#PRODUCT {
+  font-size: 180%;
+}
+#LIBRARY {
+  color: #0b3d73;
+  background: inherit;
+  font-size: 180%;
+  font-family: serif;
+}
+#RELEASE {
+  position: absolute;
+  top: 28px;
+  font-size: 80%;
+  font-weight: bold;
+}
+#TOOLS {
+  list-style-type: none;
+  position: absolute;
+  top: 1ex;
+  right: 2em;
+  margin: 0em;
+  padding: 0em;
+  background: inherit;
+  color: black;
+}
+#TOOLS a {
+  background: inherit;
+  color: black;
+}
+#NAV {
+  float: left;
+  width: 96%;
+  margin: 3ex 0em 0ex 0em;
+  padding: 2ex 0em 0ex 4%; /* Avoiding horizontal scroll bars. */
+  list-style-type: none;
+  background: transparent url(../gifs/nav_bg.gif) repeat-x bottom;
+}
+#NAV li {
+  float: left;
+  margin: 0ex 0.1em 0ex 0em;
+  padding: 0ex 0em 0ex 0em;
+}
+#NAV li a {
+  display: block;
+  margin: 0em;
+  padding: 3px 0.7em;
+  border-top: 1px solid gray;
+  border-right: 1px solid gray;
+  border-bottom: none;
+  border-left: 1px solid gray;
+  background-color: #a6b3c8;
+  color: #333;
+}
+#SUBNAV {
+  float: right;
+  width: 96%;
+  margin: 0ex 0em 0ex 0em;
+  padding: 0.1ex 4% 0.2ex 0em; /* Avoiding horizontal scroll bars. */
+  list-style-type: none;
+  background-color: #0d4988;
+  color: #e4edf3;  
+}
+#SUBNAV li {
+  float: right;
+}
+#SUBNAV li a {
+  display: block;
+  margin: 0em;
+  padding: 0ex 0.5em;
+  background-color: inherit;
+  color: #e4edf3;
+}
+#SIMPLESEARCH {
+  position: absolute;
+  top: 5ex;
+  right: 1em;
+}
+#CONTENT {
+  clear: both;
+}
+#NAV a:hover,
+#PORTAL_1 #OVERVIEW a,
+#PORTAL_2 #OVERVIEW a,
+#PORTAL_3 #OVERVIEW a,
+#PORTAL_4 #ADMINISTRATION a,
+#PORTAL_5 #DEVELOPMENT a,
+#PORTAL_6 #DEVELOPMENT a,
+#PORTAL_7 #DEVELOPMENT a,
+#PORTAL_11 #INSTALLATION a,
+#PORTAL_15 #ADMINISTRATION a,
+#PORTAL_16 #ADMINISTRATION a {
+  background-color: #0d4988;
+  color: #e4edf3;
+  padding-bottom: 4px;
+  border-color: gray;
+}
+
+#SUBNAV a:hover,
+#PORTAL_2 #SEARCH a,
+#PORTAL_3 #BOOKS a,
+#PORTAL_6 #WAREHOUSING a,
+#PORTAL_7 #UNSTRUCTURED a,
+#PORTAL_15 #INTEGRATION a,
+#PORTAL_16 #GRID a {
+  position: relative;
+  top: 2px;
+  background-color: white;
+  color: #0a4e89;
+}

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE toc PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 1.0//EN"
+                     "http://java.sun.com/products/javahelp/toc_1_0.dtd">
+
+<!-- Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms. -->
+
+<toc version="1.0">
+	<tocitem image="IMQ_TOP_FOLDER_IMG" text="Console d'administration de Message Queue" target="IMQ_INDEX">
+		<tocitem text="Aperçu" target="overview" />
+	</tocitem>
+	<tocitem image="OBJSTORE_TOP_FOLDER_IMG" text="Gestion des magasins d'objets Message Queue" target="OS_INDEX">
+		<tocitem text="Ajouter Object Store" target="add_object_store" />
+		<tocitem text="Propriétés Object Store" target="object_store_properties" />
+		<tocitem text="Se connecter/Se déconnecter à/de Object Store" target="conndis_object_store" />
+		<tocitem text="Ajouter objet de destination" target="add_destination_obj" />
+		<tocitem text="Propriétés de l'objet de destination" target="destination_obj_properties" />
+		<tocitem text="Ajouter Objet Classe de connexion" target="add_connection_fact">
+			<tocitem text="Fiabilité et contrôle de flux" target="add_connfact_rel_htm" />
+			<tocitem text="QueueBrowsers et ServerSessions" target="add_connfact_queue_htm" />
+			<tocitem text="Gestion des connexions" target="add_connfact_handling_htm" />
+			<tocitem text="Identification du client" target="add_connfact_clientid_htm" />
+			<tocitem text="Propriétés JMSX" target="add_connfact_jmsx_htm" />
+			<tocitem text="Dérogation d'en-tête de message" target="add_connfact_message_header_overrides_htm" />
+			<tocitem text="Gestion des connexions 3.0" target="add_connfact_handling_old_htm" />
+		</tocitem>
+		<tocitem text="Propriétés de l'objet Classe de connexion" target="connection_factory_prop">
+			<tocitem text="Fiabilité et contrôle de flux" target="connfact_rel_htm" />
+			<tocitem text="QueueBrowsers et ServerSessions" target="connfact_queue_htm" />
+			<tocitem text="Gestion des connexions" target="connfact_handling_htm" />
+			<tocitem text="Identification du client" target="connfact_clientid_htm" />
+			<tocitem text="Propriétés JMSX" target="connfact_jmsx_htm" />
+			<tocitem text="Dérogation d'en-tête de message" target="connfact_message_header_overrides_htm" />
+			<tocitem text="Gestion des connexions 3.0" target="connfact_handling_old_htm" />
+		</tocitem>
+	</tocitem>
+	<tocitem image="BROKER_TOP_FOLDER_IMG" text="Gestion de courtier de Message Queue" target="BROKER_INDEX">
+		<tocitem text="Ajouter courtier" target="add_broker" />
+		<tocitem text="Propriétés d'un courtier" target="broker_information" />
+		<tocitem text="Se connecter/Se déconnecter au/d'un courtier" target="conndis_broker" />
+		<tocitem text="Demander/mettre à jour courtier" target="broker_configuration">
+			<tocitem text="De base" target="broker_config_basic_htm" />
+			<tocitem text="Journalisation" target="broker_config_logging_htm" />
+			<tocitem text="Messagerie" target="broker_config_messaging_htm" />
+		</tocitem>
+		<tocitem text="Ajouter destination du courtier" target="add_broker_destination" />
+		<tocitem text="Propriétés de destination" target="broker_destination_properties">
+			<tocitem text="De base" target="broker_dest_basic_htm" />
+			<tocitem text="Abonnements durables" target="broker_dest_durable_htm" />
+		</tocitem>
+		<tocitem text="Propriétés du service" target="service_properties" />
+	</tocitem>
+</toc>

@@ -1,0 +1,209 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+ <TITLE>message server address syntax</TITLE>
+ <LINK rel="StyleSheet" href="../ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>Syntaxe des adresses du serveur de messagerie</H2>
+<p>La syntaxe permettant de sp&eacute;cifier une adresse de serveur de messagerie se pr&eacute;sente comme suit :<br>
+ </p>  
+<p><code><i>sch&eacute;ma</i>://<i>syntaxe_adresse</i></code><br>
+  </p> 
+  
+<p>o&ugrave; <code><i>sch&eacute;ma</i></code> et <code><i>syntaxe_adresse</i></code> sont d&eacute;crits dans le tableau suivant.</p>
+<TABLE columns="4" border="1">
+	<TR>
+		<TH>Sch&eacute;ma</TH>
+		<TH>Service de connexion</TH>
+		<TH>Description</TH>
+		<TH>Syntaxe</TH>
+	</TR>
+
+	<TR>
+		<TD valign="top"><code>mq</code></TD>
+		
+      <TD valign="top">
+      <code>jms<br> et <br> ssljms</code>
+      </TD>
+		
+	<TD valign="top">Le mappeur de ports Message Queue &agrave; l'h&ocirc;te et au port sp&eacute;cifi&eacute;s g&eacute;rera la demande de connexion&nbsp;: il attribuera dynamiquement un port en se basant sur le service de connexion sp&eacute;cifi&eacute;. Lorsque le num&eacute;ro du port est connu, Message Queue &eacute;tablit la connexion.</TD>
+		
+    <TD valign="top"><code>[<i>hostName</i>][:<i>port</i>][/<i>serviceName</i>]</code> <br> Valeurs par d&eacute;faut (pour le service jms seulement) : <br> <code><i>hostName</i> = localhost <br> <i>port</i> = 7676 <br> <i>serviceName</i> = jms</code></TD>
+	</TR>
+
+	<TR>
+		
+    <TD valign="top"><code>mqtcp</code></TD>
+		
+    <TD valign="top"><code>jms</code></TD>
+		
+	<TD valign="top">Message Queue ouvre une connexion TCP directe avec l'h&ocirc;te et le port sp&eacute;cifi&eacute;s pour &eacute;tablir une connexion.</TD>
+		
+    <TD valign="top"><code><i>hostName</i>:<i>port</i>/jms</code></TD>
+
+	</TR>
+
+	<TR>
+		
+    <TD valign="top"><code>mqssl</code></TD>
+		
+    <TD valign="top"><code>ssljms</code></TD>
+		
+	<TD valign="top">Message Queue ouvre une connexion SSL directe et s&eacute;curis&eacute;e avec l'h&ocirc;te et le port sp&eacute;cifi&eacute;s pour &eacute;tablir une connexion.</TD>
+		
+    <TD valign="top"><code><i>hostName</i>:<i>port</i>/ssljms</code></TD>
+
+	</TR>
+	
+	<TR>
+		
+    <TD valign="top"><code>htttp</code></TD>
+		
+    <TD valign="top"><code>httpjms</code></TD>
+		
+	<TD valign="top">Message Queue ouvre une connexion HTTP directe avec l'URL de servlet du tunnel de Message Queue sp&eacute;cifi&eacute;e. Le courtier doit &ecirc;tre configur&eacute; pour acc&eacute;der au servlet de tunnel.</TD>
+		
+    <TD valign="top"><code><i>HTTPtunnelServletURL</i></code></TD>
+
+	</TR>
+	
+	<TR>
+		
+    <TD valign="top"><code>htttps</code></TD>
+		
+    <TD valign="top"><code>httpsjms</code></TD>
+		
+	<TD valign="top">Message Queue ouvre une connexion HTTPS directe avec l'URL de servlet du tunnel de Message Queue sp&eacute;cifi&eacute;e. Le courtier doit &ecirc;tre configur&eacute; pour acc&eacute;der au servlet de tunnel.</TD>
+		
+    <TD valign="top"><code><i>HTTPStunnelServletURL</i></code></TD>
+
+	</TR>
+</TABLE>
+<p>&nbsp;</p>
+<p>Le tableau suivant illustre comment la syntaxe des adresses du serveur de messagerie s'applique dans quelques cas types.</p>
+<TABLE columns="4" border="1">
+	<TR>
+		<TH>Service de connexion</TH>
+		<TH>H&ocirc;te courtier</TH>
+		<TH>Port</TH>
+		<TH>Exemple d'adresse</TH>
+	</TR>
+
+	<TR>
+		
+    <TD valign="top">Non sp&eacute;cifi&eacute;</TD>
+		
+    <TD valign="top">Non sp&eacute;cifi&eacute;</TD>
+	    
+    <TD valign="top">Non sp&eacute;cifi&eacute;</TD>
+		
+    <TD valign="top">Adresse par d&eacute;faut<br> <code>(mq://localHost:7676/jms)</code></TD>	
+	</TR>
+	
+	<TR>
+		
+    <TD valign="top">Non sp&eacute;cifi&eacute;</TD>
+		
+    <TD valign="top">H&ocirc;te sp&eacute;cifi&eacute;</TD>
+	    
+    <TD valign="top">Non sp&eacute;cifi&eacute;</TD>
+		
+    <TD valign="top"><code>myBkrHost<br> (mq://myBkrHost:7676/jms)</code></TD>	
+	</TR>
+	
+	<TR>
+		
+    <TD valign="top">Non sp&eacute;cifi&eacute;</TD>
+		
+    <TD valign="top">Non sp&eacute;cifi&eacute;</TD>
+	    
+    <TD valign="top">Port Portmapper sp&eacute;cifi&eacute;</TD>
+		
+    <TD valign="top"><code>1012<br> (mq://localHost:1012/jms)</code></TD>	
+	</TR>
+	
+	<TR>
+		
+    <TD valign="top"><code>ssljms</code></TD>
+		
+    <TD valign="top">H&ocirc;te local</TD>
+	    
+    <TD valign="top">Port Portmapper par d&eacute;faut</TD>
+		
+    <TD valign="top"><code>mq://localHost:7676/ssljms</code></TD>	
+	</TR>
+	
+	<TR>
+	 <TD valign="top"><code>ssljms</code></TD>
+		
+    <TD valign="top">H&ocirc;te sp&eacute;cifi&eacute;</TD>
+	    
+    <TD valign="top">Port Portmapper par d&eacute;faut</TD>
+		
+    <TD valign="top"><code>mq://myBkrHost:7676/ssljms</code></TD>	
+	</TR>
+	<TR>
+	 <TD valign="top"><code>ssljms</code></TD>
+		
+    <TD valign="top">H&ocirc;te sp&eacute;cifi&eacute;</TD>
+	    
+    <TD valign="top">Port Portmapper sp&eacute;cifi&eacute;</TD>
+		
+    <TD valign="top"><code>mq://myBkrHost:1012/ssljms</code></TD>	
+	</TR>
+	
+	<TR>
+	 
+    <TD valign="top"><code>jms</code></TD>
+		
+    <TD valign="top">H&ocirc;te local</TD>
+	    
+    <TD valign="top">Port de service sp&eacute;cifi&eacute;</TD>
+		
+    <TD valign="top"><code>mqtcp://localhost:1032/jms</code></TD>	
+	</TR>
+	
+	<TR>
+	 
+    <TD valign="top"><code>ssljms</code></TD>
+		
+    <TD valign="top">H&ocirc;te sp&eacute;cifi&eacute;</TD>
+	    
+    <TD valign="top">Port de service sp&eacute;cifi&eacute;</TD>
+		
+    <TD valign="top"><code>mqssl://myBkrHost:1034/ssljms</code></TD>	
+	</TR>
+	
+	<TR>
+	 
+    <TD valign="top"><code>httpjms</code></TD>
+		
+    <TD valign="top">N/D</TD>
+	    
+    <TD valign="top">N/D</TD>
+		
+    <TD valign="top"><code>http://websrvr1:8085/imq/tunnel</code></TD>	
+	</TR>
+	
+	<TR>
+	 
+    <TD valign="top"><code>httpsjms</code></TD>
+		
+    <TD valign="top">N/D</TD>
+	    
+    <TD valign="top">N/D</TD>
+		
+    <TD valign="top"><code>https://websrvr2:8090/imq/tunnel</code></TD>	
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

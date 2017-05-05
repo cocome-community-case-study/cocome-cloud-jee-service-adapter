@@ -1,0 +1,868 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:30:0Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="The order Application" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39031-01" />
+        <meta name="description" content="A guide to developing enterprise applications for the Java Platform, Enterprise Edition 7 (Java EE 7) using GlassFish Server Open Source Edition." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Java FX, Web, developer, enterprise, Java EE Tutorial, Java EE 7 Tutorial" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>The Java EE 7 Tutorial:The order Application | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7.0</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/tutorial/doc/javaeetutorial7.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GEXAF">Preface</a></h2>
+<h2 class="tocheader"><a href="partintro.htm#GFIRP">Part I Introduction</a></h2>
+<h2 class="tocheader"><a href="overview.htm#BNAAW"><span class="secnum">1</span> Overview</a></h2>
+<h2 class="tocheader"><a href="usingexamples.htm#GFIUD"><span class="secnum">2</span> Using the Tutorial Examples</a></h2>
+<h2 class="tocheader"><a href="partplatform.htm#GFIRP2">Part II Platform Basics</a></h2>
+<h2 class="tocheader"><a href="resource-creation.htm#GKJIQ2"><span class="secnum">3</span> Resource Creation</a></h2>
+<h2 class="tocheader"><a href="injection.htm#GKJIQ3"><span class="secnum">4</span> Injection</a></h2>
+<h2 class="tocheader"><a href="packaging.htm#GKJIQ4"><span class="secnum">5</span> Packaging</a></h2>
+<h2 class="tocheader"><a href="partwebtier.htm#BNADP">Part III The Web Tier</a></h2>
+<h2 class="tocheader"><a href="webapp.htm#BNADR"><span class="secnum">6</span> Getting Started with Web Applications</a></h2>
+<h2 class="tocheader"><a href="jsf-intro.htm#BNAPH"><span class="secnum">7</span> JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-facelets.htm#GIEPX"><span class="secnum">8</span> Introduction to Facelets</a></h2>
+<h2 class="tocheader"><a href="jsf-el.htm#GJDDD"><span class="secnum">9</span> Expression Language</a></h2>
+<h2 class="tocheader"><a href="jsf-page.htm#BNAQZ"><span class="secnum">10</span> Using JavaServer Faces Technology in Web Pages</a></h2>
+<h2 class="tocheader"><a href="jsf-page-core.htm#GJCUT"><span class="secnum">11</span> Using Converters, Listeners, and Validators</a></h2>
+<h2 class="tocheader"><a href="jsf-develop.htm#BNATX"><span class="secnum">12</span> Developing with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-ajax.htm#GKIOW"><span class="secnum">13</span> Using Ajax with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-advanced-cc.htm#GKHXA"><span class="secnum">14</span> Composite Components: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="jsf-custom.htm#BNAVG"><span class="secnum">15</span> Creating Custom UI Components and Other Custom Objects</a></h2>
+<h2 class="tocheader"><a href="jsf-configure.htm#BNAWO"><span class="secnum">16</span> Configuring JavaServer Faces Applications</a></h2>
+<h2 class="tocheader"><a href="servlets.htm#BNAFD"><span class="secnum">17</span> Java Servlet Technology</a></h2>
+<h2 class="tocheader"><a href="websocket.htm#GKJIQ5"><span class="secnum">18</span> Java API for WebSocket</a></h2>
+<h2 class="tocheader"><a href="jsonp.htm#GLRBB"><span class="secnum">19</span> JSON Processing</a></h2>
+<h2 class="tocheader"><a href="webi18n.htm#BNAXU"><span class="secnum">20</span> Internationalizing and Localizing Web Applications</a></h2>
+<h2 class="tocheader"><a href="partbeanvalidation.htm#sthref1322">Part IV Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation.htm#CHDGJIIA"><span class="secnum">21</span> Introduction to Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation-advanced.htm#GKAHP"><span class="secnum">22</span> Bean Validation: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partcdi.htm#GJBNR">Part V Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basic.htm#GIWHB"><span class="secnum">23</span> Introduction to Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basicexamples.htm#GJBLS"><span class="secnum">24</span> Running the Basic Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="cdi-adv.htm#GJEHI"><span class="secnum">25</span> Contexts and Dependency Injection for Java EE: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="cdi-adv-examples.htm#GKHRE"><span class="secnum">26</span> Running the Advanced Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="partwebsvcs.htm#BNAYK">Part VI Web Services</a></h2>
+<h2 class="tocheader"><a href="webservices-intro.htm#GIJTI"><span class="secnum">27</span> Introduction to Web Services</a></h2>
+<h2 class="tocheader"><a href="jaxws.htm#BNAYL"><span class="secnum">28</span> Building Web Services with JAX-WS</a></h2>
+<h2 class="tocheader"><a href="jaxrs.htm#GIEPU"><span class="secnum">29</span> Building RESTful Web Services with JAX-RS</a></h2>
+<h2 class="tocheader"><a href="jaxrs-client.htm#BABEIGIH"><span class="secnum">30</span> Accessing REST Resources with the JAX-RS Client API</a></h2>
+<h2 class="tocheader"><a href="jaxrs-advanced.htm#GJJXE"><span class="secnum">31</span> JAX-RS: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="partentbeans.htm#BNBLR">Part VII Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-intro.htm#GIJSZ"><span class="secnum">32</span> Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-gettingstarted.htm#GIJRE"><span class="secnum">33</span> Getting Started with Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-basicexamples.htm#GIJRB"><span class="secnum">34</span> Running the Enterprise Bean Examples</a></h2>
+<h2 class="tocheader"><a href="ejb-embedded.htm#GKCQZ"><span class="secnum">35</span> Using the Embedded Enterprise Bean Container</a></h2>
+<h2 class="tocheader"><a href="ejb-async.htm#GKIDZ"><span class="secnum">36</span> Using Asynchronous Method Invocation in Session Beans</a></h2>
+<h2 class="tocheader"><a href="partpersist.htm#BNBPY">Part VIII Persistence</a></h2>
+<h2 class="tocheader"><a href="persistence-intro.htm#BNBPZ"><span class="secnum">37</span> Introduction to the Java Persistence API</a></h2>
+<h2 class="tocheader"><a href="persistence-basicexamples.htm#GIJST"><span class="secnum">38</span> Running the Persistence Examples</a></h2>
+<ul style="list-style-type:none">
+<li><div id="backgroundColor"><a href="persistence-basicexamples001.htm#GIQST"><span class="secnum">38.1</span> The order Application</a><ul style="list-style-type:none">
+<li><a href="persistence-basicexamples001.htm#GIQRH"><span class="secnum">38.1.1</span> Entity Relationships in the order Application</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples001.htm#GIQQR"><span class="secnum">38.1.1.1</span> Self-Referential Relationships</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQSR"><span class="secnum">38.1.1.2</span> One-to-One Relationships</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQTJ"><span class="secnum">38.1.1.3</span> One-to-Many Relationship Mapped to Overlapping Primary and Foreign Keys</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQUD"><span class="secnum">38.1.1.4</span> Unidirectional Relationships</a></li>
+</ul>
+</li>
+<li><a href="persistence-basicexamples001.htm#GIQQY"><span class="secnum">38.1.2</span> Primary Keys in the order Application</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples001.htm#GIQUV"><span class="secnum">38.1.2.1</span> Generated Primary Keys</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQUF"><span class="secnum">38.1.2.2</span> Compound Primary Keys</a></li>
+</ul>
+</li>
+<li><a href="persistence-basicexamples001.htm#GIQTL"><span class="secnum">38.1.3</span> Entity Mapped to More Than One Database Table</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQUE"><span class="secnum">38.1.4</span> Cascade Operations in the order Application</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQSC"><span class="secnum">38.1.5</span> BLOB and CLOB Database Types in the order Application</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQUM"><span class="secnum">38.1.6</span> Temporal Types in the order Application</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQQV"><span class="secnum">38.1.7</span> Managing the order Application's Entities</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples001.htm#GIQRR"><span class="secnum">38.1.7.1</span> Creating Entities</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQQC"><span class="secnum">38.1.7.2</span> Finding Entities</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQUK"><span class="secnum">38.1.7.3</span> Setting Entity Relationships</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQSV"><span class="secnum">38.1.7.4</span> Using Queries</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQTW"><span class="secnum">38.1.7.5</span> Removing Entities</a></li>
+</ul>
+</li>
+<li><a href="persistence-basicexamples001.htm#GIQUP"><span class="secnum">38.1.8</span> Running the order Example</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples001.htm#GIQSG"><span class="secnum">38.1.8.1</span> To Run the order Example Using NetBeans IDE</a></li>
+<li><a href="persistence-basicexamples001.htm#GIQTY"><span class="secnum">38.1.8.2</span> To Run the order Example Using Maven</a></li>
+</ul>
+</li>
+</ul>
+</div></li>
+<li><a href="persistence-basicexamples002.htm#GIQSQ"><span class="secnum">38.2</span> The roster Application</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples002.htm#GIQSO"><span class="secnum">38.2.1</span> Relationships in the roster Application</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples002.htm#GIQQK"><span class="secnum">38.2.1.1</span> The Many-To-Many Relationship in roster</a></li>
+</ul>
+</li>
+<li><a href="persistence-basicexamples002.htm#GIQRF"><span class="secnum">38.2.2</span> Entity Inheritance in the roster Application</a></li>
+<li><a href="persistence-basicexamples002.htm#GJJFL"><span class="secnum">38.2.3</span> Criteria Queries in the roster Application</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples002.htm#GJJEX"><span class="secnum">38.2.3.1</span> Metamodel Classes in the roster Application</a></li>
+<li><a href="persistence-basicexamples002.htm#GJJFN"><span class="secnum">38.2.3.2</span> Obtaining a CriteriaBuilder Instance in RequestBean</a></li>
+<li><a href="persistence-basicexamples002.htm#GJJFF"><span class="secnum">38.2.3.3</span> Creating Criteria Queries in RequestBean's Business Methods</a></li>
+</ul>
+</li>
+<li><a href="persistence-basicexamples002.htm#GIQRX"><span class="secnum">38.2.4</span> Automatic Table Generation in the roster Application</a></li>
+<li><a href="persistence-basicexamples002.htm#GIQUZ"><span class="secnum">38.2.5</span> Running the roster Example</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples002.htm#GIQUG"><span class="secnum">38.2.5.1</span> To Run the roster Example Using NetBeans IDE</a></li>
+<li><a href="persistence-basicexamples002.htm#GIQSJ"><span class="secnum">38.2.5.2</span> To Run the roster Example Using Maven</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="persistence-basicexamples003.htm#GKANQ"><span class="secnum">38.3</span> The address-book Application</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples003.htm#GKAOJ"><span class="secnum">38.3.1</span> Bean Validation Constraints in address-book</a></li>
+<li><a href="persistence-basicexamples003.htm#GKANL"><span class="secnum">38.3.2</span> Specifying Error Messages for Constraints in address-book</a></li>
+<li><a href="persistence-basicexamples003.htm#GKAON"><span class="secnum">38.3.3</span> Validating Contact Input from a JavaServer Faces Application</a></li>
+<li><a href="persistence-basicexamples003.htm#GKAOP"><span class="secnum">38.3.4</span> Running the address-book Example</a>
+<ul style="list-style-type:none">
+<li><a href="persistence-basicexamples003.htm#GKAOD"><span class="secnum">38.3.4.1</span> To Run the address-book Example Using NetBeans IDE</a></li>
+<li><a href="persistence-basicexamples003.htm#GKANZ"><span class="secnum">38.3.4.2</span> To Run the address-book Example Using Maven</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 class="tocheader"><a href="persistence-querylanguage.htm#BNBTG"><span class="secnum">39</span> The Java Persistence Query Language</a></h2>
+<h2 class="tocheader"><a href="persistence-criteria.htm#GJITV"><span class="secnum">40</span> Using the Criteria API to Create Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-string-queries.htm#GKJIQ"><span class="secnum">41</span> Creating and Using String-Based Criteria Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-locking.htm#GKJJF"><span class="secnum">42</span> Controlling Concurrent Access to Entity Data with Locking</a></h2>
+<h2 class="tocheader"><a href="persistence-entitygraphs.htm#BABIJIAC"><span class="secnum">43</span> Creating Fetch Plans with Entity Graphs</a></h2>
+<h2 class="tocheader"><a href="persistence-cache.htm#GKJIA"><span class="secnum">44</span> Using a Second-Level Cache with Java Persistence API Applications</a></h2>
+<h2 class="tocheader"><a href="partmessaging.htm#GFIRP3">Part IX Messaging</a></h2>
+<h2 class="tocheader"><a href="jms-concepts.htm#BNCDQ"><span class="secnum">45</span> Java Message Service Concepts</a></h2>
+<h2 class="tocheader"><a href="jms-examples.htm#BNCGV"><span class="secnum">46</span> Java Message Service Examples</a></h2>
+<h2 class="tocheader"><a href="partsecurity.htm#GIJRP">Part X Security</a></h2>
+<h2 class="tocheader"><a href="security-intro.htm#BNBWJ"><span class="secnum">47</span> Introduction to Security in the Java EE Platform</a></h2>
+<h2 class="tocheader"><a href="security-webtier.htm#BNCAS"><span class="secnum">48</span> Getting Started Securing Web Applications</a></h2>
+<h2 class="tocheader"><a href="security-javaee.htm#BNBYK"><span class="secnum">49</span> Getting Started Securing Enterprise Applications</a></h2>
+<h2 class="tocheader"><a href="security-advanced.htm#GJJWX"><span class="secnum">50</span> Java EE Security: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partsupporttechs.htm#GIJUE">Part XI Java EE Supporting Technologies</a></h2>
+<h2 class="tocheader"><a href="transactions.htm#BNCIH"><span class="secnum">51</span> Transactions</a></h2>
+<h2 class="tocheader"><a href="resources.htm#BNCJH"><span class="secnum">52</span> Resource Adapters and Contracts</a></h2>
+<h2 class="tocheader"><a href="connectorexample.htm#GLODB"><span class="secnum">53</span> The Resource Adapter Examples</a></h2>
+<h2 class="tocheader"><a href="interceptors.htm#GKEED"><span class="secnum">54</span> Using Java EE Interceptors</a></h2>
+<h2 class="tocheader"><a href="batch-processing.htm#GKJIQ6"><span class="secnum">55</span> Batch Processing</a></h2>
+<h2 class="tocheader"><a href="concurrency-utilities.htm#GKJIQ8"><span class="secnum">56</span> Concurrency Utilities for Java EE</a></h2>
+<h2 class="tocheader"><a href="partcasestudies.htm#GKGJW">Part XII Case Studies</a></h2>
+<h2 class="tocheader"><a href="dukes-bookstore.htm#GLNVI"><span class="secnum">57</span> Duke's Bookstore Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-tutoring.htm#GKAEE"><span class="secnum">58</span> Duke's Tutoring Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-forest.htm#GLNPW"><span class="secnum">59</span> Duke's Forest Case Study Example</a></h2>
+<h2 class="tocheader"><a href="index.htm">Index</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>The Java EE 7 Tutorial  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="persistence-basicexamples.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="persistence-basicexamples002.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="GIQST" name="GIQST"></a><a id="JEETT00493" name="JEETT00493"></a>
+<div class="sect1">
+<h1 class="sect1"><span class="secnum">38.1</span> The order Application</h1>
+<p>The <code>order</code> application is a simple inventory and ordering application for maintaining a catalog of parts and placing an itemized order of those parts. The application has entities that represent parts, vendors, orders, and line items. These entities are accessed using a stateful session bean that holds the business logic of the application. A simple singleton session bean creates the initial entities on application deployment. A Facelets web application manipulates the data and displays data from the catalog.</p>
+<p>The information contained in an order can be divided into elements. What is the order number? What parts are included in the order? What parts make up that part? Who makes the part? What are the specifications for the part? Are there any schematics for the part? The <code>order</code> application is a simplified version of an ordering system that has all these elements.</p>
+<p>The <code>order</code> application consists of a single WAR module that includes the enterprise bean classes, the entities, the support classes, and the Facelets XHTML and class files.</p>
+<p>The database schema in the Java DB database for <code>order</code> is shown in <a href="#CHDGGDIA">Figure 38-1</a>.</p>
+<div class="figure"><a id="CHDGGDIA" name="CHDGGDIA"></a>
+<p class="titleinfigure">Figure 38-1 Database Schema for the order Application</p>
+<img src="img/jeett_dt_024.png" alt="Description of Figure 38-1 follows" title="Description of Figure 38-1 follows" longdesc="img_text/jeett_dt_024.htm" /><br />
+<a id="sthref1926" name="sthref1926" href="img_text/jeett_dt_024.htm">Description of "Figure 38-1 Database Schema for the order Application"</a><br />
+<br /></div>
+<!-- class="figure" -->
+<div align="center">
+<div class="inftblnote"><br />
+<table class="Note oac_no_warn" summary="" border="1" width="80%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>
+<p>In this diagram, for simplicity, the <code>PERSISTENCE_ORDER_</code> prefix is omitted from the table names.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="inftblnote" --></div>
+<a id="GIQRH" name="GIQRH"></a><a id="JEETT01163" name="JEETT01163"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">38.1.1</span> <a id="sthref1927" name="sthref1927"></a>Entity Relationships in the order Application</h2>
+<p>The <code>order</code> application demonstrates several types of entity relationships: self-referential, one-to-one, one-to-many, many-to-one, and unidirectional relationships.</p>
+<a id="GIQQR" name="GIQQR"></a><a id="JEETT00689" name="JEETT00689"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.1.1.1</span> <a id="sthref1928" name="sthref1928"></a>Self-Referential Relationships</h3>
+<p>A <span class="glossaryterm">self-referential</span> relationship occurs between relationship fields in the same entity. <code>Part</code> has a field, <code>bomPart</code>, which has a one-to-many relationship with the field <code>parts</code>, which is also in <code>Part</code>. That is, a part can be made up of many parts, and each of those parts has exactly one bill-of-material part.</p>
+<p>The primary key for <code>Part</code> is a compound primary key, a combination of the <code>partNumber</code> and <code>revision</code> fields. This key is mapped to the <code>PARTNUMBER</code> and <code>REVISION</code> columns in the <code>PERSISTENCE_ORDER_PART</code> table:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+...
+@ManyToOne
+@JoinColumns({
+    @JoinColumn(name="BOMPARTNUMBER", referencedColumnName="PARTNUMBER"),
+    @JoinColumn(name="BOMREVISION", referencedColumnName="REVISION")
+})
+public Part getBomPart() {
+    return bomPart;
+}
+...
+@OneToMany(mappedBy="bomPart")
+public Collection&lt;Part&gt; getParts() {
+    return parts;
+}
+...
+</pre></div>
+<!-- class="sect3" -->
+<a id="GIQSR" name="GIQSR"></a><a id="JEETT00690" name="JEETT00690"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.1.1.2</span> <a id="sthref1929" name="sthref1929"></a>One-to-One Relationships</h3>
+<p><code>Part</code> has a field, <code>vendorPart</code>, that has a one-to-one relationship with <code>VendorPart</code>'s <code>part</code> field. That is, each part has exactly one vendor part, and vice versa.</p>
+<p>Here is the relationship mapping in <code>Part</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@OneToOne(mappedBy="part")
+public VendorPart getVendorPart() {
+    return vendorPart;
+}
+</pre>
+<p>Here is the relationship mapping in <code>VendorPart</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@OneToOne
+@JoinColumns({
+    @JoinColumn(name="PARTNUMBER", referencedColumnName="PARTNUMBER"),
+    @JoinColumn(name="PARTREVISION", referencedColumnName="REVISION")
+})
+public Part getPart() {
+    return part;
+}
+</pre>
+<p>Note that, because <code>Part</code> uses a compound primary key, the <code>@JoinColumns</code> annotation is used to map the columns in the <code>PERSISTENCE_ORDER_VENDOR_PART</code> table to the columns in <code>PERSISTENCE_ORDER_PART</code>. The <code>PERSISTENCE_ORDER_VENDOR_PART</code> table's <code>PARTREVISION</code> column refers to <code>PERSISTENCE_ORDER_PART</code>'s <code>REVISION</code> column.</p>
+</div>
+<!-- class="sect3" -->
+<a id="GIQTJ" name="GIQTJ"></a><a id="JEETT00691" name="JEETT00691"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.1.1.3</span> <a id="sthref1930" name="sthref1930"></a><a id="sthref1931" name="sthref1931"></a><a id="sthref1932" name="sthref1932"></a>One-to-Many Relationship Mapped to Overlapping Primary and Foreign Keys</h3>
+<p><code>CustomerOrder</code> has a field, <code>lineItems</code>, that has a one-to-many relationship with <code>LineItem</code>'s field <code>customerOrder</code>. That is, each order has one or more line item.</p>
+<p><code>LineItem</code> uses a compound primary key that is made up of the <code>orderId</code> and <code>itemId</code> fields. This compound primary key maps to the <code>ORDERID</code> and <code>ITEMID</code> columns in the <code>PERSISTENCE_ORDER_LINEITEM</code> table. <code>ORDERID</code> is a foreign key to the <code>ORDERID</code> column in the <code>PERSISTENCE_ORDER_CUSTOMERORDER</code> table. This means that the <code>ORDERID</code> column is mapped twice: once as a primary key field, <code>orderId</code>; and again as a relationship field, <code>order</code>.</p>
+<p>Here is the relationship mapping in <code>CustomerOrder</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@OneToMany(cascade=ALL, mappedBy="customerOrder")
+public Collection&lt;LineItem&gt; getLineItems() {
+    return lineItems;
+}
+</pre>
+<p>Here is the relationship mapping in <code>LineItem</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Id
+@ManyToOne
+@JoinColumn(name="ORDERID")
+public CustomerOrder getCustomerOrder() {
+    return customerOrder;
+}
+</pre></div>
+<!-- class="sect3" -->
+<a id="GIQUD" name="GIQUD"></a><a id="JEETT00692" name="JEETT00692"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.1.1.4</span> <a id="sthref1933" name="sthref1933"></a>Unidirectional Relationships</h3>
+<p><code>LineItem</code> has a field, <code>vendorPart</code>, that has a unidirectional many-to-one relationship with <code>VendorPart</code>. That is, there is no field in the target entity in this relationship:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@JoinColumn(name="VENDORPARTNUMBER")
+@ManyToOne
+public VendorPart getVendorPart() {
+    return vendorPart;
+}
+</pre></div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="GIQQY" name="GIQQY"></a><a id="JEETT01164" name="JEETT01164"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">38.1.2</span> Primary Keys in the order Application</h2>
+<p>The <code>order</code> application uses several types of primary keys: single-valued primary keys, generated primary keys, and compound primary keys.</p>
+<a id="GIQUV" name="GIQUV"></a><a id="JEETT00693" name="JEETT00693"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.1.2.1</span> <a id="sthref1934" name="sthref1934"></a><a id="sthref1935" name="sthref1935"></a>Generated Primary Keys</h3>
+<p><code>VendorPart</code> uses a generated primary key value. That is, the application does not assign primary key values for the entities but instead relies on the persistence provider to generate the primary key values. The <code>@GeneratedValue</code> annotation is used to specify that an entity will use a generated primary key.</p>
+<p>In <code>VendorPart</code>, the following code specifies the settings for generating primary key values:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@TableGenerator(
+    name="vendorPartGen",
+    table="PERSISTENCE_ORDER_SEQUENCE_GENERATOR",
+    pkColumnName="GEN_KEY",
+    valueColumnName="GEN_VALUE",
+    pkColumnValue="VENDOR_PART_ID",
+    allocationSize=10)
+@Id
+@GeneratedValue(strategy=GenerationType.TABLE, generator="vendorPartGen")
+public Long getVendorPartNumber() {
+    return vendorPartNumber;
+}
+</pre>
+<p>The <code>@TableGenerator</code> annotation is used in conjunction with <code>@GeneratedValue</code>'s <code>strategy=TABLE</code> element. That is, the strategy used to generate the primary keys is to use a table in the database. The <code>@TableGenerator</code> annotation is used to configure the settings for the generator table. The name element sets the name of the generator, which is <code>vendorPartGen</code> in <code>VendorPart</code>.</p>
+<p>The <code>PERSISTENCE_ORDER_SEQUENCE_GENERATOR</code> table, whose two columns are <code>GEN_KEY</code> and <code>GEN_VALUE</code>, will store the generated primary key values. This table could be used to generate other entities' primary keys, so the <code>pkColumnValue</code> element is set to <code>VENDOR_PART_ID</code> to distinguish this entity's generated primary keys from other entities' generated primary keys. The <code>allocationSize</code> element specifies the amount to increment when allocating primary key values. In this case, each <code>VendorPart</code>'s primary key will increment by 10.</p>
+<p>The primary key field <code>vendorPartNumber</code> is of type <code>Long</code>, as the generated primary key's field must be an integral type.</p>
+</div>
+<!-- class="sect3" -->
+<a id="GIQUF" name="GIQUF"></a><a id="JEETT00694" name="JEETT00694"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.1.2.2</span> <a id="sthref1936" name="sthref1936"></a><a id="sthref1937" name="sthref1937"></a>Compound Primary Keys</h3>
+<p>A compound primary key is made up of multiple fields and follows the requirements described in <a href="persistence-intro001.htm#BNBQF">Primary Keys in Entities</a>. To use a compound primary key, you must create a wrapper class.</p>
+<p>In <code>order</code>, two entities use compound primary keys: <code>Part</code> and <code>LineItem</code>.</p>
+<ul>
+<li>
+<p><code>Part</code> uses the <code>PartKey</code> wrapper class. <code>Part</code>'s primary key is a combination of the part number and the revision number. <code>PartKey</code> encapsulates this primary key.</p>
+</li>
+<li>
+<p><code>LineItem</code> uses the <code>LineItemKey</code> class. <code>LineItem</code>'s primary key is a combination of the order number and the item number. <code>LineItemKey</code> encapsulates this primary key.</p>
+</li>
+</ul>
+<p>This is the <code>LineItemKey</code> compound primary key wrapper class:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+package javaeetutorial.order.entity;
+
+import java.io.Serializable;
+
+public final class LineItemKey implements Serializable {
+
+    private Integer customerOrder;
+    private int itemId;
+
+    public LineItemKey() {}
+
+    public LineItemKey(Integer order, int itemId) {
+        this.setCustomerOrder(order);
+        this.setItemId(itemId);
+    } 
+
+    @Override
+    public int hashCode() {
+        return ((this.getCustomerOrder() == null
+                ? 0 : this.getCustomerOrder().hashCode())
+                ^ ((int) this.getItemId()));
+    }
+
+    @Override
+    public boolean equals(Object otherOb) {
+        if (this == otherOb) {
+            return true;
+        }
+        if (!(otherOb instanceof LineItemKey)) {
+            return false;
+        }
+        LineItemKey other = (LineItemKey) otherOb;
+        return ((this.getCustomerOrder() == null
+                ? other.getCustomerOrder == null : this.getOrderId()
+                .equals(other.getCustomerOrder())) 
+                &amp;&amp; (this.getItemId == oother.getItemId()));
+    }
+
+    @Override
+    public String toString() {
+        return "" + getCustomerOrder() + "-" + getItemId();
+    }
+
+    public Integer getCustomerOrder() {
+        return customerOrder;
+    }
+
+    public void setCustomerOrder(Integer order) {
+        this.customerOrder = order;
+    }
+
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
+    }
+}
+</pre>
+<p>The <code>@IdClass</code> annotation is used to specify the primary key class in the entity class. In <code>LineItem</code>, <code>@IdClass</code> is used as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@IdClass(LineItemKey.class)
+@Entity
+...
+public class LineItem implements Serializable {
+    ...
+}
+</pre>
+<p>The two fields in <code>LineItem</code> are tagged with the <code>@Id</code> annotation to mark those fields as part of the compound primary key:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Id
+public int getItemId() {
+    return itemId;
+}
+...
+@Id
+@ManyToOne
+@JoinColumn(name="ORDERID")
+public CustomerOrder getCustomerOrder() {
+    return customerOrder;
+}
+</pre>
+<p>For <code>customerOrder</code>, you also use the <code>@JoinColumn</code> annotation to specify the column name in the table and that this column is an overlapping foreign key pointing at the <code>PERSISTENCE_ORDER_CUSTOMERORDER</code> table's <code>ORDERID</code> column (see <a href="#GIQTJ">One-to-Many Relationship Mapped to Overlapping Primary and Foreign Keys</a>). That is, <code>customerOrder</code> will be set by the <code>CustomerOrder</code> entity.</p>
+<p>In <code>LineItem</code>'s constructor, the line item number (<code>LineItem.itemId</code>) is set using the <code>CustomerOrder.getNextId</code> method:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+public LineItem(CustomerOrder order, int quantity, VendorPart vendorPart) {
+    this.customerOrder = order;
+    this.itemId = order.getNextId();
+    this.quantity = quantity;
+    this.vendorPart = vendorPart;
+}
+</pre>
+<p><code>CustomerOrder.getNextId</code> counts the number of current line items, adds 1, and returns that number:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Transient
+public int getNextId() {
+    return this.lineItems.size() + 1;
+}
+</pre>
+<p><code>Part</code> requires the <code>@Column</code> annotation on the two fields that comprise <code>Part</code>'s compound primary key, because <code>Part</code>'s compound primary key is an overlapping primary key/foreign key:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@IdClass(PartKey.class)
+@Entity
+...
+public class Part implements Serializable {
+    ...
+    @Id
+    @Column(nullable=false)
+    public String getPartNumber() {
+        return partNumber;
+    }
+    ...
+    @Id
+    @Column(nullable=false)
+    public int getRevision() {
+        return revision;
+    }
+    ...
+}
+</pre></div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="GIQTL" name="GIQTL"></a><a id="JEETT01165" name="JEETT01165"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">38.1.3</span> <a id="sthref1938" name="sthref1938"></a>Entity Mapped to More Than One Database Table</h2>
+<p><code>Part</code>'s fields map to more than one database table: <code>PERSISTENCE_ORDER_PART</code> and <code>PERSISTENCE_ORDER_PART_DETAIL</code>. The <code>PERSISTENCE_ORDER_PART_DETAIL</code> table holds the specification and schematics for the part. The <code>@SecondaryTable</code> annotation is used to specify the secondary table:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+...
+@Entity
+@Table(name="PERSISTENCE_ORDER_PART")
+@SecondaryTable(name="PERSISTENCE_ORDER_PART_DETAIL", pkJoinColumns={
+    @PrimaryKeyJoinColumn(name="PARTNUMBER",
+        referencedColumnName="PARTNUMBER"),
+    @PrimaryKeyJoinColumn(name="REVISION",
+        referencedColumnName="REVISION")
+})
+public class Part implements Serializable {
+    ...
+}
+</pre>
+<p><code>PERSISTENCE_ORDER_PART_DETAIL</code> and <code>PERSISTENCE_ORDER_PART</code> share the same primary key values. The <code>pkJoinColumns</code> element of <code>@SecondaryTable</code> is used to specify that <code>PERSISTENCE_ORDER_PART_DETAIL</code>'s primary key columns are foreign keys to <code>PERSISTENCE_ORDER_PART</code>. The <code>@PrimaryKeyJoinColumn</code> annotation sets the primary key column names and specifies which column in the primary table the column refers to. In this case, the primary key column names for both <code>PERSISTENCE_ORDER_PART_DETAIL</code> and <code>PERSISTENCE_ORDER_PART</code> are the same: <code>PARTNUMBER</code> and <code>REVISION</code>, respectively.</p>
+</div>
+<!-- class="sect2" -->
+<a id="GIQUE" name="GIQUE"></a><a id="JEETT01166" name="JEETT01166"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">38.1.4</span> <a id="sthref1939" name="sthref1939"></a>Cascade Operations in the order Application</h2>
+<p>Entities that have relationships to other entities often have dependencies on the existence of the other entity in the relationship. For example, a line item is part of an order; if the order is deleted, then the line item also should be deleted. This is called a cascade delete relationship.</p>
+<p>In <code>order</code>, there are two cascade delete dependencies in the entity relationships. If the <code>CustomerOrder</code> to which a <code>LineItem</code> is related is deleted, the <code>LineItem</code> also should be deleted. If the <code>Vendor</code> to which a <code>VendorPart</code> is related is deleted, the <code>VendorPart</code> also should be deleted.</p>
+<p>You specify the cascade operations for entity relationships by setting the <code>cascade</code> element in the inverse (nonowning) side of the relationship. The cascade element is set to <code>ALL</code> in the case of <code>CustomerOrder.lineItems</code>. This means that all persistence operations (deletes, updates, and so on) are cascaded from orders to line items.</p>
+<p>Here is the relationship mapping in <code>CustomerOrder</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@OneToMany(cascade=ALL, mappedBy="customerOrder")
+public Collection&lt;LineItem&gt; getLineItems() {
+    return lineItems;
+}
+</pre>
+<p>Here is the relationship mapping in <code>LineItem</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Id
+@ManyToOne
+@JoinColumn(name="ORDERID")
+public CustomerOrder getCustomerOrder() {
+    return customerOrder;
+}
+</pre></div>
+<!-- class="sect2" -->
+<a id="GIQSC" name="GIQSC"></a><a id="JEETT01167" name="JEETT01167"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">38.1.5</span> <a id="sthref1940" name="sthref1940"></a><a id="sthref1941" name="sthref1941"></a>BLOB and CLOB Database Types in the order Application</h2>
+<p>The <code>PARTDETAIL</code> table in the database has a column, <code>DRAWING</code>, of type <code>BLOB</code>. <code>BLOB</code> stands for binary large objects, which are used for storing binary data, such as an image. The <code>DRAWING</code> column is mapped to the field <code>Part.drawing</code> of type <code>java.io.Serializable</code>. The <code>@Lob</code> annotation is used to denote that the field is a large object:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Column(table="PERSISTENCE_ORDER_PART_DETAIL")
+@Lob
+public Serializable getDrawing() {
+    return drawing;
+}
+</pre>
+<p><code>PERSISTENCE_ORDER_PART_DETAIL</code> also has a column, <code>SPECIFICATION</code>, of type <code>CLOB</code>. <code>CLOB</code> stands for character large objects, which are used to store string data too large to be stored in a <code>VARCHAR</code> column. <code>SPECIFICATION</code> is mapped to the field <code>Part.specification</code> of type <code>java.lang.String</code>. The <code>@Lob</code> annotation is also used here to denote that the field is a large object:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Column(table="PERSISTENCE_ORDER_PART_DETAIL")
+@Lob
+public String getSpecification() {
+    return specification;
+}
+</pre>
+<p>Both of these fields use the <code>@Column</code> annotation and set the <code>table</code> element to the secondary table.</p>
+</div>
+<!-- class="sect2" -->
+<a id="GIQUM" name="GIQUM"></a><a id="JEETT01168" name="JEETT01168"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">38.1.6</span> <a id="sthref1942" name="sthref1942"></a>Temporal Types in the order Application</h2>
+<p>The <code>CustomerOrder.lastUpdate</code> persistent property, which is of type <code>java.util.Date</code>, is mapped to the <code>PERSISTENCE_ORDER_CUSTOMERORDER.LASTUPDATE</code> database field, which is of the SQL type <code>TIMESTAMP</code>. To ensure the proper mapping between these types, you must use the <code>@Temporal</code> annotation with the proper temporal type specified in <code>@Temporal</code>'s element. <code>@Temporal</code>'s elements are of type <code>javax.persistence.TemporalType</code>. The possible values are</p>
+<ul>
+<li>
+<p><code>DATE</code>, which maps to <code>java.sql.Date</code></p>
+</li>
+<li>
+<p><code>TIME</code>, which maps to <code>java.sql.Time</code></p>
+</li>
+<li>
+<p><code>TIMESTAMP</code>, which maps to <code>java.sql.Timestamp</code></p>
+</li>
+</ul>
+<p>Here is the relevant section of <code>CustomerOrder</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Temporal(TIMESTAMP)
+public Date getLastUpdate() {
+    return lastUpdate;
+}
+</pre></div>
+<!-- class="sect2" -->
+<a id="GIQQV" name="GIQQV"></a><a id="JEETT01169" name="JEETT01169"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">38.1.7</span> <a id="sthref1943" name="sthref1943"></a>Managing the order Application's Entities</h2>
+<p>The <code>RequestBean</code> stateful session bean contains the business logic and manages the entities of <code>order</code>. <code>RequestBean</code> uses the <code>@PersistenceContext</code> annotation to retrieve an entity manager instance, which is used to manage <code>order</code>'s entities in <code>RequestBean</code>'s business methods:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@PersistenceContext
+private EntityManager em;
+</pre>
+<p>This <code>EntityManager</code> instance is a container-managed entity manager, so the container takes care of all the transactions involved in managing <code>order</code>'s entities.</p>
+<a id="GIQRR" name="GIQRR"></a><a id="JEETT00695" name="JEETT00695"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.1.7.1</span> <a id="sthref1944" name="sthref1944"></a>Creating Entities</h3>
+<p>The <code>RequestBean.createPart</code> business method creates a new <code>Part</code> entity. The <code>EntityManager.persist</code> method is used to persist the newly created entity to the database:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+Part part = new Part(partNumber,
+        revision,
+        description,
+        revisionDate,
+        specification,
+        drawing);
+em.persist(part);
+</pre>
+<p>The <code>ConfigBean</code> singleton session bean is used to initialize the data in <code>order</code>. <code>ConfigBean</code> is annotated with <code>@Startup</code>, which indicates that the EJB container should create <code>ConfigBean</code> when <code>order</code> is deployed. The <code>createData</code> method is annotated with <code>@PostConstruct</code> and creates the initial entities used by <code>order</code> by calling <code>RequestBean</code>'s business methods.</p>
+</div>
+<!-- class="sect3" -->
+<a id="GIQQC" name="GIQQC"></a><a id="JEETT00696" name="JEETT00696"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.1.7.2</span> <a id="sthref1945" name="sthref1945"></a>Finding Entities</h3>
+<p>The <code>RequestBean.getOrderPrice</code> business method returns the price of a given order based on the <code>orderId</code>. The <code>EntityManager.find</code> method is used to retrieve the entity from the database:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+CustomerOrder order = em.find(CustomerOrder.class, orderId);
+</pre>
+<p>The first argument of <code>EntityManager.find</code> is the entity class, and the second is the primary key.</p>
+</div>
+<!-- class="sect3" -->
+<a id="GIQUK" name="GIQUK"></a><a id="JEETT00697" name="JEETT00697"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.1.7.3</span> <a id="sthref1946" name="sthref1946"></a>Setting Entity Relationships</h3>
+<p>The <code>RequestBean.createVendorPart</code> business method creates a <code>VendorPart</code> associated with a particular <code>Vendor</code>. The <code>EntityManager.persist</code> method is used to persist the newly created <code>VendorPart</code> entity to the database, and the <code>VendorPart.setVendor</code> and <code>Vendor.setVendorPart</code> methods are used to associate the <code>VendorPart</code> with the <code>Vendor</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+PartKey pkey = new PartKey();
+pkey.setPartNumber(partNumber);
+pkey.setRevision(revision);
+
+Part part = em.find(Part.class, pkey);
+
+VendorPart vendorPart = new VendorPart(description, price, part);
+em.persist(vendorPart);
+
+Vendor vendor = em.find(Vendor.class, vendorId);
+vendor.addVendorPart(vendorPart);
+vendorPart.setVendor(vendor);
+</pre></div>
+<!-- class="sect3" -->
+<a id="GIQSV" name="GIQSV"></a><a id="JEETT00698" name="JEETT00698"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.1.7.4</span> <a id="sthref1947" name="sthref1947"></a><a id="sthref1948" name="sthref1948"></a><a id="sthref1949" name="sthref1949"></a>Using Queries</h3>
+<p>The <code>RequestBean.adjustOrderDiscount</code> business method updates the discount applied to all orders. This method uses the <code>findAllOrders</code> named query, defined in <code>CustomerOrder</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@NamedQuery(
+    name="findAllOrders",
+    query="SELECT co FROM CustomerOrder co " +
+          "ORDER BY co.orderId"
+)
+</pre>
+<p>The <code>EntityManager.createNamedQuery</code> method is used to run the query. Because the query returns a <code>List</code> of all the orders, the <code>Query.getResultList</code> method is used:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+List orders = em.createNamedQuery(
+        "findAllOrders")
+        .getResultList();
+</pre>
+<p>The <code>RequestBean.getTotalPricePerVendor</code> business method returns the total price of all the parts for a particular vendor. This method uses a named parameter, <code>id</code>, defined in the named query <code>findTotalVendorPartPricePerVendor</code> defined in <code>VendorPart</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@NamedQuery(
+    name="findTotalVendorPartPricePerVendor",
+    query="SELECT SUM(vp.price) " +
+    "FROM VendorPart vp " +
+    "WHERE vp.vendor.vendorId = :id"
+)
+</pre>
+<p>When running the query, the <code>Query.setParameter</code> method is used to set the named parameter <code>id</code> to the value of <code>vendorId</code>, the parameter to <code>RequestBean.getTotalPricePerVendor</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+return (Double) em.createNamedQuery(
+    "findTotalVendorPartPricePerVendor")
+    .setParameter("id", vendorId)
+    .getSingleResult();
+</pre>
+<p>The <code>Query.getSingleResult</code> method is used for this query because the query returns a single value.</p>
+</div>
+<!-- class="sect3" -->
+<a id="GIQTW" name="GIQTW"></a><a id="JEETT00699" name="JEETT00699"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.1.7.5</span> <a id="sthref1950" name="sthref1950"></a>Removing Entities</h3>
+<p>The <code>RequestBean.removeOrder</code> business method deletes a given order from the database. This method uses the <code>EntityManager.remove</code> method to delete the entity from the database:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+CustomerOrder order = em.find(CustomerOrder.class, orderId);
+em.remove(order);
+</pre></div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="GIQUP" name="GIQUP"></a><a id="JEETT01170" name="JEETT01170"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">38.1.8</span> Running the order Example</h2>
+<p>You can use either NetBeans IDE or Maven to build, package, deploy, and run the <code>order</code> application. First, you will create the database tables in the Java DB server.</p>
+<a id="GIQSG" name="GIQSG"></a><a id="JEETT00235" name="JEETT00235"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.1.8.1</span> To Run the order Example Using NetBeans IDE</h3>
+<ol>
+<li>
+<p>Make sure that GlassFish Server has been started (see <a href="usingexamples002.htm#BNADI">Starting and Stopping GlassFish Server</a>).</p>
+</li>
+<li>
+<p>If the database server is not already running, start it by following the instructions in <a href="usingexamples004.htm#BNADK">Starting and Stopping the Java DB Server</a>.</p>
+</li>
+<li>
+<p>From the <span class="gui-object-action">File</span> menu, choose <span class="gui-object-action">Open Project</span>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-title">Open Project</span> dialog box, navigate to:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+<span class="variable">tut-install</span>/examples/persistence
+</pre></li>
+<li>
+<p>Select the <code>order</code> folder.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">Open Project</span>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-action">Projects</span> tab, right-click the <code>order</code> project and select <span class="gui-object-action">Run</span>.</p>
+<p>NetBeans IDE opens a web browser to the following URL:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+http://localhost:8080/order/
+</pre></li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="GIQTY" name="GIQTY"></a><a id="JEETT00236" name="JEETT00236"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">38.1.8.2</span> To Run the order Example Using Maven</h3>
+<ol>
+<li>
+<p>Make sure that GlassFish Server has been started (see <a href="usingexamples002.htm#BNADI">Starting and Stopping GlassFish Server</a>).</p>
+</li>
+<li>
+<p>If the database server is not already running, start it by following the instructions in <a href="usingexamples004.htm#BNADK">Starting and Stopping the Java DB Server</a>.</p>
+</li>
+<li>
+<p>In a terminal window, go to:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+<span class="variable">tut-install</span>/examples/persistence/order/
+</pre></li>
+<li>
+<p>Enter the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+mvn install
+</pre>
+<p>This compiles the source files and packages the application into a WAR file located at <span class="variable">tut-install</span><code>/examples/persistence/order/target/order.war</code>. Then the WAR file is deployed to your GlassFish Server instance.</p>
+</li>
+<li>
+<p>To create and update the order data, open a web browser to the following URL:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+http://localhost:8080/order/
+</pre></li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="persistence-basicexamples.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="persistence-basicexamples002.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

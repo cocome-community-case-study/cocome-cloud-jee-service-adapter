@@ -1,0 +1,21 @@
+/* AUTOMATICALLY GENERATED ON Fri May 05 16:21:49 CEST 2017*/
+/* DO NOT EDIT */
+
+grant {
+  permission javax.security.jacc.WebResourcePermission "/";
+  permission javax.security.jacc.WebUserDataPermission "/";
+};
+
+grant      principal * * {
+  permission javax.security.jacc.WebRoleRefPermission "jsp", "**";
+  permission javax.security.jacc.WebRoleRefPermission "", "**";
+  permission javax.security.jacc.WebRoleRefPermission "ServiceProvider", "**";
+  permission javax.security.jacc.WebRoleRefPermission "cocome.cloud.sa.serviceprovider.impl.ServiceProviderBookSale", "**";
+  permission javax.security.jacc.WebRoleRefPermission "cocome.cloud.sa.serviceprovider.impl.ServiceProviderInterface", "**";
+  permission javax.security.jacc.WebRoleRefPermission "ServiceProviderDatabase", "**";
+  permission javax.security.jacc.WebRoleRefPermission "cocome.cloud.sa.serviceprovider.impl.ServiceProviderDatabase", "**";
+  permission javax.security.jacc.WebRoleRefPermission "ExampleServlet", "**";
+  permission javax.security.jacc.WebRoleRefPermission "ServiceProviderBookSale", "**";
+  permission javax.security.jacc.WebRoleRefPermission "default", "**";
+};
+

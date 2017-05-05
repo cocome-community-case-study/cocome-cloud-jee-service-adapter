@@ -1,0 +1,582 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:29:57Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="Configuring Web Applications" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39031-01" />
+        <meta name="description" content="A guide to developing enterprise applications for the Java Platform, Enterprise Edition 7 (Java EE 7) using GlassFish Server Open Source Edition." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Java FX, Web, developer, enterprise, Java EE Tutorial, Java EE 7 Tutorial" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>The Java EE 7 Tutorial:Configuring Web Applications | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7.0</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/tutorial/doc/javaeetutorial7.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GEXAF">Preface</a></h2>
+<h2 class="tocheader"><a href="partintro.htm#GFIRP">Part I Introduction</a></h2>
+<h2 class="tocheader"><a href="overview.htm#BNAAW"><span class="secnum">1</span> Overview</a></h2>
+<h2 class="tocheader"><a href="usingexamples.htm#GFIUD"><span class="secnum">2</span> Using the Tutorial Examples</a></h2>
+<h2 class="tocheader"><a href="partplatform.htm#GFIRP2">Part II Platform Basics</a></h2>
+<h2 class="tocheader"><a href="resource-creation.htm#GKJIQ2"><span class="secnum">3</span> Resource Creation</a></h2>
+<h2 class="tocheader"><a href="injection.htm#GKJIQ3"><span class="secnum">4</span> Injection</a></h2>
+<h2 class="tocheader"><a href="packaging.htm#GKJIQ4"><span class="secnum">5</span> Packaging</a></h2>
+<h2 class="tocheader"><a href="partwebtier.htm#BNADP">Part III The Web Tier</a></h2>
+<h2 class="tocheader"><a href="webapp.htm#BNADR"><span class="secnum">6</span> Getting Started with Web Applications</a></h2>
+<ul style="list-style-type:none">
+<li><a href="webapp001.htm#GEYSJ"><span class="secnum">6.1</span> Web Applications</a></li>
+<li><a href="webapp002.htm#BNADU"><span class="secnum">6.2</span> Web Application Lifecycle</a></li>
+<li><a href="webapp003.htm#BNADX"><span class="secnum">6.3</span> A Web Module That Uses JavaServer Faces Technology: The hello1 Example</a>
+<ul style="list-style-type:none">
+<li><a href="webapp003.htm#GJWTV"><span class="secnum">6.3.1</span> To View the hello1 Web Module Using NetBeans IDE</a>
+<ul style="list-style-type:none">
+<li><a href="webapp003.htm#GLQLK"><span class="secnum">6.3.1.1</span> Introduction to Scopes</a></li>
+</ul>
+</li>
+<li><a href="webapp003.htm#BNADZ"><span class="secnum">6.3.2</span> Packaging and Deploying the hello1 Web Module</a>
+<ul style="list-style-type:none">
+<li><a href="webapp003.htm#GJRGN"><span class="secnum">6.3.2.1</span> To Build and Package the hello1 Web Module Using NetBeans IDE</a></li>
+<li><a href="webapp003.htm#GJRKN"><span class="secnum">6.3.2.2</span> To Build and Package the hello1 Web Module Using Maven</a></li>
+</ul>
+</li>
+<li><a href="webapp003.htm#BNAEI"><span class="secnum">6.3.3</span> Viewing Deployed Web Modules</a>
+<ul style="list-style-type:none">
+<li><a href="webapp003.htm#GJSGR"><span class="secnum">6.3.3.1</span> To View Deployed Web Modules Using the Administration Console</a></li>
+<li><a href="webapp003.htm#GJSEW"><span class="secnum">6.3.3.2</span> To View Deployed Web Modules Using the asadmin Command</a></li>
+<li><a href="webapp003.htm#sthref206"><span class="secnum">6.3.3.3</span> To View Deployed Web Modules Using NetBeans IDE</a></li>
+</ul>
+</li>
+<li><a href="webapp003.htm#sthref207"><span class="secnum">6.3.4</span> Running the Deployed hello1 Web Module</a>
+<ul style="list-style-type:none">
+<li><a href="webapp003.htm#BNAEM"><span class="secnum">6.3.4.1</span> Dynamic Reloading of Deployed Modules</a></li>
+</ul>
+</li>
+<li><a href="webapp003.htm#BNAEN"><span class="secnum">6.3.5</span> Undeploying the hello1 Web Module</a>
+<ul style="list-style-type:none">
+<li><a href="webapp003.htm#GJSEJ"><span class="secnum">6.3.5.1</span> To Undeploy the hello1 Web Module Using NetBeans IDE</a></li>
+<li><a href="webapp003.htm#GJSHH"><span class="secnum">6.3.5.2</span> To Undeploy the hello1 Web Module Using Maven</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="webapp004.htm#BNAEO"><span class="secnum">6.4</span> A Web Module That Uses Java Servlet Technology: The hello2 Example</a>
+<ul style="list-style-type:none">
+<li><a href="webapp004.htm#BNAEP"><span class="secnum">6.4.1</span> Mapping URLs to Web Components</a></li>
+<li><a href="webapp004.htm#GJWWG"><span class="secnum">6.4.2</span> Examining the hello2 Web Module</a>
+<ul style="list-style-type:none">
+<li><a href="webapp004.htm#GJWWA"><span class="secnum">6.4.2.1</span> To View the hello2 Web Module Using NetBeans IDE</a></li>
+</ul>
+</li>
+<li><a href="webapp004.htm#GKBLH"><span class="secnum">6.4.3</span> Running the hello2 Example</a>
+<ul style="list-style-type:none">
+<li><a href="webapp004.htm#GJSED"><span class="secnum">6.4.3.1</span> To Run the hello2 Example Using NetBeans IDE</a></li>
+<li><a href="webapp004.htm#GJSHX"><span class="secnum">6.4.3.2</span> To Run the hello2 Example Using Maven</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><div id="backgroundColor"><a href="webapp005.htm#CHDHGJIA"><span class="secnum">6.5</span> Configuring Web Applications</a><ul style="list-style-type:none">
+<li><a href="webapp005.htm#BNAES"><span class="secnum">6.5.1</span> Setting Context Parameters</a>
+<ul style="list-style-type:none">
+<li><a href="webapp005.htm#GJSFJ"><span class="secnum">6.5.1.1</span> To Add a Context Parameter Using NetBeans IDE</a></li>
+<li><a href="webapp005.htm#GKIHH"><span class="secnum">6.5.1.2</span> To Create a web.xml File Using NetBeans IDE</a></li>
+</ul>
+</li>
+<li><a href="webapp005.htm#BNAER"><span class="secnum">6.5.2</span> Declaring Welcome Files</a></li>
+<li><a href="webapp005.htm#GKBKW"><span class="secnum">6.5.3</span> Mapping Errors to Error Screens</a>
+<ul style="list-style-type:none">
+<li><a href="webapp005.htm#BNAET"><span class="secnum">6.5.3.1</span> To Set Up Error Mapping Using NetBeans IDE</a></li>
+</ul>
+</li>
+<li><a href="webapp005.htm#BNAEU"><span class="secnum">6.5.4</span> Declaring Resource References</a>
+<ul style="list-style-type:none">
+<li><a href="webapp005.htm#BNAEW"><span class="secnum">6.5.4.1</span> Declaring a Reference to a Resource</a></li>
+<li><a href="webapp005.htm#BNAEX"><span class="secnum">6.5.4.2</span> Declaring a Reference to a Web Service</a></li>
+</ul>
+</li>
+</ul>
+</div></li>
+<li><a href="webapp006.htm#BNAFC"><span class="secnum">6.6</span> Further Information about Web Applications</a></li>
+</ul>
+<h2 class="tocheader"><a href="jsf-intro.htm#BNAPH"><span class="secnum">7</span> JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-facelets.htm#GIEPX"><span class="secnum">8</span> Introduction to Facelets</a></h2>
+<h2 class="tocheader"><a href="jsf-el.htm#GJDDD"><span class="secnum">9</span> Expression Language</a></h2>
+<h2 class="tocheader"><a href="jsf-page.htm#BNAQZ"><span class="secnum">10</span> Using JavaServer Faces Technology in Web Pages</a></h2>
+<h2 class="tocheader"><a href="jsf-page-core.htm#GJCUT"><span class="secnum">11</span> Using Converters, Listeners, and Validators</a></h2>
+<h2 class="tocheader"><a href="jsf-develop.htm#BNATX"><span class="secnum">12</span> Developing with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-ajax.htm#GKIOW"><span class="secnum">13</span> Using Ajax with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-advanced-cc.htm#GKHXA"><span class="secnum">14</span> Composite Components: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="jsf-custom.htm#BNAVG"><span class="secnum">15</span> Creating Custom UI Components and Other Custom Objects</a></h2>
+<h2 class="tocheader"><a href="jsf-configure.htm#BNAWO"><span class="secnum">16</span> Configuring JavaServer Faces Applications</a></h2>
+<h2 class="tocheader"><a href="servlets.htm#BNAFD"><span class="secnum">17</span> Java Servlet Technology</a></h2>
+<h2 class="tocheader"><a href="websocket.htm#GKJIQ5"><span class="secnum">18</span> Java API for WebSocket</a></h2>
+<h2 class="tocheader"><a href="jsonp.htm#GLRBB"><span class="secnum">19</span> JSON Processing</a></h2>
+<h2 class="tocheader"><a href="webi18n.htm#BNAXU"><span class="secnum">20</span> Internationalizing and Localizing Web Applications</a></h2>
+<h2 class="tocheader"><a href="partbeanvalidation.htm#sthref1322">Part IV Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation.htm#CHDGJIIA"><span class="secnum">21</span> Introduction to Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation-advanced.htm#GKAHP"><span class="secnum">22</span> Bean Validation: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partcdi.htm#GJBNR">Part V Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basic.htm#GIWHB"><span class="secnum">23</span> Introduction to Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basicexamples.htm#GJBLS"><span class="secnum">24</span> Running the Basic Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="cdi-adv.htm#GJEHI"><span class="secnum">25</span> Contexts and Dependency Injection for Java EE: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="cdi-adv-examples.htm#GKHRE"><span class="secnum">26</span> Running the Advanced Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="partwebsvcs.htm#BNAYK">Part VI Web Services</a></h2>
+<h2 class="tocheader"><a href="webservices-intro.htm#GIJTI"><span class="secnum">27</span> Introduction to Web Services</a></h2>
+<h2 class="tocheader"><a href="jaxws.htm#BNAYL"><span class="secnum">28</span> Building Web Services with JAX-WS</a></h2>
+<h2 class="tocheader"><a href="jaxrs.htm#GIEPU"><span class="secnum">29</span> Building RESTful Web Services with JAX-RS</a></h2>
+<h2 class="tocheader"><a href="jaxrs-client.htm#BABEIGIH"><span class="secnum">30</span> Accessing REST Resources with the JAX-RS Client API</a></h2>
+<h2 class="tocheader"><a href="jaxrs-advanced.htm#GJJXE"><span class="secnum">31</span> JAX-RS: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="partentbeans.htm#BNBLR">Part VII Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-intro.htm#GIJSZ"><span class="secnum">32</span> Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-gettingstarted.htm#GIJRE"><span class="secnum">33</span> Getting Started with Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-basicexamples.htm#GIJRB"><span class="secnum">34</span> Running the Enterprise Bean Examples</a></h2>
+<h2 class="tocheader"><a href="ejb-embedded.htm#GKCQZ"><span class="secnum">35</span> Using the Embedded Enterprise Bean Container</a></h2>
+<h2 class="tocheader"><a href="ejb-async.htm#GKIDZ"><span class="secnum">36</span> Using Asynchronous Method Invocation in Session Beans</a></h2>
+<h2 class="tocheader"><a href="partpersist.htm#BNBPY">Part VIII Persistence</a></h2>
+<h2 class="tocheader"><a href="persistence-intro.htm#BNBPZ"><span class="secnum">37</span> Introduction to the Java Persistence API</a></h2>
+<h2 class="tocheader"><a href="persistence-basicexamples.htm#GIJST"><span class="secnum">38</span> Running the Persistence Examples</a></h2>
+<h2 class="tocheader"><a href="persistence-querylanguage.htm#BNBTG"><span class="secnum">39</span> The Java Persistence Query Language</a></h2>
+<h2 class="tocheader"><a href="persistence-criteria.htm#GJITV"><span class="secnum">40</span> Using the Criteria API to Create Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-string-queries.htm#GKJIQ"><span class="secnum">41</span> Creating and Using String-Based Criteria Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-locking.htm#GKJJF"><span class="secnum">42</span> Controlling Concurrent Access to Entity Data with Locking</a></h2>
+<h2 class="tocheader"><a href="persistence-entitygraphs.htm#BABIJIAC"><span class="secnum">43</span> Creating Fetch Plans with Entity Graphs</a></h2>
+<h2 class="tocheader"><a href="persistence-cache.htm#GKJIA"><span class="secnum">44</span> Using a Second-Level Cache with Java Persistence API Applications</a></h2>
+<h2 class="tocheader"><a href="partmessaging.htm#GFIRP3">Part IX Messaging</a></h2>
+<h2 class="tocheader"><a href="jms-concepts.htm#BNCDQ"><span class="secnum">45</span> Java Message Service Concepts</a></h2>
+<h2 class="tocheader"><a href="jms-examples.htm#BNCGV"><span class="secnum">46</span> Java Message Service Examples</a></h2>
+<h2 class="tocheader"><a href="partsecurity.htm#GIJRP">Part X Security</a></h2>
+<h2 class="tocheader"><a href="security-intro.htm#BNBWJ"><span class="secnum">47</span> Introduction to Security in the Java EE Platform</a></h2>
+<h2 class="tocheader"><a href="security-webtier.htm#BNCAS"><span class="secnum">48</span> Getting Started Securing Web Applications</a></h2>
+<h2 class="tocheader"><a href="security-javaee.htm#BNBYK"><span class="secnum">49</span> Getting Started Securing Enterprise Applications</a></h2>
+<h2 class="tocheader"><a href="security-advanced.htm#GJJWX"><span class="secnum">50</span> Java EE Security: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partsupporttechs.htm#GIJUE">Part XI Java EE Supporting Technologies</a></h2>
+<h2 class="tocheader"><a href="transactions.htm#BNCIH"><span class="secnum">51</span> Transactions</a></h2>
+<h2 class="tocheader"><a href="resources.htm#BNCJH"><span class="secnum">52</span> Resource Adapters and Contracts</a></h2>
+<h2 class="tocheader"><a href="connectorexample.htm#GLODB"><span class="secnum">53</span> The Resource Adapter Examples</a></h2>
+<h2 class="tocheader"><a href="interceptors.htm#GKEED"><span class="secnum">54</span> Using Java EE Interceptors</a></h2>
+<h2 class="tocheader"><a href="batch-processing.htm#GKJIQ6"><span class="secnum">55</span> Batch Processing</a></h2>
+<h2 class="tocheader"><a href="concurrency-utilities.htm#GKJIQ8"><span class="secnum">56</span> Concurrency Utilities for Java EE</a></h2>
+<h2 class="tocheader"><a href="partcasestudies.htm#GKGJW">Part XII Case Studies</a></h2>
+<h2 class="tocheader"><a href="dukes-bookstore.htm#GLNVI"><span class="secnum">57</span> Duke's Bookstore Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-tutoring.htm#GKAEE"><span class="secnum">58</span> Duke's Tutoring Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-forest.htm#GLNPW"><span class="secnum">59</span> Duke's Forest Case Study Example</a></h2>
+<h2 class="tocheader"><a href="index.htm">Index</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>The Java EE 7 Tutorial  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="webapp004.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="webapp006.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="CHDHGJIA" name="CHDHGJIA"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h1 class="sect1"><span class="secnum">6.5</span> Configuring Web Applications</h1>
+<p>This section describes the following tasks involved with configuring web applications:</p>
+<ul>
+<li>
+<p>Setting context parameters</p>
+</li>
+<li>
+<p>Declaring welcome files</p>
+</li>
+<li>
+<p>Mapping errors to error screens</p>
+</li>
+<li>
+<p>Declaring resource references</p>
+</li>
+</ul>
+<a id="BNAES" name="BNAES"></a><a id="JEETT00902" name="JEETT00902"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">6.5.1</span> Setting Context Parameters</h2>
+<p>The web components in a web module share an object that represents their application context. You can pass context parameters to the context, or you can pass initialization parameters to a servlet. Context parameters are available to the entire application. For information on initialization parameters, see <a href="servlets004.htm#BNAFU">Creating and Initializing a Servlet</a>.</p>
+<a id="GJSFJ" name="GJSFJ"></a><a id="JEETT00161" name="JEETT00161"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">6.5.1.1</span> <a id="sthref217" name="sthref217"></a><a id="sthref218" name="sthref218"></a>To Add a Context Parameter Using NetBeans IDE</h3>
+<p>These steps apply generally to web applications but do not apply specifically to the examples in this chapter.</p>
+<ol>
+<li>
+<p>Open the project.</p>
+</li>
+<li>
+<p>Expand the project's node in the <span class="gui-object-action">Projects</span> tree.</p>
+</li>
+<li>
+<p>Expand the <span class="gui-object-action">Web Pages</span> node and then the <span class="gui-object-action">WEB-INF</span> node.</p>
+</li>
+<li>
+<p>Double-click <code>web.xml</code>.</p>
+<p>If the project does not have a <code>web.xml</code> file, create one by following the steps in <a href="#GKIHH">To Create a web.xml File Using NetBeans IDE</a>.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">General</span> at the top of the editor window.</p>
+</li>
+<li>
+<p>Expand the <span class="gui-object-action">Context Parameters</span> node.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">Add</span>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-title">Add Context Parameter</span> dialog box, in the <span class="gui-object-action">Parameter Name</span> field, enter the name that specifies the context object.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-action">Parameter Value</span> field, enter the parameter to pass to the context object.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">OK</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="GKIHH" name="GKIHH"></a><a id="JEETT00162" name="JEETT00162"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">6.5.1.2</span> To Create a web.xml File Using NetBeans IDE</h3>
+<ol>
+<li>
+<p>From the <span class="gui-object-action">File</span> menu, choose <span class="gui-object-action">New File</span>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-title">New File</span> wizard, select the <span class="gui-object-action">Web</span> category, then select <span class="gui-object-action">Standard Deployment Descriptor</span> under <span class="gui-object-action">File Types</span>.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">Next</span>.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">Finish</span>.</p>
+<p>A basic <code>web.xml</code> file appears in <code>web/WEB-INF/</code>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BNAER" name="BNAER"></a><a id="JEETT00901" name="JEETT00901"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">6.5.2</span> Declaring Welcome Files</h2>
+<p><a id="sthref219" name="sthref219"></a><a id="sthref220" name="sthref220"></a>The <span class="glossaryterm">welcome files</span> mechanism allows you to specify a list of files that the web container can append to a request for a URL (called a valid partial request) that is not mapped to a web component. For example, suppose that you define a welcome file <code>welcome.html</code>. When a client requests a URL such as <span class="variable">host</span><code>:</code><span class="variable">port</span><code>/</code><span class="variable">webapp</span><code>/</code><span class="variable">directory</span>, where <span class="variable">directory</span> is not mapped to a servlet or XHTML page, the file <span class="variable">host</span><code>:</code><span class="variable">port</span><code>/</code><span class="variable">webapp</span><code>/</code><span class="variable">directory</span><code>/welcome.html</code> is returned to the client.</p>
+<p>If a web container receives a valid partial request, the web container examines the welcome file list, appends to the partial request each welcome file in the order specified, and checks whether a static resource or servlet in the WAR is mapped to that request URL. The web container then sends the request to the first resource that matches in the WAR.</p>
+<p>If no welcome file is specified, GlassFish Server will use a file named <code>index.html</code> as the default welcome file. If there is no welcome file and no file named <code>index.html</code>, GlassFish Server returns a directory listing.</p>
+<p>You specify welcome files in the <code>web.xml</code> file. The welcome file specification for the <code>hello1</code> example looks like this:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;welcome-file-list&gt;
+    &lt;welcome-file&gt;index.xhtml&lt;/welcome-file&gt;
+&lt;/welcome-file-list&gt;
+</pre>
+<p>A specified welcome file must not have a leading or trailing slash (<code>/</code>).</p>
+<p>The <code>hello2</code> example does not specify a welcome file, because the URL request is mapped to the <code>GreetingServlet</code> web component through the URL pattern <code>/greeting</code>.</p>
+</div>
+<!-- class="sect2" -->
+<a id="GKBKW" name="GKBKW"></a><a id="JEETT00903" name="JEETT00903"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">6.5.3</span> <a id="sthref221" name="sthref221"></a><a id="sthref222" name="sthref222"></a><a id="sthref223" name="sthref223"></a>Mapping Errors to Error Screens</h2>
+<p>When an error occurs during execution of a web application, you can have the application display a specific error screen according to the type of error. In particular, you can specify a mapping between the status code returned in an HTTP response or a Java programming language exception returned by any web component and any type of error screen.</p>
+<p>You can have multiple <code>error-page</code> elements in your deployment descriptor. Each element identifies a different error that causes an error page to open. This error page can be the same for any number of <code>error-page</code> elements.</p>
+<a id="BNAET" name="BNAET"></a><a id="JEETT00164" name="JEETT00164"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">6.5.3.1</span> To Set Up Error Mapping Using NetBeans IDE</h3>
+<p>These steps apply generally to web applications but do not apply specifically to the examples in this chapter.</p>
+<ol>
+<li>
+<p>Open the project.</p>
+</li>
+<li>
+<p>Expand the project's node in the <span class="gui-object-action">Projects</span> tab.</p>
+</li>
+<li>
+<p>Expand the <span class="gui-object-action">Web Pages</span> node and then the <span class="gui-object-action">WEB-INF</span> node.</p>
+</li>
+<li>
+<p>Double-click <code>web.xml</code>.</p>
+<p>If the project does not have a <code>web.xml</code> file, create one by following the steps in <a href="#GKIHH">To Create a web.xml File Using NetBeans IDE</a>.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">Pages</span> at the top of the editor window.</p>
+</li>
+<li>
+<p>Expand the <span class="gui-object-action">Error Pages</span> node.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">Add</span>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-title">Add Error Page</span> dialog box, click <span class="gui-object-action">Browse</span> to locate the page that you want to act as the error page.</p>
+</li>
+<li>
+<p>Specify either an error code or an exception type.</p>
+<ul>
+<li>
+<p>To specify an error code, in the <span class="gui-object-action">Error Code</span> field enter the HTTP status code that will cause the error page to be opened, or leave the field blank to include all error codes.</p>
+</li>
+<li>
+<p>To specify an exception type, in the <span class="gui-object-action">Exception Type</span> field enter the exception that will cause the error page to load. To specify all throwable errors and exceptions, enter <code>java.lang.Throwable</code>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Click <span class="gui-object-action">OK</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BNAEU" name="BNAEU"></a><a id="JEETT00904" name="JEETT00904"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">6.5.4</span> Declaring Resource References</h2>
+<p>If your web component uses such objects as enterprise beans, data sources, or web services, you use Java EE annotations to inject these resources into your application. Annotations eliminate a lot of the boilerplate lookup code and configuration elements that previous versions of Java EE required.</p>
+<p>Although resource injection using annotations can be more convenient for the developer, there are some restrictions on using it in web applications. First, you can inject resources only into container-managed objects, because a container must have control over the creation of a component so that it can perform the injection into a component. As a result, you cannot inject resources into such objects as simple JavaBeans components. However, managed beans are managed by the container; therefore, they can accept resource injections.</p>
+<p>Components that can accept resource injections are listed in <a href="#BNAEV">Table 6-1</a>.</p>
+<p>This section explains how to use a couple of the annotations supported by a web container to inject resources. <a href="persistence-basicexamples.htm#GIJST">Chapter 38, "Running the Persistence Examples"</a>, explains how web applications use annotations supported by the Java Persistence API. <a href="security-webtier.htm#BNCAS">Chapter 48, "Getting Started Securing Web Applications"</a>, explains how to use annotations to specify information about securing web applications. See <a href="resources.htm#BNCJH">Chapter 52, "Resource Adapters and Contracts"</a>, for more information on resources.</p>
+<div class="tblhruleformal"><a id="sthref224" name="sthref224"></a><a id="BNAEV" name="BNAEV"></a>
+<p class="titleintable">Table 6-1 Web Components That Accept Resource Injections</p>
+<table class="HRuleFormal" title="Web Components That Accept Resource Injections" summary="This table lists the name and the class or interface of each web component that accepts resource injections." dir="ltr" border="1" width="100%" frame="hsides" rules="rows" cellpadding="3" cellspacing="0">
+<col width="23%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t2">Component</th>
+<th align="left" valign="bottom" id="r1c2-t2">Interface/Class</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t2" headers="r1c1-t2">
+<p>Servlets</p>
+</td>
+<td align="left" headers="r2c1-t2 r1c2-t2">
+<p><code>javax.servlet.Servlet</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t2" headers="r1c1-t2">
+<p>Servlet filters</p>
+</td>
+<td align="left" headers="r3c1-t2 r1c2-t2">
+<p><code>javax.servlet.ServletFilter</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t2" headers="r1c1-t2">
+<p>Event listeners</p>
+</td>
+<td align="left" headers="r4c1-t2 r1c2-t2">
+<p><code>javax.servlet.ServletContextListener</code></p>
+<p><code>javax.servlet.ServletContextAttributeListener</code></p>
+<p><code>javax.servlet.ServletRequestListener</code></p>
+<p><code>javax.servlet.ServletRequestAttributeListener</code></p>
+<p><code>javax.servlet.http.HttpSessionListener</code></p>
+<p><code>javax.servlet.http.HttpSessionAttributeListener</code></p>
+<p><code>javax.servlet.http.HttpSessionBindingListener</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t2" headers="r1c1-t2">
+<p>Managed beans</p>
+</td>
+<td align="left" headers="r5c1-t2 r1c2-t2">
+<p>Plain Old Java Objects</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblhruleformal" -->
+<a id="BNAEW" name="BNAEW"></a><a id="JEETT00586" name="JEETT00586"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">6.5.4.1</span> <a id="sthref225" name="sthref225"></a>Declaring a Reference to a Resource</h3>
+<p>The <code>@Resource</code> annotation is used to declare a reference to a resource, such as a data source, an enterprise bean, or an environment entry.</p>
+<p>The <code>@Resource</code> annotation is specified on a class, a method, or a field. The container is responsible for injecting references to resources declared by the <code>@Resource</code> annotation and mapping it to the proper JNDI resources.</p>
+<p>In the following example, the <code>@Resource</code> annotation is used to inject a data source into a component that needs to make a connection to the data source, as is done when using JDBC technology to access a relational database:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Resource javax.sql.DataSource catalogDS;
+public getProductsByCategory() {
+    // get a connection and execute the query
+    Connection conn = catalogDS.getConnection();
+    ...
+}
+</pre>
+<p>The container injects this data source prior to the component's being made available to the application. The data source JNDI mapping is inferred from the field name, <code>catalogDS</code>, and the type, <code>javax.sql.DataSource</code>.</p>
+<p>If you have multiple resources that you need to inject into one component, you need to use the <code>@Resources</code> annotation to contain them, as shown by the following example:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Resources ({
+    @Resource(name="myDB" type=javax.sql.DataSource.class),
+    @Resource(name="myMQ" type=javax.jms.ConnectionFactory.class)
+})
+</pre>
+<p>The web application examples in this tutorial use the Java Persistence API to access relational databases. This API does not require you to explicitly create a connection to a data source. Therefore, the examples do not use the <code>@Resource</code> annotation to inject a data source. However, this API supports the <code>@PersistenceUnit</code> and <code>@PersistenceContext</code> annotations for injecting <code>EntityManagerFactory</code> and <code>EntityManager</code> instances, respectively. <a href="persistence-basicexamples.htm#GIJST">Chapter 38, "Running the Persistence Examples"</a> describes these annotations and the use of the Java Persistence API in web applications.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BNAEX" name="BNAEX"></a><a id="JEETT00587" name="JEETT00587"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">6.5.4.2</span> <a id="sthref226" name="sthref226"></a><a id="sthref227" name="sthref227"></a>Declaring a Reference to a Web Service</h3>
+<p>The <code>@WebServiceRef</code> annotation provides a reference to a web service. The following example shows uses the <code>@WebServiceRef</code> annotation to declare a reference to a web service. <code>WebServiceRef</code> uses the <code>wsdlLocation</code> element to specify the URI of the deployed service's WSDL file:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+...
+import javax.xml.ws.WebServiceRef;
+...
+public class ResponseServlet extends HTTPServlet {
+@WebServiceRef(wsdlLocation="http://localhost:8080/helloservice/hello?wsdl")
+static HelloService service;
+</pre></div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="webapp004.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="webapp006.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

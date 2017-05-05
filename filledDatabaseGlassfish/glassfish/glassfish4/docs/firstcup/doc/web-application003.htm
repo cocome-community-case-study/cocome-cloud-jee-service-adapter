@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:33:38Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="Modifying the Enterprise Bean" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39032-01" />
+        <meta name="description" content="A short tutorial introducing beginning Java EE developers to the Java EE platform." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Web, developer, enterprise" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>Your First Cup: An Introduction to the Java EE Platform:Modifying the Enterprise Bean | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/firstcup/doc/firstcup.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GCQYW">Preface</a></h2>
+<h2 class="tocheader"><a href="intro.htm#GCQYB"><span class="secnum">1</span> Introduction</a></h2>
+<h2 class="tocheader"><a href="java-ee.htm#GCRLO"><span class="secnum">2</span> Understanding Java Platform, Enterprise Edition</a></h2>
+<h2 class="tocheader"><a href="creating-example.htm#GCRKP"><span class="secnum">3</span> Creating Your First Java EE Application</a></h2>
+<h2 class="tocheader"><a href="web-application.htm#GLCFC"><span class="secnum">4</span> Creating Your Second Web Application</a></h2>
+<ul style="list-style-type:none">
+<li><a href="web-application001.htm#GJBCA"><span class="secnum">4.1</span> Creating the firstcup-war Project</a>
+<ul style="list-style-type:none">
+<li><a href="web-application001.htm#GIMNT"><span class="secnum">4.1.1</span> Create the Web Application Project Using the Archetype</a></li>
+</ul>
+</li>
+<li><a href="web-application002.htm#GJBCS"><span class="secnum">4.2</span> Modifying the Java Persistence API Entity</a>
+<ul style="list-style-type:none">
+<li><a href="web-application002.htm#GKKNN"><span class="secnum">4.2.1</span> Edit the Constructor of the FirstcupUser Entity</a></li>
+<li><a href="web-application002.htm#GJBCM"><span class="secnum">4.2.2</span> Add a Named Query to the FirstcupUser Entity</a></li>
+</ul>
+</li>
+<li><div id="backgroundColor"><a href="web-application003.htm#GCRLX"><span class="secnum">4.3</span> Modifying the Enterprise Bean</a><ul style="list-style-type:none">
+<li><a href="web-application003.htm#GJBCU"><span class="secnum">4.3.1</span> Implement a Business Method to DukesBirthdayBean that Gets the Average Age Difference of firstcup-war Users</a></li>
+<li><a href="web-application003.htm#GKGOT"><span class="secnum">4.3.2</span> Implement a Business Method for Calculating the Age Difference Between Duke and the User</a></li>
+</ul>
+</div></li>
+<li><a href="web-application004.htm#GCRLT"><span class="secnum">4.4</span> Modifying the Web Client</a>
+<ul style="list-style-type:none">
+<li><a href="web-application004.htm#GCRQX"><span class="secnum">4.4.1</span> Modify the DukesBDay Managed Bean Class</a>
+<ul style="list-style-type:none">
+<li><a href="web-application004.htm#sthref10"><span class="secnum">4.4.1.1</span> Call the dukes-age Web Service to Retrieve Duke's Current Age</a></li>
+<li><a href="web-application004.htm#GCRSA"><span class="secnum">4.4.1.2</span> Get the Age Difference from the DukesBirthdayBean Enterprise Bean</a></li>
+</ul>
+</li>
+<li><a href="web-application004.htm#GIMVD"><span class="secnum">4.4.2</span> Creating the Facelets Client</a>
+<ul style="list-style-type:none">
+<li><a href="web-application004.htm#GIMUG"><span class="secnum">4.4.2.1</span> Resource Libraries in firstcup-war</a></li>
+<li><a href="web-application004.htm#GIMTW"><span class="secnum">4.4.2.2</span> The inputDate Composite Component</a></li>
+<li><a href="web-application004.htm#GIMWV"><span class="secnum">4.4.2.3</span> Implement the inputDate Composite Component</a></li>
+<li><a href="web-application004.htm#GIMUM"><span class="secnum">4.4.2.4</span> The Facelets Web Interface</a></li>
+<li><a href="web-application004.htm#GIMTA"><span class="secnum">4.4.2.5</span> Add the Form to greeting.xhtml</a></li>
+<li><a href="web-application004.htm#GIMVW"><span class="secnum">4.4.2.6</span> Add the Form to response.html</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="web-application005.htm#GCTNX"><span class="secnum">4.5</span> Building, Packaging, Deploying, and Running the firstcup-war Web Application</a>
+<ul style="list-style-type:none">
+<li><a href="web-application005.htm#GCTOJ"><span class="secnum">4.5.1</span> Build, Package, and Deploy the firstcup-war Web Application</a></li>
+<li><a href="web-application005.htm#GCTQC"><span class="secnum">4.5.2</span> Run the firstcup-war Application</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="tocheader"><a href="next-steps.htm#GCRLL"><span class="secnum">5</span> Next Steps</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>Your First Cup: An Introduction to the Java EE Platform  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="web-application002.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="web-application004.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="GCRLX" name="GCRLX"></a><a id="JEEFC00060" name="JEEFC00060"></a>
+<div class="sect1">
+<h1 class="sect1"><span class="secnum">4.3</span> Modifying the Enterprise Bean</h1>
+<p><code>DukesBirthdayBean</code> is a <span class="italic">stateless session bean</span>. Stateless session beans are enterprise beans that do not maintain a conversational state with a client. With stateless session beans, the client makes isolated requests that do not depend on any previous state or requests. If an application requires conversational state, use <span class="italic">stateful session beans</span>.</p>
+<p><code>DukesBirthdayBean</code> is a local enterprise bean that uses a no-interface view:</p>
+<ul>
+<li>
+<p>A <span class="italic">local enterprise bean</span> is visible only within the application in which it is deployed.</p>
+</li>
+<li>
+<p>Enterprise beans with a <span class="italic">no-interface</span> view do not need a separate business interface that the enterprise bean class implements. The enterprise bean class is the only coding artifact needed to create a local, no-interface enterprise bean.</p>
+</li>
+</ul>
+<p><code>DukesBirthdayBean</code> will be packaged within the same WAR file as the Facelets web front end.</p>
+<a id="GJBCU" name="GJBCU"></a><a id="JEEFC00029" name="JEEFC00029"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">4.3.1</span> Implement a Business Method to DukesBirthdayBean that Gets the Average Age Difference of firstcup-war Users</h2>
+<p>Add code to a business method to the <code>DukesBirthdayBean</code> session bean to call the <code>findAverageAgeDifferenceOfAllFirstcupUsers</code> named query in <code>FirstcupUser</code> that returns the average age difference of all users.</p>
+<ol>
+<li>
+<p>Expand the <span class="gui-object-action">Source Packages</span> node, expand the <code>firstcup.ejb</code> node, then double-click the <code>DukesBirthdayBean.java</code> file to open it in the editor window.</p>
+</li>
+<li>
+<p>Find the business method called <code>getAverageAgeDifference</code> and add the following code in bold by copying and pasting:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+    public Double getAverageAgeDifference() {
+        <code><span class="codeinlinebold">Double avgAgeDiff =</span></code> <code><span class="codeinlinebold">(Double) </span></code>
+            <code><span class="codeinlinebold">em.createNamedQuery("findAverageAgeDifferenceOfAllFirstcupUsers")</span></code>
+                                <code><span class="codeinlinebold">.getSingleResult();</span></code>
+        <code><span class="codeinlinebold">logger.log(Level.INFO, "Average age difference is: {0}",  avgAgeDiff);</span></code>
+        <code><span class="codeinlinebold">return avgAgeDiff;</span></code>
+    }
+</pre>
+<p>The named query in <code>FirstcupUser</code> is called by using the <code>EntityManager</code>'s <code>createNamedQuery</code> method. Because this query returns a single number, the <code>getSingleResult</code> method is called on the returned <code>Query</code> object. The query returns a <code>Double</code>.</p>
+</li>
+<li>
+<p>Right-click in the editor window and select <span class="gui-object-action">Format</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="GKGOT" name="GKGOT"></a><a id="JEEFC00030" name="JEEFC00030"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">4.3.2</span> Implement a Business Method for Calculating the Age Difference Between Duke and the User</h2>
+<p>Add code to a business method that calculates the difference in age in years between Duke and the user and creates a new <code>FirstcupUser</code> entity.</p>
+<ol>
+<li>
+<p>Find the <code>getAgeDifference</code> business method and add the following code in bold:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+    public int getAgeDifference(Date date) {
+        <code><span class="codeinlinebold">int ageDifference;</span></code>
+
+        <code><span class="codeinlinebold">Calendar theirBirthday = new GregorianCalendar();</span></code>
+        <code><span class="codeinlinebold">Calendar dukesBirthday = new GregorianCalendar(1995, Calendar.MAY, 23);</span></code>
+
+        <code><span class="codeinlinebold">// Set the Calendar object to the passed-in Date</span></code>
+        <code><span class="codeinlinebold">theirBirthday.setTime(date);</span></code>
+
+        <code><span class="codeinlinebold">// Subtract the user's age from Duke's age</span></code>
+        <code><span class="codeinlinebold">ageDifference = dukesBirthday.get(Calendar.YEAR)</span></code>
+                <code><span class="codeinlinebold">- theirBirthday.get(Calendar.YEAR);</span></code>
+        <code><span class="codeinlinebold">logger.log(Level.INFO, "Raw ageDifference is: {0}",  ageDifference);</span></code>
+        <code><span class="codeinlinebold">// Check to see if Duke's birthday occurs before the user's. If so,</span></code>
+        <code><span class="codeinlinebold">// subtract one from the age difference</span></code>
+        <code><span class="codeinlinebold">if (dukesBirthday.before(theirBirthday) &amp;&amp; (ageDifference&gt; 0)) {</span></code>
+            <code><span class="codeinlinebold">ageDifference--;</span></code>
+        <code><span class="codeinlinebold">}</span></code>
+
+        <code><span class="codeinlinebold">// Create and store the user's birthday in the database</span></code>
+        <code><span class="codeinlinebold">FirstcupUser user = new FirstcupUser(date, ageDifference);</span></code>
+        <code><span class="codeinlinebold">em.persist(user);</span></code>
+
+        <code><span class="codeinlinebold">logger.log(Level.INFO, "Final ageDifference is: {0}",  ageDifference);</span></code>
+
+        <code><span class="codeinlinebold">return ageDifference;</span></code>
+    }
+</pre>
+<p>This method creates the <code>Calendar</code> objects used to calculate the difference in age between the user and Duke and performs the actual calculation of the difference in age.</p>
+<p>Similar to the <code>DukesAgeResource.getText</code> code, <code>getAgeDifference</code> subtracts Duke's birthday year from the user's birthday year to get a raw age difference. If Duke's birthday falls before the user's, and the raw difference is more than 0, it subtracts one year from the age difference.</p>
+<p>A new <code>FirstcupUser</code> entity is created with the user's birthday and age difference, then stored in the Java DB database by calling the <code>EntityManager</code>'s <code>persist</code> method.</p>
+<p>The final age difference is returned as an <code>int</code>.</p>
+</li>
+<li>
+<p>Right-click in the editor window and select <span class="gui-object-action">Format</span>.</p>
+</li>
+<li>
+<p>From the <span class="gui-object-action">File</span> menu, choose <span class="gui-object-action">Save</span>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="web-application002.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="web-application004.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

@@ -1,0 +1,37 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=Big5">
+<TITLE>新增連線工廠訊息標頭置換</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+
+<h2>新增連線工廠物件 > 訊息標頭置換</h2>
+
+<p>使用此標籤置換指定訊息的永久性、使用期限和優先權的 JMS 訊息標頭欄位。由於置換這些值可能干擾目前的使用者或應用程式設計者，請在做出變更前與他們協調。</p>
+
+<p><b style="font-weight: bold;">置換 JMSDeliveryMode</b> 指定是否可覆寫用戶端設定的 JMSDeliveryMode 欄位。預設值：false。</p>
+
+<p><b style="font-weight: bold;">JMSDeliveryMode 值</b> 指定 JMSDeliveryMode 的置換值。值為 1 (非永久性的) 或 2 (永久性的)。預設值： 2。</p>
+
+<p><b style="font-weight: bold;">置換 JMSExpiration</b> 指定是否可置換用戶端設定的 JMSExpiration 欄位。預設值：false。</p>
+
+<p><b style="font-weight: bold;">JMSExpiration 值</b> 指定置換 JMSExpiration 的值 (以毫秒為單位)。預設值：0 (不會過期)。</p>
+
+<p><b style="font-weight: bold;">置換 JMSPriority</b> 指定是否可置換用戶端設定的 JMSPriority 欄位。預設值：false。</p>
+
+<p><b style="font-weight: bold;">JMSPriority 值</b> 指定置換 JMSPriority 的值 (從 0 至 9 的整數)。預設值：4 (一般)。</p>
+
+<p><b style="font-weight: bold;">將訊息置換到暫時目標</b> 指定臨時目標是否套用置換。預設值：false。</p>
+
+<p>&nbsp;</p>
+
+</body>
+
+</html>

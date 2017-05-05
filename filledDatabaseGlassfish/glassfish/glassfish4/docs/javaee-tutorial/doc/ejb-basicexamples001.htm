@@ -1,0 +1,661 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:30:0Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="The cart Example" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39031-01" />
+        <meta name="description" content="A guide to developing enterprise applications for the Java Platform, Enterprise Edition 7 (Java EE 7) using GlassFish Server Open Source Edition." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Java FX, Web, developer, enterprise, Java EE Tutorial, Java EE 7 Tutorial" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>The Java EE 7 Tutorial:The cart Example | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7.0</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/tutorial/doc/javaeetutorial7.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GEXAF">Preface</a></h2>
+<h2 class="tocheader"><a href="partintro.htm#GFIRP">Part I Introduction</a></h2>
+<h2 class="tocheader"><a href="overview.htm#BNAAW"><span class="secnum">1</span> Overview</a></h2>
+<h2 class="tocheader"><a href="usingexamples.htm#GFIUD"><span class="secnum">2</span> Using the Tutorial Examples</a></h2>
+<h2 class="tocheader"><a href="partplatform.htm#GFIRP2">Part II Platform Basics</a></h2>
+<h2 class="tocheader"><a href="resource-creation.htm#GKJIQ2"><span class="secnum">3</span> Resource Creation</a></h2>
+<h2 class="tocheader"><a href="injection.htm#GKJIQ3"><span class="secnum">4</span> Injection</a></h2>
+<h2 class="tocheader"><a href="packaging.htm#GKJIQ4"><span class="secnum">5</span> Packaging</a></h2>
+<h2 class="tocheader"><a href="partwebtier.htm#BNADP">Part III The Web Tier</a></h2>
+<h2 class="tocheader"><a href="webapp.htm#BNADR"><span class="secnum">6</span> Getting Started with Web Applications</a></h2>
+<h2 class="tocheader"><a href="jsf-intro.htm#BNAPH"><span class="secnum">7</span> JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-facelets.htm#GIEPX"><span class="secnum">8</span> Introduction to Facelets</a></h2>
+<h2 class="tocheader"><a href="jsf-el.htm#GJDDD"><span class="secnum">9</span> Expression Language</a></h2>
+<h2 class="tocheader"><a href="jsf-page.htm#BNAQZ"><span class="secnum">10</span> Using JavaServer Faces Technology in Web Pages</a></h2>
+<h2 class="tocheader"><a href="jsf-page-core.htm#GJCUT"><span class="secnum">11</span> Using Converters, Listeners, and Validators</a></h2>
+<h2 class="tocheader"><a href="jsf-develop.htm#BNATX"><span class="secnum">12</span> Developing with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-ajax.htm#GKIOW"><span class="secnum">13</span> Using Ajax with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-advanced-cc.htm#GKHXA"><span class="secnum">14</span> Composite Components: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="jsf-custom.htm#BNAVG"><span class="secnum">15</span> Creating Custom UI Components and Other Custom Objects</a></h2>
+<h2 class="tocheader"><a href="jsf-configure.htm#BNAWO"><span class="secnum">16</span> Configuring JavaServer Faces Applications</a></h2>
+<h2 class="tocheader"><a href="servlets.htm#BNAFD"><span class="secnum">17</span> Java Servlet Technology</a></h2>
+<h2 class="tocheader"><a href="websocket.htm#GKJIQ5"><span class="secnum">18</span> Java API for WebSocket</a></h2>
+<h2 class="tocheader"><a href="jsonp.htm#GLRBB"><span class="secnum">19</span> JSON Processing</a></h2>
+<h2 class="tocheader"><a href="webi18n.htm#BNAXU"><span class="secnum">20</span> Internationalizing and Localizing Web Applications</a></h2>
+<h2 class="tocheader"><a href="partbeanvalidation.htm#sthref1322">Part IV Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation.htm#CHDGJIIA"><span class="secnum">21</span> Introduction to Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation-advanced.htm#GKAHP"><span class="secnum">22</span> Bean Validation: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partcdi.htm#GJBNR">Part V Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basic.htm#GIWHB"><span class="secnum">23</span> Introduction to Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basicexamples.htm#GJBLS"><span class="secnum">24</span> Running the Basic Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="cdi-adv.htm#GJEHI"><span class="secnum">25</span> Contexts and Dependency Injection for Java EE: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="cdi-adv-examples.htm#GKHRE"><span class="secnum">26</span> Running the Advanced Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="partwebsvcs.htm#BNAYK">Part VI Web Services</a></h2>
+<h2 class="tocheader"><a href="webservices-intro.htm#GIJTI"><span class="secnum">27</span> Introduction to Web Services</a></h2>
+<h2 class="tocheader"><a href="jaxws.htm#BNAYL"><span class="secnum">28</span> Building Web Services with JAX-WS</a></h2>
+<h2 class="tocheader"><a href="jaxrs.htm#GIEPU"><span class="secnum">29</span> Building RESTful Web Services with JAX-RS</a></h2>
+<h2 class="tocheader"><a href="jaxrs-client.htm#BABEIGIH"><span class="secnum">30</span> Accessing REST Resources with the JAX-RS Client API</a></h2>
+<h2 class="tocheader"><a href="jaxrs-advanced.htm#GJJXE"><span class="secnum">31</span> JAX-RS: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="partentbeans.htm#BNBLR">Part VII Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-intro.htm#GIJSZ"><span class="secnum">32</span> Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-gettingstarted.htm#GIJRE"><span class="secnum">33</span> Getting Started with Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-basicexamples.htm#GIJRB"><span class="secnum">34</span> Running the Enterprise Bean Examples</a></h2>
+<ul style="list-style-type:none">
+<li><div id="backgroundColor"><a href="ejb-basicexamples001.htm#BNBOD"><span class="secnum">34.1</span> The cart Example</a><ul style="list-style-type:none">
+<li><a href="ejb-basicexamples001.htm#BNBOE"><span class="secnum">34.1.1</span> The Business Interface</a></li>
+<li><a href="ejb-basicexamples001.htm#BNBOF"><span class="secnum">34.1.2</span> Session Bean Class</a>
+<ul style="list-style-type:none">
+<li><a href="ejb-basicexamples001.htm#BNBOG"><span class="secnum">34.1.2.1</span> Lifecycle Callback Methods</a></li>
+<li><a href="ejb-basicexamples001.htm#BNBOH"><span class="secnum">34.1.2.2</span> Business Methods</a></li>
+</ul>
+</li>
+<li><a href="ejb-basicexamples001.htm#BNBOI"><span class="secnum">34.1.3</span> The @Remove Method</a></li>
+<li><a href="ejb-basicexamples001.htm#BNBOJ"><span class="secnum">34.1.4</span> Helper Classes</a></li>
+<li><a href="ejb-basicexamples001.htm#BNBOK"><span class="secnum">34.1.5</span> Running the cart Example</a>
+<ul style="list-style-type:none">
+<li><a href="ejb-basicexamples001.htm#BNBOL"><span class="secnum">34.1.5.1</span> To Run the cart Example Using NetBeans IDE</a></li>
+<li><a href="ejb-basicexamples001.htm#BNBON"><span class="secnum">34.1.5.2</span> To Run the cart Example Using Maven</a></li>
+</ul>
+</li>
+</ul>
+</div></li>
+<li><a href="ejb-basicexamples002.htm#GIPVI"><span class="secnum">34.2</span> A Singleton Session Bean Example: counter</a>
+<ul style="list-style-type:none">
+<li><a href="ejb-basicexamples002.htm#GIPVC"><span class="secnum">34.2.1</span> Creating a Singleton Session Bean</a>
+<ul style="list-style-type:none">
+<li><a href="ejb-basicexamples002.htm#GIPPQ"><span class="secnum">34.2.1.1</span> Initializing Singleton Session Beans</a></li>
+<li><a href="ejb-basicexamples002.htm#GIPSZ"><span class="secnum">34.2.1.2</span> Managing Concurrent Access in a Singleton Session Bean</a></li>
+<li><a href="ejb-basicexamples002.htm#GIPVD"><span class="secnum">34.2.1.3</span> Handling Errors in a Singleton Session Bean</a></li>
+</ul>
+</li>
+<li><a href="ejb-basicexamples002.htm#GIPXL"><span class="secnum">34.2.2</span> The Architecture of the counter Example</a></li>
+<li><a href="ejb-basicexamples002.htm#GIPVL"><span class="secnum">34.2.3</span> Running the counter Example</a>
+<ul style="list-style-type:none">
+<li><a href="ejb-basicexamples002.htm#GIPXT"><span class="secnum">34.2.3.1</span> To Run the counter Example Using NetBeans IDE</a></li>
+<li><a href="ejb-basicexamples002.htm#GIPZW"><span class="secnum">34.2.3.2</span> To Run the counter Example Using Maven</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="ejb-basicexamples003.htm#BNBOR"><span class="secnum">34.3</span> A Web Service Example: helloservice</a>
+<ul style="list-style-type:none">
+<li><a href="ejb-basicexamples003.htm#BNBOS"><span class="secnum">34.3.1</span> The Web Service Endpoint Implementation Class</a></li>
+<li><a href="ejb-basicexamples003.htm#BNBOT"><span class="secnum">34.3.2</span> Stateless Session Bean Implementation Class</a></li>
+<li><a href="ejb-basicexamples003.htm#BNBOU"><span class="secnum">34.3.3</span> Running the helloservice Example</a>
+<ul style="list-style-type:none">
+<li><a href="ejb-basicexamples003.htm#BNBOV"><span class="secnum">34.3.3.1</span> To Build, Package, and Deploy the helloservice Example Using NetBeans IDE</a></li>
+<li><a href="ejb-basicexamples003.htm#BNBOW"><span class="secnum">34.3.3.2</span> To Build, Package, and Deploy the helloservice Example Using Maven</a></li>
+<li><a href="ejb-basicexamples003.htm#BNBOX"><span class="secnum">34.3.3.3</span> To Test the Service without a Client</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="ejb-basicexamples004.htm#BNBOY"><span class="secnum">34.4</span> Using the Timer Service</a>
+<ul style="list-style-type:none">
+<li><a href="ejb-basicexamples004.htm#GIQLK"><span class="secnum">34.4.1</span> Creating Calendar-Based Timer Expressions</a>
+<ul style="list-style-type:none">
+<li><a href="ejb-basicexamples004.htm#GIQMX"><span class="secnum">34.4.1.1</span> Specifying Multiple Values in Calendar Expressions</a></li>
+</ul>
+</li>
+<li><a href="ejb-basicexamples004.htm#GIQLT"><span class="secnum">34.4.2</span> Programmatic Timers</a>
+<ul style="list-style-type:none">
+<li><a href="ejb-basicexamples004.htm#BNBOZ"><span class="secnum">34.4.2.1</span> The @Timeout Method</a></li>
+<li><a href="ejb-basicexamples004.htm#BNBPA"><span class="secnum">34.4.2.2</span> Creating Programmatic Timers</a></li>
+</ul>
+</li>
+<li><a href="ejb-basicexamples004.htm#GIQMB"><span class="secnum">34.4.3</span> Automatic Timers</a></li>
+<li><a href="ejb-basicexamples004.htm#BNBPB"><span class="secnum">34.4.4</span> Canceling and Saving Timers</a></li>
+<li><a href="ejb-basicexamples004.htm#BNBPC"><span class="secnum">34.4.5</span> Getting Timer Information</a></li>
+<li><a href="ejb-basicexamples004.htm#BNBPD"><span class="secnum">34.4.6</span> Transactions and Timers</a></li>
+<li><a href="ejb-basicexamples004.htm#BNBPE"><span class="secnum">34.4.7</span> The timersession Example</a></li>
+<li><a href="ejb-basicexamples004.htm#BNBPF"><span class="secnum">34.4.8</span> Running the timersession Example</a>
+<ul style="list-style-type:none">
+<li><a href="ejb-basicexamples004.htm#GIQNI"><span class="secnum">34.4.8.1</span> To Run the timersession Example Using NetBeans IDE</a></li>
+<li><a href="ejb-basicexamples004.htm#GIQNQ"><span class="secnum">34.4.8.2</span> To Build, Package, and Deploy the timersession Example Using Maven</a></li>
+<li><a href="ejb-basicexamples004.htm#GIQOP"><span class="secnum">34.4.8.3</span> To Run the Web Client</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="ejb-basicexamples005.htm#BNBPJ"><span class="secnum">34.5</span> Handling Exceptions</a></li>
+</ul>
+<h2 class="tocheader"><a href="ejb-embedded.htm#GKCQZ"><span class="secnum">35</span> Using the Embedded Enterprise Bean Container</a></h2>
+<h2 class="tocheader"><a href="ejb-async.htm#GKIDZ"><span class="secnum">36</span> Using Asynchronous Method Invocation in Session Beans</a></h2>
+<h2 class="tocheader"><a href="partpersist.htm#BNBPY">Part VIII Persistence</a></h2>
+<h2 class="tocheader"><a href="persistence-intro.htm#BNBPZ"><span class="secnum">37</span> Introduction to the Java Persistence API</a></h2>
+<h2 class="tocheader"><a href="persistence-basicexamples.htm#GIJST"><span class="secnum">38</span> Running the Persistence Examples</a></h2>
+<h2 class="tocheader"><a href="persistence-querylanguage.htm#BNBTG"><span class="secnum">39</span> The Java Persistence Query Language</a></h2>
+<h2 class="tocheader"><a href="persistence-criteria.htm#GJITV"><span class="secnum">40</span> Using the Criteria API to Create Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-string-queries.htm#GKJIQ"><span class="secnum">41</span> Creating and Using String-Based Criteria Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-locking.htm#GKJJF"><span class="secnum">42</span> Controlling Concurrent Access to Entity Data with Locking</a></h2>
+<h2 class="tocheader"><a href="persistence-entitygraphs.htm#BABIJIAC"><span class="secnum">43</span> Creating Fetch Plans with Entity Graphs</a></h2>
+<h2 class="tocheader"><a href="persistence-cache.htm#GKJIA"><span class="secnum">44</span> Using a Second-Level Cache with Java Persistence API Applications</a></h2>
+<h2 class="tocheader"><a href="partmessaging.htm#GFIRP3">Part IX Messaging</a></h2>
+<h2 class="tocheader"><a href="jms-concepts.htm#BNCDQ"><span class="secnum">45</span> Java Message Service Concepts</a></h2>
+<h2 class="tocheader"><a href="jms-examples.htm#BNCGV"><span class="secnum">46</span> Java Message Service Examples</a></h2>
+<h2 class="tocheader"><a href="partsecurity.htm#GIJRP">Part X Security</a></h2>
+<h2 class="tocheader"><a href="security-intro.htm#BNBWJ"><span class="secnum">47</span> Introduction to Security in the Java EE Platform</a></h2>
+<h2 class="tocheader"><a href="security-webtier.htm#BNCAS"><span class="secnum">48</span> Getting Started Securing Web Applications</a></h2>
+<h2 class="tocheader"><a href="security-javaee.htm#BNBYK"><span class="secnum">49</span> Getting Started Securing Enterprise Applications</a></h2>
+<h2 class="tocheader"><a href="security-advanced.htm#GJJWX"><span class="secnum">50</span> Java EE Security: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partsupporttechs.htm#GIJUE">Part XI Java EE Supporting Technologies</a></h2>
+<h2 class="tocheader"><a href="transactions.htm#BNCIH"><span class="secnum">51</span> Transactions</a></h2>
+<h2 class="tocheader"><a href="resources.htm#BNCJH"><span class="secnum">52</span> Resource Adapters and Contracts</a></h2>
+<h2 class="tocheader"><a href="connectorexample.htm#GLODB"><span class="secnum">53</span> The Resource Adapter Examples</a></h2>
+<h2 class="tocheader"><a href="interceptors.htm#GKEED"><span class="secnum">54</span> Using Java EE Interceptors</a></h2>
+<h2 class="tocheader"><a href="batch-processing.htm#GKJIQ6"><span class="secnum">55</span> Batch Processing</a></h2>
+<h2 class="tocheader"><a href="concurrency-utilities.htm#GKJIQ8"><span class="secnum">56</span> Concurrency Utilities for Java EE</a></h2>
+<h2 class="tocheader"><a href="partcasestudies.htm#GKGJW">Part XII Case Studies</a></h2>
+<h2 class="tocheader"><a href="dukes-bookstore.htm#GLNVI"><span class="secnum">57</span> Duke's Bookstore Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-tutoring.htm#GKAEE"><span class="secnum">58</span> Duke's Tutoring Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-forest.htm#GLNPW"><span class="secnum">59</span> Duke's Forest Case Study Example</a></h2>
+<h2 class="tocheader"><a href="index.htm">Index</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>The Java EE 7 Tutorial  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="ejb-basicexamples.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="ejb-basicexamples002.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="BNBOD" name="BNBOD"></a><a id="JEETT00448" name="JEETT00448"></a>
+<div class="sect1">
+<h1 class="sect1"><span class="secnum">34.1</span> <a id="sthref1724" name="sthref1724"></a><a id="sthref1725" name="sthref1725"></a>The cart Example</h1>
+<p>The <code>cart</code> example represents a shopping cart in an online bookstore and uses a stateful session bean to manage the operations of the shopping cart. The bean's client can add a book to the cart, remove a book, or retrieve the cart's contents. To assemble <code>cart</code>, you need the following code:</p>
+<ul>
+<li>
+<p>Session bean class (<code>CartBean</code>)</p>
+</li>
+<li>
+<p>Remote business interface (<code>Cart</code>)</p>
+</li>
+</ul>
+<p>All session beans require a session bean class. All enterprise beans that permit remote access must have a remote business interface. To meet the needs of a specific application, an enterprise bean may also need some helper classes. The <code>CartBean</code> session bean uses two helper classes, <code>BookException</code> and <code>IdVerifier</code>, which are discussed in the section <a href="#BNBOJ">Helper Classes</a>.</p>
+<p>The source code for this example is in the <span class="variable">tut-install</span><code>/examples/ejb/cart/</code> directory.</p>
+<a id="BNBOE" name="BNBOE"></a><a id="JEETT01094" name="JEETT01094"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">34.1.1</span> The Business Interface</h2>
+<p><a id="sthref1726" name="sthref1726"></a><a id="sthref1727" name="sthref1727"></a>The <code>Cart</code> business interface is a plain Java interface that defines all the business methods implemented in the bean class. If the bean class implements a single interface, that interface is assumed to the business interface. The business interface is a local interface unless it is annotated with the <code>javax.ejb.Remote</code> annotation; the <code>javax.ejb.Local</code> annotation is optional in this case.</p>
+<p>The bean class may implement more than one interface. In that case, the business interfaces must either be explicitly annotated <code>@Local</code> or <code>@Remote</code> or be specified by decorating the bean class with <code>@Local</code> or <code>@Remote</code>. However, the following interfaces are excluded when determining whether the bean class implements more than one interface:</p>
+<ul>
+<li>
+<p><code>java.io.Serializable</code></p>
+</li>
+<li>
+<p><code>java.io.Externalizable</code></p>
+</li>
+<li>
+<p>Any of the interfaces defined by the <code>javax.ejb</code> package</p>
+</li>
+</ul>
+<p>The source code for the <code>Cart</code> business interface is as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+package javaeetutorial.cart.ejb;
+
+import cart.util.BookException;
+import java.util.List;
+import javax.ejb.Remote;
+
+@Remote
+public interface Cart {
+    public void initialize(String person) throws BookException;
+    public void initialize(String person, String id) throws BookException;
+    public void addBook(String title);
+    public void removeBook(String title) throws BookException;
+    public List&lt;String&gt; getContents();
+    public void remove();
+}
+</pre></div>
+<!-- class="sect2" -->
+<a id="BNBOF" name="BNBOF"></a><a id="JEETT01095" name="JEETT01095"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">34.1.2</span> Session Bean Class</h2>
+<p><a id="sthref1728" name="sthref1728"></a>The session bean class for this example is called <code>CartBean</code>. Like any stateful session bean, the <code>CartBean</code> class must meet the following requirements.</p>
+<ul>
+<li>
+<p><a id="sthref1729" name="sthref1729"></a>The class is annotated <code>@Stateful</code>.</p>
+</li>
+<li>
+<p>The class implements the business methods defined in the business interface.</p>
+</li>
+</ul>
+<p>Stateful session beans may also do the following.</p>
+<ul>
+<li>
+<p>Implement the business interface, a plain Java interface. It is good practice to implement the bean's business interface.</p>
+</li>
+<li>
+<p><a id="sthref1730" name="sthref1730"></a><a id="sthref1731" name="sthref1731"></a><a id="sthref1732" name="sthref1732"></a><a id="sthref1733" name="sthref1733"></a>Implement any optional lifecycle callback methods, annotated <code>@PostConstruct</code>, <code>@PreDestroy</code>, <code>@PostActivate</code>, and <code>@PrePassivate</code>.</p>
+</li>
+<li>
+<p><a id="sthref1734" name="sthref1734"></a>Implement any optional business methods annotated <code>@Remove</code>.</p>
+</li>
+</ul>
+<p>The source code for the <code>CartBean</code> class is as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+package javaeetutorial.cart.ejb;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javaeetutorial.cart.util.BookException;
+import javaeetutorial.cart.util.IdVerifier;
+import javax.ejb.Remove;
+import javax.ejb.Stateful;
+
+@Stateful
+public class CartBean implements Cart {
+    String customerId;
+    String customerName;
+    List&lt;String&gt; contents;
+
+    @Override
+    public void initialize(String person) throws BookException {
+        if (person == null) {
+            throw new BookException("Null person not allowed.");
+        } else {
+            customerName = person;
+        }
+        customerId = "0";
+        contents = new ArrayList&lt;&gt;();
+    }
+
+    @Override
+    public void initialize(String person, String id)
+                 throws BookException {
+        if (person == null) {
+            throw new BookException("Null person not allowed.");
+        } else {
+            customerName = person;
+        }
+
+        IdVerifier idChecker = new IdVerifier();
+        if (idChecker.validate(id)) {
+            customerId = id;
+        } else {
+            throw new BookException("Invalid id: " + id);
+        }
+
+        contents = new ArrayList&lt;&gt;();
+    }
+
+    @Override
+    public void addBook(String title) {
+        contents.add(title);
+    }
+
+    @Override
+    public void removeBook(String title) throws BookException {
+        boolean result = contents.remove(title);
+        if (result == false) {
+            throw new BookException("\"" + title + " not in cart.");
+        }
+    }
+
+    @Override
+    public List&lt;String&gt; getContents() {
+        return contents;
+    }
+
+    @Remove
+    @Override
+    public void remove() {
+        contents = null;
+    }
+}
+</pre>
+<a id="BNBOG" name="BNBOG"></a><a id="JEETT00653" name="JEETT00653"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">34.1.2.1</span> <a id="sthref1735" name="sthref1735"></a><a id="sthref1736" name="sthref1736"></a><a id="sthref1737" name="sthref1737"></a><a id="sthref1738" name="sthref1738"></a>Lifecycle Callback Methods</h3>
+<p>A method in the bean class may be declared as a lifecycle callback method by annotating the method with the following annotations.</p>
+<ul>
+<li>
+<p><code>javax.annotation.PostConstruct</code>: Methods annotated with <code>@PostConstruct</code> are invoked by the container on newly constructed bean instances after all dependency injection has completed and before the first business method is invoked on the enterprise bean.</p>
+</li>
+<li>
+<p><code>javax.annotation.PreDestroy</code>: Methods annotated with <code>@PreDestroy</code> are invoked after any method annotated <code>@Remove</code> has completed and before the container removes the enterprise bean instance.</p>
+</li>
+<li>
+<p><code>javax.ejb.PostActivate</code>: Methods annotated with <code>@PostActivate</code> are invoked by the container after the container moves the bean from secondary storage to active status.</p>
+</li>
+<li>
+<p><code>javax.ejb.PrePassivate</code>: Methods annotated with <code>@PrePassivate</code> are invoked by the container before it passivates the enterprise bean, meaning that the container temporarily removes the bean from the environment and saves it to secondary storage.</p>
+</li>
+</ul>
+<p>Lifecycle callback methods must return <code>void</code> and have no parameters.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BNBOH" name="BNBOH"></a><a id="JEETT00654" name="JEETT00654"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">34.1.2.2</span> Business Methods</h3>
+<p><a id="sthref1739" name="sthref1739"></a>The primary purpose of a session bean is to run business tasks for the client. The client invokes business methods on the object reference it gets from dependency injection or JNDI lookup. From the client's perspective, the business methods appear to run locally, although they run remotely in the session bean. The following code snippet shows how the <code>CartClient</code> program invokes the business methods:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+cart.initialize("Duke DeEarl", "123");
+...
+cart.addBook("Bel Canto");
+ ...
+List&lt;String&gt; bookList = cart.getContents();
+...
+cart.removeBook("Gravity's Rainbow");
+</pre>
+<p>The <code>CartBean</code> class implements the business methods in the following code:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Override
+public void addBook(String title) {
+   contents.add(title);
+}
+
+@Override
+public void removeBook(String title) throws BookException {
+   boolean result = contents.remove(title);
+   if (result == false) {
+      throw new BookException("\"" + title + "not in cart.");
+   }
+}
+
+@Override
+public List&lt;String&gt; getContents() {
+   return contents;
+}
+</pre>
+<p><a id="sthref1740" name="sthref1740"></a>The signature of a business method must conform to these rules.</p>
+<ul>
+<li>
+<p>The method name must not begin with <code>ejb</code>, to avoid conflicts with callback methods defined by the EJB architecture. For example, you cannot call a business method <code>ejbCreate</code> or <code>ejbActivate</code>.</p>
+</li>
+<li>
+<p>The access control modifier must be <code>public</code>.</p>
+</li>
+<li>
+<p>If the bean allows remote access through a remote business interface, the arguments and return types must be legal types for the Java Remote Method Invocation (RMI) API.</p>
+</li>
+<li>
+<p><a id="sthref1741" name="sthref1741"></a>If the bean is a JAX-WS web service endpoint, the arguments and return types for the methods annotated <code>@WebMethod</code> must be legal types for JAX-WS.</p>
+</li>
+<li>
+<p>If the bean is a JAX-RS resource, the arguments and return types for the resource methods must be legal types for JAX-RS.</p>
+</li>
+<li>
+<p>The modifier must not be <code>static</code> or <code>final</code>.</p>
+</li>
+</ul>
+<p>The <code>throws</code> clause can include exceptions that you define for your application. The <code>removeBook</code> method, for example, throws a <code>BookException</code> if the book is not in the cart.</p>
+<p><a id="sthref1742" name="sthref1742"></a><a id="sthref1743" name="sthref1743"></a><a id="sthref1744" name="sthref1744"></a>To indicate a system-level problem, such as the inability to connect to a database, a business method should throw a <code>javax.ejb.EJBException</code>. The container will not wrap application exceptions, such as <code>BookException</code>. Because <code>EJBException</code> is a subclass of <code>RuntimeException</code>, you do not need to include it in the <code>throws</code> clause of the business method.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BNBOI" name="BNBOI"></a><a id="JEETT01096" name="JEETT01096"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">34.1.3</span> <a id="sthref1745" name="sthref1745"></a>The @Remove Method</h2>
+<p>Business methods annotated with <code>javax.ejb.Remove</code> in the stateful session bean class can be invoked by enterprise bean clients to remove the bean instance. The container will remove the enterprise bean after a <code>@Remove</code> method completes, either normally or abnormally.</p>
+<p>In <code>CartBean</code>, the <code>remove</code> method is a <code>@Remove</code> method:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Remove
+@Override
+public void remove() {
+    contents = null;
+}
+</pre></div>
+<!-- class="sect2" -->
+<a id="BNBOJ" name="BNBOJ"></a><a id="JEETT01097" name="JEETT01097"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">34.1.4</span> Helper Classes</h2>
+<p><a id="sthref1746" name="sthref1746"></a>The <code>CartBean</code> session bean has two helper classes: <code>BookException</code> and <code>IdVerifier</code>. The <code>BookException</code> is thrown by the <code>removeBook</code> method, and the <code>IdVerifier</code> validates the <code>customerId</code> in one of the <code>create</code> methods. Helper classes may reside in an EJB JAR file that contains the enterprise bean class; a WAR file if the enterprise bean is packaged within a WAR; or an EAR file that contains an EJB JAR, a WAR file, or a separate library JAR file. In <code>cart</code>, the helper classes are included in a library JAR used by the application client and the EJB JAR.</p>
+</div>
+<!-- class="sect2" -->
+<a id="BNBOK" name="BNBOK"></a><a id="JEETT01098" name="JEETT01098"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">34.1.5</span> Running the cart Example</h2>
+<p>Now you are ready to compile the remote interface (<code>Cart.java</code>), the enterprise bean class (<code>CartBean.java</code>), the client class (<code>CartClient.java</code>), and the helper classes (<code>BookException.java</code> and <code>IdVerifier.java</code>).</p>
+<p>You can use either NetBeans IDE or Maven to build, package, deploy, and run the <code>cart</code> application.</p>
+<a id="BNBOL" name="BNBOL"></a><a id="JEETT00197" name="JEETT00197"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">34.1.5.1</span> To Run the cart Example Using NetBeans IDE</h3>
+<ol>
+<li>
+<p>Make sure that GlassFish Server has been started (see <a href="usingexamples002.htm#BNADI">Starting and Stopping GlassFish Server</a>).</p>
+</li>
+<li>
+<p>From the <span class="gui-object-action">File</span> menu, choose <span class="gui-object-action">Open Project</span>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-title">Open Project</span> dialog box, navigate to:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+<span class="variable">tut-install</span>/examples/ejb
+</pre></li>
+<li>
+<p>Select the <code>cart</code> folder.</p>
+</li>
+<li>
+<p>Select the <span class="gui-object-action">Open Required Projects</span> check box.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">Open Project</span>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-action">Projects</span> tab, right-click the <code>cart</code> project and select <span class="gui-object-action">Build</span>.</p>
+<p>This builds and packages the application into <code>cart.ear</code>, located in <span class="variable">tut-install</span><code>/examples/ejb/cart/cart-ear/target/</code>, and deploys this EAR file to your GlassFish Server instance.</p>
+<p>You will see the output of the <code>cart-app-client</code> application client in the <span class="gui-object-action">Output</span> tab:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+...
+Retrieving book title from cart: Infinite Jest
+Retrieving book title from cart: Bel Canto
+Retrieving book title from cart: Kafka on the Shore
+Removing "Gravity's Rainbow" from cart.
+Caught a BookException: "Gravity's Rainbow" not in cart.
+</pre></li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="BNBON" name="BNBON"></a><a id="JEETT00198" name="JEETT00198"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">34.1.5.2</span> To Run the cart Example Using Maven</h3>
+<ol>
+<li>
+<p>Make sure that GlassFish Server has been started (see <a href="usingexamples002.htm#BNADI">Starting and Stopping GlassFish Server</a>).</p>
+</li>
+<li>
+<p>In a terminal window, go to:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+<span class="variable">tut-install</span>/examples/ejb/cart/
+</pre></li>
+<li>
+<p>Enter the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+mvn install
+</pre>
+<p>This command compiles and packages the application into an EAR file, <code>cart.ear</code>, located in the <code>target</code> directory, and deploys the EAR to your GlassFish Server instance.</p>
+<p>Then, the client stubs are retrieved and run. This is equivalent to running the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+appclient -client cart-ear/target/cart-earClient.jar
+</pre>
+<p>The client JAR, <code>cart-earClient.jar</code>, contains the application client class, the helper class <code>BookException</code>, and the <code>Cart</code> business interface.</p>
+<p>When you run the client, the application client container injects any component references declared in the application client class, in this case the reference to the <code>Cart</code> enterprise bean.</p>
+<p>You will see the output of the <code>cart-app-client</code> application client in the terminal window:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+...
+Retrieving book title from cart: Infinite Jest
+Retrieving book title from cart: Bel Canto
+Retrieving book title from cart: Kafka on the Shore
+Removing "Gravity's Rainbow" from cart.
+Caught a BookException: "Gravity's Rainbow" not in cart.
+</pre></li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="ejb-basicexamples.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="ejb-basicexamples002.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

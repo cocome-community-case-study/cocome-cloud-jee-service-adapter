@@ -1,0 +1,39 @@
+Thu May 04 10:15:52 CEST 2017 : Security manager installed using the Basic server security policy.
+Thu May 04 10:15:52 CEST 2017 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
+Thu May 04 10:15:52 CEST 2017 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
+----------------------------------------------------------------
+Thu May 04 10:20:17 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-015b-d287-9472-00006cf74ef2 
+on database directory /home/tobias/Documents/cocomeEclipse/glassfish/glassfish4/glassfish/databases/sun-appserv-samples with class loader sun.misc.Launcher$AppClassLoader@55f96302 
+Loaded from file:/home/tobias/Documents/cocomeEclipse/glassfish/glassfish4/javadb/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_121-b13
+user.dir=/home/tobias/Documents/cocomeEclipse/glassfish/glassfish4/bin
+os.name=Linux
+os.arch=amd64
+os.version=4.4.0-75-generic
+derby.system.home=/home/tobias/Documents/cocomeEclipse/glassfish/glassfish4/glassfish/databases
+Database Class Loader started - derby.database.classpath=''
+Fri May 05 16:02:41 CEST 2017 : Security manager installed using the Basic server security policy.
+Fri May 05 16:02:47 CEST 2017 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
+Fri May 05 16:02:47 CEST 2017 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
+----------------------------------------------------------------
+Fri May 05 16:08:30 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-015b-d8eb-8387-00006cf74ef2 
+on database directory /home/tobias/Documents/cocomeEclipse/glassfish/glassfish4/glassfish/databases/sun-appserv-samples with class loader sun.misc.Launcher$AppClassLoader@55f96302 
+Loaded from file:/home/tobias/Documents/cocomeEclipse/glassfish/glassfish4/javadb/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_121-b13
+user.dir=/home/tobias/Documents/cocomeEclipse/glassfish/glassfish4/bin
+os.name=Linux
+os.arch=amd64
+os.version=4.4.0-75-generic
+derby.system.home=/home/tobias/Documents/cocomeEclipse/glassfish/glassfish4/glassfish/databases
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Fri May 05 16:37:12 CEST 2017: Shutting down Derby engine
+----------------------------------------------------------------
+Fri May 05 16:37:15 CEST 2017:
+Shutting down instance a816c00e-015b-d8eb-8387-00006cf74ef2 on database directory /home/tobias/Documents/cocomeEclipse/glassfish/glassfish4/glassfish/databases/sun-appserv-samples with class loader sun.misc.Launcher$AppClassLoader@55f96302 
+----------------------------------------------------------------
+Fri May 05 16:37:15 CEST 2017 : Apache Derby Network Server - 10.10.2.0 - (1582446) shutdown

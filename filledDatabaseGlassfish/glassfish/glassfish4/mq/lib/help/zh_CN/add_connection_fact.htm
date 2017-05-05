@@ -1,0 +1,48 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=GB2312">
+<title>添加连接工厂</title>
+ <link rel="StyleSheet" href="ide.css">
+ 
+</head>
+<body>
+<h2>添加连接工厂对象</h2>
+ 
+<p>使用此对话框，可以配置连接工厂对象和将其添加到对象存储库中。</p>
+
+<p><i>连接工厂</i>是 JMS 客户机用来连接代理的被管理对象。此对象还用于指定连接的行为方式以及在使用它的客户机运行时访问代理的方式。</p>
+
+<p><b>查找名</b> 使用此字段，可以指定连接工厂对象的 JNDI 查找名。 </p>
+
+<p><b>工厂类型</b> 选择指定工厂生产以下哪种类型连接的菜单项：ConnectionFactory、QueueConnectionFactory 或 TopicConnectionFactory。如果消息必须是分布式事务的一部分，请选择 XAConnectionFactory、XAQueueConnectionFactory 或 XATopicConnectionFactory。</p>
+
+<p><b>只读</b> 单击此复选框，可以将工厂连接对象设置为只读。如果对象为只读对象，客户机应用程序将无法通过 API 调用修改连接工厂属性。 </p>
+
+<p>通过配置连接工厂对象，您可以指定此工厂生产的所有连接的通用属性。可以使用此对话框中显示的选项卡配置连接工厂。有关特定选项卡的信息，请单击下列链接之一。</p>
+
+	
+<a HREF="add_connfact_rel.htm">JMS 消息可靠性和流控制</a> <br> <a HREF="add_connfact_queue.htm">QueueBrowsers 和 ServerSessions</a><br> <a HREF="add_connfact_handling.htm">连接处理</a><br> <a HREF="add_connfact_clientid.htm">客户身份验证</a><br> <a HREF="add_connfact_jmsx.htm">JMSX 属性</a> <br> <a HREF="add_connfact_message_header_overrides.htm">JMS 消息头覆盖</a><br> <a HREF="add_connfact_handling_old.htm">3.0 连接处理</a><br>
+  	 
+
+<ul>
+<li>单击“重置为默认值”按钮，将所有对话框选项卡中的所有字段重置为默认值。 </li>
+<li> 单击“确定”创建连接工厂对象。 </li>
+</ul>
+
+<p>要更改连接工厂对象的属性，请执行以下操作：</p>
+
+<ol>
+<li>在管理控制台的导航窗格中，选择“连接工厂” 文件夹。 </li>
+<li>在管理控制台的结果窗格中，选择连接工厂对象。 </li>
+<li>选择“操作”>“属性”打开“连接工厂对象属性”对话框。 </li>
+</ol>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

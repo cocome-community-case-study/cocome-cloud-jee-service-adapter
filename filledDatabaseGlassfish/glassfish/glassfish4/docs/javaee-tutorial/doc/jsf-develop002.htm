@@ -1,0 +1,653 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:29:58Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="Writing Bean Properties" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39031-01" />
+        <meta name="description" content="A guide to developing enterprise applications for the Java Platform, Enterprise Edition 7 (Java EE 7) using GlassFish Server Open Source Edition." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Java FX, Web, developer, enterprise, Java EE Tutorial, Java EE 7 Tutorial" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>The Java EE 7 Tutorial:Writing Bean Properties | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7.0</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/tutorial/doc/javaeetutorial7.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GEXAF">Preface</a></h2>
+<h2 class="tocheader"><a href="partintro.htm#GFIRP">Part I Introduction</a></h2>
+<h2 class="tocheader"><a href="overview.htm#BNAAW"><span class="secnum">1</span> Overview</a></h2>
+<h2 class="tocheader"><a href="usingexamples.htm#GFIUD"><span class="secnum">2</span> Using the Tutorial Examples</a></h2>
+<h2 class="tocheader"><a href="partplatform.htm#GFIRP2">Part II Platform Basics</a></h2>
+<h2 class="tocheader"><a href="resource-creation.htm#GKJIQ2"><span class="secnum">3</span> Resource Creation</a></h2>
+<h2 class="tocheader"><a href="injection.htm#GKJIQ3"><span class="secnum">4</span> Injection</a></h2>
+<h2 class="tocheader"><a href="packaging.htm#GKJIQ4"><span class="secnum">5</span> Packaging</a></h2>
+<h2 class="tocheader"><a href="partwebtier.htm#BNADP">Part III The Web Tier</a></h2>
+<h2 class="tocheader"><a href="webapp.htm#BNADR"><span class="secnum">6</span> Getting Started with Web Applications</a></h2>
+<h2 class="tocheader"><a href="jsf-intro.htm#BNAPH"><span class="secnum">7</span> JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-facelets.htm#GIEPX"><span class="secnum">8</span> Introduction to Facelets</a></h2>
+<h2 class="tocheader"><a href="jsf-el.htm#GJDDD"><span class="secnum">9</span> Expression Language</a></h2>
+<h2 class="tocheader"><a href="jsf-page.htm#BNAQZ"><span class="secnum">10</span> Using JavaServer Faces Technology in Web Pages</a></h2>
+<h2 class="tocheader"><a href="jsf-page-core.htm#GJCUT"><span class="secnum">11</span> Using Converters, Listeners, and Validators</a></h2>
+<h2 class="tocheader"><a href="jsf-develop.htm#BNATX"><span class="secnum">12</span> Developing with JavaServer Faces Technology</a></h2>
+<ul style="list-style-type:none">
+<li><a href="jsf-develop001.htm#BNAQM"><span class="secnum">12.1</span> Managed Beans in JavaServer Faces Technology</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-develop001.htm#BNAQN"><span class="secnum">12.1.1</span> Creating a Managed Bean</a></li>
+<li><a href="jsf-develop001.htm#BNAQP"><span class="secnum">12.1.2</span> Using the EL to Reference Managed Beans</a></li>
+</ul>
+</li>
+<li><div id="backgroundColor"><a href="jsf-develop002.htm#BNATY"><span class="secnum">12.2</span> Writing Bean Properties</a><ul style="list-style-type:none">
+<li><a href="jsf-develop002.htm#BNATZ"><span class="secnum">12.2.1</span> Writing Properties Bound to Component Values</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-develop002.htm#BNAUB"><span class="secnum">12.2.1.1</span> UIInput and UIOutput Properties</a></li>
+<li><a href="jsf-develop002.htm#BNAUC"><span class="secnum">12.2.1.2</span> UIData Properties</a></li>
+<li><a href="jsf-develop002.htm#BNAUD"><span class="secnum">12.2.1.3</span> UISelectBoolean Properties</a></li>
+<li><a href="jsf-develop002.htm#BNAUE"><span class="secnum">12.2.1.4</span> UISelectMany Properties</a></li>
+<li><a href="jsf-develop002.htm#BNAUF"><span class="secnum">12.2.1.5</span> UISelectOne Properties</a></li>
+<li><a href="jsf-develop002.htm#BNAUG"><span class="secnum">12.2.1.6</span> UISelectItem Properties</a></li>
+<li><a href="jsf-develop002.htm#BNAUH"><span class="secnum">12.2.1.7</span> UISelectItems Properties</a></li>
+</ul>
+</li>
+<li><a href="jsf-develop002.htm#BNAUK"><span class="secnum">12.2.2</span> Writing Properties Bound to Component Instances</a></li>
+<li><a href="jsf-develop002.htm#BNAUL"><span class="secnum">12.2.3</span> Writing Properties Bound to Converters, Listeners, or Validators</a></li>
+</ul>
+</div></li>
+<li><a href="jsf-develop003.htm#BNAVB"><span class="secnum">12.3</span> Writing Managed Bean Methods</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-develop003.htm#BNAVC"><span class="secnum">12.3.1</span> Writing a Method to Handle Navigation</a></li>
+<li><a href="jsf-develop003.htm#BNAVD"><span class="secnum">12.3.2</span> Writing a Method to Handle an Action Event</a></li>
+<li><a href="jsf-develop003.htm#BNAVE"><span class="secnum">12.3.3</span> Writing a Method to Perform Validation</a></li>
+<li><a href="jsf-develop003.htm#BNAVF"><span class="secnum">12.3.4</span> Writing a Method to Handle a Value-Change Event</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="tocheader"><a href="jsf-ajax.htm#GKIOW"><span class="secnum">13</span> Using Ajax with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-advanced-cc.htm#GKHXA"><span class="secnum">14</span> Composite Components: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="jsf-custom.htm#BNAVG"><span class="secnum">15</span> Creating Custom UI Components and Other Custom Objects</a></h2>
+<h2 class="tocheader"><a href="jsf-configure.htm#BNAWO"><span class="secnum">16</span> Configuring JavaServer Faces Applications</a></h2>
+<h2 class="tocheader"><a href="servlets.htm#BNAFD"><span class="secnum">17</span> Java Servlet Technology</a></h2>
+<h2 class="tocheader"><a href="websocket.htm#GKJIQ5"><span class="secnum">18</span> Java API for WebSocket</a></h2>
+<h2 class="tocheader"><a href="jsonp.htm#GLRBB"><span class="secnum">19</span> JSON Processing</a></h2>
+<h2 class="tocheader"><a href="webi18n.htm#BNAXU"><span class="secnum">20</span> Internationalizing and Localizing Web Applications</a></h2>
+<h2 class="tocheader"><a href="partbeanvalidation.htm#sthref1322">Part IV Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation.htm#CHDGJIIA"><span class="secnum">21</span> Introduction to Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation-advanced.htm#GKAHP"><span class="secnum">22</span> Bean Validation: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partcdi.htm#GJBNR">Part V Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basic.htm#GIWHB"><span class="secnum">23</span> Introduction to Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basicexamples.htm#GJBLS"><span class="secnum">24</span> Running the Basic Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="cdi-adv.htm#GJEHI"><span class="secnum">25</span> Contexts and Dependency Injection for Java EE: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="cdi-adv-examples.htm#GKHRE"><span class="secnum">26</span> Running the Advanced Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="partwebsvcs.htm#BNAYK">Part VI Web Services</a></h2>
+<h2 class="tocheader"><a href="webservices-intro.htm#GIJTI"><span class="secnum">27</span> Introduction to Web Services</a></h2>
+<h2 class="tocheader"><a href="jaxws.htm#BNAYL"><span class="secnum">28</span> Building Web Services with JAX-WS</a></h2>
+<h2 class="tocheader"><a href="jaxrs.htm#GIEPU"><span class="secnum">29</span> Building RESTful Web Services with JAX-RS</a></h2>
+<h2 class="tocheader"><a href="jaxrs-client.htm#BABEIGIH"><span class="secnum">30</span> Accessing REST Resources with the JAX-RS Client API</a></h2>
+<h2 class="tocheader"><a href="jaxrs-advanced.htm#GJJXE"><span class="secnum">31</span> JAX-RS: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="partentbeans.htm#BNBLR">Part VII Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-intro.htm#GIJSZ"><span class="secnum">32</span> Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-gettingstarted.htm#GIJRE"><span class="secnum">33</span> Getting Started with Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-basicexamples.htm#GIJRB"><span class="secnum">34</span> Running the Enterprise Bean Examples</a></h2>
+<h2 class="tocheader"><a href="ejb-embedded.htm#GKCQZ"><span class="secnum">35</span> Using the Embedded Enterprise Bean Container</a></h2>
+<h2 class="tocheader"><a href="ejb-async.htm#GKIDZ"><span class="secnum">36</span> Using Asynchronous Method Invocation in Session Beans</a></h2>
+<h2 class="tocheader"><a href="partpersist.htm#BNBPY">Part VIII Persistence</a></h2>
+<h2 class="tocheader"><a href="persistence-intro.htm#BNBPZ"><span class="secnum">37</span> Introduction to the Java Persistence API</a></h2>
+<h2 class="tocheader"><a href="persistence-basicexamples.htm#GIJST"><span class="secnum">38</span> Running the Persistence Examples</a></h2>
+<h2 class="tocheader"><a href="persistence-querylanguage.htm#BNBTG"><span class="secnum">39</span> The Java Persistence Query Language</a></h2>
+<h2 class="tocheader"><a href="persistence-criteria.htm#GJITV"><span class="secnum">40</span> Using the Criteria API to Create Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-string-queries.htm#GKJIQ"><span class="secnum">41</span> Creating and Using String-Based Criteria Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-locking.htm#GKJJF"><span class="secnum">42</span> Controlling Concurrent Access to Entity Data with Locking</a></h2>
+<h2 class="tocheader"><a href="persistence-entitygraphs.htm#BABIJIAC"><span class="secnum">43</span> Creating Fetch Plans with Entity Graphs</a></h2>
+<h2 class="tocheader"><a href="persistence-cache.htm#GKJIA"><span class="secnum">44</span> Using a Second-Level Cache with Java Persistence API Applications</a></h2>
+<h2 class="tocheader"><a href="partmessaging.htm#GFIRP3">Part IX Messaging</a></h2>
+<h2 class="tocheader"><a href="jms-concepts.htm#BNCDQ"><span class="secnum">45</span> Java Message Service Concepts</a></h2>
+<h2 class="tocheader"><a href="jms-examples.htm#BNCGV"><span class="secnum">46</span> Java Message Service Examples</a></h2>
+<h2 class="tocheader"><a href="partsecurity.htm#GIJRP">Part X Security</a></h2>
+<h2 class="tocheader"><a href="security-intro.htm#BNBWJ"><span class="secnum">47</span> Introduction to Security in the Java EE Platform</a></h2>
+<h2 class="tocheader"><a href="security-webtier.htm#BNCAS"><span class="secnum">48</span> Getting Started Securing Web Applications</a></h2>
+<h2 class="tocheader"><a href="security-javaee.htm#BNBYK"><span class="secnum">49</span> Getting Started Securing Enterprise Applications</a></h2>
+<h2 class="tocheader"><a href="security-advanced.htm#GJJWX"><span class="secnum">50</span> Java EE Security: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partsupporttechs.htm#GIJUE">Part XI Java EE Supporting Technologies</a></h2>
+<h2 class="tocheader"><a href="transactions.htm#BNCIH"><span class="secnum">51</span> Transactions</a></h2>
+<h2 class="tocheader"><a href="resources.htm#BNCJH"><span class="secnum">52</span> Resource Adapters and Contracts</a></h2>
+<h2 class="tocheader"><a href="connectorexample.htm#GLODB"><span class="secnum">53</span> The Resource Adapter Examples</a></h2>
+<h2 class="tocheader"><a href="interceptors.htm#GKEED"><span class="secnum">54</span> Using Java EE Interceptors</a></h2>
+<h2 class="tocheader"><a href="batch-processing.htm#GKJIQ6"><span class="secnum">55</span> Batch Processing</a></h2>
+<h2 class="tocheader"><a href="concurrency-utilities.htm#GKJIQ8"><span class="secnum">56</span> Concurrency Utilities for Java EE</a></h2>
+<h2 class="tocheader"><a href="partcasestudies.htm#GKGJW">Part XII Case Studies</a></h2>
+<h2 class="tocheader"><a href="dukes-bookstore.htm#GLNVI"><span class="secnum">57</span> Duke's Bookstore Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-tutoring.htm#GKAEE"><span class="secnum">58</span> Duke's Tutoring Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-forest.htm#GLNPW"><span class="secnum">59</span> Duke's Forest Case Study Example</a></h2>
+<h2 class="tocheader"><a href="index.htm">Index</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>The Java EE 7 Tutorial  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="jsf-develop001.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="jsf-develop003.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="BNATY" name="BNATY"></a><a id="JEETT00355" name="JEETT00355"></a>
+<div class="sect1">
+<h1 class="sect1"><span class="secnum">12.2</span> <a id="sthref743" name="sthref743"></a>Writing Bean Properties</h1>
+<p>As explained in <a href="jsf-develop001.htm#BNAQM">Managed Beans in JavaServer Faces Technology</a>, a managed bean property can be bound to one of the following items:</p>
+<ul>
+<li>
+<p>A component value</p>
+</li>
+<li>
+<p>A component instance</p>
+</li>
+<li>
+<p>A converter implementation</p>
+</li>
+<li>
+<p>A listener implementation</p>
+</li>
+<li>
+<p>A validator implementation</p>
+</li>
+</ul>
+<p>These properties follow the conventions of JavaBeans components (also called beans). For more information on JavaBeans components, see the <span class="italic">JavaBeans Tutorial</span> at <code><a href="http://docs.oracle.com/javase/tutorial/javabeans/index.html">http://docs.oracle.com/javase/tutorial/javabeans/index.html</a></code>.</p>
+<p><a id="sthref744" name="sthref744"></a><a id="sthref745" name="sthref745"></a><a id="sthref746" name="sthref746"></a>The component's tag binds the component's value to a managed bean property by using its <code>value</code> attribute and binds the component's instance to a managed bean property by using its <code>binding</code> attribute. Likewise, all the converter, listener, and validator tags use their <code>binding</code> attributes to bind their associated implementations to managed bean properties. See <a href="jsf-custom012.htm#BNATG">Binding Component Values and Instances to Managed Bean Properties</a> and <a href="jsf-custom013.htm#BNATM">Binding Converters, Listeners, and Validators to Managed Bean Properties</a> for more information.</p>
+<p>To bind a component's value to a managed bean property, the type of the property must match the type of the component's value to which it is bound. For example, if a managed bean property is bound to a <code>UISelectBoolean</code> component's value, the property should accept and return a <code>boolean</code> value or a <code>Boolean</code> wrapper <code>Object</code> instance.</p>
+<p><a id="sthref747" name="sthref747"></a>To bind a component instance to a managed bean property, the property must match the type of component. For example, if a managed bean property is bound to a <code>UISelectBoolean</code> instance, the property should accept and return a <code>UISelectBoolean</code> value.</p>
+<p>Similarly, to bind a converter, listener, or validator implementation to a managed bean property, the property must accept and return the same type of converter, listener, or validator object. For example, if you are using the <code>convertDateTime</code> tag to bind a <code>javax.faces.convert.DateTimeConverter</code> to a property, that property must accept and return a <code>DateTimeConverter</code> instance.</p>
+<p>The rest of this section explains how to write properties that can be bound to component values, to component instances for the component objects described in <a href="jsf-page002.htm#BNARF">Adding Components to a Page Using HTML Tag Library Tags</a>, and to converter, listener, and validator implementations.</p>
+<a id="BNATZ" name="BNATZ"></a><a id="JEETT00944" name="JEETT00944"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">12.2.1</span> <a id="sthref748" name="sthref748"></a>Writing Properties Bound to Component Values</h2>
+<p>To write a managed bean property that is bound to a component's value, you must match the property type to the component's value.</p>
+<p><a href="#BNAUA">Table 12-1</a> lists the <code>javax.faces.component</code> classes and the acceptable types of their values.</p>
+<div class="tblhruleformal"><a id="sthref749" name="sthref749"></a><a id="BNAUA" name="BNAUA"></a>
+<p class="titleintable">Table 12-1 <a id="sthref750" name="sthref750"></a>Acceptable Types of Component Values</p>
+<table class="HRuleFormal" title="Acceptable Types of Component Values" summary="This table lists the component classes and the acceptable types of their values." dir="ltr" border="1" width="100%" frame="hsides" rules="rows" cellpadding="3" cellspacing="0">
+<col width="32%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t2">Component Class</th>
+<th align="left" valign="bottom" id="r1c2-t2">Acceptable Types of Component Values</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t2" headers="r1c1-t2">
+<p><code>UIInput</code>, <code>UIOutput</code>, <code>UISelectItem</code>, <code>UISelectOne</code></p>
+</td>
+<td align="left" headers="r2c1-t2 r1c2-t2">
+<p>Any of the basic primitive and numeric types or any Java programming language object type for which an appropriate <code>javax.faces.convert.Converter</code> implementation is available</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t2" headers="r1c1-t2">
+<p><code>UIData</code></p>
+</td>
+<td align="left" headers="r3c1-t2 r1c2-t2">
+<p><code>array</code> of beans, <code>List</code> of beans, single bean, <code>java.sql.ResultSet</code>, <code>javax.servlet.jsp.jstl.sql.Result</code>, <code>javax.sql.RowSet</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t2" headers="r1c1-t2">
+<p><code>UISelectBoolean</code></p>
+</td>
+<td align="left" headers="r4c1-t2 r1c2-t2">
+<p><code>boolean</code> or <code>Boolean</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t2" headers="r1c1-t2">
+<p><code>UISelectItems</code></p>
+</td>
+<td align="left" headers="r5c1-t2 r1c2-t2">
+<p><code>java.lang.String</code>, <code>Collection</code>, <code>Array</code>, <code>Map</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r6c1-t2" headers="r1c1-t2">
+<p><code>UISelectMany</code></p>
+</td>
+<td align="left" headers="r6c1-t2 r1c2-t2">
+<p><code>array</code> or <code>List</code>, although elements of the <code>array</code> or <code>List</code> can be any of the standard types</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblhruleformal" -->
+<p>When they bind components to properties by using the <code>value</code> attributes of the component tags, page authors need to ensure that the corresponding properties match the types of the components' values.</p>
+<a id="BNAUB" name="BNAUB"></a><a id="JEETT00610" name="JEETT00610"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">12.2.1.1</span> UIInput and UIOutput Properties</h3>
+<p>The <code>UIInput</code> and <code>UIOutput</code> component classes are represented by the component tags that begin with <code>h:input</code> and <code>h:output</code>, respectively (for example, <code>h:inputText</code> and <code>h:outputText</code>).</p>
+<p><a id="sthref751" name="sthref751"></a><a id="sthref752" name="sthref752"></a>In the following example, an <code>h:inputText</code> tag binds the <code>name</code> component to the <code>name</code> property of a managed bean called <code>CashierBean</code>.</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:inputText id="name" 
+             size="30"
+             value="#{cashierBean.name}"
+    ...&gt;
+&lt;/h:inputText&gt;
+</pre>
+<p>The following code snippet from the managed bean <code>CashierBean</code> shows the bean property type bound by the preceding component tag:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+protected String name = null;
+
+public void setName(String name) {
+    this.name = name;
+}
+public String getName() {
+    return this.name;
+}
+</pre>
+<p>As described in <a href="jsf-page-core001.htm#BNAST">Using the Standard Converters</a>, to convert the value of an input or output component you can either apply a converter or create the bean property bound to the component with the matching type. Here is the example tag, from <a href="jsf-page-core001.htm#BNASV">Using DateTimeConverter</a>, that displays the date on which items will be shipped.</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:outputText value="#{cashierBean.shipDate}"&gt;
+    &lt;f:convertDateTime type="date" dateStyle="full" /&gt;
+&lt;/h:outputText&gt;
+</pre>
+<p><a id="sthref753" name="sthref753"></a>The bean property represented by this tag must have a type of <code>java.util.Date</code>. The following code snippet shows the <code>shipDate</code> property, from the managed bean <code>CashierBean</code>, that is bound by the tag's value in the preceding example:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+private Date shipDate;
+
+public Date getShipDate() {
+    return this.shipDate;
+}
+public void setShipDate(Date shipDate) {
+    this.shipDate = shipDate;
+}
+</pre></div>
+<!-- class="sect3" -->
+<a id="BNAUC" name="BNAUC"></a><a id="JEETT00611" name="JEETT00611"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">12.2.1.2</span> <a id="sthref754" name="sthref754"></a><a id="sthref755" name="sthref755"></a>UIData Properties</h3>
+<p>The <code>UIData</code> component class is represented by the <code>h:dataTable</code> component tag.</p>
+<p><a id="sthref756" name="sthref756"></a><code>UIData</code> components must be bound to one of the managed bean property types listed in <a href="#BNAUA">Table 12-1</a>. Data components are discussed in <a href="jsf-page002.htm#BNARZ">Using Data-Bound Table Components</a>. Here is part of the start tag of <code>dataTable</code> from that section:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:dataTable id="items"
+    ...
+    value="#{cart.items}"
+    ...
+    var="item"&gt;
+</pre>
+<p><a id="sthref757" name="sthref757"></a>The value expression points to the <code>items</code> property of a shopping cart bean named <code>cart</code>. The <code>cart</code> bean maintains a map of <code>ShoppingCartItem</code> beans.</p>
+<p>The <code>getItems</code> method from the <code>cart</code> bean populates a <code>List</code> with <code>ShoppingCartItem</code> instances that are saved in the <code>items</code> map when the customer adds books to the cart, as shown in the following code segment:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+public synchronized List&lt;ShoppingCartItem&gt; getItems() {
+    List&lt;ShoppingCartItem&gt; results = new ArrayList&lt;ShoppingCartItem&gt;();
+    results.addAll(this.items.values());
+    return results;
+}
+</pre>
+<p><a id="sthref758" name="sthref758"></a>All the components contained in the <code>UIData</code> component are bound to the properties of the <code>cart</code> bean that is bound to the entire <code>UIData</code> component. For example, here is the <code>h:outputText</code> tag that displays the book title in the table:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:commandLink action="#{showcart.details}"&gt;
+    &lt;h:outputText value="#{item.item.title}"/&gt;
+&lt;/h:commandLink&gt;
+</pre>
+<p>The title is actually a link to the <code>bookdetails.xhtml</code> page. The <code>h:outputText</code> tag uses the value expression <code>#{item.item.title}</code> to bind its <code>UIOutput</code> component to the <code>title</code> property of the <code>Book</code> entity. The first item in the expression is the <code>ShoppingCartItem</code> instance that the <code>h:dataTable</code> tag is referencing while rendering the current row. The second item in expression refers to the <code>item</code> property of <code>ShoppingCartItem</code>, which returns an <code>Object</code> (in this case, a <code>Book</code>). The <code>title</code> part of the expression refers to the <code>title</code> property of <code>Book</code>. The value of the <code>UIOutput</code> component corresponding to this tag is bound to the <code>title</code> property of the <code>Book</code> entity:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+private String title;
+...
+public String getTitle() {
+    return title;
+}
+
+public void setTitle(String title) {
+    this.title = title;
+}
+</pre></div>
+<!-- class="sect3" -->
+<a id="BNAUD" name="BNAUD"></a><a id="JEETT00612" name="JEETT00612"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">12.2.1.3</span> <a id="sthref759" name="sthref759"></a><a id="sthref760" name="sthref760"></a>UISelectBoolean Properties</h3>
+<p>The <code>UISelectBoolean</code> component class is represented by the component tag <code>h:selectBooleanCheckbox</code>.</p>
+<p><a id="sthref761" name="sthref761"></a>Managed bean properties that hold a <code>UISelectBoolean</code> component's data must be of <code>boolean</code> or <code>Boolean</code> type. The example <code>selectBooleanCheckbox</code> tag from the section <a href="jsf-page002.htm#BNASE">Displaying Components for Selecting One Value</a> binds a component to a property. The following example shows a tag that binds a component value to a <code>boolean</code> property:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:selectBooleanCheckbox title="#{bundle.receiveEmails}"
+                         value="#{custFormBean.receiveEmails}"&gt;
+&lt;/h:selectBooleanCheckbox&gt;
+&lt;h:outputText value="#{bundle.receiveEmails}"&gt;
+</pre>
+<p>Here is an example property that can be bound to the component represented by the example tag:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+private boolean receiveEmails = false;
+...
+public void setReceiveEmails(boolean receiveEmails) {
+    this.receiveEmails = receiveEmails;
+}
+public boolean getReceiveEmails() {
+    return receiveEmails;
+}
+</pre></div>
+<!-- class="sect3" -->
+<a id="BNAUE" name="BNAUE"></a><a id="JEETT00613" name="JEETT00613"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">12.2.1.4</span> <a id="sthref762" name="sthref762"></a><a id="sthref763" name="sthref763"></a>UISelectMany Properties</h3>
+<p>The <code>UISelectMany</code> component class is represented by the component tags that begin with <code>h:selectMany</code> (for example, <code>h:selectManyCheckbox</code> and <code>h:selectManyListbox</code>).</p>
+<p>Because a <code>UISelectMany</code> component allows a user to select one or more items from a list of items, this component must map to a bean property of type <code>List</code> or <code>array</code>. This bean property represents the set of currently selected items from the list of available items.</p>
+<p><a id="sthref764" name="sthref764"></a>The following example of the <code>selectManyCheckbox</code> tag comes from <a href="jsf-page002.htm#BNASI">Displaying Components for Selecting Multiple Values</a>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:selectManyCheckbox id="newslettercheckbox"
+                      layout="pageDirection"
+                      value="#{cashierBean.newsletters}"&gt;
+    &lt;f:selectItems value="#{cashierBean.newsletterItems}"/&gt;
+&lt;/h:selectManyCheckbox&gt;
+</pre>
+<p>Here is the bean property that maps to the <code>value</code> of the <code>selectManyCheckbox</code> tag from the preceding example:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+private String[] newsletters;
+
+public void setNewsletters(String[] newsletters) {
+    this.newsletters = newsletters;
+}
+public String[] getNewsletters() {
+    return this.newsletters;
+}
+</pre>
+<p>The <code>UISelectItem</code> and <code>UISelectItems</code> components are used to represent all the values in a <code>UISelectMany</code> component. See <a href="#BNAUG">UISelectItem Properties</a> and <a href="#BNAUH">UISelectItems Properties</a> for information on writing the bean properties for the <code>UISelectItem</code> and <code>UISelectItems</code> components.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BNAUF" name="BNAUF"></a><a id="JEETT00614" name="JEETT00614"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">12.2.1.5</span> <a id="sthref765" name="sthref765"></a><a id="sthref766" name="sthref766"></a>UISelectOne Properties</h3>
+<p>The <code>UISelectOne</code> component class is represented by the component tags that begin with <code>h:selectOne</code> (for example, <code>h:selectOneRadio</code> and <code>h:selectOneListbox</code>).</p>
+<p><code>UISelectOne</code> properties accept the same types as <code>UIInput</code> and <code>UIOutput</code> properties, because a <code>UISelectOne</code> component represents the single selected item from a set of items. This item can be any of the primitive types and anything else for which you can apply a converter.</p>
+<p><a id="sthref767" name="sthref767"></a>Here is an example of the <code>h:selectOneMenu</code> tag from <a href="jsf-page002.htm#BNASH">Displaying a Menu Using the h:selectOneMenu Tag</a>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:selectOneMenu id="shippingOption"
+                 required="true"
+                 value="#{cashierBean.shippingOption}"&gt;
+    &lt;f:selectItem itemValue="2"
+                  itemLabel="#{bundle.QuickShip}"/&gt;
+    &lt;f:selectItem itemValue="5"
+                  itemLabel="#{bundle.NormalShip}"/&gt;
+    &lt;f:selectItem itemValue="7"
+                  itemLabel="#{bundle.SaverShip}"/&gt;
+ &lt;/h:selectOneMenu&gt;
+</pre>
+<p>Here is the bean property corresponding to this tag:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+private String shippingOption = "2";
+
+public void setShippingOption(String shippingOption) {
+    this.shippingOption = shippingOption;
+}
+public String getShippingOption() {
+    return this.shippingOption;
+}
+</pre>
+<p>Note that <code>shippingOption</code> represents the currently selected item from the list of items in the <code>UISelectOne</code> component.</p>
+<p>The <code>UISelectItem</code> and <code>UISelectItems</code> components are used to represent all the values in a <code>UISelectOne</code> component. This is explained in <a href="jsf-page002.htm#BNASH">Displaying a Menu Using the h:selectOneMenu Tag</a>.</p>
+<p>For information on how to write the managed bean properties for the <code>UISelectItem</code> and <code>UISelectItems</code> components, see <a href="#BNAUG">UISelectItem Properties</a> and <a href="#BNAUH">UISelectItems Properties</a>.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BNAUG" name="BNAUG"></a><a id="JEETT00615" name="JEETT00615"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">12.2.1.6</span> UISelectItem Properties</h3>
+<p><a id="sthref768" name="sthref768"></a><a id="sthref769" name="sthref769"></a>A <code>UISelectItem</code> component represents a single value in a set of values in a <code>UISelectMany</code> or a <code>UISelectOne</code> component. A <code>UISelectItem</code> component must be bound to a managed bean property of type <code>javax.faces.model.SelectItem</code>. A <code>SelectItem</code> object is composed of an <code>Object</code> representing the value along with two <code>Strings</code> representing the label and the description of the <code>UISelectItem</code> object.</p>
+<p><a id="sthref770" name="sthref770"></a>The example <code>selectOneMenu</code> tag from <a href="#BNAUF">UISelectOne Properties</a> contains <code>selectItem</code> tags that set the values of the list of items in the page. Here is an example of a bean property that can set the values for this list in the bean:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+SelectItem itemOne = null;
+
+SelectItem getItemOne(){
+    return itemOne;
+}
+void setItemOne(SelectItem item) {
+    itemOne = item;
+}
+</pre></div>
+<!-- class="sect3" -->
+<a id="BNAUH" name="BNAUH"></a><a id="JEETT00616" name="JEETT00616"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">12.2.1.7</span> <a id="sthref771" name="sthref771"></a>UISelectItems Properties</h3>
+<p><a id="sthref772" name="sthref772"></a><a id="sthref773" name="sthref773"></a><code>UISelectItems</code> components are children of <code>UISelectMany</code> and <code>UISelectOne</code> components. Each <code>UISelectItems</code> component is composed of a set of either <code>UISelectItem</code> instances or any collection of objects, such as an array, a list, or even POJOs.</p>
+<p>The following code snippet from <code>CashierBean</code> shows how to write the properties for <code>selectItems</code> tags containing <code>SelectItem</code> instances.</p>
+<pre xml:space="preserve" class="oac_no_warn">
+private String[] newsletters;
+private static final SelectItem[] newsletterItems = {
+    new SelectItem("Duke's Quarterly"),
+    new SelectItem("Innovator's Almanac"),
+    new SelectItem("Duke's Diet and Exercise Journal"),
+    new SelectItem("Random Ramblings")
+};
+...
+public void setNewsletters(String[] newsletters) {
+    this.newsletters = newsletters;
+}
+
+public String[] getNewsletters() {
+    return this.newsletters;
+}
+
+public SelectItem[] getNewsletterItems() {
+    return newsletterItems;
+}
+</pre>
+<p>Here, the <code>newsletters</code> property represents the <code>SelectItems</code> object, whereas the <code>newsletterItems</code> property represents a static array of <code>SelectItem</code> objects. The <code>SelectItem</code> class has several constructors; in this example, the first argument is an <code>Object</code> representing the value of the item, whereas the second argument is a <code>String</code> representing the label that appears in the <code>UISelectMany</code> component on the page.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BNAUK" name="BNAUK"></a><a id="JEETT00945" name="JEETT00945"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">12.2.2</span> <a id="sthref774" name="sthref774"></a>Writing Properties Bound to Component Instances</h2>
+<p>A property bound to a component instance returns and accepts a component instance rather than a component value. The following components bind a component instance to a managed bean property:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:selectBooleanCheckbox id="fanClub"
+                         rendered="false"
+                         binding="#{cashierBean.specialOffer}" /&gt;
+&lt;h:outputLabel for="fanClub"
+               rendered="false"
+               binding="#{cashierBean.specialOfferText}"
+               value="#{bundle.DukeFanClub}" /&gt;
+&lt;/h:outputLabel&gt;
+</pre>
+<p>The <code>selectBooleanCheckbox</code> tag renders a check box and binds the <code>fanClub</code> <code>UISelectBoolean</code> component to the <code>specialOffer</code> property of <code>CashierBean</code>. The <code>outputLabel</code> tag binds the value of the <code>value</code> attribute, which represents the check box's label, to the <code>specialOfferText</code> property of <code>CashierBean</code>. If the user orders more than $100 worth of books and clicks the <span class="gui-object-action">Submit</span> button, the <code>submit</code> method of <code>CashierBean</code> sets both components' <code>rendered</code> properties to <code>true</code>, causing the check box and label to display when the page is re-rendered.</p>
+<p>Because the components corresponding to the example tags are bound to the managed bean properties, these properties must match the components' types. This means that the <code>specialOfferText</code> property must be of type <code>UIOutput</code>, and the <code>specialOffer</code> property must be of type <code>UISelectBoolean</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+UIOutput specialOfferText = null;
+UISelectBoolean specialOffer = null;
+
+public UIOutput getSpecialOfferText() {
+    return this.specialOfferText;
+}
+public void setSpecialOfferText(UIOutput specialOfferText) {
+    this.specialOfferText = specialOfferText;
+}
+
+public UISelectBoolean getSpecialOffer() {
+    return this.specialOffer;
+}
+public void setSpecialOffer(UISelectBoolean specialOffer) {
+    this.specialOffer = specialOffer;
+}
+</pre>
+<p>For more general information on component binding, see <a href="jsf-develop001.htm#BNAQM">Managed Beans in JavaServer Faces Technology</a>.</p>
+<p>For information on how to reference a managed bean method that performs navigation when a button is clicked, see <a href="jsf-page-core004.htm#BNATP">Referencing a Method That Performs Navigation</a>.</p>
+<p>For more information on writing managed bean methods that handle navigation, see <a href="jsf-develop003.htm#BNAVC">Writing a Method to Handle Navigation</a>.</p>
+</div>
+<!-- class="sect2" -->
+<a id="BNAUL" name="BNAUL"></a><a id="JEETT00946" name="JEETT00946"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">12.2.3</span> <a id="sthref775" name="sthref775"></a><a id="sthref776" name="sthref776"></a><a id="sthref777" name="sthref777"></a>Writing Properties Bound to Converters, Listeners, or Validators</h2>
+<p>All the standard converter, listener, and validator tags included with JavaServer Faces technology support binding attributes that allow you to bind converter, listener, or validator implementations to managed bean properties.</p>
+<p>The following example shows a standard <code>convertDateTime</code> tag using a value expression with its <code>binding</code> attribute to bind the <code>javax.faces.convert.DateTimeConverter</code> instance to the <code>convertDate</code> property of <code>LoginBean</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:inputText value="#{loginBean.birthDate}"&gt;
+    &lt;f:convertDateTime binding="#{loginBean.convertDate}" /&gt;
+&lt;/h:inputText&gt;
+</pre>
+<p>The <code>convertDate</code> property must therefore accept and return a <code>DateTimeConverter</code> object, as shown here:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+private DateTimeConverter convertDate;
+public DateTimeConverter getConvertDate() {
+       ...
+    return convertDate;
+}
+public void setConvertDate(DateTimeConverter convertDate) {
+    convertDate.setPattern("EEEEEEEE, MMM dd, yyyy");
+    this.convertDate = convertDate;
+}
+</pre>
+<p>Because the converter is bound to a managed bean property, the managed bean property can modify the attributes of the converter or add new functionality to it. In the case of the preceding example, the property sets the date pattern that the converter uses to parse the user's input into a <code>Date</code> object.</p>
+<p>The managed bean properties that are bound to validator or listener implementations are written in the same way and have the same general purpose.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="jsf-develop001.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="jsf-develop003.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

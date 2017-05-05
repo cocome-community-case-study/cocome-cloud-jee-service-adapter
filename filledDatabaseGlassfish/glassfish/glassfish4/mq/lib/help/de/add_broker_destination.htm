@@ -1,0 +1,57 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+ <TITLE>Broker-Ziel hinzuf&uuml;gen</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ <H2>Broker-Ziel hinzuf&uuml;gen</H2>
+
+<P>Mit Hilfe dieses Dialogfelds k&ouml;nnen Sie ein physisches Ziel auf einem Broker erstellen und konfigurieren. Ein <i>Ziel</i> auf dem Broker ist ein Bereich des Arbeitsspeichers des Brokers, in dem eingehende Meldungen vor der Weiterleitung an die Meldungskomponenten zusammengestellt werden. </P>
+<P>Die Message-Queue-Meldungsbereitstellung besteht aus zwei Phasen: In der ersten Phase wird die Meldung von einem Produzenten an ein <i>Ziel</i> auf dem Broker gesendet. In der zweiten Phase erfolgt die Bereitstellung der Meldung vom Ziel auf dem Broker an einen oder mehrere Konsumenten. </P>
+<P>Ein Broker kann f&uuml;r die dynamische Erstellung physischer Ziele konfiguriert werden, sofern Sie diese nicht erstellt haben. Diese automatisch erstellten Ziele werden, wenn sie nicht mehr ben&ouml;tigt werden, automatisch vom Broker zerst&ouml;rt.</P>
+<P>Legen Sie zur Konfiguration eines physischen Ziels folgende Attributwerte fest:</P>
+<P><b>Zielname</b>: Zeigt den Namen des physischen Ziels an.</P>
+<P><b>Zieltyp</b>: Zeigt den Zieltyp an (<B>Warteschlange</B> oder <B>Thema</B>). Klicken Sie auf die Option <b>Warteschlange</b> oder <b>Thema</b>. </P>
+
+<P><b>H&ouml;chstzahl Meldungen</b>: Gibt die maximale Anzahl nicht konsumierter Meldungen an, die in diesem Ziel zul&auml;ssig sind. </P>
+<p><b>Gesamtgr&ouml;&szlig;e Meldungen</b>: Gibt den maximal zul&auml;ssigen Speicher an, der in diesem Ziel f&uuml;r nicht konsumierte Meldungen zul&auml;ssig ist. W&auml;hlen Sie in der Dropdown-Liste eine der folgenden Ma&szlig;einheiten aus: <B>Byte</B>, <B>Kilobyte</B> oder <B>Megabyte</B>.</p>
+<p><b>Max. Meldungsgr&ouml;&szlig;e</b>: Legt fest, wie gro&szlig; eine einzelne Meldung in diesem Ziel maximal sein darf. W&auml;hlen Sie in der Dropdown-Liste eine der folgenden Ma&szlig;einheiten aus: <B>Byte</B>, <B>Kilobyte</B> oder <B>Megabyte</B>.</p>
+<p><b>H&ouml;chstzahl von Produzenten</b>: Gibt die maximale Anzahl der in diesem Ziel zul&auml;ssigen Produzenten an.</p>
+<p><b>H&ouml;chstzahl aktiver Konsumenten: </b>Gilt nur f&uuml;r Warteschlangenziele. Gibt die maximale Anzahl an Konsumenten an, die bei einer Zustellung mit Lastenausgleich von diesem Ziel aus aktiv sein d&uuml;rfen.</p>
+<p><b>H&ouml;chstzahl von Backup-Konsumenten</b>: Gilt nur f&uuml;r Warteschlangenziele. Gibt die maximale Anzahl an Backup-Konsumenten an, die an die Stelle aktiver Konsumenten treten k&ouml;nnen, falls ein aktiver Konsument bei einer Zustellung mit Lastenausgleich von diesem Ziel aus fehlschlagen sollte.</p>
+<P><b>So k&ouml;nnen Sie Informationen zum aktuellen Status eines Ziels abrufen bzw. die Eigenschaften eines Ziels &auml;ndern:</b></P>
+<ol>
+  <li>W&auml;hlen Sie im Ergebnisbereich der Konsole das Ziel aus.</li>
+  <li>W&auml;hlen Sie den Befehl <b>Aktionen &gt; Eigenschaften</b>.</li>
+</ol>
+<P><b>So l&ouml;schen Sie Meldungen aus einem Ziel:</b></P>
+<ol>
+  <li>W&auml;hlen Sie im Ergebnisbereich der Konsole das Ziel aus.</li>
+  <li>W&auml;hlen Sie den Befehl <b>Aktionen &gt; Meldungen bereinigen</b>.</li>
+</ol>
+<p><b>So l&ouml;schen Sie ein Ziel:</b></p>
+<ol>
+  <li>W&auml;hlen Sie im Ergebnisbereich der Konsole das Ziel aus.</li>
+  <li>W&auml;hlen Sie den Befehl <b>Bearbeiten &gt; L&ouml;schen</b>.</li>
+</ol>
+<p><b>So unterbrechen Sie ein Ziel:</b></p>
+<ol>
+  <li>W&auml;hlen Sie im Ergebnisbereich der Konsole das Ziel aus.</li>
+  <li>W&auml;hlen Sie <b>Aktionen &gt; Produzenten unterbrechen | Konsumenten unterbrechen | Alle unterbrechen</b>.</li>
+</ol>
+<p><b>So nehmen Sie ein unterbrochenes Ziel wieder auf:</b></p>
+<ol>
+  <li>W&auml;hlen Sie im Ergebnisbereich der Konsole das Ziel aus.</li>
+  <li>W&auml;hlen Sie den Befehl <b>Aktionen &gt; Fortsetzen</b>.</li>
+</ol>
+<p>&nbsp;</p>
+
+</BODY>
+</HTML>

@@ -1,0 +1,209 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=euc-kr">
+ <TITLE>메시지 서버 주소 구문</TITLE>
+ <LINK rel="StyleSheet" href="../ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>메시지 서버 주소 구문</H2>
+<p>메시지 서버 주소를 지정하는 구문은 다음과 같습니다.<br>
+ </p>  
+<p><code><i>scheme</i>://<i>address_syntax</i></code><br>
+  </p> 
+  
+<p>여기서 <code><i>scheme</i></code> 및 <code><i>address_syntax</i></code>는 다음 표에서 설명합니다.</p>
+<TABLE columns="4" border="1">
+	<TR>
+		<TH>방식</TH>
+		<TH>연결 서비스</TH>
+		<TH>설명</TH>
+		<TH>구문</TH>
+	</TR>
+
+	<TR>
+		<TD valign="top"><code>mq</code></TD>
+		
+      <TD valign="top">
+      <code>jms<br> 및 <br> ssljms</code>
+      </TD>
+		
+	<TD valign="top">지정된 호스트와 포트의 Message Queue 포트 매퍼가 연결 요청을 처리하고 지정된 연결 서비스를 기준으로 포트를 동적으로 지정합니다. 포트 번호가 알려지면 Message Queue가 연결을 설정합니다.</TD>
+		
+    <TD valign="top"><code>[<i>hostName</i>][:<i>port</i>][/<i>serviceName</i>]</code> <br> 기본값(jms 서비스만 해당): <br> <code><i>hostName</i> = localhost <br> <i>port</i> = 7676 <br> <i>serviceName</i> = jms</code></TD>
+	</TR>
+
+	<TR>
+		
+    <TD valign="top"><code>mqtcp</code></TD>
+		
+    <TD valign="top"><code>jms</code></TD>
+		
+	<TD valign="top">Message Queue는 지정된 호스트와 포트에 직접 tcp 연결을 설정하여 연결합니다.</TD>
+		
+    <TD valign="top"><code><i>hostName</i>:<i>port</i>/jms</code></TD>
+
+	</TR>
+
+	<TR>
+		
+    <TD valign="top"><code>mqssl</code></TD>
+		
+    <TD valign="top"><code>ssljms</code></TD>
+		
+	<TD valign="top">Message Queue는 지정된 호스트와 포트에 직접 보안 ssl 연결을 설정하여 연결합니다.</TD>
+		
+    <TD valign="top"><code><i>hostName</i>:<i>port</i>/ssljms</code></TD>
+
+	</TR>
+	
+	<TR>
+		
+    <TD valign="top"><code>htttp</code></TD>
+		
+    <TD valign="top"><code>httpjms</code></TD>
+		
+	<TD valign="top">Message Queue는 지정된 Message Queue 터널 서블릿 URL에 직접 HTTP 연결을 설정합니다(브로커가 터널 서블릿에 액세스하도록 구성해야 합니다).</TD>
+		
+    <TD valign="top"><code><i>HTTPtunnelServletURL</i></code></TD>
+
+	</TR>
+	
+	<TR>
+		
+    <TD valign="top"><code>htttps</code></TD>
+		
+    <TD valign="top"><code>httpsjms</code></TD>
+		
+	<TD valign="top">Message Queue는 지정된 Message Queue 터널 서블릿 URL에 직접 HTTPS 연결을 설정합니다(브로커가 터널 서블릿에 액세스하도록 구성해야 합니다).</TD>
+		
+    <TD valign="top"><code><i>HTTPStunnelServletURL</i></code></TD>
+
+	</TR>
+</TABLE>
+<p>&nbsp;</p>
+<p>다음 표는 메시지 서버 주소 구문이 적용되는 일반적인 몇 가지 예를 보여줍니다.</p>
+<TABLE columns="4" border="1">
+	<TR>
+		<TH>연결 서비스</TH>
+		<TH>브로커 호스트</TH>
+		<TH>포트</TH>
+		<TH>주소 예</TH>
+	</TR>
+
+	<TR>
+		
+    <TD valign="top">지정 안 됨</TD>
+		
+    <TD valign="top">지정 안 됨</TD>
+	    
+    <TD valign="top">지정 안 됨</TD>
+		
+    <TD valign="top">기본값<br> <code>(mq://localHost:7676/jms)</code></TD>	
+	</TR>
+	
+	<TR>
+		
+    <TD valign="top">지정 안 됨</TD>
+		
+    <TD valign="top">지정된 호스트</TD>
+	    
+    <TD valign="top">지정 안 됨</TD>
+		
+    <TD valign="top"><code>myBkrHost<br> (mq://myBkrHost:7676/jms)</code></TD>	
+	</TR>
+	
+	<TR>
+		
+    <TD valign="top">지정 안 됨</TD>
+		
+    <TD valign="top">지정 안 됨</TD>
+	    
+    <TD valign="top">지정된 포트 매퍼 포트</TD>
+		
+    <TD valign="top"><code>1012<br> (mq://localHost:1012/jms)</code></TD>	
+	</TR>
+	
+	<TR>
+		
+    <TD valign="top"><code>ssljms</code></TD>
+		
+    <TD valign="top">로컬 호스트</TD>
+	    
+    <TD valign="top">기본 포트 매퍼 포트</TD>
+		
+    <TD valign="top"><code>mq://localHost:7676/ssljms</code></TD>	
+	</TR>
+	
+	<TR>
+	 <TD valign="top"><code>ssljms</code></TD>
+		
+    <TD valign="top">지정된 호스트</TD>
+	    
+    <TD valign="top">기본 포트 매퍼 포트</TD>
+		
+    <TD valign="top"><code>mq://myBkrHost:7676/ssljms</code></TD>	
+	</TR>
+	<TR>
+	 <TD valign="top"><code>ssljms</code></TD>
+		
+    <TD valign="top">지정된 호스트</TD>
+	    
+    <TD valign="top">지정된 포트 매퍼 포트</TD>
+		
+    <TD valign="top"><code>mq://myBkrHost:1012/ssljms</code></TD>	
+	</TR>
+	
+	<TR>
+	 
+    <TD valign="top"><code>jms</code></TD>
+		
+    <TD valign="top">로컬 호스트</TD>
+	    
+    <TD valign="top">지정된 서비스 포트</TD>
+		
+    <TD valign="top"><code>mqtcp://localhost:1032/jms</code></TD>	
+	</TR>
+	
+	<TR>
+	 
+    <TD valign="top"><code>ssljms</code></TD>
+		
+    <TD valign="top">지정된 호스트</TD>
+	    
+    <TD valign="top">지정된 서비스 포트</TD>
+		
+    <TD valign="top"><code>mqssl://myBkrHost:1034/ssljms</code></TD>	
+	</TR>
+	
+	<TR>
+	 
+    <TD valign="top"><code>httpjms</code></TD>
+		
+    <TD valign="top">N/A</TD>
+	    
+    <TD valign="top">N/A</TD>
+		
+    <TD valign="top"><code>http://websrvr1:8085/imq/tunnel</code></TD>	
+	</TR>
+	
+	<TR>
+	 
+    <TD valign="top"><code>httpsjms</code></TD>
+		
+    <TD valign="top">N/A</TD>
+	    
+    <TD valign="top">N/A</TD>
+		
+    <TD valign="top"><code>https://websrvr2:8090/imq/tunnel</code></TD>	
+	</TR>
+</TABLE>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

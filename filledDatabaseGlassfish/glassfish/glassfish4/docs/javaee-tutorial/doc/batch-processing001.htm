@@ -1,0 +1,461 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:30:3Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="Introduction to Batch Processing" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39031-01" />
+        <meta name="description" content="A guide to developing enterprise applications for the Java Platform, Enterprise Edition 7 (Java EE 7) using GlassFish Server Open Source Edition." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Java FX, Web, developer, enterprise, Java EE Tutorial, Java EE 7 Tutorial" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>The Java EE 7 Tutorial:Introduction to Batch Processing | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7.0</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/tutorial/doc/javaeetutorial7.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GEXAF">Preface</a></h2>
+<h2 class="tocheader"><a href="partintro.htm#GFIRP">Part I Introduction</a></h2>
+<h2 class="tocheader"><a href="overview.htm#BNAAW"><span class="secnum">1</span> Overview</a></h2>
+<h2 class="tocheader"><a href="usingexamples.htm#GFIUD"><span class="secnum">2</span> Using the Tutorial Examples</a></h2>
+<h2 class="tocheader"><a href="partplatform.htm#GFIRP2">Part II Platform Basics</a></h2>
+<h2 class="tocheader"><a href="resource-creation.htm#GKJIQ2"><span class="secnum">3</span> Resource Creation</a></h2>
+<h2 class="tocheader"><a href="injection.htm#GKJIQ3"><span class="secnum">4</span> Injection</a></h2>
+<h2 class="tocheader"><a href="packaging.htm#GKJIQ4"><span class="secnum">5</span> Packaging</a></h2>
+<h2 class="tocheader"><a href="partwebtier.htm#BNADP">Part III The Web Tier</a></h2>
+<h2 class="tocheader"><a href="webapp.htm#BNADR"><span class="secnum">6</span> Getting Started with Web Applications</a></h2>
+<h2 class="tocheader"><a href="jsf-intro.htm#BNAPH"><span class="secnum">7</span> JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-facelets.htm#GIEPX"><span class="secnum">8</span> Introduction to Facelets</a></h2>
+<h2 class="tocheader"><a href="jsf-el.htm#GJDDD"><span class="secnum">9</span> Expression Language</a></h2>
+<h2 class="tocheader"><a href="jsf-page.htm#BNAQZ"><span class="secnum">10</span> Using JavaServer Faces Technology in Web Pages</a></h2>
+<h2 class="tocheader"><a href="jsf-page-core.htm#GJCUT"><span class="secnum">11</span> Using Converters, Listeners, and Validators</a></h2>
+<h2 class="tocheader"><a href="jsf-develop.htm#BNATX"><span class="secnum">12</span> Developing with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-ajax.htm#GKIOW"><span class="secnum">13</span> Using Ajax with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-advanced-cc.htm#GKHXA"><span class="secnum">14</span> Composite Components: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="jsf-custom.htm#BNAVG"><span class="secnum">15</span> Creating Custom UI Components and Other Custom Objects</a></h2>
+<h2 class="tocheader"><a href="jsf-configure.htm#BNAWO"><span class="secnum">16</span> Configuring JavaServer Faces Applications</a></h2>
+<h2 class="tocheader"><a href="servlets.htm#BNAFD"><span class="secnum">17</span> Java Servlet Technology</a></h2>
+<h2 class="tocheader"><a href="websocket.htm#GKJIQ5"><span class="secnum">18</span> Java API for WebSocket</a></h2>
+<h2 class="tocheader"><a href="jsonp.htm#GLRBB"><span class="secnum">19</span> JSON Processing</a></h2>
+<h2 class="tocheader"><a href="webi18n.htm#BNAXU"><span class="secnum">20</span> Internationalizing and Localizing Web Applications</a></h2>
+<h2 class="tocheader"><a href="partbeanvalidation.htm#sthref1322">Part IV Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation.htm#CHDGJIIA"><span class="secnum">21</span> Introduction to Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation-advanced.htm#GKAHP"><span class="secnum">22</span> Bean Validation: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partcdi.htm#GJBNR">Part V Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basic.htm#GIWHB"><span class="secnum">23</span> Introduction to Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basicexamples.htm#GJBLS"><span class="secnum">24</span> Running the Basic Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="cdi-adv.htm#GJEHI"><span class="secnum">25</span> Contexts and Dependency Injection for Java EE: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="cdi-adv-examples.htm#GKHRE"><span class="secnum">26</span> Running the Advanced Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="partwebsvcs.htm#BNAYK">Part VI Web Services</a></h2>
+<h2 class="tocheader"><a href="webservices-intro.htm#GIJTI"><span class="secnum">27</span> Introduction to Web Services</a></h2>
+<h2 class="tocheader"><a href="jaxws.htm#BNAYL"><span class="secnum">28</span> Building Web Services with JAX-WS</a></h2>
+<h2 class="tocheader"><a href="jaxrs.htm#GIEPU"><span class="secnum">29</span> Building RESTful Web Services with JAX-RS</a></h2>
+<h2 class="tocheader"><a href="jaxrs-client.htm#BABEIGIH"><span class="secnum">30</span> Accessing REST Resources with the JAX-RS Client API</a></h2>
+<h2 class="tocheader"><a href="jaxrs-advanced.htm#GJJXE"><span class="secnum">31</span> JAX-RS: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="partentbeans.htm#BNBLR">Part VII Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-intro.htm#GIJSZ"><span class="secnum">32</span> Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-gettingstarted.htm#GIJRE"><span class="secnum">33</span> Getting Started with Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-basicexamples.htm#GIJRB"><span class="secnum">34</span> Running the Enterprise Bean Examples</a></h2>
+<h2 class="tocheader"><a href="ejb-embedded.htm#GKCQZ"><span class="secnum">35</span> Using the Embedded Enterprise Bean Container</a></h2>
+<h2 class="tocheader"><a href="ejb-async.htm#GKIDZ"><span class="secnum">36</span> Using Asynchronous Method Invocation in Session Beans</a></h2>
+<h2 class="tocheader"><a href="partpersist.htm#BNBPY">Part VIII Persistence</a></h2>
+<h2 class="tocheader"><a href="persistence-intro.htm#BNBPZ"><span class="secnum">37</span> Introduction to the Java Persistence API</a></h2>
+<h2 class="tocheader"><a href="persistence-basicexamples.htm#GIJST"><span class="secnum">38</span> Running the Persistence Examples</a></h2>
+<h2 class="tocheader"><a href="persistence-querylanguage.htm#BNBTG"><span class="secnum">39</span> The Java Persistence Query Language</a></h2>
+<h2 class="tocheader"><a href="persistence-criteria.htm#GJITV"><span class="secnum">40</span> Using the Criteria API to Create Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-string-queries.htm#GKJIQ"><span class="secnum">41</span> Creating and Using String-Based Criteria Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-locking.htm#GKJJF"><span class="secnum">42</span> Controlling Concurrent Access to Entity Data with Locking</a></h2>
+<h2 class="tocheader"><a href="persistence-entitygraphs.htm#BABIJIAC"><span class="secnum">43</span> Creating Fetch Plans with Entity Graphs</a></h2>
+<h2 class="tocheader"><a href="persistence-cache.htm#GKJIA"><span class="secnum">44</span> Using a Second-Level Cache with Java Persistence API Applications</a></h2>
+<h2 class="tocheader"><a href="partmessaging.htm#GFIRP3">Part IX Messaging</a></h2>
+<h2 class="tocheader"><a href="jms-concepts.htm#BNCDQ"><span class="secnum">45</span> Java Message Service Concepts</a></h2>
+<h2 class="tocheader"><a href="jms-examples.htm#BNCGV"><span class="secnum">46</span> Java Message Service Examples</a></h2>
+<h2 class="tocheader"><a href="partsecurity.htm#GIJRP">Part X Security</a></h2>
+<h2 class="tocheader"><a href="security-intro.htm#BNBWJ"><span class="secnum">47</span> Introduction to Security in the Java EE Platform</a></h2>
+<h2 class="tocheader"><a href="security-webtier.htm#BNCAS"><span class="secnum">48</span> Getting Started Securing Web Applications</a></h2>
+<h2 class="tocheader"><a href="security-javaee.htm#BNBYK"><span class="secnum">49</span> Getting Started Securing Enterprise Applications</a></h2>
+<h2 class="tocheader"><a href="security-advanced.htm#GJJWX"><span class="secnum">50</span> Java EE Security: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partsupporttechs.htm#GIJUE">Part XI Java EE Supporting Technologies</a></h2>
+<h2 class="tocheader"><a href="transactions.htm#BNCIH"><span class="secnum">51</span> Transactions</a></h2>
+<h2 class="tocheader"><a href="resources.htm#BNCJH"><span class="secnum">52</span> Resource Adapters and Contracts</a></h2>
+<h2 class="tocheader"><a href="connectorexample.htm#GLODB"><span class="secnum">53</span> The Resource Adapter Examples</a></h2>
+<h2 class="tocheader"><a href="interceptors.htm#GKEED"><span class="secnum">54</span> Using Java EE Interceptors</a></h2>
+<h2 class="tocheader"><a href="batch-processing.htm#GKJIQ6"><span class="secnum">55</span> Batch Processing</a></h2>
+<ul style="list-style-type:none">
+<li><div id="backgroundColor"><a href="batch-processing001.htm#BCGJDEEH"><span class="secnum">55.1</span> Introduction to Batch Processing</a><ul style="list-style-type:none">
+<li><a href="batch-processing001.htm#sthref2943"><span class="secnum">55.1.1</span> Steps in Batch Jobs</a></li>
+<li><a href="batch-processing001.htm#sthref2946"><span class="secnum">55.1.2</span> Parallel Processing</a></li>
+<li><a href="batch-processing001.htm#sthref2947"><span class="secnum">55.1.3</span> Status and Decision Elements</a></li>
+<li><a href="batch-processing001.htm#sthref2950"><span class="secnum">55.1.4</span> Batch Framework Functionality</a></li>
+</ul>
+</div></li>
+<li><a href="batch-processing002.htm#BCGGIBHA"><span class="secnum">55.2</span> Batch Processing in Java EE</a>
+<ul style="list-style-type:none">
+<li><a href="batch-processing002.htm#sthref2952"><span class="secnum">55.2.1</span> The Batch Processing Framework</a></li>
+<li><a href="batch-processing002.htm#sthref2954"><span class="secnum">55.2.2</span> Creating Batch Applications</a></li>
+<li><a href="batch-processing002.htm#sthref2956"><span class="secnum">55.2.3</span> Elements of a Batch Job</a></li>
+<li><a href="batch-processing002.htm#sthref2958"><span class="secnum">55.2.4</span> Properties and Parameters</a></li>
+<li><a href="batch-processing002.htm#sthref2960"><span class="secnum">55.2.5</span> Job Instances and Job Executions</a></li>
+<li><a href="batch-processing002.htm#sthref2962"><span class="secnum">55.2.6</span> Batch and Exit Status</a></li>
+</ul>
+</li>
+<li><a href="batch-processing003.htm#BCGHBJIG"><span class="secnum">55.3</span> Simple Use Case</a>
+<ul style="list-style-type:none">
+<li><a href="batch-processing003.htm#sthref2967"><span class="secnum">55.3.1</span> Chunk Step</a></li>
+<li><a href="batch-processing003.htm#sthref2969"><span class="secnum">55.3.2</span> Task Step</a></li>
+</ul>
+</li>
+<li><a href="batch-processing004.htm#BCGDDBBG"><span class="secnum">55.4</span> Using the Job Specification Language</a>
+<ul style="list-style-type:none">
+<li><a href="batch-processing004.htm#sthref2973"><span class="secnum">55.4.1</span> The job Element</a></li>
+<li><a href="batch-processing004.htm#sthref2975"><span class="secnum">55.4.2</span> The step Element</a>
+<ul style="list-style-type:none">
+<li><a href="batch-processing004.htm#sthref2977"><span class="secnum">55.4.2.1</span> The chunk Element</a></li>
+<li><a href="batch-processing004.htm#sthref2980"><span class="secnum">55.4.2.2</span> The batchlet Element</a></li>
+<li><a href="batch-processing004.htm#sthref2982"><span class="secnum">55.4.2.3</span> The partition Element</a></li>
+</ul>
+</li>
+<li><a href="batch-processing004.htm#sthref2984"><span class="secnum">55.4.3</span> The flow Element</a></li>
+<li><a href="batch-processing004.htm#sthref2986"><span class="secnum">55.4.4</span> The split Element</a></li>
+<li><a href="batch-processing004.htm#sthref2988"><span class="secnum">55.4.5</span> The decision Element</a></li>
+</ul>
+</li>
+<li><a href="batch-processing005.htm#BCGHDHGH"><span class="secnum">55.5</span> Creating Batch Artifacts</a>
+<ul style="list-style-type:none">
+<li><a href="batch-processing005.htm#sthref2991"><span class="secnum">55.5.1</span> Batch Artifact Interfaces</a></li>
+<li><a href="batch-processing005.htm#BCGIFJBB"><span class="secnum">55.5.2</span> Dependency Injection in Batch Artifacts</a></li>
+<li><a href="batch-processing005.htm#BCGCJEEF"><span class="secnum">55.5.3</span> Using the Context Objects from the Batch Runtime</a></li>
+</ul>
+</li>
+<li><a href="batch-processing006.htm#BCGCAHCB"><span class="secnum">55.6</span> Submitting Jobs to the Batch Runtime</a>
+<ul style="list-style-type:none">
+<li><a href="batch-processing006.htm#sthref2998"><span class="secnum">55.6.1</span> Starting a Job</a></li>
+<li><a href="batch-processing006.htm#BCGIBGFC"><span class="secnum">55.6.2</span> Checking the Status of a Job</a></li>
+<li><a href="batch-processing006.htm#sthref3001"><span class="secnum">55.6.3</span> Invoking the Batch Runtime in Your Application</a></li>
+</ul>
+</li>
+<li><a href="batch-processing007.htm#BCGBBGJI"><span class="secnum">55.7</span> Packaging Batch Applications</a></li>
+<li><a href="batch-processing008.htm#BCGJHEHJ"><span class="secnum">55.8</span> The webserverlog Example Application</a>
+<ul style="list-style-type:none">
+<li><a href="batch-processing008.htm#sthref3005"><span class="secnum">55.8.1</span> Architecture of the webserverlog Example Application</a>
+<ul style="list-style-type:none">
+<li><a href="batch-processing008.htm#sthref3006"><span class="secnum">55.8.1.1</span> The Job Definition File</a></li>
+<li><a href="batch-processing008.htm#sthref3007"><span class="secnum">55.8.1.2</span> The LogLine and LogFilteredLine Items</a></li>
+<li><a href="batch-processing008.htm#sthref3008"><span class="secnum">55.8.1.3</span> The Chunk Step Batch Artifacts</a></li>
+<li><a href="batch-processing008.htm#BCGCCFAC"><span class="secnum">55.8.1.4</span> The Listener Batch Artifacts</a></li>
+<li><a href="batch-processing008.htm#sthref3009"><span class="secnum">55.8.1.5</span> The Task Step Batch Artifact</a></li>
+<li><a href="batch-processing008.htm#sthref3010"><span class="secnum">55.8.1.6</span> The JavaServer Faces Pages</a></li>
+<li><a href="batch-processing008.htm#sthref3011"><span class="secnum">55.8.1.7</span> The Managed Bean</a></li>
+</ul>
+</li>
+<li><a href="batch-processing008.htm#sthref3012"><span class="secnum">55.8.2</span> Running the webserverlog Example Application</a>
+<ul style="list-style-type:none">
+<li><a href="batch-processing008.htm#sthref3013"><span class="secnum">55.8.2.1</span> To Run the webserverlog Example Application Using NetBeans IDE</a></li>
+<li><a href="batch-processing008.htm#sthref3014"><span class="secnum">55.8.2.2</span> To Run the webserverlog Example Application Using Maven</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="batch-processing009.htm#BCGFCACD"><span class="secnum">55.9</span> The phonebilling Example Application</a>
+<ul style="list-style-type:none">
+<li><a href="batch-processing009.htm#sthref3017"><span class="secnum">55.9.1</span> Architecture of the phonebilling Example Application</a>
+<ul style="list-style-type:none">
+<li><a href="batch-processing009.htm#sthref3018"><span class="secnum">55.9.1.1</span> The Job Definition File</a></li>
+<li><a href="batch-processing009.htm#sthref3019"><span class="secnum">55.9.1.2</span> The CallRecord and PhoneBill Entities</a></li>
+<li><a href="batch-processing009.htm#sthref3020"><span class="secnum">55.9.1.3</span> The Call Records Chunk Step</a></li>
+<li><a href="batch-processing009.htm#BCGGGAHB"><span class="secnum">55.9.1.4</span> The Phone Billing Chunk Step</a></li>
+<li><a href="batch-processing009.htm#sthref3021"><span class="secnum">55.9.1.5</span> The JavaServer Faces Pages</a></li>
+<li><a href="batch-processing009.htm#sthref3022"><span class="secnum">55.9.1.6</span> The Managed Bean</a></li>
+</ul>
+</li>
+<li><a href="batch-processing009.htm#sthref3023"><span class="secnum">55.9.2</span> Running the phonebilling Example Application</a>
+<ul style="list-style-type:none">
+<li><a href="batch-processing009.htm#sthref3024"><span class="secnum">55.9.2.1</span> To Run the phonebilling Example Application Using NetBeans IDE</a></li>
+<li><a href="batch-processing009.htm#sthref3025"><span class="secnum">55.9.2.2</span> To Run the phonebilling Example Application Using Maven</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="batch-processing010.htm#BCGHCHAJ"><span class="secnum">55.10</span> Further Information about Batch Processing</a></li>
+</ul>
+<h2 class="tocheader"><a href="concurrency-utilities.htm#GKJIQ8"><span class="secnum">56</span> Concurrency Utilities for Java EE</a></h2>
+<h2 class="tocheader"><a href="partcasestudies.htm#GKGJW">Part XII Case Studies</a></h2>
+<h2 class="tocheader"><a href="dukes-bookstore.htm#GLNVI"><span class="secnum">57</span> Duke's Bookstore Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-tutoring.htm#GKAEE"><span class="secnum">58</span> Duke's Tutoring Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-forest.htm#GLNPW"><span class="secnum">59</span> Duke's Forest Case Study Example</a></h2>
+<h2 class="tocheader"><a href="index.htm">Index</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>The Java EE 7 Tutorial  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="batch-processing.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="batch-processing002.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="BCGJDEEH" name="BCGJDEEH"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" -->
+<h1 class="sect1"><span class="secnum">55.1</span> <a id="sthref2942" name="sthref2942"></a>Introduction to Batch Processing</h1>
+<p>A batch <span class="glossaryterm">job</span> can be completed without user intervention. For example, consider a telephone billing application that reads phone call records from the enterprise information systems and generates a monthly bill for each account. Since this application does not require any user interaction, it can run as a batch job.</p>
+<p>The phone billing application consists of two phases: The first phase associates each call from the registry with a monthly bill, and the second phase calculates the tax and total amount due for each bill. Each of these phases is a <span class="glossaryterm">step</span> of the batch job.</p>
+<p>Batch applications specify a set of steps and their execution order. Different batch frameworks may specify additional elements, like decision elements or groups of steps that run in parallel. The following sections describe steps in more detail and provide information about other common characteristics of batch frameworks.</p>
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref2943" name="sthref2943"></a>
+<h2 class="sect2"><span class="secnum">55.1.1</span> <a id="sthref2944" name="sthref2944"></a>Steps in Batch Jobs</h2>
+<p>A step is an independent and sequential phase of a batch job. Batch jobs contain chunk-oriented steps and task-oriented steps.</p>
+<ul>
+<li>
+<p><span class="glossaryterm">Chunk-oriented steps</span> (chunk steps) process data by reading items from a data source, applying some business logic to each item, and storing the results. Chunk steps read and process one item at a time and group the results into a chunk. The results are stored when the chunk reaches a configurable size. Chunk-oriented processing makes storing results more efficient and facilitates transaction demarcation.</p>
+<p>Chunk steps have three parts.</p>
+<ul>
+<li>
+<p>The input retrieval part reads one item at a time from a data source, such as entries on a database, files in a directory, or entries in a log file.</p>
+</li>
+<li>
+<p>The business processing part manipulates one item at a time using the business logic defined by the application. Examples include filtering, formatting, and accessing data from the item for computing a result.</p>
+</li>
+<li>
+<p>The output writing part stores a chunk of processed items at a time.</p>
+</li>
+</ul>
+<p>Chunk steps are often long-running because they process large amounts of data. Batch frameworks enable chunk steps to bookmark their progress using <span class="glossaryterm">checkpoints</span>. A chunk step that is interrupted can be restarted from the last checkpoint. The input retrieval and output writing parts of a chunk step save their current position after the processing of each chunk, and can recover it when the step is restarted.</p>
+<p><a href="#BABFJBAH">Figure 55-1</a> shows the three parts of two steps in a batch job.</p>
+<div class="figure"><a id="BABFJBAH" name="BABFJBAH"></a>
+<p class="titleinfigure">Figure 55-1 Chunk Steps in a Batch Job</p>
+<img src="img/jeett_dt_058.png" alt="Description of Figure 55-1 follows" title="Description of Figure 55-1 follows" longdesc="img_text/jeett_dt_058.htm" /><br />
+<a id="sthref2945" name="sthref2945" href="img_text/jeett_dt_058.htm">Description of "Figure 55-1 Chunk Steps in a Batch Job"</a><br />
+<br /></div>
+<!-- class="figure" --></li>
+<li>
+<p><span class="glossaryterm">Task-oriented steps</span> (task steps) execute tasks other than processing items from a data source. Examples include creating or removing directories, moving files, creating or dropping database tables, configuring resources, and so on. Task steps are not usually long-running compared to chunk steps.</p>
+</li>
+</ul>
+<p>For example, the phone billing application consists of two chunk steps.</p>
+<ul>
+<li>
+<p>In the first step, the input retrieval part reads call records from the registry; the business processing part associates each call with a bill and creates a bill if one does not exist for an account; and the output writing part stores each bill in a database.</p>
+</li>
+<li>
+<p>In the second step, the input retrieval part reads bills from the database; the business processing part calculates the tax and total amount due for each bill; and the output writing part updates the database records and generates printable versions of each bill.</p>
+</li>
+</ul>
+<p>This application could also contain a task step that cleaned up the files from the bills generated for the previous month.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref2946" name="sthref2946"></a>
+<h2 class="sect2"><span class="secnum">55.1.2</span> Parallel Processing</h2>
+<p>Batch jobs often process large amounts of data or perform computationally expensive operations. Batch applications can benefit from parallel processing in two scenarios.</p>
+<ul>
+<li>
+<p>Steps that do not depend on each other can run on different threads.</p>
+</li>
+<li>
+<p>Chunk-oriented steps where the processing of each item does not depend on the results of processing previous items can run on more than one thread.</p>
+</li>
+</ul>
+<p>Batch frameworks provide mechanisms for developers to define groups of independent steps and to split chunk-oriented steps in parts that can run in parallel.</p>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref2947" name="sthref2947"></a>
+<h2 class="sect2"><span class="secnum">55.1.3</span> <a id="sthref2948" name="sthref2948"></a>Status and Decision Elements</h2>
+<p>Batch frameworks keep track of a <span class="glossaryterm">status</span> for every step in a job. The status indicates if a step is running or if it has completed. If the step has completed, the status indicates one of the following.</p>
+<ul>
+<li>
+<p>The execution of the step was successful.</p>
+</li>
+<li>
+<p>The step was interrupted.</p>
+</li>
+<li>
+<p>An error occurred in the execution of the step.</p>
+</li>
+</ul>
+<p>In addition to steps, batch jobs can also contain <span class="glossaryterm">decision elements</span>. Decision elements use the exit status of the previous step to determine the next step or to terminate the batch job. Decision elements set the status of the batch job when terminating it. Like a step, a batch job can terminate successfully, be interrupted, or fail.</p>
+<p><a href="#BCGDCDCA">Figure 55-2</a> shows an example of a job that contains chunk steps, task steps and a decision element.</p>
+<div class="figure"><a id="BCGDCDCA" name="BCGDCDCA"></a>
+<p class="titleinfigure">Figure 55-2 Steps and Decision Elements in a Job</p>
+<img src="img/jeett_dt_059.png" alt="Description of Figure 55-2 follows" title="Description of Figure 55-2 follows" longdesc="img_text/jeett_dt_059.htm" /><br />
+<a id="sthref2949" name="sthref2949" href="img_text/jeett_dt_059.htm">Description of "Figure 55-2 Steps and Decision Elements in a Job"</a><br />
+<br /></div>
+<!-- class="figure" --></div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref2950" name="sthref2950"></a>
+<h2 class="sect2"><span class="secnum">55.1.4</span> Batch Framework Functionality</h2>
+<p>Batch applications have the following common requirements.</p>
+<ul>
+<li>
+<p>Define jobs, steps, decision elements, and the relationships between them.</p>
+</li>
+<li>
+<p>Execute some groups of steps or parts of a step in parallel.</p>
+</li>
+<li>
+<p>Maintain state information for jobs and steps.</p>
+</li>
+<li>
+<p>Launch jobs and resume interrupted jobs.</p>
+</li>
+<li>
+<p>Handle errors.</p>
+</li>
+</ul>
+<p>Batch frameworks provide the batch execution infrastructure that addresses the common requirements of all batch applications, enabling developers to concentrate on the business logic of their applications. Batch frameworks consist of a format to specify jobs and steps, an application programming interface (API), and a service available at runtime that manages the execution of batch jobs.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="batch-processing.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="batch-processing002.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

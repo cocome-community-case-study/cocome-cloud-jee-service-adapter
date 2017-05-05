@@ -1,0 +1,555 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:29:57Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="Value and Method Expressions" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39031-01" />
+        <meta name="description" content="A guide to developing enterprise applications for the Java Platform, Enterprise Edition 7 (Java EE 7) using GlassFish Server Open Source Edition." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Java FX, Web, developer, enterprise, Java EE Tutorial, Java EE 7 Tutorial" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>The Java EE 7 Tutorial:Value and Method Expressions | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7.0</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/tutorial/doc/javaeetutorial7.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GEXAF">Preface</a></h2>
+<h2 class="tocheader"><a href="partintro.htm#GFIRP">Part I Introduction</a></h2>
+<h2 class="tocheader"><a href="overview.htm#BNAAW"><span class="secnum">1</span> Overview</a></h2>
+<h2 class="tocheader"><a href="usingexamples.htm#GFIUD"><span class="secnum">2</span> Using the Tutorial Examples</a></h2>
+<h2 class="tocheader"><a href="partplatform.htm#GFIRP2">Part II Platform Basics</a></h2>
+<h2 class="tocheader"><a href="resource-creation.htm#GKJIQ2"><span class="secnum">3</span> Resource Creation</a></h2>
+<h2 class="tocheader"><a href="injection.htm#GKJIQ3"><span class="secnum">4</span> Injection</a></h2>
+<h2 class="tocheader"><a href="packaging.htm#GKJIQ4"><span class="secnum">5</span> Packaging</a></h2>
+<h2 class="tocheader"><a href="partwebtier.htm#BNADP">Part III The Web Tier</a></h2>
+<h2 class="tocheader"><a href="webapp.htm#BNADR"><span class="secnum">6</span> Getting Started with Web Applications</a></h2>
+<h2 class="tocheader"><a href="jsf-intro.htm#BNAPH"><span class="secnum">7</span> JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-facelets.htm#GIEPX"><span class="secnum">8</span> Introduction to Facelets</a></h2>
+<h2 class="tocheader"><a href="jsf-el.htm#GJDDD"><span class="secnum">9</span> Expression Language</a></h2>
+<ul style="list-style-type:none">
+<li><a href="jsf-el001.htm#BNAHQ"><span class="secnum">9.1</span> Overview of the EL</a></li>
+<li><a href="jsf-el002.htm#BNAHR"><span class="secnum">9.2</span> Immediate and Deferred Evaluation Syntax</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-el002.htm#BNAHS"><span class="secnum">9.2.1</span> Immediate Evaluation</a></li>
+<li><a href="jsf-el002.htm#BNAHT"><span class="secnum">9.2.2</span> Deferred Evaluation</a></li>
+</ul>
+</li>
+<li><div id="backgroundColor"><a href="jsf-el003.htm#BNAHU"><span class="secnum">9.3</span> Value and Method Expressions</a><ul style="list-style-type:none">
+<li><a href="jsf-el003.htm#BNAHV"><span class="secnum">9.3.1</span> Value Expressions</a>
+<ul style="list-style-type:none">
+<li><a href="jsf-el003.htm#BNAHW"><span class="secnum">9.3.1.1</span> Referencing Objects</a></li>
+<li><a href="jsf-el003.htm#BNAHX"><span class="secnum">9.3.1.2</span> Referencing Object Properties or Collection Elements</a></li>
+<li><a href="jsf-el003.htm#sthref409"><span class="secnum">9.3.1.3</span> Referencing Literals</a></li>
+<li><a href="jsf-el003.htm#GJHBZ"><span class="secnum">9.3.1.4</span> Parameterized Method Calls</a></li>
+<li><a href="jsf-el003.htm#BNAHY"><span class="secnum">9.3.1.5</span> Where Value Expressions Can Be Used</a></li>
+</ul>
+</li>
+<li><a href="jsf-el003.htm#BNAHZ"><span class="secnum">9.3.2</span> Method Expressions</a></li>
+<li><a href="jsf-el003.htm#sthref415"><span class="secnum">9.3.3</span> Lambda Expressions</a></li>
+</ul>
+</div></li>
+<li><a href="jsf-el004.htm#CIHGABHD"><span class="secnum">9.4</span> Operations on Collection Objects</a></li>
+<li><a href="jsf-el005.htm#BNAIK"><span class="secnum">9.5</span> Operators</a></li>
+<li><a href="jsf-el006.htm#BNAIL"><span class="secnum">9.6</span> Reserved Words</a></li>
+<li><a href="jsf-el007.htm#BNAIM"><span class="secnum">9.7</span> Examples of EL Expressions</a></li>
+<li><a href="jsf-el008.htm#CIHGBBHA"><span class="secnum">9.8</span> Further Information about the Expression Language</a></li>
+</ul>
+<h2 class="tocheader"><a href="jsf-page.htm#BNAQZ"><span class="secnum">10</span> Using JavaServer Faces Technology in Web Pages</a></h2>
+<h2 class="tocheader"><a href="jsf-page-core.htm#GJCUT"><span class="secnum">11</span> Using Converters, Listeners, and Validators</a></h2>
+<h2 class="tocheader"><a href="jsf-develop.htm#BNATX"><span class="secnum">12</span> Developing with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-ajax.htm#GKIOW"><span class="secnum">13</span> Using Ajax with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-advanced-cc.htm#GKHXA"><span class="secnum">14</span> Composite Components: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="jsf-custom.htm#BNAVG"><span class="secnum">15</span> Creating Custom UI Components and Other Custom Objects</a></h2>
+<h2 class="tocheader"><a href="jsf-configure.htm#BNAWO"><span class="secnum">16</span> Configuring JavaServer Faces Applications</a></h2>
+<h2 class="tocheader"><a href="servlets.htm#BNAFD"><span class="secnum">17</span> Java Servlet Technology</a></h2>
+<h2 class="tocheader"><a href="websocket.htm#GKJIQ5"><span class="secnum">18</span> Java API for WebSocket</a></h2>
+<h2 class="tocheader"><a href="jsonp.htm#GLRBB"><span class="secnum">19</span> JSON Processing</a></h2>
+<h2 class="tocheader"><a href="webi18n.htm#BNAXU"><span class="secnum">20</span> Internationalizing and Localizing Web Applications</a></h2>
+<h2 class="tocheader"><a href="partbeanvalidation.htm#sthref1322">Part IV Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation.htm#CHDGJIIA"><span class="secnum">21</span> Introduction to Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation-advanced.htm#GKAHP"><span class="secnum">22</span> Bean Validation: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partcdi.htm#GJBNR">Part V Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basic.htm#GIWHB"><span class="secnum">23</span> Introduction to Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basicexamples.htm#GJBLS"><span class="secnum">24</span> Running the Basic Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="cdi-adv.htm#GJEHI"><span class="secnum">25</span> Contexts and Dependency Injection for Java EE: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="cdi-adv-examples.htm#GKHRE"><span class="secnum">26</span> Running the Advanced Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="partwebsvcs.htm#BNAYK">Part VI Web Services</a></h2>
+<h2 class="tocheader"><a href="webservices-intro.htm#GIJTI"><span class="secnum">27</span> Introduction to Web Services</a></h2>
+<h2 class="tocheader"><a href="jaxws.htm#BNAYL"><span class="secnum">28</span> Building Web Services with JAX-WS</a></h2>
+<h2 class="tocheader"><a href="jaxrs.htm#GIEPU"><span class="secnum">29</span> Building RESTful Web Services with JAX-RS</a></h2>
+<h2 class="tocheader"><a href="jaxrs-client.htm#BABEIGIH"><span class="secnum">30</span> Accessing REST Resources with the JAX-RS Client API</a></h2>
+<h2 class="tocheader"><a href="jaxrs-advanced.htm#GJJXE"><span class="secnum">31</span> JAX-RS: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="partentbeans.htm#BNBLR">Part VII Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-intro.htm#GIJSZ"><span class="secnum">32</span> Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-gettingstarted.htm#GIJRE"><span class="secnum">33</span> Getting Started with Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-basicexamples.htm#GIJRB"><span class="secnum">34</span> Running the Enterprise Bean Examples</a></h2>
+<h2 class="tocheader"><a href="ejb-embedded.htm#GKCQZ"><span class="secnum">35</span> Using the Embedded Enterprise Bean Container</a></h2>
+<h2 class="tocheader"><a href="ejb-async.htm#GKIDZ"><span class="secnum">36</span> Using Asynchronous Method Invocation in Session Beans</a></h2>
+<h2 class="tocheader"><a href="partpersist.htm#BNBPY">Part VIII Persistence</a></h2>
+<h2 class="tocheader"><a href="persistence-intro.htm#BNBPZ"><span class="secnum">37</span> Introduction to the Java Persistence API</a></h2>
+<h2 class="tocheader"><a href="persistence-basicexamples.htm#GIJST"><span class="secnum">38</span> Running the Persistence Examples</a></h2>
+<h2 class="tocheader"><a href="persistence-querylanguage.htm#BNBTG"><span class="secnum">39</span> The Java Persistence Query Language</a></h2>
+<h2 class="tocheader"><a href="persistence-criteria.htm#GJITV"><span class="secnum">40</span> Using the Criteria API to Create Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-string-queries.htm#GKJIQ"><span class="secnum">41</span> Creating and Using String-Based Criteria Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-locking.htm#GKJJF"><span class="secnum">42</span> Controlling Concurrent Access to Entity Data with Locking</a></h2>
+<h2 class="tocheader"><a href="persistence-entitygraphs.htm#BABIJIAC"><span class="secnum">43</span> Creating Fetch Plans with Entity Graphs</a></h2>
+<h2 class="tocheader"><a href="persistence-cache.htm#GKJIA"><span class="secnum">44</span> Using a Second-Level Cache with Java Persistence API Applications</a></h2>
+<h2 class="tocheader"><a href="partmessaging.htm#GFIRP3">Part IX Messaging</a></h2>
+<h2 class="tocheader"><a href="jms-concepts.htm#BNCDQ"><span class="secnum">45</span> Java Message Service Concepts</a></h2>
+<h2 class="tocheader"><a href="jms-examples.htm#BNCGV"><span class="secnum">46</span> Java Message Service Examples</a></h2>
+<h2 class="tocheader"><a href="partsecurity.htm#GIJRP">Part X Security</a></h2>
+<h2 class="tocheader"><a href="security-intro.htm#BNBWJ"><span class="secnum">47</span> Introduction to Security in the Java EE Platform</a></h2>
+<h2 class="tocheader"><a href="security-webtier.htm#BNCAS"><span class="secnum">48</span> Getting Started Securing Web Applications</a></h2>
+<h2 class="tocheader"><a href="security-javaee.htm#BNBYK"><span class="secnum">49</span> Getting Started Securing Enterprise Applications</a></h2>
+<h2 class="tocheader"><a href="security-advanced.htm#GJJWX"><span class="secnum">50</span> Java EE Security: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partsupporttechs.htm#GIJUE">Part XI Java EE Supporting Technologies</a></h2>
+<h2 class="tocheader"><a href="transactions.htm#BNCIH"><span class="secnum">51</span> Transactions</a></h2>
+<h2 class="tocheader"><a href="resources.htm#BNCJH"><span class="secnum">52</span> Resource Adapters and Contracts</a></h2>
+<h2 class="tocheader"><a href="connectorexample.htm#GLODB"><span class="secnum">53</span> The Resource Adapter Examples</a></h2>
+<h2 class="tocheader"><a href="interceptors.htm#GKEED"><span class="secnum">54</span> Using Java EE Interceptors</a></h2>
+<h2 class="tocheader"><a href="batch-processing.htm#GKJIQ6"><span class="secnum">55</span> Batch Processing</a></h2>
+<h2 class="tocheader"><a href="concurrency-utilities.htm#GKJIQ8"><span class="secnum">56</span> Concurrency Utilities for Java EE</a></h2>
+<h2 class="tocheader"><a href="partcasestudies.htm#GKGJW">Part XII Case Studies</a></h2>
+<h2 class="tocheader"><a href="dukes-bookstore.htm#GLNVI"><span class="secnum">57</span> Duke's Bookstore Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-tutoring.htm#GKAEE"><span class="secnum">58</span> Duke's Tutoring Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-forest.htm#GLNPW"><span class="secnum">59</span> Duke's Forest Case Study Example</a></h2>
+<h2 class="tocheader"><a href="index.htm">Index</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>The Java EE 7 Tutorial  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="jsf-el002.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="jsf-el004.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="BNAHU" name="BNAHU"></a><a id="JEETT00341" name="JEETT00341"></a>
+<div class="sect1">
+<h1 class="sect1"><span class="secnum">9.3</span> Value and Method Expressions</h1>
+<p>The EL defines two kinds of expressions: value expressions and method expressions. <span class="glossaryterm">Value expressions</span> can be evaluated to yield a value, and <span class="glossaryterm">method expressions</span> are used to reference a method.</p>
+<a id="BNAHV" name="BNAHV"></a><a id="JEETT00914" name="JEETT00914"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">9.3.1</span> Value Expressions</h2>
+<p><a id="sthref406" name="sthref406"></a><a id="sthref407" name="sthref407"></a><a id="sthref408" name="sthref408"></a>Value expressions can be further categorized into <span class="glossaryterm">rvalue</span> and <span class="glossaryterm">lvalue</span> expressions. An lvalue expression can specify a target, such as an object, a bean property, or elements of a collection, that can be assigned a value. An rvalue expression cannot specify such a target.</p>
+<p>All expressions that are evaluated immediately use the <code>${}</code> delimiters, and although the expression can be an lvalue expression, no assignments will ever happen. Expressions whose evaluation can be deferred use the <code>#{}</code> delimiters and can act as both rvalue and lvalue expressions; if the expression is an lvalue expression, it can be assigned a new value. Consider the following two value expressions:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+${customer.name}
+
+#{customer.name}
+</pre>
+<p>The former uses immediate evaluation syntax, whereas the latter uses deferred evaluation syntax. The first expression accesses the <code>name</code> property, gets its value, and passes the value to the tag handler. With the second expression, the tag handler can defer the expression evaluation to a later time in the page lifecycle if the technology using this tag allows.</p>
+<p>In the case of JavaServer Faces technology, the latter tag's expression is evaluated immediately during an initial request for the page. During a postback request, this expression can be used to set the value of the <code>name</code> property with user input.</p>
+<a id="BNAHW" name="BNAHW"></a><a id="JEETT00590" name="JEETT00590"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">9.3.1.1</span> Referencing Objects</h3>
+<p>A top-level identifier (such as <code>customer</code> in the expression <code>customer.name</code>) can refer to the following objects:</p>
+<ul>
+<li>
+<p>Lambda parameters</p>
+</li>
+<li>
+<p>EL variables</p>
+</li>
+<li>
+<p>Managed beans</p>
+</li>
+<li>
+<p>Implicit objects</p>
+</li>
+<li>
+<p>Classes of static fields and methods</p>
+</li>
+</ul>
+<p>To refer to these objects, you write an expression using a variable that is the name of the object. The following expression references a managed bean called <code>customer</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+${customer}
+</pre>
+<p>You can use a custom EL resolver to alter the way variables are resolved. For instance, you can provide an EL resolver that intercepts objects with the name <code>customer</code>, so that <code>${customer}</code> returns a value in the EL resolver instead. (JavaServer Faces technology uses an EL resolver to handle managed beans.)</p>
+<p>An <code>enum</code> constant is a special case of a static field, and you can reference such a constant directly. For example, consider this <code>enum</code> class:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+public enum Suit {hearts, spades, diamonds, clubs}
+</pre>
+<p>In the following expression, in which <code>mySuit</code> is an instance of <code>Suit</code>, you can compare <code>suit.hearts</code> to the instance:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+${mySuit == suit.hearts}
+</pre></div>
+<!-- class="sect3" -->
+<a id="BNAHX" name="BNAHX"></a><a id="JEETT00591" name="JEETT00591"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">9.3.1.2</span> Referencing Object Properties or Collection Elements</h3>
+<p>To refer to properties of a bean, static fields or methods of a class, or items of a collection, you use the <code>.</code> or <code>[]</code> notation. The same syntax can be used for attributes of an implicit object, because attributes are placed in a map.</p>
+<p>To reference the <code>name</code> property of the <code>customer</code> bean, use either the expression <code>${customer.name}</code> or the expression <code>${customer["name"]}</code>. Here, the part inside the brackets is a <code>String</code> literal that is the name of the property to reference. The <code>[]</code> syntax is more general than the <code>.</code> syntax, because the part inside the brackets can be any <code>String</code> expression, not just literals.</p>
+<p>You can use double or single quotes for the <code>String</code> literal. You can also combine the <code>[]</code> and <code>.</code> notations, as shown here:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+${customer.address["street"]}
+</pre>
+<p>You can reference a static field or method using the syntax <span class="variable">classname</span>.<span class="variable">field</span>, as in the following example:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+Boolean.FALSE
+</pre>
+<p>The <span class="variable">classname</span> is the name of the class without the package name. By default, all the <code>java.lang</code> packages are imported. You can import other packages, classes, and static fields as needed.</p>
+<p>If you are accessing an item in an array or list, you must use the <code>[]</code> notation and specify an index in the array or list. The index is an expression that can be converted to <code>int</code>. The following example references the first of the customer orders, assuming that <code>customer.orders</code> is a <code>List</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+${customer.orders[1]}
+</pre>
+<p>If you are accessing an item in a <code>Map</code>, you must specify the key for the <code>Map</code>. If the key is a <code>String</code> literal, the dot (<code>.)</code> notation can be used. Assuming that <code>customer.orders</code> is a <code>Map</code> with a <code>String</code> key, the following examples reference the item with the key <code>"socks"</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+${customer.orders["socks"]}
+
+${customer.orders.socks}
+</pre></div>
+<!-- class="sect3" -->
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref409" name="sthref409"></a>
+<h3 class="sect3"><span class="secnum">9.3.1.3</span> Referencing Literals</h3>
+<p><a id="sthref410" name="sthref410"></a>The EL defines the following literals:</p>
+<ul>
+<li>
+<p><span class="bold">Boolean</span>: <code>true</code> and <code>false</code></p>
+</li>
+<li>
+<p><span class="bold">Integer</span>: As in Java</p>
+</li>
+<li>
+<p><span class="bold">Floating-point</span>: As in Java</p>
+</li>
+<li>
+<p><span class="bold">String</span>: With single and double quotes; <code>"</code> is escaped as <code>\"</code>, <code>'</code> is escaped as <code>\'</code>, and <code>\</code> is escaped as <code>\\</code></p>
+</li>
+<li>
+<p><span class="bold">Null</span>: <code>null</code></p>
+</li>
+</ul>
+<p>Here are some examples:</p>
+<ul>
+<li>
+<p><code>${"literal"}</code></p>
+</li>
+<li>
+<p><code>${true}</code></p>
+</li>
+<li>
+<p><code>${57}</code></p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<a id="GJHBZ" name="GJHBZ"></a><a id="JEETT00593" name="JEETT00593"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">9.3.1.4</span> <a id="sthref411" name="sthref411"></a>Parameterized Method Calls</h3>
+<p>The EL offers support for parameterized method calls.</p>
+<p>Both the <code>.</code> and <code>[]</code> operators can be used for invoking method calls with parameters, as shown in the following expression syntax:</p>
+<ul>
+<li>
+<p><span class="variable">expr-a</span><code>[</code><span class="variable">expr-b</span><code>](</code><span class="variable">parameters</span><code>)</code></p>
+</li>
+<li>
+<p><span class="variable">expr-a</span><code>.</code><span class="variable">identifier-b</span><code>(</code><span class="variable">parameters</span><code>)</code></p>
+</li>
+</ul>
+<p>In the first expression syntax, <span class="variable">expr-a</span> is evaluated to represent a bean object. The expression <span class="variable">expr-b</span> is evaluated and cast to a string that represents a method in the bean represented by <span class="variable">expr-a</span>. In the second expression syntax, <span class="variable">expr-a</span> is evaluated to represent a bean object, and <span class="variable">identifier-b</span> is a string that represents a method in the bean object. The <span class="variable">parameters</span> in parentheses are the arguments for the method invocation. Parameters can be zero or more values of expressions, separated by commas.</p>
+<p>Parameters are supported for both value expressions and method expressions. In the following example, which is a modified tag from the <code>guessnumber</code> application, a random number is provided as an argument rather than from user input to the method call:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:inputText value="#{userNumberBean.userNumber('5')}"&gt;
+</pre>
+<p>The preceding example uses a value expression.</p>
+<p>Consider the following example of a JavaServer Faces component tag that uses a method expression:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:commandButton action="#{trader.buy}" value="buy"/&gt;
+</pre>
+<p>The EL expression <code>trader.buy</code> calls the <code>trader</code> bean's <code>buy</code> method. You can modify the tag to pass on a parameter. Here is the revised tag in which a parameter is passed:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:commandButton action="#{trader.buy('SOMESTOCK')}" value="buy"/&gt;
+</pre>
+<p>In the preceding example, you are passing the string <code>'SOMESTOCK'</code> (a stock symbol) as a parameter to the <code>buy</code> method.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BNAHY" name="BNAHY"></a><a id="JEETT00592" name="JEETT00592"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">9.3.1.5</span> Where Value Expressions Can Be Used</h3>
+<p>Value expressions using the <code>${}</code> delimiters can be used</p>
+<ul>
+<li>
+<p>In static text</p>
+</li>
+<li>
+<p>In any standard or custom tag attribute that can accept an expression</p>
+</li>
+</ul>
+<p>The value of an expression in static text is computed and inserted into the current output. Here is an example of an expression embedded in static text:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;some:tag&gt;
+    some text ${expr} some text
+&lt;/some:tag&gt;
+</pre>
+<p>A tag attribute can be set in the following ways.</p>
+<ul>
+<li>
+<p>With a single expression construct:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;some:tag value="${expr}"/&gt;
+
+&lt;another:tag value="#{expr}"/&gt;
+</pre>
+<p>These expressions are evaluated, and the result is converted to the attribute's expected type.</p>
+</li>
+<li>
+<p>With one or more expressions separated or surrounded by text:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;some:tag value="some${expr}${expr}text${expr}"/&gt;
+
+&lt;another:tag value="some#{expr}#{expr}text#{expr}"/&gt;
+</pre>
+<p><a id="sthref412" name="sthref412"></a>These kinds of expression, called <span class="glossaryterm">composite expressions</span>, are evaluated from left to right. Each expression embedded in the composite expression is converted to a <code>String</code> and then concatenated with any intervening text. The resulting <code>String</code> is then converted to the attribute's expected type.</p>
+</li>
+<li>
+<p>With text only:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;some:tag value="sometext"/&gt;
+</pre>
+<p>The attribute's <code>String</code> value is converted to the attribute's expected type.</p>
+</li>
+</ul>
+<p>You can use the string concatenation operator += to create a single expression from what would otherwise be a composite expression. For example, you could change the composite expression</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;some:tag value="sometext ${expr} moretext"/&gt;
+</pre>
+<p>to</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;some:tag value="${sometext += expr += moretext}"/&gt;
+</pre>
+<p><a id="sthref413" name="sthref413"></a>All expressions used to set attribute values are evaluated in the context of an expected type. If the result of the expression evaluation does not match the expected type exactly, a type conversion will be performed. For example, the expression <code>${1.2E4}</code> provided as the value of an attribute of type <code>float</code> will result in the following conversion:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+Float.valueOf("1.2E4").floatValue()
+</pre></div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BNAHZ" name="BNAHZ"></a><a id="JEETT00915" name="JEETT00915"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">9.3.2</span> Method Expressions</h2>
+<p><a id="sthref414" name="sthref414"></a>Another feature of the EL is its support of deferred method expressions. A method expression is used to refer to a public method of a bean and has the same syntax as an lvalue expression.</p>
+<p>In JavaServer Faces technology, a component tag represents a component on a page. The component tag uses method expressions to specify methods that can be invoked to perform some processing for the component. These methods are necessary for handling events that the components generate and for validating component data, as shown in this example:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;h:form&gt;
+    &lt;h:inputText id="name"
+                 value="#{customer.name}"
+                 validator="#{customer.validateName}"/&gt;
+    &lt;h:commandButton id="submit"
+                     action="#{customer.submit}" /&gt;
+&lt;/h:form&gt;
+</pre>
+<p>The <code>h:inputText</code> tag displays as a field. The <code>validator</code> attribute of this <code>h:inputText</code> tag references a method, called <code>validateName</code>, in the bean, called <code>customer</code>.</p>
+<p>Because a method can be invoked during different phases of the lifecycle, method expressions must always use the deferred evaluation syntax.</p>
+<p>Like lvalue expressions, method expressions can use the <code>.</code> and the <code>[]</code> operators. For example, <code>#{object.method}</code> is equivalent to <code>#{object["method"]}</code>. The literal inside the <code>[]</code> is converted to <code>String</code> and is used to find the name of the method that matches it.</p>
+<p>Method expressions can be used only in tag attributes and only in the following ways:</p>
+<ul>
+<li>
+<p>With a single expression construct, where <span class="variable">bean</span> refers to a JavaBeans component and <span class="variable">method</span> refers to a method of the JavaBeans component:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;some:tag value="#{<span class="variable">bean</span>.<span class="variable">method</span>}"/&gt;
+</pre>
+<p>The expression is evaluated to a method expression, which is passed to the tag handler. The method represented by the method expression can then be invoked later.</p>
+</li>
+<li>
+<p>With text only:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;some:tag value="sometext"/&gt;
+</pre>
+<p>Method expressions support literals primarily to support <code>action</code> attributes in JavaServer Faces technology. When the method referenced by this method expression is invoked, the method returns the <code>String</code> literal, which is then converted to the expected return type, as defined in the tag's tag library descriptor.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect2" -->
+<div class="sect2"><!-- infolevel="all" infotype="General" --><a id="sthref415" name="sthref415"></a>
+<h2 class="sect2"><span class="secnum">9.3.3</span> Lambda Expressions</h2>
+<p>A lambda expression is a value expression with parameters. The syntax is similar to that of the lambda expression in the Java programming language, except that in the EL, the body of the lambda expression is an EL expression.</p>
+<p>For basic information on lambda expressions, see <code><a href="http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html">http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html</a></code>.</p>
+<div align="center">
+<div class="inftblnote"><br />
+<table class="Note oac_no_warn" summary="" border="1" width="80%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>
+<p>Lambda expressions are part of Java SE 8, but you can use them in EL expressions with Java SE 7, the Java version associated with the Java EE 7 platform.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="inftblnote" --></div>
+<p>A lambda expression uses the arrow token (<code>-&gt;)</code> operator. The identifiers to the left of the operator are called lambda parameters. The body, to the right of the operator, must be an EL expression. The lambda parameters are enclosed in parentheses; the parentheses can be omitted if there is only one parameter. Here are some examples:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+x -&gt; x+1
+(x, y) -&gt; x + y
+() -&gt; 64
+</pre>
+<p>A lambda expression behaves like a function. It can be invoked immediately. For example, the following invocation evaluates to 7:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+((x, y) -&gt; x + y)(3, 4)
+</pre>
+<p>You can use a lambda expression in conjunction with the assignment and semicolon operators. For example, the following code assigns the previous lambda expression to a variable and then invokes it. The result is again 7:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+v = (x, y) -&gt; x + y; v(3, 4)
+</pre>
+<p>A lambda expression can also be passed as an argument to a method and be invoked in the method. It can also be nested in another lambda expression.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="jsf-el002.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="jsf-el004.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

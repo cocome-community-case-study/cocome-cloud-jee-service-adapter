@@ -1,0 +1,688 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:30:1Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="Using the JMS API in Java EE Applications" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39031-01" />
+        <meta name="description" content="A guide to developing enterprise applications for the Java Platform, Enterprise Edition 7 (Java EE 7) using GlassFish Server Open Source Edition." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Java FX, Web, developer, enterprise, Java EE Tutorial, Java EE 7 Tutorial" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>The Java EE 7 Tutorial:Using the JMS API in Java EE Applications | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7.0</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/tutorial/doc/javaeetutorial7.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GEXAF">Preface</a></h2>
+<h2 class="tocheader"><a href="partintro.htm#GFIRP">Part I Introduction</a></h2>
+<h2 class="tocheader"><a href="overview.htm#BNAAW"><span class="secnum">1</span> Overview</a></h2>
+<h2 class="tocheader"><a href="usingexamples.htm#GFIUD"><span class="secnum">2</span> Using the Tutorial Examples</a></h2>
+<h2 class="tocheader"><a href="partplatform.htm#GFIRP2">Part II Platform Basics</a></h2>
+<h2 class="tocheader"><a href="resource-creation.htm#GKJIQ2"><span class="secnum">3</span> Resource Creation</a></h2>
+<h2 class="tocheader"><a href="injection.htm#GKJIQ3"><span class="secnum">4</span> Injection</a></h2>
+<h2 class="tocheader"><a href="packaging.htm#GKJIQ4"><span class="secnum">5</span> Packaging</a></h2>
+<h2 class="tocheader"><a href="partwebtier.htm#BNADP">Part III The Web Tier</a></h2>
+<h2 class="tocheader"><a href="webapp.htm#BNADR"><span class="secnum">6</span> Getting Started with Web Applications</a></h2>
+<h2 class="tocheader"><a href="jsf-intro.htm#BNAPH"><span class="secnum">7</span> JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-facelets.htm#GIEPX"><span class="secnum">8</span> Introduction to Facelets</a></h2>
+<h2 class="tocheader"><a href="jsf-el.htm#GJDDD"><span class="secnum">9</span> Expression Language</a></h2>
+<h2 class="tocheader"><a href="jsf-page.htm#BNAQZ"><span class="secnum">10</span> Using JavaServer Faces Technology in Web Pages</a></h2>
+<h2 class="tocheader"><a href="jsf-page-core.htm#GJCUT"><span class="secnum">11</span> Using Converters, Listeners, and Validators</a></h2>
+<h2 class="tocheader"><a href="jsf-develop.htm#BNATX"><span class="secnum">12</span> Developing with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-ajax.htm#GKIOW"><span class="secnum">13</span> Using Ajax with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-advanced-cc.htm#GKHXA"><span class="secnum">14</span> Composite Components: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="jsf-custom.htm#BNAVG"><span class="secnum">15</span> Creating Custom UI Components and Other Custom Objects</a></h2>
+<h2 class="tocheader"><a href="jsf-configure.htm#BNAWO"><span class="secnum">16</span> Configuring JavaServer Faces Applications</a></h2>
+<h2 class="tocheader"><a href="servlets.htm#BNAFD"><span class="secnum">17</span> Java Servlet Technology</a></h2>
+<h2 class="tocheader"><a href="websocket.htm#GKJIQ5"><span class="secnum">18</span> Java API for WebSocket</a></h2>
+<h2 class="tocheader"><a href="jsonp.htm#GLRBB"><span class="secnum">19</span> JSON Processing</a></h2>
+<h2 class="tocheader"><a href="webi18n.htm#BNAXU"><span class="secnum">20</span> Internationalizing and Localizing Web Applications</a></h2>
+<h2 class="tocheader"><a href="partbeanvalidation.htm#sthref1322">Part IV Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation.htm#CHDGJIIA"><span class="secnum">21</span> Introduction to Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation-advanced.htm#GKAHP"><span class="secnum">22</span> Bean Validation: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partcdi.htm#GJBNR">Part V Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basic.htm#GIWHB"><span class="secnum">23</span> Introduction to Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basicexamples.htm#GJBLS"><span class="secnum">24</span> Running the Basic Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="cdi-adv.htm#GJEHI"><span class="secnum">25</span> Contexts and Dependency Injection for Java EE: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="cdi-adv-examples.htm#GKHRE"><span class="secnum">26</span> Running the Advanced Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="partwebsvcs.htm#BNAYK">Part VI Web Services</a></h2>
+<h2 class="tocheader"><a href="webservices-intro.htm#GIJTI"><span class="secnum">27</span> Introduction to Web Services</a></h2>
+<h2 class="tocheader"><a href="jaxws.htm#BNAYL"><span class="secnum">28</span> Building Web Services with JAX-WS</a></h2>
+<h2 class="tocheader"><a href="jaxrs.htm#GIEPU"><span class="secnum">29</span> Building RESTful Web Services with JAX-RS</a></h2>
+<h2 class="tocheader"><a href="jaxrs-client.htm#BABEIGIH"><span class="secnum">30</span> Accessing REST Resources with the JAX-RS Client API</a></h2>
+<h2 class="tocheader"><a href="jaxrs-advanced.htm#GJJXE"><span class="secnum">31</span> JAX-RS: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="partentbeans.htm#BNBLR">Part VII Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-intro.htm#GIJSZ"><span class="secnum">32</span> Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-gettingstarted.htm#GIJRE"><span class="secnum">33</span> Getting Started with Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-basicexamples.htm#GIJRB"><span class="secnum">34</span> Running the Enterprise Bean Examples</a></h2>
+<h2 class="tocheader"><a href="ejb-embedded.htm#GKCQZ"><span class="secnum">35</span> Using the Embedded Enterprise Bean Container</a></h2>
+<h2 class="tocheader"><a href="ejb-async.htm#GKIDZ"><span class="secnum">36</span> Using Asynchronous Method Invocation in Session Beans</a></h2>
+<h2 class="tocheader"><a href="partpersist.htm#BNBPY">Part VIII Persistence</a></h2>
+<h2 class="tocheader"><a href="persistence-intro.htm#BNBPZ"><span class="secnum">37</span> Introduction to the Java Persistence API</a></h2>
+<h2 class="tocheader"><a href="persistence-basicexamples.htm#GIJST"><span class="secnum">38</span> Running the Persistence Examples</a></h2>
+<h2 class="tocheader"><a href="persistence-querylanguage.htm#BNBTG"><span class="secnum">39</span> The Java Persistence Query Language</a></h2>
+<h2 class="tocheader"><a href="persistence-criteria.htm#GJITV"><span class="secnum">40</span> Using the Criteria API to Create Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-string-queries.htm#GKJIQ"><span class="secnum">41</span> Creating and Using String-Based Criteria Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-locking.htm#GKJJF"><span class="secnum">42</span> Controlling Concurrent Access to Entity Data with Locking</a></h2>
+<h2 class="tocheader"><a href="persistence-entitygraphs.htm#BABIJIAC"><span class="secnum">43</span> Creating Fetch Plans with Entity Graphs</a></h2>
+<h2 class="tocheader"><a href="persistence-cache.htm#GKJIA"><span class="secnum">44</span> Using a Second-Level Cache with Java Persistence API Applications</a></h2>
+<h2 class="tocheader"><a href="partmessaging.htm#GFIRP3">Part IX Messaging</a></h2>
+<h2 class="tocheader"><a href="jms-concepts.htm#BNCDQ"><span class="secnum">45</span> Java Message Service Concepts</a></h2>
+<ul style="list-style-type:none">
+<li><a href="jms-concepts001.htm#BNCDR"><span class="secnum">45.1</span> Overview of the JMS API</a>
+<ul style="list-style-type:none">
+<li><a href="jms-concepts001.htm#BNCDS"><span class="secnum">45.1.1</span> What Is Messaging?</a></li>
+<li><a href="jms-concepts001.htm#BNCDT"><span class="secnum">45.1.2</span> What Is the JMS API?</a></li>
+<li><a href="jms-concepts001.htm#BNCDU"><span class="secnum">45.1.3</span> When Can You Use the JMS API?</a></li>
+<li><a href="jms-concepts001.htm#BNCDW"><span class="secnum">45.1.4</span> How Does the JMS API Work with the Java EE Platform?</a></li>
+</ul>
+</li>
+<li><a href="jms-concepts002.htm#BNCDX"><span class="secnum">45.2</span> Basic JMS API Concepts</a>
+<ul style="list-style-type:none">
+<li><a href="jms-concepts002.htm#BNCDY"><span class="secnum">45.2.1</span> JMS API Architecture</a></li>
+<li><a href="jms-concepts002.htm#BNCEA"><span class="secnum">45.2.2</span> Messaging Styles</a>
+<ul style="list-style-type:none">
+<li><a href="jms-concepts002.htm#BNCEB"><span class="secnum">45.2.2.1</span> Point-to-Point Messaging Style</a></li>
+<li><a href="jms-concepts002.htm#BNCED"><span class="secnum">45.2.2.2</span> Publish/Subscribe Messaging Style</a></li>
+</ul>
+</li>
+<li><a href="jms-concepts002.htm#BNCEG"><span class="secnum">45.2.3</span> Message Consumption</a></li>
+</ul>
+</li>
+<li><a href="jms-concepts003.htm#BNCEH"><span class="secnum">45.3</span> The JMS API Programming Model</a>
+<ul style="list-style-type:none">
+<li><a href="jms-concepts003.htm#BNCEJ"><span class="secnum">45.3.1</span> JMS Administered Objects</a>
+<ul style="list-style-type:none">
+<li><a href="jms-concepts003.htm#BNCEK"><span class="secnum">45.3.1.1</span> JMS Connection Factories</a></li>
+<li><a href="jms-concepts003.htm#BNCEL"><span class="secnum">45.3.1.2</span> JMS Destinations</a></li>
+</ul>
+</li>
+<li><a href="jms-concepts003.htm#BNCEM"><span class="secnum">45.3.2</span> Connections</a></li>
+<li><a href="jms-concepts003.htm#BNCEN"><span class="secnum">45.3.3</span> Sessions</a></li>
+<li><a href="jms-concepts003.htm#BABGDFEA"><span class="secnum">45.3.4</span> JMSContext Objects</a></li>
+<li><a href="jms-concepts003.htm#BNCEO"><span class="secnum">45.3.5</span> JMS Message Producers</a></li>
+<li><a href="jms-concepts003.htm#BNCEP"><span class="secnum">45.3.6</span> JMS Message Consumers</a>
+<ul style="list-style-type:none">
+<li><a href="jms-concepts003.htm#BNCEQ"><span class="secnum">45.3.6.1</span> JMS Message Listeners</a></li>
+<li><a href="jms-concepts003.htm#BNCER"><span class="secnum">45.3.6.2</span> JMS Message Selectors</a></li>
+<li><a href="jms-concepts003.htm#BABEEJJJ"><span class="secnum">45.3.6.3</span> Consuming Messages from Topics</a></li>
+<li><a href="jms-concepts003.htm#BNCGD"><span class="secnum">45.3.6.4</span> Creating Durable Subscriptions</a></li>
+<li><a href="jms-concepts003.htm#BABJCIGJ"><span class="secnum">45.3.6.5</span> Creating Shared Subscriptions</a></li>
+</ul>
+</li>
+<li><a href="jms-concepts003.htm#BNCES"><span class="secnum">45.3.7</span> JMS Messages</a>
+<ul style="list-style-type:none">
+<li><a href="jms-concepts003.htm#BNCET"><span class="secnum">45.3.7.1</span> Message Headers</a></li>
+<li><a href="jms-concepts003.htm#BNCEV"><span class="secnum">45.3.7.2</span> Message Properties</a></li>
+<li><a href="jms-concepts003.htm#BNCEW"><span class="secnum">45.3.7.3</span> Message Bodies</a></li>
+</ul>
+</li>
+<li><a href="jms-concepts003.htm#BNCEY"><span class="secnum">45.3.8</span> JMS Queue Browsers</a></li>
+<li><a href="jms-concepts003.htm#BNCEZ"><span class="secnum">45.3.9</span> JMS Exception Handling</a></li>
+</ul>
+</li>
+<li><a href="jms-concepts004.htm#BNCFU"><span class="secnum">45.4</span> Using Advanced JMS Features</a>
+<ul style="list-style-type:none">
+<li><a href="jms-concepts004.htm#BNCFW"><span class="secnum">45.4.1</span> Controlling Message Acknowledgment</a></li>
+<li><a href="jms-concepts004.htm#BNCFV"><span class="secnum">45.4.2</span> Specifying Options for Sending Messages</a>
+<ul style="list-style-type:none">
+<li><a href="jms-concepts004.htm#BNCFY"><span class="secnum">45.4.2.1</span> Specifying Message Persistence</a></li>
+<li><a href="jms-concepts004.htm#BNCFZ"><span class="secnum">45.4.2.2</span> Setting Message Priority Levels</a></li>
+<li><a href="jms-concepts004.htm#BNCGA"><span class="secnum">45.4.2.3</span> Allowing Messages to Expire</a></li>
+<li><a href="jms-concepts004.htm#BABGEADH"><span class="secnum">45.4.2.4</span> Specifying a Delivery Delay</a></li>
+<li><a href="jms-concepts004.htm#BABJFIAD"><span class="secnum">45.4.2.5</span> Using JMSProducer Method Chaining</a></li>
+</ul>
+</li>
+<li><a href="jms-concepts004.htm#BNCGB"><span class="secnum">45.4.3</span> Creating Temporary Destinations</a></li>
+<li><a href="jms-concepts004.htm#BNCGH"><span class="secnum">45.4.4</span> Using JMS Local Transactions</a></li>
+<li><a href="jms-concepts004.htm#BABFIFAJ"><span class="secnum">45.4.5</span> Sending Messages Asynchronously</a></li>
+</ul>
+</li>
+<li><div id="backgroundColor"><a href="jms-concepts005.htm#BNCGL"><span class="secnum">45.5</span> Using the JMS API in Java EE Applications</a><ul style="list-style-type:none">
+<li><a href="jms-concepts005.htm#BABHFBDH"><span class="secnum">45.5.1</span> Creating Resources for Java EE Applications</a></li>
+<li><a href="jms-concepts005.htm#BNCGM"><span class="secnum">45.5.2</span> Using Resource Injection in Enterprise Bean or Web Components</a>
+<ul style="list-style-type:none">
+<li><a href="jms-concepts005.htm#sthref2356"><span class="secnum">45.5.2.1</span> Injecting a ConnectionFactory, Queue, or Topic</a></li>
+<li><a href="jms-concepts005.htm#BABCJBEE"><span class="secnum">45.5.2.2</span> Injecting a JMSContext Object</a></li>
+</ul>
+</li>
+<li><a href="jms-concepts005.htm#BNCGN"><span class="secnum">45.5.3</span> Using Java EE Components to Produce and to Synchronously Receive Messages</a>
+<ul style="list-style-type:none">
+<li><a href="jms-concepts005.htm#BNCGO"><span class="secnum">45.5.3.1</span> Managing JMS Resources in Web and EJB Components</a></li>
+<li><a href="jms-concepts005.htm#BNCGP"><span class="secnum">45.5.3.2</span> Managing Transactions in Session Beans</a></li>
+</ul>
+</li>
+<li><a href="jms-concepts005.htm#BNCGQ"><span class="secnum">45.5.4</span> Using Message-Driven Beans to Receive Messages Asynchronously</a></li>
+<li><a href="jms-concepts005.htm#BNCGS"><span class="secnum">45.5.5</span> Managing JTA Transactions</a></li>
+</ul>
+</div></li>
+<li><a href="jms-concepts006.htm#BNCGU"><span class="secnum">45.6</span> Further Information about JMS</a></li>
+</ul>
+<h2 class="tocheader"><a href="jms-examples.htm#BNCGV"><span class="secnum">46</span> Java Message Service Examples</a></h2>
+<h2 class="tocheader"><a href="partsecurity.htm#GIJRP">Part X Security</a></h2>
+<h2 class="tocheader"><a href="security-intro.htm#BNBWJ"><span class="secnum">47</span> Introduction to Security in the Java EE Platform</a></h2>
+<h2 class="tocheader"><a href="security-webtier.htm#BNCAS"><span class="secnum">48</span> Getting Started Securing Web Applications</a></h2>
+<h2 class="tocheader"><a href="security-javaee.htm#BNBYK"><span class="secnum">49</span> Getting Started Securing Enterprise Applications</a></h2>
+<h2 class="tocheader"><a href="security-advanced.htm#GJJWX"><span class="secnum">50</span> Java EE Security: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partsupporttechs.htm#GIJUE">Part XI Java EE Supporting Technologies</a></h2>
+<h2 class="tocheader"><a href="transactions.htm#BNCIH"><span class="secnum">51</span> Transactions</a></h2>
+<h2 class="tocheader"><a href="resources.htm#BNCJH"><span class="secnum">52</span> Resource Adapters and Contracts</a></h2>
+<h2 class="tocheader"><a href="connectorexample.htm#GLODB"><span class="secnum">53</span> The Resource Adapter Examples</a></h2>
+<h2 class="tocheader"><a href="interceptors.htm#GKEED"><span class="secnum">54</span> Using Java EE Interceptors</a></h2>
+<h2 class="tocheader"><a href="batch-processing.htm#GKJIQ6"><span class="secnum">55</span> Batch Processing</a></h2>
+<h2 class="tocheader"><a href="concurrency-utilities.htm#GKJIQ8"><span class="secnum">56</span> Concurrency Utilities for Java EE</a></h2>
+<h2 class="tocheader"><a href="partcasestudies.htm#GKGJW">Part XII Case Studies</a></h2>
+<h2 class="tocheader"><a href="dukes-bookstore.htm#GLNVI"><span class="secnum">57</span> Duke's Bookstore Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-tutoring.htm#GKAEE"><span class="secnum">58</span> Duke's Tutoring Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-forest.htm#GLNPW"><span class="secnum">59</span> Duke's Forest Case Study Example</a></h2>
+<h2 class="tocheader"><a href="index.htm">Index</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>The Java EE 7 Tutorial  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="jms-concepts004.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="jms-concepts006.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="BNCGL" name="BNCGL"></a><a id="JEETT00552" name="JEETT00552"></a>
+<div class="sect1">
+<h1 class="sect1"><span class="secnum">45.5</span> <a id="sthref2355" name="sthref2355"></a>Using the JMS API in Java EE Applications</h1>
+<p>This section describes how using the JMS API in enterprise bean applications or web applications differs from using it in application clients.</p>
+<p>A general rule in the Java EE platform specification applies to all Java EE components that use the JMS API within EJB or web containers: Application components in the web and EJB containers must not attempt to create more than one active (not closed) <code>Session</code> object per connection. Multiple <code>JMSContext</code> objects are permitted, however, since they combine a single connection and a single session.</p>
+<p>This rule does not apply to application clients. The application client container supports the creation of multiple sessions for each connection.</p>
+<a id="BABHFBDH" name="BABHFBDH"></a>
+<div class="sect2"><!-- infolevel="all" infotype="General" -->
+<h2 class="sect2"><span class="secnum">45.5.1</span> Creating Resources for Java EE Applications</h2>
+<p>You can use annotations to create application-specific connection factories and destinations for Java EE enterprise bean or web components. The resources you create in this way are visible only to the application for which you create them.</p>
+<p>You can also use deployment descriptor elements to create these resources. Elements specified in the deployment descriptor override elements specified in annotations. See <a href="packaging001.htm#BCGDJDFB">Packaging Applications</a> for basic information about deployment descriptors. You must use a deployment descriptor to create application-specific resources for application clients.</p>
+<p>To create a destination, use a <code>@JMSDestinationDefinition</code> annotation like the following on a class:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@JMSDestinationDefinition(
+    name = "java:app/jms/myappTopic",
+    interfaceName = "javax.jms.Topic",
+    destinationName = "MyPhysicalAppTopic"
+  )
+</pre>
+<p>The <code>name</code>, <code>interfaceName</code>, and <code>destinationName</code> elements are required. You can optionally specify a <code>description</code> element. To create multiple destinations, enclose them in a <code>@JMSDestinationDefinitions</code> annotation, separated by commas.</p>
+<p>To create a connection factory, use a <code>@JMSConnectionFactoryDefinition</code> annotation like the following on a class:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@JMSConnectionFactoryDefinition(
+    name="java:app/jms/MyConnectionFactory"
+)
+</pre>
+<p>The <code>name</code> element is required. You can optionally specify a number of other elements, such as <code>clientId</code> if you want to use the connection factory for durable subscriptions, or <code>description</code>. If you do not specify the <code>interfaceName</code> element, the default interface is <code>javax.jms.ConnectionFactory</code>. To create multiple connection factories, enclose them in a <code>@JMSConnectionFactoryDefinitions</code> annotation, separated by commas.</p>
+<p>You need to specify the annotation only once for a given application, in any of the components.</p>
+<div align="center">
+<div class="inftblnote"><br />
+<table class="Note oac_no_warn" summary="" border="1" width="80%" frame="hsides" rules="groups" cellpadding="3" cellspacing="0">
+<tbody>
+<tr>
+<td align="left">
+<p class="notep1">Note:</p>
+<p>If your application contains one or more message-driven beans, you may want to place the annotation on one of the message-driven beans. If you place the annotation on a sending component such as an application client, you need to specify the <code>mappedName</code> element to look up the topic, instead of using the <code>destinationLookup</code> property of the activation configuration specification.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="inftblnote" --></div>
+<p>When you inject the resource into a component, use the value of the <code>name</code> element in the definition annotation as the value of the <code>lookup</code> element in the <code>@Resource</code> annotation:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Resource(lookup = "java:app/jms/myappTopic")
+private Topic topic;
+</pre>
+<p>The following portable JNDI namespaces are available. Which ones you can use depends on how your application is packaged.</p>
+<ul>
+<li>
+<p><code>java:global</code>: Makes the resource available to all deployed applications</p>
+</li>
+<li>
+<p><code>java:app</code>: Makes the resource available to all components in all modules in a single application</p>
+</li>
+<li>
+<p><code>java:module</code>: Makes the resource available to all components within a given module (for example, all enterprise beans within an EJB module)</p>
+</li>
+<li>
+<p><code>java:comp</code>: Makes the resource available to a single component only (except in a web application, where it is equivalent to <code>java:module</code>)</p>
+</li>
+</ul>
+<p>See the API documentation for details on these annotations. The examples in <a href="jms-examples005.htm#BABBABFC">Sending and Receiving Messages Using a Simple Web Application</a>, <a href="jms-examples007.htm#BNCGW">Sending Messages from a Session Bean to an MDB</a>, and <a href="jms-examples008.htm#BNCHF">Using an Entity to Join Messages from Two MDBs</a> all use the <code>@JMSDestinationDefinition</code> annotation. The other JMS examples do not use these annotations. The examples that consist only of application clients are not deployed in the application server and must therefore communicate with each other using administratively created resources that exist outside of individual applications.</p>
+</div>
+<!-- class="sect2" -->
+<a id="BNCGM" name="BNCGM"></a><a id="JEETT01286" name="JEETT01286"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">45.5.2</span> Using Resource Injection in Enterprise Bean or Web Components</h2>
+<p>You may use resource injection to inject both administered objects and <code>JMSContext</code> objects in Java EE applications.</p>
+<div class="sect3"><!-- infolevel="all" infotype="General" --><a id="sthref2356" name="sthref2356"></a>
+<h3 class="sect3"><span class="secnum">45.5.2.1</span> Injecting a ConnectionFactory, Queue, or Topic</h3>
+<p>Normally, you use the <code>@Resource</code> annotation to inject a <code>ConnectionFactory</code>, <code>Queue</code>, or <code>Topic</code> into your Java EE application. These objects must be created administratively before you deploy your application. You may want to use the default connection factory, whose JNDI name is <code>java:comp/DefaultJMSConnectionFactory</code>.</p>
+<p>When you use resource injection in an application client component, you normally declare the JMS resource static:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Resource(lookup = "java:comp/DefaultJMSConnectionFactory")
+private static ConnectionFactory connectionFactory;
+
+@Resource(lookup = "jms/MyQueue")
+private static Queue queue;
+</pre>
+<p>However, when you use this annotation in a session bean, a message-driven bean, or a web component, do <span class="italic">not</span> declare the resource static:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Resource(lookup = "java:comp/DefaultJMSConnectionFactory")
+private ConnectionFactory connectionFactory;
+
+@Resource(lookup = "jms/MyTopic")
+private Topic topic;
+</pre>
+<p>If you declare the resource static in these components, runtime errors will result.</p>
+</div>
+<!-- class="sect3" -->
+<a id="BABCJBEE" name="BABCJBEE"></a>
+<div class="sect3"><!-- infolevel="all" infotype="General" -->
+<h3 class="sect3"><span class="secnum">45.5.2.2</span> Injecting a JMSContext Object</h3>
+<p>To access a <code>JMSContext</code> object in an enterprise bean or web component, instead of injecting the <code>ConnectionFactory</code> resource and then creating a <code>JMSContext</code>, you can use the <code>@Inject</code> and <code>@JMSConnectionFactory</code> annotations to inject a <code>JMSContext</code>. To use the default connection factory, use code like the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Inject
+private JMSContext context1;
+</pre>
+<p>To use your own connection factory, use code like the following:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@Inject
+@JMSConnectionFactory("jms/MyConnectionFactory")
+private JMSContext context2;
+</pre></div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BNCGN" name="BNCGN"></a><a id="JEETT01287" name="JEETT01287"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">45.5.3</span> <a id="sthref2357" name="sthref2357"></a><a id="sthref2358" name="sthref2358"></a>Using Java EE Components to Produce and to Synchronously Receive Messages</h2>
+<p>An application that produces messages or synchronously receives them can use a Java EE web or EJB component, such as a managed bean, a servlet, or a session bean, to perform these operations. The example in <a href="jms-examples007.htm#BNCGW">Sending Messages from a Session Bean to an MDB</a> uses a stateless session bean to send messages to a topic. The example in <a href="jms-examples005.htm#BABBABFC">Sending and Receiving Messages Using a Simple Web Application</a> uses managed beans to produce and to consume messages.</p>
+<p>Because a synchronous receive with no specified timeout ties up server resources, this mechanism usually is not the best application design for a web or EJB component. Instead, use a synchronous receive that specifies a timeout value, or use a message-driven bean to receive messages asynchronously. For details about synchronous receives, see <a href="jms-concepts003.htm#BNCEP">JMS Message Consumers</a>.</p>
+<p>Using the JMS API in a Java EE component is in many ways similar to using it in an application client. The main differences are the areas of resource management and transactions.</p>
+<a id="BNCGO" name="BNCGO"></a><a id="JEETT00820" name="JEETT00820"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">45.5.3.1</span> <a id="sthref2359" name="sthref2359"></a><a id="sthref2360" name="sthref2360"></a><a id="sthref2361" name="sthref2361"></a>Managing JMS Resources in Web and EJB Components</h3>
+<p>The JMS resources are a connection and a session, usually combined in a <code>JMSContext</code> object. In general, it is important to release JMS resources when they are no longer being used. Here are some useful practices to follow.</p>
+<ul>
+<li>
+<p>If you wish to maintain a JMS resource only for the life span of a business method, use a <code>try</code>-with-resources statement to create the <code>JMSContext</code> so that it will be closed automatically at the end of the <code>try</code> block.</p>
+</li>
+<li>
+<p>To maintain a JMS resource for the duration of a transaction or request, inject the <code>JMSContext</code> as described in <a href="#BABCJBEE">Injecting a JMSContext Object</a>. This will also cause the resource to be released when it is no longer needed.</p>
+</li>
+<li>
+<p>If you would like to maintain a JMS resource for the life span of an enterprise bean instance, you can use a <code>@PostConstruct</code> callback method to create the resource and a <code>@PreDestroy</code> callback method to close the resource. However, there is normally no need to do this, since application servers usually maintain a pool of connections. If you use a stateful session bean and you wish to maintain the JMS resource in a cached state, you must close the resource in a <code>@PrePassivate</code> callback method and set its value to <code>null</code>, and you must create it again in a <code>@PostActivate</code> callback method.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect3" -->
+<a id="BNCGP" name="BNCGP"></a><a id="JEETT00821" name="JEETT00821"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">45.5.3.2</span> <a id="sthref2362" name="sthref2362"></a>Managing Transactions in Session Beans</h3>
+<p>Instead of using local transactions, you use JTA transactions. You can use either container-managed transactions or bean-managed transactions. Normally, you use container-managed transactions for bean methods that perform sends or receives, allowing the EJB container to handle transaction demarcation. Because container-managed transactions are the default, you do not have to specify them.</p>
+<p>You can use bean-managed transactions and the <code>javax.transaction.UserTransaction</code> interface's transaction demarcation methods, but you should do so only if your application has special requirements and you are an expert in using transactions. Usually, container-managed transactions produce the most efficient and correct behavior. This tutorial does not provide any examples of bean-managed transactions.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BNCGQ" name="BNCGQ"></a><a id="JEETT01288" name="JEETT01288"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">45.5.4</span> <a id="sthref2363" name="sthref2363"></a><a id="sthref2364" name="sthref2364"></a>Using Message-Driven Beans to Receive Messages Asynchronously</h2>
+<p>The sections <a href="ejb-intro003.htm#GIPKO">What Is a Message-Driven Bean?</a> and <a href="jms-concepts001.htm#BNCDW">How Does the JMS API Work with the Java EE Platform?</a> describe how the Java EE platform supports a special kind of enterprise bean, the message-driven bean, which allows Java EE applications to process JMS messages asynchronously. Other Java EE web and EJB components allow you to send messages and to receive them synchronously but not asynchronously.</p>
+<p>A message-driven bean is a message listener to which messages can be delivered from either a queue or a topic. The messages can be sent by any Java EE component (from an application client, another enterprise bean, or a web component) or from an application or a system that does not use Java EE technology.</p>
+<p>A message-driven bean class has the following requirements.</p>
+<ul>
+<li>
+<p>It must be annotated with the <code>@MessageDriven</code> annotation if it does not use a deployment descriptor.</p>
+</li>
+<li>
+<p>The class must be defined as <code>public</code>, but not as <code>abstract</code> or <code>final</code>.</p>
+</li>
+<li>
+<p>It must contain a public constructor with no arguments.</p>
+</li>
+</ul>
+<p>It is recommended, but not required, that a message-driven bean class implement the message listener interface for the message type it supports. A bean that supports the JMS API implements the <code>javax.jms.MessageListener</code> interface, which means that it must provide an <code>onMessage</code> method with the following signature:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+void onMessage(Message inMessage)
+</pre>
+<p><a id="sthref2365" name="sthref2365"></a>The <code>onMessage</code> method is called by the bean's container when a message has arrived for the bean to service. This method contains the business logic that handles the processing of the message. It is the message-driven bean's responsibility to parse the message and perform the necessary business logic.</p>
+<p>A message-driven bean differs from an application client's message listener in the following ways.</p>
+<ul>
+<li>
+<p>In an application client, you must create a <code>JMSContext</code>, then create a <code>JMSConsumer</code>, then call <code>setMessageListener</code> to activate the listener. For a message-driven bean, you need only define the class and annotate it, and the EJB container creates it for you.</p>
+</li>
+<li>
+<p>The bean class uses the <code>@MessageDriven</code> annotation, which typically contains an <code>activationConfig</code> element containing <code>@ActivationConfigProperty</code> annotations that specify properties used by the bean or the connection factory. These properties can include the connection factory, a destination type, a durable subscription, a message selector, or an acknowledgment mode. Some of the examples in <a href="jms-examples.htm#BNCGV">Chapter 46, "Java Message Service Examples"</a> set these properties. You can also set the properties in the deployment descriptor.</p>
+</li>
+<li>
+<p>The application client container has only one instance of a <code>MessageListener</code>, which is called on a single thread at a time. A message-driven bean, however, may have multiple instances, configured by the container, which may be called concurrently by multiple threads (although each instance is called by only one thread at a time). Message-driven beans may therefore allow much faster processing of messages than message listeners.</p>
+</li>
+<li>
+<p>You do not need to specify a message acknowledgment mode unless you use bean-managed transactions. The message is consumed in the transaction in which the <code>onMessage</code> method is invoked.</p>
+</li>
+</ul>
+<p><a href="#GJKOH">Table 45-3</a> lists the activation configuration properties defined by the JMS specification.</p>
+<div class="tblhruleformal"><a id="sthref2366" name="sthref2366"></a><a id="GJKOH" name="GJKOH"></a>
+<p class="titleintable">Table 45-3 @ActivationConfigProperty Settings for Message-Driven Beans</p>
+<table class="HRuleFormal" title="@ActivationConfigProperty Settings for Message-Driven Beans" summary="This table lists and describes the common ActivationConfigProperty settings for message-driven beans." dir="ltr" border="1" width="100%" frame="hsides" rules="rows" cellpadding="3" cellspacing="0">
+<col width="33%" />
+<col width="*" />
+<thead>
+<tr align="left" valign="top">
+<th align="left" valign="bottom" id="r1c1-t7">Property Name</th>
+<th align="left" valign="bottom" id="r1c2-t7">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr align="left" valign="top">
+<td align="left" id="r2c1-t7" headers="r1c1-t7">
+<p><code>acknowledgeMode</code></p>
+</td>
+<td align="left" headers="r2c1-t7 r1c2-t7">
+<p>Acknowledgment mode, used only for bean-managed transactions; the default is <code>Auto-acknowledge</code> (<code>Dups-ok-acknowledge</code> is also permitted)</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r3c1-t7" headers="r1c1-t7">
+<p><code>destinationLookup</code></p>
+</td>
+<td align="left" headers="r3c1-t7 r1c2-t7">
+<p>The lookup name of the queue or topic from which the bean will receive messages</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r4c1-t7" headers="r1c1-t7">
+<p><code>destinationType</code></p>
+</td>
+<td align="left" headers="r4c1-t7 r1c2-t7">
+<p>Either <code>javax.jms.Queue</code> or <code>javax.jms.Topic</code></p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r5c1-t7" headers="r1c1-t7">
+<p><code>subscriptionDurability</code></p>
+</td>
+<td align="left" headers="r5c1-t7 r1c2-t7">
+<p>For durable subscriptions, set the value to <code>Durable</code>; see <a href="jms-concepts003.htm#BNCGD">Creating Durable Subscriptions</a> for more information</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r6c1-t7" headers="r1c1-t7">
+<p><code>clientId</code></p>
+</td>
+<td align="left" headers="r6c1-t7 r1c2-t7">
+<p>For durable subscriptions, the client ID for the connection (optional)</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r7c1-t7" headers="r1c1-t7">
+<p><code>subscriptionName</code></p>
+</td>
+<td align="left" headers="r7c1-t7 r1c2-t7">
+<p>For durable subscriptions, the name of the subscription</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r8c1-t7" headers="r1c1-t7">
+<p><code>messageSelector</code></p>
+</td>
+<td align="left" headers="r8c1-t7 r1c2-t7">
+<p>A string that filters messages; see <a href="jms-concepts003.htm#BNCER">JMS Message Selectors</a> for information</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td align="left" id="r9c1-t7" headers="r1c1-t7">
+<p><code>connectionFactoryLookup</code></p>
+</td>
+<td align="left" headers="r9c1-t7 r1c2-t7">
+<p>The lookup name of the connection factory to be used to connect to the JMS provider from which the bean will receive messages</p>
+</td>
+</tr>
+</tbody>
+</table>
+<br /></div>
+<!-- class="tblhruleformal" -->
+<p>For example, here is the message-driven bean used in <a href="jms-examples006.htm#BNBPK">Receiving Messages Asynchronously Using a Message-Driven Bean</a>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@MessageDriven(activationConfig = {
+    @ActivationConfigProperty(propertyName = "destinationLookup",
+            propertyValue = "jms/MyQueue"),
+    @ActivationConfigProperty(propertyName = "destinationType",
+            propertyValue = "javax.jms.Queue")
+})
+public class SimpleMessageBean implements MessageListener {
+
+    @Resource
+    private MessageDrivenContext mdc;
+    static final Logger logger = Logger.getLogger("SimpleMessageBean");
+
+    public SimpleMessageBean() {
+    }
+
+    @Override
+    public void onMessage(Message inMessage) {
+
+        try {
+            if (inMessage instanceof TextMessage) {
+                logger.log(Level.INFO,
+                        "MESSAGE BEAN: Message received: {0}",
+                        inMessage.getBody(String.class));
+            } else {
+                logger.log(Level.WARNING,
+                        "Message of wrong type: {0}",
+                        inMessage.getClass().getName());
+            }
+        } catch (JMSException e) {
+            logger.log(Level.SEVERE,
+                    "SimpleMessageBean.onMessage: JMSException: {0}",
+                    e.toString());
+            mdc.setRollbackOnly();
+        }
+    }
+}
+</pre>
+<p>If JMS is integrated with the application server using a resource adapter, the JMS resource adapter handles these tasks for the EJB container.</p>
+<p>The bean class commonly injects a <code>MessageDrivenContext</code> resource, which provides some additional methods you can use for transaction management (<code>setRollbackOnly</code>, for example):</p>
+<pre xml:space="preserve" class="oac_no_warn">
+    @Resource
+    private MessageDrivenContext mdc;
+</pre>
+<p>A message-driven bean never has a local or remote interface. Instead, it has only a bean class.</p>
+<p>A message-driven bean is similar in some ways to a stateless session bean: Its instances are relatively short-lived and retain no state for a specific client. The instance variables of the message-driven bean instance can contain some state across the handling of client messages: for example, an open database connection, or an object reference to an enterprise bean object.</p>
+<p>Like a stateless session bean, a message-driven bean can have many interchangeable instances running at the same time. The container can pool these instances to allow streams of messages to be processed concurrently. The container attempts to deliver messages in chronological order when that would not impair the concurrency of message processing, but no guarantees are made as to the exact order in which messages are delivered to the instances of the message-driven bean class. If message order is essential to your application, you may want to configure your application server to use just one instance of the message-driven bean.</p>
+<p>For details on the lifecycle of a message-driven bean, see <a href="ejb-intro007.htm#GIPKW">The Lifecycle of a Message-Driven Bean</a>.</p>
+</div>
+<!-- class="sect2" -->
+<a id="BNCGS" name="BNCGS"></a><a id="JEETT01289" name="JEETT01289"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">45.5.5</span> <a id="sthref2367" name="sthref2367"></a>Managing JTA Transactions</h2>
+<p>Java EE application clients and Java SE clients use JMS local transactions (described in <a href="jms-concepts004.htm#BNCGH">Using JMS Local Transactions</a>), which allow the grouping of sends and receives within a specific JMS session. Java EE applications that run in the web or EJB container commonly use JTA transactions to ensure the integrity of accesses to external resources. The key difference between a JTA transaction and a JMS local transaction is that a JTA transaction is controlled by the application server's transaction managers. JTA transactions may be <span class="glossaryterm">distributed</span>, which means that they can encompass multiple resources in the same transaction, such as a JMS provider and a database.</p>
+<p>For example, distributed transactions allow multiple applications to perform atomic updates on the same database, and they allow a single application to perform atomic updates on multiple databases.</p>
+<p>In a Java EE application that uses the JMS API, you can use transactions to combine message sends or receives with database updates and other resource manager operations. You can access resources from multiple application components within a single transaction. For example, a servlet can start a transaction, access multiple databases, invoke an enterprise bean that sends a JMS message, invoke another enterprise bean that modifies an EIS system using the Connector Architecture, and finally commit the transaction. Your application cannot, however, both send a JMS message and receive a reply to it within the same transaction.</p>
+<p>JTA transactions within the EJB and web containers can be either of two kinds.</p>
+<ul>
+<li>
+<p><a id="sthref2368" name="sthref2368"></a><span class="bold">Container-managed transactions</span>: The container controls the integrity of your transactions without your having to call <code>commit</code> or <code>rollback</code>. Container-managed transactions are easier to use than bean-managed transactions. You can specify appropriate transaction attributes for your enterprise bean methods.</p>
+<p>Use the <code>Required</code> transaction attribute (the default) to ensure that a method is always part of a transaction. If a transaction is in progress when the method is called, the method will be part of that transaction; if not, a new transaction will be started before the method is called and will be committed when the method returns. See <a href="transactions003.htm#BNCIK">Transaction Attributes</a> for more information.</p>
+</li>
+<li>
+<p><a id="sthref2369" name="sthref2369"></a><a id="sthref2370" name="sthref2370"></a><span class="bold">Bean-managed transactions</span>: You can use these in conjunction with the <code>javax.transaction.UserTransaction</code> interface, which provides its own <code>commit</code> and <code>rollback</code> methods you can use to delimit transaction boundaries. Bean-managed transactions are recommended only for those who are experienced in programming transactions.</p>
+</li>
+</ul>
+<p>You can use either container-managed transactions or bean-managed transactions with message-driven beans. To ensure that all messages are received and handled within the context of a transaction, use container-managed transactions and use the <code>Required</code> transaction attribute (the default) for the <code>onMessage</code> method.</p>
+<p>When you use container-managed transactions, you can call the following <code>MessageDrivenContext</code> methods.</p>
+<ul>
+<li>
+<p><a id="sthref2371" name="sthref2371"></a><code>setRollbackOnly</code>: Use this method for error handling. If an exception occurs, <code>setRollbackOnly</code> marks the current transaction so that the only possible outcome of the transaction is a rollback.</p>
+</li>
+<li>
+<p><a id="sthref2372" name="sthref2372"></a><code>getRollbackOnly</code>: Use this method to test whether the current transaction has been marked for rollback.</p>
+</li>
+</ul>
+<p>If you use bean-managed transactions, the delivery of a message to the <code>onMessage</code> method takes place outside the JTA transaction context. The transaction begins when you call the <code>UserTransaction.begin</code> method within the <code>onMessage</code> method, and it ends when you call <code>UserTransaction.commit</code> or <code>UserTransaction.rollback</code>. Any call to the <code>Connection.createSession</code> method must take place within the transaction.</p>
+<p>Using bean-managed transactions allows you to process the message by using more than one transaction or to have some parts of the message processing take place outside a transaction context. However, if you use container-managed transactions, the message is received by the MDB and processed by the <code>onMessage</code> method within the same transaction. It is not possible to achieve this behavior with bean-managed transactions.</p>
+<p>When you create a <code>JMSContext</code> in a JTA transaction (in the web or EJB container), the container ignores any arguments you specify, because it manages all transactional properties. When you create a <code>JMSContext</code> in the web or EJB container and there is no JTA transaction, the value (if any) passed to the <code>createContext</code> method should be <code>JMSContext.AUTO_ACKNOWLEDGE</code> or <code>JMSContext.DUPS_OK_ACKNOWLEDGE</code>.</p>
+<p><a id="sthref2373" name="sthref2373"></a><a id="sthref2374" name="sthref2374"></a>When you use container-managed transactions, you normally use the <code>Required</code> transaction attribute (the default) for your enterprise bean's business methods.</p>
+<p>You do not specify the activation configuration property <code>acknowledgeMode</code> when you create a message-driven bean that uses container-managed transactions. The container acknowledges the message automatically when it commits the transaction.</p>
+<p><a id="sthref2375" name="sthref2375"></a>If a message-driven bean uses bean-managed transactions, the message receipt cannot be part of the bean-managed transaction. You can set the activation configuration property <code>acknowledgeMode</code> to <code>Auto-acknowledge</code> or <code>Dups-ok-acknowledge</code> to specify how you want the message received by the message-driven bean to be acknowledged.</p>
+<p>If the <code>onMessage</code> method throws a <code>RuntimeException</code>, the container does not acknowledge processing the message. In that case, the JMS provider will redeliver the unacknowledged message in the future.</p>
+</div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="jms-concepts004.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="jms-concepts006.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

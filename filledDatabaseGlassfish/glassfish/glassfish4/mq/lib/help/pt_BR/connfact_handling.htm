@@ -1,0 +1,76 @@
+<!--
+
+    DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+    Copyright (c) 2000-2010 Oracle and/or its affiliates. All rights reserved.
+
+    The contents of this file are subject to the terms of either the GNU
+    General Public License Version 2 only ("GPL") or the Common Development
+    and Distribution License("CDDL") (collectively, the "License").  You
+    may not use this file except in compliance with the License.  You can
+    obtain a copy of the License at
+    https://glassfish.dev.java.net/public/CDDL+GPL_1_1.html
+    or packager/legal/LICENSE.txt.  See the License for the specific
+    language governing permissions and limitations under the License.
+
+    When distributing the software, include this License Header Notice in each
+    file and include the License file at packager/legal/LICENSE.txt.
+
+    GPL Classpath Exception:
+    Oracle designates this particular file as subject to the "Classpath"
+    exception as provided by Oracle in the GPL Version 2 section of the License
+    file that accompanied this code.
+
+    Modifications:
+    If applicable, add the following below the License Header, with the fields
+    enclosed by brackets [] replaced by your own identifying information:
+    "Portions Copyright [year] [name of copyright owner]"
+
+    Contributor(s):
+    If you wish your version of this file to be governed by only the CDDL or
+    only the GPL Version 2, indicate your decision by adding "[Contributor]
+    elects to include this software in this distribution under the [CDDL or GPL
+    Version 2] license."  If you don't indicate a single choice of license, a
+    recipient has the option to distribute your version of this file under
+    either the CDDL, the GPL Version 2 or to extend the choice of license to
+    its licensees as provided above.  However, if you add GPL Version 2 code
+    and therefore, elected the GPL Version 2 license, then the option applies
+    only if the new code is made subject to such option by the copyright
+    holder.
+
+-->
+
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+ <TITLE>connfact handling</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>Propriedades de objeto de f&aacute;brica de conex&atilde;o &gt; <BR>Manipula&ccedil;&atilde;o de conex&otilde;es</H2>
+ 
+<P>Utilize a aba Manipula&ccedil;&atilde;o de conex&otilde;es para reconfigurar as conex&otilde;es que ser&atilde;o criadas por esta f&aacute;brica.</P>
+<p><b>Lista de endere&ccedil;os do servidor de mensagens</b> Especifica uma lista de endere&ccedil;os do servidor de mensagens (uma ou mais), separados por v&iacute;rgulas, cada um correspondente a uma inst&acirc;ncia diferente do broker &agrave; qual o tempo de execu&ccedil;&atilde;o do cliente pode se conectar. Cada endere&ccedil;o da lista especifica o nome do host, a porta do host e o servi&ccedil;o de conex&atilde;o da conex&atilde;o. <BR>Para obter mais informa&ccedil;&otilde;es sobre a Sintaxe de endere&ccedil;o do servidor de mensagens, <A HREF="message_server_syntax.htm">clique aqui</A><br>
+</p>
+<p><b>Ordem da lista de endere&ccedil;os</b> Especifica se as tentativas de conex&atilde;o s&atilde;o realizadas na ordem em que aparecem os endere&ccedil;os na lista de endere&ccedil;os do servidor de mensagens (PRIORIDADE) ou em uma ordem aleat&oacute;ria (ALEAT&Oacute;RIA). Se houver muitos clientes tentando se conectar utilizando a mesma f&aacute;brica de conex&otilde;es, a ordem aleat&oacute;ria deveria ser utilizada para impedi-los de conectarem-se ao mesmo endere&ccedil;o.<br>
+</p>
+<p><b>N&uacute;mero de itera&ccedil;&otilde;es da lista de endere&ccedil;os </b>Especifica o n&uacute;mero de vezes que o tempo de execu&ccedil;&atilde;o do cliente realizar&aacute; itera&ccedil;&otilde;es na lista de endere&ccedil;os do servidor de mensagens para tentar estabelecer ou restabelecer uma conex&atilde;o. Um valor de -1 indica que o n&uacute;mero de tentativas de reconex&atilde;o &eacute; ilimitado.</p>
+
+<p><b>Ativar reconhecimento autom&aacute;tico para servidor de mensagens</b> Um valor definido como verdadeiro especifica que o tempo de execu&ccedil;&atilde;o do cliente tentar&aacute; se reconectar a um servidor de mensagens (ou &agrave; lista de endere&ccedil;os em uma lista de servidores de mensagens) quando a conex&atilde;o for perdida.<br>
+</p>
+
+<p><b>N&uacute;mero de tentativas de reconex&atilde;o por endere&ccedil;o</b> Especifica o n&uacute;mero de tentativas de reconex&atilde;o que ser&aacute; realizado para cada endere&ccedil;o da lista de endere&ccedil;os do servidor de mensagens antes que o tempo de execu&ccedil;&atilde;o do cliente passe para o pr&oacute;ximo endere&ccedil;o da lista. Um valor de -1 indica que o n&uacute;mero de tentativas de reconex&atilde;o &eacute; ilimitado.<br>
+</p>
+
+<p><b>Intervalo de reconex&atilde;o por endere&ccedil;o (milissegundos)</b> Especifica o intervalo (em milissegundos) entre as tentativas de reconex&atilde;o para cada endere&ccedil;o da lista de endere&ccedil;os do servidor de mensagens antes que o tempo de execu&ccedil;&atilde;o do cliente passe para o pr&oacute;ximo endere&ccedil;o da lista. Se for muito curto, esse intervalo de tempo n&atilde;o dar&aacute; ao broker tempo para se recuperar. Se for muito longo, a reconex&atilde;o pode significar um atraso inaceit&aacute;vel.<br>
+</p>
+
+<p><b>Intervalo da conex&atilde;o com ping (em segundos)</b> Especifica o intervalo m&iacute;nimo (em segundos) no qual o tempo de execu&ccedil;&atilde;o do cliente verificar&aacute; periodicamente se a sua conex&atilde;o com o broker est&aacute; funcionando.<br>
+</p>
+
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

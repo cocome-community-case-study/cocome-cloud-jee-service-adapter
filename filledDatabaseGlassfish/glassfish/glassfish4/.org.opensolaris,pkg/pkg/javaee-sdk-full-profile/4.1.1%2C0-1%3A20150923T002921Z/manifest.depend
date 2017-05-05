@@ -1,0 +1,7 @@
+depend fmri=pkg:/glassfish-full-profile type=require
+depend fmri=pkg:/javaee-samples-full type=require
+depend fmri=pkg:/javaee-samples-web type=require
+depend fmri=pkg:/sdk-branding-full type=require
+depend fmri=pkg:/javaee-tutorial type=require
+depend fmri=pkg:/javaee-firstcup-tutorial type=require
+depend fmri=pkg:/javaee-javadocs type=require

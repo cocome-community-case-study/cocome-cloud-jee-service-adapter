@@ -1,0 +1,77 @@
+<!--
+
+    DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+    Copyright (c) 2000-2010 Oracle and/or its affiliates. All rights reserved.
+
+    The contents of this file are subject to the terms of either the GNU
+    General Public License Version 2 only ("GPL") or the Common Development
+    and Distribution License("CDDL") (collectively, the "License").  You
+    may not use this file except in compliance with the License.  You can
+    obtain a copy of the License at
+    https://glassfish.dev.java.net/public/CDDL+GPL_1_1.html
+    or packager/legal/LICENSE.txt.  See the License for the specific
+    language governing permissions and limitations under the License.
+
+    When distributing the software, include this License Header Notice in each
+    file and include the License file at packager/legal/LICENSE.txt.
+
+    GPL Classpath Exception:
+    Oracle designates this particular file as subject to the "Classpath"
+    exception as provided by Oracle in the GPL Version 2 section of the License
+    file that accompanied this code.
+
+    Modifications:
+    If applicable, add the following below the License Header, with the fields
+    enclosed by brackets [] replaced by your own identifying information:
+    "Portions Copyright [year] [name of copyright owner]"
+
+    Contributor(s):
+    If you wish your version of this file to be governed by only the CDDL or
+    only the GPL Version 2, indicate your decision by adding "[Contributor]
+    elects to include this software in this distribution under the [CDDL or GPL
+    Version 2] license."  If you don't indicate a single choice of license, a
+    recipient has the option to distribute your version of this file under
+    either the CDDL, the GPL Version 2 or to extend the choice of license to
+    its licensees as provided above.  However, if you add GPL Version 2 code
+    and therefore, elected the GPL Version 2 license, then the option applies
+    only if the new code is made subject to such option by the copyright
+    holder.
+
+-->
+
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+ <TITLE>object store properties</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ <H2>Propriedades do armazenamento de objeto</H2>
+ 
+<P>Utilize esta caixa de di&aacute;logo para adicionar, excluir ou atualizar as propriedades de um armazenamento de objetos que j&aacute; foi adicionado ao painel de navega&ccedil;&atilde;o do console de administra&ccedil;&atilde;o. Para editar os campos desta caixa de di&aacute;logo, &eacute; necess&aacute;rio desconectar o console de administra&ccedil;&atilde;o do armazenamento de objeto e exibir esta caixa de di&aacute;logo novamente.</P>
+
+<P><b>Propriedades do servi&ccedil;o de nomea&ccedil;&atilde;o JNDI</b>: Utilize os controles deste &aacute;rea para definir a lista de propriedades JNDI do armazenamento de objetos. Utilize a lista suspensa <b>Nome</b> para selecionar um nome de propriedade. Ap&oacute;s selecionar o nome da propriedade, utilize o campo <b>Valor</b> para inserir o valor da propriedade.</P>
+<P> Consulte <code>http://java.sun.com/products/jndi/1.2/javadoc/</code> para obter informa&ccedil;&otilde;es sobre a interface de programa&ccedil;&atilde;o de aplicativo JNDI. Voc&ecirc; &eacute; solicitado a definir as propriedades 
+  <code>java.naming.factory.initial e java.naming.provider.url</code> 
+  . </P>
+<p>A propriedade de contexto inicial (<code>java.naming.factory.initial</code>) pode ter dois valores:</p>
+<ul> 
+  <li> Armazenamento do sistema de arquivos: <code>com.sun.jndi.fscontext.RefFSContextFactory</code></li>
+  <li>Servidor LDAP: <code>com.sun.jndi.ldap.LdapCtxFactory</code></li>
+</ul>
+<p>Voc&ecirc; tamb&eacute;m &eacute; solicitado a especificar informa&ccedil;&otilde;es de autentica&ccedil;&atilde;o. No entanto, se estiver preocupado com a seguran&ccedil;a, espere at&eacute; ser solicitado a inserir estas informa&ccedil;&otilde;es no momento da conex&atilde;o.</p>
+<ul>
+  <li> Ap&oacute;s especificar o nome e o valor da propriedade, clique no bot&atilde;o <b>Adicionar</b> para adicionar a propriedade &agrave; tabela.</li>
+  <li> Para excluir uma propriedade existente, selecione a propriedade na tabela e clique no bot&atilde;o <b>Excluir</b> para excluir tal propriedade. </li>
+  <li>Utilize o bot&atilde;o <b>Limpar</b> para limpar todas as entradas. </li>
+  <li>Selecione uma entrada, altere seu valor e utilize o bot&atilde;o <b>Alterar</b> para reconfigurar tal propriedade. </li>
+  <li>Utilize o bot&atilde;o <b>OK</b> para enviar todas as configura&ccedil;&otilde;es da propriedade. </li>
+</ul>
+
+<p>Para se reconectar ao armazenamento de objeto depois de reconfigur&aacute;-lo: selecione o armazenamento de objeto no painel de navega&ccedil;&atilde;o e escolha <b>A&ccedil;&otilde;es &gt; Conectar ao armazenamento de objeto</b>. </p>
+
+<P>&nbsp;</P>
+</BODY>
+</HTML>

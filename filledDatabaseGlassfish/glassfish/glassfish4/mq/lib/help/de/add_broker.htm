@@ -1,0 +1,56 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<html>
+<head>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+ <title>Broker hinzuf&uuml;gen</title>
+ <link rel="StyleSheet" href="ide.css">
+</head>
+<body>
+ <h2>Broker hinzuf&uuml;gen</h2>
+ 
+<p>Mit Hilfe dieses Dialogfelds k&ouml;nnen Sie im Navigationsbereich der Administrationskonsole die Darstellung eines Brokers erstellen. Der Broker muss dazu nicht gestartet werden. Dieser muss erst gestartet werden, wenn Sie eine Verbindung zu ihm herstellen m&ouml;chten.</p>
+
+<p><b>Broker-Beschriftung</b>: Gibt den Namen an, unter dem dieser Broker im Navigationsbereich der Administrationskonsole angezeigt werden soll. Dieser Name muss nicht mit dem Instanznamen des Brokers identisch sein.</p>
+
+<p><b>Host</b>: Gibt den Namen des Computers an, auf dem dieser Broker gehostet ist, oder beh&auml;lt den Standardwert <code>localhost</code> bei.</p>
+
+<p><b>Prim&auml;rer Anschluss</b>: Gibt die Nummer des Anschlusses an, der dem Portmapper zugewiesen ist. Die Standardnummer lautet 7676. Anhand der Kombination aus Hostnamen und Nummer des prim&auml;ren Anschlusses kann der Broker eindeutig identifiziert werden. Wenn auf ein und demselben Server zwei Instanzen eines Brokers ausgef&uuml;hrt werden sollen, m&uuml;ssen die Portmapper der Broker unterschiedliche Anschlussnummern haben.</p>
+
+<p><b>Benutzername</b>: Gibt Ihren Benutzernamen an. Das Standard-Benutzerpasswort f&uuml;r den Administrator lautet <code>admin</code>. Diese Angabe wird verwendet, um Sie beim Verbindungsaufbau mit dem Broker zu authentifizieren. Die Eingabe Ihres Passworts in dieses Dialogfeld ist nicht sicher. Wenn Sicherheit ein Thema f&uuml;r Sie ist, sollten Sie mit der Eingabe dieser Information warten, bis Sie beim Verbindungsaufbau dazu aufgefordert werden.</p>
+
+<p><b>Passwort</b>: Gibt Ihr Benutzerpasswort an. Das Standard-Benutzerpasswort f&uuml;r den Administrator lautet <code>admin</code>. Diese Angabe wird verwendet, um Sie beim Verbindungsaufbau mit dem Broker zu authentifizieren. Die Eingabe Ihres Passworts in dieses Dialogfeld ist nicht sicher. Wenn Sicherheit ein Thema f&uuml;r Sie ist, sollten Sie mit der Eingabe dieser Information warten, bis Sie beim Verbindungsaufbau dazu aufgefordert werden.</p>
+
+<ul>
+<li>Klicken Sie auf <b>OK</b>, um alle eingegebenen Informationen zu best&auml;tigen und den Broker hinzuzuf&uuml;gen.
+</ul>
+<p>So stellen Sie eine Verbindung zu dem von Ihnen hinzugef&uuml;gten Broker her:</p>
+
+<ol>
+  <li>W&auml;hlen Sie im Navigationsbereich der Administrationskonsole den Broker aus.</li>
+  <li>W&auml;hlen Sie den Befehl <b>Aktionen &gt; Mit Broker verbinden</b>.</li>
+</ol>
+
+<p>So k&ouml;nnen Sie eine Abfrage an einen laufenden Broker senden und/oder ihn aktualisieren:</p>
+
+<ol>
+  <li>W&auml;hlen Sie im Navigationsbereich der Administrationskonsole den Broker aus.</li>
+  <li>Stellen Sie, falls noch nicht geschehen, eine Verbindung zum Broker her.
+  <li>W&auml;hlen Sie <b>Aktionen &gt; Broker-Abfrage/Aktualisierung</b>.</li>
+</ol>
+
+<p>Wenn Sie die Informationen f&uuml;r einen bestimmten Broker, die Sie in diesem Dialogfeld eingegeben haben, &auml;ndern m&ouml;chten, gehen Sie wie folgt vor: </p>
+
+<ol>
+  <li>W&auml;hlen Sie im Navigationsbereich den Broker aus.</li>
+  <li>Trennen Sie die Verbindung zum Broker, falls Sie noch verbunden sind. Wenn die Verbindung zu einem Broker getrennt ist, sieht dessen Symbol im Navigationsbereich wie folgt aus: <img src="../images/BrokerX16X.gif" alt="mit einem x durchgestrichenes Broker-Symbol"><br> Die Verbindung zum Broker k&ouml;nnen Sie mit dem Befehl <b>Aktionen &gt; Verbindung mit Broker trennen</b> trennen.</li>
+  <li>W&auml;hlen Sie den Befehl <b>Aktionen &gt; Eigenschaften</b>, um das Dialogfeld <b>Broker-Eigenschaften</b> zu &ouml;ffnen.</li>
+</ol>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

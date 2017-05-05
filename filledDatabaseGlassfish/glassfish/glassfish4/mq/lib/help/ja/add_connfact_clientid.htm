@@ -1,0 +1,27 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=EUC-JP">
+<TITLE>コネクションファクトリの追加 (クライアント ID)</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>コネクションファクトリオブジェクトを追加→<BR>クライアント ID</H2>
+ 
+<P>このタブは、ユーザー名とパスワードのデフォルト値を指定し、ブローカがクライアントを識別する方法 (ClientID) を指定するために使用します。ClientId の値は、主に、永続サブスクライバの情報を把握するのに使用します。</P>
+
+<P><b>デフォルトのユーザー名</b> ブローカの認証で使用されるデフォルトのユーザー名を指定します。デフォルト値は <code>guest</code> です。</P>
+<p><b>デフォルトのパスワード</b> ブローカの認証で使用されるデフォルトのパスワードを指定します。デフォルト値は <code>guest</code> です。</p>
+<p><b>setClientID() JMS API を無効にする </b>クライアントアプリケーションの API 呼び出しで、ClientID を変更しないように設定します。一般的に、管理者にとっては ClientID を制御する方が容易です。</p>
+<p> このチェックボックスを選択すると、<b>「ClientID の設定」</b>フィールドにクライアントの ClientID を指定できます。値を指定しない場合は、クライアントのホストの IP アドレスを構成するデフォルトの値が自動的に割り当てられます。これは開発者にとって便利な機能ですが、クライアントアプリケーションが複数のコネクションを作成できないようになっています。同じ ClientID に対して 2 つのコネクションは使用できません。</p>
+<p><b>ClientID の設定</b> クライアントのクライアント ID を指定します。値を指定せず、ClientID を設定する api 呼び出しを無効にしている場合は、クライアントのホストの IP アドレスを構成するデフォルトの値が自動的に割り当てられます。これは開発者にとって便利な機能ですが、クライアントアプリケーションが複数のコネクションを作成できないようになっています。同じ ClientID に対して 2 つのコネクションは使用できません。</p>
+<p>&nbsp;</p>
+
+</BODY>
+</HTML>

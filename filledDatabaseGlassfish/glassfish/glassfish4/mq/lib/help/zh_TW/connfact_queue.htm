@@ -1,0 +1,28 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=Big5">
+<TITLE>連線工廠佇列</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>連線工廠物件屬性 > <BR>佇列瀏覽器和伺服器階段作業</H2>
+ 
+<P>使用此標籤可為用戶端執行階段重新配置佇列瀏覽，並可重新指定在應用程式伺服器上執行的階段作業之行為。</P>
+
+<p><b>佇列瀏覽器擷取容量</b> 指定瀏覽佇列目標內容時，用戶端執行階段一次將擷取的最大訊息數量。預設值： 1000</p>
+
+<p><b>佇列瀏覽器擷取逾時 (以毫秒為單位)</b> 指定在拋棄異常之前，瀏覽佇列目標內容時，用戶端執行階段擷取訊息所需等待的最長時間。預設值：60000 毫秒。</p>
+
+<p><b>將最大訊息量載入伺服器階段作業</b> 指定 Message Queue 連接使用者應為伺服器階段作業至多載入訊息 <code>maxMessages</code> 的數量。不核取此方塊，則指定 Message Queue 連接使用者每次僅載入一條訊息。請參閱 JMS 規格的「應用程式伺服器設備」一節，以取得更多資訊。</p>
+
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,29 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=EUC-JP">
+<TITLE>コネクションファクトリ (旧版でのコネクションの処理)</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>コネクションファクトリオブジェクトのプロパティ→<BR>3.0 でのコネクションの処理</H2>
+ 
+<P>「コネクションの処理」タブは、このファクトリで作成されるコネクションの基本的な情報を再設定するために使用します。</P>
+
+<p><b>コネクションタイプ</b> ドロップダウンリストから、コネクションタイプを選択します。</p>
+
+<p><b>ブローカのホスト名</b> クライアントの接続先となるブローカをホスティングするマシン名を指定します。</p>
+
+<p><b>ブローカのホストのポート</b> ポートマッパのポート番号を指定します。クライアントは、ポートマッパの提供する情報を使用して、jms または ssljms の希望するサービスに接続します。</p>
+
+<p><b>ブローカのサービスのポート</b> jms または ssljms サービスに直接コネクションを作成するために使用するポート番号を指定します。「ブローカのサービスのポート」を使用して、ポートマッパをバイパスします。これによって、クライアントは既知の単一ポートを使用してファイアウォール経由で接続できます。 </p>
+<p><b>HTTP URL</b> メッセージサービスへの接続で使用する URL を指定します。この値のデフォルトは <code>http://localhost/imq/tunnel</code> です。</p>
+
+</BODY>
+</HTML>

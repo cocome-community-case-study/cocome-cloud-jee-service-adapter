@@ -1,0 +1,81 @@
+<!--
+Copyright 2004 Sun Microsystems, Inc. All Rights Reserved
+SUN PROPRIETARY/CONFIDENTIAL
+Use is subject to license terms.
+-->
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+ <TITLE>Propiedades del destino de agente - B&aacute;sicas</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>Propiedades del destino de agente &gt; <BR>B&aacute;sicas</H2>
+ 
+<P>Esta ficha muestra informaci&oacute;n sobre un destino de agente. Tambi&eacute;n puede usarla para cambiar propiedades que haya definido para un destino mediante el di&aacute;logo <b>Agregar destino de agente</b>.</P>
+
+<p><b>Nombre del destino</b> Especifica el nombre del destino f&iacute;sico.</p>
+<p><b>Tipo de destino</b> Especifica el tipo de destino (cola o tema). </p>
+<p><b>Estado del destino</b> Especifica si el destino est&aacute; activo o detenido en pausa (productores detenidos en pausa, consumidores detenidos en pausa o ambos).</p>
+
+<P>
+<hr>
+<p><b>N&uacute;mero actual de mensajes en el sistema</b> Especifica el n&uacute;mero de mensajes no consumidos que hay actualmente en este destino.</p>
+<p><b>Tama&ntilde;o m&aacute;ximo actual de mensajes (bytes)</b> Especifica la cantidad total de memorial usada por los mensajes no consumidos que hay actualmente en este destino</p>
+<p><b>N&uacute;mero actual de productores</b> Especifica el n&uacute;mero actual de productores relacionados con este destino.</p>
+<p><b>N&uacute;mero actual de consumidores</b> Especifica el n&uacute;mero actual de consumidores relacionados con este destino. Incluye no-duraderos y duraderos activos/inactivos (s&oacute;lo tema).</p>
+<p><b>N&uacute;mero actual de consumidores activos</b> Especifica el n&uacute;mero de consumidores activos relacionados actualmente con este destino (s&oacute;lo cola).</p>
+<p><b>N&uacute;mero actual de consumidores de respaldo</b>: Especifica el n&uacute;mero de consumidores de respaldo que est&aacute; asociado actualmente a este destino (s&oacute;lo en cola).</p>
+<P>
+<hr>
+<p><b>N&uacute;mero m&aacute;x. de mensajes</b> Especifica el n&uacute;mero m&aacute;ximo de mensajes no consumidos que se permite en este destino. </p>
+<p><b>Tama&ntilde;o m&aacute;x. total de mensajes (bytes)</b> Especifica la cantidad m&aacute;xima total de memoria que se permite en este destino para mensajes no consumidos. Utilice la lista desplegable para seleccionar la unidad de medida: bytes, kilobytes o megabytes.</p>
+<p><b>Tama&ntilde;o m&aacute;x. por mensaje (bytes)</b> Especifica el tama&ntilde;o m&aacute;ximo de cada mensaje que se permite en este destino. Utilice la lista desplegable para seleccionar la unidad de medida: bytes, kilobytes o megabytes.</p>
+<p><b>N&uacute;mero m&aacute;ximo de productores</b> Especifica el n&uacute;mero m&aacute;ximo de productores que se permite en este destino.</p>
+<p><b>N&uacute;mero m&aacute;ximo de consumidores activos</b> Se aplica s&oacute;lo a los destinos de cola. Especifica el n&uacute;mero m&aacute;ximo de consumidores que puede estar activo en una entrega de carga equilibrada desde este destino.</p>
+<p><b>N&uacute;mero m&aacute;ximo de consumidores de respaldo</b> Se aplica s&oacute;lo a los destinos de cola. Especifica el n&uacute;mero m&aacute;ximo de consumidores de respaldo que puede ocupar el lugar de los consumidores activos en caso de que uno de estos &uacute;ltimos falle durante una entrega de carga equilibrada desde este destino.</p>
+<P>
+<hr>
+<P><b>Comportamiento l&iacute;mite</b> Especifica c&oacute;mo responde el agente cuando se alcanza un umbral de l&iacute;mite de memoria para este destino. Los valores son: 
+<UL>
+  <li>FLOW_CONTROL - ralentiza los productores</li>
+  <li>REMOVE_OLDEST - elimina los mensajes m&aacute;s antiguos</li>
+  <li>REMOVE_LOW_PRIORITY - elimina los mensajes con prioridad m&aacute;s baja seg&uacute;n la fecha (el cliente productor no recibe notificaci&oacute;n de la eliminaci&oacute;n de mensajes)</li>  
+  <li>REJECT_NEWEST - rechaza los mensajes m&aacute;s nuevos (el cliente productor obtiene una excepci&oacute;n para el rechazo de mensajes persistentes, pero no obtiene ninguna notificaci&oacute;n para el rechazo de mensajes no persistentes)</li>
+  
+</ul>
+
+<p><b>Utilizaci&oacute;n de cola de mensajes muertos</b> Especifica el uso de una cola de mensajes muertos para el destino.</p>
+
+<p>Cuando un mensaje no se puede enviar, se coloca autom&aacute;ticamente en una cola especial denominada cola de mensajes muertos. Un mensaje colocado en esta cola retiene todos sus encabezados originales (incluyendo su destino original) y se a&ntilde;ade informaci&oacute;n a las propiedades del mensaje para explicar porqu&eacute; se ha convertido en un mensaje muerto. Un administrador o programador puede acceder a esta cola, eliminar un mensaje y determinar porqu&eacute; se ha colocado en la cola.</p>
+
+<p>La cola de mensajes muertos se crea autom&aacute;ticamente por el sistema que la denomina <code>mq.sys.dmq</code>.</p>
+
+<hr>
+
+<p><b>Para depurar los mensajes en un destino:</b></p>
+<ol>
+  <li>Seleccione el destino en el panel de resultados de la consola.</li>
+  <li>Elija <b>Acciones &gt; Depurar mensajes</b>.</li>
+</ol>
+<p><b>Para eliminar un destino:</b></p>
+<ol>
+  <li>Seleccione el destino en el panel de resultados de la consola.</li>
+  <li>Elija <b>Editar &gt; Eliminar</b>.</li>
+</ol>
+<p><b>Para detener en pausa un destino:</b></p>
+<ol>
+  <li>Seleccione el destino en el panel de resultados de la consola.</li>
+  <li>Elija <b>Acciones &gt; Detener en pausa a los productores | Detener en pausa a los consumidores | Detenerlos en pausa a todos</b>.</li>
+</ol>
+<p><b>Para reanudar un destino detenido en pausa:</b></p>
+<ol>
+  <li>Seleccione el destino en el panel de resultados de la consola.</li>
+  <li>Elija <b>Acciones &gt; Reanudar</b>.</li>
+</ol>
+<p>&nbsp;</p>
+
+</BODY>
+</HTML>

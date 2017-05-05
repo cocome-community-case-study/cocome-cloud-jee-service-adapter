@@ -1,0 +1,728 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta http-equiv="Content-Style-Type" content="text/css" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+        <!-- Add DARB meta tags here -->
+
+        <meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.24" />
+<meta name="date" content="2014-08-07T14:30:2Z" />
+<meta name="robots" content="noarchive" />
+<meta name="doctitle" content="Examples: Securing Web Applications" />
+<meta name="relnum" content="Release 7" />
+<meta name="partnum" content="E39031-01" />
+        <meta name="description" content="A guide to developing enterprise applications for the Java Platform, Enterprise Edition 7 (Java EE 7) using GlassFish Server Open Source Edition." />
+        <meta name="keywords" content="Get started with Java EE, get started with Java EE 7, tutorials, Java EE getting started, Java EE getting started guide, Java EE, Java EE 7, Java FX, Web, developer, enterprise, Java EE Tutorial, Java EE 7 Tutorial" />
+
+        <!-- Persistent copyright link from DARB output -->
+        <link rel="copyright" href="dcommon/html/cpyr.htm" title="Copyright" type="text/html" />
+
+        <!-- Links to Java EE output template style sheets -->
+        <link href="css/javaee-darb-position.css" rel="stylesheet" type="text/css" />
+        <link href="css/javaee-darb-fonts.css" rel="stylesheet" type="text/css" />
+
+        <title>The Java EE 7 Tutorial:Examples: Securing Web Applications | Java EE Documentation</title>
+
+
+    </head>
+
+    <body class="javaee">
+        <!-- The following markup is required for accessibility -->
+        <noscript>
+            JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+        </noscript>
+
+
+        	<!-- ///////// Container ///////// -->
+        	<div id="container">
+
+
+
+            <!--///////// Header /////////-->
+            <div id="header">
+                <div id="headertrail" class="breadcrumb"><a href="http://www.oracle.com/technetwork/java/index.html">Java</a> &gt; <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">Java EE </a> &gt; <a href="http://docs.oracle.com/javaee/">Java EE Documentation</a>
+                </div>
+            </div>   
+			<!-- end #header -->
+            <!--///////// End Header /////////-->
+
+
+
+            <!--///////// Start Side Bar /////////-->
+            <div id="sidebar">
+
+                <!-- Sidebar item 1. This <div> is obligatory -->
+                <div id="sidebar_version_box" class="type_med_gry">
+                    <h1>Release: Java EE 7.0</h1>
+                    <p>Last Updated: August, 2014</p>
+					 <p><a href="http://docs.oracle.com/javaee/7/tutorial/doc/javaeetutorial7.pdf">Download as PDF</a></p>  
+                 </div>
+			    <!-- end obligatory sidebar_version_box -->
+
+
+                <!-- Sidebar item 2 Table of Contents. -->
+                <div id="sidebar_toc_box" class="type_med_gry">
+                    
+                    <div id="toc">
+
+                         <h2 class="tocheader"><a href="preface.htm#GEXAF">Preface</a></h2>
+<h2 class="tocheader"><a href="partintro.htm#GFIRP">Part I Introduction</a></h2>
+<h2 class="tocheader"><a href="overview.htm#BNAAW"><span class="secnum">1</span> Overview</a></h2>
+<h2 class="tocheader"><a href="usingexamples.htm#GFIUD"><span class="secnum">2</span> Using the Tutorial Examples</a></h2>
+<h2 class="tocheader"><a href="partplatform.htm#GFIRP2">Part II Platform Basics</a></h2>
+<h2 class="tocheader"><a href="resource-creation.htm#GKJIQ2"><span class="secnum">3</span> Resource Creation</a></h2>
+<h2 class="tocheader"><a href="injection.htm#GKJIQ3"><span class="secnum">4</span> Injection</a></h2>
+<h2 class="tocheader"><a href="packaging.htm#GKJIQ4"><span class="secnum">5</span> Packaging</a></h2>
+<h2 class="tocheader"><a href="partwebtier.htm#BNADP">Part III The Web Tier</a></h2>
+<h2 class="tocheader"><a href="webapp.htm#BNADR"><span class="secnum">6</span> Getting Started with Web Applications</a></h2>
+<h2 class="tocheader"><a href="jsf-intro.htm#BNAPH"><span class="secnum">7</span> JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-facelets.htm#GIEPX"><span class="secnum">8</span> Introduction to Facelets</a></h2>
+<h2 class="tocheader"><a href="jsf-el.htm#GJDDD"><span class="secnum">9</span> Expression Language</a></h2>
+<h2 class="tocheader"><a href="jsf-page.htm#BNAQZ"><span class="secnum">10</span> Using JavaServer Faces Technology in Web Pages</a></h2>
+<h2 class="tocheader"><a href="jsf-page-core.htm#GJCUT"><span class="secnum">11</span> Using Converters, Listeners, and Validators</a></h2>
+<h2 class="tocheader"><a href="jsf-develop.htm#BNATX"><span class="secnum">12</span> Developing with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-ajax.htm#GKIOW"><span class="secnum">13</span> Using Ajax with JavaServer Faces Technology</a></h2>
+<h2 class="tocheader"><a href="jsf-advanced-cc.htm#GKHXA"><span class="secnum">14</span> Composite Components: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="jsf-custom.htm#BNAVG"><span class="secnum">15</span> Creating Custom UI Components and Other Custom Objects</a></h2>
+<h2 class="tocheader"><a href="jsf-configure.htm#BNAWO"><span class="secnum">16</span> Configuring JavaServer Faces Applications</a></h2>
+<h2 class="tocheader"><a href="servlets.htm#BNAFD"><span class="secnum">17</span> Java Servlet Technology</a></h2>
+<h2 class="tocheader"><a href="websocket.htm#GKJIQ5"><span class="secnum">18</span> Java API for WebSocket</a></h2>
+<h2 class="tocheader"><a href="jsonp.htm#GLRBB"><span class="secnum">19</span> JSON Processing</a></h2>
+<h2 class="tocheader"><a href="webi18n.htm#BNAXU"><span class="secnum">20</span> Internationalizing and Localizing Web Applications</a></h2>
+<h2 class="tocheader"><a href="partbeanvalidation.htm#sthref1322">Part IV Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation.htm#CHDGJIIA"><span class="secnum">21</span> Introduction to Bean Validation</a></h2>
+<h2 class="tocheader"><a href="bean-validation-advanced.htm#GKAHP"><span class="secnum">22</span> Bean Validation: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partcdi.htm#GJBNR">Part V Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basic.htm#GIWHB"><span class="secnum">23</span> Introduction to Contexts and Dependency Injection for Java EE</a></h2>
+<h2 class="tocheader"><a href="cdi-basicexamples.htm#GJBLS"><span class="secnum">24</span> Running the Basic Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="cdi-adv.htm#GJEHI"><span class="secnum">25</span> Contexts and Dependency Injection for Java EE: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="cdi-adv-examples.htm#GKHRE"><span class="secnum">26</span> Running the Advanced Contexts and Dependency Injection Examples</a></h2>
+<h2 class="tocheader"><a href="partwebsvcs.htm#BNAYK">Part VI Web Services</a></h2>
+<h2 class="tocheader"><a href="webservices-intro.htm#GIJTI"><span class="secnum">27</span> Introduction to Web Services</a></h2>
+<h2 class="tocheader"><a href="jaxws.htm#BNAYL"><span class="secnum">28</span> Building Web Services with JAX-WS</a></h2>
+<h2 class="tocheader"><a href="jaxrs.htm#GIEPU"><span class="secnum">29</span> Building RESTful Web Services with JAX-RS</a></h2>
+<h2 class="tocheader"><a href="jaxrs-client.htm#BABEIGIH"><span class="secnum">30</span> Accessing REST Resources with the JAX-RS Client API</a></h2>
+<h2 class="tocheader"><a href="jaxrs-advanced.htm#GJJXE"><span class="secnum">31</span> JAX-RS: Advanced Topics and an Example</a></h2>
+<h2 class="tocheader"><a href="partentbeans.htm#BNBLR">Part VII Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-intro.htm#GIJSZ"><span class="secnum">32</span> Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-gettingstarted.htm#GIJRE"><span class="secnum">33</span> Getting Started with Enterprise Beans</a></h2>
+<h2 class="tocheader"><a href="ejb-basicexamples.htm#GIJRB"><span class="secnum">34</span> Running the Enterprise Bean Examples</a></h2>
+<h2 class="tocheader"><a href="ejb-embedded.htm#GKCQZ"><span class="secnum">35</span> Using the Embedded Enterprise Bean Container</a></h2>
+<h2 class="tocheader"><a href="ejb-async.htm#GKIDZ"><span class="secnum">36</span> Using Asynchronous Method Invocation in Session Beans</a></h2>
+<h2 class="tocheader"><a href="partpersist.htm#BNBPY">Part VIII Persistence</a></h2>
+<h2 class="tocheader"><a href="persistence-intro.htm#BNBPZ"><span class="secnum">37</span> Introduction to the Java Persistence API</a></h2>
+<h2 class="tocheader"><a href="persistence-basicexamples.htm#GIJST"><span class="secnum">38</span> Running the Persistence Examples</a></h2>
+<h2 class="tocheader"><a href="persistence-querylanguage.htm#BNBTG"><span class="secnum">39</span> The Java Persistence Query Language</a></h2>
+<h2 class="tocheader"><a href="persistence-criteria.htm#GJITV"><span class="secnum">40</span> Using the Criteria API to Create Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-string-queries.htm#GKJIQ"><span class="secnum">41</span> Creating and Using String-Based Criteria Queries</a></h2>
+<h2 class="tocheader"><a href="persistence-locking.htm#GKJJF"><span class="secnum">42</span> Controlling Concurrent Access to Entity Data with Locking</a></h2>
+<h2 class="tocheader"><a href="persistence-entitygraphs.htm#BABIJIAC"><span class="secnum">43</span> Creating Fetch Plans with Entity Graphs</a></h2>
+<h2 class="tocheader"><a href="persistence-cache.htm#GKJIA"><span class="secnum">44</span> Using a Second-Level Cache with Java Persistence API Applications</a></h2>
+<h2 class="tocheader"><a href="partmessaging.htm#GFIRP3">Part IX Messaging</a></h2>
+<h2 class="tocheader"><a href="jms-concepts.htm#BNCDQ"><span class="secnum">45</span> Java Message Service Concepts</a></h2>
+<h2 class="tocheader"><a href="jms-examples.htm#BNCGV"><span class="secnum">46</span> Java Message Service Examples</a></h2>
+<h2 class="tocheader"><a href="partsecurity.htm#GIJRP">Part X Security</a></h2>
+<h2 class="tocheader"><a href="security-intro.htm#BNBWJ"><span class="secnum">47</span> Introduction to Security in the Java EE Platform</a></h2>
+<h2 class="tocheader"><a href="security-webtier.htm#BNCAS"><span class="secnum">48</span> Getting Started Securing Web Applications</a></h2>
+<ul style="list-style-type:none">
+<li><a href="security-webtier001.htm#BNCAT"><span class="secnum">48.1</span> Overview of Web Application Security</a></li>
+<li><a href="security-webtier002.htm#GKBAA"><span class="secnum">48.2</span> Securing Web Applications</a>
+<ul style="list-style-type:none">
+<li><a href="security-webtier002.htm#BNCBK"><span class="secnum">48.2.1</span> Specifying Security Constraints</a>
+<ul style="list-style-type:none">
+<li><a href="security-webtier002.htm#GJJCD"><span class="secnum">48.2.1.1</span> Specifying a Web Resource Collection</a></li>
+<li><a href="security-webtier002.htm#GJJCG"><span class="secnum">48.2.1.2</span> Specifying an Authorization Constraint</a></li>
+<li><a href="security-webtier002.htm#BNCBM"><span class="secnum">48.2.1.3</span> Specifying a Secure Connection</a></li>
+<li><a href="security-webtier002.htm#BNCBL"><span class="secnum">48.2.1.4</span> Specifying Security Constraints for Resources</a></li>
+</ul>
+</li>
+<li><a href="security-webtier002.htm#GKBSA"><span class="secnum">48.2.2</span> Specifying Authentication Mechanisms</a>
+<ul style="list-style-type:none">
+<li><a href="security-webtier002.htm#BNCBO"><span class="secnum">48.2.2.1</span> HTTP Basic Authentication</a></li>
+<li><a href="security-webtier002.htm#BNCBQ"><span class="secnum">48.2.2.2</span> Form-Based Authentication</a></li>
+<li><a href="security-webtier002.htm#BNCBW"><span class="secnum">48.2.2.3</span> Digest Authentication</a></li>
+</ul>
+</li>
+<li><a href="security-webtier002.htm#BNCBN"><span class="secnum">48.2.3</span> Specifying an Authentication Mechanism in the Deployment Descriptor</a></li>
+<li><a href="security-webtier002.htm#BNCAV"><span class="secnum">48.2.4</span> Declaring Security Roles</a></li>
+</ul>
+</li>
+<li><a href="security-webtier003.htm#GJIIE"><span class="secnum">48.3</span> Using Programmatic Security with Web Applications</a>
+<ul style="list-style-type:none">
+<li><a href="security-webtier003.htm#GIRCJ"><span class="secnum">48.3.1</span> Authenticating Users Programmatically</a></li>
+<li><a href="security-webtier003.htm#BNCBA"><span class="secnum">48.3.2</span> Checking Caller Identity Programmatically</a></li>
+<li><a href="security-webtier003.htm#GJJLQ"><span class="secnum">48.3.3</span> Example Code for Programmatic Security</a></li>
+<li><a href="security-webtier003.htm#BNCBB"><span class="secnum">48.3.4</span> Declaring and Linking Role References</a></li>
+</ul>
+</li>
+<li><div id="backgroundColor"><a href="security-webtier004.htm#BNCBX"><span class="secnum">48.4</span> Examples: Securing Web Applications</a><ul style="list-style-type:none">
+<li><a href="security-webtier004.htm#GJJLK"><span class="secnum">48.4.1</span> To Set Up Your System for Running the Security Examples</a></li>
+<li><a href="security-webtier004.htm#BNCCK"><span class="secnum">48.4.2</span> The hello2-basicauth Example: Basic Authentication with a Servlet</a>
+<ul style="list-style-type:none">
+<li><a href="security-webtier004.htm#GJRMH"><span class="secnum">48.4.2.1</span> Specifying Security for Basic Authentication Using Annotations</a></li>
+<li><a href="security-webtier004.htm#GJQYS"><span class="secnum">48.4.2.2</span> To Build, Package, and Deploy the hello2-basicauth Example Using NetBeans IDE</a></li>
+<li><a href="security-webtier004.htm#GJQZH"><span class="secnum">48.4.2.3</span> To Build, Package, and Deploy the hello2-basicauth Example Using Maven</a></li>
+<li><a href="security-webtier004.htm#GJQZF"><span class="secnum">48.4.2.4</span> To Run the hello2-basicauth Example</a></li>
+</ul>
+</li>
+<li><a href="security-webtier004.htm#BNCBY"><span class="secnum">48.4.3</span> The hello1-formauth Example: Form-Based Authentication with a JavaServer Faces Application</a>
+<ul style="list-style-type:none">
+<li><a href="security-webtier004.htm#BNCCA"><span class="secnum">48.4.3.1</span> Creating the Login Form and the Error Page</a></li>
+<li><a href="security-webtier004.htm#BNCCB"><span class="secnum">48.4.3.2</span> Specifying Security for the Form-Based Authentication Example</a></li>
+<li><a href="security-webtier004.htm#GJRBA"><span class="secnum">48.4.3.3</span> To Build, Package, and Deploy the hello1-formauth Example Using NetBeans IDE</a></li>
+<li><a href="security-webtier004.htm#GJRAZ"><span class="secnum">48.4.3.4</span> To Build, Package, and Deploy the hello1-formauth Example Using Maven and the asadmin Command</a></li>
+<li><a href="security-webtier004.htm#GJRAL"><span class="secnum">48.4.3.5</span> To Run the hello1-formauth Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 class="tocheader"><a href="security-javaee.htm#BNBYK"><span class="secnum">49</span> Getting Started Securing Enterprise Applications</a></h2>
+<h2 class="tocheader"><a href="security-advanced.htm#GJJWX"><span class="secnum">50</span> Java EE Security: Advanced Topics</a></h2>
+<h2 class="tocheader"><a href="partsupporttechs.htm#GIJUE">Part XI Java EE Supporting Technologies</a></h2>
+<h2 class="tocheader"><a href="transactions.htm#BNCIH"><span class="secnum">51</span> Transactions</a></h2>
+<h2 class="tocheader"><a href="resources.htm#BNCJH"><span class="secnum">52</span> Resource Adapters and Contracts</a></h2>
+<h2 class="tocheader"><a href="connectorexample.htm#GLODB"><span class="secnum">53</span> The Resource Adapter Examples</a></h2>
+<h2 class="tocheader"><a href="interceptors.htm#GKEED"><span class="secnum">54</span> Using Java EE Interceptors</a></h2>
+<h2 class="tocheader"><a href="batch-processing.htm#GKJIQ6"><span class="secnum">55</span> Batch Processing</a></h2>
+<h2 class="tocheader"><a href="concurrency-utilities.htm#GKJIQ8"><span class="secnum">56</span> Concurrency Utilities for Java EE</a></h2>
+<h2 class="tocheader"><a href="partcasestudies.htm#GKGJW">Part XII Case Studies</a></h2>
+<h2 class="tocheader"><a href="dukes-bookstore.htm#GLNVI"><span class="secnum">57</span> Duke's Bookstore Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-tutoring.htm#GKAEE"><span class="secnum">58</span> Duke's Tutoring Case Study Example</a></h2>
+<h2 class="tocheader"><a href="dukes-forest.htm#GLNPW"><span class="secnum">59</span> Duke's Forest Case Study Example</a></h2>
+<h2 class="tocheader"><a href="index.htm">Index</a></h2>
+ 
+
+                    </div><!-- End toc box -->
+                </div>
+				<!-- End sidebar_toc box -->
+
+
+                <!-- Sidebar item feedback -->
+                <div id="sidebar_feedback_box" class="type_med_gry">
+                    <p class="boxtitle">Feedback</p>
+                    <p><a href="http://docs.oracle.com/javaee/support/feedback.htm">Send us feedback about this document.</a></p>
+                </div>
+				<!-- end sidebar_feedback_box -->
+
+            </div>
+			<!-- end #sidebar -->
+            <!--///////// End Side Bar /////////-->
+
+
+
+
+            <!--///////// Main Content /////////-->
+            <div id="mainContent">
+
+                <!-- Book Info div is used only for multipage documents -->
+                <div id="bookTitle">
+                    <h1>The Java EE 7 Tutorial  </h1>
+                </div>
+			   <!-- End BookInfo div tag -->
+
+
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="security-webtier003.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="security-javaee.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>              
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+
+
+                <!-- /////////////// Start content copied from DARB output ////////////// -->
+				<div class="ind">
+
+ 				<!-- [REPLACE_INI_TITLE_PAGE_CONTENTS] -->
+				 <a id="BNCBX" name="BNCBX"></a><a id="JEETT00519" name="JEETT00519"></a>
+<div class="sect1">
+<h1 class="sect1"><span class="secnum">48.4</span> Examples: Securing Web Applications</h1>
+<p>Some basic setup is required before any of the example applications will run correctly. The examples use annotations, programmatic security, and/or declarative security to demonstrate adding security to existing web applications.</p>
+<p>Here are some other locations where you will find examples of securing various types of applications:</p>
+<ul>
+<li>
+<p><a href="security-javaee003.htm#BNBZK">The cart-secure Example: Securing an Enterprise Bean with Declarative Security</a></p>
+</li>
+<li>
+<p><a href="security-javaee003.htm#BNCAA">The converter-secure Example: Securing an Enterprise Bean with Programmatic Security</a></p>
+</li>
+<li>
+<p>GlassFish samples: <code><a href="https://glassfish-samples.java.net/">https://glassfish-samples.java.net/</a></code></p>
+</li>
+</ul>
+<a id="GJJLK" name="GJJLK"></a><a id="JEETT00242" name="JEETT00242"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">48.4.1</span> To Set Up Your System for Running the Security Examples</h2>
+<p>To set up your system for running the security examples, you need to configure a user database that the application can use for authenticating users. Before continuing, follow these steps.</p>
+<ol>
+<li>
+<p>Make sure that GlassFish Server has been started (see <a href="usingexamples002.htm#BNADI">Starting and Stopping GlassFish Server</a>).</p>
+</li>
+<li>
+<p>Add an authorized user to GlassFish Server. For the examples in this chapter and in <a href="security-javaee.htm#BNBYK">Chapter 49, "Getting Started Securing Enterprise Applications"</a>, add a user to the <code>file</code> realm of GlassFish Server, and assign the user to the group <code>TutorialUser</code>.</p>
+<ol>
+<li>
+<p>From the Administration Console, expand the <span class="gui-object-action">Configurations</span> node, then expand the <span class="gui-object-action">server-config</span> node.</p>
+</li>
+<li>
+<p>Expand the <span class="gui-object-action">Security</span> node.</p>
+</li>
+<li>
+<p>Expand the <span class="gui-object-action">Realms</span> node.</p>
+</li>
+<li>
+<p>Select the <span class="gui-object-action">File</span> node.</p>
+</li>
+<li>
+<p>On the <span class="gui-object-title">Edit Realm</span> page, click <span class="gui-object-action">Manage Users</span>.</p>
+</li>
+<li>
+<p>On the <span class="gui-object-title">File Users</span> page, click <span class="gui-object-action">New</span>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-action">User ID</span> field, enter a user ID.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-action">Group List</span> field, enter <code>TutorialUser</code>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-action">New Password</span> and <span class="gui-object-action">Confirm New Password</span> fields, enter a password.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">OK</span>.</p>
+</li>
+</ol>
+<p>Be sure to write down the user name and password for the user you create so that you can use it for testing the example applications. Authentication is case sensitive for both the user name and password, so write down the user name and password exactly. This topic is discussed more in <a href="security-intro005.htm#BNBXR">Managing Users and Groups in GlassFish Server</a>.</p>
+</li>
+<li>
+<p>Set up Default Principal to Role Mapping in GlassFish Server.</p>
+<ol>
+<li>
+<p>From the Administration Console, expand the <span class="gui-object-action">Configurations</span> node, then expand the <span class="gui-object-action">server-config</span> node.</p>
+</li>
+<li>
+<p>Select the <span class="gui-object-action">Security</span> node.</p>
+</li>
+<li>
+<p>Select the <span class="gui-object-action">Default Principal to Role Mapping Enabled</span> check box.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">Save</span>.</p>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+<!-- class="sect2" -->
+<a id="BNCCK" name="BNCCK"></a><a id="JEETT01233" name="JEETT01233"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">48.4.2</span> <a id="sthref2662" name="sthref2662"></a><a id="sthref2663" name="sthref2663"></a>The hello2-basicauth Example: Basic Authentication with a Servlet</h2>
+<p>This example explains how to use basic authentication with a servlet. With basic authentication of a servlet, the web browser presents a standard login dialog box that is not customizable. When a user submits his or her name and password, the server determines whether the user name and password are those of an authorized user and sends the requested web resource if the user is authorized to view it.</p>
+<p>In general, the following steps are necessary for adding basic authentication to an unsecured servlet, such as the ones described in <a href="webapp.htm#BNADR">Chapter 6, "Getting Started with Web Applications"</a>. In the example application included with this tutorial, many of these steps have been completed for you and are listed here simply to show what needs to be done should you wish to create a similar application. This application can be found in the <span class="variable">tut-install</span><code>/examples/security/hello2-basicauth/</code> directory.</p>
+<ol>
+<li>
+<p>Follow the steps in <a href="#GJJLK">To Set Up Your System for Running the Security Examples</a>.</p>
+</li>
+<li>
+<p>Create a web module for the servlet example, <code>hello2</code>, as described in <a href="webapp.htm#BNADR">Chapter 6, "Getting Started with Web Applications"</a>.</p>
+</li>
+<li>
+<p>Add the appropriate security annotations to the servlet. The security annotations are described in <a href="#GJRMH">Specifying Security for Basic Authentication Using Annotations</a>.</p>
+</li>
+<li>
+<p>Build, package, and deploy the web application by following the steps in <a href="#GJQYS">To Build, Package, and Deploy the hello2-basicauth Example Using NetBeans IDE</a> or <a href="#GJQZH">To Build, Package, and Deploy the hello2-basicauth Example Using Maven</a>.</p>
+</li>
+<li>
+<p>Run the web application by following the steps described in <a href="#GJQZF">To Run the hello2-basicauth Example</a>.</p>
+</li>
+</ol>
+<a id="GJRMH" name="GJRMH"></a><a id="JEETT00780" name="JEETT00780"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">48.4.2.1</span> <a id="sthref2664" name="sthref2664"></a><a id="sthref2665" name="sthref2665"></a>Specifying Security for Basic Authentication Using Annotations</h3>
+<p>The default authentication mechanism used by GlassFish Server is basic authentication. With basic authentication, GlassFish Server spawns a standard login dialog box to collect user name and password data for a protected resource. Once the user is authenticated, access to the protected resource is permitted.</p>
+<p><a id="sthref2666" name="sthref2666"></a><a id="sthref2667" name="sthref2667"></a><a id="sthref2668" name="sthref2668"></a>To specify security for a servlet, use the <code>@ServletSecurity</code> annotation. This annotation allows you to specify both specific constraints on HTTP methods and more general constraints that apply to all HTTP methods for which no specific constraint is specified. Within the <code>@ServletSecurity</code> annotation, you can specify the following annotations:</p>
+<ul>
+<li>
+<p>The <code>@HttpMethodConstraint</code> annotation, which applies to a specific HTTP method</p>
+</li>
+<li>
+<p>The more general <code>@HttpConstraint</code> annotation, which applies to all HTTP methods for which there is no corresponding <code>@HttpMethodConstraint</code> annotation</p>
+</li>
+</ul>
+<p>Both the <code>@HttpMethodConstraint</code> and <code>@HttpConstraint</code> annotations within the <code>@ServletSecurity</code> annotation can specify the following:</p>
+<ul>
+<li>
+<p>A <code>transportGuarantee</code> element that specifies the data protection requirements (that is, whether or not SSL/TLS is required) that must be satisfied by the connections on which requests arrive. Valid values for this element are <code>NONE</code> and <code>CONFIDENTIAL</code>.</p>
+</li>
+<li>
+<p>A <code>rolesAllowed</code> element that specifies the names of the authorized roles.</p>
+</li>
+</ul>
+<p>For the <code>hello2-basicauth</code> application, the <code>GreetingServlet</code> has the following annotations:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+@WebServlet(name = "GreetingServlet", urlPatterns = {"/greeting"})
+@ServletSecurity(
+@HttpConstraint(transportGuarantee = TransportGuarantee.CONFIDENTIAL,
+    rolesAllowed = {"TutorialUser"}))
+</pre>
+<p>These annotations specify that the request URI <code>/greeting</code> can be accessed only by users who have been authorized to access this URL because they have been verified to be in the role <code>TutorialUser</code>. The data will be sent over a protected transport in order to keep the user name and password data from being read in transit.</p>
+<p>If you use the <code>@ServletSecurity</code> annotation, you do not need to specify security settings in the deployment descriptor. Use the deployment descriptor to specify settings for nondefault authentication mechanisms, for which you cannot use the <code>@ServletSecurity</code> annotation.</p>
+</div>
+<!-- class="sect3" -->
+<a id="GJQYS" name="GJQYS"></a><a id="JEETT00243" name="JEETT00243"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">48.4.2.2</span> To Build, Package, and Deploy the hello2-basicauth Example Using NetBeans IDE</h3>
+<ol>
+<li>
+<p>Follow the steps in <a href="#GJJLK">To Set Up Your System for Running the Security Examples</a>.</p>
+</li>
+<li>
+<p>From the <span class="gui-object-action">File</span> menu, choose <span class="gui-object-action">Open Project</span>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-title">Open Project</span> dialog box, navigate to:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+<span class="variable">tut-install</span>/examples/security
+</pre></li>
+<li>
+<p>Select the <code>hello2-basicauth</code> folder.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">Open Project</span>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-action">Projects</span> tab, right-click the <code>hello2-basicauth</code> project and select <span class="gui-object-action">Build</span>.</p>
+<p>This command builds and deploys the example application to your GlassFish Server instance.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="GJQZH" name="GJQZH"></a><a id="JEETT00244" name="JEETT00244"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">48.4.2.3</span> To Build, Package, and Deploy the hello2-basicauth Example Using Maven</h3>
+<ol>
+<li>
+<p>Follow the steps in <a href="#GJJLK">To Set Up Your System for Running the Security Examples</a>.</p>
+</li>
+<li>
+<p>In a terminal window, go to:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+<span class="variable">tut-install</span>/examples/security/hello2-basicauth/
+</pre></li>
+<li>
+<p>Enter the following command:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+mvn install
+</pre>
+<p>This command builds and packages the application into a WAR file, <code>hello2-basicauth.war</code>, that is located in the <code>target</code> directory, then deploys the WAR file.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="GJQZF" name="GJQZF"></a><a id="JEETT00245" name="JEETT00245"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">48.4.2.4</span> To Run the hello2-basicauth Example</h3>
+<ol>
+<li>
+<p>In a web browser, enter the following URL:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+https://localhost:8181/hello2-basicauth/greeting
+</pre>
+<p>You may be prompted to accept the security certificate for the server. If so, accept the security certificate. If the browser warns that the certificate is invalid because it is self-signed, add a security exception for the application.</p>
+<p>An <span class="gui-object-title">Authentication Required</span> dialog box appears. Its appearance varies, depending on the browser you use.</p>
+</li>
+<li>
+<p>Enter a user name and password combination that corresponds to a user who has already been created in the <code>file</code> realm of GlassFish Server and has been assigned to the group <code>TutorialUser</code>; then click <span class="gui-object-action">OK</span>.</p>
+<p>Basic authentication is case sensitive for both the user name and password, so enter the user name and password exactly as defined for GlassFish Server.</p>
+<p>The server returns the requested resource if all the following conditions are met.</p>
+<ul>
+<li>
+<p>A user with the user name you entered is defined for GlassFish Server.</p>
+</li>
+<li>
+<p>The user with the user name you entered has the password you entered.</p>
+</li>
+<li>
+<p>The user name and password combination you entered is assigned to the group <code>TutorialUser</code> in GlassFish Server.</p>
+</li>
+<li>
+<p>The role of <code>TutorialUser</code>, as defined for the application, is mapped to the group <code>TutorialUser</code>, as defined for GlassFish Server.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Enter a name in the field and click <span class="gui-object-action">Submit</span>.</p>
+<p>Because you have already been authorized, the name you enter in this step does not have any limitations. You have unlimited access to the application now.</p>
+<p>The application responds by saying "Hello" to the name you entered.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" -->
+<a id="BNCBY" name="BNCBY"></a><a id="JEETT01234" name="JEETT01234"></a>
+<div class="sect2">
+<h2 class="sect2"><span class="secnum">48.4.3</span> <a id="sthref2669" name="sthref2669"></a><a id="sthref2670" name="sthref2670"></a><a id="sthref2671" name="sthref2671"></a>The hello1-formauth Example: Form-Based Authentication with a JavaServer Faces Application</h2>
+<p>This example explains how to use form-based authentication with a JavaServer Faces application. With form-based authentication, you can customize the login screen and error pages that are presented to the web client for authentication of the user name and password. When a user submits his or her name and password, the server determines whether the user name and password are those of an authorized user and, if authorized, sends the requested web resource.</p>
+<p>This example, <code>hello1-formauth</code>, adds security to the basic JavaServer Faces application shown in <a href="webapp003.htm#BNADX">A Web Module That Uses JavaServer Faces Technology: The hello1 Example</a>.</p>
+<p>In general, the steps necessary for adding form-based authentication to an unsecured JavaServer Faces application are similar to those described in <a href="#BNCCK">The hello2-basicauth Example: Basic Authentication with a Servlet</a>. The major difference is that you must use a deployment descriptor to specify the use of form-based authentication, as described in <a href="#BNCCB">Specifying Security for the Form-Based Authentication Example</a>. In addition, you must create a login form page and a login error page, as described in <a href="#BNCCA">Creating the Login Form and the Error Page</a>.</p>
+<p>This application can be found in the <span class="variable">tut-install</span><code>/examples/security/hello1-formauth/</code> directory.</p>
+<a id="BNCCA" name="BNCCA"></a><a id="JEETT00781" name="JEETT00781"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">48.4.3.1</span> Creating the Login Form and the Error Page</h3>
+<p>When using form-based login mechanisms, you must specify a page that contains the form you want to use to obtain the user name and password, as well as a page to display if login authentication fails. This section discusses the login form and the error page used in this example. <a href="#BNCCB">Specifying Security for the Form-Based Authentication Example</a> shows how you specify these pages in the deployment descriptor.</p>
+<p>The login page can be an HTML page or a servlet, and it must return an HTML page containing a form that conforms to specific naming conventions (see the Java Servlet 3.1 specification for more information on these requirements). To do this, include the elements that accept user name and password information between <code>&lt;form&gt;&lt;/form&gt;</code> tags in your login page. The content of an HTML page or servlet for a login page should be coded as follows:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;form method="post" action="j_security_check"&gt;
+    &lt;input type="text" name="j_username"&gt;
+    &lt;input type="password" name= "j_password"&gt;
+&lt;/form&gt;
+</pre>
+<p>The full code for the login page used in this example can be found at <span class="variable">tut-install</span><code>/examples/security/hello1-formauth/src/main/webapp/login.html</code>. Here is the code for this page:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;title&gt;Login Form&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h2&gt;Hello, please log in:&lt;/h2&gt;
+        &lt;form method="post" action="j_security_check"&gt;
+            &lt;table role="presentation"&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Please type your user name: &lt;/td&gt; 
+                    &lt;td&gt;&lt;input type="text" name="j_username" 
+                               size="20"/&gt;&lt;/td&gt; 
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;Please type your password: &lt;/td&gt;
+                    &lt;td&gt;&lt;input type="password" name="j_password"
+                               size="20"/&gt;&lt;/td&gt; 
+                &lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;p&gt;&lt;/p&gt;
+            &lt;input type="submit" value="Submit"/&gt;
+            &amp;nbsp;
+            &lt;input type="reset" value="Reset"/&gt;
+        &lt;/form&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>The login error page is displayed if the user enters a user name and password combination that is not authorized to access the protected URI. For this example, the login error page can be found at <span class="variable">tut-install</span><code>/examples/security/hello1-formauth/</code><code>src/main/webapp/error.html</code>. For this example, the login error page explains the reason for receiving the error page and provides a link that will allow the user to try again. Here is the code for this page:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;title&gt;Login Error&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h2&gt;Invalid user name or password.&lt;/h2&gt;
+
+        &lt;p&gt;Please enter a user name or password that is authorized to access 
+           this application. For this application, this means a user that 
+           has been created in the &lt;code&gt;file&lt;/code&gt; realm and has been 
+           assigned to the &lt;em&gt;group&lt;/em&gt; of &lt;code&gt;TutorialUser&lt;/code&gt;.&lt;/p&gt;
+        &lt;p&gt;&lt;a href="login.html"&gt;Return to login page&lt;/a&gt;&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+<!-- class="sect3" -->
+<a id="BNCCB" name="BNCCB"></a><a id="JEETT00782" name="JEETT00782"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">48.4.3.2</span> Specifying Security for the Form-Based Authentication Example</h3>
+<p>This example takes a very simple servlet-based web application and adds form-based security. To specify form-based instead of basic authentication for a JavaServer Faces example, you must use the deployment descriptor.</p>
+<p>The following sample code shows the security elements added to the deployment descriptor for this example, which can be found in <span class="variable">tut-install</span><code>/examples/security/hello1-formauth/src/main/webapp/WEB-INF/web.xml</code>:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+    &lt;security-constraint&gt;
+        &lt;display-name&gt;Constraint1&lt;/display-name&gt;
+        &lt;web-resource-collection&gt;
+            &lt;web-resource-name&gt;wrcoll&lt;/web-resource-name&gt;
+            &lt;description/&gt;
+            &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+        &lt;/web-resource-collection&gt;
+        &lt;auth-constraint&gt;
+            &lt;description/&gt;
+            &lt;role-name&gt;TutorialUser&lt;/role-name&gt;
+        &lt;/auth-constraint&gt;
+    &lt;/security-constraint&gt;
+
+    &lt;login-config&gt;
+        &lt;auth-method&gt;FORM&lt;/auth-method&gt;
+        &lt;realm-name&gt;file&lt;/realm-name&gt;
+        &lt;form-login-config&gt;
+            &lt;form-login-page&gt;/login.xhtml&lt;/form-login-page&gt;
+            &lt;form-error-page&gt;/error.xhtml&lt;/form-error-page&gt;
+        &lt;/form-login-config&gt;
+    &lt;/login-config&gt;
+
+    &lt;security-role&gt;
+        &lt;description/&gt;
+        &lt;role-name&gt;TutorialUser&lt;/role-name&gt;
+    &lt;/security-role&gt;
+</pre></div>
+<!-- class="sect3" -->
+<a id="GJRBA" name="GJRBA"></a><a id="JEETT00246" name="JEETT00246"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">48.4.3.3</span> To Build, Package, and Deploy the hello1-formauth Example Using NetBeans IDE</h3>
+<ol>
+<li>
+<p>Follow the steps in <a href="#GJJLK">To Set Up Your System for Running the Security Examples</a>.</p>
+</li>
+<li>
+<p>From the <span class="gui-object-action">File</span> menu, choose <span class="gui-object-action">Open Project</span>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-title">Open Project</span> dialog box, navigate to:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+<span class="variable">tut-install</span>/examples/security
+</pre></li>
+<li>
+<p>Select the <code>hello1-formauth</code> folder.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">Open Project</span>.</p>
+</li>
+<li>
+<p>In the <span class="gui-object-action">Projects</span> tab, right-click the <code>hello1-formauth</code> project and select <span class="gui-object-action">Run</span>.</p>
+<p>This command builds and deploys the example application to your GlassFish Server instance, then opens it in a browser.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="GJRAZ" name="GJRAZ"></a><a id="JEETT00247" name="JEETT00247"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">48.4.3.4</span> To Build, Package, and Deploy the hello1-formauth Example Using Maven and the asadmin Command</h3>
+<ol>
+<li>
+<p>Follow the steps in <a href="#GJJLK">To Set Up Your System for Running the Security Examples</a>.</p>
+</li>
+<li>
+<p>In a terminal window, go to:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+<span class="variable">tut-install</span>/examples/security/hello1-formauth/
+</pre></li>
+<li>
+<p>Enter the following command at the terminal window or command prompt:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+mvn install
+</pre>
+<p>This command builds and packages the application into a WAR file, <code>hello1-formauth.war</code>, that is located in the <code>target</code> directory, then deploys the WAR file to GlassFish Server.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect3" -->
+<a id="GJRAL" name="GJRAL"></a><a id="JEETT00248" name="JEETT00248"></a>
+<div class="sect3">
+<h3 class="sect3"><span class="secnum">48.4.3.5</span> To Run the hello1-formauth Example</h3>
+<p>To run the web client for <code>hello1-formauth</code>, follow these steps.</p>
+<ol>
+<li>
+<p>Open a web browser to the following URL:</p>
+<pre xml:space="preserve" class="oac_no_warn">
+http://localhost:8080/hello1-formauth/
+</pre></li>
+<li>
+<p>In the login form, enter a user name and password combination that corresponds to a user who has already been created in the <code>file</code> realm of GlassFish Server and has been assigned to the group <code>TutorialUser</code>.</p>
+<p>Form-based authentication is case sensitive for both the user name and password, so enter the user name and password exactly as defined for GlassFish Server.</p>
+</li>
+<li>
+<p>Click <span class="gui-object-action">Submit</span>.</p>
+<p>If you entered <code>My_Name</code> as the name and <code>My_Pwd</code> for the password, the server returns the requested resource if all the following conditions are met.</p>
+<ul>
+<li>
+<p>A user with the user name <code>My_Name</code> is defined for GlassFish Server.</p>
+</li>
+<li>
+<p>The user with the user name <code>My_Name</code> has a password <code>My_Pwd</code> defined for GlassFish Server.</p>
+</li>
+<li>
+<p>The user <code>My_Name</code> with the password <code>My_Pwd</code> is assigned to the group <code>TutorialUser</code> on GlassFish Server.</p>
+</li>
+<li>
+<p>The role <code>TutorialUser</code>, as defined for the application, is mapped to the group <code>TutorialUser</code>, as defined for GlassFish Server.</p>
+</li>
+</ul>
+<p>When these conditions are met and the server has authenticated the user, the application appears.</p>
+</li>
+<li>
+<p>Enter your name and click <span class="gui-object-action">Submit</span>.</p>
+<p>Because you have already been authorized, the name you enter in this step does not have any limitations. You have unlimited access to the application now.</p>
+<p>The application responds by saying "Hello" to you.</p>
+</li>
+</ol>
+<a id="sthref2672" name="sthref2672"></a>
+<p class="subhead2">Next Steps</p>
+<p>For additional testing and to see the login error page generated, close and reopen your browser, enter the application URL, and enter a user name and password that are not authorized.</p>
+</div>
+<!-- class="sect3" --></div>
+<!-- class="sect2" --></div>
+<!-- class="sect1" --> 
+				
+                </div>  
+				<!-- End ind div tag -->
+                <!-- /////////////// End content copied from DARB output ////////////// -->
+
+
+
+                
+
+                <!-- START NEXT_PREVIOUS BUTTONS -->
+				<div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="security-webtier003.htm"><img src="images/previouspage.gif" alt="Previous" border="0" /></a></div></td>
+<td><div align="right"><a href="security-javaee.htm"><img src="images/nextpage.gif" alt="Next" border="0" /></a></div></td>
+</tr>
+</tbody></table>
+</div>		          
+                <!-- END NEXT_PREVIOUS BUTTONS -->
+
+
+                <!-- end #mainContent -->
+            </div>
+			<br class="clearfloat" />
+            <!--///////// End Main Content /////////-->
+
+
+
+            <!--///////// Footer /////////-->
+            <div id="footer">
+
+                <!-- Start SiteCatalyst (Omniture) code   -->
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js"></script>
+                <script type="text/javascript" src="http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js"></script>
+
+
+                <!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+                <!--  Below code will send the info to Omniture server -->
+                <script  type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+                <!-- End SiteCatalyst code -->
+
+
+
+                <!-- Footer Legal info -->
+                <div id="blur"><span class="copyrightlogo">Copyright 2014, Oracle and/or its affiliates. All rights reserved.</span>
+                    <a href="dcommon/html/cpyr.htm"><br />
+                        <span class="copyrightlogo">Legal Notices</span></a></div> <!-- End footer legal info -->
+
+                <!-- end #footer -->
+            </div>
+            <!--///////// End Footer /////////-->
+
+            <!-- end #container -->
+        </div>
+
+
+    </body>
+</html>
+

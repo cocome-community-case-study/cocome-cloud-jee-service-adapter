@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="ComplexOrder" type="ComplexOrder" />
+
+	<xs:element name="ComplexOrderEntry" type="ComplexOrderEntry" />
+
+	<xs:element name="Order" type="Order" />
+
+	<xs:element name="OrderEntry" type="OrderEntry" />
+
+	<xs:element name="Product" type="Product" />
+
+	<xs:element name="ProductWithSupplier" type="ProductWithSupplier" />
+
+	<xs:element name="Supplier" type="Supplier" />
+
+	<xs:element name="StoreWithEnterprise" type="StoreWithEnterprise" />
+
+	<xs:element name="Store" type="Store" />
+
+	<xs:element name="Enterprise" type="Enterprise" />
+
+	<xs:element name="ProductWithStockItem" type="ProductWithStockItem" />
+
+	<xs:element name="Sale" type="Sale" />
+
+	<xs:element name="StockItem" type="StockItem" />
+
+	<xs:element name="ProductAmount" type="ProductAmount" />
+
+	<xs:element name="ProductMovement" type="ProductMovement" />
+
+	<xs:element name="ProductWithSupplierAndStockItem" type="ProductWithSupplierAndStockItem" />
+
+	<xs:element name="Report" type="Report" />
+
+	<xs:complexType name="Report">
+		<xs:sequence>
+			<xs:element name="ReportText" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Sale">
+		<xs:sequence>
+			<xs:element name="Date" type="xs:dateTime" minOccurs="0" />
+			<xs:element name="Products" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Product" type="ProductWithStockItem"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Enterprise">
+		<xs:sequence>
+			<xs:element name="Id" type="xs:long" />
+			<xs:element name="Name" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ProductWithSupplierAndStockItem">
+		<xs:complexContent>
+			<xs:extension base="ProductWithSupplier">
+				<xs:sequence>
+					<xs:element ref="StockItem" minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ProductWithStockItem">
+		<xs:complexContent>
+			<xs:extension base="Product">
+				<xs:sequence>
+					<xs:element ref="StockItem" minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ProductWithSupplier">
+		<xs:complexContent>
+			<xs:extension base="Product">
+				<xs:sequence>
+					<xs:element ref="Supplier" minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+
+	<xs:complexType name="StoreWithEnterprise">
+		<xs:complexContent>
+			<xs:extension base="Store">
+				<xs:sequence>
+					<xs:element ref="Enterprise" minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="ProductMovement">
+		<xs:sequence>
+			<xs:element name="OriginStore" type="Store" minOccurs="0" />
+			<xs:element name="DestinationStore" type="Store"
+				minOccurs="0" />
+			<xs:element name="ProductAmounts" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ProductAmount" minOccurs="0"
+							maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ProductAmount">
+		<xs:sequence>
+			<xs:element ref="Product" minOccurs="0" />
+			<xs:element name="Amount" type="xs:long" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Store">
+		<xs:sequence>
+			<xs:element name="Id" type="xs:long" />
+			<xs:element name="Name" type="xs:string" minOccurs="0" />
+			<xs:element name="Location" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ComplexOrder">
+		<xs:complexContent>
+			<xs:extension base="Order">
+				<xs:sequence>
+					<xs:element name="OrderEntries" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="OrderEntry" type="ComplexOrderEntry"
+									minOccurs="0" maxOccurs="unbounded" />
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Order">
+		<xs:sequence>
+			<xs:element name="Id" type="xs:long" />
+			<xs:element name="DeliveryDate" type="xs:dateTime"
+				minOccurs="0" />
+			<xs:element name="OrderingDate" type="xs:dateTime"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ComplexOrderEntry">
+		<xs:complexContent>
+			<xs:extension base="OrderEntry">
+				<xs:sequence>
+					<xs:element name="Product" type="ProductWithSupplier"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="OrderEntry">
+		<xs:sequence>
+			<xs:element name="Amount" type="xs:long" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="StockItem">
+		<xs:sequence>
+			<xs:element name="Id" type="xs:long" />
+			<xs:element name="SalesPrice" type="xs:double" />
+			<xs:element name="Amount" type="xs:long" />
+			<xs:element name="MinStock" type="xs:long" />
+			<xs:element name="MaxStock" type="xs:long" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Product">
+		<xs:sequence>
+			<xs:element name="Id" type="xs:long" />
+			<xs:element name="Barcode" type="xs:long" />
+			<xs:element name="PurchasePrice" type="xs:double" />
+			<xs:element name="Name" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Supplier">
+		<xs:sequence>
+			<xs:element name="Id" type="xs:long" />
+			<xs:element name="Name" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
+

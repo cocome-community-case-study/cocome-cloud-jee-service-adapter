@@ -1,0 +1,73 @@
+<!--
+
+    DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+    Copyright (c) 2000-2010 Oracle and/or its affiliates. All rights reserved.
+
+    The contents of this file are subject to the terms of either the GNU
+    General Public License Version 2 only ("GPL") or the Common Development
+    and Distribution License("CDDL") (collectively, the "License").  You
+    may not use this file except in compliance with the License.  You can
+    obtain a copy of the License at
+    https://glassfish.dev.java.net/public/CDDL+GPL_1_1.html
+    or packager/legal/LICENSE.txt.  See the License for the specific
+    language governing permissions and limitations under the License.
+
+    When distributing the software, include this License Header Notice in each
+    file and include the License file at packager/legal/LICENSE.txt.
+
+    GPL Classpath Exception:
+    Oracle designates this particular file as subject to the "Classpath"
+    exception as provided by Oracle in the GPL Version 2 section of the License
+    file that accompanied this code.
+
+    Modifications:
+    If applicable, add the following below the License Header, with the fields
+    enclosed by brackets [] replaced by your own identifying information:
+    "Portions Copyright [year] [name of copyright owner]"
+
+    Contributor(s):
+    If you wish your version of this file to be governed by only the CDDL or
+    only the GPL Version 2, indicate your decision by adding "[Contributor]
+    elects to include this software in this distribution under the [CDDL or GPL
+    Version 2] license."  If you don't indicate a single choice of license, a
+    recipient has the option to distribute your version of this file under
+    either the CDDL, the GPL Version 2 or to extend the choice of license to
+    its licensees as provided above.  However, if you add GPL Version 2 code
+    and therefore, elected the GPL Version 2 license, then the option applies
+    only if the new code is made subject to such option by the copyright
+    holder.
+
+-->
+
+<HTML>
+<HEAD>
+ <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+ <TITLE>broker config basic</TITLE>
+ <LINK rel="StyleSheet" href="ide.css">
+ 
+</HEAD>
+<BODY>
+ 
+<H2>Ricerca/Aggiorna il broker &gt; <BR>
+  Di base</H2>
+ 
+<P>Utilizzare questa scheda per specificare o consultare informazioni di configurazione di base per una istanza del broker.</P>
+
+<P><b>Versione</b> Specifica la versione del broker.</P>
+
+<P><b>Nome istanza</b> Specifica il nome predefinito <code>imqbroker</code> oppure il nome che &egrave; stato assegnato all'avvio del broker.</P>
+
+<P><b>Porta principale</b> Specifica il numero per la porta portmapper del broker. Il portmapper &egrave; responsabile dell'assegnazione dinamica delle porte ai servizi di Message Queue. Questo dovrebbe essere lo stesso numero che &egrave; stato specificato all'avvio del broker.</P>
+
+<P><b>Creazione automatica argomenti</b> Specifica se il broker pu&ograve; creare una destinazione per l'argomento ogni volta che un consumatore o un produttore di messaggi tenta di accedere a una destinazione inesistente. </P>
+
+<P><b>Creazione automatica code</b> Specifica se il broker pu&ograve; creare una destinazione per la coda ogni volta che un consumatore o un produttore di messaggi tenta di accedere a una destinazione inesistente.</P>
+
+<P><b>Numero massimo di consumatori attivi della coda creata automaticamente</b> Specifica il numero massimo di consumatori che possono essere attivi nel recapito con carico bilanciato da questa una destinazione.</P>
+<P><b>Numero massimo di consumatori backup della coda creata automaticamente</b> Specifica il numero massimo di consumatori di backup che possono sostituire i consumatori attivi, in caso di errore durante la distribuzione bilanciata di questi ultimi dalla destinazione. 
+</P>
+
+
+</BODY>
+</HTML>
