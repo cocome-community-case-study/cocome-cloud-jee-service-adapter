@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="ascii"?>
-<history><client name="pkg" version="1.122.2-57.2889"><args><arg><![CDATA[/export/home/java_re/BUILD_AREA/workspace/sdk-7-build-weekly/uc-toolkit/pkg-toolkit-sunos-sparc/pkg/bin/client.py]]></arg><arg><![CDATA[install]]></arg><arg><![CDATA[metro]]></arg></args></client><operation end_time="20150923T003654Z" name="refresh-publishers" result="Succeeded" start_time="20150923T003653Z" userid="143" username="java_re"/></history>
