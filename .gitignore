@@ -4,8 +4,6 @@
 **/.checkstyle
 **/.classpath
 settings.xml
-.settings/**
-.project
 target/**
 .checkstyle
-.classpath
+*.iml
