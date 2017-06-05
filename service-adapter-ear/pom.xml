@@ -52,10 +52,12 @@
 						<ejbModule>
 							<groupId>org.cocome</groupId>
 							<artifactId>service-adapter-ejb</artifactId>
+							<unpack>true</unpack>
 						</ejbModule>
 						<webModule>
 							<groupId>org.cocome</groupId>
 							<artifactId>service-adapter-rest</artifactId>
+							<unpack>true</unpack>
 							<contextRoot>/de.kit.ipd.cocome.cloud.serviceadapter</contextRoot>
 						</webModule>
 					</modules>
@@ -66,7 +68,7 @@
 				<artifactId>cargo-maven2-plugin</artifactId>
 				<version>1.4.9</version>
 				<configuration>
-					<wait>true</wait>
+					<!-- <wait>true</wait> -->
 					<container>
 						<containerId>glassfish4x</containerId>
 						<type>remote</type>
