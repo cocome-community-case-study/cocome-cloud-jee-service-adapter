@@ -18,7 +18,9 @@ public enum Role {
 	@XmlEnumValue("Stock Manager")
 	STOCK_MANAGER("Stock Manager"),
 	@XmlEnumValue("Enterprise Manager")
-	ENTERPRISE_MANAGER("Enterprise Manager");
+	ENTERPRISE_MANAGER("Enterprise Manager"),
+	@XmlEnumValue("Plant Manager")
+	PLANT_MANAGER("Plant Manager");
 	
 	private final String __label;
 	
