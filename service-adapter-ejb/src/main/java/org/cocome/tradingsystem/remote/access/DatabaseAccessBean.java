@@ -1,9 +1,7 @@
 package org.cocome.tradingsystem.remote.access;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -26,7 +24,6 @@ import org.cocome.tradingsystem.inventory.data.store.StockItem;
 import org.cocome.tradingsystem.inventory.data.store.Store;
 import org.cocome.tradingsystem.usermanager.Customer;
 import org.cocome.tradingsystem.usermanager.LoginUser;
-import org.cocome.tradingsystem.usermanager.datatypes.Role;
 
 @Stateless(name = DatabaseAccess.BEAN_NAME, mappedName = DatabaseAccess.JDNI_NAMING,
 		description = "Bean to provide access on the database")
@@ -134,8 +131,8 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		final EntityManager em = this.emf.createEntityManager();
 		final Notification notification = new Notification();
 
-		Store _store = null;
-		Product _product = null;
+		Store _store;
+		Product _product;
 
 		for (final StockItem nextStockItem : stockitems) {
 			// query product
@@ -201,8 +198,8 @@ public class DatabaseAccessBean implements DatabaseAccess {
 	public Notification createProductOrder(final List<ProductOrder> orders) {
 		final EntityManager em = this.emf.createEntityManager();
 		final Notification notification = new Notification();
-		Store _store = null;
-		Product _product = null;
+		Store _store;
+		Product _product;
 		ProductOrder _productOrder;
 		for (final ProductOrder nextOrder : orders) {
 
@@ -257,7 +254,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		final EntityManager em = this.emf.createEntityManager();
 		final Notification notification = new Notification();
 
-		TradingEnterprise _enterprise = null;
+		TradingEnterprise _enterprise;
 		for (final TradingEnterprise nextEnterprise : list) {
 			_enterprise = this._queryEnterpriseById(em, nextEnterprise);
 			if (_enterprise == null) {
@@ -283,7 +280,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		final EntityManager em = this.emf.createEntityManager();
 		final Notification notification = new Notification();
 
-		ProductSupplier _supplier = null;
+		ProductSupplier _supplier;
 		for (final ProductSupplier nextSupplier : list) {
 			_supplier = this._queryProductSupplierById(em, nextSupplier);
 			if (_supplier == null) {
@@ -309,7 +306,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		final EntityManager em = this.emf.createEntityManager();
 		final Notification notification = new Notification();
 
-		ProductOrder _order = null;
+		ProductOrder _order;
 		for (final ProductOrder nextOrder : list) {
 			_order = this._queryProductOrderById(em, nextOrder);
 			if (_order == null) {
@@ -326,11 +323,6 @@ public class DatabaseAccessBean implements DatabaseAccess {
 
 			if (nextOrder.getOrderingDate() != null) {
 				_order.setOrderingDate(nextOrder.getOrderingDate());
-			}
-
-			// loop order entries
-			for (final OrderEntry nextOrderEntry : nextOrder.getOrderEntries()) {
-				// TODO update order entries
 			}
 
 			em.merge(_order);
@@ -350,7 +342,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		final Notification notification = new Notification();
 		Product _pro;
 		ProductSupplier _proSupp;
-		double pprice = 0;
+		double pprice;
 		for (final Product nextProduct : products) {
 			// query product
 			_pro = this._queryProduct(em, nextProduct);
@@ -372,7 +364,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 					} else {
 						notification.addNotification(
 								"updateProduct", Notification.FAILED,
-								"Update ProductSupplier:" + _proSupp);
+								"ProductSupplier: <null>");
 					}
 				} else {
 					notification.addNotification(
@@ -397,7 +389,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 			throws IllegalArgumentException {
 		final EntityManager em = this.emf.createEntityManager();
 		final Notification notification = new Notification();
-		Store _store = null;
+		Store _store;
 		for (final Store nextStore : stores) {
 			_store = this._queryStoreById(em, notification, nextStore);
 			if (_store == null) {
@@ -426,7 +418,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		final EntityManager em = this.emf.createEntityManager();
 		final Notification notification = new Notification();
 		StockItem _stockItem = null;
-		Store _store = null;
+		Store _store;
 
 		for (final StockItem nextStockItem : stockitems) {
 			// query store
@@ -494,17 +486,11 @@ public class DatabaseAccessBean implements DatabaseAccess {
 	// * PRIVATE *
 	// **********************************************************************
 
-	/**
-	 * Query the enterprise with the given name of the given {@link EnterpriseTO} object
-	 * 
-	 * @param enterpriseTO
-	 * @return all enterprises with the same name
-	 */
 	private TradingEnterprise _queryEnterprise(final EntityManager em, final TradingEnterprise enterprise) {
 		final TypedQuery<TradingEnterprise> query = em.createQuery(
 				"SELECT te FROM TradingEnterprise te WHERE te.name LIKE :teName",
 				TradingEnterprise.class).setParameter("teName", enterprise.getName());
-		TradingEnterprise t = null;
+		TradingEnterprise t;
 		try {
 			t = query.getSingleResult();
 		} catch (final NoResultException e) {
@@ -517,7 +503,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		final TypedQuery<TradingEnterprise> query = em.createQuery(
 				"SELECT te FROM TradingEnterprise te WHERE te.id = :teId",
 				TradingEnterprise.class).setParameter("teId", enterprise.getId());
-		TradingEnterprise t = null;
+		TradingEnterprise t;
 		try {
 			t = query.getSingleResult();
 		} catch (final NoResultException e) {
@@ -530,7 +516,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		final TypedQuery<Store> query = em.createQuery(
 				"SELECT s FROM Store s WHERE s.id=:sId",
 				Store.class).setParameter("sId", store.getId());
-		Store s = null;
+		Store s;
 		try {
 			s = query.getSingleResult();
 		} catch (final NoResultException e) {
@@ -539,42 +525,11 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		return s;
 	}
 
-	/**
-	 * Get the given Store (Name, Location, Enterprise)
-	 * TODO unused method?
-	 * 
-	 * @param em
-	 * @param store
-	 * @return
-	 */
-	private Store _queryStore(final EntityManager em, final Notification notification, final Store store) {
-		final TradingEnterprise _enterprise = this._queryEnterprise(em, store.getEnterprise());
-		if (_enterprise == null) {
-			notification.addNotification(
-					"queryStore", Notification.FAILED,
-					"TradingEnterprise not available:" + store.getEnterprise());
-			return null;
-		}
-		for (final Store nextStore : _enterprise.getStores()) {
-			if (nextStore.getName().equals(store.getName())
-					&& nextStore.getLocation().equals(store.getLocation())) {
-				return nextStore;
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * Query the enterprise with the given name of the given {@link EnterpriseTO} object
-	 * 
-	 * @param enterpriseTO
-	 * @return all enterprises with the same name
-	 */
 	private Product _queryProduct(final EntityManager em, final Product product) {
 		final TypedQuery<Product> query = em.createQuery(
 				"SELECT p FROM Product p WHERE p.barcode = :pBarCode",
 				Product.class).setParameter("pBarCode", product.getBarcode());
-		Product p = null;
+		Product p;
 		try {
 			p = query.getSingleResult();
 		} catch (final NoResultException e) {
@@ -586,15 +541,15 @@ public class DatabaseAccessBean implements DatabaseAccess {
 	/**
 	 * Query the product supplier with the given name
 	 * 
-	 * @param em
-	 * @param ps
-	 * @return
+	 * @param em the entity manager
+	 * @param ps the product supplier to query
+	 * @return the product supplier with the given name
 	 */
 	private ProductSupplier _queryProductSupplier(final EntityManager em, final ProductSupplier ps) {
 		final TypedQuery<ProductSupplier> query = em.createQuery(
 				"SELECT p FROM ProductSupplier p WHERE p.name = :pName",
 				ProductSupplier.class).setParameter("pName", ps.getName());
-		ProductSupplier p = null;
+		ProductSupplier p;
 		try {
 			p = query.getSingleResult();
 		} catch (final NoResultException e) {
@@ -607,7 +562,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		final TypedQuery<ProductSupplier> query = em.createQuery(
 				"SELECT p FROM ProductSupplier p WHERE p.id = :pId",
 				ProductSupplier.class).setParameter("pId", ps.getId());
-		ProductSupplier p = null;
+		ProductSupplier p;
 		try {
 			p = query.getSingleResult();
 		} catch (final NoResultException e) {
@@ -620,7 +575,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		final TypedQuery<ProductOrder> query = em.createQuery(
 				"SELECT p FROM ProductOrder p WHERE p.id = :pId",
 				ProductOrder.class).setParameter("pId", order.getId());
-		ProductOrder p = null;
+		ProductOrder p;
 		try {
 			p = query.getSingleResult();
 		} catch (final NoResultException e) {
@@ -633,7 +588,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		final TypedQuery<LoginUser> query = em.createQuery(
 				"SELECT u FROM LoginUser u WHERE u.username = :uName",
 				LoginUser.class).setParameter("uName", user.getUsername());
-		LoginUser _user = null;
+		LoginUser _user;
 		try {
 			_user = query.getSingleResult();
 		} catch (final NoResultException e) {
@@ -646,7 +601,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		final TypedQuery<Customer> query = em.createQuery(
 				"SELECT c FROM Customer c WHERE c.id = :cId",
 				Customer.class).setParameter("cId", customer.getId());
-		Customer _customer = null;
+		Customer _customer;
 		try {
 			_customer = query.getSingleResult();
 		} catch (final NoResultException e) {
@@ -654,47 +609,27 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		}
 		return _customer;
 	}
-	
-//	private Set<Role> _queryRoles(final EntityManager em, final Set<Role> roles) {
-//		final TypedQuery<Role> query = em.createQuery(
-//				"SELECT r FROM Role r WHERE r.ordinal IN(roles)",
-//				Role.class).setParameter("roles", roles);
-//		Set<Role> _roles = null;
-//		try {
-//			_roles = new LinkedHashSet<Role>(query.getResultList());
-//		} catch (final NoResultException e) {
-//			return null;
-//		}
-//		return _roles;
-//	}
 
 	/**
 	 * Persist the given object in the order they are given.<br>
 	 * No argument check is done.
 	 * 
-	 * @param objects
-	 * @return
+	 * @param objects the objects to persist
 	 */
-	private String _persist(final Object... objects) {
-		final int len = objects.length;
+	private void _persist(final Object... objects) {
 		final IData data = DataFactory.getInstance(this.emf);
 		final IPersistence pm = data.getPersistenceManager();
 		final IPersistenceContext pctx = pm.getPersistenceContext();
-		final StringBuilder notification = new StringBuilder();
 		try {
-			for (int i = 0; i < len; i++) {
-				pctx.makePersistent(objects[i]);
+			for (Object o : objects) {
+				pctx.makePersistent(o);
 			}
-			notification.append(Notification.SUCCESS);
-
 		} catch (final Exception e) {
 			e.printStackTrace();
-			notification.append(e.getMessage() + ";");
 			if (LoggerConfig.ON) {
 				System.out.println(e.getMessage());
 			}
 		}
-		return notification.toString();
 	}
 
 	@Override
@@ -702,7 +637,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		final EntityManager em = this.emf.createEntityManager();
 		final Notification notification = new Notification();
 
-		LoginUser _user = null;
+		LoginUser _user;
 		Store _store = null;
 
 		for (final Customer nextCustomer : customers) {
