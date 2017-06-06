@@ -1,3 +1,5 @@
+package test;
+
 import javax.inject.Inject;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -25,6 +27,5 @@ public class GreetingTest {
     public void should_create_greeting() {
         Assert.assertEquals("Hello, World!",
                 greeter.greet());
-        System.out.println("TEST");
     }
 }
