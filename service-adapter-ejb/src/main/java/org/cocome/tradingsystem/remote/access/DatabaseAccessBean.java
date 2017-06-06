@@ -144,7 +144,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 				continue;
 			}
 			// query store
-			_store = this._queryStoreById(em, notification, nextStockItem.getStore());
+			_store = this._queryStoreById(em, nextStockItem.getStore());
 			if (_store == null) {
 				notification.addNotification(
 						"createStockItem", Notification.FAILED,
@@ -203,7 +203,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		ProductOrder _productOrder;
 		for (final ProductOrder nextOrder : orders) {
 
-			_store = this._queryStoreById(em, notification, nextOrder.getStore());
+			_store = this._queryStoreById(em, nextOrder.getStore());
 			if (_store == null) {
 				notification.addNotification(
 						"createProductOrder", Notification.FAILED,
@@ -391,7 +391,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		final Notification notification = new Notification();
 		Store _store;
 		for (final Store nextStore : stores) {
-			_store = this._queryStoreById(em, notification, nextStore);
+			_store = this._queryStoreById(em,  nextStore);
 			if (_store == null) {
 				notification.addNotification(
 						"updateStore", Notification.FAILED,
@@ -422,7 +422,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 
 		for (final StockItem nextStockItem : stockitems) {
 			// query store
-			_store = this._queryStoreById(em, notification, nextStockItem.getStore());
+			_store = this._queryStoreById(em, nextStockItem.getStore());
 			if (_store == null) {
 				notification.addNotification(
 						"updateStockItems", Notification.FAILED,
@@ -512,7 +512,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		return t;
 	}
 
-	private Store _queryStoreById(final EntityManager em, final Notification notification, final Store store) {
+	private Store _queryStoreById(final EntityManager em, final Store store) {
 		final TypedQuery<Store> query = em.createQuery(
 				"SELECT s FROM Store s WHERE s.id=:sId",
 				Store.class).setParameter("sId", store.getId());
@@ -651,7 +651,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 			}
 			// query store
 			if (nextCustomer.getPreferredStore() != null) {
-				_store = this._queryStoreById(em, notification, nextCustomer.getPreferredStore());
+				_store = this._queryStoreById(em, nextCustomer.getPreferredStore());
 				if (_store == null) {
 					notification.addNotification(
 							"createCustomer", Notification.FAILED,

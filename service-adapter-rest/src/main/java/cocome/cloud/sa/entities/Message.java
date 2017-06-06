@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "Message", propOrder = { "header", "body" })
 public class Message {
 
-	public static final String MESSAGE_ENTRY_RESULT = "result";
+	private static final String MESSAGE_ENTRY_RESULT = "result";
 
 	// **********************************************************************
 	// * FIELDS *
@@ -41,26 +41,6 @@ public class Message {
 
 	/** Empty constructor. */
 	public Message() {}
-
-	// **********************************************************************
-	// * PUBLIC *
-	// **********************************************************************
-
-	public List<MessageEntry> getHeader() {
-		return this.header;
-	}
-
-	public void setHeader(final List<MessageEntry> header) {
-		this.header = header;
-	}
-
-	public List<MessageEntry> getBody() {
-		return this.body;
-	}
-
-	public void setBody(final List<MessageEntry> body) {
-		this.body = body;
-	}
 
 	/**
 	 * Add an header entry and set the index ot the header size.
