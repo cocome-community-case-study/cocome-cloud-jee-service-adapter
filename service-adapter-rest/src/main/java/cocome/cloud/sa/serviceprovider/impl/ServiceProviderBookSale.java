@@ -62,7 +62,7 @@ public class ServiceProviderBookSale extends HttpServlet {
 
 	@POST
 	@Override
-	protected void doPost(final HttpServletRequest request, final HttpServletResponse response)
+	public void doPost(final HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException {
 
 		final String requestedUri = request.getRequestURI();
@@ -91,7 +91,7 @@ public class ServiceProviderBookSale extends HttpServlet {
 	 */
 	@GET
 	@Override
-	protected void doGet(final HttpServletRequest request,
+	public void doGet(final HttpServletRequest request,
 			final HttpServletResponse response) throws ServletException, IOException {
 
 		final String requestedUri = request.getRequestURI();

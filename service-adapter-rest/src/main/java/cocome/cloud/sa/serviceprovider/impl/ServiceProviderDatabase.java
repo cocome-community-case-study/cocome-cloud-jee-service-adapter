@@ -63,21 +63,18 @@ import cocome.cloud.sa.serviceprovider.ServiceProvider;
 @WebServlet("/Database/ServiceProviderDatabase")
 public class ServiceProviderDatabase extends HttpServlet {
 
-	public static final String URL_SERVICE_PROVIDER_DATABASE = "/Database/ServiceProviderDatabase";
-	public static final String NAME_SERVICE_PROVIDER_DATABASE = "Database";
-
-	public static final String URL_SERVICE_DATABASE_GETDATA = "/Database/GetData";
-	public static final String NAME_SERVICE_DATABASE_GETDATA = "GetData";
-
-	public static final String URL_SERVICE_DATABASE_SETDATA = "/Database/SetData";
-	public static final String NAME_SERVICE_DATABASE_SETDATA = "SetData";
-
-	public static final String MESSAGE_ENTRY_RESULT = "result";
-
 	private static final long serialVersionUID = 1L;
 
-	// TODO what is this doing here?
-	// private static final String pathTypesSchema = "/WEB-INF/schemas/types.xsd";
+	static final String URL_SERVICE_PROVIDER_DATABASE = "/Database/ServiceProviderDatabase";
+    static final String NAME_SERVICE_PROVIDER_DATABASE = "Database";
+
+    static final String URL_SERVICE_DATABASE_GETDATA = "/Database/GetData";
+    static final String NAME_SERVICE_DATABASE_GETDATA = "GetData";
+
+    static final String URL_SERVICE_DATABASE_SETDATA = "/Database/SetData";
+    static final String NAME_SERVICE_DATABASE_SETDATA = "SetData";
+
+    private static final String MESSAGE_ENTRY_RESULT = "result";
 
 	private static final String CONTENT_TYPE_CSV = "application/csv";
 	private static final String CONTENT_TYPE_XML = "application/xml";
@@ -135,7 +132,7 @@ public class ServiceProviderDatabase extends HttpServlet {
 			throws ServletException, IOException {
 		final String requestedUri = request.getRequestURI();
 		if (requestedUri.endsWith(URL_SERVICE_DATABASE_SETDATA)) {
-			String next = null;
+			String next;
 			for (final Enumeration<String> param = request.getParameterNames(); param.hasMoreElements();) {
 				next = param.nextElement();
 				switch (next) {
@@ -154,7 +151,7 @@ public class ServiceProviderDatabase extends HttpServlet {
 			throws ServletException, IOException {
 		final String requestedUri = request.getRequestURI();
 		if (requestedUri.endsWith(URL_SERVICE_DATABASE_SETDATA)) {
-			String next = null;
+			String next;
 			for (final Enumeration<String> param = request.getParameterNames(); param.hasMoreElements();) {
 				next = param.nextElement();
 				switch (next) {
@@ -173,7 +170,7 @@ public class ServiceProviderDatabase extends HttpServlet {
 			throws ServletException, IOException {
 		final String requestedUri = request.getRequestURI();
 		if (requestedUri.endsWith(URL_SERVICE_DATABASE_SETDATA)) {
-			String next = null;
+			String next;
 			for (final Enumeration<String> param = request.getParameterNames(); param.hasMoreElements();) {
 				next = param.nextElement();
 				switch (next) {
@@ -219,10 +216,10 @@ public class ServiceProviderDatabase extends HttpServlet {
 	 * <li>{@link IQueryConst#QUERY_DELETE}</li>
 	 * </ul>
 	 *
-	 * @param qm
-	 * @param request
-	 * @param response
-	 * @throws IOException
+	 * @param qm the query string
+	 * @param request the request object
+	 * @param response the response object
+	 * @throws IOException if the request could not be processed
 	 */
 	private void dispatchQueryWriteRequest(final String qm,
 			final HttpServletRequest request, final HttpServletResponse response)
@@ -301,8 +298,8 @@ public class ServiceProviderDatabase extends HttpServlet {
 	 * <li>{@link IQueryConst#QUERY_SELECT}</li>
 	 * </ul>
 	 *
-	 * @param request
-	 * @param response
+	 * @param request the request object
+	 * @param response the response object
 	 */
 	private void dispatchQueryReadRequest(final HttpServletRequest request,
 			final HttpServletResponse response) {
@@ -315,10 +312,10 @@ public class ServiceProviderDatabase extends HttpServlet {
 		message.appendHeader("RequestedParam", request.getQueryString());
 		message.appendHeader("RequestedFormat", this.contentTypeFormat);
 
-		PrintWriter writer = null;
+		PrintWriter writer;
 		try {
 			writer = response.getWriter();
-			String next = null;
+			String next;
 			// iteration through all parameter
 			for (final Enumeration<String> param = request.getParameterNames(); param
 					.hasMoreElements();) {
@@ -334,7 +331,6 @@ public class ServiceProviderDatabase extends HttpServlet {
 					break;
 				}
 			}
-
 		} catch (final Exception e) { // NOCS
 			e.printStackTrace();
 			Throwable cause = e.getCause();
@@ -342,6 +338,7 @@ public class ServiceProviderDatabase extends HttpServlet {
 				message.appendBody("Error", cause.getMessage());
 				cause = cause.getCause();
 			}
+			return;
 		}
 		final JAXBEngine engine = JAXBEngine.getInstance();
 		final StringWriter strWriter = new StringWriter();
@@ -358,9 +355,9 @@ public class ServiceProviderDatabase extends HttpServlet {
 	/**
 	 * Query-Insert
 	 *
-	 * @param parameter
-	 * @param content
-	 * @param message
+	 * @param parameter the execution parameter
+	 * @param content the query content
+	 * @param message the result message
 	 */
 	private void queryInsert(final String parameter, final String content, final Message message) {
 
@@ -430,10 +427,6 @@ public class ServiceProviderDatabase extends HttpServlet {
 		}
 	}
 
-	private void queryDelete(final String parameter, final String content, final Message message) {
-		// TODO impl missing
-	}
-
 	// ********************************************************************
 	// * QUERY READ
 	// ********************************************************************
@@ -452,7 +445,7 @@ public class ServiceProviderDatabase extends HttpServlet {
 		System.out.println("Query:" + localQuery);
 		// perform query
 
-		String response = "No Result!";
+		String response;
 
 		final List queryResult = this.databaseAccess.query(localQuery);
 		msg.appendBody("Info Size Resultset", String.valueOf(queryResult.size()));
@@ -517,10 +510,9 @@ public class ServiceProviderDatabase extends HttpServlet {
 	private void createEnterprises(final String content, final Message message) {
 		final List<TradingEnterprise> list = this.createEnterpriseList(this.createTable(content));
 
-		Notification notification = null;
 		for (final TradingEnterprise enterprise : list) {
 			// TODO why here only one enterprise?
-			notification = this.databaseAccess.createEnterprise(enterprise);
+            Notification notification = this.databaseAccess.createEnterprise(enterprise);
 			this.includeNotification(notification.getNotification(), message);
 		}
 	}
@@ -736,8 +728,6 @@ public class ServiceProviderDatabase extends HttpServlet {
 		Column<String> colOrderOrderingDate;
 		Column<String> colOrderAmount;
 
-		ProductOrder productOrder = null;
-
 		for (int i = 0; i < len; i++) {
 			colProductOrderId = table.getColumnByName(i, "ProductOrderId");
 			colStoreId = table.getColumnByName(i, "StoreId");
@@ -746,7 +736,7 @@ public class ServiceProviderDatabase extends HttpServlet {
 			colOrderOrderingDate = table.getColumnByName(i, "OrderOrderingDate");
 			colOrderAmount = table.getColumnByName(i, "OrderAmount");
 
-			productOrder = map.get(colProductOrderId.getValue());
+            ProductOrder productOrder = map.get(colProductOrderId.getValue());
 			if (productOrder == null) {
 				productOrder = new ProductOrder();
 				productOrder.setId(Long.parseLong(colProductOrderId.getValue()));
@@ -783,10 +773,7 @@ public class ServiceProviderDatabase extends HttpServlet {
 	private List<StockItem> createStockItemList(final Table<String> table) {
 		final List<StockItem> list = new ArrayList<>();
 		final int len = table.size();
-		final Column<String> colEnterpriseName;
-		final Column<String> colStoreName;
 		Column<String> colStoreId;
-		final Column<String> colStoreLocation;
 		Column<String> colProductBarcode;
 		Column<String> colStockItemMinStock;
 		Column<String> colStockItemMaxStock;
@@ -1188,15 +1175,15 @@ public class ServiceProviderDatabase extends HttpServlet {
 	 * <li>CSV</li>
 	 * </ul>
 	 *
-	 * @param content
-	 * @return
+	 * @param content the actual content
+	 * @return the corresponding table
 	 */
 	@SuppressWarnings("unchecked")
 	private Table<String> createTable(final String content) {
 		// TODO debug
 		System.out.println("Starting creating Table");
 		final CSVParser parser = new CSVParser();
-		Table<String> table = null;
+		Table<String> table;
 
 		switch (this.contentTypeFormat.toLowerCase()) {
 		case CONTENT_TYPE_CSV:
@@ -1220,20 +1207,13 @@ public class ServiceProviderDatabase extends HttpServlet {
 	/**
 	 * Include the notification into the message object
 	 *
-	 * @param table
-	 * @param message
+	 * @param table the table
+	 * @param message the message
 	 */
 	private void includeNotification(final Table<String> table, final Message message) {
 		final CSVParser parser = new CSVParser();
 		parser.setModel(table);
 		message.appendBody("Notification", parser.toString());
-	}
-
-	private String getBaseUrl(final HttpServletRequest request) {
-		return request.getScheme()
-				+ "://" + request.getServerName()
-				+ ":" + request.getServerPort()
-				+ request.getContextPath();
 	}
 
 	// TODO does this construct serve a purpose or is it just broken.
@@ -1252,11 +1232,11 @@ public class ServiceProviderDatabase extends HttpServlet {
 		/**
 		 * Write the description to {@link HttpServletResponse}
 		 *
-		 * @param request
-		 * @param response
-		 * @throws IOException
+		 * @param request the request object
+		 * @param response the response object
+		 * @throws IOException if request could not be processed
 		 */
-		public static void getDescription(final HttpServletRequest request,
+		static void getDescription(final HttpServletRequest request,
 				final HttpServletResponse response) throws IOException {
 
 			final String urlBase = request.getScheme()

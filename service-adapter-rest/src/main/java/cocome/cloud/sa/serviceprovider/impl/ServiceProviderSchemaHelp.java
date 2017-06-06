@@ -20,7 +20,7 @@ import de.kit.ipd.java.utils.parsing.html.HtmlParser;
  * @author Alessandro Giusa, alessandrogiusa@gmail.com
  *
  */
-public final class ServiceProviderSchemaHelp {
+final class ServiceProviderSchemaHelp {
 
 	/** This is some sort of library function collection. */
 	private ServiceProviderSchemaHelp() {}
@@ -28,10 +28,9 @@ public final class ServiceProviderSchemaHelp {
 	/**
 	 * Get the schemas of the service provider
 	 *
-	 * @param request
-	 * @param response
-	 * @param message
-	 * @param ctx
+	 * @param request the request object
+	 * @param response the response object
+	 * @param ctx the servlet context
 	 */
 	public static void getSchemas(final HttpServletRequest request,
 			final HttpServletResponse response, final ServletContext ctx) {

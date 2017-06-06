@@ -1,10 +1,8 @@
 package cocome.cloud.sa.serviceprovider.impl;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,11 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.GET;
 
-import org.apache.commons.codec.binary.Base64;
 
 import com.sun.xml.messaging.saaj.util.ByteOutputStream;
 
-import de.kit.ipd.java.utils.io.Utilities;
 import de.kit.ipd.java.utils.xml.JAXBEngine;
 
 import cocome.cloud.sa.serviceprovider.ServiceProvider;
@@ -29,11 +25,9 @@ import cocome.cloud.sa.serviceprovider.ServiceProviderObjectFactory;
 @WebServlet("/ServiceProviderInterface")
 public class ServiceProviderInterface extends HttpServlet {
 
-	public static final String URL_SERVICE_BASE = "/Services";
+	static final String URL_SERVICE_BASE = "/Services";
 
 	private static final long serialVersionUID = 1L;
-
-	private static final String PATH_TYPES_SCHEMA = "/WEB-INF/schemas/types.xsd";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -47,7 +41,7 @@ public class ServiceProviderInterface extends HttpServlet {
 	 */
 	@Override
 	@GET
-	protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
 		final PrintWriter writer = response.getWriter();
 
 		// TODO later..for testing purposes disabled
@@ -83,35 +77,6 @@ public class ServiceProviderInterface extends HttpServlet {
 	/*************************************************************************
 	 * PRIVATE
 	 ************************************************************************/
-
-	private boolean checkUser(final HttpServletRequest request, final HttpServletResponse responses) {
-		final String authentification = request.getHeader("Authorization");
-
-		if (authentification == null || authentification.isEmpty()
-				|| !authentification.toUpperCase().startsWith("BASIC")) {
-			responses.setHeader("WWW-Authenticate", "Not Authorized");
-			try {
-				responses.sendError(HttpServletResponse.SC_UNAUTHORIZED);
-			} catch (final IOException e) {
-				e.printStackTrace();
-			}
-			return false;
-		}
-		final String userpassEncoded = authentification.substring(6);
-		final String userpassDecoded = new String(Base64.decodeBase64(userpassEncoded));
-
-		// Check user and password are allowed
-		// TODO check the password here
-		System.out.println(userpassDecoded);
-		return true;
-	}
-
-	private String getSchema() {
-		final ServletContext ctx = this.getServletContext();
-		final InputStream inputSchema = ctx.getResourceAsStream(PATH_TYPES_SCHEMA);
-		final String schema = Utilities.getString(inputSchema); // TODO do later
-		return schema;
-	}
 
 	private String getRespond(final ServiceProviderCatalog catalog) {
 		final JAXBEngine engine = JAXBEngine.getInstance();
