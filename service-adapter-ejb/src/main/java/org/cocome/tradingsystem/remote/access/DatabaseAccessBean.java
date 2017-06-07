@@ -489,133 +489,73 @@ public class DatabaseAccessBean implements DatabaseAccess {
 	// **********************************************************************
 
 	private TradingEnterprise _queryEnterprise(final EntityManager em, final TradingEnterprise enterprise) {
-		final TypedQuery<TradingEnterprise> query = em.createQuery(
+        return _querySingleInstance(em.createQuery(
 				"SELECT te FROM TradingEnterprise te WHERE te.name LIKE :teName",
-				TradingEnterprise.class).setParameter("teName", enterprise.getName());
-		TradingEnterprise t;
-		try {
-			t = query.getSingleResult();
-		} catch (final NoResultException e) {
-			return null;
-		}
-		return t;
+				TradingEnterprise.class).setParameter("teName", enterprise.getName()));
 	}
 
 	private TradingEnterprise _queryEnterpriseById(final EntityManager em, final TradingEnterprise enterprise) {
-		final TypedQuery<TradingEnterprise> query = em.createQuery(
+        return _querySingleInstance(em.createQuery(
 				"SELECT te FROM TradingEnterprise te WHERE te.id = :teId",
-				TradingEnterprise.class).setParameter("teId", enterprise.getId());
-		TradingEnterprise t;
-		try {
-			t = query.getSingleResult();
-		} catch (final NoResultException e) {
-			return null;
-		}
-		return t;
+				TradingEnterprise.class).setParameter("teId", enterprise.getId()));
 	}
 
 	private Store _queryStoreById(final EntityManager em, final Store store) {
-		final TypedQuery<Store> query = em.createQuery(
+        return _querySingleInstance(em.createQuery(
 				"SELECT s FROM Store s WHERE s.id=:sId",
-				Store.class).setParameter("sId", store.getId());
-		Store s;
-		try {
-			s = query.getSingleResult();
-		} catch (final NoResultException e) {
-			return null;
-		}
-		return s;
+				Store.class).setParameter("sId", store.getId()));
 	}
 
 	private Product _queryProduct(final EntityManager em, final Product product) {
-		final TypedQuery<Product> query = em.createQuery(
+        return _querySingleInstance(em.createQuery(
 				"SELECT p FROM Product p WHERE p.barcode = :pBarCode",
-				Product.class).setParameter("pBarCode", product.getBarcode());
-		Product p;
-		try {
-			p = query.getSingleResult();
-		} catch (final NoResultException e) {
-			return null;
-		}
-		return p;
+				Product.class).setParameter("pBarCode", product.getBarcode()));
 	}
 
-	/**
-	 * Query the product supplier with the given name
-	 * 
-	 * @param em the entity manager
-	 * @param ps the product supplier to query
-	 * @return the product supplier with the given name
-	 */
 	private ProductSupplier _queryProductSupplier(final EntityManager em, final ProductSupplier ps) {
-		final TypedQuery<ProductSupplier> query = em.createQuery(
+        return _querySingleInstance(em.createQuery(
 				"SELECT p FROM ProductSupplier p WHERE p.name = :pName",
-				ProductSupplier.class).setParameter("pName", ps.getName());
-		ProductSupplier p;
-		try {
-			p = query.getSingleResult();
-		} catch (final NoResultException e) {
-			return null;
-		}
-		return p;
+				ProductSupplier.class).setParameter("pName", ps.getName()));
 	}
 
 	private ProductSupplier _queryProductSupplierById(final EntityManager em, final ProductSupplier ps) {
-		final TypedQuery<ProductSupplier> query = em.createQuery(
+        return _querySingleInstance(em.createQuery(
 				"SELECT p FROM ProductSupplier p WHERE p.id = :pId",
-				ProductSupplier.class).setParameter("pId", ps.getId());
-		ProductSupplier p;
-		try {
-			p = query.getSingleResult();
-		} catch (final NoResultException e) {
-			return null;
-		}
-		return p;
+				ProductSupplier.class).setParameter("pId", ps.getId()));
 	}
 
 	private ProductOrder _queryProductOrderById(final EntityManager em, final ProductOrder order) {
-		final TypedQuery<ProductOrder> query = em.createQuery(
+        return _querySingleInstance(em.createQuery(
 				"SELECT p FROM ProductOrder p WHERE p.id = :pId",
-				ProductOrder.class).setParameter("pId", order.getId());
-		ProductOrder p;
-		try {
-			p = query.getSingleResult();
-		} catch (final NoResultException e) {
-			return null;
-		}
-		return p;
+				ProductOrder.class).setParameter("pId", order.getId()));
 	}
-	
+
 	private LoginUser _queryUser(final EntityManager em, final LoginUser user) {
-		final TypedQuery<LoginUser> query = em.createQuery(
+        return _querySingleInstance(em.createQuery(
 				"SELECT u FROM LoginUser u WHERE u.username = :uName",
-				LoginUser.class).setParameter("uName", user.getUsername());
-		LoginUser _user;
-		try {
-			_user = query.getSingleResult();
-		} catch (final NoResultException e) {
-			return null;
-		}
-		return _user;
+				LoginUser.class).setParameter("uName", user.getUsername()));
 	}
-	
+
 	private Customer _queryCustomer(final EntityManager em, final Customer customer) {
-		final TypedQuery<Customer> query = em.createQuery(
-				"SELECT c FROM Customer c WHERE c.id = :cId",
-				Customer.class).setParameter("cId", customer.getId());
-		Customer _customer;
-		try {
-			_customer = query.getSingleResult();
-		} catch (final NoResultException e) {
-			return null;
-		}
-		return _customer;
+	    return _querySingleInstance(em.createQuery(
+                "SELECT c FROM Customer c WHERE c.id = :cId",
+                Customer.class).setParameter("cId", customer.getId()));
 	}
+
+    private <T> T _querySingleInstance(final TypedQuery<T> query) {
+        T result;
+        try {
+            result = query.getSingleResult();
+        } catch (final NoResultException e) {
+            return null;
+        }
+        return result;
+    }
 
 	/**
 	 * Persist the given object in the order they are given.<br>
 	 * No argument check is done.
-	 * 
+	 *
 	 * @param objects the objects to persist
 	 */
 	private void _persist(final Object... objects) {
@@ -661,11 +601,11 @@ public class DatabaseAccessBean implements DatabaseAccess {
 					continue;
 				}
 			}
-			
+
 			// update object with actual database objects
 			nextCustomer.setPreferredStore(_store);
 			nextCustomer.setUser(_user);
-			
+
 			// persist
 			em.persist(nextCustomer);
 			notification.addNotification(
@@ -681,20 +621,8 @@ public class DatabaseAccessBean implements DatabaseAccess {
 	public Notification createUser(List<LoginUser> users) throws IllegalArgumentException {
 		final EntityManager em = this.emf.createEntityManager();
 		final Notification notification = new Notification();
-		
-		for (final LoginUser nextUser: users) {		
-			
-//			Set<Role> _roles = null; 
-//			_roles = this._queryRoles(em, nextUser.getRoles());
-//			if (_roles == null) {
-//				notification.addNotification(
-//						"createUser", Notification.FAILED,
-//						"Roles not available:" + nextUser.getRoles());
-//				continue;
-//			}
-//			
-//			nextUser.setRoles(_roles);
-			
+
+		for (final LoginUser nextUser: users) {
 			// persist
 			em.persist(nextUser);
 			notification.addNotification(
@@ -710,20 +638,20 @@ public class DatabaseAccessBean implements DatabaseAccess {
 	public Notification updateUser(List<LoginUser> users) throws IllegalArgumentException {
 		final EntityManager em = this.emf.createEntityManager();
 		final Notification notification = new Notification();
-		
+
 		for (final LoginUser nextUser: users) {
 			LoginUser persistedUser = _queryUser(em, nextUser);
-			
+
 			if (persistedUser == null) {
 				notification.addNotification("updateUser", Notification.FAILED,
 						"Update user: No such user: " + nextUser.getUsername());
 				continue;
 			}
-			
+
 			persistedUser.setUsername(nextUser.getUsername());
 			persistedUser.setRoles(nextUser.getRoles());
 			persistedUser.setCredentials(nextUser.getCredentials());
-			
+
 			em.merge(nextUser);
 			notification.addNotification(
 					"updateUser", Notification.SUCCESS,
@@ -738,23 +666,23 @@ public class DatabaseAccessBean implements DatabaseAccess {
 	public Notification updateCustomer(List<Customer> customers) throws IllegalArgumentException {
 		final EntityManager em = this.emf.createEntityManager();
 		final Notification notification = new Notification();
-		
+
 		for (final Customer nextCustomer : customers) {
 			Customer persistedCustomer = _queryCustomer(em, nextCustomer);
-			
+
 			if (persistedCustomer == null) {
 				notification.addNotification("updateCustomer", Notification.FAILED,
 						"Update Customer: No such customer: " + nextCustomer.getId());
 				continue;
 			}
-			
+
 			persistedCustomer.setFirstName(nextCustomer.getFirstName());
 			persistedCustomer.setLastName(nextCustomer.getLastName());
 			persistedCustomer.setCreditCardInfo(nextCustomer.getCreditCardInfo());
 			persistedCustomer.setPreferredStore(nextCustomer.getPreferredStore());
-			// Do not change mail address and users because they are used for 
+			// Do not change mail address and users because they are used for
 			// the login and should not change
-			
+
 			em.merge(nextCustomer);
 			notification.addNotification(
 					"updateCustomer", Notification.SUCCESS,
