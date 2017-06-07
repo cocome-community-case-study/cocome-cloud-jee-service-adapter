@@ -14,7 +14,7 @@ public class SelectQuery implements IQuery {
 
 	private static final String ENTITY_TYPE_VAR = "e";
 
-	private final Map<String, String> variables = new HashMap<String, String>();
+	private final Map<String, String> variables = new HashMap<>();
 	private String entityType;
 
 	private final Random random = new Random(System.currentTimeMillis());
@@ -65,7 +65,6 @@ public class SelectQuery implements IQuery {
 		String varName;
 		final int len = param.size();
 		int counter = 0;
-		final int cmpMeth = -1;
 		for (final String nextParam : param.keySet()) {
 			typeName = nextParam.substring(0, nextParam.indexOf("."));
 			typeProperty = nextParam.substring(nextParam.indexOf(".") + 1, nextParam.length());
@@ -87,12 +86,8 @@ public class SelectQuery implements IQuery {
 	private String createJointStatement() {
 		final StringBuilder sb = new StringBuilder();
 		final String join = " INNER JOIN ";
-		// sb.append(join);
-		final int len = this.variables.size();
-		int counter = 0;
 		for (final String next : this.variables.keySet()) {
 			if (next.equalsIgnoreCase(this.entityType)) {
-				counter++;
 				continue;
 			}
 			sb.append(join);
@@ -101,10 +96,6 @@ public class SelectQuery implements IQuery {
 			sb.append(next);
 			sb.append(" ");
 			sb.append(this.variables.get(next));
-			// if((counter+1)<len){
-			// sb.append(join);
-			// }
-			counter++;
 		}
 		return sb.toString();
 	}
@@ -121,7 +112,6 @@ public class SelectQuery implements IQuery {
 					varName += this.getRandomLetter();
 				}
 				this.variables.put(tmp, varName);
-				varName = "";
 			} else {
 				// is the done more then once but doesn't matter
 				this.variables.put(this.entityType, ENTITY_TYPE_VAR);
