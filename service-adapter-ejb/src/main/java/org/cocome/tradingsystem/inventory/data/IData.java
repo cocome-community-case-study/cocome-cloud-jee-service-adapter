@@ -37,13 +37,6 @@ public interface IData {
 	IEnterpriseQuery getEnterpriseQuery();
 
 	/**
-	 * Creates a new StoreQuery component
-	 * 
-	 * @return the new StoreQuery component
-	 */
-	
-
-	/**
 	 * Creates a new PersistenceIf component
 	 * 
 	 * @return the new PersistenceIf component
