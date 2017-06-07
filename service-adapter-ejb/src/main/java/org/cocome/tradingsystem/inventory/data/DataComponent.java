@@ -32,9 +32,9 @@ final class DataComponent implements IData {
 
 	private EntityManagerFactory emf = null;
 
-	public DataComponent() {}
+	DataComponent() {}
 
-	public DataComponent(final EntityManagerFactory emf) {
+	DataComponent(final EntityManagerFactory emf) {
 		this.emf = emf;
 	}
 
@@ -54,4 +54,4 @@ final class DataComponent implements IData {
 		return new EnterpriseQueryProvider();
 	}
 
-	}
+}
