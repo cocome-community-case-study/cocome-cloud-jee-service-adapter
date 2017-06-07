@@ -44,27 +44,29 @@ public class DatabaseAccessBean implements DatabaseAccess {
 	 * Create the given {@link TradingEnterprise} in database
 	 */
 	@Override
-	public Notification createEnterprise(final TradingEnterprise enterprise)
+	public Notification createEnterprises(final List<TradingEnterprise> enterprises)
 			throws IllegalArgumentException {
 		final Notification notification = new Notification();
-		if (enterprise != null) {
+		if (enterprises != null) {
 			final EntityManager em = this.emf.createEntityManager();
 
-			final TradingEnterprise tmpEnterprise = this._queryEnterprise(em, enterprise);
-			if (tmpEnterprise != null) {
-				notification.addNotification(
-						"createEnterprise", Notification.FAILED,
-						"Enterprise already available:" + enterprise);
-				return notification;
-			}
+			for(final TradingEnterprise enterprise : enterprises) {
+				final TradingEnterprise tmpEnterprise = this._queryEnterprise(em, enterprise);
+				if (tmpEnterprise != null) {
+					notification.addNotification(
+							"createEnterprise", Notification.FAILED,
+							"Enterprise already available:" + enterprise);
+					return notification;
+				}
 
-			final TradingEnterprise _enterprise = new TradingEnterprise();
-			_enterprise.setName(enterprise.getName());
-			this._persist(enterprise);
-			notification.addNotification(
-					"createEnterprise", Notification.SUCCESS,
-					"Enterprise creation:" + _enterprise);
-			em.flush();
+				final TradingEnterprise _enterprise = new TradingEnterprise();
+				_enterprise.setName(enterprise.getName());
+				this._persist(enterprise);
+				notification.addNotification(
+						"createEnterprise", Notification.SUCCESS,
+						"Enterprise creation:" + _enterprise);
+			}
+            em.flush();
 			em.close();
 			return notification;
 		}
@@ -153,7 +155,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 			}
 			// ensure store can save items
 			if (_store.getStockItems() == null) {
-				_store.setStockItems(new ArrayList<StockItem>());
+				_store.setStockItems(new ArrayList<>());
 			}
 			// update object with actual database objects
 			nextStockItem.setStore(_store);
@@ -212,7 +214,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 			}
 
 			_productOrder = new ProductOrder();
-			_productOrder.setOrderEntries(new ArrayList<OrderEntry>());
+			_productOrder.setOrderEntries(new ArrayList<>());
 			_productOrder.setStore(_store);
 			_productOrder.setDeliveryDate(nextOrder.getDeliveryDate());
 			_productOrder.setOrderingDate(nextOrder.getOrderingDate());

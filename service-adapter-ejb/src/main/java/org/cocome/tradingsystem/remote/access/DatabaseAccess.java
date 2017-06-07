@@ -37,7 +37,7 @@ public interface DatabaseAccess {
 	Notification updateStore(List<Store> stores)
 			throws IllegalArgumentException;
 
-	Notification createEnterprise(TradingEnterprise enterprise)
+	Notification createEnterprises(List<TradingEnterprise> enterprises)
 			throws IllegalArgumentException;
 
 	Notification updateEnterprises(List<TradingEnterprise> list)
