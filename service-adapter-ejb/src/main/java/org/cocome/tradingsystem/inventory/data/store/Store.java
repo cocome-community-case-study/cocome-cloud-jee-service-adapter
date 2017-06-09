@@ -1,4 +1,5 @@
-/***************************************************************************
+/*
+ ****************************************************************************
  * Copyright 2013 DFG SPP 1593 (http://dfg-spp1593.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +13,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- ***************************************************************************/
+ **************************************************************************
+ */
 
 package org.cocome.tradingsystem.inventory.data.store;
 
@@ -28,12 +30,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 
@@ -43,30 +39,15 @@ import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
  * @author Yannick Welsch
  */
 @Entity
-@XmlRootElement(name = "Store")
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Store", propOrder = { "name", "location", "enterprise" })
 public class Store implements Serializable, Comparable<Store> {
 
-	@XmlTransient
 	private static final long serialVersionUID = 1L;
 
-	@XmlTransient
 	private long id;
-
-	@XmlElement(name = "Name")
 	private String name;
-
-	@XmlElement(name = "Location")
 	private String location;
-
-	@XmlElement(name = "Enterprise")
 	private TradingEnterprise enterprise;
-
-	@XmlTransient
 	private Collection<ProductOrder> productOrders;
-
-	@XmlTransient
 	private Collection<StockItem> stockItems;
 
 	/** Empty constructor. */

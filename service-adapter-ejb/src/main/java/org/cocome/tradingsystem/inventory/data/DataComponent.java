@@ -1,4 +1,5 @@
-/***************************************************************************
+/*
+ ****************************************************************************
  * Copyright 2013 DFG SPP 1593 (http://dfg-spp1593.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +13,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- ***************************************************************************/
+ **************************************************************************
+ */
 
 package org.cocome.tradingsystem.inventory.data;
 
@@ -22,8 +24,6 @@ import org.cocome.tradingsystem.inventory.data.enterprise.EnterpriseQueryProvide
 import org.cocome.tradingsystem.inventory.data.enterprise.IEnterpriseQuery;
 import org.cocome.tradingsystem.inventory.data.persistence.EntityPersistence;
 import org.cocome.tradingsystem.inventory.data.persistence.IPersistence;
-
-
 
 /**
  * @author Yannick Welsch
@@ -37,12 +37,6 @@ final class DataComponent implements IData {
 	DataComponent(final EntityManagerFactory emf) {
 		this.emf = emf;
 	}
-
-	// not using since we get the emf per injection from the ejb-container
-	// private EntityManagerFactory __emf =
-	// javax.persistence.Persistence.createEntityManagerFactory(EJB_PERSISTENCE_UNIT_NAME);
-
-	//
 
 	@Override
 	public IPersistence getPersistenceManager() {

@@ -342,22 +342,19 @@ public class DatabaseAccessBean implements DatabaseAccess {
 			throws IllegalArgumentException {
 		final EntityManager em = this.emf.createEntityManager();
 		final Notification notification = new Notification();
-		Product _pro;
-		ProductSupplier _proSupp;
-		double pprice;
 		for (final Product nextProduct : products) {
 			// query product
-			_pro = this._queryProduct(em, nextProduct);
+            Product _pro = this._queryProduct(em, nextProduct);
 			if (_pro != null) {
 				// update purchase price
-				pprice = _pro.getPurchasePrice();
+				double pprice = _pro.getPurchasePrice();
 				_pro.setPurchasePrice(nextProduct.getPurchasePrice());
 				notification.addNotification(
 						"updateProduct", Notification.SUCCESS,
 						"Update PurchasePrice:From" + pprice + "->TO:" + nextProduct.getPurchasePrice());
 				// update product supplier
 				if (nextProduct.getSupplier() != null) {
-					_proSupp = this._queryProductSupplier(em, nextProduct.getSupplier());
+                    ProductSupplier _proSupp = this._queryProductSupplier(em, nextProduct.getSupplier());
 					if (_proSupp != null) {
 						_pro.setSupplier(_proSupp);
 						notification.addNotification(
@@ -366,7 +363,7 @@ public class DatabaseAccessBean implements DatabaseAccess {
 					} else {
 						notification.addNotification(
 								"updateProduct", Notification.FAILED,
-								"ProductSupplier: <null>");
+								"New ProductSupplier");
 					}
 				} else {
 					notification.addNotification(
