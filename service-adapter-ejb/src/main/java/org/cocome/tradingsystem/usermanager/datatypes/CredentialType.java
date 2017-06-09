@@ -4,12 +4,8 @@ import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(name = "CredentialType")
-@XmlEnum
 public enum CredentialType {
-	@XmlEnumValue("PASSWORD")
 	PASSWORD("PASSWORD"),
-	@XmlEnumValue("AUTH_TOKEN")
 	AUTH_TOKEN("AUTH_TOKEN");
 	
 	public static final int SIZE = CredentialType.values().length;

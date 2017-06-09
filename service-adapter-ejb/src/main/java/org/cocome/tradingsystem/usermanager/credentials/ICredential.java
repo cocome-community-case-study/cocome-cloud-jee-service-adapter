@@ -5,13 +5,13 @@ import org.cocome.tradingsystem.usermanager.datatypes.CredentialType;
 
 
 public interface ICredential {
-	public CredentialType getType();
+	CredentialType getType();
 	
-	public boolean isMatching(ICredential credential);
+	boolean isMatching(ICredential credential);
 	
-	public String getCredentialString();
+	String getCredentialString();
 	
-	public void setCredentialString(String credential);
+	void setCredentialString(String credential);
 	
-	public char[] resetCredential(LoginUser user);
+	char[] resetCredential(LoginUser user);
 }
