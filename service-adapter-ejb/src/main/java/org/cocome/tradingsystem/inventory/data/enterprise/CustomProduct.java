@@ -1,54 +1,54 @@
 package org.cocome.tradingsystem.inventory.data.enterprise;
 
-import javax.persistence.*;
-import java.io.Serializable;
 
+import org.cocome.tradingsystem.inventory.data.plant.parameter.ParameterCategory;
+import org.cocome.tradingsystem.inventory.data.plant.recipe.Recipe;
+
+import javax.persistence.*;
+import java.util.Collection;
 
 /**
- * This class represents a dynamic product in the database
+ * This class represents a customizable product in the database
  *
  * @author Rudolf Biczok
  */
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"barcode"}))
-public class CustomProduct implements Serializable {
-    private long id;
+public class CustomProduct extends AbstractProduct {
 
-    private long barcode;
+    private static final long serialVersionUID = -2577328715744776645L;
+
+    private Collection<ParameterCategory<CustomProduct>> parameterCategories;
+    private Recipe productionRecipe;
 
     /**
-     * Gets identifier value
-     *
-     * @return The id.
+     * @return all available parameters (organized in categories)
      */
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public long getId() {
-        return id;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Collection<ParameterCategory<CustomProduct>> getParameterCategory() {
+        return parameterCategories;
     }
 
     /**
-     * Sets identifier.
-     *
-     * @param id Identifier value.
+     * @param parameterCategories all available parameters (organized in categories)
      */
-    public void setId(long id) {
-        this.id = id;
+    public void setParameterCategory(Collection<ParameterCategory<CustomProduct>> parameterCategories) {
+        this.parameterCategories = parameterCategories;
     }
 
     /**
-     * @return The barcode of the product
+     * @return The recipe used to delegate instructions th the plants
      */
-    @Basic
-    public long getBarcode() {
-        return barcode;
+    @OneToOne(cascade = CascadeType.ALL)
+    public Recipe getProductionRecipe() {
+        return productionRecipe;
     }
 
     /**
-     * @param barcode The barcode of the product
+     * @param productionRecipe
+     *            The recipe used to delegate instructions th the plants
      */
-    public void setBarcode(long barcode) {
-        this.barcode = barcode;
+    public void setProductionRecipe(Recipe productionRecipe) {
+        this.productionRecipe = productionRecipe;
     }
-
 }

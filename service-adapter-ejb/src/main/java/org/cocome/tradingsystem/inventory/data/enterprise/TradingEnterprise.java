@@ -1,4 +1,5 @@
-/***************************************************************************
+/*
+ ***************************************************************************
  * Copyright 2013 DFG SPP 1593 (http://dfg-spp1593.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +13,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- ***************************************************************************/
+ **************************************************************************
+ */
 
 package org.cocome.tradingsystem.inventory.data.enterprise;
 
@@ -28,14 +30,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
 
+import org.cocome.tradingsystem.inventory.data.plant.Plant;
 import org.cocome.tradingsystem.inventory.data.store.Store;
 
 /**
@@ -44,25 +40,15 @@ import org.cocome.tradingsystem.inventory.data.store.Store;
  * @author Yannick Welsch
  */
 @Entity
-@XmlRootElement(name = "Enterprise")
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Enterprise", propOrder = {"name","stores"})
 public class TradingEnterprise implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@XmlTransient
 	private long id;
-
-	@XmlElement(name="Name")
 	private String name;
-
-	@XmlTransient
 	private Collection<ProductSupplier> suppliers;
-
-	@XmlElementWrapper(name="Stores")
-	@XmlElement(name="Store")
 	private Collection<Store> stores;
+	private Collection<Plant> plants;
 
 	/**
 	 * @return id a unique identifier of this TradingEnterprise
@@ -103,6 +89,22 @@ public class TradingEnterprise implements Serializable{
 	@OneToMany(mappedBy = "enterprise", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	public Collection<Store> getStores() {
 		return stores;
+	}
+
+	/**
+	 * @param plants
+	 *            Collection of Plants related to the TradingEnterprise
+	 */
+	public void setPlants(Collection<Plant> plants) {
+		this.plants = plants;
+	}
+
+	/**
+	 * @return Collection of Plants related to the TradingEnterprise
+	 */
+	@OneToMany(mappedBy = "enterprise", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	public Collection<Plant> getPlants() {
+		return plants;
 	}
 
 	/**
