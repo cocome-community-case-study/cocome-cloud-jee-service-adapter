@@ -79,9 +79,8 @@ public class DatabaseAccessBean implements DatabaseAccess {
 		final Notification notification = new Notification();
 		if (stores != null) {
 			final EntityManager em = this.emf.createEntityManager();
-			TradingEnterprise _enterprise;
 			for (final Store nextStore : stores) {
-				_enterprise = this._queryEnterprise(em, nextStore.getEnterprise());
+				final TradingEnterprise _enterprise = this._queryEnterprise(em, nextStore.getEnterprise());
 				if (_enterprise == null) {
 					notification.addNotification(
 							"createStore", Notification.FAILED,
