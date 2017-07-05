@@ -6,9 +6,7 @@
         http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
     <container qualifier="glassfish-embedded" default="true">
         <configuration>
-            <property name="resourcesXml">
-                src/test/resources/glassfish-resources.xml
-            </property>
+            <property name="resourcesXml">src/test/resources/glassfish-resources.xml</property>
         </configuration>
     </container>
 </arquillian>
