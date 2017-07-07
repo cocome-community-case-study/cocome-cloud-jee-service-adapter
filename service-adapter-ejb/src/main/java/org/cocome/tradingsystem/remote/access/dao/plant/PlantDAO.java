@@ -27,6 +27,11 @@ import java.util.List;
 @LocalBean
 public class PlantDAO implements DataAccessObject<Plant> {
 
+    private static final String ENTERPRISE_ID_COL = "EnterpriseId";
+    private static final String ID_COL = Plant.class.getSimpleName() + "Id";
+    private static final String NAME_COL = Plant.class.getSimpleName() + "Name";
+    private static final String LOCATION_COL = Plant.class.getSimpleName() + "Location";
+
     @EJB
     private TradingEnterpriseDAO tradingEnterpriseDAO;
 
@@ -35,7 +40,7 @@ public class PlantDAO implements DataAccessObject<Plant> {
 
     @Override
     public String getEntityTypeName() {
-        return "store";
+        return Plant.class.getSimpleName().toLowerCase();
     }
 
     @Override
@@ -43,18 +48,18 @@ public class PlantDAO implements DataAccessObject<Plant> {
         final Notification notification = new Notification();
         if (entities != null) {
             final EntityManager em = this.emf.createEntityManager();
-            for (final Plant nextPlant : entities) {
-                final TradingEnterprise enterprise = tradingEnterpriseDAO.queryEnterpriseById(em, nextPlant.getEnterprise());
+            for (final Plant entity : entities) {
+                final TradingEnterprise enterprise = tradingEnterpriseDAO.queryEnterpriseById(em, entity.getEnterprise());
                 if (enterprise == null) {
                     notification.addNotification(
                             "createStore", Notification.FAILED,
                             "Creation Plant failed, Enterprise not available:"
-                                    + nextPlant.getEnterprise() + "," + nextPlant);
+                                    + entity.getEnterprise() + "," + entity);
                     continue;
                 }
                 final Plant plant = new Plant();
-                plant.setName(nextPlant.getName());
-                plant.setLocation(nextPlant.getLocation());
+                plant.setName(entity.getName());
+                plant.setLocation(entity.getLocation());
                 plant.setEnterprise(enterprise);
                 enterprise.getPlants().add(plant);
                 em.persist(plant);
@@ -75,18 +80,18 @@ public class PlantDAO implements DataAccessObject<Plant> {
         final EntityManager em = this.emf.createEntityManager();
         final Notification notification = new Notification();
         Plant plant;
-        for (final Plant nextPlant : entities) {
-            plant = this.queryPlantById(em, nextPlant);
+        for (final Plant entity : entities) {
+            plant = this.queryPlantById(em, entity);
             if (plant == null) {
                 notification.addNotification(
                         "updateStore", Notification.FAILED,
-                        "Store not available:" + nextPlant);
+                        "Store not available:" + entity);
                 continue;
             }
             // update location
-            plant.setLocation(nextPlant.getLocation());
+            plant.setLocation(entity.getLocation());
             // update name
-            plant.setName(nextPlant.getName());
+            plant.setName(entity.getName());
 
             em.merge(plant);
             notification.addNotification(
@@ -101,7 +106,7 @@ public class PlantDAO implements DataAccessObject<Plant> {
     @Override
     public Table<String> toTable(final List<Plant> list) {
         final Table<String> table = new Table<>();
-        table.addHeader("EnterpriseId", "PlantId", "PlantName", "PlantLocation");
+        table.addHeader(ENTERPRISE_ID_COL, ID_COL, NAME_COL, LOCATION_COL);
         final int len = list.size();
         for (int i = 0; i < len; i++) {
             table.set(i, 0, String.valueOf(list.get(i).getEnterprise().getId()));
@@ -117,12 +122,12 @@ public class PlantDAO implements DataAccessObject<Plant> {
         final int len = table.size();
         final List<Plant> list = new ArrayList<>(len);
         for (int i = 0; i < len; i++) {
-            final Column<String> colEnterprise = table.getColumnByName(i, "EnterpriseId");
+            final Column<String> colEnterprise = table.getColumnByName(i, ENTERPRISE_ID_COL);
             final TradingEnterprise t = new TradingEnterprise();
             t.setId(Long.parseLong(colEnterprise.getValue()));
-            final Column<String> colId = table.getColumnByName(i, "PlantId");
-            final Column<String> colName = table.getColumnByName(i, "PlantName");
-            final Column<String> colLocation = table.getColumnByName(i, "PlantLocation");
+            final Column<String> colId = table.getColumnByName(i, ID_COL);
+            final Column<String> colName = table.getColumnByName(i, NAME_COL);
+            final Column<String> colLocation = table.getColumnByName(i, LOCATION_COL);
             final Plant plant = new Plant();
             if (colId != null) {
                 plant.setId(Long.parseLong(colId.getValue()));
