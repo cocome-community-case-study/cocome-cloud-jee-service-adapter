@@ -7,7 +7,6 @@ import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.store.Store;
 import org.cocome.tradingsystem.remote.access.Notification;
-import org.cocome.tradingsystem.remote.access.dao.store.StoreDAO;
 import org.cocome.tradingsystem.usermanager.Customer;
 import org.cocome.tradingsystem.usermanager.LoginUser;
 
@@ -29,9 +28,6 @@ public class CustomerDAO implements DataAccessObject<Customer> {
 
     @EJB
     private LoginUserDAO loginUserDAO;
-
-    @EJB
-    private StoreDAO storeDAO;
 
     @PersistenceUnit(unitName = IData.EJB_PERSISTENCE_UNIT_NAME)
     private EntityManagerFactory emf;
@@ -60,7 +56,7 @@ public class CustomerDAO implements DataAccessObject<Customer> {
             }
             // query store
             if (nextCustomer.getPreferredStore() != null) {
-                _store = storeDAO.queryStoreById(em, nextCustomer.getPreferredStore());
+                _store = em.find(Store.class, nextCustomer.getPreferredStore().getId());
                 if (_store == null) {
                     notification.addNotification(
                             "createCustomer", Notification.FAILED,

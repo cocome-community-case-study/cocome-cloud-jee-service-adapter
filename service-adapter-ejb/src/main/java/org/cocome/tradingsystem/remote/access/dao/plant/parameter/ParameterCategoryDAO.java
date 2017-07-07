@@ -63,7 +63,7 @@ public class ParameterCategoryDAO implements DataAccessObject<ParameterCategory>
         final Notification notification = new Notification();
 
         for (final ParameterCategory<?> entity : entities) {
-            if (this.queryParameterCategoryById(em, entity) == null) {
+            if (em.find(ParameterCategory.class, entity.getId()) == null) {
                 notification.addNotification(
                         "updateParameterCategory", Notification.FAILED,
                         "ParameterCategory not available:" + entity);
@@ -141,11 +141,5 @@ public class ParameterCategoryDAO implements DataAccessObject<ParameterCategory>
         }
 
         return new ArrayList<>(map.values());
-    }
-
-    ParameterCategory queryParameterCategoryById(final EntityManager em, final ParameterCategory param) {
-        return querySingleInstance(em.createQuery(
-                "SELECT c FROM ParameterCategory c WHERE c.id = :cId",
-                ParameterCategory.class).setParameter("cId", param.getId()));
     }
 }

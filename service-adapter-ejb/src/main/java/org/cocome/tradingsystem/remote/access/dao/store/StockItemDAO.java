@@ -30,9 +30,6 @@ public class StockItemDAO implements DataAccessObject<StockItem> {
     @EJB
     private ProductDAO productDAO;
 
-    @EJB
-    private StoreDAO storeDAO;
-
     @PersistenceUnit(unitName = IData.EJB_PERSISTENCE_UNIT_NAME)
     private EntityManagerFactory emf;
 
@@ -59,7 +56,7 @@ public class StockItemDAO implements DataAccessObject<StockItem> {
                 continue;
             }
             // query store
-            _store = storeDAO.queryStoreById(em, nextStockItem.getStore());
+            _store = em.find(Store.class, nextStockItem.getStore().getId());
             if (_store == null) {
                 notification.addNotification(
                         "createStockItem", Notification.FAILED,
@@ -97,7 +94,7 @@ public class StockItemDAO implements DataAccessObject<StockItem> {
 
         for (final StockItem nextStockItem : entities) {
             // query store
-            _store = storeDAO.queryStoreById(em, nextStockItem.getStore());
+            _store = em.find(Store.class, nextStockItem.getStore().getId());
             if (_store == null) {
                 notification.addNotification(
                         "updateStockItems", Notification.FAILED,

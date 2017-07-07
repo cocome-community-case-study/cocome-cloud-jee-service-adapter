@@ -61,7 +61,7 @@ public class NorminalParameterDAO implements DataAccessObject<NorminalParameter>
         final Notification notification = new Notification();
 
         for (final NorminalParameter entity : entities) {
-            if (this.queryNorminalParameterById(em, entity) == null) {
+            if (em.find(NorminalParameter.class, entity.getId()) == null) {
                 notification.addNotification(
                         "updateNorminalParameter", Notification.FAILED,
                         "NorminalParameter not available:" + entity);
@@ -122,11 +122,5 @@ public class NorminalParameterDAO implements DataAccessObject<NorminalParameter>
         }
 
         return new ArrayList<>(map.values());
-    }
-
-    NorminalParameter queryNorminalParameterById(final EntityManager em, final NorminalParameter param) {
-        return querySingleInstance(em.createQuery(
-                "SELECT p FROM NorminalParameter p WHERE p.id = :pId",
-                NorminalParameter.class).setParameter("pId", param.getId()));
     }
 }

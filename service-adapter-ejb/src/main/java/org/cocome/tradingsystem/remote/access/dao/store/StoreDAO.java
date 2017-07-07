@@ -75,7 +75,7 @@ public class StoreDAO implements DataAccessObject<Store> {
         final Notification notification = new Notification();
         Store _store;
         for (final Store nextStore : entities) {
-            _store = this.queryStoreById(em, nextStore);
+            _store = em.find(Store.class, nextStore.getId());
             if (_store == null) {
                 notification.addNotification(
                         "updateStore", Notification.FAILED,
@@ -139,11 +139,4 @@ public class StoreDAO implements DataAccessObject<Store> {
         }
         return list;
     }
-
-    public Store queryStoreById(final EntityManager em, final Store store) {
-        return querySingleInstance(em.createQuery(
-                "SELECT s FROM Store s WHERE s.id=:sId",
-                Store.class).setParameter("sId", store.getId()));
-    }
-
 }

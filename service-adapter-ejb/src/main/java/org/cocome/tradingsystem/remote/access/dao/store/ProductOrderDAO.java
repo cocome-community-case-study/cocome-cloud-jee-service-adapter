@@ -106,7 +106,7 @@ public class ProductOrderDAO implements DataAccessObject<ProductOrder> {
 
         ProductOrder _order;
         for (final ProductOrder nextOrder : entities) {
-            _order = this.queryProductOrderById(em, nextOrder);
+            _order = em.find(ProductOrder.class, nextOrder.getId());
             if (_order == null) {
                 notification.addNotification(
                         "updateProductOrder", Notification.FAILED,
@@ -209,12 +209,5 @@ public class ProductOrderDAO implements DataAccessObject<ProductOrder> {
         final List<ProductOrder> list = new ArrayList<>(map.values());
         System.out.println("Product Order List:" + list.size());
         return list;
-    }
-
-
-    ProductOrder queryProductOrderById(final EntityManager em, final ProductOrder order) {
-        return querySingleInstance(em.createQuery(
-                "SELECT p FROM ProductOrder p WHERE p.id = :pId",
-                ProductOrder.class).setParameter("pId", order.getId()));
     }
 }

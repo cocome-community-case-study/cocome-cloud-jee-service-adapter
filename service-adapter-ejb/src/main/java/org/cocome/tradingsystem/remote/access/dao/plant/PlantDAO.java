@@ -81,7 +81,7 @@ public class PlantDAO implements DataAccessObject<Plant> {
         final Notification notification = new Notification();
         Plant plant;
         for (final Plant entity : entities) {
-            plant = this.queryPlantById(em, entity);
+            plant = em.find(Plant.class, entity.getId());
             if (plant == null) {
                 notification.addNotification(
                         "updatePlant", Notification.FAILED,
@@ -138,11 +138,5 @@ public class PlantDAO implements DataAccessObject<Plant> {
             list.add(plant);
         }
         return list;
-    }
-
-    Plant queryPlantById(final EntityManager em, final Plant plant) {
-        return querySingleInstance(em.createQuery(
-                "SELECT p FROM Plant p WHERE p.id = :pId",
-                Plant.class).setParameter("pId", plant.getId()));
     }
 }

@@ -60,7 +60,7 @@ public class BooleanParameterDAO implements DataAccessObject<BooleanParameter> {
         final EntityManager em = this.emf.createEntityManager();
         final Notification notification = new Notification();
         for (final BooleanParameter entity : entities) {
-            final BooleanParameter booleanParameter = this.queryBooleanParameterById(em, entity);
+            final BooleanParameter booleanParameter = em.find(BooleanParameter.class, entity.getId());
             if (booleanParameter == null) {
                 notification.addNotification(
                         "updateBooleanParameter", Notification.FAILED,
@@ -109,11 +109,5 @@ public class BooleanParameterDAO implements DataAccessObject<BooleanParameter> {
             list.add(param);
         }
         return list;
-    }
-
-    BooleanParameter  queryBooleanParameterById(final EntityManager em, final BooleanParameter booleanParameter) {
-        return querySingleInstance(em.createQuery(
-                "SELECT p FROM BooleanParameter p WHERE p.id = :pId",
-                BooleanParameter .class).setParameter("pId", booleanParameter.getId()));
     }
 }

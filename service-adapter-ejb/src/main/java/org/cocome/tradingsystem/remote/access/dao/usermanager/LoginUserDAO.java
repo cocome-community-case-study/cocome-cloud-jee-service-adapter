@@ -5,7 +5,6 @@ import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.store.Store;
-import org.cocome.tradingsystem.remote.access.DatabaseAccess;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.usermanager.LoginUser;
 import org.cocome.tradingsystem.usermanager.credentials.AbstractCredential;
@@ -14,7 +13,6 @@ import org.cocome.tradingsystem.usermanager.credentials.PlainPassword;
 import org.cocome.tradingsystem.usermanager.datatypes.CredentialType;
 import org.cocome.tradingsystem.usermanager.datatypes.Role;
 
-import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

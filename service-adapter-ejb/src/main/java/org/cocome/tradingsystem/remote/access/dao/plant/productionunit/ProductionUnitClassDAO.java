@@ -61,7 +61,7 @@ public class ProductionUnitClassDAO implements DataAccessObject<ProductionUnitCl
         final Notification notification = new Notification();
 
         for (final ProductionUnitClass entity : entities) {
-            if (this.queryProductionUnitClassById(em, entity) == null) {
+            if (em.find(ProductionUnitClass.class, entity.getId()) == null) {
                 notification.addNotification(
                         "updateProductionUnitClass", Notification.FAILED,
                         "ProductionUnitClass not available:" + entity);
@@ -121,11 +121,5 @@ public class ProductionUnitClassDAO implements DataAccessObject<ProductionUnitCl
         }
 
         return new ArrayList<>(map.values());
-    }
-
-    ProductionUnitClass queryProductionUnitClassById(final EntityManager em, final ProductionUnitClass puc) {
-        return querySingleInstance(em.createQuery(
-                "SELECT puc FROM ProductionUnitClass puc WHERE puc.id = :puId",
-                ProductionUnitClass.class).setParameter("puId", puc.getId()));
     }
 }

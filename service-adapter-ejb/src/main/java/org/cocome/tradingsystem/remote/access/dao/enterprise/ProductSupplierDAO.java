@@ -57,9 +57,8 @@ public class ProductSupplierDAO implements DataAccessObject<ProductSupplier> {
         final EntityManager em = this.emf.createEntityManager();
         final Notification notification = new Notification();
 
-        ProductSupplier _supplier;
         for (final ProductSupplier nextSupplier : entities) {
-            _supplier = this.queryProductSupplierById(em, nextSupplier);
+            final ProductSupplier _supplier = em.find(ProductSupplier.class, nextSupplier.getId());
             if (_supplier == null) {
                 notification.addNotification(
                         "updateProductSupplier", Notification.FAILED,
@@ -119,11 +118,5 @@ public class ProductSupplierDAO implements DataAccessObject<ProductSupplier> {
         return querySingleInstance(em.createQuery(
                 "SELECT p FROM ProductSupplier p WHERE p.name = :pName",
                 ProductSupplier.class).setParameter("pName", ps.getName()));
-    }
-
-    ProductSupplier queryProductSupplierById(final EntityManager em, final ProductSupplier ps) {
-        return querySingleInstance(em.createQuery(
-                "SELECT p FROM ProductSupplier p WHERE p.id = :pId",
-                ProductSupplier.class).setParameter("pId", ps.getId()));
     }
 }
