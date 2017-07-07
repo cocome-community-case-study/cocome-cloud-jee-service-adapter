@@ -3,7 +3,6 @@ package org.cocome.tradingsystem.remote.access.dao.plant.parameter;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.IData;
-import org.cocome.tradingsystem.inventory.data.plant.Plant;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.NorminalParameter;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.ParameterOption;
 import org.cocome.tradingsystem.remote.access.Notification;
@@ -20,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * DAO for {@link Plant}
+ * DAO for {@link NorminalParameter}
  *
  * @author Rudolf Biczok
  */
@@ -95,6 +94,7 @@ public class NorminalParameterDAO implements DataAccessObject<NorminalParameter>
         return table;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<NorminalParameter> fromTable(final Table<String> table) {
         final Map<String, NorminalParameter> map = new HashMap<>();
@@ -106,18 +106,19 @@ public class NorminalParameterDAO implements DataAccessObject<NorminalParameter>
             final Column<String> colOptId = table.getColumnByName(i, OPTION_ID_COL);
             final Column<String> colOptName = table.getColumnByName(i, OPTION_NAME_COL);
 
-            NorminalParameter<?> param = map.get(colParamId.getValue());
+            NorminalParameter param = map.get(colParamId.getValue());
             if (param == null) {
                 param = new NorminalParameter<>();
                 param.setId(Long.parseLong(colParamId.getValue()));
                 param.setName(colParamName.getValue());
-                param.setOptions(new ArrayList<>());
+                param.setOptions(new ArrayList());
                 map.put(colParamId.getValue(), param);
             }
 
-            final ParameterOption<?> option = new ParameterOption();
+            final ParameterOption option = new ParameterOption();
             option.setId(Long.parseLong(colOptId.getValue()));
             option.setName(colOptName.getValue());
+            param.getOptions().add(option);
         }
 
         return new ArrayList<>(map.values());

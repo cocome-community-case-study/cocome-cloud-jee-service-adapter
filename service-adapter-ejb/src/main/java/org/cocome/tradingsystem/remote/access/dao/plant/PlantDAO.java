@@ -84,19 +84,17 @@ public class PlantDAO implements DataAccessObject<Plant> {
             plant = this.queryPlantById(em, entity);
             if (plant == null) {
                 notification.addNotification(
-                        "updateStore", Notification.FAILED,
-                        "Store not available:" + entity);
+                        "updatePlant", Notification.FAILED,
+                        "Plant not available:" + entity);
                 continue;
             }
-            // update location
             plant.setLocation(entity.getLocation());
-            // update name
             plant.setName(entity.getName());
 
             em.merge(plant);
             notification.addNotification(
-                    "updateStore", Notification.SUCCESS,
-                    "Update Store:" + plant);
+                    "updatePlant", Notification.SUCCESS,
+                    "Update Plant:" + plant);
         }
         em.flush();
         em.close();

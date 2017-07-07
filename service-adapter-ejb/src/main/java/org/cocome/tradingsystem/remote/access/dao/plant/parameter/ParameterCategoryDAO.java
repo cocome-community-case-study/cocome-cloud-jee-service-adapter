@@ -3,7 +3,6 @@ package org.cocome.tradingsystem.remote.access.dao.plant.parameter;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.IData;
-import org.cocome.tradingsystem.inventory.data.plant.Plant;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.NorminalParameter;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.ParameterCategory;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter;
@@ -21,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * DAO for {@link Plant}
+ * DAO for {@link ParameterCategory}
  *
  * @author Rudolf Biczok
  */
@@ -102,6 +101,7 @@ public class ParameterCategoryDAO implements DataAccessObject<ParameterCategory>
         return table;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<ParameterCategory> fromTable(final Table<String> table) {
         final Map<String, ParameterCategory> map = new HashMap<>();
@@ -114,7 +114,7 @@ public class ParameterCategoryDAO implements DataAccessObject<ParameterCategory>
             final Column<String> colParamName = table.getColumnByName(i, PARAM_NAME_COL);
             final Column<String> colParamType = table.getColumnByName(i, PARAM_TYPE_COL);
 
-            ParameterCategory<?> category = map.get(colCategoryId.getValue());
+            ParameterCategory category = map.get(colCategoryId.getValue());
             if (category == null) {
                 category = new ParameterCategory<>();
                 category.setId(Long.parseLong(colCategoryId.getValue()));
@@ -123,7 +123,7 @@ public class ParameterCategoryDAO implements DataAccessObject<ParameterCategory>
                 map.put(colParamId.getValue(), category);
             }
 
-            final ProductionParameter<?> param;
+            final ProductionParameter param;
             try {
                 final Class<?> clazz = Class.forName(colParamType.getValue());
                 if (!ProductionParameter.class.isAssignableFrom(clazz)) {
@@ -137,6 +137,7 @@ public class ParameterCategoryDAO implements DataAccessObject<ParameterCategory>
             }
             param.setId(Long.parseLong(colCategoryId.getValue()));
             param.setName(colParamName.getValue());
+            category.getProductionParameters().add(param);
         }
 
         return new ArrayList<>(map.values());

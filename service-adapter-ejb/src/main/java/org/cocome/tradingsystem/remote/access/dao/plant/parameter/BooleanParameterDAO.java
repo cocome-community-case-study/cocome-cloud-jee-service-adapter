@@ -3,7 +3,6 @@ package org.cocome.tradingsystem.remote.access.dao.plant.parameter;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.IData;
-import org.cocome.tradingsystem.inventory.data.plant.Plant;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.BooleanParameter;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * DAO for {@link Plant}
+ * DAO for {@link BooleanParameter}
  *
  * @author Rudolf Biczok
  */
