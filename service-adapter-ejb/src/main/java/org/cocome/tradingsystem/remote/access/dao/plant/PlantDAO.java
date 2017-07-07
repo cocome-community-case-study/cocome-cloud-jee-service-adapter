@@ -75,18 +75,18 @@ public class PlantDAO implements DataAccessObject<Plant> {
         final EntityManager em = this.emf.createEntityManager();
         final Notification notification = new Notification();
         Plant plant;
-        for (final Plant nextStore : entities) {
-            plant = this.queryPlantById(em, nextStore);
+        for (final Plant nextPlant : entities) {
+            plant = this.queryPlantById(em, nextPlant);
             if (plant == null) {
                 notification.addNotification(
                         "updateStore", Notification.FAILED,
-                        "Store not available:" + nextStore);
+                        "Store not available:" + nextPlant);
                 continue;
             }
             // update location
-            plant.setLocation(nextStore.getLocation());
+            plant.setLocation(nextPlant.getLocation());
             // update name
-            plant.setName(nextStore.getName());
+            plant.setName(nextPlant.getName());
 
             em.merge(plant);
             notification.addNotification(
