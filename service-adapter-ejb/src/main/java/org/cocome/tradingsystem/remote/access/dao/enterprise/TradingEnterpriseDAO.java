@@ -139,13 +139,13 @@ public class TradingEnterpriseDAO implements DataAccessObject<TradingEnterprise>
         return list;
     }
 
-     public TradingEnterprise queryEnterprise(final EntityManager em, final TradingEnterprise enterprise) {
+    public TradingEnterprise queryEnterprise(final EntityManager em, final TradingEnterprise enterprise) {
         return querySingleInstance(em.createQuery(
                 "SELECT te FROM TradingEnterprise te WHERE te.name LIKE :teName",
                 TradingEnterprise.class).setParameter("teName", enterprise.getName()));
     }
 
-    TradingEnterprise queryEnterpriseById(final EntityManager em, final TradingEnterprise enterprise) {
+    public TradingEnterprise queryEnterpriseById(final EntityManager em, final TradingEnterprise enterprise) {
         return querySingleInstance(em.createQuery(
                 "SELECT te FROM TradingEnterprise te WHERE te.id = :teId",
                 TradingEnterprise.class).setParameter("teId", enterprise.getId()));

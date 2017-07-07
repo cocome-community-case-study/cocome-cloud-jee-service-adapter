@@ -45,7 +45,7 @@ public class PlantDAO implements DataAccessObject<Plant> {
         if (entities != null) {
             final EntityManager em = this.emf.createEntityManager();
             for (final Plant nextStore : entities) {
-                final TradingEnterprise _enterprise = tradingEnterpriseDAO.queryEnterprise(em, nextStore.getEnterprise());
+                final TradingEnterprise _enterprise = tradingEnterpriseDAO.queryEnterpriseById(em, nextStore.getEnterprise());
                 if (_enterprise == null) {
                     notification.addNotification(
                             "createStore", Notification.FAILED,

@@ -458,8 +458,6 @@ public class ServiceProviderDatabase extends HttpServlet {
      */
     @SuppressWarnings("unchecked")
     private Table<String> createTable(final String content) {
-        // TODO debug
-        System.out.println("Starting creating Table");
         final CSVParser parser = new CSVParser();
         Table<String> table;
 
@@ -475,10 +473,7 @@ public class ServiceProviderDatabase extends HttpServlet {
                 table = obj.getValue();
                 break;
         }
-        // TODO debug
-        System.out.println("Table created\n");
         parser.setModel(table);
-        System.out.println(parser.toString());
         return table;
     }
 

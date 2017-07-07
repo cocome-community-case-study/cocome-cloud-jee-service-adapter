@@ -62,7 +62,7 @@ public class ProductDAO implements DataAccessObject<Product> {
         final Notification notification = new Notification();
         for (final Product nextProduct : entities) {
             // query product
-            Product _pro = this.queryProduct(em, nextProduct);
+            final Product _pro = this.queryProduct(em, nextProduct);
             if (_pro != null) {
                 // update purchase price
                 double pprice = _pro.getPurchasePrice();
