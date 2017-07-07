@@ -13,7 +13,6 @@ public class EntryPoint implements Serializable, QueryableById {
     private static final long serialVersionUID = 1L;
 
     private long id;
-    private PlantOperation operation;
 
     /**
      * @return the database id
@@ -31,21 +30,5 @@ public class EntryPoint implements Serializable, QueryableById {
      */
     public void setId(final long id) {
         this.id = id;
-    }
-
-    /**
-     * @return the {@link PlantOperation} this port belongs to
-     */
-    @OneToOne(fetch = FetchType.EAGER)
-    public PlantOperation getOperation() {
-        return operation;
-    }
-
-    /**
-     *
-     * @param operation the {@link PlantOperation} this port belongs to
-     */
-    public void setOperation(PlantOperation operation) {
-        this.operation = operation;
     }
 }
