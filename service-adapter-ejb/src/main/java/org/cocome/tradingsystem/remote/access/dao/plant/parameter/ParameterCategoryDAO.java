@@ -123,18 +123,7 @@ public class ParameterCategoryDAO implements DataAccessObject<ParameterCategory>
                 map.put(colParamId.getValue(), category);
             }
 
-            final ProductionParameter param;
-            try {
-                final Class<?> clazz = Class.forName(colParamType.getValue());
-                if (!ProductionParameter.class.isAssignableFrom(clazz)) {
-                    continue;
-                }
-                final Class<? extends ProductionParameter> paramClass;
-                paramClass = (Class<? extends ProductionParameter>) clazz;
-                param = paramClass.newInstance();
-            } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-                continue;
-            }
+            final ProductionParameter param = ProductionParameterDOUtil.createInstance(colParamType.getValue());
             param.setId(Long.parseLong(colCategoryId.getValue()));
             param.setName(colParamName.getValue());
             category.getProductionParameters().add(param);
