@@ -34,9 +34,6 @@ public class ProductOrderDAO implements DataAccessObject<ProductOrder> {
     @EJB
     private ProductDAO productDAO;
 
-    @EJB
-    private StoreDAO storeDAO;
-
     @PersistenceUnit(unitName = IData.EJB_PERSISTENCE_UNIT_NAME)
     private EntityManagerFactory emf;
 
@@ -54,7 +51,7 @@ public class ProductOrderDAO implements DataAccessObject<ProductOrder> {
         ProductOrder _productOrder;
         for (final ProductOrder nextOrder : entities) {
 
-            _store = storeDAO.queryStoreById(em, nextOrder.getStore());
+            _store = em.find(Store.class, nextOrder.getStore().getId());
             if (_store == null) {
                 notification.addNotification(
                         "createProductOrder", Notification.FAILED,
