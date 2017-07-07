@@ -18,11 +18,9 @@ public interface DataAccessObject<E> {
 
     String getEntityTypeName();
 
-    Notification createEntities(final List<E> list)
-            throws IllegalArgumentException;
+    Notification createEntities(final List<E> list);
 
-    Notification updateEntities(final List<E> list)
-            throws IllegalArgumentException;
+    Notification updateEntities(final List<E> list);
 
     Table<String> toTable(final List<E> list);
 

@@ -19,13 +19,13 @@ public class DatabaseAccess {
     /**
      * Trigger a book sale.
      */
-    public Notification bookSale(final Object o) throws IllegalArgumentException {
+    public Notification bookSale(final Object o) {
         // TODO Implement this.
         return null;
     }
 
     @SuppressWarnings("unchecked")
-    public List<Object> query(final String query) throws IllegalArgumentException {
+    public List<Object> query(final String query) {
         if ((query != null) && !query.isEmpty()) {
             return this.emf.createEntityManager().createQuery(query).getResultList();
         } else {
