@@ -21,14 +21,12 @@ import cocome.cloud.sa.query.parsing.QueryLexer.State6;
 
 public class QueryParser implements IParser<String>, ILexerVisitor<CharSequence> {
 
-	
-
 	private static final int INIT_STATE = 0;
 	private static final int EOL_STATE = 5;
 
 	private ILexer<CharSequence> lexer = new QueryLexer();
 
-	private final Map<String, String> map = new HashMap<String, String>();
+	private final Map<String, String> map = new HashMap<>();
 
 	private IQuery query;
 
@@ -58,18 +56,6 @@ public class QueryParser implements IParser<String>, ILexerVisitor<CharSequence>
 		this.strQuery = model;
 	}
 
-	/**
-	 * This assigns a lexer and sets the state machine on state 4.
-	 *
-	 * @param lexer
-	 *            the lexer to be set
-	 */
-	public void setLexer(final ILexer<CharSequence> lexer) {
-		this.lexer = lexer;
-		lexer.getMachine().setEOLState(4);
-		lexer.getMachine().addVisitor(this);
-	}
-
 	@Override
 	public void parse(final String content) {
 		this.lexer.getMachine().setInput(content);
@@ -81,7 +67,7 @@ public class QueryParser implements IParser<String>, ILexerVisitor<CharSequence>
 		try {
 			if (in != null && in.available() != -1) {
 				final BufferedReader br = new BufferedReader(new InputStreamReader(in));
-				String line = null;
+				String line;
 				final StringBuilder content = new StringBuilder();
 				while ((line = br.readLine()) != null) {
 					content.append(line);
@@ -101,7 +87,7 @@ public class QueryParser implements IParser<String>, ILexerVisitor<CharSequence>
 		if (!val.isEmpty()) {
 			switch (state) {
 			case State6.INDEX:
-				this.selectQueryClass(val);
+				// TODO implementation missing;
 				break;
 			case State4.INDEX:
 				if (val.toLowerCase().startsWith("entity.type")) {
@@ -126,9 +112,6 @@ public class QueryParser implements IParser<String>, ILexerVisitor<CharSequence>
 		return super.toString();
 	}
 
-	private void selectQueryClass(final String token) {
-		// TODO implementation missing
-	}
 
 	private void selectEntityType(final String token) {
 		this.entityType = token.split("=")[1].toLowerCase();
@@ -155,6 +138,5 @@ public class QueryParser implements IParser<String>, ILexerVisitor<CharSequence>
 	@Override
 	public void addVisitor(final IParserVisitor<String> visitor) {
 		// TODO Auto-generated method stub
-
 	}
 }

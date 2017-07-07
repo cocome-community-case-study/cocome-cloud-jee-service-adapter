@@ -1,5 +1,6 @@
 package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
+import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.expression.Expression;
 
@@ -12,7 +13,7 @@ import java.util.Collection;
  * @author Rudolf Biczok
  */
 @Entity
-public class PlantOperation implements Serializable {
+public class PlantOperation implements Serializable, QueryableById {
     private static final long serialVersionUID = 1L;
 
     private long id;
@@ -24,6 +25,7 @@ public class PlantOperation implements Serializable {
     /**
      * @return A unique identifier of this Plant.
      */
+    @Override
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {

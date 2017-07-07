@@ -132,9 +132,6 @@
                 <version>2.20</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <java.util.logging.config.file>
-                            ${project.build.testOutputDirectory}/logging.properties
-                        </java.util.logging.config.file>
                         <derby.stream.error.file>
                             ${project.build.directory}/derby.log
                         </derby.stream.error.file>

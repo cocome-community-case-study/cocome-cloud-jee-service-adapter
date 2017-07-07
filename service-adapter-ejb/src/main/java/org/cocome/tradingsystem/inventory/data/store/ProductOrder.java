@@ -18,6 +18,8 @@
 
 package org.cocome.tradingsystem.inventory.data.store;
 
+import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -40,106 +42,102 @@ import javax.persistence.TemporalType;
  * @author Yannick Welsch
  */
 @Entity
-public class ProductOrder implements Serializable {
+public class ProductOrder implements Serializable, QueryableById {
 
-	private static final long serialVersionUID = -8340585715760459030L;
+    private static final long serialVersionUID = -8340585715760459030L;
 
-	private long id;
-	private Date deliveryDate;
-	private Date orderingDate;
-	private Collection<OrderEntry> orderEntries;
-	private Store store;
+    private long id;
+    private Date deliveryDate;
+    private Date orderingDate;
+    private Collection<OrderEntry> orderEntries;
+    private Store store;
 
-	/**
-	 * @return A unique identifier for ProductOrder objects
-	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public long getId() {
-		return this.id;
-	}
+    /**
+     * @return A unique identifier for ProductOrder objects
+     */
+    @Override
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public long getId() {
+        return this.id;
+    }
 
-	/**
-	 * @param id
-	 *            A unique identifier for ProductOrder objects
-	 */
-	public void setId(final long id) {
-		this.id = id;
-	}
+    /**
+     * @param id A unique identifier for ProductOrder objects
+     */
+    public void setId(final long id) {
+        this.id = id;
+    }
 
-	/**
-	 * @return A list of OrderEntry objects (pairs of Product-Amount-pairs)
-	 */
-	@OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	public Collection<OrderEntry> getOrderEntries() {
-		return this.orderEntries;
-	}
+    /**
+     * @return A list of OrderEntry objects (pairs of Product-Amount-pairs)
+     */
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Collection<OrderEntry> getOrderEntries() {
+        return this.orderEntries;
+    }
 
-	/**
-	 * @param orderEntries
-	 *            A list of OrderEntry objects (pairs of Product-Amount-pairs)
-	 */
-	public void setOrderEntries(final Collection<OrderEntry> orderEntries) {
-		this.orderEntries = orderEntries;
-	}
+    /**
+     * @param orderEntries A list of OrderEntry objects (pairs of Product-Amount-pairs)
+     */
+    public void setOrderEntries(final Collection<OrderEntry> orderEntries) {
+        this.orderEntries = orderEntries;
+    }
 
-	/**
-	 * @return The date of ordering.
-	 */
-	@Basic
-	@Temporal(TemporalType.TIMESTAMP)
-	public Date getOrderingDate() {
-		return this.orderingDate;
-	}
+    /**
+     * @return The date of ordering.
+     */
+    @Basic
+    @Temporal(TemporalType.TIMESTAMP)
+    public Date getOrderingDate() {
+        return this.orderingDate;
+    }
 
-	/**
-	 * @param orderingDate
-	 *            the date of ordering
-	 */
-	public void setOrderingDate(final Date orderingDate) {
-		this.orderingDate = orderingDate;
-	}
+    /**
+     * @param orderingDate the date of ordering
+     */
+    public void setOrderingDate(final Date orderingDate) {
+        this.orderingDate = orderingDate;
+    }
 
-	/**
-	 * The delivery date is used for computing the mean time to delivery
-	 *
-	 * @return The date of order fulfillment.
-	 */
-	@Basic
-	@Temporal(TemporalType.TIMESTAMP)
-	public Date getDeliveryDate() {
-		return this.deliveryDate;
-	}
+    /**
+     * The delivery date is used for computing the mean time to delivery
+     *
+     * @return The date of order fulfillment.
+     */
+    @Basic
+    @Temporal(TemporalType.TIMESTAMP)
+    public Date getDeliveryDate() {
+        return this.deliveryDate;
+    }
 
-	/**
-	 * The delivery date is used for computing the mean time to delivery
-	 *
-	 * @param deliveryDate
-	 *            the date of order fulfillment
-	 */
-	public void setDeliveryDate(final Date deliveryDate) {
-		this.deliveryDate = deliveryDate;
-	}
+    /**
+     * The delivery date is used for computing the mean time to delivery
+     *
+     * @param deliveryDate the date of order fulfillment
+     */
+    public void setDeliveryDate(final Date deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
 
-	/**
-	 * @return The store where the order is placed.
-	 */
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	public Store getStore() {
-		return this.store;
-	}
+    /**
+     * @return The store where the order is placed.
+     */
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Store getStore() {
+        return this.store;
+    }
 
-	/**
-	 * @param store
-	 *            the store where the order is placed
-	 */
-	public void setStore(final Store store) {
-		this.store = store;
-	}
+    /**
+     * @param store the store where the order is placed
+     */
+    public void setStore(final Store store) {
+        this.store = store;
+    }
 
-	@Override
-	public String toString() {
-		return "[Class:" + this.getClass().getSimpleName() + ",Id:" + this.getId() + ",Store:" + this.getStore() + "]";
-	}
+    @Override
+    public String toString() {
+        return "[Class:" + this.getClass().getSimpleName() + ",Id:" + this.getId() + ",Store:" + this.getStore() + "]";
+    }
 
 }

@@ -1,4 +1,5 @@
-/***************************************************************************
+/*
+ ***************************************************************************
  * Copyright 2013 DFG SPP 1593 (http://dfg-spp1593.de)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +13,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- ***************************************************************************/
+ **************************************************************************
+ */
 
 package org.cocome.tradingsystem.inventory.data.enterprise;
 
@@ -30,75 +32,73 @@ import javax.persistence.OneToMany;
 
 /**
  * This class represents a ProductSupplier in the database.
- * 
+ *
  * @author Yannick Welsch
  */
 @Entity
-public class ProductSupplier implements Serializable{
+public class ProductSupplier implements Serializable, QueryableById {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private long id;
+    private long id;
 
-	private String name;
+    private String name;
 
-	private Collection<Product> products;
+    private Collection<Product> products;
 
-	//
+    //
 
-	/**
-	 * @return A unique identifier for ProductSupplier objects
-	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public long getId() {
-		return id;
-	}
+    /**
+     * @return A unique identifier for ProductSupplier objects
+     */
+    @Override
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public long getId() {
+        return id;
+    }
 
-	/**
-	 * @param id
-	 *            A unique identifier for ProductSupplier objects
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
+    /**
+     * @param id A unique identifier for ProductSupplier objects
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	/**
-	 * @return The name of the ProductSupplier
-	 */
-	@Basic
-	public String getName() {
-		return name;
-	}
+    /**
+     * @return The name of the ProductSupplier
+     */
+    @Basic
+    public String getName() {
+        return name;
+    }
 
-	/**
-	 * @param name
-	 *            The name of the ProductSupplier
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
+    /**
+     * @param name The name of the ProductSupplier
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	/**
-	 * @return The list of Products provided by the ProductSupplier
-	 */
-	@OneToMany(mappedBy = "supplier", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	public Collection<Product> getProducts() {
-		return products;
-	}
+    /**
+     * @return The list of Products provided by the ProductSupplier
+     */
+    @OneToMany(mappedBy = "supplier", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Collection<Product> getProducts() {
+        return products;
+    }
 
-	/**
-	 * @param products
-	 *            The list of Products provided by the ProductSupplier
-	 */
-	public void setProducts(Collection<Product> products) {
-		this.products = products;
-	}
-	
-	@Override
-	public String toString() {
-		return "[Class:" + getClass().getSimpleName() + ",Id" + getId()
-				+ ",Name:" + this.getName() + "]";
-	}
+    /**
+     * @param products The list of Products provided by the ProductSupplier
+     */
+    public void setProducts(Collection<Product> products) {
+        this.products = products;
+    }
+
+    @Override
+    public String toString() {
+        return "[Class:" + getClass().getSimpleName() + ",Id" + getId()
+                + ",Name:" + this.getName() + "]";
+    }
 
 }

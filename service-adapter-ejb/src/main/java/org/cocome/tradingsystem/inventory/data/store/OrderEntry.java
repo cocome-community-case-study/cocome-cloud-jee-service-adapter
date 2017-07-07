@@ -28,6 +28,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.Product;
+import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 
 /**
  * Represents a single product order entry in the database.
@@ -35,94 +36,94 @@ import org.cocome.tradingsystem.inventory.data.enterprise.Product;
  * @author Yannick Welsch
  */
 @Entity
-public class OrderEntry implements Serializable {
+public class OrderEntry implements Serializable, QueryableById {
 
-	private static final long serialVersionUID = -7683436740437770058L;
+    private static final long serialVersionUID = -7683436740437770058L;
 
-	private long id;
+    private long id;
 
-	private long amount;
+    private long amount;
 
-	private Product product;
+    private Product product;
 
-	private ProductOrder order;
+    private ProductOrder order;
 
-	/** Empty constructor. */
-	public OrderEntry() {}
+    /**
+     * Empty constructor.
+     */
+    public OrderEntry() {
+    }
 
-	/**
-	 * Gets identifier value
-	 *
-	 * @return The id.
-	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public long getId() {
-		return this.id;
-	}
+    /**
+     * Gets identifier value
+     *
+     * @return The id.
+     */
+    @Override
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public long getId() {
+        return this.id;
+    }
 
-	/**
-	 * Sets identifier.
-	 *
-	 * @param id
-	 *            Identifier value.
-	 */
-	public void setId(final long id) {
-		this.id = id;
-	}
+    /**
+     * Sets identifier.
+     *
+     * @param id Identifier value.
+     */
+    public void setId(final long id) {
+        this.id = id;
+    }
 
-	/**
-	 * @return The amount of ordered products
-	 */
-	@Basic
-	public long getAmount() {
-		return this.amount;
-	}
+    /**
+     * @return The amount of ordered products
+     */
+    @Basic
+    public long getAmount() {
+        return this.amount;
+    }
 
-	/**
-	 * @param amount
-	 *            The amount of ordered products
-	 */
-	public void setAmount(final long amount) {
-		this.amount = amount;
-	}
+    /**
+     * @param amount The amount of ordered products
+     */
+    public void setAmount(final long amount) {
+        this.amount = amount;
+    }
 
-	/**
-	 * @return The ProductOrder where the OrderEntry belongs to
-	 */
-	@ManyToOne
-	public ProductOrder getOrder() {
-		return this.order;
-	}
+    /**
+     * @return The ProductOrder where the OrderEntry belongs to
+     */
+    @ManyToOne
+    public ProductOrder getOrder() {
+        return this.order;
+    }
 
-	/**
-	 * @param productOrder
-	 *            The ProductOrder where the OrderEntry belongs to
-	 */
-	public void setOrder(final ProductOrder productOrder) {
-		this.order = productOrder;
-	}
+    /**
+     * @param productOrder The ProductOrder where the OrderEntry belongs to
+     */
+    public void setOrder(final ProductOrder productOrder) {
+        this.order = productOrder;
+    }
 
-	/**
-	 * @return The product which is ordered
-	 */
-	@ManyToOne
-	public Product getProduct() {
-		return this.product;
-	}
+    /**
+     * @return The product which is ordered
+     */
+    @ManyToOne
+    public Product getProduct() {
+        return this.product;
+    }
 
-	/**
-	 * @param product
-	 *            The product which is ordered
-	 */
-	public void setProduct(final Product product) {
-		this.product = product;
-	}
+    /**
+     * @param product The product which is ordered
+     */
+    public void setProduct(final Product product) {
+        this.product = product;
+    }
 
-	@Override
-	public String toString() {
-		return "[Class:" + this.getClass().getSimpleName() + ",Id" + this.getId()
-				+ ",Product:" + this.product + ",ProductOrder:" + this.order + "]";
-	}
+    @Override
+    public String toString() {
+        return "[Class:" + this.getClass().getSimpleName() + ",Id" + this.getId()
+                + ",Product:" + this.product + ",ProductOrder:" + this.order + "]";
+    }
 
 }

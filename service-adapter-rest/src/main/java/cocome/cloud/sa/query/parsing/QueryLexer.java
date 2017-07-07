@@ -10,19 +10,19 @@ import de.kit.ipd.java.utils.framework.statemachine.IStateMachine;
 
 public class QueryLexer implements ILexer<CharSequence> {
 
-	public static final IState<CharSequence> STATE_0 = new State0();
+	private static final IState<CharSequence> STATE_0 = new State0();
 
-	public static final IState<CharSequence> STATE_1 = new State1();
+	private static final IState<CharSequence> STATE_1 = new State1();
 
-	public static final IState<CharSequence> STATE_2 = new State2();
+	private static final IState<CharSequence> STATE_2 = new State2();
 
-	public static final IState<CharSequence> STATE_3 = new State3();
+	private static final IState<CharSequence> STATE_3 = new State3();
 
-	public static final IState<CharSequence> STATE_4 = new State4();
+	private static final IState<CharSequence> STATE_4 = new State4();
 
-	public static final IState<CharSequence> STATE_5 = new State5();
+	private static final IState<CharSequence> STATE_5 = new State5();
 
-	public static final IState<CharSequence> STATE_6 = new State6();
+	private static final IState<CharSequence> STATE_6 = new State6();
 
 	/** State-Machine which does the scanning of the source. */
 	private final IStateMachine<CharSequence> machine = new CharStreamStateMachine();
@@ -30,7 +30,7 @@ public class QueryLexer implements ILexer<CharSequence> {
 	/**
 	 * Initialize query lexer.
 	 */
-	public QueryLexer() {
+	QueryLexer() {
 		this.machine.add(STATE_0);
 		this.machine.add(STATE_1);
 		this.machine.add(STATE_2);
@@ -72,7 +72,7 @@ public class QueryLexer implements ILexer<CharSequence> {
 		private final String transitionDefault = "[\\r]";
 
 		/** empty constructor. */
-		public State0() {}
+		State0() {}
 
 		@Override
 		public void run(final IStateMachine<CharSequence> machine) {

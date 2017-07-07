@@ -1,16 +1,19 @@
 package org.cocome.tradingsystem.inventory.data.plant.parameter;
 
+import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
 /**
  * Represents a category container.
+ *
  * @param <T> The class type this parameter category is associated with
  * @author Rudolf Biczok
  */
 @Entity
-public class ParameterCategory<T> implements Serializable {
+public class ParameterCategory<T> implements Serializable, QueryableById {
 
     private static final long serialVersionUID = -2577328715744776645L;
 
@@ -21,6 +24,7 @@ public class ParameterCategory<T> implements Serializable {
     /**
      * @return The id.
      */
+    @Override
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
@@ -28,8 +32,7 @@ public class ParameterCategory<T> implements Serializable {
     }
 
     /**
-     * @param id
-     *            Identifier value.
+     * @param id Identifier value.
      */
     public void setId(long id) {
         this.id = id;
@@ -44,8 +47,7 @@ public class ParameterCategory<T> implements Serializable {
     }
 
     /**
-     * @param name
-     *            The name of the product
+     * @param name The name of the product
      */
     public void setName(String name) {
         this.name = name;

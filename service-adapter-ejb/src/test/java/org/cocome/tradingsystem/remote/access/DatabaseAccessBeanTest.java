@@ -18,7 +18,7 @@ public class DatabaseAccessBeanTest {
     @Deployment
     public static Archive<?> createDeployment() {
         return ShrinkWrap.create(WebArchive.class, "test.war")
-                .addPackage(DatabaseAccessBean.class.getPackage())
+                .addPackage(DatabaseAccess.class.getPackage())
                 .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
     }

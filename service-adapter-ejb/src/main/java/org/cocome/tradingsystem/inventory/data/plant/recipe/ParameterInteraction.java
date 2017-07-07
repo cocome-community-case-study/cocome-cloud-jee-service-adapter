@@ -1,6 +1,7 @@
 package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct;
+import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter;
 
 import javax.persistence.*;
@@ -14,7 +15,7 @@ import java.io.Serializable;
  * @author Rudolf Biczok
  */
 @Entity
-public class ParameterInteraction implements Serializable {
+public class ParameterInteraction implements Serializable, QueryableById {
     private static final long serialVersionUID = 1L;
 
     private long id;
@@ -24,6 +25,7 @@ public class ParameterInteraction implements Serializable {
     /**
      * @return The database id
      */
+    @Override
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {

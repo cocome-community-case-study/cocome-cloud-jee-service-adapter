@@ -1,6 +1,7 @@
-package cocome.cloud.sa.serviceprovider.impl.dao.store;
+package org.cocome.tradingsystem.remote.access.dao.store;
 
-import cocome.cloud.sa.serviceprovider.impl.dao.DataAccessObject;
+import org.cocome.tradingsystem.inventory.data.IData;
+import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import de.kit.ipd.java.utils.time.TimeUtils;
@@ -8,11 +9,15 @@ import org.cocome.tradingsystem.inventory.data.enterprise.Product;
 import org.cocome.tradingsystem.inventory.data.store.OrderEntry;
 import org.cocome.tradingsystem.inventory.data.store.ProductOrder;
 import org.cocome.tradingsystem.inventory.data.store.Store;
-import org.cocome.tradingsystem.remote.access.DatabaseAccess;
 import org.cocome.tradingsystem.remote.access.Notification;
+import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductDAO;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.Dependent;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,11 +27,18 @@ import java.util.Map;
  * DAO for {@link ProductOrder}
  * @author Rudolf Biczok
  */
-@Dependent
+@Stateless
+@LocalBean
 public class ProductOrderDAO implements DataAccessObject<ProductOrder> {
 
     @EJB
-    private DatabaseAccess databaseAccess;
+    private ProductDAO productDAO;
+
+    @EJB
+    private StoreDAO storeDAO;
+
+    @PersistenceUnit(unitName = IData.EJB_PERSISTENCE_UNIT_NAME)
+    private EntityManagerFactory emf;
 
     @Override
     public String getEntityTypeName() {
@@ -35,12 +47,90 @@ public class ProductOrderDAO implements DataAccessObject<ProductOrder> {
 
     @Override
     public Notification createEntities(List<ProductOrder> entities) throws IllegalArgumentException {
-        return databaseAccess.createProductOrder(entities);
+        final EntityManager em = this.emf.createEntityManager();
+        final Notification notification = new Notification();
+        Store _store;
+        Product _product;
+        ProductOrder _productOrder;
+        for (final ProductOrder nextOrder : entities) {
+
+            _store = storeDAO.queryStoreById(em, nextOrder.getStore());
+            if (_store == null) {
+                notification.addNotification(
+                        "createProductOrder", Notification.FAILED,
+                        "Store not available:" + nextOrder.getStore());
+                continue;
+            }
+
+            _productOrder = new ProductOrder();
+            _productOrder.setOrderEntries(new ArrayList<>());
+            _productOrder.setStore(_store);
+            _productOrder.setDeliveryDate(nextOrder.getDeliveryDate());
+            _productOrder.setOrderingDate(nextOrder.getOrderingDate());
+            // set the store of database
+
+            // search for the right product
+            for (final OrderEntry nextOrderEntry : nextOrder.getOrderEntries()) {
+                // query product
+                _product = productDAO.queryProduct(em, nextOrderEntry.getProduct());
+                if (_product == null) {
+                    System.out.println(
+                            "Product missing:" + nextOrderEntry.getProduct());
+                    notification.addNotification(
+                            "createProductOrder", Notification.FAILED,
+                            "Product not available:" + nextOrderEntry.getProduct());
+                    continue;
+                }
+                final OrderEntry _orderEntery = new OrderEntry();
+                _orderEntery.setProduct(_product);
+                _orderEntery.setAmount(nextOrderEntry.getAmount());
+                _orderEntery.setOrder(_productOrder);
+                _productOrder.getOrderEntries().add(_orderEntery);
+                // set the product of database
+            }
+            // persist order
+            em.persist(_productOrder);
+            notification.addNotification(
+                    "createProductOrder", Notification.SUCCESS,
+                    "Creation ProductOrder:" + nextOrder);
+        }
+        em.flush();
+        em.close();
+        return notification;
     }
 
     @Override
     public Notification updateEntities(List<ProductOrder> entities) throws IllegalArgumentException {
-        return databaseAccess.updateProductOrder(entities);
+        final EntityManager em = this.emf.createEntityManager();
+        final Notification notification = new Notification();
+
+        ProductOrder _order;
+        for (final ProductOrder nextOrder : entities) {
+            _order = this.queryProductOrderById(em, nextOrder);
+            if (_order == null) {
+                notification.addNotification(
+                        "updateProductOrder", Notification.FAILED,
+                        "ProductOrder not available:" + nextOrder);
+                continue;
+            }
+
+            // update
+            if (nextOrder.getDeliveryDate() != null) {
+                _order.setDeliveryDate(nextOrder.getDeliveryDate());
+            }
+
+            if (nextOrder.getOrderingDate() != null) {
+                _order.setOrderingDate(nextOrder.getOrderingDate());
+            }
+
+            em.merge(_order);
+            notification.addNotification(
+                    "updateProductOrder", Notification.SUCCESS,
+                    "Update ProductOrder:" + nextOrder);
+        }
+        em.flush();
+        em.close();
+        return notification;
     }
 
     @Override
@@ -119,5 +209,12 @@ public class ProductOrderDAO implements DataAccessObject<ProductOrder> {
         final List<ProductOrder> list = new ArrayList<>(map.values());
         System.out.println("Product Order List:" + list.size());
         return list;
+    }
+
+
+    ProductOrder queryProductOrderById(final EntityManager em, final ProductOrder order) {
+        return querySingleInstance(em.createQuery(
+                "SELECT p FROM ProductOrder p WHERE p.id = :pId",
+                ProductOrder.class).setParameter("pId", order.getId()));
     }
 }

@@ -36,105 +36,101 @@ import org.cocome.tradingsystem.inventory.data.store.Store;
 
 /**
  * Represents a TradingEnterprise in the database.
- * 
+ *
  * @author Yannick Welsch
  */
 @Entity
-public class TradingEnterprise implements Serializable{
+public class TradingEnterprise implements Serializable, QueryableById {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private long id;
-	private String name;
-	private Collection<ProductSupplier> suppliers;
-	private Collection<Store> stores;
-	private Collection<Plant> plants;
+    private long id;
+    private String name;
+    private Collection<ProductSupplier> suppliers;
+    private Collection<Store> stores;
+    private Collection<Plant> plants;
 
-	/**
-	 * @return id a unique identifier of this TradingEnterprise
-	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public long getId() {
-		return id;
-	}
+    /**
+     * @return id a unique identifier of this TradingEnterprise
+     */
+    @Override
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public long getId() {
+        return id;
+    }
 
-	/**
-	 * @param id
-	 *            a unique identifier of this TradingEnterprise
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
+    /**
+     * @param id a unique identifier of this TradingEnterprise
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	/**
-	 * @return Name of this TradingEnterprise
-	 */
-	@Basic
-	public String getName() {
-		return name;
-	}
+    /**
+     * @return Name of this TradingEnterprise
+     */
+    @Basic
+    public String getName() {
+        return name;
+    }
 
-	/**
-	 * @param name
-	 *            Name of this TradingEnterprise
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
+    /**
+     * @param name Name of this TradingEnterprise
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	/**
-	 * @return Collection of Stores related to the TradingEnterprise
-	 */
-	@OneToMany(mappedBy = "enterprise", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	public Collection<Store> getStores() {
-		return stores;
-	}
+    /**
+     * @return Collection of Stores related to the TradingEnterprise
+     */
+    @OneToMany(mappedBy = "enterprise", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Collection<Store> getStores() {
+        return stores;
+    }
 
-	/**
-	 * @param plants
-	 *            Collection of Plants related to the TradingEnterprise
-	 */
-	public void setPlants(Collection<Plant> plants) {
-		this.plants = plants;
-	}
+    /**
+     * @param plants Collection of Plants related to the TradingEnterprise
+     */
+    public void setPlants(Collection<Plant> plants) {
+        this.plants = plants;
+    }
 
-	/**
-	 * @return Collection of Plants related to the TradingEnterprise
-	 */
-	@OneToMany(mappedBy = "enterprise", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	public Collection<Plant> getPlants() {
-		return plants;
-	}
+    /**
+     * @return Collection of Plants related to the TradingEnterprise
+     */
+    @OneToMany(mappedBy = "enterprise", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Collection<Plant> getPlants() {
+        return plants;
+    }
 
-	/**
-	 * @param stores
-	 *            Collection of Stores related to the TradingEnterprise
-	 */
-	public void setStores(Collection<Store> stores) {
-		this.stores = stores;
-	}
+    /**
+     * @param stores Collection of Stores related to the TradingEnterprise
+     */
+    public void setStores(Collection<Store> stores) {
+        this.stores = stores;
+    }
 
-	/**
-	 * @return Collection of Suppliers related to the TradingEnterprise
-	 */
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	public Collection<ProductSupplier> getSuppliers() {
-		return suppliers;
-	}
+    /**
+     * @return Collection of Suppliers related to the TradingEnterprise
+     */
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Collection<ProductSupplier> getSuppliers() {
+        return suppliers;
+    }
 
-	/**
-	 * @param suppliers
-	 *            Collection of Suppliers related to the TradingEnterprise
-	 */
-	public void setSuppliers(Collection<ProductSupplier> suppliers) {
-		this.suppliers = suppliers;
-	}
-	
-	@Override
-	public String toString() {
-		return "[Class:" + getClass().getSimpleName() + ",Id" + getId()
-				+ ",Name:" + getName() + "]";
-	}
+    /**
+     * @param suppliers Collection of Suppliers related to the TradingEnterprise
+     */
+    public void setSuppliers(Collection<ProductSupplier> suppliers) {
+        this.suppliers = suppliers;
+    }
+
+    @Override
+    public String toString() {
+        return "[Class:" + getClass().getSimpleName() + ",Id" + getId()
+                + ",Name:" + getName() + "]";
+    }
 
 }

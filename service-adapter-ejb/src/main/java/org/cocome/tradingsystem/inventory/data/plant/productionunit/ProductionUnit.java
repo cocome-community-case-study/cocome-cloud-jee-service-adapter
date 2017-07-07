@@ -1,5 +1,7 @@
 package org.cocome.tradingsystem.inventory.data.plant.productionunit;
 
+import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -9,7 +11,7 @@ import java.io.Serializable;
  * @author Rudolf Biczok
  */
 @Entity
-public class ProductionUnit implements Serializable {
+public class ProductionUnit implements Serializable, QueryableById {
 
     private static final long serialVersionUID = -2577328715744776645L;
 
@@ -23,6 +25,7 @@ public class ProductionUnit implements Serializable {
      *
      * @return The id.
      */
+    @Override
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {

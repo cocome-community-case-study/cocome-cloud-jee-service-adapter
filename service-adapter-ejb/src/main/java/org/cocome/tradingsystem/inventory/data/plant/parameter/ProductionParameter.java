@@ -1,5 +1,7 @@
 package org.cocome.tradingsystem.inventory.data.plant.parameter;
 
+import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -10,7 +12,7 @@ import java.io.Serializable;
  */
 //TODO: This should be @MappedSuperclass though, but would then prevent polymorphism
 @Entity
-public class ProductionParameter<T> implements Serializable {
+public class ProductionParameter<T> implements Serializable, QueryableById {
 
     private static final long serialVersionUID = -2577328715744776645L;
 
@@ -20,6 +22,7 @@ public class ProductionParameter<T> implements Serializable {
     /**
      * @return The id.
      */
+    @Override
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {

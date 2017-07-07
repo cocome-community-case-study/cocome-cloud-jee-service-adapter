@@ -1,6 +1,7 @@
-package cocome.cloud.sa.serviceprovider.impl.dao.usermanager;
+package org.cocome.tradingsystem.remote.access.dao.usermanager;
 
-import cocome.cloud.sa.serviceprovider.impl.dao.DataAccessObject;
+import org.cocome.tradingsystem.inventory.data.IData;
+import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.store.Store;
@@ -14,18 +15,24 @@ import org.cocome.tradingsystem.usermanager.datatypes.CredentialType;
 import org.cocome.tradingsystem.usermanager.datatypes.Role;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.Dependent;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import java.util.*;
 
 /**
  * DAO for {@link Store}
+ *
  * @author Rudolf Biczok
  */
-@Dependent
+@Stateless
+@LocalBean
 public class LoginUserDAO implements DataAccessObject<LoginUser> {
 
-    @EJB
-    private DatabaseAccess databaseAccess;
+    @PersistenceUnit(unitName = IData.EJB_PERSISTENCE_UNIT_NAME)
+    private EntityManagerFactory emf;
 
     @Override
     public String getEntityTypeName() {
@@ -34,12 +41,47 @@ public class LoginUserDAO implements DataAccessObject<LoginUser> {
 
     @Override
     public Notification createEntities(List<LoginUser> entities) throws IllegalArgumentException {
-        return databaseAccess.createUser(entities);
+        final EntityManager em = this.emf.createEntityManager();
+        final Notification notification = new Notification();
+
+        for (final LoginUser nextUser : entities) {
+            // persist
+            em.persist(nextUser);
+            notification.addNotification(
+                    "createUser", Notification.SUCCESS,
+                    "Creation User:" + nextUser);
+        }
+        em.flush();
+        em.close();
+        return notification;
     }
 
     @Override
     public Notification updateEntities(List<LoginUser> entities) throws IllegalArgumentException {
-        return databaseAccess.updateUser(entities);
+        final EntityManager em = this.emf.createEntityManager();
+        final Notification notification = new Notification();
+
+        for (final LoginUser nextUser : entities) {
+            LoginUser persistedUser = this.queryUser(em, nextUser);
+
+            if (persistedUser == null) {
+                notification.addNotification("updateUser", Notification.FAILED,
+                        "Update user: No such user: " + nextUser.getUsername());
+                continue;
+            }
+
+            persistedUser.setUsername(nextUser.getUsername());
+            persistedUser.setRoles(nextUser.getRoles());
+            persistedUser.setCredentials(nextUser.getCredentials());
+
+            em.merge(nextUser);
+            notification.addNotification(
+                    "updateUser", Notification.SUCCESS,
+                    "Update User:" + nextUser);
+        }
+        em.flush();
+        em.close();
+        return notification;
     }
 
     @Override
@@ -148,5 +190,11 @@ public class LoginUserDAO implements DataAccessObject<LoginUser> {
             list.put(user.getUsername(), user);
         }
         return new ArrayList<>(list.values());
+    }
+
+    LoginUser queryUser(final EntityManager em, final LoginUser user) {
+        return querySingleInstance(em.createQuery(
+                "SELECT u FROM LoginUser u WHERE u.username = :uName",
+                LoginUser.class).setParameter("uName", user.getUsername()));
     }
 }

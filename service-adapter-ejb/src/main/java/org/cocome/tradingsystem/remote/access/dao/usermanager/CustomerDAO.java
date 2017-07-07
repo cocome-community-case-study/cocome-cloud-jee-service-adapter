@@ -1,28 +1,40 @@
-package cocome.cloud.sa.serviceprovider.impl.dao.usermanager;
+package org.cocome.tradingsystem.remote.access.dao.usermanager;
 
-import cocome.cloud.sa.serviceprovider.impl.dao.DataAccessObject;
+import org.cocome.tradingsystem.inventory.data.IData;
+import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.store.Store;
-import org.cocome.tradingsystem.remote.access.DatabaseAccess;
 import org.cocome.tradingsystem.remote.access.Notification;
+import org.cocome.tradingsystem.remote.access.dao.store.StoreDAO;
 import org.cocome.tradingsystem.usermanager.Customer;
 import org.cocome.tradingsystem.usermanager.LoginUser;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.Dependent;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import java.util.*;
 
 /**
  * DAO for {@link Store}
  * @author Rudolf Biczok
  */
-@Dependent
+@Stateless
+@LocalBean
 public class CustomerDAO implements DataAccessObject<Customer> {
 
     @EJB
-    private DatabaseAccess databaseAccess;
+    private LoginUserDAO loginUserDAO;
+
+    @EJB
+    private StoreDAO storeDAO;
+
+    @PersistenceUnit(unitName = IData.EJB_PERSISTENCE_UNIT_NAME)
+    private EntityManagerFactory emf;
 
     @Override
     public String getEntityTypeName() {
@@ -31,12 +43,76 @@ public class CustomerDAO implements DataAccessObject<Customer> {
 
     @Override
     public Notification createEntities(List<Customer> entities) throws IllegalArgumentException {
-        return databaseAccess.createCustomer(entities);
+        final EntityManager em = this.emf.createEntityManager();
+        final Notification notification = new Notification();
+
+        LoginUser _user;
+        Store _store = null;
+
+        for (final Customer nextCustomer : entities) {
+            // query product
+            _user = loginUserDAO.queryUser(em, nextCustomer.getUser());
+            if (_user == null) {
+                notification.addNotification(
+                        "createCustomer", Notification.FAILED,
+                        "User not available:" + nextCustomer.getUser());
+                continue;
+            }
+            // query store
+            if (nextCustomer.getPreferredStore() != null) {
+                _store = storeDAO.queryStoreById(em, nextCustomer.getPreferredStore());
+                if (_store == null) {
+                    notification.addNotification(
+                            "createCustomer", Notification.FAILED,
+                            "Store not available:" + nextCustomer.getPreferredStore());
+                    continue;
+                }
+            }
+
+            // update object with actual database objects
+            nextCustomer.setPreferredStore(_store);
+            nextCustomer.setUser(_user);
+
+            // persist
+            em.persist(nextCustomer);
+            notification.addNotification(
+                    "createCustomer", Notification.SUCCESS,
+                    "Creation customer:" + nextCustomer);
+        }
+        em.flush();
+        em.close();
+        return notification;
     }
 
     @Override
     public Notification updateEntities(List<Customer> entities) throws IllegalArgumentException {
-        return databaseAccess.updateCustomer(entities);
+        final EntityManager em = this.emf.createEntityManager();
+        final Notification notification = new Notification();
+
+        for (final Customer nextCustomer : entities) {
+            Customer persistedCustomer = this.queryCustomer(em, nextCustomer);
+
+            if (persistedCustomer == null) {
+                notification.addNotification("updateCustomer", Notification.FAILED,
+                        "Update Customer: No such customer: " + nextCustomer.getId());
+                continue;
+            }
+
+            persistedCustomer.setFirstName(nextCustomer.getFirstName());
+            persistedCustomer.setLastName(nextCustomer.getLastName());
+            persistedCustomer.setCreditCardInfo(nextCustomer.getCreditCardInfo());
+            persistedCustomer.setPreferredStore(nextCustomer.getPreferredStore());
+            // Do not change mail address and users because they are used for
+            // the login and should not change
+
+            em.merge(nextCustomer);
+            notification.addNotification(
+                    "updateCustomer", Notification.SUCCESS,
+                    "Update Customer: " + nextCustomer);
+        }
+        em.flush();
+        em.close();
+        return notification;
     }
 
     @Override
@@ -153,4 +229,11 @@ public class CustomerDAO implements DataAccessObject<Customer> {
         table.addColumn(row, 6, String.valueOf(nextCustomer.getUser().getId()), true);
         table.addColumn(row, 7, nextCustomer.getUser().getUsername(), true);
     }
+
+    Customer queryCustomer(final EntityManager em, final Customer customer) {
+        return querySingleInstance(em.createQuery(
+                "SELECT c FROM Customer c WHERE c.id = :cId",
+                Customer.class).setParameter("cId", customer.getId()));
+    }
+
 }

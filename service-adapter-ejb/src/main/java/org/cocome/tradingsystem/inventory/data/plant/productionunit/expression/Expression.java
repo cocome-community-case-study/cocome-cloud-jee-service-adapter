@@ -1,5 +1,7 @@
 package org.cocome.tradingsystem.inventory.data.plant.productionunit.expression;
 
+import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +13,7 @@ import java.io.Serializable;
  * @author Rudolf Biczok
  */
 @Entity
-public class Expression implements Serializable {
+public class Expression implements Serializable, QueryableById {
     private static final long serialVersionUID = 1L;
 
     private long id;
@@ -19,6 +21,7 @@ public class Expression implements Serializable {
     /**
      * @return A unique identifier of this Plant.
      */
+    @Override
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {

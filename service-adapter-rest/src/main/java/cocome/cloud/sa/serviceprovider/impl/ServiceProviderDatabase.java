@@ -11,7 +11,6 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,15 +18,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBElement;
 
-import cocome.cloud.sa.serviceprovider.impl.dao.DataAccessObject;
-import cocome.cloud.sa.serviceprovider.impl.dao.enterprise.ProductDAO;
-import cocome.cloud.sa.serviceprovider.impl.dao.enterprise.ProductSupplierDAO;
-import cocome.cloud.sa.serviceprovider.impl.dao.enterprise.TradingEnterpriseDAO;
-import cocome.cloud.sa.serviceprovider.impl.dao.store.ProductOrderDAO;
-import cocome.cloud.sa.serviceprovider.impl.dao.store.StockItemDAO;
-import cocome.cloud.sa.serviceprovider.impl.dao.store.StoreDAO;
-import cocome.cloud.sa.serviceprovider.impl.dao.usermanager.CustomerDAO;
-import cocome.cloud.sa.serviceprovider.impl.dao.usermanager.LoginUserDAO;
+import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
+import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductDAO;
+import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductSupplierDAO;
+import org.cocome.tradingsystem.remote.access.dao.enterprise.TradingEnterpriseDAO;
+import org.cocome.tradingsystem.remote.access.dao.store.ProductOrderDAO;
+import org.cocome.tradingsystem.remote.access.dao.store.StockItemDAO;
+import org.cocome.tradingsystem.remote.access.dao.store.StoreDAO;
+import org.cocome.tradingsystem.remote.access.dao.usermanager.CustomerDAO;
+import org.cocome.tradingsystem.remote.access.dao.usermanager.LoginUserDAO;
 import de.kit.ipd.java.utils.framework.table.Table;
 import de.kit.ipd.java.utils.framework.table.TableObjectFactory;
 import de.kit.ipd.java.utils.parsing.csv.CSVParser;
@@ -77,28 +76,28 @@ public class ServiceProviderDatabase extends HttpServlet {
     @EJB
     private DatabaseAccess databaseAccess;
 
-    @Inject
+    @EJB
     private ProductDAO productDAO;
 
-    @Inject
+    @EJB
     private ProductSupplierDAO productSupplierDAO;
 
-    @Inject
+    @EJB
     private TradingEnterpriseDAO tradingEnterpriseDAO;
 
-    @Inject
+    @EJB
     private ProductOrderDAO productOrderDAO;
 
-    @Inject
+    @EJB
     private StockItemDAO stockItemDAO;
 
-    @Inject
+    @EJB
     private StoreDAO storeDAO;
 
-    @Inject
+    @EJB
     private CustomerDAO customerDAO;
 
-    @Inject
+    @EJB
     private LoginUserDAO loginUserDAO;
 
     private Map<String, DataAccessObject> daoMap = new HashMap<>();
