@@ -5,7 +5,6 @@ import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
-import org.cocome.tradingsystem.inventory.data.store.Store;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.TradingEnterpriseDAO;
@@ -44,25 +43,25 @@ public class PlantDAO implements DataAccessObject<Plant> {
         final Notification notification = new Notification();
         if (entities != null) {
             final EntityManager em = this.emf.createEntityManager();
-            for (final Plant nextStore : entities) {
-                final TradingEnterprise _enterprise = tradingEnterpriseDAO.queryEnterpriseById(em, nextStore.getEnterprise());
-                if (_enterprise == null) {
+            for (final Plant nextPlant : entities) {
+                final TradingEnterprise enterprise = tradingEnterpriseDAO.queryEnterpriseById(em, nextPlant.getEnterprise());
+                if (enterprise == null) {
                     notification.addNotification(
                             "createStore", Notification.FAILED,
                             "Creation Plant failed, Enterprise not available:"
-                                    + nextStore.getEnterprise() + "," + nextStore);
+                                    + nextPlant.getEnterprise() + "," + nextPlant);
                     continue;
                 }
-                final Store store = new Store();
-                store.setName(nextStore.getName());
-                store.setLocation(nextStore.getLocation());
-                store.setEnterprise(_enterprise);
-                _enterprise.getStores().add(store);
-                em.persist(store);
-                em.merge(_enterprise);
+                final Plant plant = new Plant();
+                plant.setName(nextPlant.getName());
+                plant.setLocation(nextPlant.getLocation());
+                plant.setEnterprise(enterprise);
+                enterprise.getPlants().add(plant);
+                em.persist(plant);
+                em.merge(enterprise);
                 notification.addNotification(
                         "createPlant", Notification.SUCCESS,
-                        "Creation Plant:" + store);
+                        "Creation Plant:" + plant);
             }
             em.flush();
             em.close();
@@ -75,24 +74,24 @@ public class PlantDAO implements DataAccessObject<Plant> {
     public Notification updateEntities(List<Plant> entities) throws IllegalArgumentException {
         final EntityManager em = this.emf.createEntityManager();
         final Notification notification = new Notification();
-        Plant _store;
+        Plant plant;
         for (final Plant nextStore : entities) {
-            _store = this.queryPlantById(em, nextStore);
-            if (_store == null) {
+            plant = this.queryPlantById(em, nextStore);
+            if (plant == null) {
                 notification.addNotification(
                         "updateStore", Notification.FAILED,
                         "Store not available:" + nextStore);
                 continue;
             }
             // update location
-            _store.setLocation(nextStore.getLocation());
+            plant.setLocation(nextStore.getLocation());
             // update name
-            _store.setName(nextStore.getName());
+            plant.setName(nextStore.getName());
 
-            em.merge(_store);
+            em.merge(plant);
             notification.addNotification(
                     "updateStore", Notification.SUCCESS,
-                    "Update Store:" + _store);
+                    "Update Store:" + plant);
         }
         em.flush();
         em.close();
