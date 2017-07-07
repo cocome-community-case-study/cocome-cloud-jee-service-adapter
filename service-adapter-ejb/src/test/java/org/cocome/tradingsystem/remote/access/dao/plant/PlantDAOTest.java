@@ -24,7 +24,7 @@ import java.util.List;
 
 public class PlantDAOTest {
 
-    final EntityManagerFactory factory = Persistence.createEntityManagerFactory(
+    private final EntityManagerFactory factory = Persistence.createEntityManagerFactory(
             "InventoryManagerTest");
 
     private PlantDAO plantDAO = injectFakeEJB(PlantDAO.class);
