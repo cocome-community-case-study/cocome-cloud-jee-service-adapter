@@ -2,7 +2,7 @@ package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter;
-import org.cocome.tradingsystem.inventory.data.plant.productionunit.expression.Expression;
+import org.cocome.tradingsystem.inventory.data.plant.expression.Expression;
 
 import javax.persistence.*;
 import java.io.Serializable;

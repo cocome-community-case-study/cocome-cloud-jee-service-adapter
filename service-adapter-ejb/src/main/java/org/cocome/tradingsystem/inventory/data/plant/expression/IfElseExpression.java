@@ -1,4 +1,4 @@
-package org.cocome.tradingsystem.inventory.data.plant.productionunit.expression;
+package org.cocome.tradingsystem.inventory.data.plant.expression;
 
 
 import org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter;
