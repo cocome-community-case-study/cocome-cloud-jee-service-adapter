@@ -7,12 +7,15 @@ import org.cocome.tradingsystem.inventory.data.plant.parameter.NorminalParameter
 import org.cocome.tradingsystem.inventory.data.plant.parameter.ParameterCategory;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter;
 import org.cocome.tradingsystem.remote.access.Notification;
+import org.cocome.tradingsystem.remote.access.ReflectionUtil;
+import org.cocome.tradingsystem.remote.access.dao.AbstractDAO;
 import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +29,7 @@ import java.util.Map;
  */
 @Stateless
 @LocalBean
-public class ParameterCategoryDAO implements DataAccessObject<ParameterCategory> {
+public class ParameterCategoryDAO extends AbstractDAO<ParameterCategory> {
 
     private static final String ID_COL = NorminalParameter.class.getSimpleName() + "Id";
     private static final String NAME_COL = NorminalParameter.class.getSimpleName() + "Name";
@@ -34,49 +37,14 @@ public class ParameterCategoryDAO implements DataAccessObject<ParameterCategory>
     private static final String PARAM_NAME_COL = ProductionParameter.class.getSimpleName() + "Name";
     private static final String PARAM_TYPE_COL = ProductionParameter.class.getSimpleName() + "Type";
 
-    @PersistenceUnit(unitName = IData.EJB_PERSISTENCE_UNIT_NAME)
-    private EntityManagerFactory emf;
-
     @Override
-    public String getEntityTypeName() {
-        return ParameterCategory.class.getSimpleName().toLowerCase();
+    protected Class<ParameterCategory> getEntityType() {
+        return ParameterCategory.class;
     }
 
     @Override
-    public Notification createEntities(final List<ParameterCategory> entities) throws IllegalArgumentException {
-        final EntityManager em = this.emf.createEntityManager();
-        final Notification notification = new Notification();
-        for (final ParameterCategory<?> entity : entities) {
-            em.persist(entity);
-            notification.addNotification(
-                    "createParameterCategory", Notification.SUCCESS,
-                    "Creation ParameterCategory:" + entity);
-        }
-        em.flush();
-        em.close();
-        return notification;
-    }
-
-    @Override
-    public Notification updateEntities(List<ParameterCategory> entities) throws IllegalArgumentException {
-        final EntityManager em = this.emf.createEntityManager();
-        final Notification notification = new Notification();
-
-        for (final ParameterCategory<?> entity : entities) {
-            if (em.find(ParameterCategory.class, entity.getId()) == null) {
-                notification.addNotification(
-                        "updateParameterCategory", Notification.FAILED,
-                        "ParameterCategory not available:" + entity);
-                continue;
-            }
-            em.merge(entity);
-            notification.addNotification(
-                    "updateNorminalParameter", Notification.SUCCESS,
-                    "Update NorminalParameter:" + entity);
-        }
-        em.flush();
-        em.close();
-        return notification;
+    protected void syncEntity(EntityManager em, ParameterCategory entity) {
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -123,7 +91,9 @@ public class ParameterCategoryDAO implements DataAccessObject<ParameterCategory>
                 map.put(colParamId.getValue(), category);
             }
 
-            final ProductionParameter param = ProductionParameterDOUtil.createInstance(colParamType.getValue());
+            final ProductionParameter param = ReflectionUtil.createInstance(
+                    ProductionParameter.class,
+                    colParamType.getValue());
             param.setId(Long.parseLong(colCategoryId.getValue()));
             param.setName(colParamName.getValue());
             category.getProductionParameters().add(param);

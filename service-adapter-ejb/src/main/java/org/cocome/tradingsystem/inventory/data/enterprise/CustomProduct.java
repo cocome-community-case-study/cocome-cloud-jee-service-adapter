@@ -24,7 +24,7 @@ public class CustomProduct extends AbstractProduct {
     /**
      * @return all available parameters (organized in categories)
      */
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany
     public Collection<ParameterCategory<CustomProduct>> getParameterCategory() {
         return parameterCategories;
     }
@@ -39,7 +39,7 @@ public class CustomProduct extends AbstractProduct {
     /**
      * @return The recipe used to delegate instructions th the plants
      */
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     public Recipe getProductionRecipe() {
         return productionRecipe;
     }

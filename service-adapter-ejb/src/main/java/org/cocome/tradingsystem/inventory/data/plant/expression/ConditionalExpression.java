@@ -1,6 +1,5 @@
 package org.cocome.tradingsystem.inventory.data.plant.expression;
 
-
 import org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
 
@@ -13,7 +12,7 @@ import javax.persistence.OneToOne;
  * @author Rudolf Biczok
  */
 @Entity
-public class IfElseExpression extends Expression {
+public class ConditionalExpression extends Expression {
     private static final long serialVersionUID = 1L;
 
     private ProductionParameter<PlantOperation> parameter;
@@ -24,7 +23,7 @@ public class IfElseExpression extends Expression {
     /**
      * @return the parameter to be tested
      */
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     public ProductionParameter<PlantOperation> getParameter() {
         return parameter;
     }
@@ -53,7 +52,7 @@ public class IfElseExpression extends Expression {
     /**
      * @return the expression that is supposed to be executed if the condition holds
      */
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     public Expression getOnTrueExpression() {
         return onTrueExpression;
     }
@@ -68,7 +67,7 @@ public class IfElseExpression extends Expression {
     /**
      * @return the expression that is supposed to be executed if the condition holds
      */
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     public Expression getOnFalseExpression() {
         return onFalseExpression;
     }

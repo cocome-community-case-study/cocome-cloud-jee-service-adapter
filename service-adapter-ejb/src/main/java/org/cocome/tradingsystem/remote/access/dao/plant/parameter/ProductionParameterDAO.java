@@ -3,9 +3,9 @@ package org.cocome.tradingsystem.remote.access.dao.plant.parameter;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.IData;
-import org.cocome.tradingsystem.inventory.data.plant.parameter.BooleanParameter;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter;
 import org.cocome.tradingsystem.remote.access.Notification;
+import org.cocome.tradingsystem.remote.access.ReflectionUtil;
 import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
 
 import javax.ejb.LocalBean;
@@ -44,18 +44,15 @@ public class ProductionParameterDAO implements DataAccessObject<ProductionParame
             throw new IllegalArgumentException("[createProductionParameter]given arguments are null");
         }
         final EntityManager em = this.emf.createEntityManager();
-        for (final ProductionParameter booleanParameter : entities) {
-            final BooleanParameter param = new BooleanParameter();
-            param.setName(booleanParameter.getName());
-            em.persist(param);
+        for (final ProductionParameter entity : entities) {
+            em.persist(entity);
             notification.addNotification(
                     "createProductionParameter", Notification.SUCCESS,
-                    "Creation ProductionParameter:" + param);
+                    "Creation ProductionParameter:" + entity);
         }
         em.flush();
         em.close();
         return notification;
-
     }
 
     @Override
@@ -105,7 +102,9 @@ public class ProductionParameterDAO implements DataAccessObject<ProductionParame
             final Column<String> colName = table.getColumnByName(i, NAME_COL);
             final Column<String> colType = table.getColumnByName(i, TYPE_COL);
 
-            final ProductionParameter param = ProductionParameterDOUtil.createInstance(colType.getValue());
+            final ProductionParameter param = ReflectionUtil.createInstance(
+                    ProductionParameter.class,
+                    colType.getValue());
             param.setId(Long.parseLong(colId.getValue()));
             param.setName(colName.getValue());
             list.add(param);

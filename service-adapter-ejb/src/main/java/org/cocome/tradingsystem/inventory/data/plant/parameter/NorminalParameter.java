@@ -16,7 +16,7 @@ public class NorminalParameter<T> extends ProductionParameter<T> {
     /**
      * @return all available options
      */
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER)
     public Collection<ParameterOption<T>> getOptions() {
         return options;
     }
