@@ -7,8 +7,8 @@
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
         <properties>
-            <property name="javax.persistence.jdbc.user" value="APP"/>
-            <property name="javax.persistence.jdbc.password" value="APP"/>
+            <property name="javax.persistence.jdbc.user" value="APP_TEST"/>
+            <property name="javax.persistence.jdbc.password" value="APP_TEST"/>
             <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
             <property name="javax.persistence.jdbc.url"
                       value="jdbc:derby:target/databases/derby;create=true"/>

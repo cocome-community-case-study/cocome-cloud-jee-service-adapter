@@ -100,7 +100,7 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
         return queriedEntity;
     }
 
-    public <T extends QueryableById> T getOrCreateReferencedEntity(final Class<T> entityClass,
+    protected <T extends QueryableById> T getOrCreateReferencedEntity(final Class<T> entityClass,
                                                            final long id,
                                                            final EntityManager em) {
         final T entity = em.find(entityClass, id);

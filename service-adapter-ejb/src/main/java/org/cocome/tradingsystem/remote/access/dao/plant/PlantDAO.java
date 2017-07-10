@@ -2,20 +2,15 @@ package org.cocome.tradingsystem.remote.access.dao.plant;
 
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
-import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
 import org.cocome.tradingsystem.remote.access.Notification;
-import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
-import org.cocome.tradingsystem.remote.access.dao.LegacyDataAccessObject;
-import org.cocome.tradingsystem.remote.access.dao.enterprise.TradingEnterpriseDAO;
+import org.cocome.tradingsystem.remote.access.dao.AbstractDAO;
 
-import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,80 +21,16 @@ import java.util.List;
  */
 @Stateless
 @LocalBean
-public class PlantDAO implements LegacyDataAccessObject<Plant> {
+public class PlantDAO extends AbstractDAO<Plant> {
 
     private static final String ENTERPRISE_ID_COL = "EnterpriseId";
     private static final String ID_COL = Plant.class.getSimpleName() + "Id";
     private static final String NAME_COL = Plant.class.getSimpleName() + "Name";
     private static final String LOCATION_COL = Plant.class.getSimpleName() + "Location";
 
-    @EJB
-    private TradingEnterpriseDAO tradingEnterpriseDAO;
-
-    @PersistenceUnit(unitName = IData.EJB_PERSISTENCE_UNIT_NAME)
-    private EntityManagerFactory emf;
-
     @Override
-    public String getEntityTypeName() {
-        return Plant.class.getSimpleName().toLowerCase();
-    }
-
-    @Override
-    public Notification createEntities(final List<Plant> entities) throws IllegalArgumentException {
-        final Notification notification = new Notification();
-        if (entities != null) {
-            final EntityManager em = this.emf.createEntityManager();
-            for (final Plant entity : entities) {
-                final TradingEnterprise enterprise = tradingEnterpriseDAO.queryEnterpriseById(em, entity.getEnterprise());
-                if (enterprise == null) {
-                    notification.addNotification(
-                            "createStore", Notification.FAILED,
-                            "Creation Plant failed, Enterprise not available:"
-                                    + entity.getEnterprise() + "," + entity);
-                    continue;
-                }
-                final Plant plant = new Plant();
-                plant.setName(entity.getName());
-                plant.setLocation(entity.getLocation());
-                plant.setEnterprise(enterprise);
-                enterprise.getPlants().add(plant);
-                em.persist(plant);
-                em.merge(enterprise);
-                notification.addNotification(
-                        "createPlant", Notification.SUCCESS,
-                        "Creation Plant:" + plant);
-            }
-            em.flush();
-            em.close();
-            return notification;
-        }
-        throw new IllegalArgumentException("[createPlant]given arguments are null");
-    }
-
-    @Override
-    public Notification updateEntities(List<Plant> entities) throws IllegalArgumentException {
-        final EntityManager em = this.emf.createEntityManager();
-        final Notification notification = new Notification();
-        Plant plant;
-        for (final Plant entity : entities) {
-            plant = em.find(Plant.class, entity.getId());
-            if (plant == null) {
-                notification.addNotification(
-                        "updatePlant", Notification.FAILED,
-                        "Plant not available:" + entity);
-                continue;
-            }
-            plant.setLocation(entity.getLocation());
-            plant.setName(entity.getName());
-
-            em.merge(plant);
-            notification.addNotification(
-                    "updatePlant", Notification.SUCCESS,
-                    "Update Plant:" + plant);
-        }
-        em.flush();
-        em.close();
-        return notification;
+    public Class<Plant> getEntityType() {
+        return Plant.class;
     }
 
     @Override
@@ -117,22 +48,36 @@ public class PlantDAO implements LegacyDataAccessObject<Plant> {
     }
 
     @Override
-    public List<Plant> fromTable(final Table<String> table) {
+    public List<Plant> fromTable(final EntityManager em,
+                                 final Table<String> table,
+                                 final Notification notification,
+                                 final String sourceOperation) {
         final int len = table.size();
         final List<Plant> list = new ArrayList<>(len);
         for (int i = 0; i < len; i++) {
-            final Column<String> colEnterprise = table.getColumnByName(i, ENTERPRISE_ID_COL);
-            final TradingEnterprise t = new TradingEnterprise();
-            t.setId(Long.parseLong(colEnterprise.getValue()));
+            final Column<String> colEnterpriseId = table.getColumnByName(i, ENTERPRISE_ID_COL);
             final Column<String> colId = table.getColumnByName(i, ID_COL);
             final Column<String> colName = table.getColumnByName(i, NAME_COL);
             final Column<String> colLocation = table.getColumnByName(i, LOCATION_COL);
-            final Plant plant = new Plant();
-            if (colId != null) {
-                plant.setId(Long.parseLong(colId.getValue()));
-            } else {
-                plant.setId(-1L);
+
+            final TradingEnterprise t;
+            try {
+                t = getReferencedEntity(
+                        TradingEnterprise.class,
+                        Long.valueOf(colEnterpriseId.getValue()),
+                        em);
+            } catch (final EntityNotFoundException e) {
+                notification.addNotification(
+                        sourceOperation,
+                        Notification.FAILED,
+                        String.format("%s not available: %s", getClass().getSimpleName(),
+                                e.getMessage()));
+                continue;
             }
+
+            final Plant plant = getOrCreateReferencedEntity(Plant.class,
+                    Long.parseLong(colId.getValue()),
+                    em);
             plant.setEnterprise(t);
             plant.setLocation(colLocation.getValue());
             plant.setName(colName.getValue());

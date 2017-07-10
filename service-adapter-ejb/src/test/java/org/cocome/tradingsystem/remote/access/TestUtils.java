@@ -14,10 +14,13 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Utilities for unit tests that use JPA together with an embedded database
+ *
  * @author Rudolf Biczok
  */
 public class TestUtils {
@@ -42,16 +45,17 @@ public class TestUtils {
         } catch (final InstantiationException | IllegalAccessException | InvocationTargetException e) {
             throw new IllegalStateException("Unable to create instance", e);
         }
-        for (final Field f : instance.getClass().getDeclaredFields()) {
+        for (final Field f : listAllFields(instance)) {
             for (final Annotation a : f.getAnnotations()) {
                 if (a.annotationType().equals(PersistenceUnit.class)) {
                     final String unitName = f.getAnnotation(PersistenceUnit.class).unitName();
                     if (!unitName.equals(IData.EJB_PERSISTENCE_UNIT_NAME)) {
                         throw new IllegalArgumentException("Unknown unit name:" + unitName);
                     }
+
                     setProperty(instance, f, TEST_EMF);
                 }
-                if(a.annotationType().equals(EJB.class)) {
+                if (a.annotationType().equals(EJB.class)) {
                     setProperty(instance, f, injectFakeEJB(f.getType()));
                 }
             }
@@ -73,8 +77,18 @@ public class TestUtils {
         return table;
     }
 
+    private static List<Field> listAllFields(final Object obj) {
+        final List<Field> current = new ArrayList<>();
+        Class tmpClass = obj.getClass();
+        while (tmpClass.getSuperclass() != null) {
+            current.addAll(Arrays.asList(tmpClass.getDeclaredFields()));
+            tmpClass = tmpClass.getSuperclass();
+        }
+        return current;
+    }
+
     private static boolean hasAnnotation(Class<?> ejbClass,
-                                  Class<? extends Annotation> annotationClass) {
+                                         Class<? extends Annotation> annotationClass) {
         return Arrays.stream(ejbClass.getDeclaredAnnotations())
                 .filter(a -> a.annotationType().equals(annotationClass)).count() != 0;
     }

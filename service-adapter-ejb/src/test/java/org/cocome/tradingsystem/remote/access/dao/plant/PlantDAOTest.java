@@ -1,5 +1,6 @@
 package org.cocome.tradingsystem.remote.access.dao.plant;
 
+import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
 import org.cocome.tradingsystem.remote.access.TestUtils;
@@ -40,9 +41,11 @@ public class PlantDAOTest {
                 "456;2;TUM;Munich\n" +
                 "456;3;ETH Zürich;Zurich";
 
+        final Table<String> table = TestUtils.fromCSV(expected);
+        plantDAO.createEntities(table);
+        System.out.println(TestUtils.TEST_EMF.createEntityManager().createQuery("SELECT p FROM Plant p WHERE p.id > 0").getResultList());
+
         Assert.assertEquals(expected, TestUtils.toCSV(plantDAO.toTable(list)));
-        Assert.assertEquals(expected, TestUtils.toCSV(plantDAO.toTable(
-                plantDAO.fromTable(TestUtils.fromCSV(expected)))));
     }
 
 }
