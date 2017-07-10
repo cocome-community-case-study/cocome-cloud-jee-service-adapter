@@ -79,7 +79,7 @@ public class ProductionUnitDAO extends AbstractDAO<ProductionUnit> {
             } catch (final EntityNotFoundException e) {
                 notification.addNotification(
                         sourceOperation,
-                        Notification.SUCCESS,
+                        Notification.FAILED,
                         String.format("%s not available: %s", getClass().getSimpleName(),
                                 e.getMessage()));
                 continue;
