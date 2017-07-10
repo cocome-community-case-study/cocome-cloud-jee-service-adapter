@@ -6,6 +6,7 @@ import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.enterprise.ProductSupplier;
 import org.cocome.tradingsystem.remote.access.Notification;
+import org.cocome.tradingsystem.remote.access.dao.LegacyDataAccessObject;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -22,7 +23,7 @@ import java.util.List;
  */
 @Stateless
 @LocalBean
-public class ProductSupplierDAO implements DataAccessObject<ProductSupplier> {
+public class ProductSupplierDAO implements LegacyDataAccessObject<ProductSupplier> {
 
     @PersistenceUnit(unitName = IData.EJB_PERSISTENCE_UNIT_NAME)
     private EntityManagerFactory emf;

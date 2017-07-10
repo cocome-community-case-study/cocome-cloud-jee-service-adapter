@@ -6,7 +6,7 @@ import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnit;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitClass;
 import org.cocome.tradingsystem.remote.access.Notification;
-import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
+import org.cocome.tradingsystem.remote.access.dao.LegacyDataAccessObject;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -23,7 +23,7 @@ import java.util.List;
  */
 @Stateless
 @LocalBean
-public class ProductionUnitDAO implements DataAccessObject<ProductionUnit> {
+public class ProductionUnitDAO implements LegacyDataAccessObject<ProductionUnit> {
 
     private static final String ID_COL = ProductionUnit.class.getSimpleName() + "Id";
     private static final String LOCATION_COL = ProductionUnit.class.getSimpleName() + "Location";

@@ -5,7 +5,7 @@ import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.BooleanParameter;
 import org.cocome.tradingsystem.remote.access.Notification;
-import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
+import org.cocome.tradingsystem.remote.access.dao.LegacyDataAccessObject;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -22,7 +22,7 @@ import java.util.List;
  */
 @Stateless
 @LocalBean
-public class BooleanParameterDAO implements DataAccessObject<BooleanParameter> {
+public class BooleanParameterDAO implements LegacyDataAccessObject<BooleanParameter> {
 
     private static final String ID_COL = BooleanParameter.class.getSimpleName() + "Id";
     private static final String NAME_COL = BooleanParameter.class.getSimpleName() + "Name";

@@ -1,7 +1,6 @@
 package org.cocome.tradingsystem.remote.access.dao.store;
 
 import org.cocome.tradingsystem.inventory.data.IData;
-import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import de.kit.ipd.java.utils.time.TimeUtils;
@@ -10,6 +9,7 @@ import org.cocome.tradingsystem.inventory.data.store.OrderEntry;
 import org.cocome.tradingsystem.inventory.data.store.ProductOrder;
 import org.cocome.tradingsystem.inventory.data.store.Store;
 import org.cocome.tradingsystem.remote.access.Notification;
+import org.cocome.tradingsystem.remote.access.dao.LegacyDataAccessObject;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductDAO;
 
 import javax.ejb.EJB;
@@ -29,7 +29,7 @@ import java.util.Map;
  */
 @Stateless
 @LocalBean
-public class ProductOrderDAO implements DataAccessObject<ProductOrder> {
+public class ProductOrderDAO implements LegacyDataAccessObject<ProductOrder> {
 
     @EJB
     private ProductDAO productDAO;

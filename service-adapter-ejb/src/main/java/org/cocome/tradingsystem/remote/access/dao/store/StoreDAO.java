@@ -1,12 +1,12 @@
 package org.cocome.tradingsystem.remote.access.dao.store;
 
 import org.cocome.tradingsystem.inventory.data.IData;
-import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.store.Store;
 import org.cocome.tradingsystem.remote.access.Notification;
+import org.cocome.tradingsystem.remote.access.dao.LegacyDataAccessObject;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.TradingEnterpriseDAO;
 
 import javax.ejb.EJB;
@@ -24,7 +24,7 @@ import java.util.List;
  */
 @Stateless
 @LocalBean
-public class StoreDAO implements DataAccessObject<Store> {
+public class StoreDAO implements LegacyDataAccessObject<Store> {
 
     @EJB
     private TradingEnterpriseDAO tradingEnterpriseDAO;

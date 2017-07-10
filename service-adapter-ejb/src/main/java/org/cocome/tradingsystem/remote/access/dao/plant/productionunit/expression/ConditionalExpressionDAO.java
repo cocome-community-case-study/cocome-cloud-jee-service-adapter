@@ -6,12 +6,13 @@ import org.cocome.tradingsystem.inventory.data.plant.expression.ConditionalExpre
 import org.cocome.tradingsystem.inventory.data.plant.expression.Expression;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
-import org.cocome.tradingsystem.remote.access.ReflectionUtil;
+import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.AbstractDAO;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,22 +38,6 @@ public class ConditionalExpressionDAO extends AbstractDAO<ConditionalExpression>
     @Override
     protected Class<ConditionalExpression> getEntityType() {
         return ConditionalExpression.class;
-    }
-
-    @Override
-    protected void syncEntity(EntityManager em, ConditionalExpression entity) {
-        entity.setParameter(
-                getReferencedEntity(
-                        entity.getParameter(),
-                        em));
-        entity.setOnFalseExpression(
-                getReferencedEntity(
-                        entity.getOnFalseExpression(),
-                        em));
-        entity.setOnTrueExpression(
-                getReferencedEntity(
-                        entity.getOnTrueExpression(),
-                        em));
     }
 
     @Override
@@ -83,36 +68,45 @@ public class ConditionalExpressionDAO extends AbstractDAO<ConditionalExpression>
     }
 
     @Override
-    public List<ConditionalExpression> fromTable(final Table<String> table) {
+    public List<ConditionalExpression> fromTable(final EntityManager em,
+                                                 final Table<String> table,
+                                                 final Notification notification,
+                                                 final String sourceOperation) {
         final int len = table.size();
         final List<ConditionalExpression> list = new ArrayList<>(len);
         for (int i = 0; i < len; i++) {
             final Column<String> colId = table.getColumnByName(i, ID_COL);
             final Column<String> colParamId = table.getColumnByName(i, PARAM_ID_COL);
-            final Column<String> colParamName = table.getColumnByName(i, PARAM_NAME_COL);
-            final Column<String> colParamType = table.getColumnByName(i, PARAM_TYPE_COL);
             final Column<String> colParamValue = table.getColumnByName(i, PARAM_VALUE_COL);
             final Column<String> colOnTrueExpId = table.getColumnByName(i, ON_TRUE_COL);
-            final Column<String> colOnTrueExpType = table.getColumnByName(i, ON_TRUE_TYPE_COL);
             final Column<String> colOnFalseExpId = table.getColumnByName(i, ON_FALSE_COL);
-            final Column<String> colOnFalseExpType = table.getColumnByName(i, ON_FALSE_TYPE_COL);
 
             @SuppressWarnings("unchecked")
-            final ProductionParameter<PlantOperation> param = ReflectionUtil.createInstance(
+            final ProductionParameter<PlantOperation> param = getReferencedEntity(
                     ProductionParameter.class,
-                    colParamType.getValue());
-            param.setId(Long.valueOf(colParamId.getValue()));
-            param.setName(colParamName.getValue());
+                    Long.valueOf(colParamId.getValue()),
+                    em);
 
-            final Expression onTrue = ReflectionUtil.createInstance(
-                    Expression.class,
-                    colOnTrueExpType.getValue());
-            onTrue.setId(Long.valueOf(colOnTrueExpId.getValue()));
+            final Expression onTrue;
+            final Expression onFalse;
+            try {
+                onTrue = getReferencedEntity(
+                        Expression.class,
+                        Long.valueOf(colOnTrueExpId.getValue()),
+                        em);
 
-            final Expression onFalse = ReflectionUtil.createInstance(
-                    Expression.class,
-                    colOnFalseExpType.getValue());
-            onFalse.setId(Long.valueOf(colOnFalseExpId.getValue()));
+                onFalse = getReferencedEntity(
+                        Expression.class,
+                        Long.valueOf(colOnFalseExpId.getValue()),
+                        em);
+            } catch (final EntityNotFoundException e) {
+                notification.addNotification(
+                        sourceOperation,
+                        Notification.SUCCESS,
+                        String.format("%s not available: %s", getClass().getSimpleName(),
+                                e.getMessage()));
+                continue;
+            }
 
             final ConditionalExpression condition = new ConditionalExpression();
             condition.setId(Long.parseLong(colId.getValue()));

@@ -2,11 +2,11 @@ package org.cocome.tradingsystem.remote.access.dao.enterprise;
 
 import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.enterprise.ProductSupplier;
-import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.enterprise.Product;
 import org.cocome.tradingsystem.remote.access.Notification;
+import org.cocome.tradingsystem.remote.access.dao.LegacyDataAccessObject;
 
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
@@ -23,7 +23,7 @@ import java.util.List;
  */
 @Stateless
 @LocalBean
-public class ProductDAO implements DataAccessObject<Product> {
+public class ProductDAO implements LegacyDataAccessObject<Product> {
 
     @EJB
     private ProductSupplierDAO productSupplierDAO;

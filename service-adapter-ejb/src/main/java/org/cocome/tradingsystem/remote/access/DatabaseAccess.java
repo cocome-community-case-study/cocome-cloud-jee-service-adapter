@@ -16,14 +16,6 @@ public class DatabaseAccess {
     @PersistenceUnit(unitName = IData.EJB_PERSISTENCE_UNIT_NAME)
     private EntityManagerFactory emf;
 
-    /**
-     * Trigger a book sale.
-     */
-    public Notification bookSale(final Object o) {
-        // TODO Implement this.
-        return null;
-    }
-
     @SuppressWarnings("unchecked")
     public List<Object> query(final String query) {
         if ((query != null) && !query.isEmpty()) {

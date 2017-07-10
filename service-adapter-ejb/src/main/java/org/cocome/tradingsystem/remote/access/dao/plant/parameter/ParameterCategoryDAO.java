@@ -2,21 +2,16 @@ package org.cocome.tradingsystem.remote.access.dao.plant.parameter;
 
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
-import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.NorminalParameter;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.ParameterCategory;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.ReflectionUtil;
 import org.cocome.tradingsystem.remote.access.dao.AbstractDAO;
-import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.PersistenceUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,11 +38,6 @@ public class ParameterCategoryDAO extends AbstractDAO<ParameterCategory> {
     }
 
     @Override
-    protected void syncEntity(EntityManager em, ParameterCategory entity) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public Table<String> toTable(final List<ParameterCategory> list) {
         final Table<String> table = new Table<>();
         table.addHeader(ID_COL,
@@ -71,7 +61,10 @@ public class ParameterCategoryDAO extends AbstractDAO<ParameterCategory> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<ParameterCategory> fromTable(final Table<String> table) {
+    public List<ParameterCategory> fromTable(final EntityManager em,
+                                             final Table<String> table,
+                                             final Notification notification,
+                                             final String sourceOperation) {
         final Map<String, ParameterCategory> map = new HashMap<>();
         final int len = table.size();
 

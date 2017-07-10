@@ -1,11 +1,11 @@
 package org.cocome.tradingsystem.remote.access.dao.usermanager;
 
 import org.cocome.tradingsystem.inventory.data.IData;
-import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.store.Store;
 import org.cocome.tradingsystem.remote.access.Notification;
+import org.cocome.tradingsystem.remote.access.dao.LegacyDataAccessObject;
 import org.cocome.tradingsystem.usermanager.LoginUser;
 import org.cocome.tradingsystem.usermanager.credentials.AbstractCredential;
 import org.cocome.tradingsystem.usermanager.credentials.ICredential;
@@ -27,7 +27,7 @@ import java.util.*;
  */
 @Stateless
 @LocalBean
-public class LoginUserDAO implements DataAccessObject<LoginUser> {
+public class LoginUserDAO implements LegacyDataAccessObject<LoginUser> {
 
     @PersistenceUnit(unitName = IData.EJB_PERSISTENCE_UNIT_NAME)
     private EntityManagerFactory emf;

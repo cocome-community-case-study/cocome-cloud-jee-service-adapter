@@ -6,7 +6,7 @@ import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.NorminalParameter;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.ParameterOption;
 import org.cocome.tradingsystem.remote.access.Notification;
-import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
+import org.cocome.tradingsystem.remote.access.dao.LegacyDataAccessObject;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -25,7 +25,7 @@ import java.util.Map;
  */
 @Stateless
 @LocalBean
-public class NorminalParameterDAO implements DataAccessObject<NorminalParameter> {
+public class NorminalParameterDAO implements LegacyDataAccessObject<NorminalParameter> {
 
     private static final String ID_COL = NorminalParameter.class.getSimpleName() + "Id";
     private static final String NAME_COL = NorminalParameter.class.getSimpleName() + "Name";

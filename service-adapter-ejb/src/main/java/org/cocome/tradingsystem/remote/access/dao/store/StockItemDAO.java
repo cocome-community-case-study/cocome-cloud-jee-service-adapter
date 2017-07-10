@@ -8,6 +8,7 @@ import org.cocome.tradingsystem.inventory.data.enterprise.Product;
 import org.cocome.tradingsystem.inventory.data.store.StockItem;
 import org.cocome.tradingsystem.inventory.data.store.Store;
 import org.cocome.tradingsystem.remote.access.Notification;
+import org.cocome.tradingsystem.remote.access.dao.LegacyDataAccessObject;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductDAO;
 
 import javax.ejb.EJB;
@@ -25,7 +26,7 @@ import java.util.List;
  */
 @Stateless
 @LocalBean
-public class StockItemDAO implements DataAccessObject<StockItem> {
+public class StockItemDAO implements LegacyDataAccessObject<StockItem> {
 
     @EJB
     private ProductDAO productDAO;

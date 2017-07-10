@@ -13,7 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(Arquillian.class)
-public class DatabaseAccessBeanTest {
+public class DatabaseAccessTest {
 
     @Deployment
     public static Archive<?> createDeployment() {

@@ -3,6 +3,7 @@ package org.cocome.tradingsystem.remote.access.dao.plant.productionunit.expressi
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.plant.expression.Expression;
+import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.ReflectionUtil;
 import org.cocome.tradingsystem.remote.access.dao.AbstractDAO;
 
@@ -30,10 +31,6 @@ public class ExpressionDAO extends AbstractDAO<Expression> {
     }
 
     @Override
-    protected void syncEntity(EntityManager em, Expression entity) {
-    }
-
-    @Override
     public Table<String> toTable(final List<Expression> list) {
         final Table<String> table = new Table<>();
         table.addHeader(ID_COL, TYPE_COL);
@@ -46,7 +43,10 @@ public class ExpressionDAO extends AbstractDAO<Expression> {
     }
 
     @Override
-    public List<Expression> fromTable(final Table<String> table) {
+    public List<Expression> fromTable(final EntityManager em,
+                                      final Table<String> table,
+                                      final Notification notification,
+                                      final String sourceOperation) {
         final int len = table.size();
         final List<Expression> list = new ArrayList<>(len);
         for (int i = 0; i < len; i++) {

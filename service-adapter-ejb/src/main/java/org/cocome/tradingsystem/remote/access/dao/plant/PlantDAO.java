@@ -7,6 +7,7 @@ import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
+import org.cocome.tradingsystem.remote.access.dao.LegacyDataAccessObject;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.TradingEnterpriseDAO;
 
 import javax.ejb.EJB;
@@ -25,7 +26,7 @@ import java.util.List;
  */
 @Stateless
 @LocalBean
-public class PlantDAO implements DataAccessObject<Plant> {
+public class PlantDAO implements LegacyDataAccessObject<Plant> {
 
     private static final String ENTERPRISE_ID_COL = "EnterpriseId";
     private static final String ID_COL = Plant.class.getSimpleName() + "Id";
