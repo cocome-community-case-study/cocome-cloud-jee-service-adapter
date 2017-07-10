@@ -18,6 +18,7 @@ public class ProductionParameter<T> implements Serializable, QueryableById {
 
     private long id;
     private String name;
+    private String category;
 
     /**
      * @return The id.
@@ -38,7 +39,7 @@ public class ProductionParameter<T> implements Serializable, QueryableById {
     }
 
     /**
-     * @return The name of the product
+     * @return The parameter name
      */
     @Basic
     public String getName() {
@@ -47,9 +48,25 @@ public class ProductionParameter<T> implements Serializable, QueryableById {
 
     /**
      * @param name
-     *            The name of the product
+     *            The parameter name
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * @return The the parameter category
+     */
+    @Basic
+    public String getCategory() {
+        return category;
+    }
+
+    /**
+     * @param category
+     *            The parameter category
+     */
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

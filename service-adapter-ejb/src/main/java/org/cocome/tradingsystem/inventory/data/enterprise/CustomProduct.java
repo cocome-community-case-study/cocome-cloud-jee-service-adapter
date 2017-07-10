@@ -1,7 +1,7 @@
 package org.cocome.tradingsystem.inventory.data.enterprise;
 
 
-import org.cocome.tradingsystem.inventory.data.plant.parameter.ParameterCategory;
+import org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.Recipe;
 
 import javax.persistence.*;
@@ -18,22 +18,22 @@ public class CustomProduct extends AbstractProduct {
 
     private static final long serialVersionUID = -2577328715744776645L;
 
-    private Collection<ParameterCategory<CustomProduct>> parameterCategories;
+    private Collection<ProductionParameter<CustomProduct>> parameters;
     private Recipe productionRecipe;
 
     /**
      * @return all available parameters (organized in categories)
      */
     @OneToMany
-    public Collection<ParameterCategory<CustomProduct>> getParameterCategory() {
-        return parameterCategories;
+    public Collection<ProductionParameter<CustomProduct>> getParameters() {
+        return parameters;
     }
 
     /**
      * @param parameterCategories all available parameters (organized in categories)
      */
-    public void setParameterCategory(Collection<ParameterCategory<CustomProduct>> parameterCategories) {
-        this.parameterCategories = parameterCategories;
+    public void setParameters(Collection<ProductionParameter<CustomProduct>> parameterCategories) {
+        this.parameters = parameterCategories;
     }
 
     /**
@@ -45,8 +45,7 @@ public class CustomProduct extends AbstractProduct {
     }
 
     /**
-     * @param productionRecipe
-     *            The recipe used to delegate instructions th the plants
+     * @param productionRecipe The recipe used to delegate instructions th the plants
      */
     public void setProductionRecipe(Recipe productionRecipe) {
         this.productionRecipe = productionRecipe;
