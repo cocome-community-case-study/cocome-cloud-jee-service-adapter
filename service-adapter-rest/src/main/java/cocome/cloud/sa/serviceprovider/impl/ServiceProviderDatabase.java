@@ -381,17 +381,12 @@ public class ServiceProviderDatabase extends HttpServlet {
         parser.parse("query.select=" + parameter);
         final String localQuery = parser.getModel();
 
-        // TODO debug
-        System.out.println("Query:" + localQuery);
         // perform query
 
         String response;
 
         final List queryResult = this.databaseAccess.query(localQuery);
         msg.appendBody("Info Size Resultset", String.valueOf(queryResult.size()));
-
-        // TODO debug
-        System.out.println("Found Results:" + queryResult.size());
 
         // compute the query
         final CSVParser csvparser = new CSVParser();
@@ -429,15 +424,13 @@ public class ServiceProviderDatabase extends HttpServlet {
     // ********************************************************************
 
     private <E> void createEntiries(final DataAccessObject<E> dao, final String content, final Message message) {
-        final List<E> list = dao.fromTable(this.createTable(content));
-        Notification notification = dao.createEntities(list);
+        Notification notification = dao.createEntities(this.createTable(content));
         this.includeNotification(notification.getNotification(), message);
     }
 
 
     private <E> void updateEntities(final DataAccessObject<E> dao, final String content, final Message message) {
-        final List<E> list = dao.fromTable(this.createTable(content));
-        final Notification notification = dao.updateEntities(list);
+        final Notification notification = dao.updateEntities(this.createTable(content));
         this.includeNotification(notification.getNotification(), message);
     }
 
