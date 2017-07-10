@@ -77,7 +77,7 @@ public class ProductionUnit implements Serializable, QueryableById {
     /**
      * @return the production unit class
      */
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public ProductionUnitClass getProductionUnitClass() {
         return productionUnitClass;
     }
