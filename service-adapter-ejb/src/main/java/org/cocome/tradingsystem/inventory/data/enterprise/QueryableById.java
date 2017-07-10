@@ -11,4 +11,9 @@ public interface QueryableById {
      * @return The id.
      */
     long getId();
+
+    /**
+     * @param id the identifier value
+     */
+    void setId(final long id);
 }

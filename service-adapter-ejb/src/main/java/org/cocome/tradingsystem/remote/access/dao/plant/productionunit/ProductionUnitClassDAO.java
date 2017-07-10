@@ -2,17 +2,14 @@ package org.cocome.tradingsystem.remote.access.dao.plant.productionunit;
 
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
-import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitClass;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation;
 import org.cocome.tradingsystem.remote.access.Notification;
-import org.cocome.tradingsystem.remote.access.dao.LegacyDataAccessObject;
+import org.cocome.tradingsystem.remote.access.dao.AbstractDAO;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,56 +22,16 @@ import java.util.Map;
  */
 @Stateless
 @LocalBean
-public class ProductionUnitClassDAO implements LegacyDataAccessObject<ProductionUnitClass> {
+public class ProductionUnitClassDAO extends AbstractDAO<ProductionUnitClass> {
 
     private static final String ID_COL = ProductionUnitClass.class.getSimpleName() + "Id";
     private static final String NAME_COL = ProductionUnitClass.class.getSimpleName() + "Name";
     private static final String OPT_ID_COL = ProductionUnitOperation.class.getSimpleName() + "Id";
     private static final String OPT_OID_COL = ProductionUnitOperation.class.getSimpleName() + "OperationId";
 
-    @PersistenceUnit(unitName = IData.EJB_PERSISTENCE_UNIT_NAME)
-    private EntityManagerFactory emf;
-
     @Override
-    public String getEntityTypeName() {
-        return ProductionUnitClass.class.getSimpleName().toLowerCase();
-    }
-
-    @Override
-    public Notification createEntities(final List<ProductionUnitClass> entities) throws IllegalArgumentException {
-        final EntityManager em = this.emf.createEntityManager();
-        final Notification notification = new Notification();
-        for (final ProductionUnitClass entity : entities) {
-            em.persist(entity);
-            notification.addNotification(
-                    "createProductionUnitClass", Notification.SUCCESS,
-                    "Creation ProductionUnitClass:" + entity);
-        }
-        em.flush();
-        em.close();
-        return notification;
-    }
-
-    @Override
-    public Notification updateEntities(List<ProductionUnitClass> entities) throws IllegalArgumentException {
-        final EntityManager em = this.emf.createEntityManager();
-        final Notification notification = new Notification();
-
-        for (final ProductionUnitClass entity : entities) {
-            if (em.find(ProductionUnitClass.class, entity.getId()) == null) {
-                notification.addNotification(
-                        "updateProductionUnitClass", Notification.FAILED,
-                        "ProductionUnitClass not available:" + entity);
-                continue;
-            }
-            em.merge(entity);
-            notification.addNotification(
-                    "updateProductionUnitClass", Notification.SUCCESS,
-                    "Update ProductionUnitClass:" + entity);
-        }
-        em.flush();
-        em.close();
-        return notification;
+    public Class<ProductionUnitClass> getEntityType() {
+        return ProductionUnitClass.class;
     }
 
     @Override
@@ -95,7 +52,10 @@ public class ProductionUnitClassDAO implements LegacyDataAccessObject<Production
     }
 
     @Override
-    public List<ProductionUnitClass> fromTable(final Table<String> table) {
+    public List<ProductionUnitClass> fromTable(final EntityManager em,
+                                               final Table<String> table,
+                                               final Notification notification,
+                                               final String sourceOperation) {
         final Map<String, ProductionUnitClass> map = new HashMap<>();
         final int len = table.size();
 
@@ -107,8 +67,9 @@ public class ProductionUnitClassDAO implements LegacyDataAccessObject<Production
 
             ProductionUnitClass unitClass = map.get(colParamId.getValue());
             if (unitClass == null) {
-                unitClass = new ProductionUnitClass();
-                unitClass.setId(Long.parseLong(colParamId.getValue()));
+                unitClass = getOrCreateReferencedEntity(ProductionUnitClass.class,
+                        Long.parseLong(colParamId.getValue()),
+                        em);
                 unitClass.setName(colParamName.getValue());
                 unitClass.setOperations(new ArrayList<>());
                 map.put(colParamId.getValue(), unitClass);

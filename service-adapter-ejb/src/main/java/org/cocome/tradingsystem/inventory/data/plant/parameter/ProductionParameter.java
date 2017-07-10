@@ -10,9 +10,8 @@ import java.io.Serializable;
  * @param <T> The class type this parameter is associated with
  * @author Rudolf Biczok
  */
-//TODO: This should be @MappedSuperclass though, but would then prevent polymorphism
 @Entity
-public class ProductionParameter<T> implements Serializable, QueryableById {
+public abstract class ProductionParameter<T> implements Serializable, QueryableById {
 
     private static final long serialVersionUID = -2577328715744776645L;
 

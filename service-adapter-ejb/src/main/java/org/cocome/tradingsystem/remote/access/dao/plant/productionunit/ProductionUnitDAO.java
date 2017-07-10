@@ -2,17 +2,15 @@ package org.cocome.tradingsystem.remote.access.dao.plant.productionunit;
 
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
-import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnit;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitClass;
 import org.cocome.tradingsystem.remote.access.Notification;
-import org.cocome.tradingsystem.remote.access.dao.LegacyDataAccessObject;
+import org.cocome.tradingsystem.remote.access.dao.AbstractDAO;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +21,7 @@ import java.util.List;
  */
 @Stateless
 @LocalBean
-public class ProductionUnitDAO implements LegacyDataAccessObject<ProductionUnit> {
+public class ProductionUnitDAO extends AbstractDAO<ProductionUnit> {
 
     private static final String ID_COL = ProductionUnit.class.getSimpleName() + "Id";
     private static final String LOCATION_COL = ProductionUnit.class.getSimpleName() + "Location";
@@ -31,62 +29,9 @@ public class ProductionUnitDAO implements LegacyDataAccessObject<ProductionUnit>
     private static final String PROD_CLASS_ID_COL = ProductionUnitClass.class.getSimpleName() + "Id";
     private static final String PROD_CLASS_NAME_COL = ProductionUnitClass.class.getSimpleName() + "Name";
 
-    @PersistenceUnit(unitName = IData.EJB_PERSISTENCE_UNIT_NAME)
-    private EntityManagerFactory emf;
-
     @Override
-    public String getEntityTypeName() {
-        return ProductionUnit.class.getSimpleName().toLowerCase();
-    }
-
-    @Override
-    public Notification createEntities(final List<ProductionUnit> entities) throws IllegalArgumentException {
-        final Notification notification = new Notification();
-        if (entities == null) {
-            throw new IllegalArgumentException("[createProductionUnit]given arguments are null");
-        }
-        final EntityManager em = this.emf.createEntityManager();
-        for (final ProductionUnit entity : entities) {
-            final ProductionUnitClass enterprise = em.find(ProductionUnitClass.class,
-                    entity.getProductionUnitClass().getId());
-            if (enterprise == null) {
-                notification.addNotification(
-                        "createProductionUnit", Notification.FAILED,
-                        "Creation of ProductionUnit failed, ProductionUnitClass not available:"
-                                + entity.getProductionUnitClass().getId() + "," + entity.getId());
-                continue;
-            }
-            entity.setProductionUnitClass(enterprise);
-            em.persist(entity);
-            notification.addNotification(
-                    "createProductionUnit", Notification.SUCCESS,
-                    "Creation of ProductionUnit:" + entity.getId());
-        }
-        em.flush();
-        em.close();
-        return notification;
-    }
-
-    @Override
-    public Notification updateEntities(List<ProductionUnit> entities) throws IllegalArgumentException {
-        final EntityManager em = this.emf.createEntityManager();
-        final Notification notification = new Notification();
-
-        for (final ProductionUnit entity : entities) {
-            if (em.find(ProductionUnit.class, entity.getId()) == null) {
-                notification.addNotification(
-                        "updateProductionUnit", Notification.FAILED,
-                        "ProductionUnit not available:" + entity);
-                continue;
-            }
-            em.merge(entity);
-            notification.addNotification(
-                    "updateProductionUnit", Notification.SUCCESS,
-                    "Update ProductionUnit:" + entity);
-        }
-        em.flush();
-        em.close();
-        return notification;
+    public Class<ProductionUnit> getEntityType() {
+        return ProductionUnit.class;
     }
 
     @Override
@@ -111,7 +56,10 @@ public class ProductionUnitDAO implements LegacyDataAccessObject<ProductionUnit>
     }
 
     @Override
-    public List<ProductionUnit> fromTable(final Table<String> table) {
+    public List<ProductionUnit> fromTable(final EntityManager em,
+                                          final Table<String> table,
+                                          final Notification notification,
+                                          final String sourceOperation) {
         final int len = table.size();
         final List<ProductionUnit> entities = new ArrayList<>(len);
 
@@ -122,12 +70,26 @@ public class ProductionUnitDAO implements LegacyDataAccessObject<ProductionUnit>
             final Column<String> colPUCId = table.getColumnByName(i, PROD_CLASS_ID_COL);
             final Column<String> colPUCName = table.getColumnByName(i, PROD_CLASS_NAME_COL);
 
-            final ProductionUnitClass puc = new ProductionUnitClass();
+            final ProductionUnitClass puc;
+            try {
+                puc = getReferencedEntity(
+                        ProductionUnitClass.class,
+                        Long.valueOf(colPUCId.getValue()),
+                        em);
+            } catch (final EntityNotFoundException e) {
+                notification.addNotification(
+                        sourceOperation,
+                        Notification.SUCCESS,
+                        String.format("%s not available: %s", getClass().getSimpleName(),
+                                e.getMessage()));
+                continue;
+            }
             puc.setId(Long.parseLong(colPUCId.getValue()));
             puc.setName(colPUCName.getValue());
 
-            final ProductionUnit pu = new ProductionUnit();
-            pu.setId(Long.parseLong(colPUId.getValue()));
+            final ProductionUnit pu = getOrCreateReferencedEntity(ProductionUnit.class,
+                    Long.parseLong(colPUId.getValue()),
+                    em);
             pu.setLocation(colPULocation.getValue());
             pu.setInterfaceUrl(colPUInterfaceURL.getValue());
             pu.setProductionUnitClass(puc);

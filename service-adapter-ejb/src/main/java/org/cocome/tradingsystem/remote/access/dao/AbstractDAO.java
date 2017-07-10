@@ -5,10 +5,7 @@ import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 import org.cocome.tradingsystem.remote.access.Notification;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -101,6 +98,25 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
             throw new EntityNotFoundException(String.valueOf(id));
         }
         return queriedEntity;
+    }
+
+    public <T extends QueryableById> T getOrCreateReferencedEntity(final Class<T> entityClass,
+                                                           final long id,
+                                                           final EntityManager em) {
+        final T entity = em.find(entityClass, id);
+        if(entity == null) {
+            final T instance;
+            try {
+                instance = entityClass.newInstance();
+            } catch (InstantiationException | IllegalAccessException e) {
+                throw new IllegalStateException("Could not instantiate entity class: "
+                        + entityClass.getName());
+            }
+            instance.setId(id);
+            return instance;
+        }
+        return entity;
+
     }
 
     protected abstract Class<E> getEntityType();
