@@ -1,4 +1,4 @@
-package org.cocome.tradingsystem.remote.access.dao.plant.productionunit.expression;
+package org.cocome.tradingsystem.remote.access.dao.plant.expression;
 
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
