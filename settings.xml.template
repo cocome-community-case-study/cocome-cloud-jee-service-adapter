@@ -11,12 +11,12 @@
 
 				<!-- logic node deployment configuration -->
 				<serviceadapter.protocol>http</serviceadapter.protocol>
-				<serviceadapter.domain>cocome</serviceadapter.domain>
-				<serviceadapter.host>192.168.48.224</serviceadapter.host>
-				<serviceadapter.httpPort>8080</serviceadapter.httpPort>
-				<serviceadapter.adminPort>4848</serviceadapter.adminPort>
+				<serviceadapter.domain>adapter</serviceadapter.domain>
+				<serviceadapter.host>localhost</serviceadapter.host>
+				<serviceadapter.httpPort>8280</serviceadapter.httpPort>
+				<serviceadapter.adminPort>8248</serviceadapter.adminPort>
 				<serviceadapter.user>admin</serviceadapter.user>
-				<serviceadapter.password>admin</serviceadapter.password>
+				<serviceadapter.password></serviceadapter.password>
 			</properties>
 		</profile>
 	</profiles>
@@ -24,3 +24,5 @@
 		<activeProfile>cocome-context</activeProfile>
 	</activeProfiles>
 </settings>
+Contact GitHub API Training Shop Blog About
+© 2017 GitHub, Inc. Terms Privacy Security 

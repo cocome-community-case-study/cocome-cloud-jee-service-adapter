@@ -17,9 +17,18 @@ properties defined in the XML file.
 The properties correspond with values of your running Glassfish
 instance. In a default Glassfish installation the domain is called
 `domain1` if you did not provide a different name. However, we recommend
-to create your own domain, e.g., `cocome` or `adapter`.
+to create your own domain, e.g., `cocome` or `adapter`. 
+You can adjust the fields in the settings as follows:
+
+* host (usually "localhost", can be ip adress when you deployed parts of cocome on a different machine)
+* http port (port used by the services in a deployment; portbase + 80)
+* admin port (port used by the admin console; portbase + 48)
+* domain (Glassfish domain, ex.:  adapter)
+* admin user name (name of the admin user; usually: admin)
+* admin password (password of the admin user; usually no password )
+
 Important: If you finished the glassfish setup, you've propably already created
-the domain for the service-adapter (it is named `adapter`)
+the domain for the service-adapter (it is named `adapter`). 
 
 
 To build the service-adapter with Maven type in the project root
