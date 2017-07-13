@@ -1,6 +1,6 @@
 package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
-import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
+import org.cocome.tradingsystem.inventory.data.enterprise.NameableEntity;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter;
 import org.cocome.tradingsystem.inventory.data.plant.expression.Expression;
 
@@ -13,10 +13,11 @@ import java.util.Collection;
  * @author Rudolf Biczok
  */
 @Entity
-public class PlantOperation implements Serializable, QueryableById {
+public class PlantOperation implements Serializable, NameableEntity {
     private static final long serialVersionUID = 1L;
 
     private long id;
+    private String name;
     private Collection<ProductionParameter<PlantOperation>> parameters;
     private Collection<Expression> expressions;
     private Collection<EntryPoint> inputEntryPoint;
@@ -36,8 +37,29 @@ public class PlantOperation implements Serializable, QueryableById {
      * @param id
      *            a unique identifier of this Plant
      */
+    @Override
     public void setId(final long id) {
         this.id = id;
+    }
+
+    /**
+     * Returns the name of the Plant.
+     *
+     * @return Plant name.
+     */
+    @Override
+    @Basic
+    public String getName() {
+        return this.name;
+    }
+
+    /**
+     * @param name
+     *            the name of the Plant
+     */
+    @Override
+    public void setName(final String name) {
+        this.name = name;
     }
 
     /**

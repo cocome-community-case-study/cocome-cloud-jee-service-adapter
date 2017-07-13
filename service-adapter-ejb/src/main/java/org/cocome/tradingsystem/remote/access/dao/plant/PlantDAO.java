@@ -23,7 +23,7 @@ import java.util.List;
 @LocalBean
 public class PlantDAO extends AbstractDAO<Plant> {
 
-    private static final String ENTERPRISE_ID_COL = "EnterpriseId";
+    private static final String ENTERPRISE_ID_COL = TradingEnterprise.class.getSimpleName() + "Id";
     private static final String ID_COL = Plant.class.getSimpleName() + "Id";
     private static final String NAME_COL = Plant.class.getSimpleName() + "Name";
     private static final String LOCATION_COL = Plant.class.getSimpleName() + "Location";

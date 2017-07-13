@@ -1,5 +1,6 @@
 package org.cocome.tradingsystem.inventory.data.plant.parameter;
 
+import org.cocome.tradingsystem.inventory.data.enterprise.NameableEntity;
 import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import java.io.Serializable;
  * @author Rudolf Biczok
  */
 @Entity
-public abstract class ProductionParameter<T> implements Serializable, QueryableById {
+public abstract class ProductionParameter<T> implements Serializable, NameableEntity {
 
     private static final long serialVersionUID = -2577328715744776645L;
 
@@ -33,6 +34,7 @@ public abstract class ProductionParameter<T> implements Serializable, QueryableB
      * @param id
      *            Identifier value.
      */
+    @Override
     public void setId(long id) {
         this.id = id;
     }
@@ -40,6 +42,7 @@ public abstract class ProductionParameter<T> implements Serializable, QueryableB
     /**
      * @return The parameter name
      */
+    @Override
     @Basic
     public String getName() {
         return name;
@@ -49,6 +52,7 @@ public abstract class ProductionParameter<T> implements Serializable, QueryableB
      * @param name
      *            The parameter name
      */
+    @Override
     public void setName(String name) {
         this.name = name;
     }

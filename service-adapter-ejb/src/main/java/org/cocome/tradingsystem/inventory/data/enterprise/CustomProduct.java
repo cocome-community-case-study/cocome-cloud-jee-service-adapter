@@ -18,8 +18,8 @@ public class CustomProduct extends AbstractProduct {
 
     private static final long serialVersionUID = -2577328715744776645L;
 
-    private Collection<ProductionParameter<CustomProduct>> parameters;
     private Recipe productionRecipe;
+    private Collection<ProductionParameter<CustomProduct>> parameters;
 
     /**
      * @return all available parameters (organized in categories)
