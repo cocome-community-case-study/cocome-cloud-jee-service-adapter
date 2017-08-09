@@ -3,17 +3,16 @@ package org.cocome.tradingsystem.remote.access;
 import de.kit.ipd.java.utils.framework.table.Table;
 import de.kit.ipd.java.utils.parsing.csv.CSVParser;
 import org.cocome.tradingsystem.inventory.data.IData;
+import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.*;
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,39 +27,56 @@ public class TestUtils {
     public static final EntityManagerFactory TEST_EMF = Persistence.createEntityManagerFactory(
             "InventoryManagerTest");
 
+    private static class EJBAnswer implements Answer<Object> {
+        private EntityManagerFactory proxyEMF = Mockito.mock(EntityManagerFactory.class);
+
+        private List<EntityTransaction> txList = new ArrayList<>();
+
+        EntityManagerFactory getProxyEMF() {
+            return proxyEMF;
+        }
+
+        @Override
+        public Object answer(InvocationOnMock invocation) throws Throwable {
+            final EntityManager em = TEST_EMF.createEntityManager();
+            Mockito.when(proxyEMF.createEntityManager()).then(inv -> em);
+            if(!em.getTransaction().isActive()) {
+                em.getTransaction().begin();
+            }
+            Object result = invocation.callRealMethod();
+            for(int i = 0; i < txList.size(); i ++) {
+                txList.get(i).commit();
+                txList.remove(i);
+            }
+            em.getTransaction().commit();
+            return result;
+        }
+    }
+
     public static <T> T injectFakeEJB(Class<T> ejbClass) {
         if (!hasAnnotation(ejbClass, LocalBean.class) || !hasAnnotation(ejbClass, Stateless.class)) {
             throw new IllegalArgumentException("@LocalBean and @Stateless annotations must be present on target class: "
                     + ejbClass.getName());
         }
-        final Constructor<T> c;
-        try {
-            c = ejbClass.getConstructor();
-        } catch (final NoSuchMethodException e) {
-            throw new IllegalArgumentException("Target class has no non-arg constructor: " + ejbClass.getName());
-        }
-        final T instance;
-        try {
-            instance = c.newInstance();
-        } catch (final InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            throw new IllegalStateException("Unable to create instance", e);
-        }
-        for (final Field f : listAllFields(instance)) {
+
+        EJBAnswer ejbAnswer = new EJBAnswer();
+        final T proxyInstance = Mockito.mock(ejbClass, ejbAnswer);
+
+        for (final Field f : listAllFields(proxyInstance)) {
             for (final Annotation a : f.getAnnotations()) {
                 if (a.annotationType().equals(PersistenceUnit.class)) {
                     final String unitName = f.getAnnotation(PersistenceUnit.class).unitName();
                     if (!unitName.equals(IData.EJB_PERSISTENCE_UNIT_NAME)) {
                         throw new IllegalArgumentException("Unknown unit name:" + unitName);
                     }
-
-                    setProperty(instance, f, TEST_EMF);
+                    setProperty(proxyInstance, f, ejbAnswer.getProxyEMF());
                 }
                 if (a.annotationType().equals(EJB.class)) {
-                    setProperty(instance, f, injectFakeEJB(f.getType()));
+                    setProperty(proxyInstance, f, injectFakeEJB(f.getType()));
                 }
             }
         }
-        return instance;
+        return proxyInstance;
     }
 
     public static String toCSV(final Table<String> table) {

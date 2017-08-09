@@ -4,14 +4,13 @@ import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnit;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
-import org.cocome.tradingsystem.inventory.data.plant.recipe.RecipeStep;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
 /**
- * This class represents a plant that provides access to a collection of {@link RecipeStep}.
+ * This class represents a plant that provides access to a collection of {@link PlantOperation}.
  *
  * @author Rudolf Biczok
  */

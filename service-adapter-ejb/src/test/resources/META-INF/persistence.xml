@@ -2,17 +2,38 @@
 <persistence version="2.1"
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="InventoryManager"
-		transaction-type="JTA">
-		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-		<jta-data-source>jdbc/CoCoMEDB</jta-data-source>
-		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <persistence-unit name="InventoryManagerTest"
+                      transaction-type="RESOURCE_LOCAL">
+        <class>org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise</class>
+        <class>org.cocome.tradingsystem.inventory.data.enterprise.ProductSupplier</class>
+        <class>org.cocome.tradingsystem.inventory.data.enterprise.Product</class>
+        <class>org.cocome.tradingsystem.inventory.data.store.Store</class>
+        <class>org.cocome.tradingsystem.inventory.data.store.Store</class>
+        <class>org.cocome.tradingsystem.inventory.data.store.StockItem</class>
+        <class>org.cocome.tradingsystem.inventory.data.store.ProductOrder</class>
+        <class>org.cocome.tradingsystem.inventory.data.store.OrderEntry</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.Plant</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnit</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitClass</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.expression.Expression</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.recipe.EntryPoint</class>
 
-		<!-- Comment out to not produce always a empty db -->
-		<properties>
-			<property name="javax.persistence.jdbc.user" value="APP" />
-			<property name="javax.persistence.jdbc.password" value="APP" />
-			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
-		</properties>
-	</persistence-unit>
+        <properties>
+            <property name="javax.persistence.jdbc.user" value="APP_TEST"/>
+            <property name="javax.persistence.jdbc.password" value="APP_TEST"/>
+             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:h2:./target/embedded_db_h2"/>
+
+
+            <!-- <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:derby:target/databases/derby;create=true"/> -->
+
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+        </properties>
+    </persistence-unit>
 </persistence>
