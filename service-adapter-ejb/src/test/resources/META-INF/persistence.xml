@@ -28,11 +28,6 @@
             <property name="javax.persistence.jdbc.url"
                       value="jdbc:h2:./target/embedded_db_h2"/>
 
-
-            <!-- <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
-            <property name="javax.persistence.jdbc.url"
-                      value="jdbc:derby:target/databases/derby;create=true"/> -->
-
             <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
         </properties>
     </persistence-unit>
