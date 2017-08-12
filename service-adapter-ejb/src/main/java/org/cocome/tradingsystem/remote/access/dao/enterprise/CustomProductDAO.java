@@ -85,9 +85,7 @@ public class CustomProductDAO extends AbstractDAO<CustomProduct> {
                 continue;
             }
 
-            final CustomProduct product = getOrCreateReferencedEntity(CustomProduct.class,
-                    Long.parseLong(colId.getValue()),
-                    em);
+            final CustomProduct product = getOrCreateReferencedEntity(CustomProduct.class, colId, em);
 
             product.setBarcode(Long.valueOf(colBarcode.getValue()));
             product.setName(colName.getValue());

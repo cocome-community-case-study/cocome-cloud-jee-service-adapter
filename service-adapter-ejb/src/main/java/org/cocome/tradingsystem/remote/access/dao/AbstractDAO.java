@@ -1,11 +1,15 @@
 package org.cocome.tradingsystem.remote.access.dao;
 
+import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 import org.cocome.tradingsystem.remote.access.Notification;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.PersistenceUnit;
 import java.util.List;
 
 /**
@@ -21,7 +25,7 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
 
     @Override
     public String getEntityTypeName() {
-        return this.getEntityType().getClass().getSimpleName().toLowerCase();
+        return this.getEntityType().getSimpleName().toLowerCase();
     }
 
     @Override
@@ -32,7 +36,7 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
         final List<E> entities = fromTable(em, table, notification, "createEntities");
         for (final E entity : entities) {
             final QueryableById entityFromDB = em.find(entity.getClass(), entity.getId());
-            if(entityFromDB != null) {
+            if (entityFromDB != null) {
                 notification.addNotification(
                         "createEntities",
                         Notification.SUCCESS,
@@ -80,11 +84,10 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
     }
 
     private <T extends QueryableById> void getReferencedEntity(final T entity,
-                                                              final EntityManager em) {
+                                                               final EntityManager em) {
         assert entity != null;
         assert em != null;
-        @SuppressWarnings("unchecked")
-        final Class<T> entityType = (Class<T>) entity.getClass();
+        @SuppressWarnings("unchecked") final Class<T> entityType = (Class<T>) entity.getClass();
         getReferencedEntity(entityType, entity.getId(), em);
     }
 
@@ -101,10 +104,11 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
     }
 
     protected <T extends QueryableById> T getOrCreateReferencedEntity(final Class<T> entityClass,
-                                                           final long id,
-                                                           final EntityManager em) {
-        final T entity = em.find(entityClass, id);
-        if(entity == null) {
+                                                                      final Column<String> colId,
+                                                                      final EntityManager em) {
+        final Long id = colId != null ? Long.parseLong(colId.getValue()) : null;
+        final T entity = id != null ? em.find(entityClass, id) : null;
+        if (entity == null) {
             final T instance;
             try {
                 instance = entityClass.newInstance();
@@ -112,11 +116,9 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
                 throw new IllegalStateException("Could not instantiate entity class: "
                         + entityClass.getName());
             }
-            instance.setId(id);
             return instance;
         }
         return entity;
-
     }
 
     protected abstract Class<E> getEntityType();

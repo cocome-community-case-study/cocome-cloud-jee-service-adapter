@@ -87,9 +87,7 @@ public class ProductionUnitDAO extends AbstractDAO<ProductionUnit> {
             puc.setId(Long.parseLong(colPUCId.getValue()));
             puc.setName(colPUCName.getValue());
 
-            final ProductionUnit pu = getOrCreateReferencedEntity(ProductionUnit.class,
-                    Long.parseLong(colPUId.getValue()),
-                    em);
+            final ProductionUnit pu = getOrCreateReferencedEntity(ProductionUnit.class, colPUId, em);
             pu.setLocation(colPULocation.getValue());
             pu.setInterfaceUrl(colPUInterfaceURL.getValue());
             pu.setProductionUnitClass(puc);

@@ -94,10 +94,7 @@ public class RecipeDAO extends AbstractDAO<Recipe> {
 
             Recipe recipe = map.get(colId.getValue());
             if (recipe == null) {
-                recipe = getOrCreateReferencedEntity(
-                        Recipe.class,
-                        Long.parseLong(colId.getValue()),
-                        em);
+                recipe = getOrCreateReferencedEntity(Recipe.class, colId, em);
                 recipe.setOperations(new ArrayList<>());
                 recipe.setInputInteractions(new ArrayList<>());
                 recipe.setOutputInteractions(new ArrayList<>());

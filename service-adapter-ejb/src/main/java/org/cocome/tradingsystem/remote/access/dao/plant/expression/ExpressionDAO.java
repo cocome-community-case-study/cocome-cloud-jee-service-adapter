@@ -78,9 +78,7 @@ public class ExpressionDAO extends AbstractDAO<Expression> {
             if (colType.getValue().equals(ConstExpression.class.getName())) {
                 ConstExpression exp = (ConstExpression) map.get(colId.getValue());
                 if (exp == null) {
-                    exp = getOrCreateReferencedEntity(ConstExpression.class,
-                            Long.parseLong(colId.getValue()),
-                            em);
+                    exp = getOrCreateReferencedEntity(ConstExpression.class, colId, em);
                     exp.setOperations(new ArrayList<>());
 
                     if (colTrueExp.getValue() != null) {
@@ -96,9 +94,7 @@ public class ExpressionDAO extends AbstractDAO<Expression> {
                     map.put(colId.getValue(), exp);
                 }
                 final ProductionUnitOperation option = getOrCreateReferencedEntity(
-                        ProductionUnitOperation.class,
-                        Long.parseLong(colOptId.getValue()),
-                        em);
+                        ProductionUnitOperation.class, colOptId, em);
                 option.setOperationId(colOptOId.getValue());
                 exp.getOperations().add(option);
 
@@ -122,9 +118,7 @@ public class ExpressionDAO extends AbstractDAO<Expression> {
                 ConditionalExpression exp = (ConditionalExpression) map.get(colId.getValue());
                 if (exp == null) {
                     exp = getOrCreateReferencedEntity(
-                            ConditionalExpression.class,
-                            Long.parseLong(colId.getValue()),
-                            em);
+                            ConditionalExpression.class, colId, em);
                     exp.setOnTrueExpressions(new ArrayList<>());
                     exp.setOnFalseExpressions(new ArrayList<>());
 

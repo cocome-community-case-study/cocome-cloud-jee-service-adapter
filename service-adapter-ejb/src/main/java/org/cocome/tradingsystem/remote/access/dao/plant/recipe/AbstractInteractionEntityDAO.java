@@ -64,9 +64,7 @@ public abstract class AbstractInteractionEntityDAO<FromType extends NameableEnti
             final Column<String> colToId = table.getColumnByName(i, prefix + TO_ID_COL);
             final Column<String> colToName = table.getColumnByName(i, prefix + TO_NAME_COL);
 
-            final T entryPoint = getOrCreateReferencedEntity(this.getEntityType(),
-                    Long.parseLong(colId.getValue()),
-                    em);
+            final T entryPoint = getOrCreateReferencedEntity(this.getEntityType(), colId, em);
             final FromType from;
             final ToType to;
             try {

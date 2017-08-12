@@ -104,23 +104,17 @@ public class ProductionParameterDAO extends AbstractDAO<ProductionParameter> {
             if (colType.getValue().equals(NorminalParameter.class.getName())) {
                 NorminalParameter<?> param = (NorminalParameter) map.get(colId.getValue());
                 if (param == null) {
-                    param = getOrCreateReferencedEntity(NorminalParameter.class,
-                            Long.parseLong(colId.getValue()),
-                            em);
+                    param = getOrCreateReferencedEntity(NorminalParameter.class, colId, em);
                     param.setName(colName.getValue());
                     param.setCategory(colCategory.getValue());
                     param.setOptions(new ArrayList<>());
                     map.put(colId.getValue(), param);
                 }
-                final ParameterOption option = getOrCreateReferencedEntity(ParameterOption.class,
-                        Long.parseLong(colOptionId.getValue()),
-                        em);
+                final ParameterOption option = getOrCreateReferencedEntity(ParameterOption.class, colOptionId, em);
                 option.setName(colOptionName.getValue());
                 param.getOptions().add(option);
             } else if (colType.getValue().equals(BooleanParameter.class.getName())) {
-                final BooleanParameter param = getOrCreateReferencedEntity(BooleanParameter.class,
-                        Long.parseLong(colId.getValue()),
-                        em);
+                final BooleanParameter param = getOrCreateReferencedEntity(BooleanParameter.class, colId, em);
                 param.setName(colName.getValue());
                 param.setCategory(colCategory.getValue());
                 map.put(colId.getValue(), param);

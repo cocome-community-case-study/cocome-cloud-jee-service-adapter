@@ -76,9 +76,7 @@ public class PlantDAO extends AbstractDAO<Plant> {
                 continue;
             }
 
-            final Plant plant = getOrCreateReferencedEntity(Plant.class,
-                    Long.parseLong(colId.getValue()),
-                    em);
+            final Plant plant = getOrCreateReferencedEntity(Plant.class, colId, em);
             plant.setEnterprise(t);
             plant.setLocation(colLocation.getValue());
             plant.setName(colName.getValue());

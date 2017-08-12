@@ -22,6 +22,7 @@ import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductDAO;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductSupplierDAO;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.TradingEnterpriseDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.PlantDAO;
 import org.cocome.tradingsystem.remote.access.dao.store.ProductOrderDAO;
 import org.cocome.tradingsystem.remote.access.dao.store.StockItemDAO;
 import org.cocome.tradingsystem.remote.access.dao.store.StoreDAO;
@@ -80,6 +81,9 @@ public class ServiceProviderDatabase extends HttpServlet {
     private ProductDAO productDAO;
 
     @EJB
+    private PlantDAO plantDAO;
+
+    @EJB
     private ProductSupplierDAO productSupplierDAO;
 
     @EJB
@@ -110,6 +114,7 @@ public class ServiceProviderDatabase extends HttpServlet {
     @PostConstruct
     protected void initDAOMap() {
         daoMap.put(productDAO.getEntityTypeName(), productDAO);
+        daoMap.put(plantDAO.getEntityTypeName(), plantDAO);
         daoMap.put(productSupplierDAO.getEntityTypeName(), productSupplierDAO);
         daoMap.put(tradingEnterpriseDAO.getEntityTypeName(), tradingEnterpriseDAO);
         daoMap.put(productOrderDAO.getEntityTypeName(), productOrderDAO);

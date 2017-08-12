@@ -17,14 +17,14 @@ import java.util.List;
  */
 public abstract class AbstractNameableEntityDAO<T extends NameableEntity> extends AbstractDAO<T> {
 
-    private static final String ID_COL =  "Id";
+    private static final String ID_COL = "Id";
     private static final String NAME_COL = "Name";
 
     @Override
     public Table<String> toTable(final List<T> list) {
         final Table<String> table = new Table<>();
         table.addHeader(this.getEntityType().getSimpleName() + ID_COL,
-                this.getEntityType().getSimpleName() +NAME_COL);
+                this.getEntityType().getSimpleName() + NAME_COL);
         final int len = list.size();
         for (int i = 0; i < len; i++) {
             table.set(i, 0, String.valueOf(list.get(i).getId()));
@@ -44,9 +44,7 @@ public abstract class AbstractNameableEntityDAO<T extends NameableEntity> extend
             final Column<String> colId = table.getColumnByName(i, this.getEntityType().getSimpleName() + ID_COL);
             final Column<String> colName = table.getColumnByName(i, this.getEntityType().getSimpleName() + NAME_COL);
 
-            final T entity = getOrCreateReferencedEntity(this.getEntityType(),
-                    Long.parseLong(colId.getValue()),
-                    em);
+            final T entity = getOrCreateReferencedEntity(this.getEntityType(), colId, em);
             entity.setName(colName.getValue());
             list.add(entity);
         }

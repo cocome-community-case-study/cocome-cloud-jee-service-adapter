@@ -67,9 +67,7 @@ public class ProductionUnitClassDAO extends AbstractDAO<ProductionUnitClass> {
 
             ProductionUnitClass unitClass = map.get(colParamId.getValue());
             if (unitClass == null) {
-                unitClass = getOrCreateReferencedEntity(ProductionUnitClass.class,
-                        Long.parseLong(colParamId.getValue()),
-                        em);
+                unitClass = getOrCreateReferencedEntity(ProductionUnitClass.class, colParamId, em);
                 unitClass.setName(colParamName.getValue());
                 unitClass.setOperations(new ArrayList<>());
                 map.put(colParamId.getValue(), unitClass);
