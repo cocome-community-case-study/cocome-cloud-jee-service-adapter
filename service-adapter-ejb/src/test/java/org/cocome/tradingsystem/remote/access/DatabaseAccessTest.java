@@ -27,7 +27,7 @@ public class DatabaseAccessTest {
     private DatabaseAccess databaseAccess;
 
     @Test
-    public void shouldFindAllGamesUsingJpqlQuery() throws Exception {
+    public void shouldInjectSomething() throws Exception {
         Assert.assertNotNull(databaseAccess);
     }
 
