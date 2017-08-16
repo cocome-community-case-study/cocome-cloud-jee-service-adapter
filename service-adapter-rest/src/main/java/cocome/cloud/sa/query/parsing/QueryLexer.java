@@ -3,29 +3,29 @@ package cocome.cloud.sa.query.parsing;
 import java.util.regex.Pattern;
 
 import de.kit.ipd.java.utils.framework.statemachine.CharStreamStateMachine;
-import de.kit.ipd.java.utils.framework.statemachine.ILexer;
-import de.kit.ipd.java.utils.framework.statemachine.ILexerVisitor;
-import de.kit.ipd.java.utils.framework.statemachine.IState;
-import de.kit.ipd.java.utils.framework.statemachine.IStateMachine;
+import de.kit.ipd.java.utils.framework.statemachine.Lexer;
+import de.kit.ipd.java.utils.framework.statemachine.LexerVisitor;
+import de.kit.ipd.java.utils.framework.statemachine.State;
+import de.kit.ipd.java.utils.framework.statemachine.StateMachine;
 
-public class QueryLexer implements ILexer<CharSequence> {
+public class QueryLexer implements Lexer<CharSequence> {
 
-	private static final IState<CharSequence> STATE_0 = new State0();
+	private static final State<CharSequence> STATE_0 = new State0();
 
-	private static final IState<CharSequence> STATE_1 = new State1();
+	private static final State<CharSequence> STATE_1 = new State1();
 
-	private static final IState<CharSequence> STATE_2 = new State2();
+	private static final State<CharSequence> STATE_2 = new State2();
 
-	private static final IState<CharSequence> STATE_3 = new State3();
+	private static final State<CharSequence> STATE_3 = new State3();
 
-	private static final IState<CharSequence> STATE_4 = new State4();
+	private static final State<CharSequence> STATE_4 = new State4();
 
-	private static final IState<CharSequence> STATE_5 = new State5();
+	private static final State<CharSequence> STATE_5 = new State5();
 
-	private static final IState<CharSequence> STATE_6 = new State6();
+	private static final State<CharSequence> STATE_6 = new State6();
 
 	/** State-Machine which does the scanning of the source. */
-	private final IStateMachine<CharSequence> machine = new CharStreamStateMachine();
+	private final StateMachine<CharSequence> machine = new CharStreamStateMachine();
 
 	/**
 	 * Initialize query lexer.
@@ -41,12 +41,12 @@ public class QueryLexer implements ILexer<CharSequence> {
 	}
 
 	@Override
-	public IStateMachine<CharSequence> getMachine() {
+	public StateMachine<CharSequence> getMachine() {
 		return this.machine;
 	}
 
 	@Override
-	public void addVisitor(final ILexerVisitor<CharSequence> visitor) {
+	public void addVisitor(final LexerVisitor<CharSequence> visitor) {
 		this.machine.addVisitor(visitor);
 	}
 
@@ -60,7 +60,7 @@ public class QueryLexer implements ILexer<CharSequence> {
 	 * @author unknown
 	 *
 	 */
-	public static class State0 implements IState<CharSequence> {
+	public static class State0 implements State<CharSequence> {
 		/** Index of State */
 		public static final int INDEX = 0;
 
@@ -75,7 +75,7 @@ public class QueryLexer implements ILexer<CharSequence> {
 		State0() {}
 
 		@Override
-		public void run(final IStateMachine<CharSequence> machine) {
+		public void run(final StateMachine<CharSequence> machine) {
 
 			final String next = String.valueOf(machine.getNext());
 
@@ -110,7 +110,7 @@ public class QueryLexer implements ILexer<CharSequence> {
 	 * State1 class.
 	 *
 	 */
-	public static class State1 implements IState<CharSequence> {
+	public static class State1 implements State<CharSequence> {
 		/** Index of State */
 		public static final int INDEX = 1;
 
@@ -127,7 +127,7 @@ public class QueryLexer implements ILexer<CharSequence> {
 		public State1() {}
 
 		@Override
-		public void run(final IStateMachine<CharSequence> machine) {
+		public void run(final StateMachine<CharSequence> machine) {
 
 			final String next = String.valueOf(machine.getNext());
 
@@ -166,7 +166,7 @@ public class QueryLexer implements ILexer<CharSequence> {
 	/**
 	 * STATE 2.
 	 */
-	public static class State2 implements IState<CharSequence> {
+	public static class State2 implements State<CharSequence> {
 		/** Index of state. */
 		public static final int INDEX = 2;
 
@@ -183,7 +183,7 @@ public class QueryLexer implements ILexer<CharSequence> {
 		public State2() {}
 
 		@Override
-		public void run(final IStateMachine<CharSequence> machine) {
+		public void run(final StateMachine<CharSequence> machine) {
 
 			final String next = String.valueOf(machine.getNext());
 
@@ -222,7 +222,7 @@ public class QueryLexer implements ILexer<CharSequence> {
 	/**
 	 * STATE 3.
 	 */
-	public static class State3 implements IState<CharSequence> {
+	public static class State3 implements State<CharSequence> {
 		/** Index of state. */
 		public static final int INDEX = 3;
 
@@ -235,7 +235,7 @@ public class QueryLexer implements ILexer<CharSequence> {
 		public State3() {}
 
 		@Override
-		public void run(final IStateMachine<CharSequence> machine) {
+		public void run(final StateMachine<CharSequence> machine) {
 
 			final String next = String.valueOf(machine.getNext());
 
@@ -266,7 +266,7 @@ public class QueryLexer implements ILexer<CharSequence> {
 	/**
 	 * STATE 4.
 	 */
-	public static class State4 implements IState<CharSequence> {
+	public static class State4 implements State<CharSequence> {
 		/** Index of state. */
 		public static final int INDEX = 4;
 
@@ -274,7 +274,7 @@ public class QueryLexer implements ILexer<CharSequence> {
 		public State4() {}
 
 		@Override
-		public void run(final IStateMachine<CharSequence> machine) {
+		public void run(final StateMachine<CharSequence> machine) {
 
 			machine.callVisitor(this.getIndex(), machine.getToken());
 			machine.resetToken();
@@ -291,7 +291,7 @@ public class QueryLexer implements ILexer<CharSequence> {
 	/**
 	 * STATE 5.
 	 */
-	public static class State5 implements IState<CharSequence> {
+	public static class State5 implements State<CharSequence> {
 		/** Index of state. */
 		public static final int INDEX = 5;
 
@@ -299,7 +299,7 @@ public class QueryLexer implements ILexer<CharSequence> {
 		public State5() {}
 
 		@Override
-		public void run(final IStateMachine<CharSequence> machine) {
+		public void run(final StateMachine<CharSequence> machine) {
 			machine.callVisitor(this.getIndex(), machine.getToken());
 		}
 
@@ -312,7 +312,7 @@ public class QueryLexer implements ILexer<CharSequence> {
 	/**
 	 * STATE 6.
 	 */
-	public static class State6 implements IState<CharSequence> {
+	public static class State6 implements State<CharSequence> {
 		/** Index of state. */
 		public static final int INDEX = 6;
 
@@ -320,7 +320,7 @@ public class QueryLexer implements ILexer<CharSequence> {
 		public State6() {}
 
 		@Override
-		public void run(final IStateMachine<CharSequence> machine) {
+		public void run(final StateMachine<CharSequence> machine) {
 
 			machine.callVisitor(this.getIndex(), machine.getToken());
 			machine.resetToken();

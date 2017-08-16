@@ -10,12 +10,12 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import de.kit.ipd.java.utils.xml.IMarshable;
+import de.kit.ipd.java.utils.xml.Marshable;
 
 @XmlRootElement(name = "ServiceProviderCatalog")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ServiceProviderCatalog", propOrder = { "listServiceProvider" })
-public class ServiceProviderCatalog implements IMarshable {
+public class ServiceProviderCatalog implements Marshable {
 
 	@XmlElementWrapper(name = "ServiceProviders")
 	@XmlElement(name = "ServiceProvider")

@@ -7,11 +7,11 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.kit.ipd.java.utils.framework.statemachine.ILexer;
-import de.kit.ipd.java.utils.framework.statemachine.ILexerVisitor;
-import de.kit.ipd.java.utils.framework.statemachine.IParser;
-import de.kit.ipd.java.utils.framework.statemachine.IParserVisitor;
-import de.kit.ipd.java.utils.framework.statemachine.IStateMachine;
+import de.kit.ipd.java.utils.framework.statemachine.Lexer;
+import de.kit.ipd.java.utils.framework.statemachine.LexerVisitor;
+import de.kit.ipd.java.utils.framework.statemachine.Parser;
+import de.kit.ipd.java.utils.framework.statemachine.ParserVisitor;
+import de.kit.ipd.java.utils.framework.statemachine.StateMachine;
 
 import cocome.cloud.sa.query.IQuery;
 import cocome.cloud.sa.query.SelectQuery;
@@ -19,12 +19,12 @@ import cocome.cloud.sa.query.parsing.QueryLexer.State4;
 import cocome.cloud.sa.query.parsing.QueryLexer.State5;
 import cocome.cloud.sa.query.parsing.QueryLexer.State6;
 
-public class QueryParser implements IParser<String>, ILexerVisitor<CharSequence> {
+public class QueryParser implements Parser<String>, LexerVisitor<CharSequence> {
 
 	private static final int INIT_STATE = 0;
 	private static final int EOL_STATE = 5;
 
-	private ILexer<CharSequence> lexer = new QueryLexer();
+	private Lexer<CharSequence> lexer = new QueryLexer();
 
 	private final Map<String, String> map = new HashMap<>();
 
@@ -57,6 +57,11 @@ public class QueryParser implements IParser<String>, ILexerVisitor<CharSequence>
 	}
 
 	@Override
+	public void addVisitor(ParserVisitor... visitors) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
 	public void parse(final String content) {
 		this.lexer.getMachine().setInput(content);
 		this.lexer.getMachine().run(QueryParser.INIT_STATE);
@@ -82,7 +87,7 @@ public class QueryParser implements IParser<String>, ILexerVisitor<CharSequence>
 	}
 
 	@Override
-	public void visit(final IStateMachine<CharSequence> machine, final int state, final CharSequence token) {
+	public void visit(final StateMachine<CharSequence> machine, final int state, final CharSequence token) {
 		final String val = String.valueOf(token);
 		if (!val.isEmpty()) {
 			switch (state) {
@@ -135,8 +140,4 @@ public class QueryParser implements IParser<String>, ILexerVisitor<CharSequence>
 		this.strQuery = this.query.parse(this.map);
 	}
 
-	@Override
-	public void addVisitor(final IParserVisitor<String> visitor) {
-		// TODO Auto-generated method stub
-	}
 }

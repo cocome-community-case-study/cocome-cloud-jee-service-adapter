@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -74,34 +74,34 @@ public class ServiceProviderDatabase extends HttpServlet {
 
     private static final String URL_SERVICE_DATABASE_SCHEMAS = "/Database/Schemas";
 
-    @EJB
+    @Inject
     private DatabaseAccess databaseAccess;
 
-    @EJB
+    @Inject
     private ProductDAO productDAO;
 
-    @EJB
+    @Inject
     private PlantDAO plantDAO;
 
-    @EJB
+    @Inject
     private ProductSupplierDAO productSupplierDAO;
 
-    @EJB
+    @Inject
     private TradingEnterpriseDAO tradingEnterpriseDAO;
 
-    @EJB
+    @Inject
     private ProductOrderDAO productOrderDAO;
 
-    @EJB
+    @Inject
     private StockItemDAO stockItemDAO;
 
-    @EJB
+    @Inject
     private StoreDAO storeDAO;
 
-    @EJB
+    @Inject
     private CustomerDAO customerDAO;
 
-    @EJB
+    @Inject
     private LoginUserDAO loginUserDAO;
 
     private Map<String, DataAccessObject> daoMap = new HashMap<>();
