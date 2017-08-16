@@ -1,61 +1,45 @@
 package de.kit.ipd.java.utils.framework.table;
 
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-/**
- *
- * @author unknown
- *
- * @param <T>
- *            column element type
- */
 @XmlRootElement(name = "Column")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Column", propOrder = { "name", "index", "value" })
 public class Column<T> implements Serializable {
 
 	private static final long serialVersionUID = -924839233083176478L;
-
-	@XmlAttribute(name = "name", required = true)
+	
+	@XmlAttribute(name = "name",required= true)
 	private String name;
 
-	@XmlAttribute(name = "index", required = true)
+	@XmlAttribute(name = "index",required=true)
 	private int index;
 
-	@XmlElement(name = "Value", required = true)
+	@XmlElement(name = "Value",required=true)
 	private T value;
 
-	/** Should be replaced by one with parameters. */
-	public Column() {}
-
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
-	public void setName(final String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
 	public int getIndex() {
-		return this.index;
+		return index;
 	}
 
-	public void setIndex(final int index) {
+	public void setIndex(int index) {
 		this.index = index;
 	}
 
 	public T getValue() {
-		return this.value;
+		return value;
 	}
 
-	public void setValue(final T value) {
+	public void setValue(T value) {
 		this.value = value;
 	}
 

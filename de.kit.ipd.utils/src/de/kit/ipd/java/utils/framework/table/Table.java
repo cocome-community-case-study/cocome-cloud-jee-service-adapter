@@ -1,69 +1,59 @@
 package de.kit.ipd.java.utils.framework.table;
 
+import de.kit.ipd.java.utils.xml.Marshable;
+
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import de.kit.ipd.java.utils.xml.IMarshable;
-
-/**
- * @param <T> field type
- * @author unknown
- */
 @XmlRootElement(name = "Table")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Table", propOrder = {"name", "rows", "header"})
-public class Table<T> implements IMarshable, Serializable {
+public class Table<T> implements Marshable, Serializable {
 
     private static final long serialVersionUID = 4238619456650651713L;
+
+    public static final Class<TableObjectFactory> OBJECT_FACTORY =
+            TableObjectFactory.class;
 
     @XmlAttribute(name = "name")
     private String name;
 
     @XmlElementWrapper(name = "Rows", required = true)
     @XmlElement(name = "Row", required = true)
-    private List<Row<T>> rows = new ArrayList<>();
+    private List<Row<T>> rows = new ArrayList<Row<T>>();
 
     @XmlElementWrapper(name = "Headers", required = true)
     @XmlElement(name = "Header", required = true)
-    private List<TableHeader> header = new ArrayList<>();
-
-    /**
-     * Should be replaced by one with parameters.
-     */
-    public Table() {
-
-    }
+    private List<TableHeader> header = new ArrayList<TableHeader>();
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public List<Row<T>> getRows() {
-        return this.rows;
+        return rows;
     }
 
-    public void setName(final String name) {
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public void setRows(List<Row<T>> rows) {
+        this.rows = rows;
     }
 
     public int size() {
         return this.rows.size();
     }
 
+
     public List<TableHeader> getHeader() {
-        return this.header;
+        return header;
     }
 
-    public void setHeader(final List<TableHeader> header) {
+    public void setHeader(List<TableHeader> header) {
         this.header = header;
     }
 
@@ -76,98 +66,103 @@ public class Table<T> implements IMarshable, Serializable {
      * BUSINESS METHODS
      ************************************************************************/
 
-    public void addHeader(final String... names) {
+    public void addHeader(String... names) {
         if (names != null) {
-            final int len = names.length;
+            int len = names.length;
             for (int i = 0; i < len; i++) {
-                final TableHeader newHeader = new TableHeader();
-                newHeader.setIndex(i);
-                newHeader.setName(names[i]);
-                this.header.add(newHeader);
+                TableHeader _header = new TableHeader();
+                _header.setIndex(i);
+                _header.setName(names[i]);
+                header.add(_header);
             }
         }
     }
 
-    private void addRows(final int amount) {
-        final int start = this.rows.size();
+    public void addRows(int amount) {
+        int start = rows.size();
         for (int i = 0; i < amount; i++) {
-            final Row<T> row = new Row<>();
-            row.setIndex(start + i);
-            this.rows.add(start + i, row);
+            Row<T> _row = new Row<>();
+            _row.setIndex(start + i);
+            rows.add(start + i, _row);
         }
     }
 
-    public void addColumn(final int rowIndex, final int columnIndex, final T value) {
-        final boolean test = (this.header.size() - 1) >= columnIndex;
+    public void addColumn(int row, int column, T value) {
+        boolean test = (header.size() - 1) >= column;
         if (test) {
-            final Row<T> row = this.getRow(rowIndex);
-            final Column<T> col = new Column<>();
-            col.setIndex(columnIndex);
-            col.setName(this.header.get(columnIndex).getName());
+            Row<T> _row = this.getRow(row);
+            Column<T> col = new Column<>();
+            col.setIndex(column);
+            col.setName(header.get(column).getName());
             col.setValue(value);
-            row.getColumns().add(col);
+            _row.getColumns().add(col);
         }
+    }
+
+    public void addColumn(int row, int column, T value, boolean createRowIfAbsent) {
+        boolean test = (header.size() - 1) >= column;
+        if (test) {
+            Row<T> _row = this.getRow(row, createRowIfAbsent);
+            Column<T> col = new Column<>();
+            col.setIndex(column);
+            col.setName(header.get(column).getName());
+            col.setValue(value);
+            _row.getColumns().add(col);
+            return;
+        }
+        throw new IllegalArgumentException("row index not valid! Give only 0-" + (header.size() - 1));
+    }
+
+    public TableHeader getHeader(int index) {
+        if (index >= 0) {
+            for (TableHeader nextHeader : header) {
+                if (nextHeader.getIndex() == index) {
+                    return nextHeader;
+                }
+            }
+        }
+        throw new IllegalArgumentException("index not valid! Give only >= 0");
     }
 
     public void set(final int rowIndex, final int column, final T value) {
         this.addColumn(rowIndex, column, value, true);
     }
 
-    public void addColumn(final int rowIndex, final int column, final T value, final boolean createRowIfAbsent) {
-        final boolean test = (this.header.size() - 1) >= column;
-        if (test) {
-            final Row<T> row = this.getRow(rowIndex, createRowIfAbsent);
-            final Column<T> col = new Column<>();
-            col.setIndex(column);
-            col.setName(this.header.get(column).getName());
-            col.setValue(value);
-            row.getColumns().add(col);
-            return;
+    public Row<T> getRow(int index, boolean createIfAbsent) {
+        if (index <= (this.size() - 1) && index >= 0) {
+            return rows.get(index);
         }
-        throw new IllegalArgumentException("row index not valid! Give only 0-" + (this.header.size() - 1));
-    }
-
-    public TableHeader getHeader(final int index) {
-        if (index >= 0) {
-            for (final TableHeader nextHeader : this.header) {
-                if (nextHeader.getIndex() == index)
-                    return nextHeader;
-            }
-        }
-        throw new IllegalArgumentException("index not valid! Give only >= 0");
-    }
-
-    private Row<T> getRow(final int index, final boolean createIfAbsent) {
-        if ((index <= (this.size() - 1)) && (index >= 0))
-            return this.rows.get(index);
         if (createIfAbsent) {
-            final int start = (this.rows.size() != 0) ? this.rows.size() - 1 : 0;
-            final int amount = ((index - start) != 0) ? index - start : 1;
+            int start = (rows.size() != 0) ? rows.size() - 1 : 0;
+            int amount = (index - start != 0) ? index - start : 1;
             this.addRows(amount);
             return this.getRow(index);
         }
         throw new IllegalArgumentException("row index not valid! Give only 0-" + (this.size() - 1));
     }
 
-    private Row<T> getRow(final int index) {
-        if ((index <= (this.size() - 1)) && (index >= 0))
-            return this.rows.get(index);
+    public Row<T> getRow(int index) {
+        if (index <= (this.size() - 1) && index >= 0) {
+            return rows.get(index);
+        }
         throw new IllegalArgumentException("row index not valid! Give only 0-" + (this.size() - 1));
     }
 
-    public Column<T> getColumn(final int rowIndex, final int columnIndex) {
-        final Row<T> row = this.getRow(rowIndex);
-        if ((row.size() <= (row.size() - 1)) && (row.size() >= 0))
-            return row.getColumns().get(columnIndex);
-        throw new IllegalArgumentException("column index not valid! Give only 0-" + (row.size() - 1));
+    public Column<T> getColumn(int row, int column) {
+        Row<T> _row = this.getRow(row);
+        if (_row.size() <= (_row.size() - 1) && _row.size() >= 0) {
+            return _row.getColumns().get(column);
+        }
+        throw new IllegalArgumentException("column index not valid! Give only 0-" + (_row.size() - 1));
     }
 
-    public Column<T> getColumnByName(final int rowIndex, final String columnName) {
-        final Row<T> row = this.getRow(rowIndex);
-        if (columnName != null) {
-            for (final Column<T> nextCol : row.getColumns()) {
-                if (nextCol.getName().equals(columnName))
+    public Column<T> getColumnByName(int row, String name) {
+        Row<T> _row = getRow(row);
+        if (name != null) {
+            for (Column<T> nextCol : _row.getColumns()) {
+                if (nextCol.getName().equals(name)) {
                     return nextCol;
+                }
             }
             return null;
         }

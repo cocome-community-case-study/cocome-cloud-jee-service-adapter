@@ -5,55 +5,54 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
-/**
- *
- * @author unknown
- *
- */
+
 @XmlRegistry
-public class TableObjectFactory<T> {
+public class TableObjectFactory {
+	
+	private final static QName _Table_QName = new QName("", "Table");
+	private final static QName _Header_QName = new QName("", "Header");
+	private final static QName _Row_QName = new QName("", "Row");
+	private final static QName _Column_QName = new QName("", "Column");
+	
+	
 
-	private static final QName TABLE_QNAME = new QName("", "Table");
-	private static final QName HEADER_QNAME = new QName("", "Header");
-	private static final QName ROW_QNAME = new QName("", "Row");
-	private static final QName COLUMN_QNAME = new QName("", "Column");
-
-	public TableObjectFactory() {}
-
-	public Table<T> createTable() {
-		return new Table<T>();
-	}
-
-	@XmlElementDecl(namespace = "", name = "Table")
-	public JAXBElement<Table> createTable(final Table value) {
-		return new JAXBElement<Table>(TABLE_QNAME, Table.class, null, value);
-	}
-
-	public TableHeader createTableHeader() {
-		return new TableHeader();
-	}
-
-	@XmlElementDecl(namespace = "", name = "Header")
-	public JAXBElement<TableHeader> createTableHeader(final TableHeader value) {
-		return new JAXBElement<TableHeader>(HEADER_QNAME, TableHeader.class, null, value);
-	}
-
-	public Row<T> createRow() {
-		return new Row<T>();
-	}
-
-	@XmlElementDecl(namespace = "", name = "Row")
-	public JAXBElement<Row> createTable(final Row value) {
-		return new JAXBElement<Row>(ROW_QNAME, Row.class, null, value);
-	}
-
-	public Column<T> createColumn() {
-		return new Column<T>();
-	}
-
-	@XmlElementDecl(namespace = "", name = "Column")
-	public JAXBElement<Column> createColumn(final Column value) {
-		return new JAXBElement<Column>(COLUMN_QNAME, Column.class, null, value);
-	}
+    public TableObjectFactory() {}
+    
+    public Table createTable() {
+        return new Table();
+    }
+    
+    @XmlElementDecl(namespace = "", name = "Table")
+    public JAXBElement createTable(Table value) {
+        return new JAXBElement<Table>(_Table_QName, Table.class, null, value);
+    }
+    
+    public TableHeader createTableHeader() {
+        return new TableHeader();
+    }
+    
+    @XmlElementDecl(namespace = "", name = "Header")
+    public JAXBElement createTableHeader(TableHeader value) {
+        return new JAXBElement<TableHeader>(_Header_QName, TableHeader.class, null, value);
+    }
+    
+    public Row createRow() {
+    	return new Row();
+    }
+    
+    @XmlElementDecl(namespace = "", name = "Row")
+    public JAXBElement<Row> createTable(Row value) {
+    	return new JAXBElement<Row>(_Row_QName, Row.class, null, value);
+    }
+    
+    public Column createColumn() {
+    	return new Column();
+    }
+    
+    @XmlElementDecl(namespace = "", name = "Column")
+    public JAXBElement<Column> createColumn(Column value) {
+    	return new JAXBElement<Column>(_Column_QName, Column.class, null, value);
+    }
+    
 
 }
