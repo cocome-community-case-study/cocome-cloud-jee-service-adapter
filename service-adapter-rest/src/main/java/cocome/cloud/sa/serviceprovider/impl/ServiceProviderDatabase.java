@@ -1,3 +1,21 @@
+/*
+ *************************************************************************
+ * Copyright 2013 DFG SPP 1593 (http://dfg-spp1593.de)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *************************************************************************
+ */
+
 package cocome.cloud.sa.serviceprovider.impl;
 
 import java.io.BufferedReader;
@@ -18,6 +36,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBElement;
 
+import org.apache.log4j.Logger;
 import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductDAO;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductSupplierDAO;
@@ -55,6 +74,8 @@ import cocome.cloud.sa.serviceprovider.ServiceProvider;
 public class ServiceProviderDatabase extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
+
+    private static final Logger LOG = Logger.getLogger(ServiceProviderDatabase.class);
 
     static final String URL_SERVICE_PROVIDER_DATABASE = "/Database/ServiceProviderDatabase";
     static final String NAME_SERVICE_PROVIDER_DATABASE = "Database";
@@ -142,19 +163,20 @@ public class ServiceProviderDatabase extends HttpServlet {
     @Override
     protected void doPost(final HttpServletRequest request, final HttpServletResponse response)
             throws ServletException, IOException {
-        dispatchWrite(request, response, IQueryConst.QUERY_INSERT);
+        dispatchWrite(request, response);
     }
 
     @Override
     protected void doPut(final HttpServletRequest request, final HttpServletResponse response)
             throws ServletException, IOException {
-        dispatchWrite(request, response, IQueryConst.QUERY_UPDATE);
+        dispatchWrite(request, response);
     }
 
     @Override
     protected void doDelete(final HttpServletRequest request, final HttpServletResponse response)
             throws ServletException, IOException {
-        dispatchWrite(request, response, IQueryConst.QUERY_DELETE);
+        //We cannot use HTTP DELETE + response body, so we have to stick with PUT or POST instead.
+        throw new UnsupportedOperationException("DELETE not supported, use PUT instead");
     }
 
     /**
@@ -176,15 +198,14 @@ public class ServiceProviderDatabase extends HttpServlet {
         }
     }
 
-    private void dispatchWrite(final HttpServletRequest request, final HttpServletResponse response,
-                               final String opt)
+    private void dispatchWrite(final HttpServletRequest request, final HttpServletResponse response)
             throws ServletException, IOException {
         final String requestedUri = request.getRequestURI();
         if (requestedUri.endsWith(URL_SERVICE_DATABASE_SETDATA)) {
             String next;
             for (final Enumeration<String> param = request.getParameterNames(); param.hasMoreElements(); ) {
                 next = param.nextElement();
-                if(next.equals(opt)) {
+                if(next.startsWith("query.")) {
                     this.dispatchQueryWriteRequest(next, request, response);
                 }
             }
@@ -212,7 +233,6 @@ public class ServiceProviderDatabase extends HttpServlet {
     private void dispatchQueryWriteRequest(final String qm,
                                            final HttpServletRequest request, final HttpServletResponse response)
             throws IOException {
-
         final String requestedUri = request.getRequestURI();
         if (!requestedUri.endsWith(URL_SERVICE_DATABASE_SETDATA))
             return;
@@ -245,7 +265,7 @@ public class ServiceProviderDatabase extends HttpServlet {
                 case IQueryConst.QUERY_SELECT:
                     final String queryselect = this.querySelect(request.getParameter(qm),
                             message);
-                    System.out.println(queryselect);
+                    LOG.debug(queryselect);
                     message.appendBody(MESSAGE_ENTRY_RESULT, queryselect);
                     break;
                 case IQueryConst.QUERY_INSERT:
@@ -255,7 +275,7 @@ public class ServiceProviderDatabase extends HttpServlet {
                     this.queryUpdate(request.getParameter(qm), data, message);
                     break;
                 case IQueryConst.QUERY_DELETE:
-                    // TODO delete impl
+                    this.queryDelete(request.getParameter(qm), data, message);
                     break;
                 default:
                     message.appendBody("Error", "command " + qm + " not available!");
@@ -264,7 +284,7 @@ public class ServiceProviderDatabase extends HttpServlet {
 
             br.close();
         } catch (final Exception e) { // NOCS
-            e.printStackTrace();
+            LOG.error(e);
             Throwable cause = e.getCause();
             while (cause != null) {
                 message.appendBody("Error", cause.getMessage());
@@ -320,7 +340,7 @@ public class ServiceProviderDatabase extends HttpServlet {
                 }
             }
         } catch (final Exception e) { // NOCS
-            e.printStackTrace();
+            LOG.error(e);
             Throwable cause = e.getCause();
             while (cause != null) {
                 message.appendBody("Error", cause.getMessage());
@@ -348,7 +368,9 @@ public class ServiceProviderDatabase extends HttpServlet {
      * @param message   the result message
      */
 
-    private void queryInsert(final String parameter, final String content, final Message message) {
+    private void queryInsert(final String parameter,
+                             final String content,
+                             final Message message) {
         final String entityType = parameter.toLowerCase();
         if (!this.daoMap.containsKey(entityType)) {
             message.appendBody("Error", "parameter value "
@@ -357,10 +379,13 @@ public class ServiceProviderDatabase extends HttpServlet {
         }
         @SuppressWarnings("unchecked")
         DataAccessObject<Object> dao = this.daoMap.get(entityType);
-        this.createEntiries(dao, content, message);
+        Notification notification = dao.createEntities(this.createTable(content));
+        this.includeNotification(notification.getNotification(), message);
     }
 
-    private void queryUpdate(final String parameter, final String content, final Message message) {
+    private void queryUpdate(final String parameter,
+                             final String content,
+                             final Message message) {
         final String entityType = parameter.toLowerCase();
         if (!this.daoMap.containsKey(entityType)) {
             message.appendBody("Error", "parameter value "
@@ -369,7 +394,23 @@ public class ServiceProviderDatabase extends HttpServlet {
         }
         @SuppressWarnings("unchecked")
         DataAccessObject<Object> dao = this.daoMap.get(entityType);
-        this.updateEntities(dao, content, message);
+        final Notification notification = dao.updateEntities(this.createTable(content));
+        this.includeNotification(notification.getNotification(), message);
+    }
+
+    private void queryDelete(final String parameter,
+                             final String content,
+                             final Message message) {
+        final String entityType = parameter.toLowerCase();
+        if (!this.daoMap.containsKey(entityType)) {
+            message.appendBody("Error", "parameter value "
+                    + parameter + " not available!");
+            return;
+        }
+        @SuppressWarnings("unchecked")
+        DataAccessObject<Object> dao = this.daoMap.get(entityType);
+        final Notification notification = dao.deleteEntities(this.createTable(content));
+        this.includeNotification(notification.getNotification(), message);
     }
 
     // ********************************************************************
@@ -378,8 +419,7 @@ public class ServiceProviderDatabase extends HttpServlet {
 
     @SuppressWarnings("unchecked")
     private String querySelect(final String parameter, final Message msg) {
-        // TODO debug
-        System.out.println("to parser->" + parameter);
+        LOG.debug("to parser->" + parameter);
 
         // create query
         final QueryParser parser = new QueryParser();
@@ -422,21 +462,6 @@ public class ServiceProviderDatabase extends HttpServlet {
                 break;
         }
         return response;
-    }
-
-    // ********************************************************************
-    // * CREATE AND UPDATE ENTITY
-    // ********************************************************************
-
-    private <E> void createEntiries(final DataAccessObject<E> dao, final String content, final Message message) {
-        Notification notification = dao.createEntities(this.createTable(content));
-        this.includeNotification(notification.getNotification(), message);
-    }
-
-
-    private <E> void updateEntities(final DataAccessObject<E> dao, final String content, final Message message) {
-        final Notification notification = dao.updateEntities(this.createTable(content));
-        this.includeNotification(notification.getNotification(), message);
     }
 
     // ********************************************************************

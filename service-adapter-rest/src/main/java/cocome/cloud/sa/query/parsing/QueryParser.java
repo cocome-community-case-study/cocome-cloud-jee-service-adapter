@@ -121,13 +121,6 @@ public class QueryParser implements Parser<String>, LexerVisitor<CharSequence> {
 	private void selectEntityType(final String token) {
 		this.entityType = token.split("=")[1].toLowerCase();
 		this.query = new SelectQuery();
-		// switch (val) {
-		// case "store":
-		// query = new StoreQuery2();
-		// break;
-		// default:
-		// break;
-		// }
 	}
 
 	private void appendProperty(final String token) {

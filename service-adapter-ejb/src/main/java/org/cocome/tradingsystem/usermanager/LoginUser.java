@@ -18,12 +18,13 @@ import javax.persistence.Id;
 import javax.persistence.MapKeyEnumerated;
 import javax.persistence.OneToMany;
 
+import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 import org.cocome.tradingsystem.usermanager.credentials.AbstractCredential;
 import org.cocome.tradingsystem.usermanager.datatypes.CredentialType;
 import org.cocome.tradingsystem.usermanager.datatypes.Role;
 
 @Entity
-public class LoginUser implements Serializable {
+public class LoginUser implements Serializable, QueryableById {
 	private static final long serialVersionUID = 1L;
 
 	private long id;

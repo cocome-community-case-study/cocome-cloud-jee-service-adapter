@@ -81,6 +81,33 @@ public class CustomerDAO implements LegacyDataAccessObject<Customer> {
     }
 
     @Override
+    public Notification deleteEntities(final List<Customer> entities) {
+        final Notification notification = new Notification();
+        if (entities != null) {
+            final EntityManager em = this.emf.createEntityManager();
+
+            for (final Customer entity : entities) {
+                final Customer managedEntity = this.queryCustomer(em, entity);
+                if (managedEntity == null) {
+                    notification.addNotification(
+                            "createEntities", Notification.FAILED,
+                            "Entity not available:" + entity);
+                    return notification;
+                }
+
+                em.remove(managedEntity);
+                notification.addNotification(
+                        "deleteEntities", Notification.SUCCESS,
+                        "Entity deleted:" + entity);
+            }
+            em.flush();
+            em.close();
+            return notification;
+        }
+        throw new IllegalAccessError("[deleteEntity]argument is null");
+    }
+
+    @Override
     public Notification updateEntities(List<Customer> entities) throws IllegalArgumentException {
         final EntityManager em = this.emf.createEntityManager();
         final Notification notification = new Notification();

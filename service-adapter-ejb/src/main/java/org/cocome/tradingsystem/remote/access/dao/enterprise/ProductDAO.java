@@ -57,6 +57,33 @@ public class ProductDAO implements LegacyDataAccessObject<Product> {
     }
 
     @Override
+    public Notification deleteEntities(final List<Product> entities) {
+        final Notification notification = new Notification();
+        if (entities != null) {
+            final EntityManager em = this.emf.createEntityManager();
+
+            for (final Product entity : entities) {
+                final Product managedEntity = this.queryProduct(em, entity);
+                if (managedEntity == null) {
+                    notification.addNotification(
+                            "createEntities", Notification.FAILED,
+                            "Entity not available:" + entity);
+                    return notification;
+                }
+
+                em.remove(managedEntity);
+                notification.addNotification(
+                        "deleteEntities", Notification.SUCCESS,
+                        "Entity deleted:" + entity);
+            }
+            em.flush();
+            em.close();
+            return notification;
+        }
+        throw new IllegalAccessError("[deleteEntity]argument is null");
+    }
+
+    @Override
     public Notification updateEntities(List<Product> entities) throws IllegalArgumentException {
         final EntityManager em = this.emf.createEntityManager();
         final Notification notification = new Notification();

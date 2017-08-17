@@ -5,10 +5,11 @@ import java.util.Map;
 import java.util.Random;
 
 import de.kit.ipd.java.utils.strings.StringUtils;
+import org.apache.log4j.Logger;
 
 public class SelectQuery implements IQuery {
 
-	
+	private static final Logger LOG = Logger.getLogger(SelectQuery.class);
 
 	private static final String ENTITY_TYPE = "entity.type";
 
@@ -33,8 +34,7 @@ public class SelectQuery implements IQuery {
 		this.calcNeededVariables(param);
 
 		final StringBuilder query = new StringBuilder();
-		query.append("SELECT ");
-		query.append(" DISTINCT ");
+		query.append("SELECT DISTINCT ");
 		query.append(ENTITY_TYPE_VAR);
 		query.append(" FROM ");
 		query.append(this.entityType);
@@ -52,7 +52,7 @@ public class SelectQuery implements IQuery {
 			final String where = this.createWhereStatement(param);
 			query.append(where);
 		}
-		System.out.println("Query build:" + query.toString());
+		LOG.debug("Query build:" + query.toString());
 		return query.toString();
 	}
 

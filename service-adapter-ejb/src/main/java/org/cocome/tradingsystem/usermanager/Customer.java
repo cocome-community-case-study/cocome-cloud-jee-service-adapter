@@ -3,22 +3,14 @@ package org.cocome.tradingsystem.usermanager;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
+import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 import org.cocome.tradingsystem.inventory.data.store.Store;
 import java.io.Serializable;
 
 @Entity
-public class Customer implements Serializable, ICustomer {
+public class Customer implements Serializable, ICustomer, QueryableById {
 	private static final long serialVersionUID = 1L;
 	
 	private long id;

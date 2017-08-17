@@ -70,6 +70,33 @@ public class StoreDAO implements LegacyDataAccessObject<Store> {
     }
 
     @Override
+    public Notification deleteEntities(final List<Store> entities) {
+        final Notification notification = new Notification();
+        if (entities != null) {
+            final EntityManager em = this.emf.createEntityManager();
+
+            for (final Store entity : entities) {
+                final Store managedEntity = this.queryStore(em, entity);
+                if (managedEntity == null) {
+                    notification.addNotification(
+                            "createEntities", Notification.FAILED,
+                            "Entity not available:" + entity);
+                    return notification;
+                }
+
+                em.remove(managedEntity);
+                notification.addNotification(
+                        "deleteEntities", Notification.SUCCESS,
+                        "Entity deleted:" + entity);
+            }
+            em.flush();
+            em.close();
+            return notification;
+        }
+        throw new IllegalAccessError("[deleteEntity]argument is null");
+    }
+
+    @Override
     public Notification updateEntities(List<Store> entities) throws IllegalArgumentException {
         final EntityManager em = this.emf.createEntityManager();
         final Notification notification = new Notification();
@@ -138,5 +165,11 @@ public class StoreDAO implements LegacyDataAccessObject<Store> {
             list.add(s);
         }
         return list;
+    }
+
+    private Store queryStore(final EntityManager em, final Store store) {
+        return querySingleInstance(em.createQuery(
+                "SELECT s FROM Store s WHERE s.id = :storeId",
+                Store.class).setParameter("storeId", store.getId()));
     }
 }

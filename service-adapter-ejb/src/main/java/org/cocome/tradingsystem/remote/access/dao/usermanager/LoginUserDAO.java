@@ -55,6 +55,33 @@ public class LoginUserDAO implements LegacyDataAccessObject<LoginUser> {
     }
 
     @Override
+    public Notification deleteEntities(final List<LoginUser> entities) {
+        final Notification notification = new Notification();
+        if (entities != null) {
+            final EntityManager em = this.emf.createEntityManager();
+
+            for (final LoginUser entity : entities) {
+                final LoginUser managedEntity = this.queryUser(em, entity);
+                if (managedEntity == null) {
+                    notification.addNotification(
+                            "createEntities", Notification.FAILED,
+                            "Entity not available:" + entity);
+                    return notification;
+                }
+
+                em.remove(managedEntity);
+                notification.addNotification(
+                        "deleteEntities", Notification.SUCCESS,
+                        "Entity deleted:" + entity);
+            }
+            em.flush();
+            em.close();
+            return notification;
+        }
+        throw new IllegalAccessError("[deleteEntity]argument is null");
+    }
+
+    @Override
     public Notification updateEntities(List<LoginUser> entities) throws IllegalArgumentException {
         final EntityManager em = this.emf.createEntityManager();
         final Notification notification = new Notification();

@@ -67,6 +67,33 @@ public class TradingEnterpriseDAO implements LegacyDataAccessObject<TradingEnter
     }
 
     @Override
+    public Notification deleteEntities(final List<TradingEnterprise> entities) {
+        final Notification notification = new Notification();
+        if (entities != null) {
+            final EntityManager em = this.emf.createEntityManager();
+
+            for (final TradingEnterprise entity : entities) {
+                final TradingEnterprise managedEntity = this.queryEnterprise(em, entity);
+                if (managedEntity == null) {
+                    notification.addNotification(
+                            "createEntities", Notification.FAILED,
+                            "Entity not available:" + entity);
+                    return notification;
+                }
+
+                em.remove(managedEntity);
+                notification.addNotification(
+                        "deleteEntities", Notification.SUCCESS,
+                        "Entity deleted:" + entity);
+            }
+            em.flush();
+            em.close();
+            return notification;
+        }
+        throw new IllegalAccessError("[deleteEntity]argument is null");
+    }
+
+    @Override
     public Notification updateEntities(List<TradingEnterprise> entities) throws IllegalArgumentException {
         final EntityManager em = this.emf.createEntityManager();
         final Notification notification = new Notification();

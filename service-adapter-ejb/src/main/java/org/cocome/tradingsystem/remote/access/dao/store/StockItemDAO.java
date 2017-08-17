@@ -86,6 +86,33 @@ public class StockItemDAO implements LegacyDataAccessObject<StockItem> {
     }
 
     @Override
+    public Notification deleteEntities(final List<StockItem> entities) {
+        final Notification notification = new Notification();
+        if (entities != null) {
+            final EntityManager em = this.emf.createEntityManager();
+
+            for (final StockItem entity : entities) {
+                final StockItem managedEntity = this.queryStockItem(em, entity);
+                if (managedEntity == null) {
+                    notification.addNotification(
+                            "createEntities", Notification.FAILED,
+                            "Entity not available:" + entity);
+                    return notification;
+                }
+
+                em.remove(managedEntity);
+                notification.addNotification(
+                        "deleteEntities", Notification.SUCCESS,
+                        "Entity deleted:" + entity);
+            }
+            em.flush();
+            em.close();
+            return notification;
+        }
+        throw new IllegalAccessError("[deleteEntity]argument is null");
+    }
+
+    @Override
     public Notification updateEntities(List<StockItem> entities) throws IllegalArgumentException {
         final EntityManager em = this.emf.createEntityManager();
         final Notification notification = new Notification();
@@ -203,5 +230,11 @@ public class StockItemDAO implements LegacyDataAccessObject<StockItem> {
             list.add(stockItem);
         }
         return list;
+    }
+
+    private StockItem queryStockItem(final EntityManager em, final StockItem stockItem) {
+        return querySingleInstance(em.createQuery(
+                "SELECT s FROM StockItem s WHERE s.id = :id",
+                StockItem.class).setParameter("id", stockItem.getId()));
     }
 }

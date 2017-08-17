@@ -1,9 +1,9 @@
 package org.cocome.tradingsystem.remote.access.dao.store;
 
-import org.cocome.tradingsystem.inventory.data.IData;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import de.kit.ipd.java.utils.time.TimeUtils;
+import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.enterprise.Product;
 import org.cocome.tradingsystem.inventory.data.store.OrderEntry;
 import org.cocome.tradingsystem.inventory.data.store.ProductOrder;
@@ -25,6 +25,7 @@ import java.util.Map;
 
 /**
  * DAO for {@link ProductOrder}
+ *
  * @author Rudolf Biczok
  */
 @Stateless
@@ -94,6 +95,33 @@ public class ProductOrderDAO implements LegacyDataAccessObject<ProductOrder> {
         em.flush();
         em.close();
         return notification;
+    }
+
+    @Override
+    public Notification deleteEntities(final List<ProductOrder> entities) {
+        final Notification notification = new Notification();
+        if (entities != null) {
+            final EntityManager em = this.emf.createEntityManager();
+
+            for (final ProductOrder entity : entities) {
+                final ProductOrder managedEntity = this.queryProductOrder(em, entity);
+                if (managedEntity == null) {
+                    notification.addNotification(
+                            "createEntities", Notification.FAILED,
+                            "Entity not available:" + entity);
+                    return notification;
+                }
+
+                em.remove(managedEntity);
+                notification.addNotification(
+                        "deleteEntities", Notification.SUCCESS,
+                        "Entity deleted:" + entity);
+            }
+            em.flush();
+            em.close();
+            return notification;
+        }
+        throw new IllegalAccessError("[deleteEntity]argument is null");
     }
 
     @Override
@@ -204,7 +232,12 @@ public class ProductOrderDAO implements LegacyDataAccessObject<ProductOrder> {
         }
 
         final List<ProductOrder> list = new ArrayList<>(map.values());
-        System.out.println("Product Order List:" + list.size());
         return list;
+    }
+
+    private ProductOrder queryProductOrder(final EntityManager em, final ProductOrder productOrder) {
+        return querySingleInstance(em.createQuery(
+                "SELECT s FROM ProductOrder s WHERE s.id = :id",
+                ProductOrder.class).setParameter("id", productOrder.getId()));
     }
 }

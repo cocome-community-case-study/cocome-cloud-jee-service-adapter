@@ -1,7 +1,6 @@
 package org.cocome.tradingsystem.remote.access.dao.enterprise;
 
 import org.cocome.tradingsystem.inventory.data.IData;
-import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.enterprise.ProductSupplier;
@@ -75,6 +74,33 @@ public class ProductSupplierDAO implements LegacyDataAccessObject<ProductSupplie
         em.flush();
         em.close();
         return notification;
+    }
+
+    @Override
+    public Notification deleteEntities(final List<ProductSupplier> entities) {
+        final Notification notification = new Notification();
+        if (entities != null) {
+            final EntityManager em = this.emf.createEntityManager();
+
+            for (final ProductSupplier entity : entities) {
+                final ProductSupplier managedEntity = this.queryProductSupplier(em, entity);
+                if (managedEntity == null) {
+                    notification.addNotification(
+                            "createEntities", Notification.FAILED,
+                            "Entity not available:" + entity);
+                    return notification;
+                }
+
+                em.remove(managedEntity);
+                notification.addNotification(
+                        "deleteEntities", Notification.SUCCESS,
+                        "Entity deleted:" + entity);
+            }
+            em.flush();
+            em.close();
+            return notification;
+        }
+        throw new IllegalAccessError("[deleteEntity]argument is null");
     }
 
     @Override

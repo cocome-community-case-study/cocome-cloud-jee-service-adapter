@@ -83,12 +83,41 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
         return notification;
     }
 
-    private <T extends QueryableById> void getReferencedEntity(final T entity,
-                                                               final EntityManager em) {
+    @Override
+    public Notification deleteEntities(final Table<String> table) {
+        assert table != null;
+        final EntityManager em = this.emf.createEntityManager();
+        final Notification notification = new Notification();
+        final List<E> entities = fromTable(em, table, notification, "deleteEntities");
+        for (final E entity : entities) {
+            final E managedEntity;
+            try {
+                managedEntity = getReferencedEntity(entity, em);
+            } catch (final EntityNotFoundException e) {
+                notification.addNotification(
+                        "deleteEntities",
+                        Notification.SUCCESS,
+                        String.format("%s not available: %d", entity.getClass().getSimpleName(),
+                                entity.getId()));
+                continue;
+            }
+            em.remove(managedEntity);
+            notification.addNotification(
+                    "deleteEntities",
+                    Notification.SUCCESS,
+                    String.format("Delete %s: %d", getEntityType().getSimpleName(), entity.getId()));
+        }
+        em.flush();
+        em.close();
+        return notification;
+    }
+
+    private <T extends QueryableById> T getReferencedEntity(final T entity,
+                                                            final EntityManager em) {
         assert entity != null;
         assert em != null;
         @SuppressWarnings("unchecked") final Class<T> entityType = (Class<T>) entity.getClass();
-        getReferencedEntity(entityType, entity.getId(), em);
+        return getReferencedEntity(entityType, entity.getId(), em);
     }
 
     protected <T> T getReferencedEntity(final Class<T> entityClass,
