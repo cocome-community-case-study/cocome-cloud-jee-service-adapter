@@ -1,9 +1,12 @@
 package org.cocome.tradingsystem.inventory.data.plant.productionunit;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
+import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -17,7 +20,8 @@ public class ProductionUnitClass implements Serializable, QueryableById {
 
     private long id;
     private String name;
-    private Collection<ProductionUnitOperation> operations;
+    private TradingEnterprise enterprise;
+    private Collection<ProductionUnitOperation> operations = new ArrayList<>();
 
     /**
      * @return The id.
@@ -51,6 +55,23 @@ public class ProductionUnitClass implements Serializable, QueryableById {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * @return The enterprise which the Plant belongs to
+     */
+    @ManyToOne(cascade = CascadeType.ALL)
+    @NotNull
+    public TradingEnterprise getEnterprise() {
+        return this.enterprise;
+    }
+
+    /**
+     * @param enterprise
+     *            The enterprise which the Plant belongs to
+     */
+    public void setEnterprise(final TradingEnterprise enterprise) {
+        this.enterprise = enterprise;
     }
 
     /**

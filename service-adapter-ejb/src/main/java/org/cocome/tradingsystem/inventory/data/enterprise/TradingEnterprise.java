@@ -31,7 +31,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import org.cocome.tradingsystem.inventory.data.plant.Plant;
 import org.cocome.tradingsystem.inventory.data.store.Store;
 
 /**
@@ -48,7 +47,6 @@ public class TradingEnterprise implements Serializable, QueryableById {
     private String name;
     private Collection<ProductSupplier> suppliers;
     private Collection<Store> stores;
-    private Collection<Plant> plants;
 
     /**
      * @return id a unique identifier of this TradingEnterprise
@@ -88,21 +86,6 @@ public class TradingEnterprise implements Serializable, QueryableById {
     @OneToMany(mappedBy = "enterprise", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Collection<Store> getStores() {
         return stores;
-    }
-
-    /**
-     * @param plants Collection of Plants related to the TradingEnterprise
-     */
-    public void setPlants(Collection<Plant> plants) {
-        this.plants = plants;
-    }
-
-    /**
-     * @return Collection of Plants related to the TradingEnterprise
-     */
-    @OneToMany(mappedBy = "enterprise", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    public Collection<Plant> getPlants() {
-        return plants;
     }
 
     /**

@@ -3,6 +3,7 @@ package org.cocome.tradingsystem.remote.access.dao;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.IData;
+import org.cocome.tradingsystem.inventory.data.enterprise.QueryableByIdClass;
 import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 import org.cocome.tradingsystem.remote.access.Notification;
 
@@ -121,6 +122,15 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
     }
 
     protected <T> T getReferencedEntity(final Class<T> entityClass,
+                                        final Column<String> colId,
+                                        final EntityManager em) {
+        if (colId == null) {
+            throw new EntityNotFoundException("colId == null");
+        }
+        return getReferencedEntity(entityClass, Long.valueOf(colId.getValue()), em);
+    }
+
+    protected <T> T getReferencedEntity(final Class<T> entityClass,
                                         final long id,
                                         final EntityManager em) {
         assert entityClass != null;
@@ -137,6 +147,24 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
                                                                       final EntityManager em) {
         final Long id = colId != null ? Long.parseLong(colId.getValue()) : null;
         final T entity = id != null ? em.find(entityClass, id) : null;
+        return returnOrCreateEntity(entityClass, entity);
+    }
+
+    protected <K, T extends QueryableByIdClass<K>> T getOrCreateReferencedEntity(final Class<T> entityClass,
+                                                                                 final K id,
+                                                                                 final EntityManager em) {
+        final T entity = em.find(entityClass, id);
+        return returnOrCreateEntity(entityClass, entity);
+    }
+
+    protected abstract Class<E> getEntityType();
+
+    protected abstract List<E> fromTable(final EntityManager em,
+                                         final Table<String> table,
+                                         final Notification notification,
+                                         final String sourceOperation);
+
+    private <T> T returnOrCreateEntity(final Class<T> entityClass, T entity) {
         if (entity == null) {
             final T instance;
             try {
@@ -149,11 +177,4 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
         }
         return entity;
     }
-
-    protected abstract Class<E> getEntityType();
-
-    protected abstract List<E> fromTable(final EntityManager em,
-                                         final Table<String> table,
-                                         final Notification notification,
-                                         final String sourceOperation);
 }

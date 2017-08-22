@@ -1,8 +1,10 @@
 package org.cocome.tradingsystem.inventory.data.plant.productionunit;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
+import org.cocome.tradingsystem.inventory.data.plant.Plant;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -18,6 +20,8 @@ public class ProductionUnit implements Serializable, QueryableById {
     private long id;
     private String location;
     private String interfaceUrl;
+
+    private Plant plant;
     private ProductionUnitClass productionUnitClass;
 
     /**
@@ -78,6 +82,7 @@ public class ProductionUnit implements Serializable, QueryableById {
      * @return the production unit class
      */
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @NotNull
     public ProductionUnitClass getProductionUnitClass() {
         return productionUnitClass;
     }
@@ -87,5 +92,21 @@ public class ProductionUnit implements Serializable, QueryableById {
      */
     public void setProductionUnitClass(ProductionUnitClass productionUnitClass) {
         this.productionUnitClass = productionUnitClass;
+    }
+
+    /**
+     * @return the plant that owns this production unit
+     */
+    @ManyToOne(cascade = CascadeType.ALL)
+    @NotNull
+    public Plant getPlant() {
+        return plant;
+    }
+
+    /**
+     * @param plant the plant that owns this production unit
+     */
+    public void setPlant(Plant plant) {
+        this.plant = plant;
     }
 }

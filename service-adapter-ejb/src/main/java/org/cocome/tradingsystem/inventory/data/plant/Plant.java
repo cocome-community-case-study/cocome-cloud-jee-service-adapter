@@ -2,12 +2,11 @@ package org.cocome.tradingsystem.inventory.data.plant;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
-import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnit;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Collection;
 
 /**
  * This class represents a plant that provides access to a collection of {@link PlantOperation}.
@@ -22,8 +21,6 @@ public class Plant implements Serializable, QueryableById {
     private String name;
     private String location;
     private TradingEnterprise enterprise;
-    private Collection<PlantOperation> operations;
-    private Collection<ProductionUnit> productionUnits;
 
     /**
      * @return A unique identifier of this Plant.
@@ -85,6 +82,7 @@ public class Plant implements Serializable, QueryableById {
      * @return The enterprise which the Plant belongs to
      */
     @ManyToOne
+    @NotNull
     public TradingEnterprise getEnterprise() {
         return this.enterprise;
     }
@@ -95,35 +93,5 @@ public class Plant implements Serializable, QueryableById {
      */
     public void setEnterprise(final TradingEnterprise enterprise) {
         this.enterprise = enterprise;
-    }
-
-    /**
-     * @return all available operations this plant can offer
-     */
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    public Collection<PlantOperation> getOperations() {
-        return operations;
-    }
-
-    /**
-     * @param operations all available operations this plant can offer
-     */
-    public void setOperations(Collection<PlantOperation> operations) {
-        this.operations = operations;
-    }
-
-    /**
-     * @return the production units available in this plant
-     */
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    public Collection<ProductionUnit> getProductionUnits() {
-        return productionUnits;
-    }
-
-    /**
-     * @param productionUnits the production units available in this plant
-     */
-    public void setProductionUnits(Collection<ProductionUnit> productionUnits) {
-        this.productionUnits = productionUnits;
     }
 }

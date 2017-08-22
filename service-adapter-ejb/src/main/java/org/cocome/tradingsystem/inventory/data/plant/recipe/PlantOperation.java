@@ -1,6 +1,7 @@
 package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.NameableEntity;
+import org.cocome.tradingsystem.inventory.data.plant.Plant;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter;
 import org.cocome.tradingsystem.inventory.data.plant.expression.Expression;
 
@@ -18,6 +19,7 @@ public class PlantOperation implements Serializable, NameableEntity {
 
     private long id;
     private String name;
+    private Plant plant;
     private Collection<ProductionParameter<PlantOperation>> parameters;
     private Collection<Expression> expressions;
     private Collection<EntryPoint> inputEntryPoint;
@@ -122,4 +124,18 @@ public class PlantOperation implements Serializable, NameableEntity {
         this.outputEntryPoint = outputMaterial;
     }
 
+    /**
+     * @return the plant that owns this production unit
+     */
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Plant getPlant() {
+        return plant;
+    }
+
+    /**
+     * @param plant the plant that owns this production unit
+     */
+    public void setPlant(Plant plant) {
+        this.plant = plant;
+    }
 }

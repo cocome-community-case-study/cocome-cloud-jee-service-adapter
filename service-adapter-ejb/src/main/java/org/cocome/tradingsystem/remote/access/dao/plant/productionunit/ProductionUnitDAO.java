@@ -2,6 +2,7 @@ package org.cocome.tradingsystem.remote.access.dao.plant.productionunit;
 
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
+import org.cocome.tradingsystem.inventory.data.plant.Plant;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnit;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitClass;
 import org.cocome.tradingsystem.remote.access.Notification;
@@ -26,8 +27,8 @@ public class ProductionUnitDAO extends AbstractDAO<ProductionUnit> {
     private static final String ID_COL = ProductionUnit.class.getSimpleName() + "Id";
     private static final String LOCATION_COL = ProductionUnit.class.getSimpleName() + "Location";
     private static final String INTERFACE_URL_COL = ProductionUnit.class.getSimpleName() + "InterfaceURL";
+    private static final String PLANT_ID_COL = Plant.class.getSimpleName() + "Id";
     private static final String PROD_CLASS_ID_COL = ProductionUnitClass.class.getSimpleName() + "Id";
-    private static final String PROD_CLASS_NAME_COL = ProductionUnitClass.class.getSimpleName() + "Name";
 
     @Override
     public Class<ProductionUnit> getEntityType() {
@@ -40,16 +41,16 @@ public class ProductionUnitDAO extends AbstractDAO<ProductionUnit> {
         table.addHeader(ID_COL,
                 LOCATION_COL,
                 INTERFACE_URL_COL,
-                PROD_CLASS_ID_COL,
-                PROD_CLASS_NAME_COL);
+                PLANT_ID_COL,
+                PROD_CLASS_ID_COL);
 
         int row = 0;
         for (final ProductionUnit entity : entities) {
             table.set(row, 0, String.valueOf(entity.getId()));
             table.set(row, 1, entity.getLocation());
             table.set(row, 2, entity.getInterfaceUrl());
-            table.set(row, 3, String.valueOf(entity.getProductionUnitClass().getId()));
-            table.set(row, 4, entity.getProductionUnitClass().getName());
+            table.set(row, 3, String.valueOf(entity.getPlant().getId()));
+            table.set(row, 4, String.valueOf(entity.getProductionUnitClass().getId()));
             row++;
         }
         return table;
@@ -67,14 +68,18 @@ public class ProductionUnitDAO extends AbstractDAO<ProductionUnit> {
             final Column<String> colPUId = table.getColumnByName(i, ID_COL);
             final Column<String> colPULocation = table.getColumnByName(i, LOCATION_COL);
             final Column<String> colPUInterfaceURL = table.getColumnByName(i, INTERFACE_URL_COL);
+            final Column<String> colPlantId = table.getColumnByName(i, PLANT_ID_COL);
             final Column<String> colPUCId = table.getColumnByName(i, PROD_CLASS_ID_COL);
-            final Column<String> colPUCName = table.getColumnByName(i, PROD_CLASS_NAME_COL);
-
+            final Plant plant;
             final ProductionUnitClass puc;
             try {
+                plant = getReferencedEntity(
+                        Plant.class,
+                        colPlantId,
+                        em);
                 puc = getReferencedEntity(
                         ProductionUnitClass.class,
-                        Long.valueOf(colPUCId.getValue()),
+                        colPUCId,
                         em);
             } catch (final EntityNotFoundException e) {
                 notification.addNotification(
@@ -84,12 +89,10 @@ public class ProductionUnitDAO extends AbstractDAO<ProductionUnit> {
                                 e.getMessage()));
                 continue;
             }
-            puc.setId(Long.parseLong(colPUCId.getValue()));
-            puc.setName(colPUCName.getValue());
-
             final ProductionUnit pu = getOrCreateReferencedEntity(ProductionUnit.class, colPUId, em);
             pu.setLocation(colPULocation.getValue());
             pu.setInterfaceUrl(colPUInterfaceURL.getValue());
+            pu.setPlant(plant);
             pu.setProductionUnitClass(puc);
 
             entities.add(pu);
