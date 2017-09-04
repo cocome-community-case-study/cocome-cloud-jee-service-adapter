@@ -19,6 +19,8 @@ public class ProductionUnitOperation implements Serializable, QueryableById {
 
     private String operationId;
 
+    private ProductionUnitClass productionUnitClass;
+
     /**
      * Gets identifier value
      *
@@ -30,9 +32,6 @@ public class ProductionUnitOperation implements Serializable, QueryableById {
     public long getId() {
         return id;
     }
-
-    private ProductionUnitClass productionUnitClass;
-
 
     /**
      * Sets identifier.
@@ -65,7 +64,7 @@ public class ProductionUnitOperation implements Serializable, QueryableById {
      * @return the associated {@link ProductionUnitClass}
      */
     @NotNull
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     public ProductionUnitClass getProductionUnitClass() {
         return productionUnitClass;
     }

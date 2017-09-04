@@ -12,9 +12,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.util.List;
 
-public class ProductionUnitClassDAOTest {
+public class ProductionUnitOperationTest {
 
-    private ProductionUnitClassDAO pucDAO = TestUtils.injectFakeEJB(ProductionUnitClassDAO.class);
+    private ProductionUnitOperationDAO pucDAO = TestUtils.injectFakeEJB(ProductionUnitOperationDAO.class);
 
     @Test
     public void convertToTableContent() throws Exception {
@@ -27,16 +27,26 @@ public class ProductionUnitClassDAOTest {
         puc.setEnterprise(enterprise);
         puc.setName("xPPU v 0.1 Beta");
 
+        final ProductionUnitOperation pucOp1 = new ProductionUnitOperation();
+        pucOp1.setOperationId("_1_2_1_P2_O1");
+        pucOp1.setProductionUnitClass(puc);
+
+        final ProductionUnitOperation pucOp2 = new ProductionUnitOperation();
+        pucOp2.setOperationId("_1_2_1_P2_O2");
+        pucOp2.setProductionUnitClass(puc);
+
         tx.begin();
-        em.persist(puc);
+        em.persist(pucOp1);
+        em.persist(pucOp2);
         tx.commit();
 
-        final List<ProductionUnitClass> queryedInstances = TestUtils.TEST_EMF.createEntityManager()
-                .createQuery("SELECT puc from ProductionUnitClass puc WHERE puc.enterprise.id = "
-                        + enterprise.getId(), ProductionUnitClass.class).getResultList();
+        final List<ProductionUnitOperation> queryedInstances = TestUtils.TEST_EMF.createEntityManager()
+                .createQuery("SELECT op from ProductionUnitOperation op WHERE op.productionUnitClass.id = "
+                        + puc.getId(), ProductionUnitOperation.class).getResultList();
 
-        final String expectedTableContent = "TradingEnterpriseId;ProductionUnitClassId;ProductionUnitClassName\n"
-        + "2;1;xPPU v 0.1 Beta";
+        final String expectedTableContent = "ProductionUnitOperationId;ProductionUnitOperationOID;ProductionUnitClassId\n" +
+                "1;_1_2_1_P2_O1;2\n" +
+                "4;_1_2_1_P2_O2;2";
 
         Assert.assertNotNull(queryedInstances);
         Assert.assertFalse(queryedInstances.isEmpty());
