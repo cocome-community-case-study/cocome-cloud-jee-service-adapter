@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>de.kit.ipd</groupId>
-            <artifactId>java.utils</artifactId>
+            <artifactId>java-old-utils</artifactId>
             <version>1.1</version>
         </dependency>
         <dependency>

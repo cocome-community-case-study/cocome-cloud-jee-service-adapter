@@ -9,7 +9,7 @@
     <name>CoCoME Service Adapter Parent</name>
 
     <modules>
-        <module>de.kit.ipd.utils</module>
+        <module>java-old-utils</module>
         <module>service-adapter-ear</module>
         <module>service-adapter-ejb</module>
         <module>service-adapter-rest</module>
@@ -58,7 +58,6 @@
         <!-- Static deployment properties -->
         <!-- -->
     </properties>
-
 
     <repositories>
         <repository>
