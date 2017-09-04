@@ -35,36 +35,27 @@ public class ProductionUnitClassDAOTest {
 
         final ProductionUnitOperation pucOp1 = new ProductionUnitOperation();
         pucOp1.setOperationId("_1_2_1_P2_O1");
-        puc.getOperations().add(pucOp1);
+        pucOp1.setProductionUnitClass(puc);
 
         final ProductionUnitOperation pucOp2 = new ProductionUnitOperation();
         pucOp2.setOperationId("_1_2_1_P2_O2");
-        puc.getOperations().add(pucOp2);
+        pucOp2.setProductionUnitClass(puc);
 
         tx.begin();
         em.persist(puc);
+        em.persist(pucOp1);
+        em.persist(pucOp2);
         tx.commit();
 
         final List<ProductionUnitClass> queryedInstances = TestUtils.TEST_EMF.createEntityManager()
                 .createQuery("SELECT puc from ProductionUnitClass puc WHERE puc.enterprise.id = "
                         + enterprise.getId(), ProductionUnitClass.class).getResultList();
 
-        final String expectedTableContent = "ProductionUnitClassId;ProductionUnitClassName;"
-                + "TradingEnterpriseId;ProductionUnitOperationId;ProductionUnitOperationOperationId\n"
-                + "1;xPPU v 0.1 Beta;2;3;_1_2_1_P2_O1\n"
-                + "1;xPPU v 0.1 Beta;2;4;_1_2_1_P2_O2";
+        final String expectedTableContent = "TradingEnterpriseId;ProductionUnitClassId;ProductionUnitClassName\n"
+        + "2;1;xPPU v 0.1 Beta";
 
         Assert.assertNotNull(queryedInstances);
         Assert.assertFalse(queryedInstances.isEmpty());
         Assert.assertEquals(expectedTableContent, TestUtils.toCSV(pucDAO.toTable(queryedInstances)));
-
-        final String updateTableContent = "ProductionUnitClassId;ProductionUnitClassName;"
-                + "TradingEnterpriseId;ProductionUnitOperationId;ProductionUnitOperationOperationId\n"
-                + "1;xPPU v 0.1 Beta;2;3;_1_2_1_P2_O1\n"
-                + "1;xPPU v 0.1 Beta;2;4;_1_2_1_P2_O2\n"
-                + "1;xPPU v 0.1 Beta;2;-1;_1_2_1_P2_O3";
-
-        pucDAO.updateEntities(TestUtils.fromCSV(updateTableContent));
-        System.out.println(TestUtils.TEST_EMF.createEntityManager().createQuery("select o from ProductionUnitOperation o", ProductionUnitOperation.class).getResultList());
     }
 }

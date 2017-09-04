@@ -36,7 +36,7 @@ public class ProductionUnitDAOTest {
 
         final ProductionUnitOperation pucOp1 = new ProductionUnitOperation();
         pucOp1.setOperationId("_1_2_1_P2_O1");
-        puc.getOperations().add(pucOp1);
+        pucOp1.setProductionUnitClass(puc);
 
         final ProductionUnit pu1 = new ProductionUnit();
         pu1.setPlant(plant1);
@@ -61,6 +61,7 @@ public class ProductionUnitDAOTest {
         em.persist(pu1);
         em.persist(pu2);
         em.persist(pu3);
+        em.persist(pucOp1);
         tx.commit();
 
         final List<ProductionUnit> queryedInstances = TestUtils.TEST_EMF.createEntityManager()
@@ -70,7 +71,7 @@ public class ProductionUnitDAOTest {
         final String expectedTableContent = "ProductionUnitId;ProductionUnitLocation;ProductionUnitInterfaceURL;"
                 + "PlantId;ProductionUnitClassId\n"
                 + "1;Room 1;pu1.mystery.com;2;3\n"
-                + "6;Room 2;pu1.mystery.com;2;3";
+                + "5;Room 2;pu1.mystery.com;2;3";
 
         Assert.assertNotNull(queryedInstances);
         Assert.assertFalse(queryedInstances.isEmpty());

@@ -4,7 +4,6 @@ import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitClass;
-import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.AbstractDAO;
 
@@ -13,9 +12,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * DAO for {@link ProductionUnitClass}
@@ -26,11 +23,9 @@ import java.util.Map;
 @LocalBean
 public class ProductionUnitClassDAO extends AbstractDAO<ProductionUnitClass> {
 
+    private static final String ENTERPRISE_ID_COL = TradingEnterprise.class.getSimpleName() + "Id";
     private static final String ID_COL = ProductionUnitClass.class.getSimpleName() + "Id";
     private static final String NAME_COL = ProductionUnitClass.class.getSimpleName() + "Name";
-    private static final String ENTERPRISE_ID_COL = TradingEnterprise.class.getSimpleName() + "Id";
-    private static final String OPT_ID_COL = ProductionUnitOperation.class.getSimpleName() + "Id";
-    private static final String OPT_OID_COL = ProductionUnitOperation.class.getSimpleName() + "OperationId";
 
     @Override
     public Class<ProductionUnitClass> getEntityType() {
@@ -38,19 +33,14 @@ public class ProductionUnitClassDAO extends AbstractDAO<ProductionUnitClass> {
     }
 
     @Override
-    public Table<String> toTable(final List<ProductionUnitClass> entities) {
+    public Table<String> toTable(final List<ProductionUnitClass> list) {
         final Table<String> table = new Table<>();
-        table.addHeader(ID_COL, NAME_COL, ENTERPRISE_ID_COL, OPT_ID_COL, OPT_OID_COL);
-        int row = 0;
-        for (final ProductionUnitClass entity : entities) {
-            for (final ProductionUnitOperation operation : entity.getOperations()) {
-                table.set(row, 0, String.valueOf(entity.getId()));
-                table.set(row, 1, entity.getName());
-                table.set(row, 2, String.valueOf(entity.getEnterprise().getId()));
-                table.set(row, 3, String.valueOf(operation.getId()));
-                table.set(row, 4, operation.getOperationId());
-                row++;
-            }
+        table.addHeader(ENTERPRISE_ID_COL, ID_COL, NAME_COL);
+        final int len = list.size();
+        for (int i = 0; i < len; i++) {
+            table.set(i, 0, String.valueOf(list.get(i).getEnterprise().getId()));
+            table.set(i, 1, String.valueOf(list.get(i).getId()));
+            table.set(i, 2, list.get(i).getName());
         }
         return table;
     }
@@ -60,44 +50,33 @@ public class ProductionUnitClassDAO extends AbstractDAO<ProductionUnitClass> {
                                                final Table<String> table,
                                                final Notification notification,
                                                final String sourceOperation) {
-        final Map<String, ProductionUnitClass> map = new HashMap<>();
         final int len = table.size();
-
+        final List<ProductionUnitClass> list = new ArrayList<>(len);
         for (int i = 0; i < len; i++) {
-            final Column<String> colParamId = table.getColumnByName(i, ID_COL);
-            final Column<String> colParamName = table.getColumnByName(i, NAME_COL);
             final Column<String> colEnterpriseId = table.getColumnByName(i, ENTERPRISE_ID_COL);
-            final Column<String> colOptId = table.getColumnByName(i, OPT_ID_COL);
-            final Column<String> colOptName = table.getColumnByName(i, OPT_OID_COL);
+            final Column<String> colId = table.getColumnByName(i, ID_COL);
+            final Column<String> colName = table.getColumnByName(i, NAME_COL);
 
-            ProductionUnitClass unitClass = map.get(colParamId.getValue());
-            if (unitClass == null) {
-                unitClass = getOrCreateReferencedEntity(ProductionUnitClass.class, colParamId, em);
-                final TradingEnterprise enterprise;
-                try {
-                    enterprise = getReferencedEntity(
-                            TradingEnterprise.class,
-                            colEnterpriseId,
-                            em);
-                } catch (final EntityNotFoundException e) {
-                    notification.addNotification(
-                            sourceOperation,
-                            Notification.FAILED,
-                            String.format("%s not available: %s", getClass().getSimpleName(),
-                                    e.getMessage()));
-                    continue;
-                }
-                unitClass.setName(colParamName.getValue());
-                unitClass.setEnterprise(enterprise);
-                unitClass.setOperations(new ArrayList<>());
-                map.put(colParamId.getValue(), unitClass);
+            final TradingEnterprise t;
+            try {
+                t = getReferencedEntity(
+                        TradingEnterprise.class,
+                        Long.valueOf(colEnterpriseId.getValue()),
+                        em);
+            } catch (final EntityNotFoundException e) {
+                notification.addNotification(
+                        sourceOperation,
+                        Notification.FAILED,
+                        String.format("%s not available: %s", getClass().getSimpleName(),
+                                e.getMessage()));
+                continue;
             }
 
-            final ProductionUnitOperation option = getOrCreateReferencedEntity(ProductionUnitOperation.class, colOptId, em);
-            option.setOperationId(colOptName.getValue());
-            unitClass.getOperations().add(option);
+            final ProductionUnitClass plant = getOrCreateReferencedEntity(ProductionUnitClass.class, colId, em);
+            plant.setEnterprise(t);
+            plant.setName(colName.getValue());
+            list.add(plant);
         }
-
-        return new ArrayList<>(map.values());
+        return list;
     }
 }

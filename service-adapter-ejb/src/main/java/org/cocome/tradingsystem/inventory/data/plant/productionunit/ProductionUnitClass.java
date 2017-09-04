@@ -6,8 +6,6 @@ import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  * Represents a class of production unity utilizing a specific set of {@link ProductionUnitOperation}
@@ -21,7 +19,6 @@ public class ProductionUnitClass implements Serializable, QueryableById {
     private long id;
     private String name;
     private TradingEnterprise enterprise;
-    private Collection<ProductionUnitOperation> operations = new ArrayList<>();
 
     /**
      * @return The id.
@@ -72,20 +69,5 @@ public class ProductionUnitClass implements Serializable, QueryableById {
      */
     public void setEnterprise(final TradingEnterprise enterprise) {
         this.enterprise = enterprise;
-    }
-
-    /**
-     * @return all available operations of this production unit type
-     */
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    public Collection<ProductionUnitOperation> getOperations() {
-        return operations;
-    }
-
-    /**
-     * @param operations all available operations of this production unit type
-     */
-    public void setOperations(Collection<ProductionUnitOperation> operations) {
-        this.operations = operations;
     }
 }

@@ -3,6 +3,7 @@ package org.cocome.tradingsystem.inventory.data.plant.productionunit;
 import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -30,6 +31,9 @@ public class ProductionUnitOperation implements Serializable, QueryableById {
         return id;
     }
 
+    private ProductionUnitClass productionUnitClass;
+
+
     /**
      * Sets identifier.
      *
@@ -43,6 +47,7 @@ public class ProductionUnitOperation implements Serializable, QueryableById {
     /**
      * @return The operation id unique to the production plant
      */
+    @NotNull
     @Basic
     public String getOperationId() {
         return operationId;
@@ -54,5 +59,21 @@ public class ProductionUnitOperation implements Serializable, QueryableById {
      */
     public void setOperationId(String operationId) {
         this.operationId = operationId;
+    }
+
+    /**
+     * @return the associated {@link ProductionUnitClass}
+     */
+    @NotNull
+    @ManyToOne
+    public ProductionUnitClass getProductionUnitClass() {
+        return productionUnitClass;
+    }
+
+    /**
+     * @param productionUnitClass the associated production unit class
+     */
+    public void setProductionUnitClass(ProductionUnitClass productionUnitClass) {
+        this.productionUnitClass = productionUnitClass;
     }
 }
