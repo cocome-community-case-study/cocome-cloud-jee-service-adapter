@@ -7,19 +7,27 @@
         <class>org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise</class>
         <class>org.cocome.tradingsystem.inventory.data.enterprise.ProductSupplier</class>
         <class>org.cocome.tradingsystem.inventory.data.enterprise.Product</class>
+        <class>org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct</class>
+        <class>org.cocome.tradingsystem.inventory.data.enterprise.parameter.CustomProductParameter</class>
+        <class>org.cocome.tradingsystem.inventory.data.enterprise.parameter.BooleanCustomProductParameter</class>
+        <class>org.cocome.tradingsystem.inventory.data.enterprise.parameter.NorminalCustomProductParameter</class>
         <class>org.cocome.tradingsystem.inventory.data.store.Store</class>
         <class>org.cocome.tradingsystem.inventory.data.store.Store</class>
         <class>org.cocome.tradingsystem.inventory.data.store.StockItem</class>
         <class>org.cocome.tradingsystem.inventory.data.store.ProductOrder</class>
         <class>org.cocome.tradingsystem.inventory.data.store.OrderEntry</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.Plant</class>
-        <class>org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.expression.Expression</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnit</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitClass</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation</class>
-        <class>org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter</class>
-        <class>org.cocome.tradingsystem.inventory.data.plant.expression.Expression</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.recipe.Recipe</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.recipe.ParameterInteraction</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.recipe.EntryPoint</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.recipe.EntryPointInteraction</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.recipe.InteractionEntity</class>
 
         <properties>
             <property name="javax.persistence.jdbc.user" value="APP_TEST"/>
