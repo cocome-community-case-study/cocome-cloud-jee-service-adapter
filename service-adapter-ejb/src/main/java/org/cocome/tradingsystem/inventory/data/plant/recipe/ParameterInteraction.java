@@ -1,7 +1,8 @@
 package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct;
-import org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter;
+import org.cocome.tradingsystem.inventory.data.enterprise.parameter.CustomProductParameter;
+import org.cocome.tradingsystem.inventory.data.plant.parameter.PlantOperationParameter;
 
 import javax.persistence.*;
 
@@ -14,23 +15,21 @@ import javax.persistence.*;
  */
 @Entity
 public class ParameterInteraction extends InteractionEntity<
-        ProductionParameter<CustomProduct>,
-        ProductionParameter<PlantOperation> > {
+        CustomProductParameter,
+        PlantOperationParameter> {
     private static final long serialVersionUID = 1L;
 
     @SuppressWarnings("unchecked")
     @Transient
     @Override
-    public Class<ProductionParameter<CustomProduct>> getFromClass() {
-        Class<? extends ProductionParameter> c = ProductionParameter.class;
-        return (Class<ProductionParameter<CustomProduct>>)c;
+    public Class<CustomProductParameter> getFromClass() {
+        return CustomProductParameter.class;
     }
 
     @SuppressWarnings("unchecked")
     @Transient
     @Override
-    public Class<ProductionParameter<PlantOperation>> getToClass() {
-        Class<? extends ProductionParameter> c = ProductionParameter.class;
-        return (Class<ProductionParameter<PlantOperation>>)c;
+    public Class<PlantOperationParameter> getToClass() {
+        return PlantOperationParameter.class;
     }
 }

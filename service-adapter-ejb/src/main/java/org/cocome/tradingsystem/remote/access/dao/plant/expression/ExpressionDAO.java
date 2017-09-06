@@ -5,7 +5,7 @@ import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.plant.expression.ConditionalExpression;
 import org.cocome.tradingsystem.inventory.data.plant.expression.ConstExpression;
 import org.cocome.tradingsystem.inventory.data.plant.expression.Expression;
-import org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter;
+import org.cocome.tradingsystem.inventory.data.plant.parameter.PlantOperationParameter;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
 import org.cocome.tradingsystem.remote.access.Notification;
@@ -24,12 +24,12 @@ import java.util.*;
  */
 @Stateless
 @LocalBean
-public class ExpressionDAO extends AbstractDAO<Expression> {
+public class    ExpressionDAO extends AbstractDAO<Expression> {
 
     private static final String ID_COL = Expression.class.getSimpleName() + "Id";
     private static final String TYPE_COL = Expression.class.getSimpleName() + "Type";
-    private static final String PARAM_ID_COL = ProductionParameter.class.getSimpleName() + "Id";
-    private static final String PARAM_NAME_COL = ProductionParameter.class.getSimpleName() + "Name";
+    private static final String PARAM_ID_COL = PlantOperation.class.getSimpleName() + "Id";
+    private static final String PARAM_NAME_COL = PlantOperation.class.getSimpleName() + "Name";
     private static final String PARAM_VALUE_COL = ConditionalExpression.class.getSimpleName() + "Value";
     private static final String ON_TRUE_COL = ConditionalExpression.class.getSimpleName() + "OnTrueExpressionOf";
     private static final String ON_FALSE_COL = ConditionalExpression.class.getSimpleName() + "OnFalseExpressionOf";
@@ -100,10 +100,10 @@ public class ExpressionDAO extends AbstractDAO<Expression> {
 
                 map.put(colId.getValue(), exp);
             } else if (colType.getValue().equals(ConditionalExpression.class.getName())) {
-                final ProductionParameter<PlantOperation> param;
+                final PlantOperationParameter param;
                 try {
                     param = getReferencedEntity(
-                            ProductionParameter.class,
+                            PlantOperationParameter.class,
                             Long.valueOf(colParamId.getValue()),
                             em);
                 } catch (final EntityNotFoundException e) {

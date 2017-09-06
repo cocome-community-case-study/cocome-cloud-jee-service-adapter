@@ -1,7 +1,6 @@
 package org.cocome.tradingsystem.inventory.data.plant.expression;
 
-import org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter;
-import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
+import org.cocome.tradingsystem.inventory.data.plant.parameter.PlantOperationParameter;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -14,7 +13,7 @@ import java.util.Collection;
 public class ConditionalExpression extends Expression {
     private static final long serialVersionUID = 1L;
 
-    private ProductionParameter<PlantOperation> parameter;
+    private PlantOperationParameter parameter;
     private String parameterValue;
     private Collection<Expression> onTrueExpressions;
     private Collection<Expression> onFalseExpressions;
@@ -23,14 +22,14 @@ public class ConditionalExpression extends Expression {
      * @return the parameter to be tested
      */
     @OneToOne
-    public ProductionParameter<PlantOperation> getParameter() {
+    public PlantOperationParameter getParameter() {
         return parameter;
     }
 
     /**
      * @param parameter the parameter to be tested
      */
-    public void setParameter(ProductionParameter<PlantOperation> parameter) {
+    public void setParameter(PlantOperationParameter parameter) {
         this.parameter = parameter;
     }
 

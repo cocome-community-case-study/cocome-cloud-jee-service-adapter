@@ -44,6 +44,8 @@ import org.cocome.tradingsystem.remote.access.dao.enterprise.TradingEnterpriseDA
 import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.BooleanCustomProductParameterDAO;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.NorminalCustomProductParameterDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.PlantDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.parameter.BooleanPlantOperationParameterDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.parameter.NorminalPlantOperationParameterDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitClassDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitOperationDAO;
@@ -116,6 +118,12 @@ public class ServiceProviderDatabase extends HttpServlet {
     private NorminalCustomProductParameterDAO norminalCustomProductParameterDAO;
 
     @Inject
+    private BooleanPlantOperationParameterDAO booleanPlantOperationParameterDAO;
+
+    @Inject
+    private NorminalPlantOperationParameterDAO norminalPlantOperationParameterDAO;
+
+    @Inject
     private ProductionUnitClassDAO productionUnitClassDAO;
 
     @Inject
@@ -158,6 +166,8 @@ public class ServiceProviderDatabase extends HttpServlet {
         daoMap.put(plantDAO.getEntityTypeName(), plantDAO);
         daoMap.put(booleanCustomProductParameterDAO.getEntityTypeName(), booleanCustomProductParameterDAO);
         daoMap.put(norminalCustomProductParameterDAO.getEntityTypeName(), norminalCustomProductParameterDAO);
+        daoMap.put(booleanPlantOperationParameterDAO.getEntityTypeName(), booleanPlantOperationParameterDAO);
+        daoMap.put(norminalPlantOperationParameterDAO.getEntityTypeName(), norminalPlantOperationParameterDAO);
         daoMap.put(productionUnitOperationDAO.getEntityTypeName(), productionUnitOperationDAO);
         daoMap.put(productionUnitClassDAO.getEntityTypeName(), productionUnitClassDAO);
         daoMap.put(productionUnitDAO.getEntityTypeName(), productionUnitDAO);

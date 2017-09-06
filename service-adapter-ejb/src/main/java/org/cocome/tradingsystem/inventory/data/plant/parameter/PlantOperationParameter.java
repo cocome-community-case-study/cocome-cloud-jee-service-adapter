@@ -1,23 +1,25 @@
 package org.cocome.tradingsystem.inventory.data.plant.parameter;
 
-import org.cocome.tradingsystem.inventory.data.enterprise.NameableEntity;
+import org.cocome.tradingsystem.inventory.data.enterprise.parameter.IParameter;
+import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 
 /**
- * Represents a product customization parameter
- * @param <T> The class type this parameter is associated with
+ * Abstract class of {@link IParameter} for {@link PlantOperation}
+ *
  * @author Rudolf Biczok
  */
 @Entity
-public class ProductionParameter<T> implements Serializable, NameableEntity {
+public class PlantOperationParameter implements IParameter {
 
     private static final long serialVersionUID = -2577328715744776645L;
 
     private long id;
     private String name;
     private String category;
+    private PlantOperation plantOperation;
 
     /**
      * @return The id.
@@ -30,8 +32,7 @@ public class ProductionParameter<T> implements Serializable, NameableEntity {
     }
 
     /**
-     * @param id
-     *            Identifier value.
+     * @param id Identifier value.
      */
     @Override
     public void setId(long id) {
@@ -48,8 +49,7 @@ public class ProductionParameter<T> implements Serializable, NameableEntity {
     }
 
     /**
-     * @param name
-     *            The parameter name
+     * @param name The parameter name
      */
     @Override
     public void setName(String name) {
@@ -65,10 +65,25 @@ public class ProductionParameter<T> implements Serializable, NameableEntity {
     }
 
     /**
-     * @param category
-     *            The parameter category
+     * @param category The parameter category
      */
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    /**
+     * @return the corresponding plant operation
+     */
+    @NotNull
+    @ManyToOne(cascade = CascadeType.ALL)
+    public PlantOperation getPlantOperation() {
+        return plantOperation;
+    }
+
+    /**
+     * @param plantOperation the corresponding plant operation
+     */
+    public void setPlantOperation(PlantOperation plantOperation) {
+        this.plantOperation = plantOperation;
     }
 }

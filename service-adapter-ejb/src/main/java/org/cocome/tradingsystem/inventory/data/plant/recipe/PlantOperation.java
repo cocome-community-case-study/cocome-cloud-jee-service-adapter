@@ -2,7 +2,6 @@ package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.NameableEntity;
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
-import org.cocome.tradingsystem.inventory.data.plant.parameter.ProductionParameter;
 import org.cocome.tradingsystem.inventory.data.plant.expression.Expression;
 
 import javax.persistence.*;
@@ -20,7 +19,6 @@ public class PlantOperation implements Serializable, NameableEntity {
     private long id;
     private String name;
     private Plant plant;
-    private Collection<ProductionParameter<PlantOperation>> parameters;
     private Collection<Expression> expressions;
     private Collection<EntryPoint> inputEntryPoint;
     private Collection<EntryPoint> outputEntryPoint;
@@ -77,21 +75,6 @@ public class PlantOperation implements Serializable, NameableEntity {
      */
     public void setExpressions(Collection<Expression> expressions) {
         this.expressions = expressions;
-    }
-
-    /**
-     * @return all available operations of this production unit type
-     */
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    public Collection<ProductionParameter<PlantOperation>> getProductionParameters() {
-        return parameters;
-    }
-
-    /**
-     * @param parameters all available operations of this production unit type
-     */
-    public void setProductionParameters(Collection<ProductionParameter<PlantOperation>> parameters) {
-        this.parameters = parameters;
     }
 
     /**
