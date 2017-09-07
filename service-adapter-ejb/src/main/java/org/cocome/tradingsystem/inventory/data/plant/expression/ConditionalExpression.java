@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 /**
- * Represents an conditional expression.
+ * Represents a conditional expression.
  * @author Rudolf Biczok
  */
 @Entity
