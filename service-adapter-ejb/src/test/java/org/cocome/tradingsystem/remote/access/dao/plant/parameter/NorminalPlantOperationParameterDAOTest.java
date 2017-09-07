@@ -33,7 +33,7 @@ public class NorminalPlantOperationParameterDAOTest {
         em.persist(param);
         tx.commit();
 
-        final List<NorminalPlantOperationParameter> queryedInstances = TestUtils.TEST_EMF.createEntityManager()
+        final List<NorminalPlantOperationParameter> queriedInstances = TestUtils.TEST_EMF.createEntityManager()
                 .createQuery("SELECT param from NorminalPlantOperationParameter param", NorminalPlantOperationParameter.class).getResultList();
 
         final String expectedTableContent = String.format("PlantOperationId;NorminalPlantOperationParameterId;"
@@ -43,8 +43,8 @@ public class NorminalPlantOperationParameterDAOTest {
                 operation.getId(),
                 param.getId());
 
-        Assert.assertNotNull(queryedInstances);
-        Assert.assertFalse(queryedInstances.isEmpty());
-        Assert.assertEquals(expectedTableContent, TestUtils.toCSV(dao.toTable(queryedInstances)));
+        Assert.assertNotNull(queriedInstances);
+        Assert.assertFalse(queriedInstances.isEmpty());
+        Assert.assertEquals(expectedTableContent, TestUtils.toCSV(dao.toTable(queriedInstances)));
     }
 }

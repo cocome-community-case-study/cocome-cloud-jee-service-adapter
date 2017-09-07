@@ -31,7 +31,7 @@ public class BooleanCustomProductParameterDAOTest {
         em.persist(param);
         tx.commit();
 
-        final List<BooleanCustomProductParameter> queryedInstances = TestUtils.TEST_EMF.createEntityManager()
+        final List<BooleanCustomProductParameter> queriedInstances = TestUtils.TEST_EMF.createEntityManager()
                 .createQuery("SELECT param from BooleanCustomProductParameter param", BooleanCustomProductParameter.class).getResultList();
 
         final String expectedTableContent = String.format("CustomProductId;BooleanCustomProductParameterId;"
@@ -40,8 +40,8 @@ public class BooleanCustomProductParameterDAOTest {
                 product.getId(),
                 param.getId());
 
-        Assert.assertNotNull(queryedInstances);
-        Assert.assertFalse(queryedInstances.isEmpty());
-        Assert.assertEquals(expectedTableContent, TestUtils.toCSV(dao.toTable(queryedInstances)));
+        Assert.assertNotNull(queriedInstances);
+        Assert.assertFalse(queriedInstances.isEmpty());
+        Assert.assertEquals(expectedTableContent, TestUtils.toCSV(dao.toTable(queriedInstances)));
     }
 }

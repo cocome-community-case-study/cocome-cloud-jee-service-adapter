@@ -30,7 +30,7 @@ public class BooleanPlantOperationParameterDAOTest {
         em.persist(param);
         tx.commit();
 
-        final List<BooleanPlantOperationParameter> queryedInstances = TestUtils.TEST_EMF.createEntityManager()
+        final List<BooleanPlantOperationParameter> queriedInstances = TestUtils.TEST_EMF.createEntityManager()
                 .createQuery("SELECT param from BooleanPlantOperationParameter param",
                         BooleanPlantOperationParameter.class).getResultList();
 
@@ -40,8 +40,8 @@ public class BooleanPlantOperationParameterDAOTest {
                 product.getId(),
                 param.getId());
 
-        Assert.assertNotNull(queryedInstances);
-        Assert.assertFalse(queryedInstances.isEmpty());
-        Assert.assertEquals(expectedTableContent, TestUtils.toCSV(dao.toTable(queryedInstances)));
+        Assert.assertNotNull(queriedInstances);
+        Assert.assertFalse(queriedInstances.isEmpty());
+        Assert.assertEquals(expectedTableContent, TestUtils.toCSV(dao.toTable(queriedInstances)));
     }
 }

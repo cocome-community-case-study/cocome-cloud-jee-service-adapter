@@ -62,7 +62,6 @@ public class PlantDAOTest {
                 .createEntityManager()
                 .createQuery("SELECT p FROM Plant p", Plant.class).getResultList());
 
-
         plantDAO.deleteEntities(dbTable);
         Assert.assertTrue(TestUtils.TEST_EMF
                 .createEntityManager()
