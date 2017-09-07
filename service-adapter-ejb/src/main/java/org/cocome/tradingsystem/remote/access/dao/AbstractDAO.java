@@ -10,7 +10,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceUnit;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Abstract class for data access objects
@@ -19,6 +21,8 @@ import java.util.List;
  * @author Rudolf Biczok
  */
 public abstract class AbstractDAO<E extends QueryableById> implements DataAccessObject<E> {
+
+    protected static final String SET_DELIMITER = ",";
 
     @PersistenceUnit(unitName = IData.EJB_PERSISTENCE_UNIT_NAME)
     private EntityManagerFactory emf;
@@ -155,6 +159,21 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
                                          final Table<String> table,
                                          final Notification notification,
                                          final String sourceOperation);
+
+    /**
+     * Used in circumstances where @ManyToOne mappings are not possible, e.g.
+     * when the relation ships are reflexive. We would then have to return joined tables
+     *
+     * @param collection any collection
+     * @param <T>        the type of the collections elements
+     * @return a comma-separated textual representation of the given collection.
+     * It calls {@link Object#toString()} on every element.
+     */
+    protected <T> String joinValues(final Collection<T> collection) {
+        return collection.stream()
+                .map(Object::toString)
+                .collect(Collectors.joining(SET_DELIMITER));
+    }
 
     private <T> T returnOrCreateEntity(final Class<T> entityClass, T entity) {
         if (entity == null) {

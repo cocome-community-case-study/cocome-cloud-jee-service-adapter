@@ -1,7 +1,6 @@
 package org.cocome.tradingsystem.remote.access.dao.plant.productionunit;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
-import org.cocome.tradingsystem.inventory.data.plant.Plant;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitClass;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation;
 import org.cocome.tradingsystem.remote.access.TestUtils;

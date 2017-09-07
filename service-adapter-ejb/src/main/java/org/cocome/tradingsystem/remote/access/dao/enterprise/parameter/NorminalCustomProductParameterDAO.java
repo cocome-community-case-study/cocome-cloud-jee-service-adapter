@@ -12,7 +12,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * DAO for {@link NorminalCustomProductParameter}
@@ -22,9 +21,6 @@ import java.util.stream.Collectors;
 @Stateless
 @LocalBean
 public class NorminalCustomProductParameterDAO extends AbstractDAO<NorminalCustomProductParameter> {
-
-    private static final String SET_DELIMITER = ",";
-
     private static final String CUSTOM_PRODUCT_ID_COL = CustomProduct.class.getSimpleName() + "Id";
     private static final String ID_COL = NorminalCustomProductParameter.class.getSimpleName() + "Id";
     private static final String NAME_COL = NorminalCustomProductParameter.class.getSimpleName() + "Name";
@@ -46,13 +42,9 @@ public class NorminalCustomProductParameterDAO extends AbstractDAO<NorminalCusto
             table.set(i, 1, String.valueOf(list.get(i).getId()));
             table.set(i, 2, list.get(i).getName());
             table.set(i, 3, list.get(i).getCategory());
-            table.set(i, 4, toString(list.get(i).getOptions()));
+            table.set(i, 4, joinValues(list.get(i).getOptions()));
         }
         return table;
-    }
-
-    private String toString(final Set<String> options) {
-        return options.stream().collect(Collectors.joining(SET_DELIMITER));
     }
 
     @Override

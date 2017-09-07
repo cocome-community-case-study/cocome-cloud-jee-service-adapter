@@ -13,7 +13,6 @@ import java.util.HashSet;
 import java.util.List;
 
 public class NorminalCustomProductParameterDAOTest {
-
     private NorminalCustomProductParameterDAO dao = TestUtils.injectFakeEJB(NorminalCustomProductParameterDAO.class);
 
     @Test
