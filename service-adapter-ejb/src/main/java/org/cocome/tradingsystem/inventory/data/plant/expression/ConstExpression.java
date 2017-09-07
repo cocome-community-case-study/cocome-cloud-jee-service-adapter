@@ -4,6 +4,7 @@ import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUn
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import java.util.Collection;
 
@@ -20,7 +21,7 @@ public class ConstExpression extends Expression {
     /**
      * @return the list of operations that are supposed to be executed
      */
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     public Collection<ProductionUnitOperation> getOperations() {
         return operations;
     }
