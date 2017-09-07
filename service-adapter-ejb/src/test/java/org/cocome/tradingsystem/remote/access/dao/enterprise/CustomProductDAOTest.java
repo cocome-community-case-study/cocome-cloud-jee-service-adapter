@@ -1,8 +1,6 @@
 package org.cocome.tradingsystem.remote.access.dao.enterprise;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct;
-import org.cocome.tradingsystem.inventory.data.plant.parameter.BooleanPlantOperationParameter;
-import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
 import org.cocome.tradingsystem.remote.access.TestUtils;
 import org.junit.Assert;
 import org.junit.Test;
