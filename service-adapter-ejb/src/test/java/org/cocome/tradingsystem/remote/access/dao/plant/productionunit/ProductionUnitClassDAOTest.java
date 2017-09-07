@@ -35,8 +35,8 @@ public class ProductionUnitClassDAOTest {
                 .createQuery("SELECT puc from ProductionUnitClass puc WHERE puc.enterprise.id = "
                         + enterprise.getId(), ProductionUnitClass.class).getResultList();
 
-        final String expectedTableContent = "TradingEnterpriseId;ProductionUnitClassId;ProductionUnitClassName\n"
-        + "2;1;xPPU v 0.1 Beta";
+        final String expectedTableContent = String.format("TradingEnterpriseId;ProductionUnitClassId;ProductionUnitClassName\n"
+        + "%d;%d;xPPU v 0.1 Beta", enterprise.getId(), puc.getId());
 
         Assert.assertNotNull(queryedInstances);
         Assert.assertFalse(queryedInstances.isEmpty());

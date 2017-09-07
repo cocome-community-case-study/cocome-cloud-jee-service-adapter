@@ -26,6 +26,7 @@ public class PlantDAOTest {
         enterprise.setName("CoCoME SE");
         final EntityManager em = TestUtils.TEST_EMF.createEntityManager();
         final EntityTransaction tx = em.getTransaction();
+
         tx.begin();
         em.persist(enterprise);
         tx.commit();
@@ -46,16 +47,23 @@ public class PlantDAOTest {
             setLocation("Zurich");
             setEnterprise(enterprise);
         }});
-        final String expected = "TradingEnterpriseId;PlantId;PlantName;PlantLocation\n"
-                        + "1;2;SDQ KIT;Karlsruhe\n"
-                        + "1;3;TUM;Munich\n"
-                        + "1;4;ETH Zürich;Zurich";
+        final String expected = String.format("TradingEnterpriseId;PlantId;PlantName;PlantLocation\n"
+                + "%1$d;2;SDQ KIT;Karlsruhe\n"
+                + "%1$d;3;TUM;Munich\n"
+                + "%1$d;4;ETH Zürich;Zurich", enterprise.getId());
 
         final Table<String> table = TestUtils.fromCSV(expected);
         plantDAO.createEntities(table);
-        Assert.assertEquals("", expected, TestUtils.toCSV(plantDAO.toTable(list)));
 
-        plantDAO.deleteEntities(table);
+        Assert.assertEquals("Check for correct table representation",
+                expected, TestUtils.toCSV(plantDAO.toTable(list)));
+
+        final Table<String> dbTable = plantDAO.toTable(TestUtils.TEST_EMF
+                .createEntityManager()
+                .createQuery("SELECT p FROM Plant p", Plant.class).getResultList());
+
+
+        plantDAO.deleteEntities(dbTable);
         Assert.assertTrue(TestUtils.TEST_EMF
                 .createEntityManager()
                 .createQuery("SELECT p FROM Plant p")

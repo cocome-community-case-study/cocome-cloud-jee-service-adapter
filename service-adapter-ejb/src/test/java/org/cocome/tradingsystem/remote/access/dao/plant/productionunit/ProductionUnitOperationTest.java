@@ -44,9 +44,9 @@ public class ProductionUnitOperationTest {
                 .createQuery("SELECT op from ProductionUnitOperation op WHERE op.productionUnitClass.id = "
                         + puc.getId(), ProductionUnitOperation.class).getResultList();
 
-        final String expectedTableContent = "ProductionUnitOperationId;ProductionUnitOperationOID;ProductionUnitClassId\n" +
-                "1;_1_2_1_P2_O1;2\n" +
-                "4;_1_2_1_P2_O2;2";
+        final String expectedTableContent = String.format("ProductionUnitOperationId;ProductionUnitOperationOID;ProductionUnitClassId\n" +
+                "%2$d;_1_2_1_P2_O1;%1$d\n" +
+                "%3$d;_1_2_1_P2_O2;%1$d", puc.getId(), pucOp1.getId(), pucOp2.getId());
 
         Assert.assertNotNull(queryedInstances);
         Assert.assertFalse(queryedInstances.isEmpty());

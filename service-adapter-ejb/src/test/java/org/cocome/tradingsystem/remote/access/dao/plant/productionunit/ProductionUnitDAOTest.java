@@ -68,10 +68,11 @@ public class ProductionUnitDAOTest {
                 .createQuery("SELECT pu from ProductionUnit pu WHERE pu.plant.id = "
                         + plant1.getId(), ProductionUnit.class).getResultList();
 
-        final String expectedTableContent = "ProductionUnitId;ProductionUnitLocation;ProductionUnitInterfaceURL;"
+        final String expectedTableContent = String.format("ProductionUnitId;ProductionUnitLocation;ProductionUnitInterfaceURL;"
                 + "PlantId;ProductionUnitClassId\n"
-                + "1;Room 1;pu1.mystery.com;2;3\n"
-                + "5;Room 2;pu1.mystery.com;2;3";
+                + "%3$d;Room 1;pu1.mystery.com;%1$d;%2$d\n"
+                + "%4$d;Room 2;pu1.mystery.com;%1$d;%2$d",
+                plant1.getId(), puc.getId(), pu1.getId(), pu2.getId());
 
         Assert.assertNotNull(queryedInstances);
         Assert.assertFalse(queryedInstances.isEmpty());

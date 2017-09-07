@@ -20,6 +20,7 @@ public class BooleanCustomProductParameterDAOTest {
         final EntityTransaction tx = em.getTransaction();
 
         final CustomProduct product = new CustomProduct();
+        product.setBarcode(12345);
 
         final BooleanCustomProductParameter param = new BooleanCustomProductParameter();
         param.setProduct(product);
@@ -33,9 +34,11 @@ public class BooleanCustomProductParameterDAOTest {
         final List<BooleanCustomProductParameter> queryedInstances = TestUtils.TEST_EMF.createEntityManager()
                 .createQuery("SELECT param from BooleanCustomProductParameter param", BooleanCustomProductParameter.class).getResultList();
 
-        final String expectedTableContent = "CustomProductId;BooleanCustomProductParameterId;"
-        + "BooleanCustomProductParameterName;BooleanCustomProductParameterCategory\n"
-        + "2;1;With Chocolate;Ingredients";
+        final String expectedTableContent = String.format("CustomProductId;BooleanCustomProductParameterId;"
+                        + "BooleanCustomProductParameterName;BooleanCustomProductParameterCategory\n"
+                        + "%d;%d;With Chocolate;Ingredients",
+                product.getId(),
+                param.getId());
 
         Assert.assertNotNull(queryedInstances);
         Assert.assertFalse(queryedInstances.isEmpty());

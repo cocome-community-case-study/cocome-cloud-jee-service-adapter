@@ -22,6 +22,7 @@ public class NorminalCustomProductParameterDAOTest {
         final EntityTransaction tx = em.getTransaction();
 
         final CustomProduct product = new CustomProduct();
+        product.setBarcode(123);
 
         final NorminalCustomProductParameter param = new NorminalCustomProductParameter();
         param.setProduct(product);
@@ -36,10 +37,12 @@ public class NorminalCustomProductParameterDAOTest {
         final List<NorminalCustomProductParameter> queryedInstances = TestUtils.TEST_EMF.createEntityManager()
                 .createQuery("SELECT param from NorminalCustomProductParameter param", NorminalCustomProductParameter.class).getResultList();
 
-        final String expectedTableContent = "CustomProductId;NorminalCustomProductParameterId;"
+        final String expectedTableContent = String.format("CustomProductId;NorminalCustomProductParameterId;"
                 + "NorminalCustomProductParameterName;NorminalCustomProductParameterCategory;"
                 + "NorminalCustomProductParameterOptions\n"
-                + "2;1;Fruits;Ingredients;Apple,Coconut,Banana";
+                + "%d;%d;Fruits;Ingredients;Apple,Coconut,Banana",
+        product.getId(),
+                param.getId());
 
         Assert.assertNotNull(queryedInstances);
         Assert.assertFalse(queryedInstances.isEmpty());
