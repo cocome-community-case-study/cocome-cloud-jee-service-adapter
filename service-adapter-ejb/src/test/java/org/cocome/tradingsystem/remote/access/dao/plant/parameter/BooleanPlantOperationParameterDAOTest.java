@@ -1,5 +1,7 @@
 package org.cocome.tradingsystem.remote.access.dao.plant.parameter;
 
+import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
+import org.cocome.tradingsystem.inventory.data.plant.Plant;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.BooleanPlantOperationParameter;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
 import org.cocome.tradingsystem.remote.access.TestUtils;
@@ -19,10 +21,14 @@ public class BooleanPlantOperationParameterDAOTest {
         final EntityManager em = TestUtils.TEST_EMF.createEntityManager();
         final EntityTransaction tx = em.getTransaction();
 
-        final PlantOperation product = new PlantOperation();
+        final TradingEnterprise enterprise = new TradingEnterprise();
+        final Plant plant = new Plant();
+        plant.setEnterprise(enterprise);
+        final PlantOperation operation = new PlantOperation();
+        operation.setPlant(plant);
 
         final BooleanPlantOperationParameter param = new BooleanPlantOperationParameter();
-        param.setPlantOperation(product);
+        param.setPlantOperation(operation);
         param.setCategory("Ingredients");
         param.setName("With Chocolate");
 
@@ -30,18 +36,18 @@ public class BooleanPlantOperationParameterDAOTest {
         em.persist(param);
         tx.commit();
 
-        final List<BooleanPlantOperationParameter> queriedInstances = TestUtils.TEST_EMF.createEntityManager()
+        final List<BooleanPlantOperationParameter> queryedInstances = TestUtils.TEST_EMF.createEntityManager()
                 .createQuery("SELECT param from BooleanPlantOperationParameter param",
                         BooleanPlantOperationParameter.class).getResultList();
 
         final String expectedTableContent = String.format("PlantOperationId;BooleanPlantOperationParameterId;"
                         + "BooleanPlantOperationParameterName;BooleanPlantOperationParameterCategory\n"
                         + "%d;%d;With Chocolate;Ingredients",
-                product.getId(),
+                operation.getId(),
                 param.getId());
 
-        Assert.assertNotNull(queriedInstances);
-        Assert.assertFalse(queriedInstances.isEmpty());
-        Assert.assertEquals(expectedTableContent, TestUtils.toCSV(dao.toTable(queriedInstances)));
+        Assert.assertNotNull(queryedInstances);
+        Assert.assertFalse(queryedInstances.isEmpty());
+        Assert.assertEquals(expectedTableContent, TestUtils.toCSV(dao.toTable(queryedInstances)));
     }
 }

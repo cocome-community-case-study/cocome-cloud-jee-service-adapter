@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceUnit;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -133,6 +134,16 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
         return getReferencedEntity(entityClass, Long.valueOf(colId.getValue()), em);
     }
 
+    protected <T> List<T> getReferencedEntities(Class<T> entityClass,
+                                                Column<String> foreignKeyCol,
+                                                EntityManager em) {
+        final String[] splits = foreignKeyCol.getValue().split(SET_DELIMITER);
+        return Arrays.stream(splits)
+                .mapToLong(Long::valueOf)
+                .mapToObj(id -> getReferencedEntity(entityClass, id, em))
+                .collect(Collectors.toList());
+    }
+
     protected <T> T getReferencedEntity(final Class<T> entityClass,
                                         final long id,
                                         final EntityManager em) {
@@ -169,9 +180,19 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
      * @return a comma-separated textual representation of the given collection.
      * It calls {@link Object#toString()} on every element.
      */
-    protected <T> String joinValues(final Collection<T> collection) {
-        return collection.stream()
+    protected <T extends QueryableById> String joinValues(final Collection<T> collection) {
+        return collection.stream().sequential()
+                .map(QueryableById::getId)
                 .map(Object::toString)
+                .collect(Collectors.joining(SET_DELIMITER));
+    }
+
+    /**
+     * @param collection any collection
+     * @return a comma-separated textual representation of the given collection.
+     */
+    protected String joinStringValues(final Collection<String> collection) {
+        return collection.stream()
                 .collect(Collectors.joining(SET_DELIMITER));
     }
 

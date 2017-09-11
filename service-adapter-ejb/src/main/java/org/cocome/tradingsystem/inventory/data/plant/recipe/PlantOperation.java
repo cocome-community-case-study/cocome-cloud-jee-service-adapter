@@ -4,6 +4,7 @@ import org.cocome.tradingsystem.inventory.data.enterprise.NameableEntity;
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -94,6 +95,7 @@ public class PlantOperation implements Serializable, NameableEntity {
     /**
      * @return the plant that owns this production unit
      */
+    @NotNull
     @ManyToOne(cascade = CascadeType.ALL)
     public Plant getPlant() {
         return plant;

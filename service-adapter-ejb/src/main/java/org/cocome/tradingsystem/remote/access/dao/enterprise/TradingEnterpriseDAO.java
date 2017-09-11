@@ -73,7 +73,7 @@ public class TradingEnterpriseDAO implements LegacyDataAccessObject<TradingEnter
             final EntityManager em = this.emf.createEntityManager();
 
             for (final TradingEnterprise entity : entities) {
-                final TradingEnterprise managedEntity = this.queryEnterprise(em, entity);
+                final TradingEnterprise managedEntity = this.queryEnterpriseById(em, entity);
                 if (managedEntity == null) {
                     notification.addNotification(
                             "createEntities", Notification.FAILED,

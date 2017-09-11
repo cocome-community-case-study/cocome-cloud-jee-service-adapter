@@ -4,6 +4,7 @@ import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -38,6 +39,7 @@ public class Expression implements Serializable, QueryableById {
     /**
      * @return the associated plant operation
      */
+    @NotNull
     @ManyToOne(cascade = CascadeType.ALL)
     public PlantOperation getPlantOperation() {
         return plantOperation;

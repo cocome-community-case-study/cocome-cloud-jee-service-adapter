@@ -1,5 +1,7 @@
 package org.cocome.tradingsystem.remote.access.dao.plant.parameter;
 
+import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
+import org.cocome.tradingsystem.inventory.data.plant.Plant;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.NorminalPlantOperationParameter;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
 import org.cocome.tradingsystem.remote.access.TestUtils;
@@ -21,7 +23,11 @@ public class NorminalPlantOperationParameterDAOTest {
         final EntityManager em = TestUtils.TEST_EMF.createEntityManager();
         final EntityTransaction tx = em.getTransaction();
 
+        final TradingEnterprise enterprise = new TradingEnterprise();
+        final Plant plant = new Plant();
+        plant.setEnterprise(enterprise);
         final PlantOperation operation = new PlantOperation();
+        operation.setPlant(plant);
 
         final NorminalPlantOperationParameter param = new NorminalPlantOperationParameter();
         param.setPlantOperation(operation);
@@ -34,7 +40,9 @@ public class NorminalPlantOperationParameterDAOTest {
         tx.commit();
 
         final List<NorminalPlantOperationParameter> queriedInstances = TestUtils.TEST_EMF.createEntityManager()
-                .createQuery("SELECT param from NorminalPlantOperationParameter param", NorminalPlantOperationParameter.class).getResultList();
+                .createQuery("SELECT param from NorminalPlantOperationParameter param WHERE param.id = "
+                                + param.getId(),
+                        NorminalPlantOperationParameter.class).getResultList();
 
         final String expectedTableContent = String.format("PlantOperationId;NorminalPlantOperationParameterId;"
                         + "NorminalPlantOperationParameterName;NorminalPlantOperationParameterCategory;"

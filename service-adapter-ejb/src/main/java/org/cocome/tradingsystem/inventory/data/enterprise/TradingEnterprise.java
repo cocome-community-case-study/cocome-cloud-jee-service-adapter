@@ -112,7 +112,7 @@ public class TradingEnterprise implements Serializable, QueryableById {
 
     @Override
     public String toString() {
-        return "[Class:" + getClass().getSimpleName() + ",Id" + getId()
+        return "[Class:" + getClass().getSimpleName() + ",Id:" + getId()
                 + ",Name:" + getName() + "]";
     }
 

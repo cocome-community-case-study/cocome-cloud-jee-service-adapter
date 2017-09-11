@@ -43,7 +43,7 @@ public class NorminalPlantOperationParameterDAO extends AbstractDAO<NorminalPlan
             table.set(i, 1, String.valueOf(list.get(i).getId()));
             table.set(i, 2, list.get(i).getName());
             table.set(i, 3, list.get(i).getCategory());
-            table.set(i, 4, joinValues(list.get(i).getOptions()));
+            table.set(i, 4, joinStringValues(list.get(i).getOptions()));
         }
         return table;
     }

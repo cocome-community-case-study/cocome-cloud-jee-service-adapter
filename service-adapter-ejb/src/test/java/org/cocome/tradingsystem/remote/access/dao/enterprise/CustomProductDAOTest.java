@@ -28,7 +28,7 @@ public class CustomProductDAOTest {
         tx.commit();
 
         final List<CustomProduct> queriedInstances = TestUtils.TEST_EMF.createEntityManager()
-                .createQuery("SELECT p from CustomProduct p",
+                .createQuery("SELECT p from CustomProduct p WHERE p.id = " + product.getId(),
                         CustomProduct.class).getResultList();
 
         final String expectedTableContent = String.format("CustomProductId;CustomProductBarcode;CustomProductLocation;"

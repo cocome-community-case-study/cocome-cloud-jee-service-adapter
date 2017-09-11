@@ -18,6 +18,8 @@
         <class>org.cocome.tradingsystem.inventory.data.store.OrderEntry</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.Plant</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.expression.Expression</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.expression.ConstExpression</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.expression.ConditionalExpression</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.parameter.PlantOperationParameter</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.parameter.BooleanPlantOperationParameter</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.parameter.NorminalPlantOperationParameter</class>

@@ -32,25 +32,22 @@ public class PlantDAOTest {
         tx.commit();
 
         final List<Plant> list = Arrays.asList(new Plant() {{
-            setId(2);
             setName("SDQ KIT");
             setLocation("Karlsruhe");
             setEnterprise(enterprise);
         }}, new Plant() {{
-            setId(3);
             setName("TUM");
             setLocation("Munich");
             setEnterprise(enterprise);
         }}, new Plant() {{
-            setId(4);
             setName("ETH Zürich");
             setLocation("Zurich");
             setEnterprise(enterprise);
         }});
         final String expected = String.format("TradingEnterpriseId;PlantId;PlantName;PlantLocation\n"
-                + "%1$d;2;SDQ KIT;Karlsruhe\n"
-                + "%1$d;3;TUM;Munich\n"
-                + "%1$d;4;ETH Zürich;Zurich", enterprise.getId());
+                + "%1$d;0;SDQ KIT;Karlsruhe\n"
+                + "%1$d;0;TUM;Munich\n"
+                + "%1$d;0;ETH Zürich;Zurich", enterprise.getId());
 
         final Table<String> table = TestUtils.fromCSV(expected);
         plantDAO.createEntities(table);
@@ -60,21 +57,21 @@ public class PlantDAOTest {
 
         final Table<String> dbTable = plantDAO.toTable(TestUtils.TEST_EMF
                 .createEntityManager()
-                .createQuery("SELECT p FROM Plant p", Plant.class).getResultList());
+                .createQuery("SELECT p FROM Plant p WHERE p.enterprise.id = " + enterprise.getId(), Plant.class).getResultList());
 
         plantDAO.deleteEntities(dbTable);
         Assert.assertTrue(TestUtils.TEST_EMF
                 .createEntityManager()
-                .createQuery("SELECT p FROM Plant p")
+                .createQuery("SELECT p FROM Plant p WHERE p.enterprise.id = " + enterprise.getId())
                 .getResultList().isEmpty());
         Assert.assertFalse(TestUtils.TEST_EMF
                 .createEntityManager()
-                .createQuery("SELECT e FROM TradingEnterprise e")
+                .createQuery("SELECT e FROM TradingEnterprise e WHERE e.id = " + enterprise.getId())
                 .getResultList().isEmpty());
         enterpriseDAO.deleteEntities(Collections.singletonList(enterprise));
         Assert.assertTrue(TestUtils.TEST_EMF
                 .createEntityManager()
-                .createQuery("SELECT e FROM TradingEnterprise e")
+                .createQuery("SELECT e FROM TradingEnterprise e WHERE e.id = " + enterprise.getId())
                 .getResultList().isEmpty());
     }
 }
