@@ -18,14 +18,42 @@
 
 package cocome.cloud.sa.serviceprovider.impl;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import cocome.cloud.sa.entities.Message;
+import cocome.cloud.sa.entities.MessageEntry;
+import cocome.cloud.sa.query.IQueryConst;
+import cocome.cloud.sa.query.parsing.QueryParser;
+import cocome.cloud.sa.serviceprovider.Service;
+import cocome.cloud.sa.serviceprovider.ServiceProvider;
+import de.kit.ipd.java.utils.framework.table.Table;
+import de.kit.ipd.java.utils.framework.table.TableObjectFactory;
+import de.kit.ipd.java.utils.parsing.csv.CSVParser;
+import de.kit.ipd.java.utils.time.TimeUtils;
+import de.kit.ipd.java.utils.xml.JAXBEngine;
+import de.kit.ipd.java.utils.xml.XML;
+import org.apache.log4j.Logger;
+import org.cocome.tradingsystem.remote.access.DatabaseAccess;
+import org.cocome.tradingsystem.remote.access.Notification;
+import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
+import org.cocome.tradingsystem.remote.access.dao.enterprise.CustomProductDAO;
+import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductDAO;
+import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductSupplierDAO;
+import org.cocome.tradingsystem.remote.access.dao.enterprise.TradingEnterpriseDAO;
+import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.BooleanCustomProductParameterDAO;
+import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.NorminalCustomProductParameterDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.PlantDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.expression.ConditionalExpressionDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.expression.ConstExpressionDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.parameter.BooleanPlantOperationParameterDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.parameter.NorminalPlantOperationParameterDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitClassDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitOperationDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.recipe.*;
+import org.cocome.tradingsystem.remote.access.dao.store.ProductOrderDAO;
+import org.cocome.tradingsystem.remote.access.dao.store.StockItemDAO;
+import org.cocome.tradingsystem.remote.access.dao.store.StoreDAO;
+import org.cocome.tradingsystem.remote.access.dao.usermanager.CustomerDAO;
+import org.cocome.tradingsystem.remote.access.dao.usermanager.LoginUserDAO;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -35,41 +63,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBElement;
-
-import org.apache.log4j.Logger;
-import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
-import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductDAO;
-import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductSupplierDAO;
-import org.cocome.tradingsystem.remote.access.dao.enterprise.TradingEnterpriseDAO;
-import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.BooleanCustomProductParameterDAO;
-import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.NorminalCustomProductParameterDAO;
-import org.cocome.tradingsystem.remote.access.dao.plant.PlantDAO;
-import org.cocome.tradingsystem.remote.access.dao.plant.parameter.BooleanPlantOperationParameterDAO;
-import org.cocome.tradingsystem.remote.access.dao.plant.parameter.NorminalPlantOperationParameterDAO;
-import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitClassDAO;
-import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitDAO;
-import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitOperationDAO;
-import org.cocome.tradingsystem.remote.access.dao.store.ProductOrderDAO;
-import org.cocome.tradingsystem.remote.access.dao.store.StockItemDAO;
-import org.cocome.tradingsystem.remote.access.dao.store.StoreDAO;
-import org.cocome.tradingsystem.remote.access.dao.usermanager.CustomerDAO;
-import org.cocome.tradingsystem.remote.access.dao.usermanager.LoginUserDAO;
-import de.kit.ipd.java.utils.framework.table.Table;
-import de.kit.ipd.java.utils.framework.table.TableObjectFactory;
-import de.kit.ipd.java.utils.parsing.csv.CSVParser;
-import de.kit.ipd.java.utils.time.TimeUtils;
-import de.kit.ipd.java.utils.xml.JAXBEngine;
-
-import de.kit.ipd.java.utils.xml.XML;
-import org.cocome.tradingsystem.remote.access.DatabaseAccess;
-import org.cocome.tradingsystem.remote.access.Notification;
-
-import cocome.cloud.sa.entities.Message;
-import cocome.cloud.sa.entities.MessageEntry;
-import cocome.cloud.sa.query.IQueryConst;
-import cocome.cloud.sa.query.parsing.QueryParser;
-import cocome.cloud.sa.serviceprovider.Service;
-import cocome.cloud.sa.serviceprovider.ServiceProvider;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Servlet implementation for the ServiceProviderDatabase-Service. This Service
@@ -109,6 +110,9 @@ public class ServiceProviderDatabase extends HttpServlet {
     private ProductDAO productDAO;
 
     @Inject
+    private CustomProductDAO customProductDAO;
+
+    @Inject
     private PlantDAO plantDAO;
 
     @Inject
@@ -122,6 +126,27 @@ public class ServiceProviderDatabase extends HttpServlet {
 
     @Inject
     private NorminalPlantOperationParameterDAO norminalPlantOperationParameterDAO;
+
+    @Inject
+    private ConstExpressionDAO constExpressionDAO;
+
+    @Inject
+    private ConditionalExpressionDAO conditionalExpressionDAO;
+
+    @Inject
+    private EntryPointDAO entryPointDAO;
+
+    @Inject
+    private EntryPointInteractionDAO entryPointInteractionDAO;
+
+    @Inject
+    private ParameterInteractionDAO parameterInteractionDAO;
+
+    @Inject
+    private PlantOperationDAO plantOperationDAO;
+
+    @Inject
+    private RecipeDAO recipeDAO;
 
     @Inject
     private ProductionUnitClassDAO productionUnitClassDAO;
@@ -163,11 +188,19 @@ public class ServiceProviderDatabase extends HttpServlet {
     @PostConstruct
     protected void initDAOMap() {
         daoMap.put(productDAO.getEntityTypeName(), productDAO);
+        daoMap.put(customProductDAO.getEntityTypeName(), customProductDAO);
         daoMap.put(plantDAO.getEntityTypeName(), plantDAO);
         daoMap.put(booleanCustomProductParameterDAO.getEntityTypeName(), booleanCustomProductParameterDAO);
         daoMap.put(norminalCustomProductParameterDAO.getEntityTypeName(), norminalCustomProductParameterDAO);
         daoMap.put(booleanPlantOperationParameterDAO.getEntityTypeName(), booleanPlantOperationParameterDAO);
         daoMap.put(norminalPlantOperationParameterDAO.getEntityTypeName(), norminalPlantOperationParameterDAO);
+        daoMap.put(constExpressionDAO.getEntityTypeName(), constExpressionDAO);
+        daoMap.put(conditionalExpressionDAO.getEntityTypeName(), conditionalExpressionDAO);
+        daoMap.put(entryPointDAO.getEntityTypeName(), entryPointDAO);
+        daoMap.put(entryPointInteractionDAO.getEntityTypeName(), entryPointInteractionDAO);
+        daoMap.put(parameterInteractionDAO.getEntityTypeName(), parameterInteractionDAO);
+        daoMap.put(plantOperationDAO.getEntityTypeName(), plantOperationDAO);
+        daoMap.put(recipeDAO.getEntityTypeName(), recipeDAO);
         daoMap.put(productionUnitOperationDAO.getEntityTypeName(), productionUnitOperationDAO);
         daoMap.put(productionUnitClassDAO.getEntityTypeName(), productionUnitClassDAO);
         daoMap.put(productionUnitDAO.getEntityTypeName(), productionUnitDAO);
@@ -186,7 +219,7 @@ public class ServiceProviderDatabase extends HttpServlet {
 
     // TODO
     /*
-	 * Problem: URLEncoding
+     * Problem: URLEncoding
 	 * If the request url is encoded, it has to be decoded first!Otherwise the query is not
 	 * working
 	 */
@@ -240,7 +273,7 @@ public class ServiceProviderDatabase extends HttpServlet {
             String next;
             for (final Enumeration<String> param = request.getParameterNames(); param.hasMoreElements(); ) {
                 next = param.nextElement();
-                if(next.startsWith("query.")) {
+                if (next.startsWith("query.")) {
                     this.dispatchQueryWriteRequest(next, request, response);
                 }
             }
@@ -605,7 +638,7 @@ public class ServiceProviderDatabase extends HttpServlet {
             response.setContentType("text/xml");
             final PrintWriter writer = response.getWriter();
             final XML xmlResult = JAXBEngine.getInstance().write(spDatabase);
-            if(xmlResult != null) {
+            if (xmlResult != null) {
                 writer.append(xmlResult.toString());
             }
             writer.close();
