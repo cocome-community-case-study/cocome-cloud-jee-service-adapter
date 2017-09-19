@@ -11,7 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.util.List;
 
-public class ProductionUnitOperationTest {
+public class ProductionUnitOperationDAOTest {
 
     private ProductionUnitOperationDAO pucDAO = TestUtils.injectFakeEJB(ProductionUnitOperationDAO.class);
 
@@ -44,7 +44,8 @@ public class ProductionUnitOperationTest {
                 .createQuery("SELECT op from ProductionUnitOperation op WHERE op.productionUnitClass.id = "
                         + puc.getId(), ProductionUnitOperation.class).getResultList();
 
-        final String expectedTableContent = String.format("ProductionUnitOperationId;ProductionUnitOperationOID;ProductionUnitClassId\n" +
+        final String expectedTableContent = String.format("ProductionUnitOperationId;ProductionUnitOperationOID;" +
+                "ProductionUnitClassId\n" +
                 "%2$d;_1_2_1_P2_O1;%1$d\n" +
                 "%3$d;_1_2_1_P2_O2;%1$d", puc.getId(), pucOp1.getId(), pucOp2.getId());
 
