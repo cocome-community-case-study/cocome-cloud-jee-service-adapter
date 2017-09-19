@@ -3,6 +3,7 @@ package org.cocome.tradingsystem.remote.access.dao.enterprise;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct;
+import org.cocome.tradingsystem.inventory.data.plant.recipe.Recipe;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.AbstractDAO;
 
@@ -25,6 +26,7 @@ public class CustomProductDAO extends AbstractDAO<CustomProduct> {
     private static final String BARCODE_COL = CustomProduct.class.getSimpleName() + "Barcode";
     private static final String NAME_COL = CustomProduct.class.getSimpleName() + "Location";
     private static final String PURCHASE_PRICE_COL = CustomProduct.class.getSimpleName() + "PurchasePrice";
+    private static final String RECIPE_ID_COL = Recipe.class.getSimpleName() + "Id";
 
     @Override
     public Class<CustomProduct> getEntityType() {
@@ -37,7 +39,8 @@ public class CustomProductDAO extends AbstractDAO<CustomProduct> {
         table.addHeader(ID_COL,
                 BARCODE_COL,
                 NAME_COL,
-                PURCHASE_PRICE_COL);
+                PURCHASE_PRICE_COL,
+                RECIPE_ID_COL);
 
         int row = 0;
         for (final CustomProduct entity : entities) {
@@ -45,6 +48,9 @@ public class CustomProductDAO extends AbstractDAO<CustomProduct> {
             table.set(row, 1, String.valueOf(entity.getBarcode()));
             table.set(row, 2, entity.getName());
             table.set(row, 3, String.valueOf(entity.getPurchasePrice()));
+            table.set(row, 4, entity.getProductionRecipe() != null
+                    ? String.valueOf(entity.getProductionRecipe().getId())
+                    : "null");
             row++;
         }
         return table;
@@ -63,12 +69,14 @@ public class CustomProductDAO extends AbstractDAO<CustomProduct> {
             final Column<String> colBarcode = table.getColumnByName(i, BARCODE_COL);
             final Column<String> colName = table.getColumnByName(i, NAME_COL);
             final Column<String> colPurchasePrice = table.getColumnByName(i, PURCHASE_PRICE_COL);
+            final Column<String> colRecipeId = table.getColumnByName(i, RECIPE_ID_COL);
 
             final CustomProduct product = getOrCreateReferencedEntity(CustomProduct.class, colId, em);
 
             product.setBarcode(Long.valueOf(colBarcode.getValue()));
             product.setName(colName.getValue());
             product.setPurchasePrice(Double.valueOf(colPurchasePrice.getValue()));
+            product.setProductionRecipe(getNullableReferencedEntity(Recipe.class, colRecipeId, em));
 
             entities.add(product);
         }

@@ -125,6 +125,15 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
         return getReferencedEntity(entityType, entity.getId(), em);
     }
 
+    protected <T> T getNullableReferencedEntity(final Class<T> entityClass,
+                                                final Column<String> colId,
+                                                final EntityManager em) {
+        if (colId == null) {
+            return null;
+        }
+        return em.find(entityClass, Long.valueOf(colId.getValue()));
+    }
+
     protected <T> T getReferencedEntity(final Class<T> entityClass,
                                         final Column<String> colId,
                                         final EntityManager em) {
