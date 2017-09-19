@@ -57,7 +57,7 @@ public class ProductionUnitClass implements Serializable, QueryableById {
     /**
      * @return The enterprise which the Plant belongs to
      */
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @NotNull
     public TradingEnterprise getEnterprise() {
         return this.enterprise;

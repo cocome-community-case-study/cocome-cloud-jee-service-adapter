@@ -28,6 +28,7 @@ public class ProductionUnitClassDAOTest {
         puc.setName("xPPU v 0.1 Beta");
 
         tx.begin();
+        em.persist(enterprise);
         em.persist(puc);
         tx.commit();
 
