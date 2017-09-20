@@ -24,9 +24,7 @@ public abstract class AbstractInteractionEntityDAO<FromType extends NameableEnti
 
     private static final String ID_COL =  "Id";
     private static final String FROM_ID_COL = "ToId";
-    private static final String FROM_NAME_COL = "ToName";
     private static final String TO_ID_COL = "FromId";
-    private static final String TO_NAME_COL = "FromName";
 
     @Override
     public Table<String> toTable(final List<T> list) {
@@ -35,16 +33,12 @@ public abstract class AbstractInteractionEntityDAO<FromType extends NameableEnti
         table.addHeader(
                 prefix + ID_COL,
                 prefix  + FROM_ID_COL,
-                prefix  + FROM_NAME_COL,
-                prefix  + TO_ID_COL,
-                prefix  + TO_NAME_COL);
+                prefix  + TO_ID_COL);
         final int len = list.size();
         for (int i = 0; i < len; i++) {
             table.set(i, 0, String.valueOf(list.get(i).getId()));
             table.set(i, 1, String.valueOf(list.get(i).getFrom().getId()));
-            table.set(i, 2, list.get(i).getFrom().getName());
-            table.set(i, 3, String.valueOf(list.get(i).getTo().getId()));
-            table.set(i, 4, list.get(i).getTo().getName());
+            table.set(i, 2, String.valueOf(list.get(i).getTo().getId()));
         }
         return table;
     }
@@ -60,22 +54,16 @@ public abstract class AbstractInteractionEntityDAO<FromType extends NameableEnti
             final String prefix = this.getEntityType().getSimpleName();
             final Column<String> colId = table.getColumnByName(i, prefix + ID_COL);
             final Column<String> colFromId = table.getColumnByName(i, prefix + FROM_ID_COL);
-            final Column<String> colFromName = table.getColumnByName(i, prefix + FROM_NAME_COL);
             final Column<String> colToId = table.getColumnByName(i, prefix + TO_ID_COL);
-            final Column<String> colToName = table.getColumnByName(i, prefix + TO_NAME_COL);
 
             final T entryPoint = getOrCreateReferencedEntity(this.getEntityType(), colId, em);
-            final FromType from;
-            final ToType to;
             try {
-                from = getReferencedEntity(entryPoint.getFromClass(),
+                entryPoint.setFrom(getReferencedEntity(entryPoint.getFromClass(),
                         Long.valueOf(colFromId.getValue()),
-                        em);
-                from.setName(colFromName.getValue());
-                to = getReferencedEntity(entryPoint.getToClass(),
+                        em));
+                entryPoint.setTo(getReferencedEntity(entryPoint.getToClass(),
                         Long.valueOf(colToId.getValue()),
-                        em);
-                to.setName(colToName.getValue());
+                        em));
             } catch (final EntityNotFoundException e) {
                 notification.addNotification(
                         sourceOperation,

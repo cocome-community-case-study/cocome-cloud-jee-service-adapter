@@ -14,19 +14,56 @@ import javax.persistence.*;
  * @author Rudolf Biczok
  */
 @Entity
-public class ParameterInteraction extends InteractionEntity<
+public class ParameterInteraction implements InteractionEntity<
         CustomProductParameter,
         PlantOperationParameter> {
     private static final long serialVersionUID = 1L;
 
-    @SuppressWarnings("unchecked")
+    private long id;
+
+    private CustomProductParameter from;
+    private PlantOperationParameter to;
+
+    @Override
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public long getId() {
+        return this.id;
+    }
+
+    @Override
+    public void setId(final long id) {
+        this.id = id;
+    }
+
+    @Override
+    @OneToOne(fetch = FetchType.EAGER)
+    public CustomProductParameter getFrom() {
+        return from;
+    }
+
+    @Override
+    public void setFrom(CustomProductParameter from) {
+        this.from = from;
+    }
+
+    @Override
+    @OneToOne(fetch = FetchType.EAGER)
+    public PlantOperationParameter getTo() {
+        return to;
+    }
+
+    @Override
+    public void setTo(PlantOperationParameter to) {
+        this.to = to;
+    }
+
     @Transient
     @Override
     public Class<CustomProductParameter> getFromClass() {
         return CustomProductParameter.class;
     }
 
-    @SuppressWarnings("unchecked")
     @Transient
     @Override
     public Class<PlantOperationParameter> getToClass() {

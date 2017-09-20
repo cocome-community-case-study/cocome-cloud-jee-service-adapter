@@ -27,8 +27,7 @@ public class RecipeDAO extends AbstractDAO<Recipe> {
 
     private static final String ID_COL = Recipe.class.getSimpleName() + "Id";
     private static final String OP_ID_COL = PlantOperation.class.getSimpleName() + "Id";
-    private static final String EP_IN_ID_COL = EntryPointInteraction.class.getSimpleName() + "InputId";
-    private static final String EP_OUT_ID_COL = EntryPointInteraction.class.getSimpleName() + "OutputId";
+    private static final String EP_ID_COL = EntryPointInteraction.class.getSimpleName() + "Id";
     private static final String PARAM_ID_COL = ParameterInteraction.class.getSimpleName() + "Id";
 
     @Override
@@ -39,14 +38,13 @@ public class RecipeDAO extends AbstractDAO<Recipe> {
     @Override
     public Table<String> toTable(final List<Recipe> list) {
         final Table<String> table = new Table<>();
-        table.addHeader(ID_COL, OP_ID_COL, EP_IN_ID_COL, EP_OUT_ID_COL, PARAM_ID_COL);
+        table.addHeader(ID_COL, OP_ID_COL, EP_ID_COL, PARAM_ID_COL);
         final int len = list.size();
         for (int i = 0; i < len; i++) {
             table.set(i, 0, String.valueOf(list.get(i).getId()));
             table.set(i, 1, joinValues(list.get(i).getOperations()));
-            table.set(i, 2, joinValues(list.get(i).getInputInteractions()));
-            table.set(i, 3, joinValues(list.get(i).getOutputInteractions()));
-            table.set(i, 4, joinValues(list.get(i).getParameterInteractions()));
+            table.set(i, 2, joinValues(list.get(i).getEntryPointInteractions()));
+            table.set(i, 2, joinValues(list.get(i).getParameterInteractions()));
         }
         return table;
     }
@@ -61,8 +59,7 @@ public class RecipeDAO extends AbstractDAO<Recipe> {
         for (int i = 0; i < len; i++) {
             final Column<String> colId = table.getColumnByName(i, ID_COL);
             final Column<String> colOpId = table.getColumnByName(i, OP_ID_COL);
-            final Column<String> colEpInId = table.getColumnByName(i, EP_IN_ID_COL);
-            final Column<String> colEpOutId = table.getColumnByName(i, EP_OUT_ID_COL);
+            final Column<String> colEpId = table.getColumnByName(i, EP_ID_COL);
             final Column<String> colParamId = table.getColumnByName(i, PARAM_ID_COL);
 
             final Recipe recipe = getOrCreateReferencedEntity(Recipe.class, colId, em);
@@ -71,13 +68,9 @@ public class RecipeDAO extends AbstractDAO<Recipe> {
                         PlantOperation.class,
                         colOpId,
                         em));
-                recipe.setInputInteractions(getReferencedEntities(
+                recipe.setEntryPointInteractions(getReferencedEntities(
                         EntryPointInteraction.class,
-                        colEpInId,
-                        em));
-                recipe.setOutputInteractions(getReferencedEntities(
-                        EntryPointInteraction.class,
-                        colEpOutId,
+                        colEpId,
                         em));
                 recipe.setParameterInteractions(getReferencedEntities(
                         ParameterInteraction.class,

@@ -21,8 +21,7 @@ public class Recipe implements Serializable, QueryableById {
 
     // Represent the edges of the recipe graph
     private Collection<ParameterInteraction> parameterInteractions;
-    private Collection<EntryPointInteraction> inputInteractions;
-    private Collection<EntryPointInteraction> outputInteractions;
+    private Collection<EntryPointInteraction> entryPointInteractions;
 
     /**
      * @return A unique identifier of this Plant.
@@ -62,30 +61,15 @@ public class Recipe implements Serializable, QueryableById {
      * @return the list of incoming interactions
      */
     @OneToMany
-    public Collection<EntryPointInteraction> getInputInteractions() {
-        return inputInteractions;
+    public Collection<EntryPointInteraction> getEntryPointInteractions() {
+        return entryPointInteractions;
     }
 
     /**
      * @param inputInteractions the list of incoming interactions
      */
-    public void setInputInteractions(Collection<EntryPointInteraction> inputInteractions) {
-        this.inputInteractions = inputInteractions;
-    }
-
-    /**
-     * @return the list of outgoing interactions
-     */
-    @OneToMany
-    public Collection<EntryPointInteraction> getOutputInteractions() {
-        return outputInteractions;
-    }
-
-    /**
-     * @param outputInteractions the list of outgoing interaction
-     */
-    public void setOutputInteractions(Collection<EntryPointInteraction> outputInteractions) {
-        this.outputInteractions = outputInteractions;
+    public void setEntryPointInteractions(Collection<EntryPointInteraction> inputInteractions) {
+        this.entryPointInteractions = inputInteractions;
     }
 
     /**

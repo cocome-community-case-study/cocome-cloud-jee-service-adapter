@@ -10,6 +10,7 @@ import java.util.Collection;
 
 /**
  * Represents an operation provided by an plant
+ *
  * @author Rudolf Biczok
  */
 @Entity
@@ -34,8 +35,7 @@ public class PlantOperation implements Serializable, NameableEntity {
     }
 
     /**
-     * @param id
-     *            a unique identifier of this Plant
+     * @param id a unique identifier of this Plant
      */
     @Override
     public void setId(final long id) {
@@ -54,8 +54,7 @@ public class PlantOperation implements Serializable, NameableEntity {
     }
 
     /**
-     * @param name
-     *            the name of the Plant
+     * @param name the name of the Plant
      */
     @Override
     public void setName(final String name) {
@@ -65,6 +64,14 @@ public class PlantOperation implements Serializable, NameableEntity {
     /**
      * @return all material classes that are required for operation execution
      */
+    @JoinTable(
+            name = "PLANTOPERATION_INPUTENTRYPOINT",
+            joinColumns = {
+                    @JoinColumn(name = "ENTRYPOINT_ID"),
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "PLANTOPERATION_ID"),
+            })
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Collection<EntryPoint> getInputEntryPoint() {
         return inputEntryPoint;
@@ -80,6 +87,14 @@ public class PlantOperation implements Serializable, NameableEntity {
     /**
      * @return all material classes that results after the operation execution
      */
+    @JoinTable(
+            name = "PLANTOPERATION_OUTPUTENTRYPOINT",
+            joinColumns = {
+                    @JoinColumn(name = "ENTRYPOINT_ID"),
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "PLANTOPERATION_ID"),
+            })
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Collection<EntryPoint> getOutputEntryPoint() {
         return outputEntryPoint;
