@@ -81,7 +81,7 @@ public class ProductionUnit implements Serializable, QueryableById {
     /**
      * @return the production unit class
      */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @NotNull
     public ProductionUnitClass getProductionUnitClass() {
         return productionUnitClass;
@@ -97,7 +97,7 @@ public class ProductionUnit implements Serializable, QueryableById {
     /**
      * @return the plant that owns this production unit
      */
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @NotNull
     public Plant getPlant() {
         return plant;

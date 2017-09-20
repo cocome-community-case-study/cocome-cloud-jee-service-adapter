@@ -24,30 +24,37 @@ public class ConstExpressionDAOTest {
     public void convertToTableContent() throws Exception {
         final EntityManager em = TestUtils.TEST_EMF.createEntityManager();
         final EntityTransaction tx = em.getTransaction();
+        tx.begin();
 
         final TradingEnterprise enterprise = new TradingEnterprise();
+        em.persist(enterprise);
 
         final ProductionUnitClass puc = new ProductionUnitClass();
         puc.setEnterprise(enterprise);
+        em.persist(puc);
 
         final ProductionUnitOperation op1 = new ProductionUnitOperation();
         op1.setProductionUnitClass(puc);
         op1.setOperationId("OP_1");
+        em.persist(op1);
 
         final ProductionUnitOperation op2 = new ProductionUnitOperation();
         op2.setProductionUnitClass(puc);
         op2.setOperationId("OP_2");
+        em.persist(op2);
 
         final Plant plant = new Plant();
         plant.setEnterprise(enterprise);
+        em.persist(plant);
+
         final PlantOperation operation = new PlantOperation();
         operation.setPlant(plant);
+        em.persist(operation);
 
         final ConstExpression constExp = new ConstExpression();
         constExp.setPlantOperation(operation);
         constExp.setOperations(Arrays.asList(op1, op1, op2));
 
-        tx.begin();
         em.persist(constExp);
         tx.commit();
 

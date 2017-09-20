@@ -96,7 +96,7 @@ public class PlantOperation implements Serializable, NameableEntity {
      * @return the plant that owns this production unit
      */
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     public Plant getPlant() {
         return plant;
     }

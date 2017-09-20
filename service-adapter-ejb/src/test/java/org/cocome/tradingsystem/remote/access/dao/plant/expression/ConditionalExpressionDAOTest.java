@@ -28,43 +28,54 @@ public class ConditionalExpressionDAOTest {
         tx.begin();
 
         final TradingEnterprise enterprise = new TradingEnterprise();
+        em.persist(enterprise);
 
         final ProductionUnitClass puc = new ProductionUnitClass();
         puc.setEnterprise(enterprise);
+        em.persist(puc);
 
         final ProductionUnitOperation op1 = new ProductionUnitOperation();
         op1.setProductionUnitClass(puc);
         op1.setOperationId("OP_1");
+        em.persist(op1);
 
         final ProductionUnitOperation op2 = new ProductionUnitOperation();
         op2.setProductionUnitClass(puc);
         op2.setOperationId("OP_2");
+        em.persist(op2);
 
         final ProductionUnitOperation op3 = new ProductionUnitOperation();
         op3.setProductionUnitClass(puc);
         op3.setOperationId("OP_3");
+        em.persist(op3);
 
         final Plant plant = new Plant();
         plant.setEnterprise(enterprise);
+        em.persist(plant);
+
         final PlantOperation operation = new PlantOperation();
         operation.setPlant(plant);
+        em.persist(operation);
 
         final ConstExpression constExp1 = new ConstExpression();
         constExp1.setPlantOperation(operation);
         constExp1.setOperations(Arrays.asList(op1, op1, op1));
+        em.persist(constExp1);
 
         final ConstExpression constExp2 = new ConstExpression();
         constExp2.setPlantOperation(operation);
         constExp2.setOperations(Arrays.asList(op2, op1));
+        em.persist(constExp2);
 
         final ConstExpression constExp3 = new ConstExpression();
         constExp3.setPlantOperation(operation);
         constExp3.setOperations(Arrays.asList(op2, op1, op3));
+        em.persist(constExp3);
 
         final NorminalPlantOperationParameter param = new NorminalPlantOperationParameter();
-        final PlantOperation op = new PlantOperation();
-        op.setPlant(plant);
-        param.setPlantOperation(op);
+        operation.setPlant(plant);
+        param.setPlantOperation(operation);
+        em.persist(param);
 
         final ConditionalExpression conditionExp = new ConditionalExpression();
         conditionExp.setPlantOperation(operation);
@@ -72,11 +83,8 @@ public class ConditionalExpressionDAOTest {
         conditionExp.setParameterValue("BRAINS");
         conditionExp.setOnTrueExpressions(Arrays.asList(constExp1, constExp2));
         conditionExp.setOnFalseExpressions(Arrays.asList(constExp3, constExp3));
-
-        em.persist(constExp1);
-        em.persist(constExp2);
-        em.persist(constExp3);
         em.persist(conditionExp);
+
         tx.commit();
 
         final List<ConditionalExpression> queriedInstances = TestUtils.TEST_EMF.createEntityManager()

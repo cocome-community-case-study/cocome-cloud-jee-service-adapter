@@ -21,7 +21,7 @@ public class ConditionalExpression extends Expression {
     /**
      * @return the parameter to be tested
      */
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     public PlantOperationParameter getParameter() {
         return parameter;
     }
@@ -62,7 +62,7 @@ public class ConditionalExpression extends Expression {
             inverseJoinColumns = {
                     @JoinColumn(name = "CONDITIONALEXPRESSION_ID"),
             })
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.PERSIST)
     public List<Expression> getOnTrueExpressions() {
         return onTrueExpressions;
     }
@@ -89,7 +89,7 @@ public class ConditionalExpression extends Expression {
             inverseJoinColumns = {
                     @JoinColumn(name = "CONDITIONALEXPRESSION_ID"),
             })
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.PERSIST)
     public List<Expression> getOnFalseExpressions() {
         return onFalseExpressions;
     }

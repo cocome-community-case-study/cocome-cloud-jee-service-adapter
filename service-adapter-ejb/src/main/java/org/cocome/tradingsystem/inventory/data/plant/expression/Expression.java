@@ -40,7 +40,7 @@ public class Expression implements Serializable, QueryableById {
      * @return the associated plant operation
      */
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     public PlantOperation getPlantOperation() {
         return plantOperation;
     }

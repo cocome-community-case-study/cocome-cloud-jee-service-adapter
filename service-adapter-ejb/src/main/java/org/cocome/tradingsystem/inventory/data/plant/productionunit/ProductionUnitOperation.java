@@ -64,7 +64,7 @@ public class ProductionUnitOperation implements Serializable, QueryableById {
      * @return the associated {@link ProductionUnitClass}
      */
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     public ProductionUnitClass getProductionUnitClass() {
         return productionUnitClass;
     }

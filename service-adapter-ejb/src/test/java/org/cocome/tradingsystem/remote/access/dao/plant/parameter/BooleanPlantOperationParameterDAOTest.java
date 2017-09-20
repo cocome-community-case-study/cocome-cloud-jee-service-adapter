@@ -20,20 +20,25 @@ public class BooleanPlantOperationParameterDAOTest {
     public void convertToTableContent() throws Exception {
         final EntityManager em = TestUtils.TEST_EMF.createEntityManager();
         final EntityTransaction tx = em.getTransaction();
+        tx.begin();
 
         final TradingEnterprise enterprise = new TradingEnterprise();
+        em.persist(enterprise);
+
         final Plant plant = new Plant();
         plant.setEnterprise(enterprise);
+        em.persist(plant);
+
         final PlantOperation operation = new PlantOperation();
         operation.setPlant(plant);
+        em.persist(operation);
 
         final BooleanPlantOperationParameter param = new BooleanPlantOperationParameter();
         param.setPlantOperation(operation);
         param.setCategory("Ingredients");
         param.setName("With Chocolate");
-
-        tx.begin();
         em.persist(param);
+
         tx.commit();
 
         final List<BooleanPlantOperationParameter> queryedInstances = TestUtils.TEST_EMF.createEntityManager()

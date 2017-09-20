@@ -64,7 +64,7 @@ public class CustomProductParameter implements IParameter {
     }
 
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     public CustomProduct getProduct() {
         return product;
     }

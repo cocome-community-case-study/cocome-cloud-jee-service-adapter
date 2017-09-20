@@ -30,6 +30,7 @@ public class NorminalCustomProductParameterDAOTest {
         param.setOptions(new HashSet<>(Arrays.asList("Apple", "Banana", "Coconut")));
 
         tx.begin();
+        em.persist(product);
         em.persist(param);
         tx.commit();
 

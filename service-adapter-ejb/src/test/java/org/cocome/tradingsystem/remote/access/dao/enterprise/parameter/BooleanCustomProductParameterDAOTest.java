@@ -18,17 +18,18 @@ public class BooleanCustomProductParameterDAOTest {
     public void convertToTableContent() throws Exception {
         final EntityManager em = TestUtils.TEST_EMF.createEntityManager();
         final EntityTransaction tx = em.getTransaction();
+        tx.begin();
 
         final CustomProduct product = new CustomProduct();
         product.setBarcode(12345);
+        em.persist(product);
 
         final BooleanCustomProductParameter param = new BooleanCustomProductParameter();
         param.setProduct(product);
         param.setCategory("Ingredients");
         param.setName("With Chocolate");
-
-        tx.begin();
         em.persist(param);
+
         tx.commit();
 
         final List<BooleanCustomProductParameter> queriedInstances = TestUtils.TEST_EMF.createEntityManager()

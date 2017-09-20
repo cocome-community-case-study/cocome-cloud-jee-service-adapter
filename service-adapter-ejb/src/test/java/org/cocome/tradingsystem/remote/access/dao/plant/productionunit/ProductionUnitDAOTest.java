@@ -58,6 +58,10 @@ public class ProductionUnitDAOTest {
         pu3.setInterfaceUrl("pu3.mystery.com");
 
         tx.begin();
+        em.persist(enterprise);
+        em.persist(plant1);
+        em.persist(plant2);
+        em.persist(puc);
         em.persist(pu1);
         em.persist(pu2);
         em.persist(pu3);

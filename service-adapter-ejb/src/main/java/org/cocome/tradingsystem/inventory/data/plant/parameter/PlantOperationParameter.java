@@ -75,7 +75,7 @@ public class PlantOperationParameter implements IParameter {
      * @return the corresponding plant operation
      */
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     public PlantOperation getPlantOperation() {
         return plantOperation;
     }

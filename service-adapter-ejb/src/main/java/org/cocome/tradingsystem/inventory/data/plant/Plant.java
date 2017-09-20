@@ -81,7 +81,7 @@ public class Plant implements Serializable, QueryableById {
     /**
      * @return The enterprise which the Plant belongs to
      */
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @NotNull
     public TradingEnterprise getEnterprise() {
         return this.enterprise;

@@ -22,21 +22,26 @@ public class NorminalPlantOperationParameterDAOTest {
     public void convertToTableContent() throws Exception {
         final EntityManager em = TestUtils.TEST_EMF.createEntityManager();
         final EntityTransaction tx = em.getTransaction();
+        tx.begin();
 
         final TradingEnterprise enterprise = new TradingEnterprise();
+        em.persist(enterprise);
+
         final Plant plant = new Plant();
         plant.setEnterprise(enterprise);
+        em.persist(plant);
+
         final PlantOperation operation = new PlantOperation();
         operation.setPlant(plant);
+        em.persist(operation);
 
         final NorminalPlantOperationParameter param = new NorminalPlantOperationParameter();
         param.setPlantOperation(operation);
         param.setCategory("Ingredients");
         param.setName("Fruits");
         param.setOptions(new HashSet<>(Arrays.asList("Apple", "Banana", "Coconut")));
-
-        tx.begin();
         em.persist(param);
+
         tx.commit();
 
         final List<NorminalPlantOperationParameter> queriedInstances = TestUtils.TEST_EMF.createEntityManager()

@@ -35,6 +35,7 @@ public class ProductionUnitOperationDAOTest {
         pucOp2.setProductionUnitClass(puc);
 
         tx.begin();
+        em.persist(puc);
         em.persist(enterprise);
         em.persist(pucOp1);
         em.persist(pucOp2);
