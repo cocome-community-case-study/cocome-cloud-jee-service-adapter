@@ -4,7 +4,6 @@ import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.plant.expression.ConstExpression;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation;
-import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.AbstractDAO;
 
@@ -24,7 +23,6 @@ import java.util.List;
 @LocalBean
 public class ConstExpressionDAO extends AbstractDAO<ConstExpression> {
 
-    private static final String PLANT_OP_ID_COL = PlantOperation.class.getSimpleName() + "Id";
     private static final String ID_COL = ConstExpression.class.getSimpleName() + "Id";
     private static final String OPTS_COL = ConstExpression.class.getSimpleName() + "Operations";
 
@@ -36,12 +34,11 @@ public class ConstExpressionDAO extends AbstractDAO<ConstExpression> {
     @Override
     public Table<String> toTable(final List<ConstExpression> list) {
         final Table<String> table = new Table<>();
-        table.addHeader(PLANT_OP_ID_COL, ID_COL, OPTS_COL);
+        table.addHeader(ID_COL, OPTS_COL);
         final int len = list.size();
         for (int i = 0; i < len; i++) {
-            table.set(i, 0, String.valueOf(list.get(i).getPlantOperation().getId()));
-            table.set(i, 1, String.valueOf(list.get(i).getId()));
-            table.set(i, 2, joinValues(list.get(i).getOperations()));
+            table.set(i, 0, String.valueOf(list.get(i).getId()));
+            table.set(i, 1, joinValues(list.get(i).getOperations()));
         }
         return table;
     }
@@ -54,7 +51,6 @@ public class ConstExpressionDAO extends AbstractDAO<ConstExpression> {
         final int len = table.size();
         final List<ConstExpression> list = new ArrayList<>(len);
         for (int i = 0; i < len; i++) {
-            final Column<String> colPlantOptId = table.getColumnByName(i, PLANT_OP_ID_COL);
             final Column<String> colId = table.getColumnByName(i, ID_COL);
             final Column<String> colOpts = table.getColumnByName(i, OPTS_COL);
 
@@ -62,10 +58,6 @@ public class ConstExpressionDAO extends AbstractDAO<ConstExpression> {
                     ConstExpression.class, colId, em);
 
             try {
-                param.setPlantOperation(getReferencedEntity(
-                        PlantOperation.class,
-                        colPlantOptId,
-                        em));
                 param.setOperations(getReferencedEntities(
                         ProductionUnitOperation.class,
                         colOpts,

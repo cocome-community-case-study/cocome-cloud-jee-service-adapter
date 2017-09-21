@@ -58,17 +58,14 @@ public class ConditionalExpressionDAOTest {
         em.persist(operation);
 
         final ConstExpression constExp1 = new ConstExpression();
-        constExp1.setPlantOperation(operation);
         constExp1.setOperations(Arrays.asList(op1, op1, op1));
         em.persist(constExp1);
 
         final ConstExpression constExp2 = new ConstExpression();
-        constExp2.setPlantOperation(operation);
         constExp2.setOperations(Arrays.asList(op2, op1));
         em.persist(constExp2);
 
         final ConstExpression constExp3 = new ConstExpression();
-        constExp3.setPlantOperation(operation);
         constExp3.setOperations(Arrays.asList(op2, op1, op3));
         em.persist(constExp3);
 
@@ -78,7 +75,6 @@ public class ConditionalExpressionDAOTest {
         em.persist(param);
 
         final ConditionalExpression conditionExp = new ConditionalExpression();
-        conditionExp.setPlantOperation(operation);
         conditionExp.setParameter(param);
         conditionExp.setParameterValue("BRAINS");
         conditionExp.setOnTrueExpressions(Arrays.asList(constExp1, constExp2));
@@ -88,14 +84,14 @@ public class ConditionalExpressionDAOTest {
         tx.commit();
 
         final List<ConditionalExpression> queriedInstances = TestUtils.TEST_EMF.createEntityManager()
-                .createQuery("SELECT exp from ConditionalExpression exp", ConditionalExpression.class).getResultList();
+                .createQuery("SELECT exp from ConditionalExpression exp WHERE exp.id = " + conditionExp.getId(),
+                        ConditionalExpression.class).getResultList();
 
         final String expectedTableContent = String.format(
-                "PlantOperationId;PlantOperationParameterId;ConditionalExpressionId;"
+                "PlantOperationParameterId;ConditionalExpressionId;"
                 + "ConditionalExpressionParameterValue;ConditionalExpressionOnTrueExpressions;"
                 + "ConditionalExpressionOnFalseExpressions\n"
-                + "%d;%d;%d;BRAINS;%d,%d;%6$d,%6$d",
-                operation.getId(),
+                + "%d;%d;BRAINS;%d,%d;%5$d,%5$d",
                 param.getId(),
                 conditionExp.getId(),
                 constExp1.getId(),

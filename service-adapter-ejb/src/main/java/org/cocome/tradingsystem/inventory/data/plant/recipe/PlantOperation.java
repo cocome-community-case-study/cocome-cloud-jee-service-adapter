@@ -2,11 +2,13 @@ package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.NameableEntity;
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
+import org.cocome.tradingsystem.inventory.data.plant.expression.Expression;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Represents an operation provided by an plant
@@ -20,6 +22,8 @@ public class PlantOperation implements Serializable, NameableEntity {
     private long id;
     private String name;
     private Plant plant;
+
+    private List<Expression> expressions;
 
     private Collection<EntryPoint> inputEntryPoint;
     private Collection<EntryPoint> outputEntryPoint;
@@ -59,6 +63,50 @@ public class PlantOperation implements Serializable, NameableEntity {
     @Override
     public void setName(final String name) {
         this.name = name;
+    }
+
+
+    /**
+     * @return the plant that owns this production unit
+     */
+    @NotNull
+    @ManyToOne
+    public Plant getPlant() {
+        return plant;
+    }
+
+    /**
+     * @param plant the plant that owns this production unit
+     */
+    public void setPlant(Plant plant) {
+        this.plant = plant;
+    }
+
+    /**
+     * @return the expressions executed within this operation
+     */
+    //Make sure the execution order of the specified operations is maintained by the DB
+    @OrderColumn(name = "EXEC_ORDER")
+    //Needed to allow multiple uses of the same operation in the same const expression
+    @JoinTable(
+            name = "PLANTOPERATION_EXPRESSION",
+            joinColumns = {
+                    @JoinColumn(name = "EXEC_ORDER"),
+                    @JoinColumn(name = "EXPRESSION_ID"),
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "PLANTOPERATION_ID"),
+            })
+    @OneToMany(cascade = CascadeType.PERSIST)
+    public List<Expression> getExpressions() {
+        return expressions;
+    }
+
+    /**
+     * @param expressions the expressions executed within this operation
+     */
+    public void setExpressions(List<Expression> expressions) {
+        this.expressions = expressions;
     }
 
     /**
@@ -105,21 +153,5 @@ public class PlantOperation implements Serializable, NameableEntity {
      */
     public void setOutputEntryPoint(Collection<EntryPoint> outputMaterial) {
         this.outputEntryPoint = outputMaterial;
-    }
-
-    /**
-     * @return the plant that owns this production unit
-     */
-    @NotNull
-    @ManyToOne
-    public Plant getPlant() {
-        return plant;
-    }
-
-    /**
-     * @param plant the plant that owns this production unit
-     */
-    public void setPlant(Plant plant) {
-        this.plant = plant;
     }
 }

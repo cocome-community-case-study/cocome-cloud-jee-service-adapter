@@ -25,7 +25,6 @@ import java.util.List;
 @LocalBean
 public class ConditionalExpressionDAO extends AbstractDAO<ConditionalExpression> {
 
-    private static final String PLANT_OP_ID_COL = PlantOperation.class.getSimpleName() + "Id";
     private static final String PARAMETER_ID_COL = PlantOperationParameter.class.getSimpleName() + "Id";
     private static final String ID_COL = ConditionalExpression.class.getSimpleName() + "Id";
     private static final String PARAM_VALUE_COL = ConditionalExpression.class.getSimpleName() + "ParameterValue";
@@ -41,7 +40,6 @@ public class ConditionalExpressionDAO extends AbstractDAO<ConditionalExpression>
     public Table<String> toTable(final List<ConditionalExpression> list) {
         final Table<String> table = new Table<>();
         table.addHeader(
-                PLANT_OP_ID_COL,
                 PARAMETER_ID_COL,
                 ID_COL,
                 PARAM_VALUE_COL,
@@ -49,12 +47,11 @@ public class ConditionalExpressionDAO extends AbstractDAO<ConditionalExpression>
                 FALSE_EXPRS_COL);
         final int len = list.size();
         for (int i = 0; i < len; i++) {
-            table.set(i, 0, String.valueOf(list.get(i).getPlantOperation().getId()));
-            table.set(i, 1, String.valueOf(list.get(i).getParameter().getId()));
-            table.set(i, 2, String.valueOf(list.get(i).getId()));
-            table.set(i, 3, String.valueOf(list.get(i).getParameterValue()));
-            table.set(i, 4, joinValues(list.get(i).getOnTrueExpressions()));
-            table.set(i, 5, joinValues(list.get(i).getOnFalseExpressions()));
+            table.set(i, 0, String.valueOf(list.get(i).getParameter().getId()));
+            table.set(i, 1, String.valueOf(list.get(i).getId()));
+            table.set(i, 2, String.valueOf(list.get(i).getParameterValue()));
+            table.set(i, 3, joinValues(list.get(i).getOnTrueExpressions()));
+            table.set(i, 4, joinValues(list.get(i).getOnFalseExpressions()));
         }
         return table;
     }
@@ -67,7 +64,6 @@ public class ConditionalExpressionDAO extends AbstractDAO<ConditionalExpression>
         final int len = table.size();
         final List<ConditionalExpression> list = new ArrayList<>(len);
         for (int i = 0; i < len; i++) {
-            final Column<String> colPlantOptId = table.getColumnByName(i, PLANT_OP_ID_COL);
             final Column<String> colParamId = table.getColumnByName(i, PARAMETER_ID_COL);
             final Column<String> colId = table.getColumnByName(i, ID_COL);
             final Column<String> colParamValue = table.getColumnByName(i, PARAM_VALUE_COL);
@@ -78,10 +74,6 @@ public class ConditionalExpressionDAO extends AbstractDAO<ConditionalExpression>
                     ConditionalExpression.class, colId, em);
 
             try {
-                param.setPlantOperation(getReferencedEntity(
-                        PlantOperation.class,
-                        colPlantOptId,
-                        em));
                 param.setParameter(getReferencedEntity(
                         PlantOperationParameter.class,
                         colParamId,

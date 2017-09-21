@@ -52,7 +52,6 @@ public class ConstExpressionDAOTest {
         em.persist(operation);
 
         final ConstExpression constExp = new ConstExpression();
-        constExp.setPlantOperation(operation);
         constExp.setOperations(Arrays.asList(op1, op1, op2));
 
         em.persist(constExp);
@@ -62,9 +61,8 @@ public class ConstExpressionDAOTest {
                 .createQuery("SELECT exp from ConstExpression exp WHERE exp.id = " + constExp.getId(), ConstExpression.class).getResultList();
 
         final String expectedTableContent = String.format(
-                          "PlantOperationId;ConstExpressionId;ConstExpressionOperations\n"
-                        + "%d;%d;%d,%d,%d",
-                operation.getId(),
+                          "ConstExpressionId;ConstExpressionOperations\n"
+                        + "%d;%d,%d,%d",
                 constExp.getId(),
                 op1.getId(),
                 op1.getId(),

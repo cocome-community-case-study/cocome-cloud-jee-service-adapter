@@ -17,7 +17,6 @@ public class Expression implements Serializable, QueryableById {
     private static final long serialVersionUID = 1L;
 
     private long id;
-    private PlantOperation plantOperation;
 
     /**
      * @return A unique identifier of this Plant.
@@ -35,21 +34,4 @@ public class Expression implements Serializable, QueryableById {
     public void setId(final long id) {
         this.id = id;
     }
-
-    /**
-     * @return the associated plant operation
-     */
-    @NotNull
-    @ManyToOne
-    public PlantOperation getPlantOperation() {
-        return plantOperation;
-    }
-
-    /**
-     * @param plantOperation the associated plant operation
-     */
-    public void setPlantOperation(PlantOperation plantOperation) {
-        this.plantOperation = plantOperation;
-    }
-
 }

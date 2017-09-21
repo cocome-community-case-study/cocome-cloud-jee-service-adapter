@@ -2,6 +2,9 @@ package org.cocome.tradingsystem.remote.access.dao.plant.recipe;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
+import org.cocome.tradingsystem.inventory.data.plant.expression.ConditionalExpression;
+import org.cocome.tradingsystem.inventory.data.plant.expression.ConstExpression;
+import org.cocome.tradingsystem.inventory.data.plant.parameter.PlantOperationParameter;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.EntryPoint;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
 import org.cocome.tradingsystem.remote.access.TestUtils;
@@ -49,6 +52,27 @@ public class PlantOperationDAOTest {
         operation.setOutputEntryPoint(Collections.singletonList(out));
         em.persist(operation);
 
+        final ConstExpression c1 = new ConstExpression();
+        em.persist(c1);
+
+        final ConstExpression c2 = new ConstExpression();
+        em.persist(c2);
+
+        final ConstExpression c3 = new ConstExpression();
+        em.persist(c3);
+
+        final PlantOperationParameter p = new PlantOperationParameter();
+        p.setPlantOperation(operation);
+        em.persist(p);
+
+        final ConditionalExpression conditionalExpression = new ConditionalExpression();
+        conditionalExpression.setParameter(p);
+        conditionalExpression.setOnTrueExpressions(Collections.singletonList(c1));
+        conditionalExpression.setOnFalseExpressions(Collections.singletonList(c2));
+        em.persist(conditionalExpression);
+
+        operation.setExpressions(Arrays.asList(conditionalExpression, c3));
+
         tx.commit();
 
         final List<PlantOperation> queriedInstances = TestUtils.TEST_EMF.createEntityManager()
@@ -56,11 +80,13 @@ public class PlantOperationDAOTest {
                                 + operation.getId(),
                         PlantOperation.class).getResultList();
 
-        final String expectedTableContent = String.format("PlantOperationId;PlantId;PlantOperationName;"
+        final String expectedTableContent = String.format("PlantOperationId;PlantId;ExpressionId;PlantOperationName;"
                 + "EntryPointInputId;EntryPointOutputId\n"
-                + "%d;%d;Build Stuff;%d,%d;%d",
+                + "%d;%d;%d,%d;Build Stuff;%d,%d;%d",
                 operation.getId(),
                 plant.getId(),
+                conditionalExpression.getId(),
+                c3.getId(),
                 in1.getId(),
                 in2.getId(),
                 out.getId());
