@@ -42,7 +42,6 @@ import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.BooleanCu
 import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.NorminalCustomProductParameterDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.PlantDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.expression.ConditionalExpressionDAO;
-import org.cocome.tradingsystem.remote.access.dao.plant.expression.ConstExpressionDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.parameter.BooleanPlantOperationParameterDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.parameter.NorminalPlantOperationParameterDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitClassDAO;
@@ -128,9 +127,6 @@ public class ServiceProviderDatabase extends HttpServlet {
     private NorminalPlantOperationParameterDAO norminalPlantOperationParameterDAO;
 
     @Inject
-    private ConstExpressionDAO constExpressionDAO;
-
-    @Inject
     private ConditionalExpressionDAO conditionalExpressionDAO;
 
     @Inject
@@ -194,7 +190,6 @@ public class ServiceProviderDatabase extends HttpServlet {
         daoMap.put(norminalCustomProductParameterDAO.getEntityTypeName(), norminalCustomProductParameterDAO);
         daoMap.put(booleanPlantOperationParameterDAO.getEntityTypeName(), booleanPlantOperationParameterDAO);
         daoMap.put(norminalPlantOperationParameterDAO.getEntityTypeName(), norminalPlantOperationParameterDAO);
-        daoMap.put(constExpressionDAO.getEntityTypeName(), constExpressionDAO);
         daoMap.put(conditionalExpressionDAO.getEntityTypeName(), conditionalExpressionDAO);
         daoMap.put(entryPointDAO.getEntityTypeName(), entryPointDAO);
         daoMap.put(entryPointInteractionDAO.getEntityTypeName(), entryPointInteractionDAO);
