@@ -3,7 +3,6 @@ package org.cocome.tradingsystem.remote.access.dao.plant.expression;
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
 import org.cocome.tradingsystem.inventory.data.plant.expression.ConditionalExpression;
-import org.cocome.tradingsystem.inventory.data.plant.expression.ConstExpression;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.NorminalPlantOperationParameter;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitClass;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation;
@@ -57,18 +56,6 @@ public class ConditionalExpressionDAOTest {
         operation.setPlant(plant);
         em.persist(operation);
 
-        final ConstExpression constExp1 = new ConstExpression();
-        constExp1.setOperations(Arrays.asList(op1, op1, op1));
-        em.persist(constExp1);
-
-        final ConstExpression constExp2 = new ConstExpression();
-        constExp2.setOperations(Arrays.asList(op2, op1));
-        em.persist(constExp2);
-
-        final ConstExpression constExp3 = new ConstExpression();
-        constExp3.setOperations(Arrays.asList(op2, op1, op3));
-        em.persist(constExp3);
-
         final NorminalPlantOperationParameter param = new NorminalPlantOperationParameter();
         operation.setPlant(plant);
         param.setPlantOperation(operation);
@@ -77,8 +64,8 @@ public class ConditionalExpressionDAOTest {
         final ConditionalExpression conditionExp = new ConditionalExpression();
         conditionExp.setParameter(param);
         conditionExp.setParameterValue("BRAINS");
-        conditionExp.setOnTrueExpressions(Arrays.asList(constExp1, constExp2));
-        conditionExp.setOnFalseExpressions(Arrays.asList(constExp3, constExp3));
+        conditionExp.setOnTrueExpressions(Arrays.asList(op1, op1, op2));
+        conditionExp.setOnFalseExpressions(Arrays.asList(op2, op3));
         em.persist(conditionExp);
 
         tx.commit();
@@ -89,14 +76,14 @@ public class ConditionalExpressionDAOTest {
 
         final String expectedTableContent = String.format(
                 "PlantOperationParameterId;ConditionalExpressionId;"
-                + "ConditionalExpressionParameterValue;ConditionalExpressionOnTrueExpressions;"
-                + "ConditionalExpressionOnFalseExpressions\n"
-                + "%d;%d;BRAINS;%d,%d;%5$d,%5$d",
+                        + "ConditionalExpressionParameterValue;ConditionalExpressionOnTrueExpressions;"
+                        + "ConditionalExpressionOnFalseExpressions\n"
+                        + "%1$d;%2$d;BRAINS;%3$d,%3$d,%4$d;%4$d,%5$d",
                 param.getId(),
                 conditionExp.getId(),
-                constExp1.getId(),
-                constExp2.getId(),
-                constExp3.getId());
+                op1.getId(),
+                op2.getId(),
+                op3.getId());
 
         Assert.assertNotNull(queriedInstances);
         Assert.assertFalse(queriedInstances.isEmpty());

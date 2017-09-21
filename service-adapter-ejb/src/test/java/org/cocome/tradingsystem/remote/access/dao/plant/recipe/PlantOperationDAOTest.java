@@ -3,8 +3,9 @@ package org.cocome.tradingsystem.remote.access.dao.plant.recipe;
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
 import org.cocome.tradingsystem.inventory.data.plant.expression.ConditionalExpression;
-import org.cocome.tradingsystem.inventory.data.plant.expression.ConstExpression;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.PlantOperationParameter;
+import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitClass;
+import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.EntryPoint;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
 import org.cocome.tradingsystem.remote.access.TestUtils;
@@ -52,13 +53,23 @@ public class PlantOperationDAOTest {
         operation.setOutputEntryPoint(Collections.singletonList(out));
         em.persist(operation);
 
-        final ConstExpression c1 = new ConstExpression();
+        final ProductionUnitClass puc = new ProductionUnitClass();
+        puc.setEnterprise(enterprise);
+        em.persist(puc);
+
+        final ProductionUnitOperation c1 = new ProductionUnitOperation();
+        c1.setOperationId("__OP1");
+        c1.setProductionUnitClass(puc);
         em.persist(c1);
 
-        final ConstExpression c2 = new ConstExpression();
+        final ProductionUnitOperation c2 = new ProductionUnitOperation();
+        c2.setOperationId("__OP2");
+        c2.setProductionUnitClass(puc);
         em.persist(c2);
 
-        final ConstExpression c3 = new ConstExpression();
+        final ProductionUnitOperation c3 = new ProductionUnitOperation();
+        c3.setOperationId("__OP3");
+        c3.setProductionUnitClass(puc);
         em.persist(c3);
 
         final PlantOperationParameter p = new PlantOperationParameter();

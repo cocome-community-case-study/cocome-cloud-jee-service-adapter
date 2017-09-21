@@ -1,17 +1,17 @@
 package org.cocome.tradingsystem.inventory.data.plant.productionunit;
 
-import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
+import org.cocome.tradingsystem.inventory.data.plant.expression.Expression;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 
 /**
  * Represents an atomic operation on a production unit
+ *
  * @author Rudolf Biczok
  */
 @Entity
-public class ProductionUnitOperation implements Serializable, QueryableById {
+public class ProductionUnitOperation extends Expression {
 
     private static final long serialVersionUID = 1L;
 
@@ -36,8 +36,7 @@ public class ProductionUnitOperation implements Serializable, QueryableById {
     /**
      * Sets identifier.
      *
-     * @param id
-     *            Identifier value.
+     * @param id Identifier value.
      */
     public void setId(long id) {
         this.id = id;
@@ -53,8 +52,7 @@ public class ProductionUnitOperation implements Serializable, QueryableById {
     }
 
     /**
-     * @param operationId
-     *            The operation id unique to the production plant
+     * @param operationId The operation id unique to the production plant
      */
     public void setOperationId(String operationId) {
         this.operationId = operationId;
