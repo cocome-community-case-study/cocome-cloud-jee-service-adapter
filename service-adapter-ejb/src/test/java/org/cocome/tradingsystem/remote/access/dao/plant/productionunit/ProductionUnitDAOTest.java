@@ -19,64 +19,65 @@ public class ProductionUnitDAOTest {
 
     @Test
     public void convertToTableContent() throws Exception {
-        final TradingEnterprise enterprise = new TradingEnterprise();
-        enterprise.setName("CoCoME SE");
         final EntityManager em = TestUtils.TEST_EMF.createEntityManager();
         final EntityTransaction tx = em.getTransaction();
+        tx.begin();
 
-        final Plant plant1 = new Plant();
-        plant1.setEnterprise(enterprise);
+        final TradingEnterprise enterprise = new TradingEnterprise();
+        enterprise.setName("CoCoME SE");
+        em.persist(enterprise);
 
-        final Plant plant2 = new Plant();
-        plant2.setEnterprise(enterprise);
+        final Plant plant = new Plant();
+        plant.setEnterprise(enterprise);
+        em.persist(plant);
 
         final ProductionUnitClass puc = new ProductionUnitClass();
-        puc.setEnterprise(enterprise);
+        puc.setPlant(plant);
         puc.setName("xPPU v 0.1 Beta");
+        em.persist(puc);
 
         final ProductionUnitOperation pucOp1 = new ProductionUnitOperation();
         pucOp1.setOperationId("_1_2_1_P2_O1");
         pucOp1.setProductionUnitClass(puc);
+        em.persist(pucOp1);
 
         final ProductionUnit pu1 = new ProductionUnit();
-        pu1.setPlant(plant1);
+        pu1.setPlant(plant);
         pu1.setProductionUnitClass(puc);
         pu1.setLocation("Room 1");
         pu1.setInterfaceUrl("pu1.mystery.com");
+        em.persist(pu1);
 
         final ProductionUnit pu2 = new ProductionUnit();
-        pu2.setPlant(plant1);
+        pu2.setPlant(plant);
         pu2.setProductionUnitClass(puc);
         pu2.setLocation("Room 2");
         pu2.setInterfaceUrl("pu1.mystery.com");
-
+        em.persist(pu2);
 
         final ProductionUnit pu3 = new ProductionUnit();
-        pu3.setPlant(plant2);
+        pu3.setPlant(plant);
         pu3.setProductionUnitClass(puc);
         pu3.setLocation("Room 3");
         pu3.setInterfaceUrl("pu3.mystery.com");
-
-        tx.begin();
-        em.persist(enterprise);
-        em.persist(plant1);
-        em.persist(plant2);
-        em.persist(puc);
-        em.persist(pu1);
-        em.persist(pu2);
         em.persist(pu3);
-        em.persist(pucOp1);
+
         tx.commit();
 
         final List<ProductionUnit> queryedInstances = TestUtils.TEST_EMF.createEntityManager()
                 .createQuery("SELECT pu from ProductionUnit pu WHERE pu.plant.id = "
-                        + plant1.getId(), ProductionUnit.class).getResultList();
+                        + plant.getId(), ProductionUnit.class).getResultList();
 
         final String expectedTableContent = String.format("ProductionUnitId;ProductionUnitLocation;ProductionUnitInterfaceURL;"
                 + "PlantId;ProductionUnitClassId\n"
                 + "%3$d;Room 1;pu1.mystery.com;%1$d;%2$d\n"
-                + "%4$d;Room 2;pu1.mystery.com;%1$d;%2$d",
-                plant1.getId(), puc.getId(), pu1.getId(), pu2.getId());
+                + "%4$d;Room 2;pu1.mystery.com;%1$d;%2$d\n"
+                + "%5$d;Room 3;pu3.mystery.com;%1$d;%2$d",
+                plant.getId(),
+                puc.getId(),
+                pu1.getId(),
+                pu2.getId(),
+                pu3.getId());
 
         Assert.assertNotNull(queryedInstances);
         Assert.assertFalse(queryedInstances.isEmpty());

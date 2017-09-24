@@ -29,8 +29,12 @@ public class ConditionalExpressionDAOTest {
         final TradingEnterprise enterprise = new TradingEnterprise();
         em.persist(enterprise);
 
+        final Plant plant = new Plant();
+        plant.setEnterprise(enterprise);
+        em.persist(plant);
+
         final ProductionUnitClass puc = new ProductionUnitClass();
-        puc.setEnterprise(enterprise);
+        puc.setPlant(plant);
         em.persist(puc);
 
         final ProductionUnitOperation op1 = new ProductionUnitOperation();
@@ -47,10 +51,6 @@ public class ConditionalExpressionDAOTest {
         op3.setProductionUnitClass(puc);
         op3.setOperationId("OP_3");
         em.persist(op3);
-
-        final Plant plant = new Plant();
-        plant.setEnterprise(enterprise);
-        em.persist(plant);
 
         final PlantOperation operation = new PlantOperation();
         operation.setPlant(plant);

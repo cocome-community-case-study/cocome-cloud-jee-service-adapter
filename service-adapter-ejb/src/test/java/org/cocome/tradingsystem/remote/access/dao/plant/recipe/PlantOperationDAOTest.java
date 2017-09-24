@@ -54,7 +54,7 @@ public class PlantOperationDAOTest {
         em.persist(operation);
 
         final ProductionUnitClass puc = new ProductionUnitClass();
-        puc.setEnterprise(enterprise);
+        puc.setPlant(plant);
         em.persist(puc);
 
         final ProductionUnitOperation c1 = new ProductionUnitOperation();

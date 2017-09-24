@@ -3,7 +3,6 @@ package org.cocome.tradingsystem.remote.access.dao.plant.productionunit;
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitClass;
-import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation;
 import org.cocome.tradingsystem.remote.access.TestUtils;
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,26 +17,31 @@ public class ProductionUnitClassDAOTest {
 
     @Test
     public void convertToTableContent() throws Exception {
-        final TradingEnterprise enterprise = new TradingEnterprise();
-        enterprise.setName("CoCoME SE");
         final EntityManager em = TestUtils.TEST_EMF.createEntityManager();
         final EntityTransaction tx = em.getTransaction();
+        tx.begin();
+
+        final TradingEnterprise enterprise = new TradingEnterprise();
+        enterprise.setName("CoCoME SE");
+        em.persist(enterprise);
+
+        final Plant plant = new Plant();
+        plant.setEnterprise(enterprise);
+        em.persist(plant);
 
         final ProductionUnitClass puc = new ProductionUnitClass();
-        puc.setEnterprise(enterprise);
+        puc.setPlant(plant);
         puc.setName("xPPU v 0.1 Beta");
-
-        tx.begin();
-        em.persist(enterprise);
         em.persist(puc);
+
         tx.commit();
 
         final List<ProductionUnitClass> queryedInstances = TestUtils.TEST_EMF.createEntityManager()
-                .createQuery("SELECT puc from ProductionUnitClass puc WHERE puc.enterprise.id = "
-                        + enterprise.getId(), ProductionUnitClass.class).getResultList();
+                .createQuery("SELECT puc from ProductionUnitClass puc WHERE puc.plant.id = "
+                        + plant.getId(), ProductionUnitClass.class).getResultList();
 
-        final String expectedTableContent = String.format("TradingEnterpriseId;ProductionUnitClassId;ProductionUnitClassName\n"
-        + "%d;%d;xPPU v 0.1 Beta", enterprise.getId(), puc.getId());
+        final String expectedTableContent = String.format("PlantId;ProductionUnitClassId;ProductionUnitClassName\n"
+                + "%d;%d;xPPU v 0.1 Beta", plant.getId(), puc.getId());
 
         Assert.assertNotNull(queryedInstances);
         Assert.assertFalse(queryedInstances.isEmpty());

@@ -1,7 +1,7 @@
 package org.cocome.tradingsystem.inventory.data.plant.productionunit;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
-import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
+import org.cocome.tradingsystem.inventory.data.plant.Plant;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 /**
  * Represents a class of production unity utilizing a specific set of {@link ProductionUnitOperation}
+ *
  * @author Rudolf Biczok
  */
 @Entity
@@ -18,7 +19,7 @@ public class ProductionUnitClass implements Serializable, QueryableById {
 
     private long id;
     private String name;
-    private TradingEnterprise enterprise;
+    private Plant plant;
 
     /**
      * @return The id.
@@ -31,8 +32,7 @@ public class ProductionUnitClass implements Serializable, QueryableById {
     }
 
     /**
-     * @param id
-     *            Identifier value.
+     * @param id Identifier value.
      */
     public void setId(long id) {
         this.id = id;
@@ -47,27 +47,25 @@ public class ProductionUnitClass implements Serializable, QueryableById {
     }
 
     /**
-     * @param name
-     *            The name of the product
+     * @param name The name of the product
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * @return The enterprise which the Plant belongs to
+     * @return The plant this unit class belongs to
      */
     @ManyToOne
     @NotNull
-    public TradingEnterprise getEnterprise() {
-        return this.enterprise;
+    public Plant getPlant() {
+        return this.plant;
     }
 
     /**
-     * @param enterprise
-     *            The enterprise which the Plant belongs to
+     * @param enterprise The plant this unit class belongs
      */
-    public void setEnterprise(final TradingEnterprise enterprise) {
-        this.enterprise = enterprise;
+    public void setPlant(final Plant enterprise) {
+        this.plant = enterprise;
     }
 }
