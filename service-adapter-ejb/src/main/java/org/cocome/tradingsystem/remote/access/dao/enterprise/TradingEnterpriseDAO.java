@@ -1,14 +1,14 @@
 package org.cocome.tradingsystem.remote.access.dao.enterprise;
 
+import de.kit.ipd.java.utils.framework.table.Column;
+import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.DataFactory;
 import org.cocome.tradingsystem.inventory.data.IData;
+import org.cocome.tradingsystem.inventory.data.enterprise.ProductSupplier;
+import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.persistence.IPersistence;
 import org.cocome.tradingsystem.inventory.data.persistence.IPersistenceContext;
 import org.cocome.tradingsystem.remote.access.LoggerConfig;
-import de.kit.ipd.java.utils.framework.table.Column;
-import de.kit.ipd.java.utils.framework.table.Table;
-import org.cocome.tradingsystem.inventory.data.enterprise.ProductSupplier;
-import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.LegacyDataAccessObject;
 
@@ -23,6 +23,7 @@ import java.util.List;
 
 /**
  * DAO for {@link TradingEnterprise}
+ *
  * @author Rudolf Biczok
  */
 @Stateless
@@ -57,7 +58,8 @@ public class TradingEnterpriseDAO implements LegacyDataAccessObject<TradingEnter
                 this._persist(enterprise);
                 notification.addNotification(
                         "createEnterprise", Notification.SUCCESS,
-                        "Enterprise creation:" + _enterprise);
+                        String.format("%s[id=%d]", TradingEnterprise.class.getName(),
+                                enterprise.getId()));
             }
             em.flush();
             em.close();

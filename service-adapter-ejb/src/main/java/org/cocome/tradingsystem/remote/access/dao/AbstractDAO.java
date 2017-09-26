@@ -53,7 +53,7 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
             notification.addNotification(
                     "createEntities",
                     Notification.SUCCESS,
-                    String.format("Creation %s: %d", getEntityType().getSimpleName(), entity.getId()));
+                    String.format("%s[id=%d]", getEntityType().getName(), entity.getId()));
         }
         em.flush();
         em.close();

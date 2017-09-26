@@ -1,8 +1,8 @@
 package org.cocome.tradingsystem.remote.access.dao.store;
 
-import org.cocome.tradingsystem.inventory.data.IData;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
+import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.enterprise.Product;
 import org.cocome.tradingsystem.inventory.data.store.StockItem;
 import org.cocome.tradingsystem.inventory.data.store.Store;
@@ -21,6 +21,7 @@ import java.util.List;
 
 /**
  * DAO for {@link StockItem}
+ *
  * @author Rudolf Biczok
  */
 @Stateless
@@ -78,7 +79,7 @@ public class StockItemDAO implements LegacyDataAccessObject<StockItem> {
             em.merge(_product);
             notification.addNotification(
                     "createStockItem", Notification.SUCCESS,
-                    "Creation StockItem:" + nextStockItem);
+                    String.format("%s[id=%d]", StockItem.class.getName(), nextStockItem.getId()));
         }
         em.flush();
         em.close();

@@ -1,8 +1,8 @@
 package org.cocome.tradingsystem.remote.access.dao.usermanager;
 
-import org.cocome.tradingsystem.inventory.data.IData;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
+import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.store.Store;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.LegacyDataAccessObject;
@@ -47,7 +47,7 @@ public class LoginUserDAO implements LegacyDataAccessObject<LoginUser> {
             em.persist(nextUser);
             notification.addNotification(
                     "createUser", Notification.SUCCESS,
-                    "Creation User:" + nextUser);
+                    String.format("%s[id=%d]", LoginUser.class.getName(), nextUser.getId()));
         }
         em.flush();
         em.close();

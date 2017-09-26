@@ -1,10 +1,10 @@
 package org.cocome.tradingsystem.remote.access.dao.enterprise;
 
-import org.cocome.tradingsystem.inventory.data.IData;
-import org.cocome.tradingsystem.inventory.data.enterprise.ProductSupplier;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
+import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.enterprise.Product;
+import org.cocome.tradingsystem.inventory.data.enterprise.ProductSupplier;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.LegacyDataAccessObject;
 
@@ -19,6 +19,7 @@ import java.util.List;
 
 /**
  * DAO for {@link Product}
+ *
  * @author Rudolf Biczok
  */
 @Stateless
@@ -46,7 +47,7 @@ public class ProductDAO implements LegacyDataAccessObject<Product> {
                 em.persist(nextProduct);
                 notification.addNotification(
                         "createProducts", Notification.SUCCESS,
-                        "Creation product:" + nextProduct);
+                        String.format("%s[id=%d]", Product.class.getName(), nextProduct.getId()));
             } else {
                 notification.addNotification(
                         "createProducts", Notification.FAILED,

@@ -42,7 +42,7 @@ public class ProductSupplierDAO implements LegacyDataAccessObject<ProductSupplie
                 em.persist(nextProSupp);
                 notification.addNotification(
                         "createProductSupplier", Notification.SUCCESS,
-                        "Creation ProductSupplier:" + nextProSupp);
+                        String.format("%s[id=%d]", ProductSupplier.class.getName(), nextProSupp.getId()));
             } else {
                 notification.addNotification(
                         "createProductSupplier", Notification.FAILED,

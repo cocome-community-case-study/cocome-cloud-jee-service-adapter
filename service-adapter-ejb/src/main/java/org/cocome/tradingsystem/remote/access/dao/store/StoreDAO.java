@@ -1,8 +1,8 @@
 package org.cocome.tradingsystem.remote.access.dao.store;
 
-import org.cocome.tradingsystem.inventory.data.IData;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
+import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.store.Store;
 import org.cocome.tradingsystem.remote.access.Notification;
@@ -20,6 +20,7 @@ import java.util.List;
 
 /**
  * DAO for {@link Store}
+ *
  * @author Rudolf Biczok
  */
 @Stateless
@@ -60,7 +61,7 @@ public class StoreDAO implements LegacyDataAccessObject<Store> {
                 em.merge(_enterprise);
                 notification.addNotification(
                         "createStore", Notification.SUCCESS,
-                        "Creation Store:" + store);
+                        String.format("%s[id=%d]", Store.class.getName(), store.getId()));
             }
             em.flush();
             em.close();

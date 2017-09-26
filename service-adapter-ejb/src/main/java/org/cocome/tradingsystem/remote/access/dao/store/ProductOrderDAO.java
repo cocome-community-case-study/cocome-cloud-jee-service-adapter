@@ -90,7 +90,7 @@ public class ProductOrderDAO implements LegacyDataAccessObject<ProductOrder> {
             em.persist(_productOrder);
             notification.addNotification(
                     "createProductOrder", Notification.SUCCESS,
-                    "Creation ProductOrder:" + nextOrder);
+                    String.format("%s[id=%d]", ProductOrder.class.getName(), _productOrder.getId()));
         }
         em.flush();
         em.close();

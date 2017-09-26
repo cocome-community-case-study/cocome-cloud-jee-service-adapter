@@ -73,7 +73,7 @@ public class CustomerDAO implements LegacyDataAccessObject<Customer> {
             em.persist(nextCustomer);
             notification.addNotification(
                     "createCustomer", Notification.SUCCESS,
-                    "Creation customer:" + nextCustomer);
+                    String.format("%s[id=%d]", Customer.class.getName(), nextCustomer.getId()));
         }
         em.flush();
         em.close();
