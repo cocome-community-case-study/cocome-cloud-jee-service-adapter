@@ -73,6 +73,7 @@ public class RecipeDAOTest {
         em.persist(entryPointInteraction);
 
         final Recipe recipe = new Recipe();
+        recipe.setCustomProduct(product);
         recipe.setOperations(Collections.singletonList(operation));
         recipe.setParameterInteractions(Collections.singletonList(parameterInteraction));
         recipe.setEntryPointInteractions(Collections.singletonList(entryPointInteraction));
@@ -85,10 +86,11 @@ public class RecipeDAOTest {
                                 + recipe.getId(),
                         Recipe.class).getResultList();
 
-        final String expectedTableContent = String.format("RecipeId;PlantOperationId;EntryPointInteractionId;"
-                        + "ParameterInteractionId\n" +
-                        "%d;%d;%d;%d",
+        final String expectedTableContent = String.format("RecipeId;CustomProductId;PlantOperationId;"
+                        + "EntryPointInteractionId;ParameterInteractionId\n" +
+                        "%d;%d;%d;%d;%d",
                 recipe.getId(),
+                product.getId(),
                 operation.getId(),
                 entryPointInteraction.getId(),
                 parameterInteraction.getId());

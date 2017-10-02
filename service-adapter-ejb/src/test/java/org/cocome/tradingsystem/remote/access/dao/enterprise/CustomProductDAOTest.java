@@ -19,12 +19,10 @@ public class CustomProductDAOTest {
         final EntityManager em = TestUtils.TEST_EMF.createEntityManager();
         final EntityTransaction tx = em.getTransaction();
 
-        final Recipe recipe = new Recipe();
         final CustomProduct product1 = new CustomProduct();
         product1.setBarcode(9876);
         product1.setName("Best Bear");
         product1.setPurchasePrice(10);
-        product1.setProductionRecipe(recipe);
 
         final CustomProduct product2 = new CustomProduct();
         product2.setBarcode(9999999);
@@ -32,7 +30,6 @@ public class CustomProductDAOTest {
         product2.setPurchasePrice(100000);
 
         tx.begin();
-        em.persist(recipe);
         em.persist(product1);
         em.persist(product2);
         tx.commit();
@@ -42,9 +39,9 @@ public class CustomProductDAOTest {
                         CustomProduct.class).getResultList();
 
         final String expectedTableContent = String.format("CustomProductId;CustomProductBarcode;CustomProductLocation;"
-                        + "CustomProductPurchasePrice;RecipeId\n" +
-                        "%d;9876;Best Bear;10.0;%d",
-                product1.getId(), recipe.getId());
+                        + "CustomProductPurchasePrice\n" +
+                        "%d;9876;Best Bear;10.0",
+                product1.getId());
 
         Assert.assertNotNull(queriedInstances);
         Assert.assertFalse(queriedInstances.isEmpty());
@@ -55,8 +52,8 @@ public class CustomProductDAOTest {
                         CustomProduct.class).getResultList();
 
         final String expectedTableContent2 = String.format("CustomProductId;CustomProductBarcode;CustomProductLocation;"
-                        + "CustomProductPurchasePrice;RecipeId\n" +
-                        "%d;9999999;Best Chocolate;100000.0;null",
+                        + "CustomProductPurchasePrice\n" +
+                        "%d;9999999;Best Chocolate;100000.0",
                 product2.getId());
 
         Assert.assertNotNull(queriedInstances2);

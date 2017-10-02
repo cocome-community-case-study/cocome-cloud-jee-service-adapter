@@ -190,7 +190,7 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
      * It calls {@link Object#toString()} on every element.
      */
     protected <T extends QueryableById> String joinValues(final Collection<T> collection) {
-        return collection.stream().sequential()
+        return collection.stream()
                 .map(QueryableById::getId)
                 .map(Object::toString)
                 .collect(Collectors.joining(SET_DELIMITER));
