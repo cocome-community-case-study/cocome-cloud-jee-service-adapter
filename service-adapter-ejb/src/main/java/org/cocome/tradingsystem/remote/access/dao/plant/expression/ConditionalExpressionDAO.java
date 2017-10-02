@@ -5,7 +5,6 @@ import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.plant.expression.ConditionalExpression;
 import org.cocome.tradingsystem.inventory.data.plant.expression.Expression;
 import org.cocome.tradingsystem.inventory.data.plant.parameter.PlantOperationParameter;
-import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.AbstractDAO;
 
