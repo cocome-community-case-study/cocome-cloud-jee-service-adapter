@@ -10,6 +10,7 @@ import org.mockito.stubbing.Answer;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.*;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
@@ -71,7 +72,7 @@ public class TestUtils {
                     }
                     setProperty(proxyInstance, f, ejbAnswer.getProxyEMF());
                 }
-                if (a.annotationType().equals(EJB.class)) {
+                if (a.annotationType().equals(EJB.class) || a.annotationType().equals(Inject.class)) {
                     setProperty(proxyInstance, f, injectFakeEJB(f.getType()));
                 }
             }

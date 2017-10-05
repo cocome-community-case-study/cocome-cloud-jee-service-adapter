@@ -31,6 +31,7 @@ import de.kit.ipd.java.utils.time.TimeUtils;
 import de.kit.ipd.java.utils.xml.JAXBEngine;
 import de.kit.ipd.java.utils.xml.XML;
 import org.apache.log4j.Logger;
+import org.cocome.tradingsystem.inventory.data.plant.parameter.PlantOperationParameterDAO;
 import org.cocome.tradingsystem.remote.access.DatabaseAccess;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
@@ -39,9 +40,11 @@ import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductDAO;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductSupplierDAO;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.TradingEnterpriseDAO;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.BooleanCustomProductParameterDAO;
+import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.CustomProductParameterDAO;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.NorminalCustomProductParameterDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.PlantDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.expression.ConditionalExpressionDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.expression.ExpressionDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.parameter.BooleanPlantOperationParameterDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.parameter.NorminalPlantOperationParameterDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitClassDAO;
@@ -121,13 +124,22 @@ public class ServiceProviderDatabase extends HttpServlet {
     private NorminalCustomProductParameterDAO norminalCustomProductParameterDAO;
 
     @Inject
+    private CustomProductParameterDAO customProductParameterDAO;
+
+    @Inject
     private BooleanPlantOperationParameterDAO booleanPlantOperationParameterDAO;
 
     @Inject
     private NorminalPlantOperationParameterDAO norminalPlantOperationParameterDAO;
 
     @Inject
+    private PlantOperationParameterDAO plantOperationParameterDAO;
+
+    @Inject
     private ConditionalExpressionDAO conditionalExpressionDAO;
+
+    @Inject
+    private ExpressionDAO expressionDAO;
 
     @Inject
     private EntryPointDAO entryPointDAO;
@@ -188,9 +200,12 @@ public class ServiceProviderDatabase extends HttpServlet {
         daoMap.put(plantDAO.getEntityTypeName(), plantDAO);
         daoMap.put(booleanCustomProductParameterDAO.getEntityTypeName(), booleanCustomProductParameterDAO);
         daoMap.put(norminalCustomProductParameterDAO.getEntityTypeName(), norminalCustomProductParameterDAO);
+        daoMap.put(customProductParameterDAO.getEntityTypeName(), customProductParameterDAO);
         daoMap.put(booleanPlantOperationParameterDAO.getEntityTypeName(), booleanPlantOperationParameterDAO);
         daoMap.put(norminalPlantOperationParameterDAO.getEntityTypeName(), norminalPlantOperationParameterDAO);
+        daoMap.put(plantOperationParameterDAO.getEntityTypeName(), plantOperationParameterDAO);
         daoMap.put(conditionalExpressionDAO.getEntityTypeName(), conditionalExpressionDAO);
+        daoMap.put(expressionDAO.getEntityTypeName(), expressionDAO);
         daoMap.put(entryPointDAO.getEntityTypeName(), entryPointDAO);
         daoMap.put(entryPointInteractionDAO.getEntityTypeName(), entryPointInteractionDAO);
         daoMap.put(parameterInteractionDAO.getEntityTypeName(), parameterInteractionDAO);
