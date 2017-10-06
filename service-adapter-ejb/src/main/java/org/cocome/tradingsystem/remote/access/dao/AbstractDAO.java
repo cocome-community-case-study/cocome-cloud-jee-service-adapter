@@ -44,7 +44,7 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
             if (entityFromDB != null) {
                 notification.addNotification(
                         "createEntities",
-                        Notification.SUCCESS,
+                        Notification.FAILED,
                         String.format("%s already exists: %d", entity.getClass().getSimpleName(),
                                 entityFromDB.getId()));
                 continue;
@@ -72,7 +72,7 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
             } catch (final EntityNotFoundException e) {
                 notification.addNotification(
                         "updateEntities",
-                        Notification.SUCCESS,
+                        Notification.FAILED,
                         String.format("%s not available: %d", entity.getClass().getSimpleName(),
                                 entity.getId()));
                 continue;
@@ -101,7 +101,7 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
             } catch (final EntityNotFoundException e) {
                 notification.addNotification(
                         "deleteEntities",
-                        Notification.SUCCESS,
+                        Notification.FAILED,
                         String.format("%s not available: %d", entity.getClass().getSimpleName(),
                                 entity.getId()));
                 continue;
