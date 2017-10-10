@@ -18,17 +18,11 @@
 
 package org.cocome.tradingsystem.inventory.data.store;
 
-import java.io.Serializable;
-
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
 import org.cocome.tradingsystem.inventory.data.enterprise.Product;
 import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Represents a single product order entry in the database.
@@ -47,12 +41,6 @@ public class OrderEntry implements Serializable, QueryableById {
     private Product product;
 
     private ProductOrder order;
-
-    /**
-     * Empty constructor.
-     */
-    public OrderEntry() {
-    }
 
     /**
      * Gets identifier value
