@@ -17,7 +17,7 @@ properties defined in the XML file.
 The properties correspond with values of your running Glassfish
 instance. In a default Glassfish installation the domain is called
 `domain1` if you did not provide a different name. However, we recommend
-to create your own domain, e.g., `cocome` or `adapter`. 
+to create your own domain, e.g., `adapter`. 
 You can adjust the fields in the settings as follows:
 
 * host (usually "localhost", can be ip adress when you deployed parts of cocome on a different machine)
@@ -27,9 +27,11 @@ You can adjust the fields in the settings as follows:
 * admin user name (name of the admin user; usually: admin)
 * admin password (password of the admin user; usually no password )
 
-Important: If you finished the glassfish setup, you've propably already created
+###Important: 
+If you finished the glassfish setup, you've propably already created
 the domain for the service-adapter (it is named `adapter`). 
 
+## Development
 
 To build the service-adapter with Maven type in the project root
 directory:
@@ -47,19 +49,21 @@ recommend to test packaging before deploying.
 
 ## Deployment
 
+Glassfish comes with a standard Derby DB. So you DO NOT need to configure your own DB. THe following steps will configure this Derby DB and connect it automatically to CoCoME
+
 Before you can deploy the service-adapter make sure you have added a
 data (re)source called `jdbc/CoCoMEDB`. This can be done on command line
 or via the Glassfish UI. You need:
-- A JDBC connection pool (please consult the [Glassfish documentation]
-(https://glassfish.java.net/docs/4.0/administration-guide.pdf))
-- A JDBC resource named `jdbc/CoCoMEDB` using the connection pool you
-  defined
-  
+
+- A JDBC connection pool
  - JDBC connection pool (default jdcb-pool (DerbyPool) is automatically 
     created when 'asadmin start-database' was executed for the first time.
- - JDBC ressource:  'asadmin create-jdbc-resource --connectionpoolid DerbyPool 
+
+- A JDBC resource named `jdbc/CoCoMEDB` using the connection pool you
+  defined
+  - You can simply add this by executing the command:  'asadmin create-jdbc-resource --connectionpoolid DerbyPool 
      --host localhost --port 8248  jdbc/CoCoMEDB'
-   Notice that port 8248 is the admin port of the adapter-domain. So when
+  - Notice that port 8248 is the admin port of the adapter-domain. So when
    you did not use the same port you have to change it!
 
 - Make sure you refer to the same domain for `service adapter` in this setting file and in the setting file of jee-plattform-migration.
