@@ -12,6 +12,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceUnit;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +25,8 @@ import java.util.stream.Collectors;
 public abstract class AbstractDAO<E extends QueryableById> implements DataAccessObject<E> {
 
     protected static final String SET_DELIMITER = ",";
+
+    private static final String NULL_VALUE = "null";
 
     @PersistenceUnit(unitName = IData.EJB_PERSISTENCE_UNIT_NAME)
     private EntityManagerFactory emf;
@@ -146,7 +149,11 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
     protected <T> List<T> getReferencedEntities(Class<T> entityClass,
                                                 Column<String> foreignKeyCol,
                                                 EntityManager em) {
-        final String[] splits = foreignKeyCol.getValue().split(SET_DELIMITER);
+        final String value = foreignKeyCol.getValue();
+        if (NULL_VALUE.equals(value)) {
+            return Collections.emptyList();
+        }
+        final String[] splits = value.split(SET_DELIMITER);
         return Arrays.stream(splits)
                 .mapToLong(Long::valueOf)
                 .mapToObj(id -> getReferencedEntity(entityClass, id, em))
