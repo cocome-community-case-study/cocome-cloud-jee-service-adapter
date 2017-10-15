@@ -31,7 +31,7 @@ import de.kit.ipd.java.utils.time.TimeUtils;
 import de.kit.ipd.java.utils.xml.JAXBEngine;
 import de.kit.ipd.java.utils.xml.XML;
 import org.apache.log4j.Logger;
-import org.cocome.tradingsystem.inventory.data.plant.parameter.PlantOperationParameterDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.parameter.PlantOperationParameterDAO;
 import org.cocome.tradingsystem.remote.access.DatabaseAccess;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
@@ -136,6 +136,15 @@ public class ServiceProviderDatabase extends HttpServlet {
     private PlantOperationParameterDAO plantOperationParameterDAO;
 
     @Inject
+    private PlantOperationOrderDAO plantOperationOrderDAO;
+
+    @Inject
+    private PlantOperationOrderEntryDAO plantOperationOrderEntryDAO;
+
+    @Inject
+    private PlantOperationParameterValueDAO plantOperationParameterValueDAO;
+
+    @Inject
     private ConditionalExpressionDAO conditionalExpressionDAO;
 
     @Inject
@@ -201,6 +210,9 @@ public class ServiceProviderDatabase extends HttpServlet {
         daoMap.put(booleanCustomProductParameterDAO.getEntityTypeName(), booleanCustomProductParameterDAO);
         daoMap.put(norminalCustomProductParameterDAO.getEntityTypeName(), norminalCustomProductParameterDAO);
         daoMap.put(customProductParameterDAO.getEntityTypeName(), customProductParameterDAO);
+        daoMap.put(plantOperationOrderDAO.getEntityTypeName(), plantOperationOrderDAO);
+        daoMap.put(plantOperationOrderEntryDAO.getEntityTypeName(), plantOperationOrderEntryDAO);
+        daoMap.put(plantOperationParameterValueDAO.getEntityTypeName(), plantOperationParameterValueDAO);
         daoMap.put(booleanPlantOperationParameterDAO.getEntityTypeName(), booleanPlantOperationParameterDAO);
         daoMap.put(norminalPlantOperationParameterDAO.getEntityTypeName(), norminalPlantOperationParameterDAO);
         daoMap.put(plantOperationParameterDAO.getEntityTypeName(), plantOperationParameterDAO);

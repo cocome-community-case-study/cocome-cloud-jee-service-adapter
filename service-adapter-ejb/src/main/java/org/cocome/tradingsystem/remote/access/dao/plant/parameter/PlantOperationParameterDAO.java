@@ -1,5 +1,6 @@
-package org.cocome.tradingsystem.inventory.data.plant.parameter;
+package org.cocome.tradingsystem.remote.access.dao.plant.parameter;
 
+import org.cocome.tradingsystem.inventory.data.plant.parameter.PlantOperationParameter;
 import org.cocome.tradingsystem.remote.access.dao.AbstractDAO;
 import org.cocome.tradingsystem.remote.access.dao.AbstractInheritanceTreeDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.parameter.BooleanPlantOperationParameterDAO;
