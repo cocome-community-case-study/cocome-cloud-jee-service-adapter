@@ -57,12 +57,12 @@ public class ConditionalExpression extends Expression {
             name = "EXPRESSION_ONTRUEEXPRESSION",
             joinColumns = {
                     @JoinColumn(name = "EXEC_ORDER"),
-                    @JoinColumn(name = "ONTRUEEXPRESSION_ID"),
+                    @JoinColumn(name = "CONDITIONALEXPRESSION_ID"),
             },
             inverseJoinColumns = {
-                    @JoinColumn(name = "CONDITIONALEXPRESSION_ID"),
+                    @JoinColumn(name = "EXPRESSION_ID"),
             })
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany
     public List<Expression> getOnTrueExpressions() {
         return onTrueExpressions;
     }
@@ -84,10 +84,10 @@ public class ConditionalExpression extends Expression {
             name = "EXPRESSION_ONFALSEEXPRESSION",
             joinColumns = {
                     @JoinColumn(name = "EXEC_ORDER"),
-                    @JoinColumn(name = "ONFALSEEXPRESSION_ID"),
+                    @JoinColumn(name = "CONDITIONALEXPRESSION_ID"),
             },
             inverseJoinColumns = {
-                    @JoinColumn(name = "CONDITIONALEXPRESSION_ID"),
+                    @JoinColumn(name = "EXPRESSION_ID"),
             })
     @OneToMany(cascade = CascadeType.PERSIST)
     public List<Expression> getOnFalseExpressions() {

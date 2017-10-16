@@ -92,12 +92,12 @@ public class PlantOperation implements Serializable, NameableEntity {
             name = "PLANTOPERATION_EXPRESSION",
             joinColumns = {
                     @JoinColumn(name = "EXEC_ORDER"),
-                    @JoinColumn(name = "EXPRESSION_ID"),
+                    @JoinColumn(name = "PLANTOPERATION_ID"),
             },
             inverseJoinColumns = {
-                    @JoinColumn(name = "PLANTOPERATION_ID"),
+                    @JoinColumn(name = "EXPRESSION_ID"),
             })
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany
     public List<Expression> getExpressions() {
         return expressions;
     }
