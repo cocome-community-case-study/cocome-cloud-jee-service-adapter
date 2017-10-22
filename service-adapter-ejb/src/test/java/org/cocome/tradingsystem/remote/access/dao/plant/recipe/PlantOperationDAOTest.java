@@ -59,16 +59,19 @@ public class PlantOperationDAOTest {
 
         final ProductionUnitOperation c1 = new ProductionUnitOperation();
         c1.setOperationId("__OP1");
+        c1.setName("Name_of_op1");
         c1.setProductionUnitClass(puc);
         em.persist(c1);
 
         final ProductionUnitOperation c2 = new ProductionUnitOperation();
         c2.setOperationId("__OP2");
+        c2.setName("Name_of_op2");
         c2.setProductionUnitClass(puc);
         em.persist(c2);
 
         final ProductionUnitOperation c3 = new ProductionUnitOperation();
         c3.setOperationId("__OP3");
+        c3.setName("Name_of_op3");
         c3.setProductionUnitClass(puc);
         em.persist(c3);
 

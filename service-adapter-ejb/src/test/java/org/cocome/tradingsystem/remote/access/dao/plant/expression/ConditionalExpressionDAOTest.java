@@ -39,16 +39,19 @@ public class ConditionalExpressionDAOTest {
 
         final ProductionUnitOperation op1 = new ProductionUnitOperation();
         op1.setProductionUnitClass(puc);
+        op1.setName("Name_of_op1");
         op1.setOperationId("OP_1");
         em.persist(op1);
 
         final ProductionUnitOperation op2 = new ProductionUnitOperation();
         op2.setProductionUnitClass(puc);
+        op2.setName("Name_of_op2");
         op2.setOperationId("OP_2");
         em.persist(op2);
 
         final ProductionUnitOperation op3 = new ProductionUnitOperation();
         op3.setProductionUnitClass(puc);
+        op3.setName("Name_of_op3");
         op3.setOperationId("OP_3");
         em.persist(op3);
 

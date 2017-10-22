@@ -37,11 +37,13 @@ public class ProductionUnitOperationDAOTest {
 
         final ProductionUnitOperation pucOp1 = new ProductionUnitOperation();
         pucOp1.setOperationId("_1_2_1_P2_O1");
+        pucOp1.setName("Name_of_op1");
         pucOp1.setProductionUnitClass(puc);
         em.persist(pucOp1);
 
         final ProductionUnitOperation pucOp2 = new ProductionUnitOperation();
         pucOp2.setOperationId("_1_2_1_P2_O2");
+        pucOp2.setName("Name_of_op2");
         pucOp2.setProductionUnitClass(puc);
         em.persist(pucOp2);
 
@@ -51,10 +53,10 @@ public class ProductionUnitOperationDAOTest {
                 .createQuery("SELECT op from ProductionUnitOperation op WHERE op.productionUnitClass.id = "
                         + puc.getId(), ProductionUnitOperation.class).getResultList();
 
-        final String expectedTableContent = String.format("ProductionUnitOperationId;ProductionUnitOperationOID;" +
-                "ProductionUnitClassId\n" +
-                "%2$d;_1_2_1_P2_O1;%1$d\n" +
-                "%3$d;_1_2_1_P2_O2;%1$d", puc.getId(), pucOp1.getId(), pucOp2.getId());
+        final String expectedTableContent = String.format("ProductionUnitOperationId;ProductionUnitOperationName;" +
+                "ProductionUnitOperationOID;ProductionUnitClassId\n" +
+                "%2$d;Name_of_op1;_1_2_1_P2_O1;%1$d\n" +
+                "%3$d;Name_of_op2;_1_2_1_P2_O2;%1$d", puc.getId(), pucOp1.getId(), pucOp2.getId());
 
         Assert.assertNotNull(queryedInstances);
         Assert.assertFalse(queryedInstances.isEmpty());

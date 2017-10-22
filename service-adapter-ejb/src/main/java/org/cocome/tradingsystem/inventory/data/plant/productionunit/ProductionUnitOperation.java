@@ -1,5 +1,6 @@
 package org.cocome.tradingsystem.inventory.data.plant.productionunit;
 
+import org.cocome.tradingsystem.inventory.data.enterprise.NameableEntity;
 import org.cocome.tradingsystem.inventory.data.plant.expression.Expression;
 
 import javax.persistence.*;
@@ -9,13 +10,16 @@ import javax.validation.constraints.NotNull;
  * Represents an atomic operation on a production unit
  *
  * @author Rudolf Biczok
+ * @author Rudolf Biczok
  */
 @Entity
-public class ProductionUnitOperation extends Expression {
+public class ProductionUnitOperation extends Expression implements NameableEntity {
 
     private static final long serialVersionUID = 1L;
 
     private long id;
+
+    private String name;
 
     private String operationId;
 
@@ -40,6 +44,18 @@ public class ProductionUnitOperation extends Expression {
      */
     public void setId(long id) {
         this.id = id;
+    }
+
+    @NotNull
+    @Basic
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public void setName(final String name) {
+        this.name = name;
     }
 
     /**

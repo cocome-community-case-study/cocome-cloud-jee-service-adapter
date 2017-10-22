@@ -38,6 +38,7 @@ public class ProductionUnitDAOTest {
 
         final ProductionUnitOperation pucOp1 = new ProductionUnitOperation();
         pucOp1.setOperationId("_1_2_1_P2_O1");
+        pucOp1.setName("Name_of_op1");
         pucOp1.setProductionUnitClass(puc);
         em.persist(pucOp1);
 

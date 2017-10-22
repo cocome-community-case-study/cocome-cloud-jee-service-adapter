@@ -24,6 +24,7 @@ import java.util.List;
 public class ProductionUnitOperationDAO extends AbstractDAO<ProductionUnitOperation> {
 
     private static final String ID_COL = ProductionUnitOperation.class.getSimpleName() + "Id";
+    private static final String NAME_COL = ProductionUnitOperation.class.getSimpleName() + "Name";
     private static final String OID_COL = ProductionUnitOperation.class.getSimpleName() + "OID";
     private static final String PUC_COL = ProductionUnitClass.class.getSimpleName() + "Id";
 
@@ -35,12 +36,13 @@ public class ProductionUnitOperationDAO extends AbstractDAO<ProductionUnitOperat
     @Override
     public Table<String> toTable(final List<ProductionUnitOperation> list) {
         final Table<String> table = new Table<>();
-        table.addHeader(ID_COL, OID_COL, PUC_COL);
+        table.addHeader(ID_COL, NAME_COL, OID_COL, PUC_COL);
         final int len = list.size();
         for (int i = 0; i < len; i++) {
             table.set(i, 0, String.valueOf(list.get(i).getId()));
-            table.set(i, 1, list.get(i).getOperationId());
-            table.set(i, 2, String.valueOf(list.get(i).getProductionUnitClass().getId()));
+            table.set(i, 1, list.get(i).getName());
+            table.set(i, 2, list.get(i).getOperationId());
+            table.set(i, 3, String.valueOf(list.get(i).getProductionUnitClass().getId()));
         }
         return table;
     }
@@ -54,6 +56,7 @@ public class ProductionUnitOperationDAO extends AbstractDAO<ProductionUnitOperat
         final List<ProductionUnitOperation> list = new ArrayList<>(len);
         for (int i = 0; i < len; i++) {
             final Column<String> colId = table.getColumnByName(i, ID_COL);
+            final Column<String> colName = table.getColumnByName(i, NAME_COL);
             final Column<String> colOId = table.getColumnByName(i, OID_COL);
             final Column<String> colPUC = table.getColumnByName(i, PUC_COL);
 
@@ -74,6 +77,7 @@ public class ProductionUnitOperationDAO extends AbstractDAO<ProductionUnitOperat
 
             final ProductionUnitOperation op = getOrCreateReferencedEntity(ProductionUnitOperation.class, colId, em);
             op.setProductionUnitClass(puc);
+            op.setName(colName.getValue());
             op.setOperationId(colOId.getValue());
             list.add(op);
         }
