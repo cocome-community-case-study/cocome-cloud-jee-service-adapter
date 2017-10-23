@@ -38,14 +38,14 @@ public class ProductionUnitOperationDAOTest {
         final ProductionUnitOperation pucOp1 = new ProductionUnitOperation();
         pucOp1.setOperationId("_1_2_1_P2_O1");
         pucOp1.setName("Name_of_op1");
-        pucOp1.setExpectedExecutionTime(10);
+        pucOp1.setExecutionDurationInMillis(10);
         pucOp1.setProductionUnitClass(puc);
         em.persist(pucOp1);
 
         final ProductionUnitOperation pucOp2 = new ProductionUnitOperation();
         pucOp2.setOperationId("_1_2_1_P2_O2");
         pucOp2.setName("Name_of_op2");
-        pucOp2.setExpectedExecutionTime(10);
+        pucOp2.setExecutionDurationInMillis(10);
         pucOp2.setProductionUnitClass(puc);
         em.persist(pucOp2);
 

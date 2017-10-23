@@ -43,7 +43,7 @@ public class ProductionUnitOperationDAO extends AbstractDAO<ProductionUnitOperat
             table.set(i, 0, String.valueOf(list.get(i).getId()));
             table.set(i, 1, list.get(i).getName());
             table.set(i, 2, list.get(i).getOperationId());
-            table.set(i, 3, String.valueOf(list.get(i).getExpectedExecutionTime()));
+            table.set(i, 3, String.valueOf(list.get(i).getExecutionDurationInMillis()));
             table.set(i, 4, String.valueOf(list.get(i).getProductionUnitClass().getId()));
         }
         return table;
@@ -82,7 +82,7 @@ public class ProductionUnitOperationDAO extends AbstractDAO<ProductionUnitOperat
             op.setProductionUnitClass(puc);
             op.setName(colName.getValue());
             op.setOperationId(colOId.getValue());
-            op.setExpectedExecutionTime(Long.valueOf(colExecTime.getValue()));
+            op.setExecutionDurationInMillis(Long.valueOf(colExecTime.getValue()));
             list.add(op);
         }
         return list;

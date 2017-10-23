@@ -23,7 +23,7 @@ public class ProductionUnitOperation extends Expression implements NameableEntit
 
     private String operationId;
 
-    private long expectedExecutionTime;
+    private long executionDurationInMillis;
 
     private ProductionUnitClass productionUnitClass;
 
@@ -81,15 +81,15 @@ public class ProductionUnitOperation extends Expression implements NameableEntit
      */
     @Min(1)
     @Basic
-    public long getExpectedExecutionTime() {
-        return expectedExecutionTime;
+    public long getExecutionDurationInMillis() {
+        return executionDurationInMillis;
     }
 
     /**
-     * @param expectedExecutionTime the in milliseconds
+     * @param executionDurationInMillis the in milliseconds
      */
-    public void setExpectedExecutionTime(long expectedExecutionTime) {
-        this.expectedExecutionTime = expectedExecutionTime;
+    public void setExecutionDurationInMillis(long executionDurationInMillis) {
+        this.executionDurationInMillis = executionDurationInMillis;
     }
 
     /**

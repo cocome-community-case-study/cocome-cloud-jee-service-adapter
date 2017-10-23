@@ -40,21 +40,21 @@ public class ExpressionDAOTest {
         op1.setProductionUnitClass(puc);
         op1.setName("Name_of_op1");
         op1.setOperationId("OP_1");
-        op1.setExpectedExecutionTime(10);
+        op1.setExecutionDurationInMillis(10);
         em.persist(op1);
 
         final ProductionUnitOperation op2 = new ProductionUnitOperation();
         op2.setProductionUnitClass(puc);
         op2.setName("Name_of_op2");
         op2.setOperationId("OP_2");
-        op2.setExpectedExecutionTime(10);
+        op2.setExecutionDurationInMillis(10);
         em.persist(op2);
 
         final ProductionUnitOperation op3 = new ProductionUnitOperation();
         op3.setProductionUnitClass(puc);
         op3.setName("Name_of_op3");
         op3.setOperationId("OP_3");
-        op3.setExpectedExecutionTime(10);
+        op3.setExecutionDurationInMillis(10);
         em.persist(op3);
 
         final PlantOperation operation = new PlantOperation();
