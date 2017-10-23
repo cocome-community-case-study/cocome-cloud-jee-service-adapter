@@ -40,18 +40,21 @@ public class ExpressionDAOTest {
         op1.setProductionUnitClass(puc);
         op1.setName("Name_of_op1");
         op1.setOperationId("OP_1");
+        op1.setExpectedExecutionTime(10);
         em.persist(op1);
 
         final ProductionUnitOperation op2 = new ProductionUnitOperation();
         op2.setProductionUnitClass(puc);
         op2.setName("Name_of_op2");
         op2.setOperationId("OP_2");
+        op2.setExpectedExecutionTime(10);
         em.persist(op2);
 
         final ProductionUnitOperation op3 = new ProductionUnitOperation();
         op3.setProductionUnitClass(puc);
         op3.setName("Name_of_op3");
         op3.setOperationId("OP_3");
+        op3.setExpectedExecutionTime(10);
         em.persist(op3);
 
         final PlantOperation operation = new PlantOperation();
@@ -81,17 +84,17 @@ public class ExpressionDAOTest {
 
         final String expectedTableContent = String.format(
                 "ExpressionType;ExpressionBeginCol;ExpressionEndCol;ProductionUnitOperationId;ProductionUnitOperationName;"
-                        + "ProductionUnitOperationOID;ProductionUnitClassId;PlantOperationParameterId;"
+                        + "ProductionUnitOperationOID;ProductionUnitOperationExpectedTime;ProductionUnitClassId;PlantOperationParameterId;"
                         + "ConditionalExpressionId;ConditionalExpressionParameterValue;"
                         + "ConditionalExpressionOnTrueExpressions;ConditionalExpressionOnFalseExpressions\n"
                         + "org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation;"
-                        + "3;6;%3$d;Name_of_op1;OP_1;%6$d;null;null;null;null;null\n"
+                        + "3;7;%3$d;Name_of_op1;OP_1;10;%6$d;null;null;null;null;null\n"
                         + "org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation;"
-                        + "3;6;%3$d;Name_of_op1;OP_1;%6$d;null;null;null;null;null\n"
+                        + "3;7;%3$d;Name_of_op1;OP_1;10;%6$d;null;null;null;null;null\n"
                         + "org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation;"
-                        + "3;6;%4$d;Name_of_op2;OP_2;%6$d;null;null;null;null;null\n"
+                        + "3;7;%4$d;Name_of_op2;OP_2;10;%6$d;null;null;null;null;null\n"
                         + "org.cocome.tradingsystem.inventory.data.plant.expression.ConditionalExpression;"
-                        + "7;11;null;null;null;null;%1$d;%2$d;BRAINS;%3$d,%3$d,%4$d;%4$d,%5$d",
+                        + "8;12;null;null;null;null;null;%1$d;%2$d;BRAINS;%3$d,%3$d,%4$d;%4$d,%5$d",
                 param.getId(),
                 conditionExp.getId(),
                 op1.getId(),

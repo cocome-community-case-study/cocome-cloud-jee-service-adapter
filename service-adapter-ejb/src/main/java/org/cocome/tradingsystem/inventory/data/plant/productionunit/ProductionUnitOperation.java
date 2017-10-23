@@ -4,12 +4,12 @@ import org.cocome.tradingsystem.inventory.data.enterprise.NameableEntity;
 import org.cocome.tradingsystem.inventory.data.plant.expression.Expression;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
  * Represents an atomic operation on a production unit
  *
- * @author Rudolf Biczok
  * @author Rudolf Biczok
  */
 @Entity
@@ -22,6 +22,8 @@ public class ProductionUnitOperation extends Expression implements NameableEntit
     private String name;
 
     private String operationId;
+
+    private long expectedExecutionTime;
 
     private ProductionUnitClass productionUnitClass;
 
@@ -72,6 +74,22 @@ public class ProductionUnitOperation extends Expression implements NameableEntit
      */
     public void setOperationId(String operationId) {
         this.operationId = operationId;
+    }
+
+    /**
+     * @return the expected execution time in milliseconds
+     */
+    @Min(1)
+    @Basic
+    public long getExpectedExecutionTime() {
+        return expectedExecutionTime;
+    }
+
+    /**
+     * @param expectedExecutionTime the in milliseconds
+     */
+    public void setExpectedExecutionTime(long expectedExecutionTime) {
+        this.expectedExecutionTime = expectedExecutionTime;
     }
 
     /**
