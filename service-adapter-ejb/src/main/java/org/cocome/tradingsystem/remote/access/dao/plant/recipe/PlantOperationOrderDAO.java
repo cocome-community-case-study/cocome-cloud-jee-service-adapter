@@ -63,7 +63,7 @@ public class PlantOperationOrderDAO extends AbstractDAO<PlantOperationOrder> {
 
             final PlantOperationOrder plantOperationOrder = getOrCreateReferencedEntity(PlantOperationOrder.class, colId, em);
             plantOperationOrder.setDeliveryDate(TimeUtils.convertToDateObject(colDeliveryDate.getValue()));
-            plantOperationOrder.setDeliveryDate(TimeUtils.convertToDateObject(colOrderingDate.getValue()));
+            plantOperationOrder.setOrderingDate(TimeUtils.convertToDateObject(colOrderingDate.getValue()));
 
             try {
                 plantOperationOrder.setEnterprise(getOrCreateReferencedEntity(TradingEnterprise.class,

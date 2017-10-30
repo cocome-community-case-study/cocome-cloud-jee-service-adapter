@@ -27,6 +27,7 @@ public class ProductionUnitDAO extends AbstractDAO<ProductionUnit> {
     private static final String ID_COL = ProductionUnit.class.getSimpleName() + "Id";
     private static final String LOCATION_COL = ProductionUnit.class.getSimpleName() + "Location";
     private static final String INTERFACE_URL_COL = ProductionUnit.class.getSimpleName() + "InterfaceURL";
+    private static final String DOUBLE_FLAG_COL = ProductionUnit.class.getSimpleName() + "Double";
     private static final String PLANT_ID_COL = Plant.class.getSimpleName() + "Id";
     private static final String PROD_CLASS_ID_COL = ProductionUnitClass.class.getSimpleName() + "Id";
 
@@ -41,6 +42,7 @@ public class ProductionUnitDAO extends AbstractDAO<ProductionUnit> {
         table.addHeader(ID_COL,
                 LOCATION_COL,
                 INTERFACE_URL_COL,
+                DOUBLE_FLAG_COL,
                 PLANT_ID_COL,
                 PROD_CLASS_ID_COL);
 
@@ -49,8 +51,9 @@ public class ProductionUnitDAO extends AbstractDAO<ProductionUnit> {
             table.set(row, 0, String.valueOf(entity.getId()));
             table.set(row, 1, entity.getLocation());
             table.set(row, 2, entity.getInterfaceUrl());
-            table.set(row, 3, String.valueOf(entity.getPlant().getId()));
-            table.set(row, 4, String.valueOf(entity.getProductionUnitClass().getId()));
+            table.set(row, 3, String.valueOf(entity.isDouble()));
+            table.set(row, 4, String.valueOf(entity.getPlant().getId()));
+            table.set(row, 5, String.valueOf(entity.getProductionUnitClass().getId()));
             row++;
         }
         return table;
@@ -68,6 +71,7 @@ public class ProductionUnitDAO extends AbstractDAO<ProductionUnit> {
             final Column<String> colPUId = table.getColumnByName(i, ID_COL);
             final Column<String> colPULocation = table.getColumnByName(i, LOCATION_COL);
             final Column<String> colPUInterfaceURL = table.getColumnByName(i, INTERFACE_URL_COL);
+            final Column<String> colDoubleFlag = table.getColumnByName(i, DOUBLE_FLAG_COL);
             final Column<String> colPlantId = table.getColumnByName(i, PLANT_ID_COL);
             final Column<String> colPUCId = table.getColumnByName(i, PROD_CLASS_ID_COL);
             final Plant plant;
@@ -92,6 +96,7 @@ public class ProductionUnitDAO extends AbstractDAO<ProductionUnit> {
             final ProductionUnit pu = getOrCreateReferencedEntity(ProductionUnit.class, colPUId, em);
             pu.setLocation(colPULocation.getValue());
             pu.setInterfaceUrl(colPUInterfaceURL.getValue());
+            pu.setDouble(Boolean.valueOf(colDoubleFlag.getValue()));
             pu.setPlant(plant);
             pu.setProductionUnitClass(puc);
 

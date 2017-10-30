@@ -31,7 +31,6 @@ import de.kit.ipd.java.utils.time.TimeUtils;
 import de.kit.ipd.java.utils.xml.JAXBEngine;
 import de.kit.ipd.java.utils.xml.XML;
 import org.apache.log4j.Logger;
-import org.cocome.tradingsystem.remote.access.dao.plant.parameter.PlantOperationParameterDAO;
 import org.cocome.tradingsystem.remote.access.DatabaseAccess;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
@@ -47,6 +46,7 @@ import org.cocome.tradingsystem.remote.access.dao.plant.expression.ConditionalEx
 import org.cocome.tradingsystem.remote.access.dao.plant.expression.ExpressionDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.parameter.BooleanPlantOperationParameterDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.parameter.NorminalPlantOperationParameterDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.parameter.PlantOperationParameterDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitClassDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitOperationDAO;
@@ -375,11 +375,9 @@ public class ServiceProviderDatabase extends HttpServlet {
             br.close();
         } catch (final Exception e) { // NOCS
             LOG.error(e);
-            Throwable cause = e.getCause();
-            while (cause != null) {
-                message.appendBody("Error", cause.getMessage());
-                cause = cause.getCause();
-            }
+            final StringWriter sw = new StringWriter();
+            e.printStackTrace(new PrintWriter(sw));
+            message.appendBody("Error", sw.toString());
         }
         final JAXBEngine engine = JAXBEngine.getInstance();
         final StringWriter strWriter = new StringWriter();

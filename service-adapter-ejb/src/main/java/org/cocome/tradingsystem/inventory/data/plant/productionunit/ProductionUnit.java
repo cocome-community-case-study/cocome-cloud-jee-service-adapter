@@ -20,6 +20,7 @@ public class ProductionUnit implements Serializable, QueryableById {
     private long id;
     private String location;
     private String interfaceUrl;
+    private boolean doubleFlag;
 
     private Plant plant;
     private ProductionUnitClass productionUnitClass;
@@ -39,8 +40,7 @@ public class ProductionUnit implements Serializable, QueryableById {
     /**
      * Sets identifier.
      *
-     * @param id
-     *            Identifier value.
+     * @param id Identifier value.
      */
     public void setId(long id) {
         this.id = id;
@@ -55,8 +55,7 @@ public class ProductionUnit implements Serializable, QueryableById {
     }
 
     /**
-     * @param location
-     *            Production unit location
+     * @param location Production unit location
      */
     public void setLocation(final String location) {
         this.location = location;
@@ -71,11 +70,26 @@ public class ProductionUnit implements Serializable, QueryableById {
     }
 
     /**
-     * @param interfaceUrl
-     *            The URL location used to communicate with the device
+     * @param interfaceUrl The URL location used to communicate with the device
      */
     public void setInterfaceUrl(final String interfaceUrl) {
         this.interfaceUrl = interfaceUrl;
+    }
+
+    /**
+     * @return <code>true</code> if this production unit has no real interface,
+     * but is supposed to be simulated by a double
+     */
+    @Basic
+    public boolean isDouble() {
+        return doubleFlag;
+    }
+
+    /**
+     * @param doubleFlag the double flag used to determine if this unit is a dummy system
+     */
+    public void setDouble(final boolean doubleFlag) {
+        this.doubleFlag = doubleFlag;
     }
 
     /**

@@ -71,10 +71,10 @@ public class ProductionUnitDAOTest {
                         + plant.getId(), ProductionUnit.class).getResultList();
 
         final String expectedTableContent = String.format("ProductionUnitId;ProductionUnitLocation;ProductionUnitInterfaceURL;"
-                + "PlantId;ProductionUnitClassId\n"
-                + "%3$d;Room 1;pu1.mystery.com;%1$d;%2$d\n"
-                + "%4$d;Room 2;pu1.mystery.com;%1$d;%2$d\n"
-                + "%5$d;Room 3;pu3.mystery.com;%1$d;%2$d",
+                + "ProductionUnitDouble;PlantId;ProductionUnitClassId\n"
+                + "%3$d;Room 1;pu1.mystery.com;false;%1$d;%2$d\n"
+                + "%4$d;Room 2;pu1.mystery.com;false;%1$d;%2$d\n"
+                + "%5$d;Room 3;pu3.mystery.com;false;%1$d;%2$d",
                 plant.getId(),
                 puc.getId(),
                 pu1.getId(),
