@@ -49,7 +49,7 @@ recommend to test packaging before deploying.
 
 ## Deployment
 
-Glassfish comes with a standard Derby DB. So you DO NOT need to configure your own DB. THe following steps will configure this Derby DB and connect it automatically to CoCoME
+Glassfish comes with a standard Derby DB. So you DO NOT need to configure your own DB. But, if you still want to use your own Database, follow the instructions in `Connect your own DB` and skip the Deployment part up to the mvn command (`mvn -s settings.xml install`). The following steps will configure theDerby DB and connect it automatically to CoCoME
 
 Before you can deploy the service-adapter make sure you have added a
 data (re)source called `jdbc/CoCoMEDB`. This can be done on command line
@@ -57,7 +57,7 @@ or via the Glassfish UI. You need:
 
 - A JDBC connection pool
  - JDBC connection pool (default jdcb-pool (DerbyPool) is automatically 
-    created when 'asadmin start-database' was executed for the first time.
+    created when `asadmin start-database` was executed for the first time.
 
 - A JDBC resource named `jdbc/CoCoMEDB` using the connection pool you
   defined
@@ -74,6 +74,39 @@ You can directly deploy them via the Cargo Maven plug-in with
 
 Alternatively, you can deploy the application via `asadmin` or the
 Glassfish administration interface.
+
+## Connect your own DB
+#####Again: Glassfish comes with a build in DerbyDB, so there's no particular reason to connect another DB if you just want to use CoCoME without careing about the DB.
+- First, you need to check your Glassfish Instance. Using a version less than 4.1.2 may cause some trouble. If you are using Glassfish <= 4.1.1, please download a newer Version and start with the [Glassfish Setup](https://github.com/cocome-community-case-study/cocome-cloud-jee-platform-migration/blob/master/cocome-maven-project/doc/Glassfish%20Setup.md) again.
+- Download and install your Database (we tested with [postgresDB](https://www.postgresql.org/download/). You propably need to install it in C:\  and not in C:\ProgrammFiles\...)
+- Use the following parameters: 
+   - DB name: choose anything
+   - user = APP
+   - password = APP
+   - portnumber: choose anything (default port fpr DB provider)
+- Navigate to your Glassfish Gui of the adapter domain (asadmin start-domain adapter, localhost:8248)
+- JDBC -> Connection pools -> New: 
+   - Pool name: myDBpool (or something similar) 
+   - resource type: javax.sql.DataSource
+
+- Next -> Additional properties:
+ - delete everything but: user, password, databaseName, serverName, portNumber
+ - user: `APP`
+ - password: `APP`
+ - databaseName: the name you did choose for the DB
+ - serverName: `localhost` (if your Database is deployed on your PC)
+ - portnumber: the portnumber your DB is listening to
+
+- JDBC Resource -> New 
+  - JNDI Name: `jdbc/CoCoMEDB`
+  - poolname: the poolname of the JDBC Connection pool you just created
+- Download the DB Driver from the manufacturer's web site. For Postgres, you need to donwload the current [driver](https://jdbc.postgresql.org/download.html)
+- copy and paste this .jar-file to the lib folder of the adapter domain (glassfish5 -> glassfish -> domains -> adapter-> lib)
+- stop and start the adpater domain via asadmin
+- Important: Undeploy the adpater via `mvn -s settings.xml clean post-clean` if you already deployed it. 
+- In both cases, deploy it with `mvn -s settings.xml install`
+- DON'T forget to start your Database before you start the Glassfish domains via asadmin when you want to work with CoCoME!
+
 
 ## Undeployment
 
