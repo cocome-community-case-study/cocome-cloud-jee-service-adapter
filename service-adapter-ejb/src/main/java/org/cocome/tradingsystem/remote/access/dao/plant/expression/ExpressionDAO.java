@@ -21,14 +21,14 @@ import java.util.List;
 public class ExpressionDAO extends AbstractInheritanceTreeDAO<Expression> {
 
     @Inject
-    private ProductionUnitOperationDAO productionUnitOperationDAO;
+    private ConditionalExpressionDAO conditionalExpressionDAO;
 
     @Inject
-    private ConditionalExpressionDAO conditionalExpressionDAO;
+    private ProductionUnitOperationDAO productionUnitOperationDAO;
 
     @Override
     protected List<AbstractDAO<? extends Expression>> getSubClasseDAOs() {
-        return Arrays.asList(productionUnitOperationDAO, conditionalExpressionDAO);
+        return Arrays.asList(conditionalExpressionDAO, productionUnitOperationDAO);
     }
 
     @Override
