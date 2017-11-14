@@ -83,18 +83,19 @@ public class ExpressionDAOTest {
         tx.commit();
 
         final String expectedTableContent = String.format(
-                "ExpressionType;ExpressionBeginCol;ExpressionEndCol;ProductionUnitOperationId;ProductionUnitOperationName;"
-                        + "ProductionUnitOperationOID;ProductionUnitOperationExpectedTime;ProductionUnitClassId;PlantOperationParameterId;"
-                        + "ConditionalExpressionId;ConditionalExpressionParameterValue;"
-                        + "ConditionalExpressionOnTrueExpressions;ConditionalExpressionOnFalseExpressions\n"
+                "ExpressionType;ExpressionBeginCol;ExpressionEndCol;PlantOperationParameterId;ConditionalExpressionId;"
+                        + "ConditionalExpressionParameterValue;ConditionalExpressionOnTrueExpressions;"
+                        + "ConditionalExpressionOnFalseExpressions;ProductionUnitOperationId;"
+                        + "ProductionUnitOperationName;ProductionUnitOperationOID;ProductionUnitOperationExpectedTime;"
+                        + "ProductionUnitClassId\n"
                         + "org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation;"
-                        + "3;7;%3$d;Name_of_op1;OP_1;10;%6$d;null;null;null;null;null\n"
+                        + "8;12;null;null;null;null;null;%3$d;Name_of_op1;OP_1;10;%6$d\n"
                         + "org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation;"
-                        + "3;7;%3$d;Name_of_op1;OP_1;10;%6$d;null;null;null;null;null\n"
+                        + "8;12;null;null;null;null;null;%3$d;Name_of_op1;OP_1;10;%6$d\n"
                         + "org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation;"
-                        + "3;7;%4$d;Name_of_op2;OP_2;10;%6$d;null;null;null;null;null\n"
+                        + "8;12;null;null;null;null;null;%4$d;Name_of_op2;OP_2;10;%6$d\n"
                         + "org.cocome.tradingsystem.inventory.data.plant.expression.ConditionalExpression;"
-                        + "8;12;null;null;null;null;null;%1$d;%2$d;BRAINS;%3$d,%3$d,%4$d;%4$d,%5$d",
+                        + "3;7;%1$d;%2$d;BRAINS;%3$d,%3$d,%4$d;%4$d,%5$d;null;null;null;null;null",
                 param.getId(),
                 conditionExp.getId(),
                 op1.getId(),

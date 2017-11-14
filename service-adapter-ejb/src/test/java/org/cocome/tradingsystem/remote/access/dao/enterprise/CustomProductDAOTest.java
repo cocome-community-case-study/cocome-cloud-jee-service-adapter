@@ -1,7 +1,6 @@
 package org.cocome.tradingsystem.remote.access.dao.enterprise;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct;
-import org.cocome.tradingsystem.inventory.data.plant.recipe.Recipe;
 import org.cocome.tradingsystem.remote.access.TestUtils;
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,19 +18,20 @@ public class CustomProductDAOTest {
         final EntityManager em = TestUtils.TEST_EMF.createEntityManager();
         final EntityTransaction tx = em.getTransaction();
 
+        tx.begin();
+
         final CustomProduct product1 = new CustomProduct();
         product1.setBarcode(9876);
         product1.setName("Best Bear");
         product1.setPurchasePrice(10);
+        em.persist(product1);
 
         final CustomProduct product2 = new CustomProduct();
         product2.setBarcode(9999999);
         product2.setName("Best Chocolate");
         product2.setPurchasePrice(100000);
-
-        tx.begin();
-        em.persist(product1);
         em.persist(product2);
+
         tx.commit();
 
         final List<CustomProduct> queriedInstances = TestUtils.TEST_EMF.createEntityManager()
