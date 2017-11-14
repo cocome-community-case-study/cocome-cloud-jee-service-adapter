@@ -7,10 +7,7 @@ import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 import org.cocome.tradingsystem.remote.access.Notification;
 
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -51,7 +48,9 @@ public abstract class AbstractInheritanceTreeDAO<E extends QueryableById> extend
 
         int lastBeginOffset = numberOfMetaCols;
 
-        for (final Map.Entry<Class<?>, List<E>> entry : groupedList.entrySet()) {
+        for (final Map.Entry<Class<?>, List<E>> entry : groupedList.entrySet().stream()
+                .sorted(Comparator.comparing(e -> e.getKey().getName()))
+                .collect(Collectors.toList())) {
             @SuppressWarnings("unchecked") final AbstractDAO<E> dao
                     = (AbstractDAO<E>) daoMap.get(entry.getKey());
             final Table<String> table = dao.toTable(entry.getValue());
