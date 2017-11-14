@@ -8,7 +8,6 @@ import javax.persistence.Entity;
  * @author Rudolf Biczok
  */
 @Entity
-//@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"barcode"}))
 public class CustomProduct extends Product {
     private static final long serialVersionUID = -2577328715744776645L;
 }
