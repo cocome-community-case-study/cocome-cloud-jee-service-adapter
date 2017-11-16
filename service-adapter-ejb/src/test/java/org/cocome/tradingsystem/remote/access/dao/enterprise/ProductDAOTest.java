@@ -1,6 +1,7 @@
 package org.cocome.tradingsystem.remote.access.dao.enterprise;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct;
+import org.cocome.tradingsystem.inventory.data.enterprise.Product;
 import org.cocome.tradingsystem.remote.access.TestUtils;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,9 +10,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.util.List;
 
-public class CustomProductDAOTest {
+public class ProductDAOTest {
 
-    private CustomProductDAO dao = TestUtils.injectFakeEJB(CustomProductDAO.class);
+    private ProductDAO dao = TestUtils.injectFakeEJB(ProductDAO.class);
 
     @Test
     public void convertToTableContent() throws Exception {
@@ -34,27 +35,24 @@ public class CustomProductDAOTest {
 
         tx.commit();
 
-        final List<CustomProduct> queriedInstances = TestUtils.TEST_EMF.createEntityManager()
-                .createQuery("SELECT p from CustomProduct p WHERE p.id = " + product1.getId(),
-                        CustomProduct.class).getResultList();
+        final List<Product> queriedInstances = TestUtils.TEST_EMF.createEntityManager()
+                .createQuery("SELECT p from Product p WHERE p.id = " + product1.getId(),
+                        Product.class).getResultList();
 
-        final String expectedTableContent = String.format("CustomProductId;CustomProductBarcode;CustomProductLocation;"
-                        + "CustomProductPurchasePrice\n" +
-                        "%d;9876;Best Bear;10.0",
-                product1.getId());
+        final String expectedTableContent =
+                "ProductBarcode;ProductName;ProductPurchasePrice;ProductType\n"
+                        + "9876;Best Bear;10.0;org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct";
 
         Assert.assertNotNull(queriedInstances);
         Assert.assertFalse(queriedInstances.isEmpty());
         Assert.assertEquals(expectedTableContent, TestUtils.toCSV(dao.toTable(queriedInstances)));
 
-        final List<CustomProduct> queriedInstances2 = TestUtils.TEST_EMF.createEntityManager()
+        final List<Product> queriedInstances2 = TestUtils.TEST_EMF.createEntityManager()
                 .createQuery("SELECT p from CustomProduct p WHERE p.id = " + product2.getId(),
-                        CustomProduct.class).getResultList();
+                        Product.class).getResultList();
 
-        final String expectedTableContent2 = String.format("CustomProductId;CustomProductBarcode;CustomProductLocation;"
-                        + "CustomProductPurchasePrice\n" +
-                        "%d;9999999;Best Chocolate;100000.0",
-                product2.getId());
+        final String expectedTableContent2 = "ProductBarcode;ProductName;ProductPurchasePrice;ProductType\n"
+                + "9999999;Best Chocolate;100000.0;org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct";
 
         Assert.assertNotNull(queriedInstances2);
         Assert.assertFalse(queriedInstances2.isEmpty());

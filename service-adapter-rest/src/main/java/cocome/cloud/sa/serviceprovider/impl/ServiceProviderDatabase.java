@@ -34,7 +34,6 @@ import org.apache.log4j.Logger;
 import org.cocome.tradingsystem.remote.access.DatabaseAccess;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
-import org.cocome.tradingsystem.remote.access.dao.enterprise.CustomProductDAO;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductDAO;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductSupplierDAO;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.TradingEnterpriseDAO;
@@ -110,9 +109,6 @@ public class ServiceProviderDatabase extends HttpServlet {
 
     @Inject
     private ProductDAO productDAO;
-
-    @Inject
-    private CustomProductDAO customProductDAO;
 
     @Inject
     private PlantDAO plantDAO;
@@ -205,7 +201,6 @@ public class ServiceProviderDatabase extends HttpServlet {
     @PostConstruct
     protected void initDAOMap() {
         daoMap.put(productDAO.getEntityTypeName(), productDAO);
-        daoMap.put(customProductDAO.getEntityTypeName(), customProductDAO);
         daoMap.put(plantDAO.getEntityTypeName(), plantDAO);
         daoMap.put(booleanCustomProductParameterDAO.getEntityTypeName(), booleanCustomProductParameterDAO);
         daoMap.put(norminalCustomProductParameterDAO.getEntityTypeName(), norminalCustomProductParameterDAO);

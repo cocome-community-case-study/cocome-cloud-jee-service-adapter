@@ -3,6 +3,7 @@ package org.cocome.tradingsystem.remote.access.dao.enterprise;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.IData;
+import org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct;
 import org.cocome.tradingsystem.inventory.data.enterprise.Product;
 import org.cocome.tradingsystem.inventory.data.enterprise.ProductSupplier;
 import org.cocome.tradingsystem.remote.access.Notification;
@@ -25,6 +26,11 @@ import java.util.List;
 @Stateless
 @LocalBean
 public class ProductDAO implements LegacyDataAccessObject<Product> {
+
+    private static final String BARCODE_COL = Product.class.getSimpleName() + "Barcode";
+    private static final String NAME_COL = Product.class.getSimpleName() + "Name";
+    private static final String PURCHASE_PRICE_COL = Product.class.getSimpleName() + "PurchasePrice";
+    private static final String TYPE_COL = Product.class.getSimpleName() + "Type";
 
     @EJB
     private ProductSupplierDAO productSupplierDAO;
@@ -132,12 +138,13 @@ public class ProductDAO implements LegacyDataAccessObject<Product> {
     @Override
     public Table<String> toTable(List<Product> list) {
         final Table<String> table = new Table<>();
-        table.addHeader("ProductBarcode", "ProductName", "ProductPurchasePrice");
+        table.addHeader(BARCODE_COL, NAME_COL, PURCHASE_PRICE_COL, TYPE_COL);
         final int len = list.size();
         for (int i = 0; i < len; i++) {
             table.set(i, 0, String.valueOf(list.get(i).getBarcode()));
             table.set(i, 1, list.get(i).getName());
             table.set(i, 2, String.valueOf(list.get(i).getPurchasePrice()));
+            table.set(i, 3, list.get(i).getClass().getName());
             // TODO supplier should also be added!
         }
         return table;
@@ -147,19 +154,17 @@ public class ProductDAO implements LegacyDataAccessObject<Product> {
     public List<Product> fromTable(Table<String> table) {
         final List<Product> list = new ArrayList<>();
         final int len = table.size();
-        Column<String> colBarcode;
-        Column<String> colName;
-        Column<String> colPurchasePrice;
         for (int i = 0; i < len; i++) {
-            colBarcode = table.getColumnByName(i, "ProductBarcode");
-            colName = table.getColumnByName(i, "ProductName");
-            colPurchasePrice = table.getColumnByName(i, "ProductPurchasePrice");
+            final Column<String> colBarcode = table.getColumnByName(i, BARCODE_COL);
+            final Column<String> colName = table.getColumnByName(i, NAME_COL);
+            final Column<String> colPurchasePrice = table.getColumnByName(i, PURCHASE_PRICE_COL);
+            final Column<String> colType = table.getColumnByName(i, TYPE_COL);
 
             if (colBarcode == null) {
                 System.out.println("Barcode column was null for row=" + i);
                 continue;
             }
-            final Product p = new Product();
+            final Product p = createEmptyInstance(colType);
             p.setBarcode(Long.parseLong(colBarcode.getValue()));
             if (colName != null) {
                 p.setName(colName.getValue());
@@ -170,6 +175,16 @@ public class ProductDAO implements LegacyDataAccessObject<Product> {
             list.add(p);
         }
         return list;
+    }
+
+    private Product createEmptyInstance(Column<String> colType) {
+        if (colType.getValue().equals(CustomProduct.class.getName())) {
+            return new CustomProduct();
+        }
+        if (colType.getValue().equals(Product.class.getName())) {
+            return new Product();
+        }
+        throw new IllegalArgumentException("Unknown product type: " + colType.getName());
     }
 
     public Product queryProduct(final EntityManager em, final Product product) {
