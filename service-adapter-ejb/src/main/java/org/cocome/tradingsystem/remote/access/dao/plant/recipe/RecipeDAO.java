@@ -3,10 +3,7 @@ package org.cocome.tradingsystem.remote.access.dao.plant.recipe;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct;
-import org.cocome.tradingsystem.inventory.data.plant.recipe.EntryPointInteraction;
-import org.cocome.tradingsystem.inventory.data.plant.recipe.ParameterInteraction;
-import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
-import org.cocome.tradingsystem.inventory.data.plant.recipe.Recipe;
+import org.cocome.tradingsystem.inventory.data.plant.recipe.*;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.AbstractDAO;
 
@@ -31,6 +28,9 @@ public class RecipeDAO extends AbstractDAO<Recipe> {
     private static final String OP_ID_COL = PlantOperation.class.getSimpleName() + "Id";
     private static final String EP_ID_COL = EntryPointInteraction.class.getSimpleName() + "Id";
     private static final String PARAM_ID_COL = ParameterInteraction.class.getSimpleName() + "Id";
+    private static final String NAME_COL = Recipe.class.getSimpleName() + "Name";
+    private static final String EP_IN_ID_COL = EntryPoint.class.getSimpleName() + "InputId";
+    private static final String EP_OUT_ID_COL = EntryPoint.class.getSimpleName() + "OutputId";
 
     @Override
     public Class<Recipe> getEntityType() {
@@ -40,7 +40,9 @@ public class RecipeDAO extends AbstractDAO<Recipe> {
     @Override
     public Table<String> toTable(final List<Recipe> list) {
         final Table<String> table = new Table<>();
-        table.addHeader(ID_COL, CUSTOM_PRODUCT_ID_COL, OP_ID_COL, EP_ID_COL, PARAM_ID_COL);
+        table.addHeader(
+                ID_COL, CUSTOM_PRODUCT_ID_COL, OP_ID_COL, EP_ID_COL, PARAM_ID_COL,
+                NAME_COL, EP_IN_ID_COL, EP_OUT_ID_COL);
         final int len = list.size();
         for (int i = 0; i < len; i++) {
             table.set(i, 0, String.valueOf(list.get(i).getId()));
@@ -48,6 +50,9 @@ public class RecipeDAO extends AbstractDAO<Recipe> {
             table.set(i, 2, joinValues(list.get(i).getOperations()));
             table.set(i, 3, joinValues(list.get(i).getEntryPointInteractions()));
             table.set(i, 4, joinValues(list.get(i).getParameterInteractions()));
+            table.set(i, 5, list.get(i).getName());
+            table.set(i, 6, joinValues(list.get(i).getInputEntryPoint()));
+            table.set(i, 7, joinValues(list.get(i).getOutputEntryPoint()));
         }
         return table;
     }
@@ -65,8 +70,12 @@ public class RecipeDAO extends AbstractDAO<Recipe> {
             final Column<String> colOpId = table.getColumnByName(i, OP_ID_COL);
             final Column<String> colEpId = table.getColumnByName(i, EP_ID_COL);
             final Column<String> colParamId = table.getColumnByName(i, PARAM_ID_COL);
+            final Column<String> colNameId = table.getColumnByName(i, NAME_COL);
+            final Column<String> colEpInId = table.getColumnByName(i, EP_IN_ID_COL);
+            final Column<String> colEpOutId = table.getColumnByName(i, EP_OUT_ID_COL);
 
             final Recipe recipe = getOrCreateReferencedEntity(Recipe.class, colId, em);
+            recipe.setName(colNameId.getValue());
             try {
                 recipe.setCustomProduct(getReferencedEntity(
                         CustomProduct.class,
@@ -83,6 +92,14 @@ public class RecipeDAO extends AbstractDAO<Recipe> {
                 recipe.setParameterInteractions(getReferencedEntities(
                         ParameterInteraction.class,
                         colParamId,
+                        em));
+                recipe.setInputEntryPoint(getReferencedEntities(
+                        EntryPoint.class,
+                        colEpInId,
+                        em));
+                recipe.setOutputEntryPoint(getReferencedEntities(
+                        EntryPoint.class,
+                        colEpOutId,
                         em));
             } catch (final EntityNotFoundException e) {
                 notification.addNotification(

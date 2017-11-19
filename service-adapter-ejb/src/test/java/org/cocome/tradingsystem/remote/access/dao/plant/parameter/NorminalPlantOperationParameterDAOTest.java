@@ -33,6 +33,7 @@ public class NorminalPlantOperationParameterDAOTest {
 
         final PlantOperation operation = new PlantOperation();
         operation.setPlant(plant);
+        operation.setName("PlantOperationName");
         em.persist(operation);
 
         final NorminalPlantOperationParameter param = new NorminalPlantOperationParameter();

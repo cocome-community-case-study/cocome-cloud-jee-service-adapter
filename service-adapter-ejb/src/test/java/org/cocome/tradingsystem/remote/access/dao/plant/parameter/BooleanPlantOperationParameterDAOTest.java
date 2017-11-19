@@ -30,6 +30,7 @@ public class BooleanPlantOperationParameterDAOTest {
         em.persist(plant);
 
         final PlantOperation operation = new PlantOperation();
+        operation.setName("PlantOperationName");
         operation.setPlant(plant);
         em.persist(operation);
 

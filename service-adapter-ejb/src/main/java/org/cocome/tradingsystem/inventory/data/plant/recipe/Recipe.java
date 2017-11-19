@@ -19,11 +19,9 @@
 package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct;
-import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.util.Collection;
 
 /**
@@ -32,10 +30,8 @@ import java.util.Collection;
  * @author Rudolf Biczok
  */
 @Entity
-public class Recipe implements Serializable, QueryableById {
+public class Recipe extends RecipeOperation {
     private static final long serialVersionUID = 1L;
-
-    private long id;
 
     private CustomProduct customProduct;
 
@@ -45,24 +41,6 @@ public class Recipe implements Serializable, QueryableById {
     // Represent the edges of the recipe graph
     private Collection<ParameterInteraction> parameterInteractions;
     private Collection<EntryPointInteraction> entryPointInteractions;
-
-    /**
-     * @return A unique identifier of this Plant.
-     */
-    @Override
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public long getId() {
-        return this.id;
-    }
-
-    /**
-     * @param id a unique identifier of this Plant
-     */
-    @Override
-    public void setId(final long id) {
-        this.id = id;
-    }
 
     /**
      * @return the custom product for which this recipe is used for
