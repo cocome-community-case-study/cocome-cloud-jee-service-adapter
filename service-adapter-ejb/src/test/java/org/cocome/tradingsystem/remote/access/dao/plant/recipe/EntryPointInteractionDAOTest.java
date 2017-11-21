@@ -39,8 +39,8 @@ public class EntryPointInteractionDAOTest {
                                 + entryPointInteraction.getId(),
                         EntryPointInteraction.class).getResultList();
 
-        final String expectedTableContent = String.format("EntryPointInteractionId;EntryPointInteractionToId;"
-                        + "EntryPointInteractionFromId\n" +
+        final String expectedTableContent = String.format("EntryPointInteractionId;EntryPointInteractionFromId;"
+                        + "EntryPointInteractionToId\n" +
                         "%d;%d;%d",
                 entryPointInteraction.getId(), e1.getId(), e2.getId());
 
