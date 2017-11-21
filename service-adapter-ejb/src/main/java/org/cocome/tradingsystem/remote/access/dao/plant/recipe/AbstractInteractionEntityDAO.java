@@ -23,8 +23,8 @@ public abstract class AbstractInteractionEntityDAO<FromType extends NameableEnti
         extends AbstractDAO<T> {
 
     private static final String ID_COL =  "Id";
-    private static final String FROM_ID_COL = "ToId";
     private static final String TO_ID_COL = "FromId";
+    private static final String FROM_ID_COL = "ToId";
 
     @Override
     public Table<String> toTable(final List<T> list) {
@@ -68,7 +68,7 @@ public abstract class AbstractInteractionEntityDAO<FromType extends NameableEnti
                 notification.addNotification(
                         sourceOperation,
                         Notification.FAILED,
-                        String.format("%s not available: %s", getClass().getSimpleName(),
+                        String.format("%s: Referenced entity not available: %s", getClass().getSimpleName(),
                                 e.getMessage()));
                 continue;
             }

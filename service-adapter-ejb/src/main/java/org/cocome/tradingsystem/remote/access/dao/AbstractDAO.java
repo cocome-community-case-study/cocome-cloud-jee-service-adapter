@@ -167,7 +167,7 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
         assert em != null;
         final T queriedEntity = em.find(entityClass, id);
         if (queriedEntity == null) {
-            throw new EntityNotFoundException(String.valueOf(id));
+            throw new EntityNotFoundException(String.format("%s[%d]", entityClass.getSimpleName(), id));
         }
         return queriedEntity;
     }
