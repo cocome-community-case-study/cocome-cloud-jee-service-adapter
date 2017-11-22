@@ -81,5 +81,4 @@ public class PlantOperationOrderDAO extends AbstractDAO<PlantOperationOrder> {
         }
         return list;
     }
-
 }
