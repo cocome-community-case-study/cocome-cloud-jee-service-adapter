@@ -39,6 +39,7 @@ import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductSupplierDAO;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.TradingEnterpriseDAO;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.BooleanCustomProductParameterDAO;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.CustomProductParameterDAO;
+import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.CustomProductParameterValueDAO;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.NorminalCustomProductParameterDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.PlantDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.expression.ConditionalExpressionDAO;
@@ -129,6 +130,15 @@ public class ServiceProviderDatabase extends HttpServlet {
     private NorminalPlantOperationParameterDAO norminalPlantOperationParameterDAO;
 
     @Inject
+    private ProductionOrderDAO productionOrderDAO;
+
+    @Inject
+    private ProductionOrderEntryDAO productionOrderEntryDAO;
+
+    @Inject
+    private CustomProductParameterValueDAO customProductParameterValueDAO;
+
+    @Inject
     private PlantOperationParameterDAO plantOperationParameterDAO;
 
     @Inject
@@ -205,6 +215,7 @@ public class ServiceProviderDatabase extends HttpServlet {
         daoMap.put(booleanCustomProductParameterDAO.getEntityTypeName(), booleanCustomProductParameterDAO);
         daoMap.put(norminalCustomProductParameterDAO.getEntityTypeName(), norminalCustomProductParameterDAO);
         daoMap.put(customProductParameterDAO.getEntityTypeName(), customProductParameterDAO);
+        daoMap.put(customProductParameterValueDAO.getEntityTypeName(), customProductParameterValueDAO);
         daoMap.put(plantOperationOrderDAO.getEntityTypeName(), plantOperationOrderDAO);
         daoMap.put(plantOperationOrderEntryDAO.getEntityTypeName(), plantOperationOrderEntryDAO);
         daoMap.put(plantOperationParameterValueDAO.getEntityTypeName(), plantOperationParameterValueDAO);
@@ -221,6 +232,8 @@ public class ServiceProviderDatabase extends HttpServlet {
         daoMap.put(productionUnitOperationDAO.getEntityTypeName(), productionUnitOperationDAO);
         daoMap.put(productionUnitClassDAO.getEntityTypeName(), productionUnitClassDAO);
         daoMap.put(productionUnitDAO.getEntityTypeName(), productionUnitDAO);
+        daoMap.put(productionOrderDAO.getEntityTypeName(), productionOrderDAO);
+        daoMap.put(productionOrderEntryDAO.getEntityTypeName(), productionOrderEntryDAO);
         daoMap.put(productSupplierDAO.getEntityTypeName(), productSupplierDAO);
         daoMap.put(tradingEnterpriseDAO.getEntityTypeName(), tradingEnterpriseDAO);
         daoMap.put(productOrderDAO.getEntityTypeName(), productOrderDAO);

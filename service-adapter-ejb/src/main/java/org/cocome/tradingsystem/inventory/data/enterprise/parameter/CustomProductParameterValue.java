@@ -1,7 +1,8 @@
-package org.cocome.tradingsystem.inventory.data.enterprise;
+package org.cocome.tradingsystem.inventory.data.enterprise.parameter;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.parameter.CustomProductParameter;
 import org.cocome.tradingsystem.inventory.data.enterprise.parameter.IParameterValue;
+import org.cocome.tradingsystem.inventory.data.plant.recipe.ProductionOrderEntry;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,8 +18,9 @@ public class CustomProductParameterValue implements IParameterValue<CustomProduc
     private static final long serialVersionUID = -2577328715744776645L;
 
     private long id;
-    private CustomProductParameter parameter;
     private String value;
+    private CustomProductParameter parameter;
+    private ProductionOrderEntry orderEntry;
 
     /**
      * @return The id.
@@ -57,7 +59,7 @@ public class CustomProductParameterValue implements IParameterValue<CustomProduc
     }
 
     /**
-     * @return the plant operation parameter
+     * @return the custom product parameter
      */
     @Override
     @NotNull
@@ -67,10 +69,26 @@ public class CustomProductParameterValue implements IParameterValue<CustomProduc
     }
 
     /**
-     * @param parameter the plant operation parameter
+     * @param parameter the custom product parameter
      */
     @Override
     public void setParameter(CustomProductParameter parameter) {
         this.parameter = parameter;
+    }
+
+    /**
+     * @return the order entry this parameter setting belongs to
+     */
+    @NotNull
+    @ManyToOne
+    public ProductionOrderEntry getOrderEntry() {
+        return orderEntry;
+    }
+
+    /**
+     * @param orderEntry the order entry this parameter setting belongs to
+     */
+    public void setOrderEntry(ProductionOrderEntry orderEntry) {
+        this.orderEntry = orderEntry;
     }
 }
