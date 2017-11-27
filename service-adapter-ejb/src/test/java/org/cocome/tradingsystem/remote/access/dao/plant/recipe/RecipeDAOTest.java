@@ -91,7 +91,7 @@ public class RecipeDAOTest {
         final String expectedTableContent = String.format(
                 "RecipeId;CustomProductId;PlantOperationId;EntryPointInteractionId;ParameterInteractionId;"
                         + "RecipeName;EntryPointInputId;EntryPointOutputId\n" +
-                        "%d;%d;%d;%d;%d;RecipeName;;",
+                        "%d;%d;%d;%d;%d;RecipeName;null;null",
                 recipe.getId(),
                 product.getId(),
                 operation.getId(),

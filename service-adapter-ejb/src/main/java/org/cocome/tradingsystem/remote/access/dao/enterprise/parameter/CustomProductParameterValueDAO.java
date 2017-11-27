@@ -27,8 +27,8 @@ public class CustomProductParameterValueDAO extends AbstractDAO<CustomProductPar
 
     private static final String ID_COL = CustomProductParameterValue.class.getSimpleName() + "Id";
     private static final String VALUE_COL = CustomProductParameterValue.class.getSimpleName() + "Value";
-    private static final String PARAMETER_ID_COL = CustomProductParameterValue.class.getSimpleName() + "Id";
-    private static final String ORDER_OD_COL = CustomProductParameterValue.class.getSimpleName() + "Id";
+    private static final String PARAMETER_ID_COL = CustomProductParameter.class.getSimpleName() + "Id";
+    private static final String PRODUCTION_ORDER_ENTRY_COL = ProductionOrderEntry.class.getSimpleName() + "Id";
 
     @Override
     public Class<CustomProductParameterValue> getEntityType() {
@@ -38,7 +38,7 @@ public class CustomProductParameterValueDAO extends AbstractDAO<CustomProductPar
     @Override
     public Table<String> toTable(final List<CustomProductParameterValue> list) {
         final Table<String> table = new Table<>();
-        table.addHeader(ID_COL, VALUE_COL, PARAMETER_ID_COL, ORDER_OD_COL);
+        table.addHeader(ID_COL, VALUE_COL, PARAMETER_ID_COL, PRODUCTION_ORDER_ENTRY_COL);
         final int len = list.size();
         for (int i = 0; i < len; i++) {
             table.set(i, 0, String.valueOf(list.get(i).getId()));
@@ -60,7 +60,7 @@ public class CustomProductParameterValueDAO extends AbstractDAO<CustomProductPar
             final Column<String> colId = table.getColumnByName(i, ID_COL);
             final Column<String> colValue = table.getColumnByName(i, VALUE_COL);
             final Column<String> colParameterId = table.getColumnByName(i, PARAMETER_ID_COL);
-            final Column<String> colOrderEntryId = table.getColumnByName(i, ORDER_OD_COL);
+            final Column<String> colOrderEntryId = table.getColumnByName(i, PRODUCTION_ORDER_ENTRY_COL);
 
             final CustomProductParameterValue paramValue = getOrCreateReferencedEntity(
                     CustomProductParameterValue.class,
@@ -69,9 +69,9 @@ public class CustomProductParameterValueDAO extends AbstractDAO<CustomProductPar
             paramValue.setValue(colValue.getValue());
 
             try {
-                paramValue.setParameter(getOrCreateReferencedEntity(CustomProductParameter.class,
+                paramValue.setParameter(getReferencedEntity(CustomProductParameter.class,
                         colParameterId, em));
-                paramValue.setOrderEntry(getOrCreateReferencedEntity(ProductionOrderEntry.class,
+                paramValue.setOrderEntry(getReferencedEntity(ProductionOrderEntry.class,
                         colOrderEntryId, em));
             } catch (final EntityNotFoundException e) {
                 notification.addNotification(
