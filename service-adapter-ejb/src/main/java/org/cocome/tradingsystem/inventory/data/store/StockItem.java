@@ -193,7 +193,7 @@ public class StockItem implements Serializable, QueryableById {
 
     @Override
     public String toString() {
-        return "[Class:" + this.getClass().getSimpleName() + ",Id" + this.getId() + ",Store:" + this.getStore() + ",Product:" + this.getProduct() + "]";
+        return "[Class:" + this.getClass().getSimpleName() + ",Id:" + this.getId() + ",Store:" + this.getStore() + ",Product:" + this.getProduct() + "]";
     }
 
 }

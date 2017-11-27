@@ -6,10 +6,7 @@ import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 import org.cocome.tradingsystem.remote.access.Notification;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -128,15 +125,6 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
         return getReferencedEntity(entityType, entity.getId(), em);
     }
 
-    protected <T> T getNullableReferencedEntity(final Class<T> entityClass,
-                                                final Column<String> colId,
-                                                final EntityManager em) {
-        if (colId == null) {
-            return null;
-        }
-        return em.find(entityClass, Long.valueOf(colId.getValue()));
-    }
-
     protected <T> T getReferencedEntity(final Class<T> entityClass,
                                         final Column<String> colId,
                                         final EntityManager em) {
@@ -197,7 +185,7 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
      * It calls {@link Object#toString()} on every element.
      */
     protected <T extends QueryableById> String joinValues(final Collection<T> collection) {
-        if(collection == null || collection.isEmpty()) {
+        if (collection == null || collection.isEmpty()) {
             return NULL_VALUE;
         }
         return collection.stream()

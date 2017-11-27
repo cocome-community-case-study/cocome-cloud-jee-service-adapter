@@ -2,20 +2,16 @@ package org.cocome.tradingsystem.remote.access.dao.store;
 
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
-import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.enterprise.Product;
 import org.cocome.tradingsystem.inventory.data.store.StockItem;
 import org.cocome.tradingsystem.inventory.data.store.Store;
 import org.cocome.tradingsystem.remote.access.Notification;
-import org.cocome.tradingsystem.remote.access.dao.LegacyDataAccessObject;
-import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductDAO;
+import org.cocome.tradingsystem.remote.access.dao.AbstractDAO;
 
-import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,216 +22,89 @@ import java.util.List;
  */
 @Stateless
 @LocalBean
-public class StockItemDAO implements LegacyDataAccessObject<StockItem> {
+public class StockItemDAO extends AbstractDAO<StockItem> {
 
-    @EJB
-    private ProductDAO productDAO;
-
-    @PersistenceUnit(unitName = IData.EJB_PERSISTENCE_UNIT_NAME)
-    private EntityManagerFactory emf;
+    private static final String ID_COL = StockItem.class.getSimpleName() + "Id";
+    private static final String STORE_ID_COL = Store.class.getSimpleName() + "Id";
+    private static final String PRODUCT_BARCODE_COL = Product.class.getSimpleName() + "Barcode";
+    private static final String MIN_STOCK_COL = StockItem.class.getSimpleName() + "MinStock";
+    private static final String MAX_STOCK_COL = StockItem.class.getSimpleName() + "MaxStock";
+    private static final String INCOMING_AMOUNT_COL = StockItem.class.getSimpleName() + "IncomingAmount";
+    private static final String AMOUNT_COL = StockItem.class.getSimpleName() + "Amount";
+    private static final String SALES_PRICE_COL = StockItem.class.getSimpleName() + "SalesPrice";
 
     @Override
-    public String getEntityTypeName() {
-        return "stockitem";
+    public Class<StockItem> getEntityType() {
+        return StockItem.class;
     }
 
     @Override
-    public Notification createEntities(List<StockItem> entities) throws IllegalArgumentException {
-        final EntityManager em = this.emf.createEntityManager();
-        final Notification notification = new Notification();
-
-        Store _store;
-        Product _product;
-
-        for (final StockItem nextStockItem : entities) {
-            // query product
-            _product = productDAO.queryProduct(em, nextStockItem.getProduct());
-            if (_product == null) {
-                notification.addNotification(
-                        "createStockItem", Notification.FAILED,
-                        "Product not available:" + nextStockItem.getProduct());
-                continue;
-            }
-            // query store
-            _store = em.find(Store.class, nextStockItem.getStore().getId());
-            if (_store == null) {
-                notification.addNotification(
-                        "createStockItem", Notification.FAILED,
-                        "Store not available:" + nextStockItem.getStore());
-                continue;
-            }
-            // ensure store can save items
-            if (_store.getStockItems() == null) {
-                _store.setStockItems(new ArrayList<>());
-            }
-            // update object with actual database objects
-            nextStockItem.setStore(_store);
-            nextStockItem.setProduct(_product);
-            // persist
-            _store.getStockItems().add(nextStockItem);
-            em.persist(nextStockItem);
-            em.merge(_store.getEnterprise());
-            em.merge(_store);
-            em.merge(_product);
-            notification.addNotification(
-                    "createStockItem", Notification.SUCCESS,
-                    String.format("%s[id=%d]", StockItem.class.getName(), nextStockItem.getId()));
-        }
-        em.flush();
-        em.close();
-        return notification;
-    }
-
-    @Override
-    public Notification deleteEntities(final List<StockItem> entities) {
-        final Notification notification = new Notification();
-        if (entities != null) {
-            final EntityManager em = this.emf.createEntityManager();
-
-            for (final StockItem entity : entities) {
-                final StockItem managedEntity = this.queryStockItem(em, entity);
-                if (managedEntity == null) {
-                    notification.addNotification(
-                            "createEntities", Notification.FAILED,
-                            "Entity not available:" + entity);
-                    return notification;
-                }
-
-                em.remove(managedEntity);
-                notification.addNotification(
-                        "deleteEntities", Notification.SUCCESS,
-                        "Entity deleted:" + entity);
-            }
-            em.flush();
-            em.close();
-            return notification;
-        }
-        throw new IllegalAccessError("[deleteEntity]argument is null");
-    }
-
-    @Override
-    public Notification updateEntities(List<StockItem> entities) throws IllegalArgumentException {
-        final EntityManager em = this.emf.createEntityManager();
-        final Notification notification = new Notification();
-        StockItem _stockItem = null;
-        Store _store;
-
-        for (final StockItem nextStockItem : entities) {
-            // query store
-            _store = em.find(Store.class, nextStockItem.getStore().getId());
-            if (_store == null) {
-                notification.addNotification(
-                        "updateStockItems", Notification.FAILED,
-                        "Store not available:" + nextStockItem.getStore());
-                continue;
-            }
-
-            // query stock item
-            for (final StockItem _storeNextStockItem : _store.getStockItems()) {
-                if (_storeNextStockItem.getProduct().getBarcode()
-                        == nextStockItem.getProduct().getBarcode()) {
-                    _stockItem = _storeNextStockItem;
-                    break;
-                }
-            }
-
-            // update stock item
-            if (_stockItem == null) {
-                notification.addNotification(
-                        "updateStockItems", Notification.FAILED,
-                        "StockItem not available:" + nextStockItem);
-                continue;
-            }
-
-            _stockItem.setAmount(nextStockItem.getAmount());
-            _stockItem.setIncomingAmount(nextStockItem.getIncomingAmount());
-            _stockItem.setMaxStock(nextStockItem.getMaxStock());
-            _stockItem.setMinStock(nextStockItem.getMinStock());
-            _stockItem.setSalesPrice(nextStockItem.getSalesPrice());
-
-            em.merge(_stockItem);
-            notification.addNotification(
-                    "updateStockItems", Notification.SUCCESS,
-                    "Update StockItem:" + _stockItem);
-        }
-        em.flush();
-        em.close();
-        return notification;
-    }
-
-    @Override
-    public Table<String> toTable(List<StockItem> list) {
+    public Table<String> toTable(final List<StockItem> list) {
         final Table<String> table = new Table<>();
-        table.addHeader("EnterpriseName",
-                "StoreName", "StoreLocation", "ProductBarcode",
-                "StockItemId", "StockItemMinStock", "StockItemMaxStock",
-                "StockItemIncomingAmount", "StockItemAmount",
-                "StockItemSalesPrice");
-        int row = 0;
-        for (final StockItem nextStockItem : list) {
-            table.set(row, 0, nextStockItem.getStore().getEnterprise().getName());
-            table.set(row, 1, nextStockItem.getStore().getName());
-            table.set(row, 2, nextStockItem.getStore().getLocation());
-            table.set(row, 3, String.valueOf(nextStockItem.getProduct().getBarcode()));
-            table.set(row, 4, String.valueOf(nextStockItem.getId()));
-            table.set(row, 5, String.valueOf(nextStockItem.getMinStock()));
-            table.set(row, 6, String.valueOf(nextStockItem.getMaxStock()));
-            table.set(row, 7, String.valueOf(nextStockItem.getIncomingAmount()));
-            table.set(row, 8, String.valueOf(nextStockItem.getAmount()));
-            table.set(row, 9, String.valueOf(nextStockItem.getSalesPrice()));
-            row++;
+        table.addHeader(ID_COL, STORE_ID_COL, PRODUCT_BARCODE_COL, MIN_STOCK_COL,
+                MAX_STOCK_COL, INCOMING_AMOUNT_COL, AMOUNT_COL, SALES_PRICE_COL);
+        final int len = list.size();
+        for (int i = 0; i < len; i++) {
+            table.set(i, 0, String.valueOf(list.get(i).getId()));
+            table.set(i, 1, String.valueOf(list.get(i).getStore().getId()));
+            table.set(i, 2, String.valueOf(list.get(i).getProduct().getBarcode()));
+            table.set(i, 3, String.valueOf(list.get(i).getMinStock()));
+            table.set(i, 4, String.valueOf(list.get(i).getMaxStock()));
+            table.set(i, 5, String.valueOf(list.get(i).getIncomingAmount()));
+            table.set(i, 6, String.valueOf(list.get(i).getAmount()));
+            table.set(i, 7, String.valueOf(list.get(i).getSalesPrice()));
         }
         return table;
     }
 
     @Override
-    public List<StockItem> fromTable(Table<String> table) {
-        final List<StockItem> list = new ArrayList<>();
+    public List<StockItem> fromTable(final EntityManager em,
+                                     final Table<String> table,
+                                     final Notification notification,
+                                     final String sourceOperation) {
         final int len = table.size();
-        Column<String> colStoreId;
-        Column<String> colProductBarcode;
-        Column<String> colStockItemMinStock;
-        Column<String> colStockItemMaxStock;
-        Column<String> colStockItemIncomingAmount;
-        Column<String> colStockItemAmount;
-        Column<String> colStockItemSalesPrice;
+        final List<StockItem> list = new ArrayList<>(len);
         for (int i = 0; i < len; i++) {
-            colStoreId = table.getColumnByName(i, "StoreId");
-            colProductBarcode = table.getColumnByName(i, "ProductBarcode");
-            colStockItemMinStock = table.getColumnByName(i, "StockItemMinStock");
-            colStockItemMaxStock = table.getColumnByName(i, "StockItemMaxStock");
-            colStockItemIncomingAmount = table.getColumnByName(i, "StockItemIncomingAmount");
-            colStockItemAmount = table.getColumnByName(i, "StockItemAmount");
-            colStockItemSalesPrice = table.getColumnByName(i, "StockItemSalesPrice");
+            final Column<String> colId = table.getColumnByName(i, ID_COL);
+            final Column<String> colStoreId = table.getColumnByName(i, STORE_ID_COL);
+            final Column<String> colProductBarcode = table.getColumnByName(i, PRODUCT_BARCODE_COL);
+            final Column<String> colMinStock = table.getColumnByName(i, MIN_STOCK_COL);
+            final Column<String> colMaxStock = table.getColumnByName(i, MAX_STOCK_COL);
+            final Column<String> colIncomingAmount = table.getColumnByName(i, INCOMING_AMOUNT_COL);
+            final Column<String> colAmount = table.getColumnByName(i, AMOUNT_COL);
+            final Column<String> colSalesPrice = table.getColumnByName(i, SALES_PRICE_COL);
 
-            final Store store = new Store();
-
-            if (colStoreId != null) {
-                store.setId(Long.parseLong(colStoreId.getValue()));
-            } else {
-                store.setId(-1L);
+            final StockItem recipe = getOrCreateReferencedEntity(StockItem.class, colId, em);
+            try {
+                recipe.setStore(getReferencedEntity(
+                        Store.class,
+                        colStoreId,
+                        em));
+                recipe.setProduct(queryProductByBarcode(em,
+                        Long.valueOf(colProductBarcode.getValue())));
+            } catch (final EntityNotFoundException e) {
+                notification.addNotification(
+                        sourceOperation,
+                        Notification.FAILED,
+                        String.format("%s: not available: %s", getClass().getSimpleName(),
+                                e.getMessage()));
+                continue;
             }
 
-            final Product product = new Product();
-            product.setBarcode(Long.parseLong(colProductBarcode.getValue()));
+            recipe.setMinStock(Long.valueOf(colMinStock.getValue()));
+            recipe.setMaxStock(Long.valueOf(colMaxStock.getValue()));
+            recipe.setIncomingAmount(Long.valueOf(colIncomingAmount.getValue()));
+            recipe.setAmount(Long.valueOf(colAmount.getValue()));
+            recipe.setSalesPrice(Double.valueOf(colSalesPrice.getValue()));
 
-            final StockItem stockItem = new StockItem();
-            stockItem.setStore(store);
-            stockItem.setProduct(product);
-            stockItem.setIncomingAmount(Long.parseLong(colStockItemIncomingAmount.getValue()));
-            stockItem.setMaxStock(Long.parseLong(colStockItemMaxStock.getValue()));
-            stockItem.setMinStock(Long.parseLong(colStockItemMinStock.getValue()));
-            stockItem.setAmount(Long.parseLong(colStockItemAmount.getValue()));
-            stockItem.setSalesPrice(Double.parseDouble(colStockItemSalesPrice.getValue()));
-
-            list.add(stockItem);
+            list.add(recipe);
         }
         return list;
     }
 
-    private StockItem queryStockItem(final EntityManager em, final StockItem stockItem) {
+    public Product queryProductByBarcode(final EntityManager em, final long barcode) {
         return querySingleInstance(em.createQuery(
-                "SELECT s FROM StockItem s WHERE s.id = :id",
-                StockItem.class).setParameter("id", stockItem.getId()));
+                "SELECT p FROM Product p WHERE p.barcode = :barcode",
+                Product.class).setParameter("barcode", barcode));
     }
 }

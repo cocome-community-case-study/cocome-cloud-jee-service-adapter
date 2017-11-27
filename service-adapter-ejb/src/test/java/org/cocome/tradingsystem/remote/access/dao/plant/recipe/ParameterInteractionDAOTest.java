@@ -60,12 +60,12 @@ public class ParameterInteractionDAOTest {
                                 + parameterInteraction.getId(),
                         ParameterInteraction.class).getResultList();
 
-        final String expectedTableContent = String.format("ParameterInteractionId;ParameterInteractionFromId;"
-                        +"ParameterInteractionToId\n"
+        final String expectedTableContent = String.format("ParameterInteractionId;ParameterInteractionToId;"
+                        +"ParameterInteractionFromId\n"
                         + "%d;%d;%d",
                 parameterInteraction.getId(),
-                customProductParameter.getId(),
-                plantOperationParameter.getId());
+                plantOperationParameter.getId(),
+                customProductParameter.getId());
 
         Assert.assertNotNull(queriedInstances);
         Assert.assertFalse(queriedInstances.isEmpty());
