@@ -11,7 +11,7 @@ public final class TimeUtils {
     }
 
     /**
-     * The expected format is dd-mm-yyyy
+     * The expected format is dd-mm-yyyy HH:mm:ss
      *
      * @param strdate the string representation of the given date
      * @return null if the format was not okay!
@@ -19,7 +19,7 @@ public final class TimeUtils {
     public static Date convertToDateObject(String strdate) {
         final Calendar calendar = GregorianCalendar.getInstance(TimeZone.getDefault(), Locale.ENGLISH);
         try {
-            final Date date = new SimpleDateFormat("dd-MM-yyyy").parse(strdate);
+            final Date date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").parse(strdate);
             calendar.setTime(date);
         } catch (ParseException e) {
             throw new IllegalStateException("Cannot convert string to date: " + strdate, e);
@@ -28,25 +28,25 @@ public final class TimeUtils {
     }
 
     /**
-     * Convert the given date to a well formatted string like dd.mm.yyyy
+     * Convert the given date to a well formatted string like dd.mm.yyyy HH:mm:ss
      *
      * @param date the date object to convert
      * @return a string representation of the given date
      */
     public static String convertToStringDate(Date date) {
-        Format formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Format formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         return formatter.format(date);
     }
 
     /**
-     * Convert the given date to a well formatted string like dd.mm.yyyy.
-     * It returns "00-00-0000" if the given
+     * Convert the given date to a well formatted string like dd.mm.yyyy HH:mm:ss.
+     * It returns "00-00-0000 00:00:00" if the given
      *
      * @param date the date object to convert
      * @return a string representation of the given date
      */
     public static String convertNullableToStringDate(Date date) {
-        return date == null ? "00-00-0000"
+        return date == null ? "00-00-0000 00:00:00"
                 : TimeUtils.convertToStringDate(date);
     }
 
