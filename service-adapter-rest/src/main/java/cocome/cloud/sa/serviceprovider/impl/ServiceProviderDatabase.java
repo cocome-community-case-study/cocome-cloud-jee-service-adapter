@@ -51,9 +51,7 @@ import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.Productio
 import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitOperationDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.recipe.*;
-import org.cocome.tradingsystem.remote.access.dao.store.ProductOrderDAO;
-import org.cocome.tradingsystem.remote.access.dao.store.StockItemDAO;
-import org.cocome.tradingsystem.remote.access.dao.store.StoreDAO;
+import org.cocome.tradingsystem.remote.access.dao.store.*;
 import org.cocome.tradingsystem.remote.access.dao.usermanager.CustomerDAO;
 import org.cocome.tradingsystem.remote.access.dao.usermanager.LoginUserDAO;
 
@@ -190,6 +188,12 @@ public class ServiceProviderDatabase extends HttpServlet {
     private ProductOrderDAO productOrderDAO;
 
     @Inject
+    private ItemDAO itemDAO;
+
+    @Inject
+    private OnDemandItemDAO onDemandItemDAO;
+
+    @Inject
     private StockItemDAO stockItemDAO;
 
     @Inject
@@ -238,6 +242,8 @@ public class ServiceProviderDatabase extends HttpServlet {
         daoMap.put(tradingEnterpriseDAO.getEntityTypeName(), tradingEnterpriseDAO);
         daoMap.put(productOrderDAO.getEntityTypeName(), productOrderDAO);
         daoMap.put(stockItemDAO.getEntityTypeName(), stockItemDAO);
+        daoMap.put(itemDAO.getEntityTypeName(), itemDAO);
+        daoMap.put(onDemandItemDAO.getEntityTypeName(), onDemandItemDAO);
         daoMap.put(storeDAO.getEntityTypeName(), storeDAO);
         daoMap.put(customerDAO.getEntityTypeName(), customerDAO);
         daoMap.put(loginUserDAO.getEntityTypeName(), loginUserDAO);

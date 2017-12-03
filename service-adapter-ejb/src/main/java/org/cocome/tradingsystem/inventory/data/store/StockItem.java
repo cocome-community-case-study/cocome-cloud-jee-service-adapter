@@ -18,17 +18,8 @@
 
 package org.cocome.tradingsystem.inventory.data.store;
 
-import java.io.Serializable;
-
 import javax.persistence.Basic;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
-import org.cocome.tradingsystem.inventory.data.enterprise.Product;
-import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 
 /**
  * Represents a concrete product in the, store including sales price,
@@ -37,40 +28,14 @@ import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
  * @author Yannick Welsch
  */
 @Entity
-public class StockItem implements Serializable, QueryableById {
+public class StockItem extends Item {
 
     private static final long serialVersionUID = -293179135307588628L;
-    private long id;
-    private double salesPrice;
+
     private long amount;
     private long minStock;
     private long maxStock;
     private long incomingAmount;
-    private Store store;
-    private Product product;
-
-    /**
-     * Empty constructor.
-     */
-    public StockItem() {
-    }
-
-    /**
-     * @return A unique identifier of this StockItem.
-     */
-    @Override
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public long getId() {
-        return this.id;
-    }
-
-    /**
-     * @param id a unique identifier of this StockItem
-     */
-    public void setId(final long id) {
-        this.id = id;
-    }
 
     /**
      * @return The currently available amount of items of a product
@@ -125,36 +90,6 @@ public class StockItem implements Serializable, QueryableById {
     }
 
     /**
-     * @return The Product of a StockItem.
-     */
-    @ManyToOne
-    public Product getProduct() {
-        return this.product;
-    }
-
-    /**
-     * @param product the Product of a StockItem
-     */
-    public void setProduct(final Product product) {
-        this.product = product;
-    }
-
-    /**
-     * @return The sales price of the StockItem
-     */
-    @Basic
-    public double getSalesPrice() {
-        return this.salesPrice;
-    }
-
-    /**
-     * @param salesPrice the sales price of the StockItem
-     */
-    public void setSalesPrice(final double salesPrice) {
-        this.salesPrice = salesPrice;
-    }
-
-    /**
      * Required for UC 8
      *
      * @return incomingAmount
@@ -175,25 +110,4 @@ public class StockItem implements Serializable, QueryableById {
     public void setIncomingAmount(final long incomingAmount) {
         this.incomingAmount = incomingAmount;
     }
-
-    /**
-     * @return The store where the StockItem belongs to
-     */
-    @ManyToOne
-    public Store getStore() {
-        return this.store;
-    }
-
-    /**
-     * @param store The store where the StockItem belongs to
-     */
-    public void setStore(final Store store) {
-        this.store = store;
-    }
-
-    @Override
-    public String toString() {
-        return "[Class:" + this.getClass().getSimpleName() + ",Id:" + this.getId() + ",Store:" + this.getStore() + ",Product:" + this.getProduct() + "]";
-    }
-
 }
