@@ -1,8 +1,7 @@
 package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct;
-import org.cocome.tradingsystem.inventory.data.enterprise.parameter.CustomProductParameter;
-import org.cocome.tradingsystem.inventory.data.plant.parameter.PlantOperationParameter;
+import org.cocome.tradingsystem.inventory.data.plant.parameter.Parameter;
 
 import javax.persistence.*;
 
@@ -14,15 +13,13 @@ import javax.persistence.*;
  * @author Rudolf Biczok
  */
 @Entity
-public class ParameterInteraction implements InteractionEntity<
-        CustomProductParameter,
-        PlantOperationParameter> {
+public class ParameterInteraction implements InteractionEntity<Parameter> {
     private static final long serialVersionUID = 1L;
 
     private long id;
-
-    private CustomProductParameter from;
-    private PlantOperationParameter to;
+    private Recipe recipe;
+    private Parameter from;
+    private Parameter to;
 
     @Override
     @Id
@@ -36,37 +33,42 @@ public class ParameterInteraction implements InteractionEntity<
         this.id = id;
     }
 
+    @ManyToOne
+    @Override
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    @Override
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+    }
+
     @Override
     @OneToOne(fetch = FetchType.EAGER)
-    public CustomProductParameter getFrom() {
+    public Parameter getFrom() {
         return from;
     }
 
     @Override
-    public void setFrom(CustomProductParameter from) {
+    public void setFrom(Parameter from) {
         this.from = from;
     }
 
     @Override
     @OneToOne(fetch = FetchType.EAGER)
-    public PlantOperationParameter getTo() {
+    public Parameter getTo() {
         return to;
     }
 
     @Override
-    public void setTo(PlantOperationParameter to) {
+    public void setTo(Parameter to) {
         this.to = to;
     }
 
     @Transient
     @Override
-    public Class<CustomProductParameter> getFromClass() {
-        return CustomProductParameter.class;
-    }
-
-    @Transient
-    @Override
-    public Class<PlantOperationParameter> getToClass() {
-        return PlantOperationParameter.class;
+    public Class<Parameter> getInteractionType() {
+        return Parameter.class;
     }
 }

@@ -18,12 +18,11 @@
 
 package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
-import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 import org.cocome.tradingsystem.inventory.data.store.Store;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 /**
  * The class represents an order of a {@link PlantOperation} in the database.
@@ -31,79 +30,18 @@ import java.util.Date;
  * @author Rudolf Biczok
  */
 @Entity
-public class ProductionOrder implements Serializable, QueryableById {
+public class ProductionOrder extends RecipeOperationOrder {
 
     private static final long serialVersionUID = -8340585715760459030L;
 
-    private long id;
-    private Date deliveryDate;
-    private Date orderingDate;
     private Store store;
 
-    /**
-     * @return A unique identifier for ProductOrder objects
-     */
-    @Override
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public long getId() {
-        return this.id;
-    }
-
-    /**
-     * @param id A unique identifier for ProductOrder objects
-     */
-    public void setId(final long id) {
-        this.id = id;
-    }
-
-    /**
-     * @return The date of ordering.
-     */
-    @Basic
-    @Temporal(TemporalType.TIMESTAMP)
-    public Date getOrderingDate() {
-        return this.orderingDate;
-    }
-
-    /**
-     * @param orderingDate the date of ordering
-     */
-    public void setOrderingDate(final Date orderingDate) {
-        this.orderingDate = orderingDate;
-    }
-
-    /**
-     * The delivery date is used for computing the mean time to delivery
-     *
-     * @return The date of order fulfillment.
-     */
-    @Basic
-    @Temporal(TemporalType.TIMESTAMP)
-    public Date getDeliveryDate() {
-        return this.deliveryDate;
-    }
-
-    /**
-     * The delivery date is used for computing the mean time to delivery
-     *
-     * @param deliveryDate the date of order fulfillment
-     */
-    public void setDeliveryDate(final Date deliveryDate) {
-        this.deliveryDate = deliveryDate;
-    }
-
-    /**
-     * @return The store from which the order came from
-     */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @NotNull
+    @ManyToOne
     public Store getStore() {
         return this.store;
     }
 
-    /**
-     * @param store the from which the order came from
-     */
     public void setStore(final Store store) {
         this.store = store;
     }

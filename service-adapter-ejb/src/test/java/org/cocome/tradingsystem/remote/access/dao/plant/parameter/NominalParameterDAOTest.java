@@ -2,7 +2,7 @@ package org.cocome.tradingsystem.remote.access.dao.plant.parameter;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
-import org.cocome.tradingsystem.inventory.data.plant.parameter.NorminalPlantOperationParameter;
+import org.cocome.tradingsystem.inventory.data.plant.parameter.NominalParameter;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
 import org.cocome.tradingsystem.remote.access.TestUtils;
 import org.junit.Assert;
@@ -14,9 +14,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-public class NorminalPlantOperationParameterDAOTest {
+public class NominalParameterDAOTest {
 
-    private NorminalPlantOperationParameterDAO dao = TestUtils.injectFakeEJB(NorminalPlantOperationParameterDAO.class);
+    private NominalParameterDAO dao = TestUtils.injectFakeEJB(NominalParameterDAO.class);
 
     @Test
     public void convertToTableContent() throws Exception {
@@ -36,8 +36,8 @@ public class NorminalPlantOperationParameterDAOTest {
         operation.setName("PlantOperationName");
         em.persist(operation);
 
-        final NorminalPlantOperationParameter param = new NorminalPlantOperationParameter();
-        param.setPlantOperation(operation);
+        final NominalParameter param = new NominalParameter();
+        param.setOperation(operation);
         param.setCategory("Ingredients");
         param.setName("Fruits");
         param.setOptions(new HashSet<>(Arrays.asList("Apple", "Banana", "Coconut")));
@@ -45,14 +45,13 @@ public class NorminalPlantOperationParameterDAOTest {
 
         tx.commit();
 
-        final List<NorminalPlantOperationParameter> queriedInstances = TestUtils.TEST_EMF.createEntityManager()
-                .createQuery("SELECT param from NorminalPlantOperationParameter param WHERE param.id = "
+        final List<NominalParameter> queriedInstances = TestUtils.TEST_EMF.createEntityManager()
+                .createQuery("SELECT param from NominalParameter param WHERE param.id = "
                                 + param.getId(),
-                        NorminalPlantOperationParameter.class).getResultList();
+                        NominalParameter.class).getResultList();
 
-        final String expectedTableContent = String.format("PlantOperationId;NorminalPlantOperationParameterId;"
-                        + "NorminalPlantOperationParameterName;NorminalPlantOperationParameterCategory;"
-                        + "NorminalPlantOperationParameterOptions\n"
+        final String expectedTableContent = String.format("RecipeOperationId;NominalParameterId;NominalParameterName;"
+                        + "NominalParameterCategory;NominalParameterOptions\n"
                         + "%d;%d;Fruits;Ingredients;Apple,Coconut,Banana",
                 operation.getId(),
                 param.getId());

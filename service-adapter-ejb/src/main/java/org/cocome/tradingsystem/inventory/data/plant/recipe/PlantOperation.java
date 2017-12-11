@@ -40,7 +40,7 @@ public class PlantOperation extends RecipeOperation {
      * @return the markup used to describe this operation
      */
     @Lob
-    @Column(name = "EXECUTION_MARKUP", length = 512)
+    @Column(length = 512)
     public String getMarkup() {
         return markup;
     }

@@ -29,6 +29,7 @@ public class ProductionOrderDAO extends AbstractDAO<ProductionOrder> {
     private static final String ID_COL = ProductionOrder.class.getSimpleName() + "Id";
     private static final String DELIVERY_DATE_COL = ProductionOrder.class.getSimpleName() + "DeliveryDate";
     private static final String ORDERING_DATE_COL = ProductionOrder.class.getSimpleName() + "OrderingDate";
+    private static final String ENTERPRISE_COL = TradingEnterprise.class.getSimpleName() + "Id";
     private static final String STORE_COL = Store.class.getSimpleName() + "Id";
 
     @Override
@@ -39,12 +40,13 @@ public class ProductionOrderDAO extends AbstractDAO<ProductionOrder> {
     @Override
     public Table<String> toTable(final List<ProductionOrder> list) {
         final Table<String> table = new Table<>();
-        table.addHeader(ID_COL, DELIVERY_DATE_COL, ORDERING_DATE_COL, STORE_COL);
+        table.addHeader(ID_COL, DELIVERY_DATE_COL, ORDERING_DATE_COL, ENTERPRISE_COL, STORE_COL);
         final int len = list.size();
         for (int i = 0; i < len; i++) {
             table.set(i, 0, String.valueOf(list.get(i).getId()));
             table.set(i, 1, TimeUtils.convertToStringDate(list.get(i).getDeliveryDate()));
             table.set(i, 2, TimeUtils.convertToStringDate(list.get(i).getOrderingDate()));
+            table.set(i, 3, String.valueOf(list.get(i).getEnterprise().getId()));
             table.set(i, 3, String.valueOf(list.get(i).getStore().getId()));
         }
         return table;
@@ -61,6 +63,7 @@ public class ProductionOrderDAO extends AbstractDAO<ProductionOrder> {
             final Column<String> colId = table.getColumnByName(i, ID_COL);
             final Column<String> colDeliveryDate = table.getColumnByName(i, DELIVERY_DATE_COL);
             final Column<String> colOrderingDate = table.getColumnByName(i, ORDERING_DATE_COL);
+            final Column<String> colEnterpriseId = table.getColumnByName(i, ENTERPRISE_COL);
             final Column<String> colStoreId = table.getColumnByName(i, STORE_COL);
 
             final ProductionOrder productionOrder = getOrCreateReferencedEntity(ProductionOrder.class, colId, em);
@@ -68,6 +71,8 @@ public class ProductionOrderDAO extends AbstractDAO<ProductionOrder> {
             productionOrder.setOrderingDate(TimeUtils.convertToDateObject(colOrderingDate.getValue()));
 
             try {
+                productionOrder.setEnterprise(getOrCreateReferencedEntity(TradingEnterprise.class,
+                        colEnterpriseId, em));
                 productionOrder.setStore(getOrCreateReferencedEntity(Store.class,
                         colStoreId, em));
             } catch (final EntityNotFoundException e) {

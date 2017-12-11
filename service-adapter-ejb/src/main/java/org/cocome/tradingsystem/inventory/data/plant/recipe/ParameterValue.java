@@ -1,26 +1,26 @@
-package org.cocome.tradingsystem.inventory.data.enterprise.parameter;
+package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
-import org.cocome.tradingsystem.inventory.data.enterprise.parameter.CustomProductParameter;
-import org.cocome.tradingsystem.inventory.data.enterprise.parameter.IParameterValue;
-import org.cocome.tradingsystem.inventory.data.plant.recipe.ProductionOrderEntry;
+import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
+import org.cocome.tradingsystem.inventory.data.plant.parameter.Parameter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
- * Holds a value for a particular {@link CustomProductParameter}
+ * Holds a value for a particular {@link Parameter}
  *
  * @author Rudolf Biczok
  */
 @Entity
-public class CustomProductParameterValue implements IParameterValue<CustomProductParameter> {
+public class ParameterValue implements QueryableById, Serializable {
 
     private static final long serialVersionUID = -2577328715744776645L;
 
     private long id;
     private String value;
-    private CustomProductParameter parameter;
-    private ProductionOrderEntry orderEntry;
+    private Parameter parameter;
+    private RecipeOperationOrderEntry orderEntry;
 
     /**
      * @return The id.
@@ -43,7 +43,6 @@ public class CustomProductParameterValue implements IParameterValue<CustomProduc
     /**
      * @return The parameter value
      */
-    @Override
     @NotNull
     @Basic
     public String getValue() {
@@ -53,26 +52,23 @@ public class CustomProductParameterValue implements IParameterValue<CustomProduc
     /**
      * @param value The parameter value
      */
-    @Override
     public void setValue(String value) {
         this.value = value;
     }
 
     /**
-     * @return the custom product parameter
+     * @return the plant operation parameter
      */
-    @Override
     @NotNull
     @ManyToOne
-    public CustomProductParameter getParameter() {
+    public Parameter getParameter() {
         return parameter;
     }
 
     /**
-     * @param parameter the custom product parameter
+     * @param parameter the plant operation parameter
      */
-    @Override
-    public void setParameter(CustomProductParameter parameter) {
+    public void setParameter(Parameter parameter) {
         this.parameter = parameter;
     }
 
@@ -81,14 +77,14 @@ public class CustomProductParameterValue implements IParameterValue<CustomProduc
      */
     @NotNull
     @ManyToOne
-    public ProductionOrderEntry getOrderEntry() {
+    public RecipeOperationOrderEntry getOrderEntry() {
         return orderEntry;
     }
 
     /**
      * @param orderEntry the order entry this parameter setting belongs to
      */
-    public void setOrderEntry(ProductionOrderEntry orderEntry) {
+    public void setOrderEntry(RecipeOperationOrderEntry orderEntry) {
         this.orderEntry = orderEntry;
     }
 }

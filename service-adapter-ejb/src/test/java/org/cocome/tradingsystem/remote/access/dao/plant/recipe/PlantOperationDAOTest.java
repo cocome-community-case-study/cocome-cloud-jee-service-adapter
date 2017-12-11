@@ -2,7 +2,7 @@ package org.cocome.tradingsystem.remote.access.dao.plant.recipe;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
-import org.cocome.tradingsystem.inventory.data.plant.parameter.PlantOperationParameter;
+import org.cocome.tradingsystem.inventory.data.plant.parameter.Parameter;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitClass;
 import org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.EntryPoint;
@@ -13,8 +13,6 @@ import org.junit.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class PlantOperationDAOTest {
@@ -33,24 +31,28 @@ public class PlantOperationDAOTest {
         plant.setEnterprise(enterprise);
         em.persist(plant);
 
+        final PlantOperation operation = new PlantOperation();
+        operation.setPlant(plant);
+        operation.setName("Build Stuff");
+        em.persist(operation);
+
         final EntryPoint in1 = new EntryPoint();
         in1.setName("Slot 1a");
+        in1.setOperation(operation);
+        in1.setDirection(EntryPoint.Direction.INPUT);
         em.persist(in1);
 
         final EntryPoint in2 = new EntryPoint();
         in2.setName("Slot 1b");
+        in2.setOperation(operation);
+        in2.setDirection(EntryPoint.Direction.INPUT);
         em.persist(in2);
 
         final EntryPoint out = new EntryPoint();
         out.setName("Slot 2");
+        out.setOperation(operation);
+        out.setDirection(EntryPoint.Direction.OUTPUT);
         em.persist(out);
-
-        final PlantOperation operation = new PlantOperation();
-        operation.setPlant(plant);
-        operation.setName("Build Stuff");
-        operation.setInputEntryPoint(Arrays.asList(in1, in2));
-        operation.setOutputEntryPoint(Collections.singletonList(out));
-        em.persist(operation);
 
         final ProductionUnitClass puc = new ProductionUnitClass();
         puc.setPlant(plant);
@@ -77,8 +79,8 @@ public class PlantOperationDAOTest {
         c3.setProductionUnitClass(puc);
         em.persist(c3);
 
-        final PlantOperationParameter p = new PlantOperationParameter();
-        p.setPlantOperation(operation);
+        final Parameter p = new Parameter();
+        p.setOperation(operation);
         em.persist(p);
 
         //TODO No validation here so far, i.e., markup could be bullshit
@@ -91,14 +93,10 @@ public class PlantOperationDAOTest {
                                 + operation.getId(),
                         PlantOperation.class).getResultList();
 
-        final String expectedTableContent = String.format("PlantOperationId;PlantId;PlantOperationMarkup;PlantOperationName;"
-                + "EntryPointInputId;EntryPointOutputId\n"
-                + "%d;%d;MARKUP;Build Stuff;%d,%d;%d",
+        final String expectedTableContent = String.format("PlantOperationId;PlantId;PlantOperationMarkup;PlantOperationName\n"
+                + "%d;%d;MARKUP;Build Stuff",
                 operation.getId(),
-                plant.getId(),
-                in1.getId(),
-                in2.getId(),
-                out.getId());
+                plant.getId());
 
         Assert.assertNotNull(queriedInstances);
         Assert.assertFalse(queriedInstances.isEmpty());

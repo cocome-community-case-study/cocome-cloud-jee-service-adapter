@@ -18,8 +18,10 @@
 
 package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Represents a single {@link PlantOperationOrder} entry in the database.
@@ -27,40 +29,47 @@ import javax.persistence.ManyToOne;
  * @author Rudolf Biczok
  */
 @Entity
-public class PlantOperationOrderEntry extends RecipeOperationOrderEntry {
+public class RecipeOperationOrderEntry implements Serializable, QueryableById {
 
     private static final long serialVersionUID = -7683436740437770058L;
 
-    private PlantOperation operation;
-    private PlantOperationOrder order;
+    private long id;
+    private long amount;
 
     /**
-     * @return The ProductOrder where the OrderEntry belongs to
+     * Gets identifier value
+     *
+     * @return The id.
      */
-    @ManyToOne
-    public PlantOperationOrder getOrder() {
-        return this.order;
+    @Override
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public long getId() {
+        return this.id;
     }
 
     /**
-     * @param productOrder The ProductOrder where the OrderEntry belongs to
+     * Sets identifier.
+     *
+     * @param id Identifier value.
      */
-    public void setOrder(final PlantOperationOrder productOrder) {
-        this.order = productOrder;
+    @Override
+    public void setId(final long id) {
+        this.id = id;
     }
 
     /**
-     * @return The product which is ordered
+     * @return The amount of ordered products
      */
-    @ManyToOne
-    public PlantOperation getOperation() {
-        return this.operation;
+    @Basic
+    public long getAmount() {
+        return this.amount;
     }
 
     /**
-     * @param operation The product which is ordered
+     * @param amount The amount of ordered products
      */
-    public void setOperation(final PlantOperation operation) {
-        this.operation = operation;
+    public void setAmount(final long amount) {
+        this.amount = amount;
     }
 }

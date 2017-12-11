@@ -14,7 +14,7 @@ import javax.ejb.Stateless;
 @Stateless
 @LocalBean
 public class EntryPointInteractionDAO
-        extends AbstractInteractionEntityDAO<EntryPoint, EntryPoint, EntryPointInteraction> {
+        extends AbstractInteractionEntityDAO<EntryPoint, EntryPointInteraction> {
 
     @Override
     public Class<EntryPointInteraction> getEntityType() {

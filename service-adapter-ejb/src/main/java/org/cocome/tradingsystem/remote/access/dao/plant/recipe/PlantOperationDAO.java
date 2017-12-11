@@ -3,7 +3,6 @@ package org.cocome.tradingsystem.remote.access.dao.plant.recipe;
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
-import org.cocome.tradingsystem.inventory.data.plant.recipe.EntryPoint;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.AbstractDAO;
@@ -28,8 +27,6 @@ public class PlantOperationDAO extends AbstractDAO<PlantOperation> {
     private static final String PLANT_ID_COL = Plant.class.getSimpleName() + "Id";
     private static final String MARKUP_ID_COL = PlantOperation.class.getSimpleName() + "Markup";
     private static final String NAME_COL = PlantOperation.class.getSimpleName() + "Name";
-    private static final String EP_IN_ID_COL = EntryPoint.class.getSimpleName() + "InputId";
-    private static final String EP_OUT_ID_COL = EntryPoint.class.getSimpleName() + "OutputId";
 
     @Override
     public Class<PlantOperation> getEntityType() {
@@ -39,15 +36,13 @@ public class PlantOperationDAO extends AbstractDAO<PlantOperation> {
     @Override
     public Table<String> toTable(final List<PlantOperation> list) {
         final Table<String> table = new Table<>();
-        table.addHeader(ID_COL, PLANT_ID_COL, MARKUP_ID_COL, NAME_COL, EP_IN_ID_COL, EP_OUT_ID_COL);
+        table.addHeader(ID_COL, PLANT_ID_COL, MARKUP_ID_COL, NAME_COL);
         final int len = list.size();
         for (int i = 0; i < len; i++) {
             table.set(i, 0, String.valueOf(list.get(i).getId()));
             table.set(i, 1, String.valueOf(list.get(i).getPlant().getId()));
             table.set(i, 2, list.get(i).getMarkup());
             table.set(i, 3, list.get(i).getName());
-            table.set(i, 4, joinValues(list.get(i).getInputEntryPoint()));
-            table.set(i, 5, joinValues(list.get(i).getOutputEntryPoint()));
         }
         return table;
     }
@@ -64,8 +59,6 @@ public class PlantOperationDAO extends AbstractDAO<PlantOperation> {
             final Column<String> colPlantId = table.getColumnByName(i, PLANT_ID_COL);
             final Column<String> colMarkupId = table.getColumnByName(i, MARKUP_ID_COL);
             final Column<String> colNameId = table.getColumnByName(i, NAME_COL);
-            final Column<String> colEpInId = table.getColumnByName(i, EP_IN_ID_COL);
-            final Column<String> colEpOutId = table.getColumnByName(i, EP_OUT_ID_COL);
 
             final PlantOperation plantOperation = getOrCreateReferencedEntity(PlantOperation.class, colId, em);
             plantOperation.setName(colNameId.getValue());
@@ -74,14 +67,6 @@ public class PlantOperationDAO extends AbstractDAO<PlantOperation> {
                 plantOperation.setPlant(getReferencedEntity(
                         Plant.class,
                         colPlantId,
-                        em));
-                plantOperation.setInputEntryPoint(getReferencedEntities(
-                        EntryPoint.class,
-                        colEpInId,
-                        em));
-                plantOperation.setOutputEntryPoint(getReferencedEntities(
-                        EntryPoint.class,
-                        colEpOutId,
                         em));
             } catch (final EntityNotFoundException e) {
                 notification.addNotification(

@@ -18,13 +18,11 @@
 
 package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
-import org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct;
-import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
+import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
  * Represents the top-level recipe for producing a custom product.
@@ -32,35 +30,43 @@ import javax.validation.constraints.NotNull;
  * @author Rudolf Biczok
  */
 @Entity
-public class Recipe extends RecipeOperation {
+public class RecipeNode implements QueryableById, Serializable {
     private static final long serialVersionUID = 1L;
 
-    private CustomProduct customProduct;
-    private TradingEnterprise enterprise;
+    private long id;
+    private Recipe recipe;
+    private RecipeOperation operation;
 
-    /**
-     * @return the custom product for which this recipe is used for
-     */
-    @NotNull
-    @OneToOne
-    public CustomProduct getCustomProduct() {
-        return customProduct;
+    @Override
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public long getId() {
+        return this.id;
     }
 
-    /**
-     * @param customProduct the custom product for which this recipe is used for
-     */
-    public void setCustomProduct(CustomProduct customProduct) {
-        this.customProduct = customProduct;
+    @Override
+    public void setId(final long id) {
+        this.id = id;
     }
+
 
     @NotNull
-    @ManyToOne
-    public TradingEnterprise getEnterprise() {
-        return enterprise;
+    @OneToOne(fetch = FetchType.EAGER)
+    public Recipe getRecipe() {
+        return recipe;
     }
 
-    public void setEnterprise(TradingEnterprise enterprise) {
-        this.enterprise = enterprise;
+    public void setRecipe(Recipe from) {
+        this.recipe = from;
+    }
+
+    @NotNull
+    @OneToOne(fetch = FetchType.EAGER)
+    public RecipeOperation getOperation() {
+        return operation;
+    }
+
+    public void setOperation(RecipeOperation to) {
+        this.operation = to;
     }
 }

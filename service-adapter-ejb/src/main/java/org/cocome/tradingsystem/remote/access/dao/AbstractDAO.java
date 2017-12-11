@@ -6,10 +6,11 @@ import org.cocome.tradingsystem.inventory.data.IData;
 import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 import org.cocome.tradingsystem.remote.access.Notification;
 
-import javax.persistence.*;
-import java.util.Arrays;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.PersistenceUnit;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -134,20 +135,6 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
         return getReferencedEntity(entityClass, Long.valueOf(colId.getValue()), em);
     }
 
-    protected <T> List<T> getReferencedEntities(Class<T> entityClass,
-                                                Column<String> foreignKeyCol,
-                                                EntityManager em) {
-        final String value = foreignKeyCol.getValue();
-        if (NULL_VALUE.equals(value)) {
-            return Collections.emptyList();
-        }
-        final String[] splits = value.split(SET_DELIMITER);
-        return Arrays.stream(splits)
-                .mapToLong(Long::valueOf)
-                .mapToObj(id -> getReferencedEntity(entityClass, id, em))
-                .collect(Collectors.toList());
-    }
-
     protected <T> T getReferencedEntity(final Class<T> entityClass,
                                         final long id,
                                         final EntityManager em) {
@@ -174,25 +161,6 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
                                          final Table<String> table,
                                          final Notification notification,
                                          final String sourceOperation);
-
-    /**
-     * Used in circumstances where @ManyToOne mappings are not possible, e.g.
-     * when the relation ships are reflexive. We would then have to return joined tables
-     *
-     * @param collection any collection
-     * @param <T>        the type of the collections elements
-     * @return a comma-separated textual representation of the given collection.
-     * It calls {@link Object#toString()} on every element.
-     */
-    protected <T extends QueryableById> String joinValues(final Collection<T> collection) {
-        if (collection == null || collection.isEmpty()) {
-            return NULL_VALUE;
-        }
-        return collection.stream()
-                .map(QueryableById::getId)
-                .map(Object::toString)
-                .collect(Collectors.joining(SET_DELIMITER));
-    }
 
     /**
      * @param collection any collection

@@ -2,11 +2,11 @@ package org.cocome.tradingsystem.remote.access.dao.plant.recipe;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct;
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
-import org.cocome.tradingsystem.inventory.data.enterprise.parameter.CustomProductParameter;
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
-import org.cocome.tradingsystem.inventory.data.plant.parameter.PlantOperationParameter;
+import org.cocome.tradingsystem.inventory.data.plant.parameter.Parameter;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.ParameterInteraction;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation;
+import org.cocome.tradingsystem.inventory.data.plant.recipe.Recipe;
 import org.cocome.tradingsystem.remote.access.TestUtils;
 import org.junit.Assert;
 import org.junit.Test;
@@ -24,16 +24,22 @@ public class ParameterInteractionDAOTest {
         final EntityTransaction tx = em.getTransaction();
         tx.begin();
 
+        final TradingEnterprise enterprise = new TradingEnterprise();
+        em.persist(enterprise);
+
         final CustomProduct product = new CustomProduct();
         product.setBarcode(11223344);
         em.persist(product);
 
-        final CustomProductParameter customProductParameter = new CustomProductParameter();
-        customProductParameter.setProduct(product);
-        em.persist(customProductParameter);
+        final Recipe recipe = new Recipe();
+        recipe.setCustomProduct(product);
+        recipe.setName("RecipeName");
+        recipe.setEnterprise(enterprise);
+        em.persist(recipe);
 
-        final TradingEnterprise enterprise = new TradingEnterprise();
-        em.persist(enterprise);
+        final Parameter recipeParameter = new Parameter();
+        recipeParameter.setOperation(recipe);
+        em.persist(recipeParameter);
 
         final Plant plant = new Plant();
         plant.setEnterprise(enterprise);
@@ -44,13 +50,14 @@ public class ParameterInteractionDAOTest {
         operation.setName("PlantOperationName");
         em.persist(operation);
 
-        final PlantOperationParameter plantOperationParameter = new PlantOperationParameter();
-        plantOperationParameter.setPlantOperation(operation);
+        final Parameter plantOperationParameter = new Parameter();
+        plantOperationParameter.setOperation(operation);
         em.persist(plantOperationParameter);
 
         final ParameterInteraction parameterInteraction = new ParameterInteraction();
-        parameterInteraction.setFrom(customProductParameter);
+        parameterInteraction.setFrom(recipeParameter);
         parameterInteraction.setTo(plantOperationParameter);
+        parameterInteraction.setRecipe(recipe);
         em.persist(parameterInteraction);
 
         tx.commit();
@@ -61,11 +68,12 @@ public class ParameterInteractionDAOTest {
                         ParameterInteraction.class).getResultList();
 
         final String expectedTableContent = String.format("ParameterInteractionId;ParameterInteractionToId;"
-                        +"ParameterInteractionFromId\n"
-                        + "%d;%d;%d",
+                        + "ParameterInteractionFromId;ParameterInteractionRecipe\n"
+                        + "%d;%d;%d;%d",
                 parameterInteraction.getId(),
                 plantOperationParameter.getId(),
-                customProductParameter.getId());
+                recipeParameter.getId(),
+                recipe.getId());
 
         Assert.assertNotNull(queriedInstances);
         Assert.assertFalse(queriedInstances.isEmpty());

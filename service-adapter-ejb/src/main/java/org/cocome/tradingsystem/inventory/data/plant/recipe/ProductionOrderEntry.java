@@ -18,10 +18,8 @@
 
 package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
-import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
-
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 /**
  * Represents a single {@link PlantOperationOrder} entry in the database.
@@ -29,51 +27,12 @@ import java.io.Serializable;
  * @author Rudolf Biczok
  */
 @Entity
-public class ProductionOrderEntry implements Serializable, QueryableById {
+public class ProductionOrderEntry extends RecipeOperationOrderEntry {
 
     private static final long serialVersionUID = -7683436740437770058L;
 
-    private long id;
-    private long amount;
     private Recipe recipe;
     private ProductionOrder order;
-
-    /**
-     * Gets identifier value
-     *
-     * @return The id.
-     */
-    @Override
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public long getId() {
-        return this.id;
-    }
-
-    /**
-     * Sets identifier.
-     *
-     * @param id Identifier value.
-     */
-    @Override
-    public void setId(final long id) {
-        this.id = id;
-    }
-
-    /**
-     * @return The amount of ordered products
-     */
-    @Basic
-    public long getAmount() {
-        return this.amount;
-    }
-
-    /**
-     * @param amount The amount of ordered products
-     */
-    public void setAmount(final long amount) {
-        this.amount = amount;
-    }
 
     /**
      * @return The order object

@@ -1,7 +1,6 @@
 package org.cocome.tradingsystem.remote.access.dao.plant.recipe;
 
-import org.cocome.tradingsystem.inventory.data.enterprise.parameter.CustomProductParameter;
-import org.cocome.tradingsystem.inventory.data.plant.parameter.PlantOperationParameter;
+import org.cocome.tradingsystem.inventory.data.plant.parameter.Parameter;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.ParameterInteraction;
 
 import javax.ejb.LocalBean;
@@ -16,9 +15,8 @@ import javax.ejb.Stateless;
 @LocalBean
 public class ParameterInteractionDAO
         extends AbstractInteractionEntityDAO<
-            CustomProductParameter,
-            PlantOperationParameter,
-            ParameterInteraction> {
+        Parameter,
+        ParameterInteraction> {
 
     @Override
     public Class<ParameterInteraction> getEntityType() {

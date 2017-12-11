@@ -2,7 +2,9 @@ package org.cocome.tradingsystem.remote.access.dao.plant.recipe;
 
 import de.kit.ipd.java.utils.framework.table.Column;
 import de.kit.ipd.java.utils.framework.table.Table;
-import org.cocome.tradingsystem.inventory.data.plant.recipe.EntryPoint;
+import org.cocome.tradingsystem.inventory.data.plant.recipe.InteractionEntity;
+import org.cocome.tradingsystem.inventory.data.plant.recipe.Recipe;
+import org.cocome.tradingsystem.inventory.data.plant.recipe.RecipeNode;
 import org.cocome.tradingsystem.inventory.data.plant.recipe.RecipeOperation;
 import org.cocome.tradingsystem.remote.access.Notification;
 import org.cocome.tradingsystem.remote.access.dao.AbstractDAO;
@@ -15,56 +17,57 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * DAO for {@link EntryPoint}
+ * Abstract DAO for {@link InteractionEntity}
  *
  * @author Rudolf Biczok
  */
 @Stateless
 @LocalBean
-public class EntryPointDAO extends AbstractDAO<EntryPoint> {
+public class RecipeNodeDAO extends AbstractDAO<RecipeNode> {
 
-    private static final String ID_COL = EntryPoint.class.getSimpleName() + "Id";
-    private static final String NAME_COL = EntryPoint.class.getSimpleName() + "Name";
+    private static final String ID_COL = RecipeNode.class.getSimpleName() + "Id";
+    private static final String RECIPE_COL = Recipe.class.getSimpleName() + "Id";
     private static final String OPERATION_COL = RecipeOperation.class.getSimpleName() + "Id";
-    private static final String DIRECTION_COL = EntryPoint.class.getSimpleName() + "Direction";
 
     @Override
-    public Class<EntryPoint> getEntityType() {
-        return EntryPoint.class;
+    public Class<RecipeNode> getEntityType() {
+        return RecipeNode.class;
     }
 
     @Override
-    public Table<String> toTable(final List<EntryPoint> list) {
+    public Table<String> toTable(final List<RecipeNode> list) {
         final Table<String> table = new Table<>();
-        table.addHeader(ID_COL, NAME_COL, OPERATION_COL, DIRECTION_COL);
+        table.addHeader(ID_COL, RECIPE_COL, OPERATION_COL);
         final int len = list.size();
         for (int i = 0; i < len; i++) {
             table.set(i, 0, String.valueOf(list.get(i).getId()));
-            table.set(i, 1, list.get(i).getName());
-            table.set(i, 1, String.valueOf(list.get(i).getOperation().getId()));
-            table.set(i, 1, list.get(i).getDirection().name());
+            table.set(i, 1, String.valueOf(list.get(i).getRecipe().getId()));
+            table.set(i, 2, String.valueOf(list.get(i).getRecipe().getId()));
         }
         return table;
     }
 
     @Override
-    public List<EntryPoint> fromTable(final EntityManager em,
+    public List<RecipeNode> fromTable(final EntityManager em,
                                       final Table<String> table,
                                       final Notification notification,
                                       final String sourceOperation) {
         final int len = table.size();
-        final List<EntryPoint> list = new ArrayList<>(len);
+        final List<RecipeNode> list = new ArrayList<>(len);
         for (int i = 0; i < len; i++) {
             final Column<String> colId = table.getColumnByName(i, ID_COL);
-            final Column<String> colName = table.getColumnByName(i, NAME_COL);
-            final Column<String> colOperation = table.getColumnByName(i, OPERATION_COL);
-            final Column<String> colDirection = table.getColumnByName(i, DIRECTION_COL);
+            final Column<String> colParent = table.getColumnByName(i, RECIPE_COL);
+            final Column<String> colChild = table.getColumnByName(i, OPERATION_COL);
 
-            final EntryPoint entryPoint = getOrCreateReferencedEntity(EntryPoint.class, colId, em);
+            final RecipeNode node = getOrCreateReferencedEntity(RecipeNode.class, colId, em);
             try {
-                entryPoint.setOperation(getReferencedEntity(
+                node.setRecipe(getReferencedEntity(
+                        Recipe.class,
+                        colParent,
+                        em));
+                node.setOperation(getReferencedEntity(
                         RecipeOperation.class,
-                        colOperation,
+                        colChild,
                         em));
             } catch (final EntityNotFoundException e) {
                 notification.addNotification(
@@ -74,10 +77,11 @@ public class EntryPointDAO extends AbstractDAO<EntryPoint> {
                                 e.getMessage()));
                 continue;
             }
-            entryPoint.setName(colName.getValue());
-            entryPoint.setDirection(EntryPoint.Direction.valueOf(colDirection.getValue()));
-            list.add(entryPoint);
+            list.add(node);
         }
         return list;
     }
+
 }
+
+

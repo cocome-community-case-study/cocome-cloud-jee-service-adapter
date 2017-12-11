@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1"
-	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
     <persistence-unit name="InventoryManagerTest"
                       transaction-type="RESOURCE_LOCAL">
         <class>org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise</class>
         <class>org.cocome.tradingsystem.inventory.data.enterprise.ProductSupplier</class>
         <class>org.cocome.tradingsystem.inventory.data.enterprise.Product</class>
         <class>org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct</class>
-        <class>org.cocome.tradingsystem.inventory.data.enterprise.parameter.CustomProductParameter</class>
-        <class>org.cocome.tradingsystem.inventory.data.enterprise.parameter.BooleanCustomProductParameter</class>
-        <class>org.cocome.tradingsystem.inventory.data.enterprise.parameter.NorminalCustomProductParameter</class>
         <class>org.cocome.tradingsystem.inventory.data.store.Store</class>
         <class>org.cocome.tradingsystem.inventory.data.store.Store</class>
         <class>org.cocome.tradingsystem.inventory.data.store.StockItem</class>
@@ -20,24 +17,28 @@
         <class>org.cocome.tradingsystem.inventory.data.store.StockItem</class>
         <class>org.cocome.tradingsystem.inventory.data.store.OnDemandItem</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.Plant</class>
-        <class>org.cocome.tradingsystem.inventory.data.plant.parameter.PlantOperationParameter</class>
-        <class>org.cocome.tradingsystem.inventory.data.plant.parameter.BooleanPlantOperationParameter</class>
-        <class>org.cocome.tradingsystem.inventory.data.plant.parameter.NorminalPlantOperationParameter</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.parameter.Parameter</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.parameter.BooleanParameter</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.parameter.NominalParameter</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnit</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitClass</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.productionunit.ProductionUnitOperation</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.recipe.RecipeOperation</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.recipe.Recipe</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.recipe.RecipeNode</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.recipe.PlantOperation</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.recipe.RecipeOperationOrder</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.recipe.RecipeOperationOrderEntry</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.recipe.ParameterInteraction</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.recipe.EntryPoint</class>
+        <class>org.cocome.tradingsystem.inventory.data.plant.recipe.EntryPoint$Direction</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.recipe.EntryPointInteraction</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.recipe.InteractionEntity</class>
 
         <properties>
             <property name="javax.persistence.jdbc.user" value="APP_TEST"/>
             <property name="javax.persistence.jdbc.password" value="APP_TEST"/>
-             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
             <property name="javax.persistence.jdbc.url"
                       value="jdbc:h2:./target/embedded_db_h2"/>
 

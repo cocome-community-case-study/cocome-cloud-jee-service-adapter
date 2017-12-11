@@ -18,13 +18,11 @@
 
 package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
-import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
-import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 /**
  * The class represents an order of a {@link PlantOperation} in the database.
@@ -32,97 +30,18 @@ import java.util.Date;
  * @author Rudolf Biczok
  */
 @Entity
-public class PlantOperationOrder implements Serializable, QueryableById {
+public class PlantOperationOrder extends RecipeOperationOrder {
 
     private static final long serialVersionUID = -8340585715760459030L;
 
-    private long id;
-    private Date deliveryDate;
-    private Date orderingDate;
-    private TradingEnterprise enterprise;
-
-
     private Plant plant;
 
-    /**
-     * @return A unique identifier for ProductOrder objects
-     */
-    @Override
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public long getId() {
-        return this.id;
-    }
-
-    /**
-     * @param id A unique identifier for ProductOrder objects
-     */
-    public void setId(final long id) {
-        this.id = id;
-    }
-
-    /**
-     * @return The date of ordering.
-     */
-    @Basic
-    @Temporal(TemporalType.TIMESTAMP)
-    public Date getOrderingDate() {
-        return this.orderingDate;
-    }
-
-    /**
-     * @param orderingDate the date of ordering
-     */
-    public void setOrderingDate(final Date orderingDate) {
-        this.orderingDate = orderingDate;
-    }
-
-    /**
-     * The delivery date is used for computing the mean time to delivery
-     *
-     * @return The date of order fulfillment.
-     */
-    @Basic
-    @Temporal(TemporalType.TIMESTAMP)
-    public Date getDeliveryDate() {
-        return this.deliveryDate;
-    }
-
-    /**
-     * The delivery date is used for computing the mean time to delivery
-     *
-     * @param deliveryDate the date of order fulfillment
-     */
-    public void setDeliveryDate(final Date deliveryDate) {
-        this.deliveryDate = deliveryDate;
-    }
-
-    /**
-     * @return The enterprise where the order is placed.
-     */
-    @ManyToOne
-    public TradingEnterprise getEnterprise() {
-        return this.enterprise;
-    }
-
-    /**
-     * @param enterprise the enterprise where the order is placed
-     */
-    public void setEnterprise(final TradingEnterprise enterprise) {
-        this.enterprise = enterprise;
-    }
-
-    /**
-     * @return the plant where this order has been placed
-     */
+    @NotNull
     @ManyToOne
     public Plant getPlant() {
         return plant;
     }
 
-    /**
-     * @param plant the plant where this order has been placed
-     */
     public void setPlant(Plant plant) {
         this.plant = plant;
     }

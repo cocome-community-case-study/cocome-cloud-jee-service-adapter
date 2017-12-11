@@ -3,6 +3,7 @@ package org.cocome.tradingsystem.inventory.data.plant.recipe;
 import org.cocome.tradingsystem.inventory.data.enterprise.NameableEntity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -10,10 +11,15 @@ import java.io.Serializable;
  */
 @Entity
 public class EntryPoint implements Serializable, NameableEntity {
+    public enum Direction {INPUT, OUTPUT}
+
     private static final long serialVersionUID = 1L;
 
     private long id;
     private String name;
+
+    private RecipeOperation operation;
+    private Direction direction;
 
     /**
      * @return the database id
@@ -26,8 +32,7 @@ public class EntryPoint implements Serializable, NameableEntity {
     }
 
     /**
-     * @param id
-     *            the database id
+     * @param id the database id
      */
     @Override
     public void setId(final long id) {
@@ -46,12 +51,30 @@ public class EntryPoint implements Serializable, NameableEntity {
     }
 
     /**
-     * @param name
-     *            the name of the Plant
+     * @param name the name of the Plant
      */
     @Override
     public void setName(final String name) {
         this.name = name;
     }
 
+    @NotNull
+    @ManyToOne
+    public RecipeOperation getOperation() {
+        return operation;
+    }
+
+    public void setOperation(RecipeOperation operation) {
+        this.operation = operation;
+    }
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
 }

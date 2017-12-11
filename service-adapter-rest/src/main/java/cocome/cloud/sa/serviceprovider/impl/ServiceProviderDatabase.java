@@ -37,14 +37,10 @@ import org.cocome.tradingsystem.remote.access.dao.DataAccessObject;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductDAO;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.ProductSupplierDAO;
 import org.cocome.tradingsystem.remote.access.dao.enterprise.TradingEnterpriseDAO;
-import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.BooleanCustomProductParameterDAO;
-import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.CustomProductParameterDAO;
-import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.CustomProductParameterValueDAO;
-import org.cocome.tradingsystem.remote.access.dao.enterprise.parameter.NorminalCustomProductParameterDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.PlantDAO;
-import org.cocome.tradingsystem.remote.access.dao.plant.parameter.BooleanPlantOperationParameterDAO;
-import org.cocome.tradingsystem.remote.access.dao.plant.parameter.NorminalPlantOperationParameterDAO;
-import org.cocome.tradingsystem.remote.access.dao.plant.parameter.PlantOperationParameterDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.parameter.BooleanParameterDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.parameter.NominalParameterDAO;
+import org.cocome.tradingsystem.remote.access.dao.plant.parameter.ParameterDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitClassDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitDAO;
 import org.cocome.tradingsystem.remote.access.dao.plant.productionunit.ProductionUnitOperationDAO;
@@ -111,19 +107,10 @@ public class ServiceProviderDatabase extends HttpServlet {
     private PlantDAO plantDAO;
 
     @Inject
-    private BooleanCustomProductParameterDAO booleanCustomProductParameterDAO;
+    private BooleanParameterDAO booleanParameterDAO;
 
     @Inject
-    private NorminalCustomProductParameterDAO norminalCustomProductParameterDAO;
-
-    @Inject
-    private CustomProductParameterDAO customProductParameterDAO;
-
-    @Inject
-    private BooleanPlantOperationParameterDAO booleanPlantOperationParameterDAO;
-
-    @Inject
-    private NorminalPlantOperationParameterDAO norminalPlantOperationParameterDAO;
+    private NominalParameterDAO nominalParameterDAO;
 
     @Inject
     private ProductionOrderDAO productionOrderDAO;
@@ -132,10 +119,10 @@ public class ServiceProviderDatabase extends HttpServlet {
     private ProductionOrderEntryDAO productionOrderEntryDAO;
 
     @Inject
-    private CustomProductParameterValueDAO customProductParameterValueDAO;
+    private ParameterDAO parameterDAO;
 
     @Inject
-    private PlantOperationParameterDAO plantOperationParameterDAO;
+    private RecipeNodeDAO recipeNode;
 
     @Inject
     private PlantOperationOrderDAO plantOperationOrderDAO;
@@ -144,7 +131,7 @@ public class ServiceProviderDatabase extends HttpServlet {
     private PlantOperationOrderEntryDAO plantOperationOrderEntryDAO;
 
     @Inject
-    private PlantOperationParameterValueDAO plantOperationParameterValueDAO;
+    private ParameterValueDAO parameterValueDAO;
 
     @Inject
     private EntryPointDAO entryPointDAO;
@@ -154,6 +141,9 @@ public class ServiceProviderDatabase extends HttpServlet {
 
     @Inject
     private ParameterInteractionDAO parameterInteractionDAO;
+
+    @Inject
+    private RecipeOperationDAO recipeOperationDAO;
 
     @Inject
     private PlantOperationDAO plantOperationDAO;
@@ -208,16 +198,14 @@ public class ServiceProviderDatabase extends HttpServlet {
     protected void initDAOMap() {
         daoMap.put(productDAO.getEntityTypeName(), productDAO);
         daoMap.put(plantDAO.getEntityTypeName(), plantDAO);
-        daoMap.put(booleanCustomProductParameterDAO.getEntityTypeName(), booleanCustomProductParameterDAO);
-        daoMap.put(norminalCustomProductParameterDAO.getEntityTypeName(), norminalCustomProductParameterDAO);
-        daoMap.put(customProductParameterDAO.getEntityTypeName(), customProductParameterDAO);
-        daoMap.put(customProductParameterValueDAO.getEntityTypeName(), customProductParameterValueDAO);
+        daoMap.put(recipeOperationDAO.getEntityTypeName(), recipeOperationDAO);
         daoMap.put(plantOperationOrderDAO.getEntityTypeName(), plantOperationOrderDAO);
         daoMap.put(plantOperationOrderEntryDAO.getEntityTypeName(), plantOperationOrderEntryDAO);
-        daoMap.put(plantOperationParameterValueDAO.getEntityTypeName(), plantOperationParameterValueDAO);
-        daoMap.put(booleanPlantOperationParameterDAO.getEntityTypeName(), booleanPlantOperationParameterDAO);
-        daoMap.put(norminalPlantOperationParameterDAO.getEntityTypeName(), norminalPlantOperationParameterDAO);
-        daoMap.put(plantOperationParameterDAO.getEntityTypeName(), plantOperationParameterDAO);
+        daoMap.put(parameterValueDAO.getEntityTypeName(), parameterValueDAO);
+        daoMap.put(booleanParameterDAO.getEntityTypeName(), booleanParameterDAO);
+        daoMap.put(nominalParameterDAO.getEntityTypeName(), nominalParameterDAO);
+        daoMap.put(parameterDAO.getEntityTypeName(), parameterDAO);
+        daoMap.put(recipeNode.getEntityTypeName(), recipeNode);
         daoMap.put(entryPointDAO.getEntityTypeName(), entryPointDAO);
         daoMap.put(entryPointInteractionDAO.getEntityTypeName(), entryPointInteractionDAO);
         daoMap.put(parameterInteractionDAO.getEntityTypeName(), parameterInteractionDAO);

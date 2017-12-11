@@ -1,18 +1,20 @@
 package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author Rudolf Biczok
  */
 @Entity
-public class EntryPointInteraction implements InteractionEntity<EntryPoint, EntryPoint> {
+public class EntryPointInteraction implements InteractionEntity<EntryPoint> {
     private static final long serialVersionUID = 1L;
 
     private long id;
 
     private EntryPoint from;
     private EntryPoint to;
+    private Recipe recipe;
 
     @Override
     @Id
@@ -26,6 +28,19 @@ public class EntryPointInteraction implements InteractionEntity<EntryPoint, Entr
         this.id = id;
     }
 
+    @NotNull
+    @ManyToOne
+    @Override
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    @Override
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+    }
+
+    @NotNull
     @Override
     @OneToOne(fetch = FetchType.EAGER)
     public EntryPoint getFrom() {
@@ -37,6 +52,7 @@ public class EntryPointInteraction implements InteractionEntity<EntryPoint, Entr
         this.from = from;
     }
 
+    @NotNull
     @Override
     @OneToOne(fetch = FetchType.EAGER)
     public EntryPoint getTo() {
@@ -50,13 +66,8 @@ public class EntryPointInteraction implements InteractionEntity<EntryPoint, Entr
 
     @Transient
     @Override
-    public Class<EntryPoint> getFromClass() {
+    public Class<EntryPoint> getInteractionType() {
         return EntryPoint.class;
     }
 
-    @Transient
-    @Override
-    public Class<EntryPoint> getToClass() {
-        return EntryPoint.class;
-    }
 }

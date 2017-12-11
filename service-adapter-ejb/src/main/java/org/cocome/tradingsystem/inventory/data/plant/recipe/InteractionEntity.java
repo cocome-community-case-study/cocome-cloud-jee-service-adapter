@@ -8,12 +8,11 @@ import java.io.Serializable;
 /**
  * Used as common interface for classes who connect two other entity types with each other
  *
- * @param <FromType> the type of the first interaction partner
- * @param <ToType>   the type of the second interaction partner
+ * @param <T> the interaction type
  * @author Rudolf Biczok
  */
-public interface InteractionEntity<FromType extends NameableEntity,
-        ToType extends NameableEntity> extends Serializable, QueryableById {
+public interface InteractionEntity<T extends NameableEntity>
+        extends Serializable, QueryableById {
 
     /**
      * @return the database id
@@ -26,33 +25,37 @@ public interface InteractionEntity<FromType extends NameableEntity,
     void setId(final long id);
 
     /**
+     * @return the recipe operation
+     */
+    Recipe getRecipe();
+
+    /**
+     * @param operation the recipe operation
+     */
+    void setRecipe(Recipe operation);
+
+    /**
      * @return the first / source instance
      */
-    FromType getFrom();
+    T getFrom();
 
     /**
      * @param from the first / source instance
      */
-    void setFrom(FromType from);
+    void setFrom(T from);
 
     /**
      * @return the second / destination instance
      */
-    ToType getTo();
+    T getTo();
 
     /**
      * @param to the second / destination instance
      */
-    void setTo(ToType to);
+    void setTo(T to);
 
     /**
      * @return the type of source instance
      */
-    Class<FromType> getFromClass();
-
-    /**
-     * @return the type of the destination instance
-     */
-    Class<ToType> getToClass();
-
+    Class<T> getInteractionType();
 }
