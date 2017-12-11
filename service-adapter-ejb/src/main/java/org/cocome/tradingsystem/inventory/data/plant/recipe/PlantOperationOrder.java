@@ -20,6 +20,7 @@ package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
 import org.cocome.tradingsystem.inventory.data.enterprise.QueryableById;
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
+import org.cocome.tradingsystem.inventory.data.plant.Plant;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -39,6 +40,9 @@ public class PlantOperationOrder implements Serializable, QueryableById {
     private Date deliveryDate;
     private Date orderingDate;
     private TradingEnterprise enterprise;
+
+
+    private Plant plant;
 
     /**
      * @return A unique identifier for ProductOrder objects
@@ -96,7 +100,7 @@ public class PlantOperationOrder implements Serializable, QueryableById {
     /**
      * @return The enterprise where the order is placed.
      */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne
     public TradingEnterprise getEnterprise() {
         return this.enterprise;
     }
@@ -106,5 +110,20 @@ public class PlantOperationOrder implements Serializable, QueryableById {
      */
     public void setEnterprise(final TradingEnterprise enterprise) {
         this.enterprise = enterprise;
+    }
+
+    /**
+     * @return the plant where this order has been placed
+     */
+    @ManyToOne
+    public Plant getPlant() {
+        return plant;
+    }
+
+    /**
+     * @param plant the plant where this order has been placed
+     */
+    public void setPlant(Plant plant) {
+        this.plant = plant;
     }
 }

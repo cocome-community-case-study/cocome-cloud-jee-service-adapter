@@ -1,11 +1,12 @@
 package org.cocome.tradingsystem.inventory.data.plant.recipe;
 
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
-import org.cocome.tradingsystem.inventory.data.plant.expression.Expression;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 /**
  * Represents an operation provided by an plant
@@ -17,8 +18,7 @@ public class PlantOperation extends RecipeOperation {
     private static final long serialVersionUID = 1L;
 
     private Plant plant;
-
-    private List<Expression> expressions;
+    private String markup;
 
     /**
      * @return the plant that owns this production unit
@@ -37,29 +37,18 @@ public class PlantOperation extends RecipeOperation {
     }
 
     /**
-     * @return the expressions executed within this operation
+     * @return the markup used to describe this operation
      */
-    //Make sure the execution order of the specified operations is maintained by the DB
-    @OrderColumn(name = "EXEC_ORDER")
-    //Needed to allow multiple uses of the same operation in the same const expression
-    @JoinTable(
-            name = "PLANTOPERATION_EXPRESSION",
-            joinColumns = {
-                    @JoinColumn(name = "EXEC_ORDER"),
-                    @JoinColumn(name = "PLANTOPERATION_ID"),
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(name = "EXPRESSION_ID"),
-            })
-    @OneToMany
-    public List<Expression> getExpressions() {
-        return expressions;
+    @Lob
+    @Column(name = "EXECUTION_MARKUP", length = 512)
+    public String getMarkup() {
+        return markup;
     }
 
     /**
-     * @param expressions the expressions executed within this operation
+     * @param executionMarkup the markup used to describe this operation
      */
-    public void setExpressions(List<Expression> expressions) {
-        this.expressions = expressions;
+    public void setMarkup(final String executionMarkup) {
+        this.markup = executionMarkup;
     }
 }

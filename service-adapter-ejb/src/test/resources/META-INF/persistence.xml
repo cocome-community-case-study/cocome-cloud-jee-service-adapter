@@ -20,8 +20,6 @@
         <class>org.cocome.tradingsystem.inventory.data.store.StockItem</class>
         <class>org.cocome.tradingsystem.inventory.data.store.OnDemandItem</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.Plant</class>
-        <class>org.cocome.tradingsystem.inventory.data.plant.expression.Expression</class>
-        <class>org.cocome.tradingsystem.inventory.data.plant.expression.ConditionalExpression</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.parameter.PlantOperationParameter</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.parameter.BooleanPlantOperationParameter</class>
         <class>org.cocome.tradingsystem.inventory.data.plant.parameter.NorminalPlantOperationParameter</class>
