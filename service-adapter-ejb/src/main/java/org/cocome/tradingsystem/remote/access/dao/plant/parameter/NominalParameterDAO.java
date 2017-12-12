@@ -29,7 +29,7 @@ public class NominalParameterDAO extends AbstractDAO<NominalParameter> {
     private static final String ID_COL = NominalParameter.class.getSimpleName() + "Id";
     private static final String NAME_COL = NominalParameter.class.getSimpleName() + "Name";
     private static final String CATEGORY_COL = NominalParameter.class.getSimpleName() + "Category";
-    private static final String OPTONS_COL = NominalParameter.class.getSimpleName() + "Options";
+    private static final String OPTIONS_COL = NominalParameter.class.getSimpleName() + "Options";
 
     @Override
     public Class<NominalParameter> getEntityType() {
@@ -39,7 +39,7 @@ public class NominalParameterDAO extends AbstractDAO<NominalParameter> {
     @Override
     public Table<String> toTable(final List<NominalParameter> list) {
         final Table<String> table = new Table<>();
-        table.addHeader(RECIPE_OPERATION_COL, ID_COL, NAME_COL, CATEGORY_COL, OPTONS_COL);
+        table.addHeader(RECIPE_OPERATION_COL, ID_COL, NAME_COL, CATEGORY_COL, OPTIONS_COL);
         final int len = list.size();
         for (int i = 0; i < len; i++) {
             table.set(i, 0, String.valueOf(list.get(i).getOperation().getId()));
@@ -63,7 +63,7 @@ public class NominalParameterDAO extends AbstractDAO<NominalParameter> {
             final Column<String> colId = table.getColumnByName(i, ID_COL);
             final Column<String> colName = table.getColumnByName(i, NAME_COL);
             final Column<String> colCategory = table.getColumnByName(i, CATEGORY_COL);
-            final Column<String> colOptions = table.getColumnByName(i, OPTONS_COL);
+            final Column<String> colOptions = table.getColumnByName(i, OPTIONS_COL);
 
             final NominalParameter param = getOrCreateReferencedEntity(
                     NominalParameter.class, colId, em);
