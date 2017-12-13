@@ -42,7 +42,7 @@ public class RecipeNodeDAO extends AbstractDAO<RecipeNode> {
         for (int i = 0; i < len; i++) {
             table.set(i, 0, String.valueOf(list.get(i).getId()));
             table.set(i, 1, String.valueOf(list.get(i).getRecipe().getId()));
-            table.set(i, 2, String.valueOf(list.get(i).getRecipe().getId()));
+            table.set(i, 2, String.valueOf(list.get(i).getOperation().getId()));
         }
         return table;
     }
