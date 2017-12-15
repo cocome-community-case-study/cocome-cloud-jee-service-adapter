@@ -25,7 +25,7 @@ import java.util.List;
 public class RecipeDAO extends AbstractDAO<Recipe> {
 
     private static final String ID_COL = Recipe.class.getSimpleName() + "Id";
-    private static final String CUSTOM_PRODUCT_ID_COL = CustomProduct.class.getSimpleName() + "Id";
+    private static final String CUSTOM_PRODUCT_BARCODE_COL = CustomProduct.class.getSimpleName() + "Barcode";
     private static final String NAME_COL = Recipe.class.getSimpleName() + "Name";
     private static final String ENTERPRISE_ID_COL = TradingEnterprise.class.getSimpleName() + "Id";
 
@@ -38,11 +38,11 @@ public class RecipeDAO extends AbstractDAO<Recipe> {
     public Table<String> toTable(final List<Recipe> list) {
         final Table<String> table = new Table<>();
         table.addHeader(
-                ID_COL, CUSTOM_PRODUCT_ID_COL, NAME_COL, ENTERPRISE_ID_COL);
+                ID_COL, CUSTOM_PRODUCT_BARCODE_COL, NAME_COL, ENTERPRISE_ID_COL);
         final int len = list.size();
         for (int i = 0; i < len; i++) {
             table.set(i, 0, String.valueOf(list.get(i).getId()));
-            table.set(i, 1, String.valueOf(list.get(i).getCustomProduct().getId()));
+            table.set(i, 1, String.valueOf(list.get(i).getCustomProduct().getBarcode()));
             table.set(i, 2, list.get(i).getName());
             table.set(i, 3, String.valueOf(list.get(i).getEnterprise().getId()));
         }
@@ -58,17 +58,15 @@ public class RecipeDAO extends AbstractDAO<Recipe> {
         final List<Recipe> list = new ArrayList<>(len);
         for (int i = 0; i < len; i++) {
             final Column<String> colId = table.getColumnByName(i, ID_COL);
-            final Column<String> colCustomProductId = table.getColumnByName(i, CUSTOM_PRODUCT_ID_COL);
+            final Column<String> colCustomProductBarcode = table.getColumnByName(i, CUSTOM_PRODUCT_BARCODE_COL);
             final Column<String> colNameId = table.getColumnByName(i, NAME_COL);
             final Column<String> colEnterpriseId = table.getColumnByName(i, ENTERPRISE_ID_COL);
 
             final Recipe recipe = getOrCreateReferencedEntity(Recipe.class, colId, em);
             recipe.setName(colNameId.getValue());
             try {
-                recipe.setCustomProduct(getReferencedEntity(
-                        CustomProduct.class,
-                        colCustomProductId,
-                        em));
+                recipe.setCustomProduct(queryProductByBarcode(em,
+                        Long.valueOf(colCustomProductBarcode.getValue())));
                 recipe.setEnterprise(getReferencedEntity(
                         TradingEnterprise.class,
                         colEnterpriseId,
@@ -85,5 +83,11 @@ public class RecipeDAO extends AbstractDAO<Recipe> {
             list.add(recipe);
         }
         return list;
+    }
+
+    public CustomProduct queryProductByBarcode(final EntityManager em, final long barcode) {
+        return querySingleInstance(em.createQuery(
+                "SELECT p FROM CustomProduct p WHERE p.barcode = :barcode",
+                CustomProduct.class).setParameter("barcode", barcode));
     }
 }

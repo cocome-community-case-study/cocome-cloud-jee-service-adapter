@@ -24,8 +24,6 @@ public abstract class AbstractDAO<E extends QueryableById> implements DataAccess
 
     protected static final String SET_DELIMITER = ",";
 
-    private static final String NULL_VALUE = "null";
-
     @PersistenceUnit(unitName = IData.EJB_PERSISTENCE_UNIT_NAME)
     private EntityManagerFactory emf;
 

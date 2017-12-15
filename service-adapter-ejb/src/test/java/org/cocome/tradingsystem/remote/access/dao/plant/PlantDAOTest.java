@@ -1,6 +1,7 @@
 package org.cocome.tradingsystem.remote.access.dao.plant;
 
 import de.kit.ipd.java.utils.framework.table.Table;
+import org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct;
 import org.cocome.tradingsystem.inventory.data.enterprise.TradingEnterprise;
 import org.cocome.tradingsystem.inventory.data.plant.Plant;
 import org.cocome.tradingsystem.remote.access.TestUtils;
@@ -26,6 +27,8 @@ public class PlantDAOTest {
         enterprise.setName("CoCoME SE");
         final EntityManager em = TestUtils.TEST_EMF.createEntityManager();
         final EntityTransaction tx = em.getTransaction();
+
+        System.out.println(em.createQuery("SELECT DISTINCT e FROM CustomProduct e WHERE e.barcode =1513290338897", CustomProduct.class).getResultList());
 
         tx.begin();
         em.persist(enterprise);
