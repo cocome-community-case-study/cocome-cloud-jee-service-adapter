@@ -43,7 +43,7 @@ public class OnDemandItemDAO extends AbstractDAO<OnDemandItem> {
             table.set(i, 0, String.valueOf(list.get(i).getId()));
             table.set(i, 1, String.valueOf(list.get(i).getStore().getId()));
             table.set(i, 2, String.valueOf(list.get(i).getProduct().getBarcode()));
-            table.set(i, 7, String.valueOf(list.get(i).getSalesPrice()));
+            table.set(i, 3, String.valueOf(list.get(i).getSalesPrice()));
         }
         return table;
     }
