@@ -51,7 +51,8 @@ public class NominalParameterDAOTest {
                         NominalParameter.class).getResultList();
 
         final String expectedTableContent = String.format("RecipeOperationId;NominalParameterId;NominalParameterName;"
-                        + "NominalParameterCategory;NominalParameterOptions\n"
+                        + "NominalParameterCategory;NominalParameterOptions"
+                        + System.lineSeparator()
                         + "%d;%d;Fruits;Ingredients;Apple,Coconut,Banana",
                 operation.getId(),
                 param.getId());

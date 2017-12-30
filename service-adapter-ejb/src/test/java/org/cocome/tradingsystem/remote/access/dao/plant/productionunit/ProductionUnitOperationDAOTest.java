@@ -56,8 +56,8 @@ public class ProductionUnitOperationDAOTest {
                         + puc.getId(), ProductionUnitOperation.class).getResultList();
 
         final String expectedTableContent = String.format("ProductionUnitOperationId;ProductionUnitOperationName;" +
-                "ProductionUnitOperationOID;ProductionUnitOperationExpectedTime;ProductionUnitClassId\n" +
-                "%2$d;Name_of_op1;_1_2_1_P2_O1;10;%1$d\n" +
+                "ProductionUnitOperationOID;ProductionUnitOperationExpectedTime;ProductionUnitClassId" + System.lineSeparator() +
+                "%2$d;Name_of_op1;_1_2_1_P2_O1;10;%1$d" + System.lineSeparator() +
                 "%3$d;Name_of_op2;_1_2_1_P2_O2;10;%1$d", puc.getId(), pucOp1.getId(), pucOp2.getId());
 
         Assert.assertNotNull(queryedInstances);

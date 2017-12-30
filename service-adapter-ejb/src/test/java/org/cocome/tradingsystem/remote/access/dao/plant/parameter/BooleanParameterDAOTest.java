@@ -47,7 +47,8 @@ public class BooleanParameterDAOTest {
                         BooleanParameter.class).getResultList();
 
         final String expectedTableContent = String.format("RecipeOperationId;BooleanParameterId;"
-                        + "BooleanParameterName;BooleanParameterCategory\n"
+                        + "BooleanParameterName;BooleanParameterCategory"
+                        + System.lineSeparator()
                         + "%d;%d;With Chocolate;Ingredients",
                 operation.getId(),
                 param.getId());

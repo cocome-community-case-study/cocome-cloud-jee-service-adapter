@@ -93,8 +93,8 @@ public class PlantOperationDAOTest {
                                 + operation.getId(),
                         PlantOperation.class).getResultList();
 
-        final String expectedTableContent = String.format("PlantOperationId;PlantId;PlantOperationMarkup;PlantOperationName\n"
-                + "%d;%d;MARKUP;Build Stuff",
+        final String expectedTableContent = String.format("PlantOperationId;PlantId;PlantOperationMarkup;PlantOperationName"
+                + System.lineSeparator() + "%d;%d;MARKUP;Build Stuff",
                 operation.getId(),
                 plant.getId());
 

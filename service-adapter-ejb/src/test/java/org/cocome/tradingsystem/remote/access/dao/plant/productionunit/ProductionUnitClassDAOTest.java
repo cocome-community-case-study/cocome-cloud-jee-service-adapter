@@ -40,7 +40,8 @@ public class ProductionUnitClassDAOTest {
                 .createQuery("SELECT puc from ProductionUnitClass puc WHERE puc.plant.id = "
                         + plant.getId(), ProductionUnitClass.class).getResultList();
 
-        final String expectedTableContent = String.format("PlantId;ProductionUnitClassId;ProductionUnitClassName\n"
+        final String expectedTableContent = String.format("PlantId;ProductionUnitClassId;ProductionUnitClassName"
+                + System.lineSeparator()
                 + "%d;%d;xPPU v 0.1 Beta", plant.getId(), puc.getId());
 
         Assert.assertNotNull(queryedInstances);

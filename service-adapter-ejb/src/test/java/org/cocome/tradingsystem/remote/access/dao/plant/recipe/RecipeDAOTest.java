@@ -95,9 +95,9 @@ public class RecipeDAOTest {
                         Recipe.class).getResultList();
 
         final String expectedTableContent = String.format(
-                "RecipeId;CustomProductId;RecipeName;TradingEnterpriseId\n"
+                "RecipeId;CustomProductBarcode;RecipeName;TradingEnterpriseId" + System.lineSeparator()
                         + "%d;%d;RecipeName;%d",
-                recipe.getId(), product.getId(), enterprise.getId());
+                recipe.getId(), product.getBarcode(), enterprise.getId());
 
         Assert.assertNotNull(queriedInstances);
         Assert.assertFalse(queriedInstances.isEmpty());

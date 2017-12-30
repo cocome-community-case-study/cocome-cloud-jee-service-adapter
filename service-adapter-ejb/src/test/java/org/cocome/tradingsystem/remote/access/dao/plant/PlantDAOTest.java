@@ -47,9 +47,9 @@ public class PlantDAOTest {
             setLocation("Zurich");
             setEnterprise(enterprise);
         }});
-        final String expected = String.format("TradingEnterpriseId;PlantId;PlantName;PlantLocation\n"
-                + "%1$d;0;SDQ KIT;Karlsruhe\n"
-                + "%1$d;0;TUM;Munich\n"
+        final String expected = String.format("TradingEnterpriseId;PlantId;PlantName;PlantLocation" + System.lineSeparator()
+                + "%1$d;0;SDQ KIT;Karlsruhe" + System.lineSeparator()
+                + "%1$d;0;TUM;Munich" + System.lineSeparator()
                 + "%1$d;0;ETH Zürich;Zurich", enterprise.getId());
 
         final Table<String> table = TestUtils.fromCSV(expected);

@@ -40,7 +40,8 @@ public class ProductDAOTest {
                         Product.class).getResultList();
 
         final String expectedTableContent =
-                "ProductBarcode;ProductName;ProductPurchasePrice;ProductType\n"
+                "ProductBarcode;ProductName;ProductPurchasePrice;ProductType"
+                        + System.lineSeparator()
                         + "9876;Best Bear;10.0;org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct";
 
         Assert.assertNotNull(queriedInstances);
@@ -51,7 +52,8 @@ public class ProductDAOTest {
                 .createQuery("SELECT p from CustomProduct p WHERE p.id = " + product2.getId(),
                         Product.class).getResultList();
 
-        final String expectedTableContent2 = "ProductBarcode;ProductName;ProductPurchasePrice;ProductType\n"
+        final String expectedTableContent2 = "ProductBarcode;ProductName;ProductPurchasePrice;ProductType" +
+                System.lineSeparator()
                 + "9999999;Best Chocolate;100000.0;org.cocome.tradingsystem.inventory.data.enterprise.CustomProduct";
 
         Assert.assertNotNull(queriedInstances2);

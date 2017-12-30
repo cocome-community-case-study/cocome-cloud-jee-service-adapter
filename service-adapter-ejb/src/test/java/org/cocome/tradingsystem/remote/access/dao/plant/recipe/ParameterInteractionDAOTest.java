@@ -68,7 +68,7 @@ public class ParameterInteractionDAOTest {
                         ParameterInteraction.class).getResultList();
 
         final String expectedTableContent = String.format("ParameterInteractionId;ParameterInteractionToId;"
-                        + "ParameterInteractionFromId;ParameterInteractionRecipe\n"
+                        + "ParameterInteractionFromId;ParameterInteractionRecipe" + System.lineSeparator()
                         + "%d;%d;%d;%d",
                 parameterInteraction.getId(),
                 plantOperationParameter.getId(),

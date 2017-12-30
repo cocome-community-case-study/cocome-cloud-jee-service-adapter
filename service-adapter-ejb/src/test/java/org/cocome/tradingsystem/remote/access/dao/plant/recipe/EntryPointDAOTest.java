@@ -48,9 +48,10 @@ public class EntryPointDAOTest {
                 .createQuery("SELECT e from EntryPoint e WHERE e.id = " + entryPoint.getId(),
                         EntryPoint.class).getResultList();
 
-        final String expectedTableContent = String.format("EntryPointId;EntryPointName;RecipeOperationId;EntryPointDirection\n" +
+        final String expectedTableContent = String.format("EntryPointId;EntryPointName;RecipeOperationId;EntryPointDirection"
+                        + System.lineSeparator() +
                         "%d;Slot 1;%d;INPUT",
-                entryPoint.getId(),opr.getId());
+                entryPoint.getId(), opr.getId());
 
         Assert.assertNotNull(queriedInstances);
         Assert.assertFalse(queriedInstances.isEmpty());
