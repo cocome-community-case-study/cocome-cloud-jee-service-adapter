@@ -35,6 +35,7 @@ public class RecipeOperationOrderEntry implements Serializable, QueryableById {
 
     private long id;
     private long amount;
+    private boolean finished;
 
     /**
      * Gets identifier value
@@ -71,5 +72,21 @@ public class RecipeOperationOrderEntry implements Serializable, QueryableById {
      */
     public void setAmount(final long amount) {
         this.amount = amount;
+    }
+
+
+    /**
+     * @return {@code true} if order has been finished
+     */
+    @Basic
+    public boolean isFinished() {
+        return finished;
+    }
+
+    /**
+     * @param finished a flag indicating of the order has finished or not
+     */
+    public void setFinished(boolean finished) {
+        this.finished = finished;
     }
 }

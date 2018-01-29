@@ -28,6 +28,7 @@ public class PlantOperationOrderDAO extends AbstractDAO<PlantOperationOrder> {
     private static final String ID_COL = PlantOperationOrder.class.getSimpleName() + "Id";
     private static final String DELIVERY_DATE_COL = PlantOperationOrder.class.getSimpleName() + "DeliveryDate";
     private static final String ORDERING_DATE_COL = PlantOperationOrder.class.getSimpleName() + "OrderingDate";
+    private static final String FINISHED_COL = PlantOperationOrder.class.getSimpleName() + "Finished";
     private static final String ENTERPRISE_COL = TradingEnterprise.class.getSimpleName() + "Id";
     private static final String PLANT_COL = Plant.class.getSimpleName() + "Id";
 
@@ -39,14 +40,15 @@ public class PlantOperationOrderDAO extends AbstractDAO<PlantOperationOrder> {
     @Override
     public Table<String> toTable(final List<PlantOperationOrder> list) {
         final Table<String> table = new Table<>();
-        table.addHeader(ID_COL, DELIVERY_DATE_COL, ORDERING_DATE_COL, ENTERPRISE_COL, PLANT_COL);
+        table.addHeader(ID_COL, DELIVERY_DATE_COL, FINISHED_COL, ORDERING_DATE_COL, ENTERPRISE_COL, PLANT_COL);
         final int len = list.size();
         for (int i = 0; i < len; i++) {
             table.set(i, 0, String.valueOf(list.get(i).getId()));
             table.set(i, 1, TimeUtils.convertToStringDate(list.get(i).getDeliveryDate()));
             table.set(i, 2, TimeUtils.convertToStringDate(list.get(i).getOrderingDate()));
-            table.set(i, 3, String.valueOf(list.get(i).getEnterprise().getId()));
-            table.set(i, 4, String.valueOf(list.get(i).getPlant().getId()));
+            table.set(i, 3, String.valueOf(list.get(i).isFinished()));
+            table.set(i, 4, String.valueOf(list.get(i).getEnterprise().getId()));
+            table.set(i, 5, String.valueOf(list.get(i).getPlant().getId()));
         }
         return table;
     }
@@ -62,12 +64,14 @@ public class PlantOperationOrderDAO extends AbstractDAO<PlantOperationOrder> {
             final Column<String> colId = table.getColumnByName(i, ID_COL);
             final Column<String> colDeliveryDate = table.getColumnByName(i, DELIVERY_DATE_COL);
             final Column<String> colOrderingDate = table.getColumnByName(i, ORDERING_DATE_COL);
+            final Column<String> colFinished = table.getColumnByName(i, FINISHED_COL);
             final Column<String> colEnterpriseId = table.getColumnByName(i, ENTERPRISE_COL);
             final Column<String> colPlantId = table.getColumnByName(i, PLANT_COL);
 
             final PlantOperationOrder plantOperationOrder = getOrCreateReferencedEntity(PlantOperationOrder.class, colId, em);
             plantOperationOrder.setDeliveryDate(TimeUtils.convertToDateObject(colDeliveryDate.getValue()));
             plantOperationOrder.setOrderingDate(TimeUtils.convertToDateObject(colOrderingDate.getValue()));
+            plantOperationOrder.setFinished(Boolean.valueOf(colFinished.getValue()));
 
             try {
                 plantOperationOrder.setEnterprise(getOrCreateReferencedEntity(TradingEnterprise.class,

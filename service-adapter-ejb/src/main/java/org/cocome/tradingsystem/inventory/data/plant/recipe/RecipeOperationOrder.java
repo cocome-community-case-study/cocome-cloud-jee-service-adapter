@@ -41,6 +41,7 @@ public class RecipeOperationOrder implements Serializable, QueryableById {
     private Date deliveryDate;
     private Date orderingDate;
     private TradingEnterprise enterprise;
+    private boolean finished;
 
     /**
      * @return A unique identifier for ProductOrder objects
@@ -104,6 +105,21 @@ public class RecipeOperationOrder implements Serializable, QueryableById {
 
     public void setEnterprise(TradingEnterprise enterprise) {
         this.enterprise = enterprise;
+    }
+
+    /**
+     * @return {@code true} if order has been finished
+     */
+    @Basic
+    public boolean isFinished() {
+        return finished;
+    }
+
+    /**
+     * @param finished a flag indicating of the order has finished or not
+     */
+    public void setFinished(boolean finished) {
+        this.finished = finished;
     }
 
 }

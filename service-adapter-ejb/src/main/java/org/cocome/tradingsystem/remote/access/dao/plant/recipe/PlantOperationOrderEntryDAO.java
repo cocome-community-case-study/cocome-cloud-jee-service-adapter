@@ -26,6 +26,7 @@ public class PlantOperationOrderEntryDAO extends AbstractDAO<PlantOperationOrder
 
     private static final String ID_COL = PlantOperationOrderEntry.class.getSimpleName() + "Id";
     private static final String AMOUNT_COL = PlantOperationOrderEntry.class.getSimpleName() + "Amount";
+    private static final String FINISHED_COL = PlantOperationOrderEntry.class.getSimpleName() + "Finished";
     private static final String PLANT_OPERATION_ID_COL = PlantOperation.class.getSimpleName() + "Id";
     private static final String PLANT_OPERATION_ORDER_ID_COL = PlantOperationOrder.class.getSimpleName() + "Id";
 
@@ -37,13 +38,14 @@ public class PlantOperationOrderEntryDAO extends AbstractDAO<PlantOperationOrder
     @Override
     public Table<String> toTable(final List<PlantOperationOrderEntry> list) {
         final Table<String> table = new Table<>();
-        table.addHeader(ID_COL, AMOUNT_COL, PLANT_OPERATION_ID_COL, PLANT_OPERATION_ORDER_ID_COL);
+        table.addHeader(ID_COL, AMOUNT_COL, FINISHED_COL, PLANT_OPERATION_ID_COL, PLANT_OPERATION_ORDER_ID_COL);
         final int len = list.size();
         for (int i = 0; i < len; i++) {
             table.set(i, 0, String.valueOf(list.get(i).getId()));
             table.set(i, 1, String.valueOf(list.get(i).getAmount()));
-            table.set(i, 2, String.valueOf(list.get(i).getOperation().getId()));
-            table.set(i, 3, String.valueOf(list.get(i).getOrder().getId()));
+            table.set(i, 2, String.valueOf(list.get(i).isFinished()));
+            table.set(i, 3, String.valueOf(list.get(i).getOperation().getId()));
+            table.set(i, 4, String.valueOf(list.get(i).getOrder().getId()));
         }
         return table;
     }
@@ -58,11 +60,14 @@ public class PlantOperationOrderEntryDAO extends AbstractDAO<PlantOperationOrder
         for (int i = 0; i < len; i++) {
             final Column<String> colId = table.getColumnByName(i, ID_COL);
             final Column<String> colAmount = table.getColumnByName(i, AMOUNT_COL);
+            final Column<String> colFinished = table.getColumnByName(i, FINISHED_COL);
             final Column<String> colPlantOperation = table.getColumnByName(i, PLANT_OPERATION_ID_COL);
             final Column<String> colPlantOperationOrder = table.getColumnByName(i, PLANT_OPERATION_ORDER_ID_COL);
 
             final PlantOperationOrderEntry orderEntry = getOrCreateReferencedEntity(PlantOperationOrderEntry.class, colId, em);
             orderEntry.setAmount(Long.valueOf(colAmount.getValue()));
+            orderEntry.setFinished(Boolean.valueOf(colFinished.getValue()));
+
             try {
                 orderEntry.setOperation(getOrCreateReferencedEntity(PlantOperation.class,
                         colPlantOperation, em));
