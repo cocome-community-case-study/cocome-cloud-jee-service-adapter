@@ -41,8 +41,8 @@ public class EntryPointDAO extends AbstractDAO<EntryPoint> {
         for (int i = 0; i < len; i++) {
             table.set(i, 0, String.valueOf(list.get(i).getId()));
             table.set(i, 1, list.get(i).getName());
-            table.set(i, 1, String.valueOf(list.get(i).getOperation().getId()));
-            table.set(i, 1, list.get(i).getDirection().name());
+            table.set(i, 2, String.valueOf(list.get(i).getOperation().getId()));
+            table.set(i, 3, list.get(i).getDirection().name());
         }
         return table;
     }
