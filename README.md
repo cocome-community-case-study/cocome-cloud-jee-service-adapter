@@ -57,7 +57,7 @@ or via the Glassfish UI. You need:
 
 You can directly deploy them via the Cargo Maven plug-in with
 
-`mvn -s settings.xml install`
+`mvn -s settings.xml install -DskipITs`
 
 Alternatively, you can deploy the application via `asadmin` or the
 Glassfish administration interface.
@@ -102,7 +102,7 @@ problems. You may consult the server logs and your settings file.
   from 4848 (admin) and 8080 (web).
 - In case you deployed before, redeployment will fail until you undeploy
   first. This can be done with
-  `mvn -s settings.xml post-clean install`
+  `mvn -s settings.xml post-clean install -DskipITs`
   which undeploys and then tries to deploy the application again
 - If undeployment does not work. Try undeploying with the Glassfish
   administration interface or `asadmin`. In seldom cases Glassfish does
